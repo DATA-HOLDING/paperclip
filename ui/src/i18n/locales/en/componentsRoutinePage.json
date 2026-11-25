@@ -1,0 +1,260 @@
+{
+  "saveParts": {
+    "details": "the routine’s details",
+    "schedule": "the schedule",
+    "responsibility": "the responsibility",
+    "and": " and "
+  },
+  "partialSave": "Saved {{saved}}, but {{failed}} couldn’t be updated{{detail}}. Save again to finish.",
+  "state": {
+    "active": "Active",
+    "paused": "Paused",
+    "draft": "Draft",
+    "archived": "Archived"
+  },
+  "pausedNotice": {
+    "both": "Scheduled runs are skipped and webhook events are ignored until this routine is on.",
+    "webhooks": "Webhook events are ignored until this routine is on. The sending app gets an error.",
+    "schedule": "Scheduled runs are skipped until this routine is on."
+  },
+  "statusDetail": {
+    "archived": "No longer runs",
+    "paused": "Run now still works",
+    "nextRun": "Next run {{when}}",
+    "webhook": "Runs when a webhook arrives",
+    "standingCheck": "Checked each time the agent wakes up",
+    "manual": "Only runs when you start it"
+  },
+  "nextRun": {
+    "today": "today at {{time}}",
+    "tomorrow": "tomorrow at {{time}}",
+    "onDay": "{{day}} at {{time}}"
+  },
+  "scheduleFallback": "Schedule",
+  "webhook": {
+    "github": "GitHub webhook",
+    "generic": "Webhook"
+  },
+  "webhookHealth": {
+    "setup": "Setup unfinished",
+    "testing": "Testing · events don’t run",
+    "paused": "Paused",
+    "rejected": "Key rejected",
+    "receiving": "Receiving events",
+    "waiting": "Waiting for the first event"
+  },
+  "webhookStatus": {
+    "setup": {
+      "title": "Waiting for a test event",
+      "detail": "Send one from your app. Test events never start the routine."
+    },
+    "setupTesting": {
+      "title": "Waiting for a test event",
+      "detail": "Send one from your app. It won’t start the routine. Real events are ignored until you finish testing."
+    },
+    "testing": {
+      "title": "Testing",
+      "detail": "Send an event from your app. It won’t start the routine. Real events are ignored until you finish testing."
+    },
+    "waiting": {
+      "title": "Ready",
+      "detail": "The next event starts this routine."
+    },
+    "receiving": {
+      "title": "Receiving events",
+      "detail": "Each event starts this routine."
+    },
+    "rejected": {
+      "title": "The last event was rejected",
+      "detail": "The key didn’t match. Replace the key, then paste the new one into your app."
+    },
+    "testReceived": {
+      "title": "Test event received",
+      "detail": "The connection works. No task was created."
+    },
+    "ignoredWhilePaused": {
+      "title": "Ignoring events while the routine is paused",
+      "detail": "Turn the routine on to start it from this webhook. Until then the sending app gets an error."
+    },
+    "paused": {
+      "title": "Paused",
+      "detail": "Events are ignored until you resume this webhook."
+    }
+  },
+  "runRules": {
+    "alwaysEnqueue": "Queues every run, even while one is still working",
+    "skipIfActive": "Skips a run while one is still working",
+    "catchUp": "Catches up on runs missed while paused",
+    "activityGateProject": "Skips scheduled runs when nothing changed in its project",
+    "activityGate": "Skips scheduled runs when nothing changed"
+  },
+  "unnamedPerson": "Unnamed person",
+  "cancel": "Cancel",
+  "create": {
+    "missing": {
+      "responsibleUser": "the responsible user"
+    },
+    "created": "Routine created",
+    "missingBody": "Couldn’t save {{missing}}. Open Edit to try again.",
+    "action": "create the routine",
+    "loadErrors": "Some choices couldn’t be loaded. Close this and try again."
+  },
+  "webhookDialog": {
+    "senders": {
+      "custom": "Another app or script"
+    },
+    "addTitle": "Add webhook",
+    "startsFromGithub": "Starts “{{title}}” when GitHub sends an event.",
+    "startsFromApp": "Starts “{{title}}” when another app sends an event.",
+    "addDescription": "Start this routine when something happens in another app.",
+    "senderQuestion": "What’s sending the webhook?",
+    "testWebhook": "Test webhook",
+    "payloadUrl": "Payload URL",
+    "webhookUrl": "Webhook URL",
+    "hmacHelp": "Sign the timestamp, a period, and the exact JSON body with HMAC-SHA256. Send X-Paperclip-Timestamp and X-Paperclip-Signature: sha256=<signature>.",
+    "noKey": "This webhook has no key. Its URL is the shared secret, so keep it private.",
+    "secret": "Secret",
+    "authorizationHeader": "Authorization header value",
+    "secretKey": "Secret key",
+    "copyNow": "Copy it now. It’s hidden after you close this.",
+    "keyHidden": "The secret key is hidden.",
+    "replaceKey": "Replace key",
+    "creating": "Creating…",
+    "create": "Create webhook",
+    "testingFooter": "Testing. No tasks are created.",
+    "finishTesting": "Finish testing",
+    "remove": "Remove",
+    "pause": "Pause",
+    "resume": "Resume",
+    "finishWithoutTesting": "Finish without testing",
+    "done": "Done"
+  },
+  "editDialog": {
+    "titleCreate": "New routine",
+    "titleEdit": "Edit routine",
+    "descriptionCreate": "Describe the work, then choose who does it and when.",
+    "descriptionEdit": "Change what this routine does, who does it, and when.",
+    "title": "Title",
+    "titlePlaceholder": "Send the weekly digest",
+    "instructions": "Instructions",
+    "instructionsPlaceholder": "What should the agent do each time? Type / for skills and routines, @ to mention, {{token}} to ask for a value.",
+    "repeats": "Repeats",
+    "timeZone": "Time zone",
+    "removeSchedule": "Remove schedule",
+    "addSchedule": "Add schedule",
+    "webhooks": "Webhooks",
+    "webhookRemoved": "{{title}} removed.",
+    "undo": "Undo",
+    "configureWebhook": "Configure {{title}}",
+    "removeWebhook": "Remove {{title}}",
+    "addWebhook": "Add webhook",
+    "defaultAgent": "Default agent",
+    "chooseAgent": "Choose an agent",
+    "noDefaultAgent": "No default agent",
+    "searchAgents": "Search agents…",
+    "noAgentsFound": "No agents found.",
+    "project": "Project",
+    "noProject": "No project",
+    "searchProjects": "Search projects…",
+    "noProjectsFound": "No projects found.",
+    "responsibility": "Responsibility",
+    "noResponsibility": "No responsibility",
+    "searchResponsibilities": "Search responsibilities…",
+    "noResponsibilitiesFound": "No responsibilities found.",
+    "alreadyUnder": "Already under {{responsibility}} through {{project}}.",
+    "itsProject": "its project",
+    "defaultResponsibleUser": "Default responsible user",
+    "choosePerson": "Choose a person",
+    "noOne": "No one",
+    "findPerson": "Find a person…",
+    "noPeopleFound": "No people found.",
+    "secrets": "Secrets",
+    "addSecret": "Add secret",
+    "discardQuestion": "Discard your changes?",
+    "keepEditing": "Keep editing",
+    "discard": "Discard",
+    "conflict": "This routine changed while you were editing. Reload to see the latest version.",
+    "reloadLatest": "Reload latest",
+    "saving": "Saving…",
+    "createRoutine": "Create routine",
+    "saveChanges": "Save changes"
+  },
+  "page": {
+    "changeSchedule": "Change schedule: {{schedule}}",
+    "paused": "Paused",
+    "timesIn": "Times are in {{timezone}}.",
+    "removeSchedule": "Remove schedule",
+    "pause": "Pause",
+    "resume": "Resume",
+    "saveSchedule": "Save schedule",
+    "openWebhook": "Open {{title}}",
+    "ignoringEvents": "Ignoring events",
+    "changeTrigger": "Change {{title}}",
+    "remove": "Remove",
+    "standingCheck": {
+      "title": "Standing check",
+      "detail": "Each time the agent wakes up",
+      "description": "The agent carries out these instructions each time it wakes up and reports what it found. It never creates a task by itself."
+    },
+    "api": {
+      "title": "API",
+      "detail": "Started by an API call",
+      "description": "Starts this routine when an app or agent calls the routine API."
+    },
+    "apiTrigger": "API trigger",
+    "instructions": "Instructions",
+    "comments_one": "{{count}} comment",
+    "comments_other": "{{count}} comments",
+    "instructionsCopied": "Instructions copied",
+    "copyInstructions": "Copy instructions",
+    "noInstructions": "No instructions yet. The agent only gets the title.",
+    "addInstructions": "Add instructions",
+    "showLess": "Show less",
+    "showAll": "Show all",
+    "managedBy": "Managed by {{plugin}}",
+    "status": "Status",
+    "pauseRoutine": "Pause this routine",
+    "turnOn": "Turn this routine on",
+    "chooseDefaultAgent": "Choose a default agent",
+    "toTurnOn": "to turn this routine on.",
+    "repeats": "Repeats",
+    "doesntRepeat": "Doesn’t repeat. Runs only when you start it.",
+    "noOneYet": "No one yet",
+    "none": "None",
+    "through": "Through {{project}}",
+    "asksFor": "Asks for",
+    "usually": "Usually {{value}}",
+    "required": "Required",
+    "optional": "Optional",
+    "runRules": "Run rules",
+    "history": "History",
+    "loadingTasks": "Loading tasks…",
+    "noTasksNext": "No tasks yet. The first one starts {{when}}.",
+    "noTasks": "No tasks yet. Each run creates a task here.",
+    "historyLabel": "Tasks created by this routine",
+    "loading": "Loading…",
+    "loadMore": "Load more",
+    "skippedRuns_one": "{{count}} run was folded into a task that was still in progress.",
+    "skippedRuns_other": "{{count}} runs were folded into a task that was still in progress.",
+    "moreActions": "More routine actions",
+    "versionHistory": "Version history",
+    "auditLog": "Audit log",
+    "restore": "Restore routine",
+    "archive": "Archive routine"
+  },
+  "errorActions": {
+    "loadAgents": "load agents",
+    "loadProjects": "load projects",
+    "loadPeople": "load people",
+    "loadSecrets": "load secrets",
+    "loadResponsibilities": "load responsibilities",
+    "finishSettingUpWebhook": "finish setting up the webhook",
+    "finishTestingWebhook": "finish testing the webhook",
+    "createWebhook": "create the webhook",
+    "replaceKey": "replace the key",
+    "pauseWebhook": "pause the webhook",
+    "resumeWebhook": "resume the webhook",
+    "removeWebhook": "remove the webhook",
+    "startTestingWebhook": "start testing the webhook"
+  }
+}

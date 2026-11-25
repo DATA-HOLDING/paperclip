@@ -1,0 +1,8 @@
+{
+  "unstarAgentName": "Unstar {{name}}",
+  "starAgentName": "Star {{name}}",
+  "unstarAgent": "Unstar agent",
+  "starAgent": "Star agent to pin",
+  "chats": "Chats",
+  "chatWithAgent": "Chat with an agent"
+}

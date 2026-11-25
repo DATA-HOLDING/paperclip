@@ -1,0 +1,75 @@
+{
+  "repairFailed": {
+    "title": "Falha no reparo",
+    "descriptionWithPhase": "O reparo parou durante {{phase}}. O backup anterior ao reparo foi mantido.",
+    "description": "O reparo parou antes de o espaço de trabalho ficar utilizável. O backup anterior ao reparo foi mantido.",
+    "viewLog": "Ver log do reparo"
+  },
+  "provisioningFailed": {
+    "title": "Falha ao provisionar o banco de dados",
+    "earlierWithPhase": "A tentativa anterior de clonagem falhou durante {{phase}}. Depois, o espaço de trabalho ficou utilizável.",
+    "earlier": "Uma tentativa anterior de clonagem falhou, mas depois o espaço de trabalho ficou utilizável.",
+    "viewLog": "Ver log do provisionamento",
+    "withPhase": "O clone falhou durante {{phase}}. O reparo substitui só o banco de dados isolado.",
+    "description": "O clone não terminou, então este espaço de trabalho ainda não tem um banco de dados utilizável."
+  },
+  "handoff": {
+    "handoffNotConfigured": "Esta instância não tem a passagem de login do espaço de trabalho configurada, então abrir o conselho usa as credenciais locais do snapshot.",
+    "noBoardIdentity": "Sua sessão não tem um usuário clonado para entrar, então abrir o conselho usa as credenciais locais do snapshot.",
+    "runtimeNotRunning": "Nenhum serviço de runtime saudável está publicando uma URL para este espaço de trabalho ainda.",
+    "runtimeUrlUnusable": "O runtime está publicando uma URL que o Paperclip não consegue abrir.",
+    "workspaceNotReady": "O banco de dados clonado ainda não está pronto para aceitar um login."
+  },
+  "readiness": {
+    "databaseUnreachable": "O banco de dados isolado não está respondendo.",
+    "cloneDataMissing": "O clone não restaurou nenhuma linha de organização ou tarefa.",
+    "cloneDataUnreadable": "Não foi possível ler as tabelas de produto clonadas.",
+    "clonedMembershipMissing": "Nenhum usuário clonado é membro ativo de uma organização.",
+    "clonedIdentityUnreadable": "Não foi possível ler as tabelas de identidade clonadas.",
+    "authHandoffNotConfigured": "O espaço de trabalho foi iniciado sem uma chave de passagem de login.",
+    "seedManifestUnreadable": "O manifesto de seed está ilegível, então a restauração não é confiável."
+  },
+  "lastRecordedPhase": "Última fase registrada: {{phase}}.",
+  "repairing": {
+    "title": "Reparando o banco de dados do espaço de trabalho",
+    "descriptionWithPhase": "Só o banco de dados isolado é substituído; o worktree do git e seus arquivos são preservados. Fase atual: {{phase}}.",
+    "description": "Só o banco de dados isolado é substituído; o worktree do git e seus arquivos são preservados.",
+    "action": "Reparo em andamento"
+  },
+  "provisioning": {
+    "title": "Provisionando o banco de dados",
+    "description": "Restaurando o clone isolado do banco de dados deste espaço de trabalho. Isso roda uma vez antes da primeira inicialização.",
+    "action": "Provisionando"
+  },
+  "actions": {
+    "repair": "Reparar espaço de trabalho",
+    "start": "Iniciar espaço de trabalho",
+    "open": "Abrir espaço de trabalho"
+  },
+  "stopped": {
+    "title": "O espaço de trabalho não está rodando",
+    "description": "Inicie o runtime do espaço de trabalho para publicar o conselho dele."
+  },
+  "validating": {
+    "title": "Validando o clone",
+    "stillConfirming": "O Paperclip ainda está confirmando o clone.",
+    "action": "Validando"
+  },
+  "degraded": {
+    "title": "O espaço de trabalho está degradado",
+    "notPassedReadiness": "O espaço de trabalho está no ar, mas o clone dele não passou no contrato de prontidão.",
+    "oneRepair": "Um reparo limitado substitui o banco de dados isolado.",
+    "noUsableDatabase": "O runtime está no ar, mas não informou um banco de dados utilizável, então o Paperclip não vai publicá-lo como pronto."
+  },
+  "ready": {
+    "snapshotLocalTitle": "Pronto — login local do snapshot",
+    "snapshotLocalDescription": "Abrir o conselho vai pedir as credenciais capturadas neste snapshot.",
+    "title": "Pronto",
+    "description": "Abrir o espaço de trabalho faz você entrar no conselho clonado sem senha."
+  },
+  "starting": {
+    "title": "O espaço de trabalho está iniciando",
+    "description": "O Paperclip está iniciando o runtime do espaço de trabalho e aguardando a URL do conselho dele.",
+    "action": "Iniciando espaço de trabalho"
+  }
+}

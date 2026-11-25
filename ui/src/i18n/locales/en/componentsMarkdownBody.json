@@ -1,0 +1,23 @@
+{
+  "issueLabelWithTitle": "Issue {{identifier}}: {{title}}",
+  "issueLabel": "Issue {{identifier}}",
+  "caseLabel": "Case {{identifier}}",
+  "code": {
+    "copyFailed": "Copy failed",
+    "copied": "Copied!",
+    "copy": "Copy",
+    "unwrapLines": "Unwrap lines",
+    "wrapLines": "Wrap lines",
+    "copyCode": "Copy code"
+  },
+  "mermaid": {
+    "failed": "Failed to render Mermaid diagram.",
+    "unable": "Unable to render Mermaid diagram: {{error}}",
+    "rendering": "Rendering Mermaid diagram..."
+  },
+  "image": {
+    "reference": "Image: {{alt}}",
+    "untitled": "Untitled image",
+    "open": "Open image: {{alt}}"
+  }
+}

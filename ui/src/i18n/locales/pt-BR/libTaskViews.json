@@ -1,0 +1,50 @@
+{
+  "groups": {
+    "myWork": "Meu trabalho",
+    "organization": "Organização"
+  },
+  "mine": {
+    "label": "Minhas",
+    "hint": "Atribuídas a você ou aguardando você"
+  },
+  "unread": {
+    "label": "Não lidas",
+    "hint": "Tarefas em que você mexeu com atividade nova"
+  },
+  "blocked": {
+    "label": "Bloqueadas",
+    "hint": "Tarefas bloqueadas, agrupadas por bloqueio"
+  },
+  "recent": {
+    "label": "Recentes",
+    "hint": "Tudo em que você mexeu recentemente"
+  },
+  "everything": {
+    "label": "Tudo",
+    "hint": "Tarefas, aprovações, execuções com falha e pedidos de entrada"
+  },
+  "archived": {
+    "label": "Arquivadas",
+    "hint": "Tarefas arquivadas para você"
+  },
+  "needsAttention": {
+    "label": "Precisam de atenção",
+    "hint": "Tarefas com decisões pendentes"
+  },
+  "all": {
+    "label": "Todas as tarefas",
+    "hint": "Todas as tarefas da organização"
+  },
+  "active": {
+    "label": "Ativas",
+    "hint": "Tarefas abertas, em execução ou não"
+  },
+  "backlog": {
+    "label": "Backlog",
+    "hint": "Ainda não iniciadas"
+  },
+  "done": {
+    "label": "Concluídas",
+    "hint": "Concluídas e canceladas"
+  }
+}

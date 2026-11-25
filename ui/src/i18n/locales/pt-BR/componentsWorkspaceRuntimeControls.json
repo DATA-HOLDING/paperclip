@@ -1,0 +1,40 @@
+{
+  "jobMissingCommand": "Este job está sem comando.",
+  "serviceNoLongerMatches": "Este serviço de execução não corresponde mais a um comando configurado do espaço de trabalho.",
+  "exposure": {
+    "unavailable": "HTTPS indisponível",
+    "unavailableRemediation": "Confira o broker do Tailscale e a configuração de HTTPS do nó.",
+    "cleanupPending": "Limpeza do HTTPS pendente",
+    "cleanupPendingRemediation": "Reinicie o broker do host antes de reutilizar esta porta.",
+    "provisioning": "Provisionando HTTPS…",
+    "ready": "HTTPS pronto"
+  },
+  "serviceFailed": "O serviço falhou",
+  "action": {
+    "run": "Executar",
+    "start": "Iniciar",
+    "stop": "Parar",
+    "restart": "Reiniciar"
+  },
+  "port": "Porta {{port}}",
+  "noServicesConfigured": "Nenhum serviço configurado para este espaço de trabalho.",
+  "noJobsConfigured": "Nenhum job avulso configurado para este espaço de trabalho.",
+  "workspaceCommands": "Comandos do espaço de trabalho",
+  "servicesRunning": "{{count}} serviços rodando",
+  "noServicesRunning": "Nenhum serviço rodando",
+  "jobsAvailable_one": "{{count}} job disponível para rodar sob demanda.",
+  "jobsAvailable_other": "{{count}} jobs disponíveis para rodar sob demanda.",
+  "eachCommandIndependent": "Cada comando pode ser controlado de forma independente.",
+  "services": {
+    "title": "Serviços",
+    "description": "Comandos de longa duração que o Paperclip pode supervisionar neste espaço de trabalho."
+  },
+  "jobs": {
+    "title": "Jobs",
+    "description": "Comandos avulsos que rodam agora e terminam quando acabam."
+  },
+  "untracked": {
+    "title": "Serviços não rastreados",
+    "description": "Serviços rodando que não correspondem mais à configuração atual de comandos do espaço de trabalho."
+  }
+}

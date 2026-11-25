@@ -1,0 +1,15 @@
+{
+  "breadcrumb": "Projects",
+  "selectOrganization": "Select an organization to view projects.",
+  "loadAction": "load projects",
+  "empty": "No projects yet.",
+  "create": "Create project",
+  "noMatch": "No projects match your search.",
+  "myProjects": "My Projects",
+  "otherProjects": "Other Projects",
+  "projectCount_one": "{{count}} project",
+  "projectCount_other": "{{count}} projects",
+  "privateProject": "Private project",
+  "taskCount_one": "{{formatted}} task",
+  "taskCount_other": "{{formatted}} tasks"
+}

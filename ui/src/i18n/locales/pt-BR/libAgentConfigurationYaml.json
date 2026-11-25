@@ -1,0 +1,11 @@
+{
+  "nestingTooDeep": "O aninhamento da configuração não pode passar de 50 níveis.",
+  "unsupportedKey": "Chave de configuração não suportada: {{key}}",
+  "jsonOnly": "A configuração só pode conter valores compatíveis com JSON (sem NaN nem infinito).",
+  "tooLarge": "A configuração precisa ter menos de 8 MiB.",
+  "useYaml12": "Use YAML 1.2.",
+  "noAliases": "Aliases de YAML não são suportados. Escreva cada valor explicitamente.",
+  "noAnchors": "Âncoras de YAML não são suportadas.",
+  "noTags": "Tags de YAML não são suportadas.",
+  "document": "documento"
+}

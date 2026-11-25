@@ -1,0 +1,39 @@
+{
+  "breadcrumbs": {
+    "organization": "Organização",
+    "inbox": "Caixa de entrada",
+    "joinRequests": "Solicitações de entrada"
+  },
+  "toast": {
+    "approved": "Solicitação de entrada aprovada",
+    "rejected": "Solicitação de entrada rejeitada"
+  },
+  "selectOrganization": "Selecione uma organização para revisar as solicitações de entrada.",
+  "loading": "Carregando solicitações de entrada…",
+  "forbidden": "Você não tem permissão para revisar as solicitações de entrada desta organização.",
+  "loadAction": "carregar as solicitações de entrada",
+  "title": "Fila de solicitações de entrada",
+  "description": "Revise as solicitações de entrada de pessoas e agentes fora do feed misto da caixa de entrada. Esta fila usa as mesmas ações de aprovação dos cartões da caixa de entrada.",
+  "filters": {
+    "status": "Status",
+    "pendingApproval": "Aprovação pendente",
+    "approved": "Aprovadas",
+    "rejected": "Rejeitadas",
+    "requestType": "Tipo de solicitação",
+    "all": "Todas",
+    "human": "Pessoa",
+    "agent": "Agente"
+  },
+  "empty": "Nenhuma solicitação de entrada corresponde aos filtros atuais.",
+  "unknownHuman": "Solicitante humano desconhecido",
+  "unknownAgent": "Agente solicitante desconhecido",
+  "reject": "Rejeitar",
+  "approve": "Aprovar",
+  "inviteContext": "Contexto do convite",
+  "inviteSummary": "Convite de entrada ({{types}})",
+  "defaultRole": " • função padrão {{role}}",
+  "inviteUnavailable": "Metadados do convite indisponíveis",
+  "requestDetails": "Detalhes da solicitação",
+  "submitted": "Enviada em {{date}}",
+  "sourceIp": "IP de origem {{ip}}"
+}

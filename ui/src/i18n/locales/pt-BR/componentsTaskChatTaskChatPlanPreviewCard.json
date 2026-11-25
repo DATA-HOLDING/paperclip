@@ -1,0 +1,15 @@
+{
+  "plan": "Plano",
+  "writing": "Escrevendo",
+  "open": "Abrir",
+  "inTheSidebar": "na barra lateral",
+  "openInTaskSidebar": "Abrir {{title}} na barra lateral da tarefa",
+  "openRevisionInTaskSidebar": "Abrir {{title}} revisão {{revision}} na barra lateral da tarefa",
+  "writingPlan": "Escrevendo o plano",
+  "revShort": "rev {{revision}}",
+  "waitingFirstStep": "Aguardando o primeiro passo do plano…",
+  "openToReview": "Abra o plano sincronizado para revisá-lo.",
+  "openPlan": "Abrir plano",
+  "openPlanRevision": "Abrir plano revisão {{revision}}",
+  "streamingPreview": "Prévia do plano em transmissão"
+}

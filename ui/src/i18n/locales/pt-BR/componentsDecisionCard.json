@@ -1,0 +1,85 @@
+{
+  "counts": {
+    "blocker_one": "{{count}} bloqueio",
+    "blocker_other": "{{count}} bloqueios",
+    "issue_one": "{{count}} tarefa",
+    "issue_other": "{{count}} tarefas",
+    "target_one": "{{count}} alvo",
+    "target_other": "{{count}} alvos"
+  },
+  "unknownStatus": "desconhecido",
+  "issueFallback": "tarefa {{id}}",
+  "effects": {
+    "comment": "Comentar em {{target}}",
+    "createIssue": "Criar a tarefa “{{title}}” em {{parent}}",
+    "setStatus": "Mudar {{target}} para {{status}}",
+    "reassign": "Reatribuir {{target}}",
+    "unblock": "Desbloquear {{target}} — remover {{blockers}}",
+    "cancelTree": "Cancelar {{target}} e sua subárvore ({{issues}})",
+    "apply": "Aplicar efeito"
+  },
+  "failureCauses": {
+    "denyIntersection": "bloqueado pelo limite de permissões (falha fechada)",
+    "invalidReference": "uma tarefa referenciada não existe mais",
+    "targetChanged": "o alvo mudou desde a proposta",
+    "executionFailed": "o efeito deu erro durante a execução",
+    "generic": "não foi possível executar o efeito"
+  },
+  "results": {
+    "skipped": "{{target}} ignorada — o alvo mudou desde a proposta",
+    "failed": "Falhou em {{target}} — {{cause}}",
+    "running": "Executando em {{target}}…",
+    "commented": "Comentou em {{target}}",
+    "created": "Criou {{issue}}",
+    "aNewIssue": "uma nova tarefa",
+    "setStatus": "Mudou {{target}} para {{status}}",
+    "reassigned": "Reatribuiu {{target}}",
+    "removedBlockers": "Removeu {{blockers}} de {{target}}",
+    "cancelledIssues": "Cancelou {{issues}} em {{target}}",
+    "applied": "Aplicou o efeito em {{target}}"
+  },
+  "badges": {
+    "pending": "Pendente",
+    "expired": "Expirada",
+    "cancelled": "Cancelada",
+    "dismissed": "Descartada",
+    "decided": "Decidida",
+    "partial": "Parcial",
+    "failed": "Falhou",
+    "destructive": "Destrutiva"
+  },
+  "provenance": {
+    "proposedBy": "Proposta por",
+    "anAgent": "um agente",
+    "whileRunning": "durante a execução de",
+    "appliesTo": " · aplica-se a ",
+    "viewRun": "ver execução"
+  },
+  "stale": {
+    "changed": "{{targets}} mudaram desde a proposta",
+    "changedValue": "alterado",
+    "optionsDisabled": "As opções que exigem um alvo inalterado estão desativadas abaixo.",
+    "blocked": "Bloqueada · desatualizada"
+  },
+  "confirm": {
+    "title": "Isto cancela uma árvore inteira de tarefas",
+    "willBeCancelled": "{{issues}} serão canceladas:",
+    "wholeTree": "Esta tarefa e todas as subtarefas abaixo dela serão canceladas.",
+    "typeBefore": "Digite",
+    "typeAfter": "para confirmar.",
+    "ariaLabel": "Digite o identificador da tarefa para confirmar",
+    "cancel": "Cancelar",
+    "cancelIssues": "Cancelar {{issues}}",
+    "cancelTree": "Cancelar árvore"
+  },
+  "terminal": {
+    "windowClosed": "O prazo da decisão terminou",
+    "targetGone": "Uma tarefa alvo foi cancelada antes da decisão.",
+    "targetCompleted": "Todas as tarefas alvo foram concluídas antes da decisão.",
+    "noResponse": "Nenhuma resposta antes do prazo de expiração.",
+    "rewoken": " O proponente foi reativado.",
+    "withdrawn": "Esta decisão foi retirada pelo proponente antes de uma resposta.",
+    "dismissed": "Descartada — nenhum efeito foi executado.",
+    "partialNote": "Alguns efeitos podem já ter sido aplicados. Revise os resultados antes de pedir ao proponente uma nova proposta."
+  }
+}

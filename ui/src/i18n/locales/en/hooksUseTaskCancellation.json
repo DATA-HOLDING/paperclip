@@ -1,0 +1,5 @@
+{
+  "unavailable": "Task cancellation is unavailable. Refresh and try again.",
+  "subtasksNotRefreshed": "The task was canceled, but its subtasks could not be refreshed. Try canceling them again.",
+  "subtasksNotCanceled": "The task was canceled, but these subtasks could not be canceled: {{tasks}}. Try canceling them again."
+}

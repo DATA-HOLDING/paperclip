@@ -1,0 +1,9 @@
+{
+  "saving": "Salvando…",
+  "saved": "Salvo",
+  "waiting": "Será salvo quando reconectar",
+  "stalled": "Salvamento automático pausado",
+  "errorWithReason": "Não foi possível salvar ({{reason}})",
+  "error": "Não foi possível salvar",
+  "defaultAction": "salvar"
+}

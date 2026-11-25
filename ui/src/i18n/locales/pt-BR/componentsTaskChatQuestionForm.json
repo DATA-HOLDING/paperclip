@@ -1,0 +1,41 @@
+{
+  "validation": {
+    "required": "Esta pergunta é obrigatória.",
+    "customAnswer": "Informe uma resposta personalizada.",
+    "minLength": "Informe pelo menos {{count}} caracteres.",
+    "maxLength": "Informe no máximo {{count}} caracteres.",
+    "unsupportedPattern": "Esta pergunta tem um padrão de validação não suportado.",
+    "noMatch": "Use o formato solicitado.",
+    "validInteger": "Informe um número inteiro válido.",
+    "validNumber": "Informe um número válido.",
+    "minimum": "Informe um valor de pelo menos {{value}}.",
+    "maximum": "Informe um valor não maior que {{value}}."
+  },
+  "recommended": "Recomendado",
+  "noAnswer": "Sem resposta",
+  "missingAnswer": "A pergunta {{number}} precisa de uma resposta antes do envio.",
+  "submitFailed": "Não foi possível enviar as respostas.",
+  "cancelFailed": "Não foi possível cancelar as perguntas.",
+  "pagination": {
+    "label": "Paginação das perguntas",
+    "previous": "Pergunta anterior",
+    "position": "{{page}} de {{total}}",
+    "next": "Próxima pergunta"
+  },
+  "context": "Contexto da pergunta",
+  "writeAnAnswer": "Escreva uma resposta",
+  "required": "Obrigatória",
+  "optional": "Opcional",
+  "addContextPlaceholder": "Adicione contexto para o agente…",
+  "writeYourAnswerPlaceholder": "Escreva sua resposta",
+  "attachImage": "Anexar imagem à resposta de {{prompt}}",
+  "filterChoices": "Filtrar opções",
+  "filterChoicesFor": "Filtrar opções de {{prompt}}",
+  "other": "Outra",
+  "typeYourAnswer": "Digite sua resposta",
+  "attachImageOther": "Anexar imagem à outra resposta de {{prompt}}",
+  "cancel": "Cancelar",
+  "skip": "Pular",
+  "submitAnswers": "Enviar respostas",
+  "next": "Avançar"
+}

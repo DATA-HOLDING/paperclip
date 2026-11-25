@@ -1,0 +1,51 @@
+{
+  "breadcrumb": "Dashboard",
+  "empty": {
+    "welcome": "Welcome to Paperclip. Set up your first organization and agent to get started.",
+    "getStarted": "Get Started",
+    "selectOrganization": "Create or select an organization to view the dashboard."
+  },
+  "loadAction": "load the dashboard",
+  "paused": {
+    "importedTitle_one": "{{count}} imported agent is paused and will not run.",
+    "importedTitle_other": "{{count}} imported agents are paused and will not run.",
+    "resuming": "Resuming…",
+    "resumeAll": "Resume all",
+    "importedBody": "Agents from an organization import arrive paused as a safety default. Resume them so assigned tasks can start.",
+    "allTitle": "All agents in this organization are paused — nothing will run.",
+    "reviewAgents": "Review agents",
+    "allBody": "Resume at least one agent to let assigned tasks start."
+  },
+  "noAgents": {
+    "message": "You have no agents.",
+    "create": "Create one here"
+  },
+  "budget": {
+    "incidents_one": "{{count}} active budget incident",
+    "incidents_other": "{{count}} active budget incidents",
+    "summary": "{{agents}} agents paused · {{projects}} projects paused · {{approvals}} pending budget approvals",
+    "open": "Open budgets"
+  },
+  "metrics": {
+    "agentsEnabled": "Agents Enabled",
+    "agentsDescription": "{{running}} running, {{paused}} paused, {{errors}} errors",
+    "tasksInProgress": "Tasks In Progress",
+    "tasksDescription": "{{open}} open, {{blocked}} blocked",
+    "monthSpend": "Month Spend",
+    "budgetUtilization": "{{percent}}% of {{budget}} budget",
+    "unlimitedBudget": "Unlimited budget",
+    "pendingApprovals": "Pending Approvals",
+    "budgetOverrides": "{{count}} budget overrides awaiting board review",
+    "awaitingBoardReview": "Awaiting board review"
+  },
+  "charts": {
+    "runActivity": "Run Activity",
+    "last14Days": "Last 14 days",
+    "tasksByPriority": "Tasks by Priority",
+    "tasksByStatus": "Tasks by Status",
+    "successRate": "Success Rate"
+  },
+  "recentActivity": "Recent Activity",
+  "recentTasks": "Recent Tasks",
+  "noTasks": "No tasks yet."
+}

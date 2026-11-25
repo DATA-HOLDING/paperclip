@@ -1,0 +1,9 @@
+{
+  "archivedSuffix": " (archived)",
+  "noArea": "No area",
+  "areaAriaLabel": "Area: {{title}}. Move to another area",
+  "noAreaAriaLabel": "No area. Choose one",
+  "archived": "(archived)",
+  "moveToArea": "Move to area",
+  "moveFailed": "Couldn’t move it."
+}

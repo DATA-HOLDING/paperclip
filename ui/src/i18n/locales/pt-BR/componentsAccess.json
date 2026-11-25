@@ -1,0 +1,99 @@
+{
+  "modeBadge": {
+    "localTrusted": "Local confiável",
+    "authenticated": "Autenticado {{exposure}}",
+    "exposure": {
+      "private": "privado",
+      "public": "público"
+    }
+  },
+  "roles": {
+    "viewer": {
+      "label": "Leitor",
+      "description": "Pode ver o trabalho da organização e acompanhar.",
+      "gets": "Participação na organização somente para leitura."
+    },
+    "operator": {
+      "label": "Operador",
+      "description": "Pode editar o trabalho da organização e convidar pessoas.",
+      "gets": "Acesso completo de edição e auditoria. Não pode aprovar pedidos de entrada nem gerenciar permissões de membros."
+    },
+    "admin": {
+      "label": "Administrador",
+      "description": "Recomendado para operadores que precisam convidar pessoas, criar agentes e aprovar entradas.",
+      "gets": "Pode criar agentes, convidar usuários, atribuir tarefas e aprovar pedidos de entrada."
+    },
+    "owner": {
+      "label": "Proprietário",
+      "description": "Acesso total à organização, incluindo gerenciamento de membros.",
+      "gets": "Tudo do Administrador, mais o gerenciamento de membros."
+    }
+  },
+  "toast": {
+    "clipboardUnavailable": "Área de transferência indisponível",
+    "urlSelected": "A URL do convite está selecionada. Copie-a manualmente do campo.",
+    "copyManually": "Copie a URL do convite manualmente do campo abaixo.",
+    "created": "Convite criado",
+    "readyCopied": "Convite pronto abaixo e copiado para a área de transferência.",
+    "ready": "Convite pronto abaixo.",
+    "createFailed": "Falha ao criar o convite",
+    "revoked": "Convite revogado",
+    "revokeFailed": "Falha ao revogar o convite"
+  },
+  "selectOrganization": "Selecione uma organização para gerenciar convites.",
+  "loading": "Carregando convites…",
+  "forbidden": "Você não tem permissão para gerenciar os convites da organização.",
+  "intro": "Convide pessoas para solicitar acesso a esta organização. Novos links de convite são copiados para sua área de transferência quando gerados.",
+  "create": {
+    "title": "Convidar uma pessoa",
+    "description": "Gere um link de convite para uma pessoa e escolha o acesso padrão que ele deve solicitar.",
+    "chooseRole": "Escolha uma função",
+    "default": "Padrão",
+    "singleUse": "Cada link de convite só pode ser usado uma vez. Pessoas convidadas recebem a função selecionada logo após entrar; convites de agentes ainda criam um pedido de entrada para aprovação.",
+    "creating": "Criando…",
+    "button": "Criar convite",
+    "historyNote": "O histórico de convites abaixo mantém a trilha de auditoria."
+  },
+  "latest": {
+    "title": "Link de convite mais recente",
+    "copied": "Copiado",
+    "domainNote": "Esta URL inclui o domínio atual do Paperclip retornado pelo servidor.",
+    "urlLabel": "URL do convite mais recente",
+    "copyLink": "Copiar link"
+  },
+  "history": {
+    "title": "Histórico de convites",
+    "description": "Revise o status do convite, o público, quem convidou e qualquer pedido de entrada vinculado.",
+    "openQueue": "Abrir fila de pedidos de entrada",
+    "empty": "Nenhum convite foi criado para esta organização ainda.",
+    "columns": {
+      "state": "Estado",
+      "for": "Para",
+      "invitedBy": "Convidado por",
+      "created": "Criado",
+      "joinRequest": "Pedido de entrada",
+      "action": "Ação"
+    },
+    "unknownInviter": "Quem convidou é desconhecido",
+    "reviewRequest": "Revisar pedido",
+    "revoke": "Revogar",
+    "inactive": "Inativo",
+    "loadingMore": "Carregando mais…",
+    "viewMore": "Ver mais",
+    "states": {
+      "active": "Ativo",
+      "accepted": "Aceito",
+      "expired": "Expirado",
+      "revoked": "Revogado"
+    }
+  },
+  "audience": {
+    "agent": "Agente",
+    "humanOrAgentRole": "Pessoa ou agente · {{role}}",
+    "humanOrAgent": "Pessoa ou agente",
+    "human": "Pessoa"
+  },
+  "errorActions": {
+    "loadInvites": "carregar os convites"
+  }
+}

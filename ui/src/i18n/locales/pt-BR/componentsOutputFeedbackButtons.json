@@ -1,0 +1,21 @@
+{
+  "helpful": "Útil",
+  "needsWork": "Precisa melhorar",
+  "reasonTitle": "O que poderia ter sido melhor?",
+  "reasonPlaceholder": "Adicione uma nota curta",
+  "dismiss": "Dispensar",
+  "saving": "Salvando...",
+  "saveNote": "Salvar nota",
+  "alwaysAllow": "Sempre permitir",
+  "dontAllow": "Não permitir",
+  "dialog": {
+    "title": "Salve sua preferência de compartilhamento de feedback",
+    "description": "Escolha se as saídas de IA votadas podem ser compartilhadas com a Paperclip Labs. Esta resposta vira o padrão para os próximos votos positivos e negativos.",
+    "savedLocally": "Este voto é sempre salvo localmente.",
+    "choose": "Escolha",
+    "toShare": "para compartilhar este voto e as próximas saídas de IA votadas. Escolha",
+    "toKeepLocal": "para manter este voto e os próximos apenas locais.",
+    "changeLater": "Você pode mudar isso depois em Configurações > Geral.",
+    "terms": "Leia nossos termos de serviço"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "breadcrumb": "Goals",
+  "selectOrganization": "Select an organization to view goals.",
+  "loadGoalsAction": "load goals",
+  "empty": "No goals yet.",
+  "addGoal": "Add Goal",
+  "newGoal": "New Goal"
+}

@@ -1,0 +1,21 @@
+{
+  "in": "entrada",
+  "out": "saída",
+  "total": "total",
+  "apiRuns": "~{{count}} api",
+  "subRuns": "~{{count}} assin.",
+  "runs": "execuções",
+  "periodSpend": "Gasto no período",
+  "ofCompanyBudget": "{{percent}}% do orçamento da organização",
+  "thisWeek": "Esta semana",
+  "perWeek": "~{{amount}} / sem.",
+  "rollingWindows": "Janelas móveis",
+  "tok": "tok",
+  "subscription": "Assinatura",
+  "subscriptionShare": "{{percent}}% do uso de tokens via assinatura",
+  "providerTokensShare": "{{percent}}% dos tokens do provedor",
+  "providerCostShare": "{{percent}}% do custo do provedor",
+  "subscriptionQuota": "Cota da assinatura",
+  "percentUsed": "{{percent}}% usado",
+  "resets": "renova em {{date}}"
+}

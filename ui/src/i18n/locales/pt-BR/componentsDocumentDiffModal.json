@@ -1,0 +1,16 @@
+{
+  "actor": {
+    "board": "conselho",
+    "agent": "agente",
+    "system": "sistema"
+  },
+  "revisionLabel": "rev. {{number}} — {{time}} • {{actor}}",
+  "diffTitle": "Diferenças —",
+  "old": "Anterior",
+  "new": "Nova",
+  "selectRevision": "Selecione a revisão",
+  "loadingRevisions": "Carregando revisões...",
+  "selectTwo": "Selecione duas revisões para comparar.",
+  "sameRevision": "Os dois lados são a mesma revisão.",
+  "content": "Conteúdo"
+}

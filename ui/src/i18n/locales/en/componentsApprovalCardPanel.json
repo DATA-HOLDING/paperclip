@@ -1,0 +1,17 @@
+{
+  "kinds": {
+    "requestBoardApproval": "Board approval request",
+    "approveCeoStrategy": "Strategy approval",
+    "budgetOverrideRequired": "Budget override request"
+  },
+  "newAgent": "New agent",
+  "reportsTo": "Reports to {{manager}}",
+  "role": "{{role}} role",
+  "nameWithBudget": "{{name}} · {{budget}} / month",
+  "viewConfiguration": "View configuration",
+  "createsAgentWithLimit": "Approval creates the agent with this monthly spending limit.",
+  "createsAgent": "Approval creates the agent.",
+  "approvalRequest": "Approval request",
+  "viewDetails": "View details",
+  "onApproval": "On approval: {{next}}"
+}

@@ -1,4 +1,5 @@
 import { parseLeadingUserCommand } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * Slash commands typed in the task composer. What the signed-in user submits
@@ -68,7 +69,7 @@ export function parseSwarmCommand(value: string): { request: string } | null {
 /** A swarm runs on the agent's configured model; a per-message model or effort choice cannot apply. */
 export function swarmRunSettingsRefusal(settings: { model: string | null; effort: string | null; fast: boolean } | null | undefined): string | null {
   return settings && (settings.model || settings.effort || settings.fast)
-    ? "Swarm uses the agent's configured model. Clear the model and effort choices for this message, then send /swarm."
+    ? t("componentsTaskChatComposerCommands.swarmRefusal")
     : null;
 }
 
@@ -99,7 +100,7 @@ export function parseRunnerGoalCommand(value: string): ParsedRunnerGoalCommand {
   const [subcommand, ...extra] = remainder.split(/\s+/);
   if (["edit", "pause", "resume", "clear"].includes(subcommand!)) {
     if (extra.length > 0) {
-      return { matched: true, error: `/goal ${subcommand} does not accept extra arguments.` };
+      return { matched: true, error: t("componentsTaskChatComposerCommands.goalExtraArgs", { subcommand }) };
     }
     return { matched: true, command: { action: subcommand as "edit" | "pause" | "resume" | "clear" } };
   }

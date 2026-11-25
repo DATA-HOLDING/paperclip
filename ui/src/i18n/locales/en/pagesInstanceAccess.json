@@ -1,0 +1,33 @@
+{
+  "breadcrumbs": {
+    "settings": "Settings",
+    "instanceSettings": "Instance settings",
+    "access": "Access"
+  },
+  "toast": {
+    "organizationAccessUpdated": "Organization access updated",
+    "instanceRoleUpdated": "Instance role updated"
+  },
+  "loadingInstanceAccess": "Loading instance access…",
+  "adminRequired": "Instance admin access is required to manage users.",
+  "actions": {
+    "loadUsers": "load users",
+    "loadOrganizations": "load organizations",
+    "loadUserAccess": "load user access"
+  },
+  "title": "Instance Access",
+  "description": "Search users, manage instance-admin status, and control which organizations they can access.",
+  "searchUsers": "Search users",
+  "searchPlaceholder": "Search by name or email",
+  "activeMemberships": "{{count}} active organization memberships",
+  "selectUser": "Select a user to inspect instance access.",
+  "loadingUserAccess": "Loading user access…",
+  "removeAdmin": "Remove instance admin",
+  "promoteAdmin": "Promote to instance admin",
+  "organizationAccess": "Organization access",
+  "organizationAccessHint": "Toggle organization membership for this user. New access defaults to an active operator membership.",
+  "saving": "Saving…",
+  "saveOrganizationAccess": "Save organization access",
+  "currentMemberships": "Current memberships",
+  "unsetRole": "unset"
+}

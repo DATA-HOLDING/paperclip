@@ -1,0 +1,31 @@
+{
+  "title": {
+    "project": "Projetos",
+    "task": "Tarefas",
+    "routine": "Rotinas"
+  },
+  "empty": {
+    "project": "Nenhum projeto aberto.",
+    "task": "Nenhuma tarefa aberta.",
+    "routine": "Nenhuma rotina."
+  },
+  "bearingPrefix": {
+    "holding": "Segurando o número: ",
+    "moving": "Movendo o número: "
+  },
+  "automateAriaLabel": "{{label}}: “{{title}}”",
+  "byHandAriaLabel": "Configurar “{{title}}” manualmente",
+  "byHandTitle": "Configurar manualmente",
+  "andMore": "e mais {{count}}",
+  "key": {
+    "holding": "Segurando o número",
+    "moving": "Movendo o número"
+  },
+  "bar": {
+    "heading": "O padrão",
+    "edit": "Editar o padrão",
+    "empty": "Nenhum padrão ainda."
+  },
+  "affectingHeading": "O que está afetando o número",
+  "openConversationFailed": "Não foi possível abrir a conversa."
+}

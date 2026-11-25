@@ -60,6 +60,7 @@ import {
 } from "@/lib/recent-assignees";
 import { getRecentProjectIds, trackRecentProject } from "@/lib/recent-projects";
 import { copyTextToClipboard } from "@/lib/clipboard";
+import { t } from "@/i18n";
 
 // ---------------------------------------------------------------------------
 // Global bridge registry
@@ -323,7 +324,7 @@ function PluginSdkIssuesList({
   });
 
   if (!companyId) {
-    return createElement("div", { className: "text-sm text-muted-foreground" }, "Select an organization to view tasks.");
+    return createElement("div", { className: "text-sm text-muted-foreground" }, t("pluginsBridgeInit.selectOrganization"));
   }
 
   return createElement(HostIssuesList, {
@@ -346,10 +347,10 @@ function PluginSdkAssigneePicker({
   companyId,
   value,
   onChange,
-  placeholder = "Responsible",
-  noneLabel = "No responsible",
-  searchPlaceholder = "Search responsible...",
-  emptyMessage = "No responsible found.",
+  placeholder = t("pluginsBridgeInit.assignee.placeholder"),
+  noneLabel = t("pluginsBridgeInit.assignee.none"),
+  searchPlaceholder = t("pluginsBridgeInit.assignee.search"),
+  emptyMessage = t("pluginsBridgeInit.assignee.empty"),
   includeUsers = true,
   includeTerminatedAgents = false,
   className,
@@ -456,10 +457,10 @@ function PluginSdkProjectPicker({
   companyId,
   value,
   onChange,
-  placeholder = "Project",
-  noneLabel = "No project",
-  searchPlaceholder = "Search projects...",
-  emptyMessage = "No projects found.",
+  placeholder = t("pluginsBridgeInit.project.placeholder"),
+  noneLabel = t("pluginsBridgeInit.project.none"),
+  searchPlaceholder = t("pluginsBridgeInit.project.search"),
+  emptyMessage = t("pluginsBridgeInit.project.empty"),
   includeArchived = false,
   className,
   onConfirm,
@@ -641,7 +642,7 @@ function PluginSdkJsonTree({ data }: { data: unknown }) {
   return createElement("pre", { className: "max-h-80 overflow-auto rounded-md border bg-muted/30 p-2 text-xs" }, JSON.stringify(data, null, 2));
 }
 
-function PluginSdkSpinner({ label = "Loading" }: { size?: "sm" | "md" | "lg"; label?: string }) {
+function PluginSdkSpinner({ label = t("pluginsBridgeInit.loading") }: { size?: "sm" | "md" | "lg"; label?: string }) {
   return createElement("span", {
     className: "inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-muted-foreground/30 border-t-foreground align-middle",
     role: "status",
@@ -658,7 +659,7 @@ class PluginSdkErrorBoundary extends Component<{ children: ReactNode; fallback?:
 
   override render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? createElement("div", { className: "rounded-md border border-destructive/30 p-3 text-sm text-destructive" }, "Plugin UI failed to render.");
+      return this.props.fallback ?? createElement("div", { className: "rounded-md border border-destructive/30 p-3 text-sm text-destructive" }, t("pluginsBridgeInit.renderFailed"));
     }
     return this.props.children;
   }

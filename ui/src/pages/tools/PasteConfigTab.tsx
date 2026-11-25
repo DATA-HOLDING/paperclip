@@ -26,6 +26,7 @@ import { endpointHost } from "@/pages/apps/generic-mcp-connect";
 import { withoutUnavailableActions } from "@/pages/apps/app-detail/action-permissions";
 import { McpConfigHelpDialog } from "./McpConfigHelpDialog";
 import { describeError } from "@/api/errors";
+import { t } from "@/i18n";
 
 const SAMPLE_CONFIG = `{
   "mcpServers": {
@@ -39,15 +40,15 @@ const SAMPLE_CONFIG = `{
 /** Turn an env/header key (e.g. `GITHUB_TOKEN`) into a friendly field label. */
 function humanizeKey(raw: string): string {
   const cleaned = raw.replace(/[_-]+/g, " ").trim().toLowerCase();
-  if (!cleaned) return "Key";
+  if (!cleaned) return t("pagesTools.pasteConfig.keyFallback");
   return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
 }
 
 function draftSummary(draft: McpJsonImportDraft): string {
   const keyCount = draft.credentialFields.length || draft.credentialRefs.length;
-  const where = draft.transport === "local_stdio" ? "Runs in your workspace" : "Connects over the web";
-  if (keyCount === 0) return `${where}  ·  no keys needed`;
-  return `${where}  ·  needs ${keyCount} ${keyCount === 1 ? "key" : "keys"}`;
+  const where = draft.transport === "local_stdio" ? t("pagesTools.pasteConfig.summary.runsLocally") : t("pagesTools.pasteConfig.summary.connectsOverWeb");
+  if (keyCount === 0) return t("pagesTools.pasteConfig.summary.noKeys", { where });
+  return t("pagesTools.pasteConfig.summary.needsKeys", { where, count: keyCount });
 }
 
 /**
@@ -153,9 +154,9 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
       if (outcome !== "connected") {
         closeAuthorization();
         setOAuthPhase("error");
-        setOAuthError(outcome === "closed" ? "The sign-in window closed. Try again to finish connecting."
-          : outcome === "denied" ? "Sign-in was cancelled. Try again when you’re ready."
-            : "Sign-in failed. Try again to finish connecting.");
+        setOAuthError(outcome === "closed" ? t("pagesTools.pasteConfig.oauth.windowClosed")
+          : outcome === "denied" ? t("pagesTools.pasteConfig.oauth.cancelled")
+            : t("pagesTools.pasteConfig.oauth.failed"));
         return;
       }
       checking = true;
@@ -189,7 +190,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
   const connectMutation = useMutation({
     mutationFn: (draft: McpJsonImportDraft) => {
       const url = draftConnectUrl(draft);
-      if (!url) throw new Error("Only remote HTTP drafts can be checked and activated from pasted config.");
+      if (!url) throw new Error(t("pagesTools.pasteConfig.errors.onlyRemote"));
       return toolsApi.connectApp(companyId, {
         link: url,
         name: connectionNames[draft.name]?.trim() || draft.name,
@@ -207,7 +208,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
           setOAuthPhase("error");
           setOAuthError(
             result.auth.manualClientReason
-              ?? "This server requires OAuth client details from its provider settings. Continue in setup to add them.",
+              ?? t("pagesTools.pasteConfig.oauth.manualClientRequired"),
           );
           return;
         }
@@ -246,7 +247,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
         access: "all_agents",
       });
     },
-    onSuccess: () => setActivatedName(connectResult?.application.name ?? "Imported app"),
+    onSuccess: () => setActivatedName(connectResult?.application.name ?? t("pagesTools.pasteConfig.importedApp")),
   });
 
   const drafts = preview?.drafts ?? [];
@@ -259,7 +260,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
       JSON.parse(trimmed);
       return null;
     } catch {
-      return "That doesn't look like valid JSON yet — paste the whole snippet, including the outer braces.";
+      return t("pagesTools.pasteConfig.errors.invalidJson");
     }
   }, [draftText]);
 
@@ -296,16 +297,16 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
     <div className="space-y-5">
       <div className="flex max-w-2xl items-start gap-1.5">
         <p className="text-sm text-muted-foreground">
-          Paste the MCP config snippet from the tool's README and we'll turn it into a friendly setup.
+          {t("pagesTools.pasteConfig.intro")}
         </p>
         <McpConfigHelpDialog />
       </div>
       <p className="text-xs text-muted-foreground">
-        Just a URL?{" "}
+        {t("pagesTools.pasteConfig.justUrl")}{" "}
         <Link to="/apps" className="text-primary hover:underline">
-          Browse planned app connections
+          {t("pagesTools.pasteConfig.browsePlanned")}
         </Link>{" "}
-        instead.
+        {t("pagesTools.pasteConfig.instead")}
       </p>
 
       <div className="space-y-2">
@@ -326,7 +327,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
           <p className="text-xs text-amber-600">{localParseError}</p>
         ) : (
           <p className="text-xs text-muted-foreground">
-            Paste an MCP config — the snippet a README tells you to copy.
+            {t("pagesTools.pasteConfig.textareaHint")}
           </p>
         )}
       </div>
@@ -336,25 +337,25 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
           onClick={() => importMutation.mutate(draftText)}
           disabled={!canSubmit || Boolean(localParseError)}
         >
-          {importMutation.isPending ? "Checking…" : "Check config"}
+          {importMutation.isPending ? t("pagesTools.pasteConfig.checking") : t("pagesTools.pasteConfig.checkConfig")}
         </Button>
         <span className="text-xs text-muted-foreground">
-          We'll read it and show what we found before anything is saved.
+          {t("pagesTools.pasteConfig.checkHint")}
         </span>
       </div>
 
-      {importMutation.error ? <QueryErrorState error={importMutation.error} action="check the config" /> : null}
+      {importMutation.error ? <QueryErrorState error={importMutation.error} action={t("pagesTools.pasteConfig.actions.checkConfig")} /> : null}
 
       {preview ? (
         drafts.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-6 text-sm text-muted-foreground">
-            We couldn't find an app in that config. Double-check you pasted the whole snippet.
+            {t("pagesTools.pasteConfig.noApps")}
           </div>
         ) : (
           <div className="space-y-3">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
               <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-              We found {drafts.length} {drafts.length === 1 ? "app" : "apps"} in that config
+              {t("pagesTools.pasteConfig.foundApps", { count: drafts.length })}
             </h3>
             {drafts.map((draft, index) => {
               const url = draftConnectUrl(draft);
@@ -379,20 +380,18 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
             })}
             {drafts.some((d) => draftConnectUrl(d)) ? (
               <p className="text-xs text-muted-foreground">
-                Checking a remote app creates a draft connection, stores any header replacements as Paperclip secrets,
-                and runs health/catalog discovery before activation.
+                {t("pagesTools.pasteConfig.remoteHint")}
               </p>
             ) : (
               <p className="text-xs text-muted-foreground">
-                We humanized the field names from the config. These run-in-your-workspace tools stay as drafts until an
-                admin maps them to an approved template.
+                {t("pagesTools.pasteConfig.localHint")}
               </p>
             )}
           </div>
         )
       ) : null}
 
-      {connectMutation.error ? <QueryErrorState error={connectMutation.error} action="check the app" /> : null}
+      {connectMutation.error ? <QueryErrorState error={connectMutation.error} action={t("pagesTools.pasteConfig.actions.checkApp")} /> : null}
       {connectResult ? (
         <CatalogReview
           result={connectResult}
@@ -410,7 +409,7 @@ export function PasteConfigTab({ companyId }: { companyId: string }) {
           onFinish={() => finishMutation.mutate()}
         />
       ) : null}
-      {finishMutation.error ? <QueryErrorState error={finishMutation.error} action="finish setup" /> : null}
+      {finishMutation.error ? <QueryErrorState error={finishMutation.error} action={t("pagesTools.pasteConfig.actions.finishSetup")} /> : null}
     </div>
   );
 }
@@ -444,14 +443,14 @@ function DraftCard({
         {onCheck ? (
           <Button size="sm" className="shrink-0" onClick={onCheck} disabled={checking || !canCheck}>
             {checking ? <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" /> : null}
-            Check actions
+            {t("pagesTools.pasteConfig.draft.checkActions")}
           </Button>
         ) : null}
       </div>
 
       {onCheck ? (
         <label className="mt-4 block max-w-sm space-y-1 text-xs font-medium text-foreground">
-          Connection name
+          {t("pagesTools.pasteConfig.draft.connectionName")}
           <Input
             value={connectionName}
             onChange={(event) => onConnectionNameChange(event.target.value)}
@@ -477,7 +476,7 @@ function DraftCard({
                   type="password"
                   value={credentialValues[credentialValueKey(draft, field.configPath)] ?? ""}
                   onChange={(event) => onCredentialChange(field.configPath, event.target.value)}
-                  placeholder="Paste replacement value"
+                  placeholder={t("pagesTools.pasteConfig.draft.replacementPlaceholder")}
                   className="h-8 max-w-sm text-xs"
                 />
               </div>
@@ -486,10 +485,10 @@ function DraftCard({
         </div>
       ) : draft.credentialRefs.length > 0 ? (
         <p className="mt-3 text-xs text-muted-foreground">
-          Keys from this config stay draft-only until an admin maps them to an approved template.
+          {t("pagesTools.pasteConfig.draft.keysDraftOnly")}
         </p>
       ) : (
-        <p className="mt-3 text-xs text-muted-foreground">No keys needed for this one.</p>
+        <p className="mt-3 text-xs text-muted-foreground">{t("pagesTools.pasteConfig.draft.noKeys")}</p>
       )}
 
       {draft.warnings.length > 0 ? (
@@ -531,19 +530,19 @@ function CatalogReview({
         <div>
           <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            Review actions for {result.application.name}
+            {t("pagesTools.pasteConfig.review.title", { name: result.application.name })}
           </h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            Health and catalog checks passed. Every discovered action starts allowed; you can narrow access after activation.
+            {t("pagesTools.pasteConfig.review.passed")}
           </p>
         </div>
         <Button size="sm" onClick={onFinish} disabled={finishing || enabledCount === 0 || Boolean(activatedName)}>
           {finishing ? <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" /> : null}
-          Activate {enabledCount} of {total}
+          {t("pagesTools.pasteConfig.review.activate", { enabled: enabledCount, total })}
         </Button>
       </div>
       <ActionGroup
-        title="Read-only"
+        title={t("pagesTools.pasteConfig.review.readOnly")}
         actions={result.actions.readOnly}
         enabled={enabled}
         onToggle={onToggle}
@@ -551,7 +550,7 @@ function CatalogReview({
         askFirstLevels={askFirstLevels}
       />
       <ActionGroup
-        title="Can make changes"
+        title={t("pagesTools.pasteConfig.review.canMakeChanges")}
         actions={result.actions.canMakeChanges}
         enabled={enabled}
         onToggle={onToggle}
@@ -559,7 +558,7 @@ function CatalogReview({
         askFirstLevels={askFirstLevels}
       />
       {activatedName ? (
-        <p className="text-xs font-medium text-emerald-700">{activatedName} is active for all agents.</p>
+        <p className="text-xs font-medium text-emerald-700">{t("pagesTools.pasteConfig.review.activeForAll", { name: activatedName })}</p>
       ) : null}
     </div>
   );
@@ -587,10 +586,10 @@ function ActionGroup({
         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{title}</div>
         <div className="flex gap-2">
           <Button type="button" size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={() => onBulk(true)}>
-            Turn all on
+            {t("pagesTools.pasteConfig.group.turnAllOn")}
           </Button>
           <Button type="button" size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={() => onBulk(false)}>
-            Turn all off
+            {t("pagesTools.pasteConfig.group.turnAllOff")}
           </Button>
         </div>
       </div>
@@ -602,7 +601,7 @@ function ActionGroup({
               <div className="min-w-0 flex-1">
                 <div className="truncate text-sm font-medium text-foreground">{action.title || action.toolName}</div>
                 <div className="truncate text-xs text-muted-foreground">
-                  {askFirstLevels.includes(action.riskLevel) ? "Ask first when enabled" : action.riskLevel}
+                  {askFirstLevels.includes(action.riskLevel) ? t("pagesTools.pasteConfig.group.askFirstWhenEnabled") : action.riskLevel}
                 </div>
               </div>
               <ToggleSwitch checked={on} onCheckedChange={(next) => onToggle(action.catalogEntryId, next)} />

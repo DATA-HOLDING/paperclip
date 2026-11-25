@@ -1,0 +1,53 @@
+{
+  "reasons": {
+    "unknownBilling": {
+      "label": "Categoria de cobrança desconhecida",
+      "description": "Esta execução não identificou se a cobrança é por API ou assinatura. Cobranças registradas estão incluídas no registro de inferência. Para as próximas execuções, selecione uma conexão de IA na configuração do agente para que o Paperclip identifique a cobrança."
+    },
+    "missingModel": {
+      "label": "Modelo não informado",
+      "description": "O uso de tokens foi registrado sem um modelo, então o Paperclip não consegue estimar o custo. Selecione um modelo explícito na configuração do agente para as próximas execuções. Alterar as configurações não recalcula esta execução passada."
+    },
+    "missingPrice": {
+      "label": "Custo indisponível",
+      "description": "O provedor não informou um preço confiável para este uso. Nenhuma ação é necessária para este registro passado. Novas execuções via API com uso completo e um modelo compatível são estimadas automaticamente."
+    },
+    "waitingForReceipt": {
+      "label": "Recebendo uso",
+      "description": "Esta execução parou. O Paperclip está aguardando os dados finais de uso e vai registrá-los automaticamente. Você não precisa executar o agente de novo."
+    },
+    "receiptUnavailable": {
+      "label": "Uso final indisponível",
+      "description": "Esta execução parou sem dados finais de uso. O custo continua pendente nas verificações de orçamento. O Paperclip registrará um comprovante tardio se ele chegar; executar o agente de novo não recupera este uso."
+    },
+    "retryable": {
+      "label": "Pronto para registrar",
+      "description": "Os dados de uso salvos estão prontos para ser registrados. O Paperclip tenta novamente de forma automática, ou você pode tentar agora. Isso só registra custos; não executa o agente de novo."
+    }
+  },
+  "toast": {
+    "recorded": "Custos registrados.",
+    "noNewData": "Não há novos dados de custo disponíveis.",
+    "notRerun": "O agente não foi executado de novo."
+  },
+  "summary": {
+    "unavailable_one": "{{count}} custo de execução indisponível",
+    "unavailable_other": "{{count}} custos de execução indisponíveis",
+    "unknownBilling_one": "{{count}} tipo de cobrança desconhecido",
+    "unknownBilling_other": "{{count}} tipos de cobrança desconhecidos"
+  },
+  "unknownAgent": "Agente desconhecido",
+  "paperclipServices": "Serviços do Paperclip",
+  "viewRun": "Ver execução",
+  "retryRecording": "Tentar registrar o custo novamente",
+  "recording": "Registrando custos salvos…",
+  "recordingFailed": "O registro do custo falhou. Tente novamente em breve.",
+  "loading": "Carregando execuções afetadas…",
+  "loadError": "Não foi possível carregar os detalhes de custo.",
+  "retryLoading": "Tentar carregar novamente",
+  "stale": "Mostrando os últimos detalhes de custo carregados. As atualizações serão retomadas automaticamente.",
+  "noGaps": "Não há mais lacunas de custo neste período.",
+  "byAgent": "Detalhes de custo por agente",
+  "agentDetails": "Detalhes de custo de {{name}}",
+  "truncated": "Mostrando os 25 registros mais recentes de cada categoria. Selecione um período menor para ver mais."
+}

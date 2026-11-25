@@ -1,0 +1,8 @@
+{
+  "fallbackTitle": "Atualização do sistema",
+  "claudeNeedsReauth": "Tarefa pausada — o Claude precisa ser autenticado novamente",
+  "bindingMissing": "Tarefa pausada — falta um vínculo de segredo/configuração",
+  "workspaceProblem": "Tarefa pausada — problema no espaço de trabalho",
+  "waitingOn": "Tarefa pausada — aguardando {{owner}}",
+  "couldNotContinue": "Não foi possível continuar a tarefa"
+}

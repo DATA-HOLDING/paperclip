@@ -1,0 +1,45 @@
+{
+  "title": "Decisions",
+  "selectOrganization": "Select an organization first.",
+  "loadAction": "load your decisions",
+  "history": "Decision history",
+  "aging": {
+    "label": "Aging",
+    "description": "Idle past {{days}} days — kept off the desk. Keep any you still want surfaced."
+  },
+  "decided": {
+    "label": "Decided",
+    "loading": "Loading decided decisions…",
+    "empty": "No decided decisions."
+  },
+  "expired": {
+    "label": "Expired",
+    "loading": "Loading expired decisions…",
+    "empty": "No expired decisions."
+  },
+  "bundle": {
+    "proposed_one": "{{agent}} proposed {{count}} decision",
+    "proposed_other": "{{agent}} proposed {{count}} decisions",
+    "anAgent": "An agent",
+    "from": "· from ",
+    "pending": "· {{count}} pending"
+  },
+  "caughtUp": {
+    "mine": "You're all caught up.",
+    "unassigned": "No cards need an owner.",
+    "company": "No company alerts right now.",
+    "archived": "Nothing archived.",
+    "all": "No open cards for anyone."
+  },
+  "noMatch": "No decisions match your search or filters.",
+  "snoozedBelow": "No archived cards. Snoozed cards are below.",
+  "adjustFilters": "Adjust or clear your search and filters to see the rest.",
+  "zeroState": {
+    "title": "You're all caught up",
+    "mine": "Nothing needs a decision from you right now.",
+    "unassigned": "Every open card has an owner.",
+    "company": "No failed runs, agent errors, budget stops or join requests.",
+    "archived": "Cards you archive or snooze for yourself show here. Restore one to see it again.",
+    "all": "Nobody has a card waiting right now."
+  }
+}

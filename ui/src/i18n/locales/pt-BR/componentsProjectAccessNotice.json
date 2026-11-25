@@ -1,0 +1,20 @@
+{
+  "thisAgent": "Este agente",
+  "ariaLabel": "Acesso ao projeto",
+  "readyTitle": "O acesso ao projeto está pronto",
+  "blockedTitle": "{{agentName}} não consegue acessar este projeto",
+  "readyBody": "O agente agora pode acessar o projeto necessário. Tente novamente para continuar com sua mensagem salva.",
+  "blockedBody": "Esta tarefa precisa de {{projectName}}, fora dos projetos permitidos ao agente. O agente não começou. Sua mensagem está salva.",
+  "aProject": "um projeto",
+  "needsManager": "Uma pessoa com permissão para gerenciar agentes pode adicionar este projeto nas configurações de Permissões / Confiança do agente.",
+  "retryTask": "Tentar a tarefa novamente",
+  "manageAccess": "Gerenciar acesso aos projetos",
+  "viewAccess": "Ver acesso do agente",
+  "runDetails": "Detalhes da execução",
+  "stoppedDuring": "Parou durante",
+  "workspaceSetup": "Preparação do espaço de trabalho",
+  "reason": "Motivo",
+  "outsideScope": "Projeto fora do escopo permitido",
+  "providerStarted": "Provedor iniciado",
+  "no": "Não"
+}

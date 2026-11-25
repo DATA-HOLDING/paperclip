@@ -1,0 +1,50 @@
+{
+  "variables": "Variables",
+  "detectedPrefix": "Detected from `",
+  "detectedSuffix": "` placeholders in the title and instructions.",
+  "promptUser": "Prompt the user for this value before each manual run.",
+  "label": "Label",
+  "type": "Type",
+  "defaultValue": "Default value",
+  "required": "Required",
+  "noDefault": "No default",
+  "true": "True",
+  "false": "False",
+  "options": "Options",
+  "defaultOption": "Default option",
+  "columns": {
+    "name": "Name",
+    "default": "Default"
+  },
+  "typeOf": "Type of {{name}}",
+  "defaultFor": "Default for {{name}}",
+  "isRequired": "{{name}} is required",
+  "optionsFor": "Options for {{name}}",
+  "optionsPlaceholder": "Options, separated by commas: high, medium, low",
+  "builtin": {
+    "dateDescription": "Current date in YYYY-MM-DD format (UTC) at the time the routine runs.",
+    "timestampDescription": "Human-readable date and time (UTC) at the time the routine runs."
+  },
+  "hint": {
+    "prefix": "Use `",
+    "suffix": "` placeholders in the title or instructions to prompt for inputs when the routine runs.",
+    "showHelp": "Show variable help"
+  },
+  "help": {
+    "title": "Routine variables",
+    "description": "How to prompt for inputs and which variables Paperclip fills in automatically.",
+    "customTitle": "Custom variables",
+    "customType": "Type",
+    "customBodyBefore": "anywhere in the title or instructions. Paperclip detects each placeholder, lists it under",
+    "customBodyAfter": ", and prompts for a value before each run.",
+    "rule1": "Names must start with a letter and may use letters, numbers, and underscores.",
+    "rule2": "Pick a type (text, textarea, number, boolean, select, date), default value, and whether it is required.",
+    "rule3": "Variable names ending in capital Date, such as startDate, are created as date variables by default.",
+    "rule4": "The same name reused across the title and instructions is treated as one variable.",
+    "builtinTitle": "Built-in variables",
+    "builtinBody": "These are filled in automatically — no setup needed and they will not appear in the Variables list.",
+    "placeholder": "Placeholder",
+    "example": "Example",
+    "descriptionColumn": "Description"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "breadcrumb": "Artifacts",
+  "selectOrganization": "Select an organization to view artifacts.",
+  "empty": {
+    "stacksSearch": "No artifact stacks match this search.",
+    "stacks": "No artifact stacks yet.",
+    "search": "No artifacts match this search.",
+    "stackFilters": "No artifacts in this stack match the current filters.",
+    "all": "No artifacts yet. Outputs attached to tasks will appear here.",
+    "kind": "No artifacts of this type yet."
+  },
+  "allStacks": "All stacks",
+  "loadAction": "load artifacts",
+  "loadingMore": "Loading more artifacts...",
+  "updating": "Updating artifacts..."
+}

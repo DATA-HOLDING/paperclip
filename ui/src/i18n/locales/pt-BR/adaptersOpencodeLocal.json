@@ -1,0 +1,5 @@
+{
+  "instructionsFileHint": "Caminho absoluto para um arquivo Markdown (ex.: AGENTS.md) que define o comportamento deste agente. Injetado no prompt de sistema durante a execução.",
+  "instructionsFile": "Arquivo de instruções do agente",
+  "skipPermissions": "Pular permissões"
+}

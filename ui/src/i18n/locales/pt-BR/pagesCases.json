@@ -1,0 +1,39 @@
+{
+  "breadcrumb": "Casos",
+  "filterBy": "Filtrar por {{label}}",
+  "projectUnavailable": "Projeto indisponível",
+  "noProject": "Sem projeto",
+  "selectCompany": "Selecione uma organização para ver os casos.",
+  "controls": "Controles dos casos",
+  "searchLabel": "Buscar casos",
+  "searchPlaceholder": "Buscar casos…",
+  "loading": "Carregando casos…",
+  "updating": "Atualizando casos…",
+  "range": "{{from}}–{{to}} casos",
+  "countOne": "{{n}} caso",
+  "countOther": "{{n}} casos",
+  "filters": {
+    "status": "Status",
+    "allStatuses": "Todos os status",
+    "type": "Tipo",
+    "allTypes": "Todos os tipos",
+    "project": "Projeto",
+    "allProjects": "Todos os projetos",
+    "selectedProject": "Projeto selecionado"
+  },
+  "clearFilters": "Limpar filtros",
+  "filtersLoadError": "Não foi possível carregar alguns filtros de casos.",
+  "retryFilters": "Tentar carregar os filtros de novo",
+  "loadError": "Não foi possível carregar os casos.",
+  "tryAgain": "Tentar novamente",
+  "empty": {
+    "page": "Nenhum caso nesta página",
+    "filtered": "Nenhum caso corresponde a estes filtros",
+    "none": "Nenhum caso ainda"
+  },
+  "firstPage": "Primeira página",
+  "list": "Lista de casos",
+  "pages": "Páginas da lista de casos",
+  "previous": "Anterior",
+  "next": "Próxima"
+}

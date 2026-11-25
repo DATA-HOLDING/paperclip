@@ -1,0 +1,6 @@
+{
+  "title": "What do you own?",
+  "message": "A responsibility is something you own, with a bar for success and a number that shows whether you are meeting it. Group them under the areas you care about, such as Fundraising or Hiring.",
+  "action": "Add a responsibility",
+  "askAgent": "Ask {{name}} to draft them"
+}

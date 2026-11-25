@@ -14,6 +14,7 @@ import { formatDate } from "../lib/utils";
 import { ListTodo } from "lucide-react";
 import { useStreamlinedUiEnabled } from "../hooks/useStreamlinedUiEnabled";
 import { taskStatusIconProps } from "@/lib/task-status-presentation";
+import { t } from "@/i18n";
 
 export function MyIssues() {
   const { enabled: streamlinedUiEnabled } = useStreamlinedUiEnabled();
@@ -21,7 +22,7 @@ export function MyIssues() {
   const { setBreadcrumbs } = useBreadcrumbs();
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "My Tasks" }]);
+    setBreadcrumbs([{ label: t("pagesMyIssues.breadcrumb") }]);
   }, [setBreadcrumbs]);
 
   const issuesQuery = useQuery({
@@ -37,8 +38,8 @@ export function MyIssues() {
       <EmptyState
         icon={ListTodo}
         message={streamlinedUiEnabled
-          ? "Select an organization to view your tasks."
-          : "Select a company to view your tasks."}
+          ? t("pagesMyIssues.selectOrganization")
+          : t("pagesMyIssues.selectCompany")}
       />
     );
   }
@@ -53,7 +54,7 @@ export function MyIssues() {
       <QueryErrorState
         size="page"
         error={issuesView.error}
-        action="load your tasks"
+        action={t("pagesMyIssues.loadAction")}
         onRetry={issuesView.retry}
         retrying={issuesView.isFetching}
       />
@@ -68,7 +69,7 @@ export function MyIssues() {
   return (
     <div className="space-y-4">
       {myIssues.length === 0 && (
-        <EmptyState icon={ListTodo} message="No tasks assigned to you." />
+        <EmptyState icon={ListTodo} message={t("pagesMyIssues.empty")} />
       )}
 
       {myIssues.length > 0 && (

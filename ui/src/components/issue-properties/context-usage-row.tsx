@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useEffect, useRef } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { IssueContextCompaction, IssueContextUsage } from "@paperclipai/shared";
@@ -37,7 +38,7 @@ export function contextCompactState(
   if (!compaction) return null;
   if (requesting || compaction.status === "pending") return { status: "pending" };
   if (compaction.status === "unavailable") {
-    return { status: "unavailable", reason: compaction.reason ?? "Compaction is unavailable right now." };
+    return { status: "unavailable", reason: compaction.reason ?? t("componentsIssueProperties.context.compactionUnavailable") };
   }
   return { status: "available", onCompact };
 }
@@ -83,8 +84,8 @@ export function IssueContextUsageRow({
     },
     onError: (error) => {
       toast?.pushToast({
-        title: "Could not compact the context",
-        body: error instanceof Error ? error.message : "Try again in a moment.",
+        title: t("componentsIssueProperties.context.compactFailed"),
+        body: error instanceof Error ? error.message : t("componentsIssueProperties.context.tryAgainSoon"),
         tone: "error",
       });
     },
@@ -104,7 +105,7 @@ export function IssueContextUsageRow({
 
   if (view.data) {
     return (
-      <PropertyRow label="Context">
+      <PropertyRow label={t("componentsIssueProperties.context.label")}>
         <ContextUsageMeter
           usage={contextUsageFromIssue(view.data)}
           compact={contextCompactState(view.data.compaction, compact.isPending, () => compact.mutate())}
@@ -114,11 +115,11 @@ export function IssueContextUsageRow({
   }
   if (view.kind !== "error") return null;
   return (
-    <PropertyRow label="Context">
+    <PropertyRow label={t("componentsIssueProperties.context.label")}>
       <QueryErrorState
         error={view.error}
         size="inline"
-        action="load the context window"
+        action={t("componentsIssueProperties.context.loadAction")}
         onRetry={view.retry}
         retrying={view.isFetching}
       />

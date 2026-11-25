@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 /**
  * Prosumer copy for the Apps surface (PAP-10856).
  *
@@ -51,114 +52,114 @@ export interface AppCopy {
  */
 const APP_COPY: Record<string, AppCopy> = {
   zapier: {
-    tagline: "Reach 9,000+ apps your team already uses.",
-    short: "Reach 9,000+ apps from your agents.",
+    tagline: t("libAppGalleryCopy.apps.zapier.tagline"),
+    short: t("libAppGalleryCopy.apps.zapier.short"),
   },
   github: {
-    tagline: "Read code and pull requests, comment on issues.",
-    short: "Read code and pull requests, comment on issues.",
+    tagline: t("libAppGalleryCopy.apps.github.tagline"),
+    short: t("libAppGalleryCopy.apps.github.short"),
   },
   slack: {
-    tagline: "Send and read messages in your team's channels.",
-    short: "Send and read messages in your channels.",
+    tagline: t("libAppGalleryCopy.apps.slack.tagline"),
+    short: t("libAppGalleryCopy.apps.slack.short"),
   },
   notion: {
-    tagline: "Read and update pages in your workspace.",
-    short: "Read and update pages in your workspace.",
+    tagline: t("libAppGalleryCopy.apps.notion.tagline"),
+    short: t("libAppGalleryCopy.apps.notion.short"),
   },
   railway: {
-    tagline: "Inspect services, read logs, and manage deployments.",
-    short: "Connect Railway for deployments, logs, and container access.",
+    tagline: t("libAppGalleryCopy.apps.railway.tagline"),
+    short: t("libAppGalleryCopy.apps.railway.short"),
   },
   posthog: {
-    tagline: "Explore product usage, errors, flags, and experiments.",
-    short: "Sign in with PostHog. Project pinning and access controls are optional.",
+    tagline: t("libAppGalleryCopy.apps.posthog.tagline"),
+    short: t("libAppGalleryCopy.apps.posthog.short"),
   },
   ditto: {
-    tagline: "Reuse approved product copy and follow your style guide.",
-    short: "Sign in with Ditto. API keys are optional.",
+    tagline: t("libAppGalleryCopy.apps.ditto.tagline"),
+    short: t("libAppGalleryCopy.apps.ditto.short"),
   },
   circleback: {
-    tagline: "Search meeting notes, transcripts, and action items.",
-    short: "Sign in with Circleback. Meetings appear as cards in chat.",
+    tagline: t("libAppGalleryCopy.apps.circleback.tagline"),
+    short: t("libAppGalleryCopy.apps.circleback.short"),
   },
   gauge: {
-    tagline: "Track your brand in AI answers and run content workflows.",
-    short: "Sign in with Gauge and pick an organization. API keys are optional.",
+    tagline: t("libAppGalleryCopy.apps.gauge.tagline"),
+    short: t("libAppGalleryCopy.apps.gauge.short"),
   },
   neon: {
-    tagline: "Manage Postgres projects, branches, and queries.",
-    short: "Sign in with Neon. Project pinning and read-only mode are optional.",
+    tagline: t("libAppGalleryCopy.apps.neon.tagline"),
+    short: t("libAppGalleryCopy.apps.neon.short"),
   },
   superagent: {
-    tagline: "Review security findings and run red-team checks.",
-    short: "Connect with a Superagent API key. Billable and destructive tools stay under action policies.",
+    tagline: t("libAppGalleryCopy.apps.superagent.tagline"),
+    short: t("libAppGalleryCopy.apps.superagent.short"),
   },
   linear: {
-    tagline: "Create, update and read tickets.",
-    short: "Create, update and read tickets.",
+    tagline: t("libAppGalleryCopy.apps.linear.tagline"),
+    short: t("libAppGalleryCopy.apps.linear.short"),
   },
   "google-sheets": {
-    tagline: "Read and update selected spreadsheets.",
-    short: "Read spreadsheets or update the files you choose.",
+    tagline: t("libAppGalleryCopy.apps.googleSheets.tagline"),
+    short: t("libAppGalleryCopy.apps.googleSheets.short"),
   },
   gmail: {
-    tagline: "Read mail and create drafts for your review.",
-    short: "Read mail and create drafts for your review.",
+    tagline: t("libAppGalleryCopy.apps.gmail.tagline"),
+    short: t("libAppGalleryCopy.apps.gmail.short"),
   },
   "google-drive": {
-    tagline: "Find, read, and create files in Drive.",
-    short: "Find, read, and create files in Drive.",
+    tagline: t("libAppGalleryCopy.apps.googleDrive.tagline"),
+    short: t("libAppGalleryCopy.apps.googleDrive.short"),
   },
   "google-docs": {
-    tagline: "Read and update documents.",
-    short: "Read and update documents.",
+    tagline: t("libAppGalleryCopy.apps.googleDocs.tagline"),
+    short: t("libAppGalleryCopy.apps.googleDocs.short"),
   },
   "google-slides": {
-    tagline: "Read and update presentations.",
-    short: "Read and update presentations.",
+    tagline: t("libAppGalleryCopy.apps.googleSlides.tagline"),
+    short: t("libAppGalleryCopy.apps.googleSlides.short"),
   },
   "google-calendar": {
-    tagline: "Review calendars and manage events.",
-    short: "Review calendars and manage events.",
+    tagline: t("libAppGalleryCopy.apps.googleCalendar.tagline"),
+    short: t("libAppGalleryCopy.apps.googleCalendar.short"),
   },
   "google-chat": {
-    tagline: "Read conversations and send messages.",
-    short: "Read conversations and send messages.",
+    tagline: t("libAppGalleryCopy.apps.googleChat.tagline"),
+    short: t("libAppGalleryCopy.apps.googleChat.short"),
   },
   "google-people": {
-    tagline: "Look up contacts and people in your directory.",
-    short: "Look up contacts and people in your directory.",
+    tagline: t("libAppGalleryCopy.apps.googlePeople.tagline"),
+    short: t("libAppGalleryCopy.apps.googlePeople.short"),
   },
   "google-workspace-search": {
-    tagline: "Search across your Google workspace.",
-    short: "Search across your Google workspace.",
+    tagline: t("libAppGalleryCopy.apps.googleWorkspaceSearch.tagline"),
+    short: t("libAppGalleryCopy.apps.googleWorkspaceSearch.short"),
   },
   hubspot: {
-    tagline: "Look up contacts and update deal stages.",
-    short: "Look up contacts and update deal stages.",
+    tagline: t("libAppGalleryCopy.apps.hubspot.tagline"),
+    short: t("libAppGalleryCopy.apps.hubspot.short"),
   },
   intercom: {
-    tagline: "Read and reply to customer conversations.",
-    short: "Read and reply to customer conversations.",
+    tagline: t("libAppGalleryCopy.apps.intercom.tagline"),
+    short: t("libAppGalleryCopy.apps.intercom.short"),
   },
   figma: {
-    tagline: "Read files and post comments on frames.",
-    short: "Read files and post comments on frames.",
+    tagline: t("libAppGalleryCopy.apps.figma.tagline"),
+    short: t("libAppGalleryCopy.apps.figma.short"),
   },
   stripe: {
-    tagline: "Read customers, invoices, and payouts.",
-    short: "Read customers, invoices, and payouts.",
+    tagline: t("libAppGalleryCopy.apps.stripe.tagline"),
+    short: t("libAppGalleryCopy.apps.stripe.short"),
   },
   context7: {
-    tagline: "Look up up-to-date docs for your libraries.",
-    short: "Look up up-to-date docs for your libraries.",
+    tagline: t("libAppGalleryCopy.apps.context7.tagline"),
+    short: t("libAppGalleryCopy.apps.context7.short"),
   },
 };
 
 const GENERIC: AppCopy = {
-  tagline: "Give your agents access to this app.",
-  short: "Give your agents access to this app.",
+  tagline: t("libAppGalleryCopy.generic"),
+  short: t("libAppGalleryCopy.generic"),
 };
 
 /** Curated, gate-safe copy for a gallery app. */
@@ -184,7 +185,7 @@ export function credentialFieldLabel(
   fieldCount: number,
 ): string {
   if (/^Paste your\b/.test(rawLabel)) return sanitizeProsumerCopy(rawLabel);
-  if (fieldCount <= 1) return `Your ${appName} key`;
+  if (fieldCount <= 1) return t("libAppGalleryCopy.yourKey", { appName });
   const cleaned = sanitizeProsumerCopy(rawLabel);
-  return cleaned || `Your ${appName} key`;
+  return cleaned || t("libAppGalleryCopy.yourKey", { appName });
 }

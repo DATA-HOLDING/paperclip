@@ -1,0 +1,30 @@
+{
+  "name": "Name",
+  "cancel": "Cancel",
+  "add": {
+    "title": "Add an area",
+    "description": "What do you care about? An area is broad, like Fundraising or Hiring. Nobody owns it and it has no deadline; the responsibilities you own sit under it.",
+    "placeholder": "e.g. Fundraising",
+    "failed": "Couldn’t add the area. {{error}}",
+    "adding": "Adding…",
+    "submit": "Add area"
+  },
+  "rename": {
+    "title": "Rename area",
+    "description": "Everyone in the company sees the new name.",
+    "failed": "Couldn’t rename the area. {{error}}",
+    "saving": "Saving…",
+    "submit": "Save name"
+  },
+  "archive": {
+    "title": "Archive {{title}}?",
+    "description": "It is archived for everyone in the company, and nothing new can be filed under it.",
+    "ownedHere_one": "Your responsibility in it stays there until you move it to another area.",
+    "ownedHere_other": "Your {{count}} responsibilities in it stay there until you move them to another area.",
+    "restoreLater": "You can restore it later.",
+    "failed": "Couldn’t archive the area. {{error}}",
+    "keep": "Keep it",
+    "archiving": "Archiving…",
+    "submit": "Archive area"
+  }
+}

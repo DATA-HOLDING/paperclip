@@ -1,0 +1,6 @@
+{
+  "breadcrumb": "Org Chart",
+  "selectOrganization": "Select an organization to view org chart.",
+  "loadAction": "load the org chart",
+  "empty": "No agents in the organization. Create agents to build your org chart."
+}

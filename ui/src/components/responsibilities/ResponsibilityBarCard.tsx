@@ -52,6 +52,7 @@ import { MetricGlance } from "./MetricGlance";
 import { ResponsibilityBarFields } from "./ResponsibilityBarFields";
 import { ResponsibilityMetrics } from "./ResponsibilityMetricSet";
 import { ResponsibilityStatusBlock } from "./ResponsibilityStatusLead";
+import { t } from "@/i18n";
 
 type StatusChoice = ResponsibilityHealthOverride | "automatic";
 
@@ -79,10 +80,10 @@ function useReadingAuthor(responsibility: ResponsibilityDetail, agentsById: Read
   });
   const actor = lastReadingActor(activity.data ?? [], responsibility.metricUpdatedAt);
   if (!actor) return null;
-  if (actor.actorType === "agent") return agentsById.get(actor.actorId)?.name ?? "an agent";
+  if (actor.actorType === "agent") return agentsById.get(actor.actorId)?.name ?? t("componentsResponsibilitiesResponsibilityBarCard.author.anAgent");
   if (actor.actorType === "user") {
-    if (session.data?.user?.id && actor.actorId === session.data.user.id) return "you";
-    return actor.actorId === responsibility.ownerUserId ? "the owner" : "a teammate";
+    if (session.data?.user?.id && actor.actorId === session.data.user.id) return t("componentsResponsibilitiesResponsibilityBarCard.author.you");
+    return actor.actorId === responsibility.ownerUserId ? t("componentsResponsibilitiesResponsibilityBarCard.author.owner") : t("componentsResponsibilitiesResponsibilityBarCard.author.teammate");
   }
   return null;
 }
@@ -99,20 +100,20 @@ export function RecordReading({ responsibility }: { responsibility: Responsibili
     update.mutate({ metricCurrent }, {
       onSuccess: () => {
         onDone?.();
-        setNotice("Recorded.");
+        setNotice(t("componentsResponsibilitiesResponsibilityBarCard.record.recorded"));
       },
     });
   };
   const failed = update.error ? (
-    <p role="alert" className="text-xs text-destructive">Couldn’t record it. {describeError(update.error).body}</p>
+    <p role="alert" className="text-xs text-destructive">{t("componentsResponsibilitiesResponsibilityBarCard.record.failed")} {describeError(update.error).body}</p>
   ) : null;
   if (responsibility.metricKind === "yes_no") {
     return (
-      <div className="flex flex-col gap-1.5" role="group" aria-label="Record a new reading">
-        <span className="text-xs text-muted-foreground">Is it true today?</span>
+      <div className="flex flex-col gap-1.5" role="group" aria-label={t("componentsResponsibilitiesResponsibilityBarCard.record.aria")}>
+        <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesResponsibilityBarCard.record.isTrueToday")}</span>
         <div className="flex items-center gap-2">
-          <Button type="button" size="sm" variant="outline" disabled={update.isPending} onClick={() => record(true)}>Yes</Button>
-          <Button type="button" size="sm" variant="outline" disabled={update.isPending} onClick={() => record(false)}>No</Button>
+          <Button type="button" size="sm" variant="outline" disabled={update.isPending} onClick={() => record(true)}>{t("componentsResponsibilitiesResponsibilityBarCard.record.yes")}</Button>
+          <Button type="button" size="sm" variant="outline" disabled={update.isPending} onClick={() => record(false)}>{t("componentsResponsibilitiesResponsibilityBarCard.record.no")}</Button>
         </div>
         {notice ? <p role="status" className="text-xs text-muted-foreground">{notice}</p> : null}
         {failed}
@@ -126,16 +127,16 @@ export function RecordReading({ responsibility }: { responsibility: Responsibili
   };
   const unit = responsibility.metricKind === "percentage" ? "%" : responsibility.metricUnit?.trim();
   return (
-    <form className="flex flex-col gap-1.5" onSubmit={submit} aria-label="Record a new reading">
+    <form className="flex flex-col gap-1.5" onSubmit={submit} aria-label={t("componentsResponsibilitiesResponsibilityBarCard.record.aria")}>
       <label htmlFor={inputId} className="text-xs text-muted-foreground">
-        New reading{unit ? ` (${unit})` : ""}
+        {t("componentsResponsibilitiesResponsibilityBarCard.record.newReading")}{unit ? ` (${unit})` : ""}
       </label>
       <div className="flex items-center gap-2">
         <Input
           id={inputId}
           inputMode="decimal"
           value={value}
-          placeholder={responsibility.metricCurrent === null ? "e.g. 9" : String(responsibility.metricCurrent)}
+          placeholder={responsibility.metricCurrent === null ? t("componentsResponsibilitiesResponsibilityBarCard.record.placeholder") : String(responsibility.metricCurrent)}
           className="max-w-40"
           aria-invalid={parsed === "invalid" || undefined}
           onChange={(event) => {
@@ -144,10 +145,10 @@ export function RecordReading({ responsibility }: { responsibility: Responsibili
           }}
         />
         <Button type="submit" size="sm" variant="outline" disabled={typeof parsed !== "number" || update.isPending}>
-          {update.isPending ? "Saving…" : "Record"}
+          {update.isPending ? t("componentsResponsibilitiesResponsibilityBarCard.record.saving") : t("componentsResponsibilitiesResponsibilityBarCard.record.record")}
         </Button>
       </div>
-      {parsed === "invalid" ? <p className="text-xs text-destructive">Enter a number</p> : null}
+      {parsed === "invalid" ? <p className="text-xs text-destructive">{t("componentsResponsibilitiesResponsibilityBarCard.record.enterNumber")}</p> : null}
       {notice ? <p role="status" className="text-xs text-muted-foreground">{notice}</p> : null}
       {failed}
     </form>
@@ -193,16 +194,16 @@ export function EditBarDialog({
       <DialogContent className="sm:max-w-xl">
         <form className="flex flex-col gap-5" onSubmit={submit} noValidate>
           <DialogHeader>
-            <DialogTitle>{responsibility.standard?.trim() ? "Edit the bar" : "Set the bar"}</DialogTitle>
-            <DialogDescription>How is success measured for {responsibility.title}? The status follows from the reading, by the kind of measure you choose.</DialogDescription>
+            <DialogTitle>{responsibility.standard?.trim() ? t("componentsResponsibilitiesResponsibilityBarCard.bar.edit") : t("componentsResponsibilitiesResponsibilityBarCard.bar.set")}</DialogTitle>
+            <DialogDescription>{t("componentsResponsibilitiesResponsibilityBarCard.editDialog.description", { title: responsibility.title })}</DialogDescription>
           </DialogHeader>
           <ResponsibilityBarFields draft={draft} onChange={setDraft} missing={missing} invalid={invalid} problems={problems} />
           {update.error ? (
-            <p role="alert" className="text-sm text-destructive">Couldn’t save the bar. {describeError(update.error).body}</p>
+            <p role="alert" className="text-sm text-destructive">{t("componentsResponsibilitiesResponsibilityBarCard.editDialog.saveFailed")} {describeError(update.error).body}</p>
           ) : null}
           <DialogFooter className="items-center sm:justify-between">
-            <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>Cancel</Button>
-            <Button type="submit" disabled={update.isPending}>{update.isPending ? "Saving…" : "Save the bar"}</Button>
+            <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>{t("componentsResponsibilitiesResponsibilityBarCard.editDialog.cancel")}</Button>
+            <Button type="submit" disabled={update.isPending}>{update.isPending ? t("componentsResponsibilitiesResponsibilityBarCard.record.saving") : t("componentsResponsibilitiesResponsibilityBarCard.editDialog.save")}</Button>
           </DialogFooter>
         </form>
       </DialogContent>
@@ -276,12 +277,12 @@ function BarConversationNotice({
   return (
     <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground" data-testid="bar-conversation-open">
       <MessageSquare aria-hidden className="h-4 w-4 shrink-0" />
-      <span>You are talking the bar through with {agentName ?? "an agent"}.</span>
+      <span>{t("componentsResponsibilitiesResponsibilityBarCard.conversation.talking", { agent: agentName ?? t("componentsResponsibilitiesResponsibilityBarCard.author.anAgent") })}</span>
       <Link
         to={`/issues/${state.conversation.identifier ?? state.conversation.issueId}`}
         className="font-medium text-foreground underline-offset-4 hover:underline"
       >
-        Open the conversation
+        {t("componentsResponsibilitiesResponsibilityBarCard.conversation.open")}
       </Link>
     </p>
   );
@@ -297,9 +298,9 @@ function StatusOverride({ responsibility }: { responsibility: ResponsibilityDeta
       {rollup.healthOverridden ? (
         <>
           <p className="text-xs text-muted-foreground">
-            Set by hand.
+            {t("componentsResponsibilitiesResponsibilityBarCard.override.setByHand")}
             {rollup.computedHealth !== rollup.health
-              ? ` From the number alone it is ${RESPONSIBILITY_HEALTH_LABEL[rollup.computedHealth].toLowerCase()}.`
+              ? t("componentsResponsibilitiesResponsibilityBarCard.override.fromNumberAlone", { health: RESPONSIBILITY_HEALTH_LABEL[rollup.computedHealth].toLowerCase() })
               : ""}
           </p>
           <InlineEditor
@@ -307,7 +308,7 @@ function StatusOverride({ responsibility }: { responsibility: ResponsibilityDeta
             onSave={(healthNote) => update.mutateAsync({ healthNote: healthNote.trim() || null })}
             as="p"
             className="text-sm text-foreground"
-            placeholder="Why you set it (optional)"
+            placeholder={t("componentsResponsibilitiesResponsibilityBarCard.override.notePlaceholder")}
             nullable
           />
         </>
@@ -315,25 +316,25 @@ function StatusOverride({ responsibility }: { responsibility: ResponsibilityDeta
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size="xs" variant="ghost" className="w-fit text-muted-foreground" disabled={update.isPending}>
-            {rollup.healthOverridden ? "Change or clear" : "Set the status by hand"}
+            {rollup.healthOverridden ? t("componentsResponsibilitiesResponsibilityBarCard.override.changeOrClear") : t("componentsResponsibilitiesResponsibilityBarCard.override.setByHandAction")}
             <ChevronDown aria-hidden="true" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
-          <DropdownMenuLabel>Status</DropdownMenuLabel>
+          <DropdownMenuLabel>{t("componentsResponsibilitiesResponsibilityBarCard.status")}</DropdownMenuLabel>
           <DropdownMenuRadioGroup
             value={value}
             onValueChange={(next) => update.mutate({ healthOverride: next === "automatic" ? null : (next as ResponsibilityHealthOverride) })}
           >
-            <DropdownMenuRadioItem value="automatic">From the number</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="behind">Behind</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="at_risk">At risk</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="on_track">On track</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="automatic">{t("componentsResponsibilitiesResponsibilityBarCard.override.fromNumber")}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="behind">{t("componentsResponsibilitiesResponsibilityBarCard.override.behind")}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="at_risk">{t("componentsResponsibilitiesResponsibilityBarCard.override.atRisk")}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="on_track">{t("componentsResponsibilitiesResponsibilityBarCard.override.onTrack")}</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
       {update.error ? (
-        <p role="alert" className="text-xs text-destructive">Couldn’t change the status. {describeError(update.error).body}</p>
+        <p role="alert" className="text-xs text-destructive">{t("componentsResponsibilitiesResponsibilityBarCard.override.failed")} {describeError(update.error).body}</p>
       ) : null}
     </div>
   );
@@ -370,9 +371,9 @@ export function ResponsibilityBarCard({
     <Card id="responsibility-bar" elevation="low" className="gap-5 px-5 py-5" aria-labelledby={headingId}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <h2 id={headingId} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">The bar</h2>
+          <h2 id={headingId} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t("componentsResponsibilitiesResponsibilityBarCard.bar.heading")}</h2>
           <p className="text-base text-foreground">
-            {responsibility.standard?.trim() || <span className="text-muted-foreground">No bar yet. How is success measured?</span>}
+            {responsibility.standard?.trim() || <span className="text-muted-foreground">{t("componentsResponsibilitiesResponsibilityBarCard.bar.empty")}</span>}
           </p>
         </div>
         {editable ? (
@@ -381,7 +382,7 @@ export function ResponsibilityBarCard({
               <>
                 <Button size="sm" variant="ghost" onClick={() => setEditing(true)}>
                   <Pencil aria-hidden="true" />
-                  Edit by hand
+                  {t("componentsResponsibilitiesResponsibilityBarCard.bar.editByHand")}
                 </Button>
                 <Button
                   size="sm"
@@ -391,13 +392,13 @@ export function ResponsibilityBarCard({
                   onClick={() => conversation.start.mutate()}
                 >
                   {conversation.start.isPending ? <Loader2 aria-hidden="true" className="animate-spin" /> : <MessageSquare aria-hidden="true" />}
-                  {conversation.open ? "Continue the conversation" : hasBar ? "Edit the bar" : "Set the bar"}
+                  {conversation.open ? t("componentsResponsibilitiesResponsibilityBarCard.conversation.continue") : hasBar ? t("componentsResponsibilitiesResponsibilityBarCard.bar.edit") : t("componentsResponsibilitiesResponsibilityBarCard.bar.set")}
                 </Button>
               </>
             ) : (
               <Button size="sm" variant="ghost" data-bar-edit-primary="" onClick={() => setEditing(true)}>
                 <Pencil aria-hidden="true" />
-                {hasBar ? "Edit the bar" : "Set the bar"}
+                {hasBar ? t("componentsResponsibilitiesResponsibilityBarCard.bar.edit") : t("componentsResponsibilitiesResponsibilityBarCard.bar.set")}
               </Button>
             )}
           </div>
@@ -405,18 +406,18 @@ export function ResponsibilityBarCard({
       </div>
       {conversation.start.error ? (
         <p role="alert" className="text-sm text-destructive">
-          Couldn’t start the conversation. {describeError(conversation.start.error).body} You can still edit the bar by hand.
+          {t("componentsResponsibilitiesResponsibilityBarCard.conversation.startFailed")} {describeError(conversation.start.error).body} {t("componentsResponsibilitiesResponsibilityBarCard.conversation.editByHandHint")}
         </p>
       ) : null}
       {conversation.loadError ? (
-        <QueryErrorState error={conversation.loadError} size="inline" action="load the bar conversation"
+        <QueryErrorState error={conversation.loadError} size="inline" action={t("componentsResponsibilitiesResponsibilityBarCard.errorActions.loadBarConversation")}
           onRetry={conversation.retry} retrying={conversation.retrying} />
       ) : null}
       {editable && conversation.state ? <BarConversationNotice state={conversation.state} agentsById={agentsById} /> : null}
 
       <div className="flex flex-col gap-3" data-bar-status="">
         <div className="flex flex-col gap-1.5">
-          <span className="text-xs text-muted-foreground">Status</span>
+          <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesResponsibilityBarCard.status")}</span>
           <ResponsibilityStatusBlock responsibility={responsibility} agentsById={agentsById} now={now} editable={editable} />
         </div>
         {editable ? <StatusOverride responsibility={responsibility} /> : null}
@@ -438,8 +439,8 @@ export function ResponsibilityBarCard({
         <div className="flex flex-col gap-3">
           <p className="text-xs text-muted-foreground">
             {updatedAt
-              ? `Updated ${describeReadingAge(updatedAt, now)}${author ? ` by ${author}` : ""}.`
-              : "No reading yet. The agents working on this keep the number current; you can record one too."}
+              ? (author ? t("componentsResponsibilitiesResponsibilityBarCard.reading.updatedBy", { age: describeReadingAge(updatedAt, now), author }) : t("componentsResponsibilitiesResponsibilityBarCard.reading.updated", { age: describeReadingAge(updatedAt, now) }))
+              : t("componentsResponsibilitiesResponsibilityBarCard.reading.none")}
           </p>
           {editable && rollup.metric ? <RecordReading responsibility={responsibility} /> : null}
         </div>

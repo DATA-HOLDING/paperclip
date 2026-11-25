@@ -8,6 +8,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 type Platform = "mac" | "windows" | "linux";
 
@@ -20,28 +21,28 @@ const platforms: { id: Platform; label: string; icon: typeof Apple }[] = [
 const instructions: Record<Platform, { steps: string[]; tip?: string }> = {
   mac: {
     steps: [
-      "Open Finder and navigate to the folder.",
-      "Right-click (or Control-click) the folder.",
-      "Hold the Option (⌥) key — \"Copy\" changes to \"Copy as Pathname\".",
-      "Click \"Copy as Pathname\", then paste here.",
+      t("componentsPathInstructionsModal.mac.step1"),
+      t("componentsPathInstructionsModal.mac.step2"),
+      t("componentsPathInstructionsModal.mac.step3"),
+      t("componentsPathInstructionsModal.mac.step4"),
     ],
-    tip: "You can also open Terminal, type cd, drag the folder into the terminal window, and press Enter. Then type pwd to see the full path.",
+    tip: t("componentsPathInstructionsModal.mac.tip"),
   },
   windows: {
     steps: [
-      "Open File Explorer and navigate to the folder.",
-      "Click in the address bar at the top — the full path will appear.",
-      "Copy the path, then paste here.",
+      t("componentsPathInstructionsModal.windows.step1"),
+      t("componentsPathInstructionsModal.windows.step2"),
+      t("componentsPathInstructionsModal.windows.step3"),
     ],
-    tip: "Alternatively, hold Shift and right-click the folder, then select \"Copy as path\".",
+    tip: t("componentsPathInstructionsModal.windows.tip"),
   },
   linux: {
     steps: [
-      "Open a terminal and navigate to the directory with cd.",
-      "Run pwd to print the full path.",
-      "Copy the output and paste here.",
+      t("componentsPathInstructionsModal.linux.step1"),
+      t("componentsPathInstructionsModal.linux.step2"),
+      t("componentsPathInstructionsModal.linux.step3"),
     ],
-    tip: "In most file managers, Ctrl+L reveals the full path in the address bar.",
+    tip: t("componentsPathInstructionsModal.linux.tip"),
   },
 };
 
@@ -69,11 +70,11 @@ export function PathInstructionsModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-base">How to get a full path</DialogTitle>
+          <DialogTitle className="text-base">{t("componentsPathInstructionsModal.title")}</DialogTitle>
           <DialogDescription>
-            Paste the absolute path (e.g.{" "}
+            {t("componentsPathInstructionsModal.description.before")}{" "}
             <code className="text-xs bg-muted px-1 py-0.5 rounded">/Users/you/project</code>
-            ) into the input field.
+            {t("componentsPathInstructionsModal.description.after")}
           </DialogDescription>
         </DialogHeader>
 
@@ -135,7 +136,7 @@ export function ChoosePathButton({ className }: { className?: string }) {
         )}
         onClick={() => setOpen(true)}
       >
-        Choose
+        {t("componentsPathInstructionsModal.choose")}
       </button>
       <PathInstructionsModal open={open} onOpenChange={setOpen} />
     </>

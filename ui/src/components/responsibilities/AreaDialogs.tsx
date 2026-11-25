@@ -24,6 +24,7 @@ import {
 import { useResolvedViewerId } from "@/hooks/useResolvedViewerId";
 import { Input } from "@/components/ui/input";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 type AreaRef = Pick<ResponsibilityArea, "id" | "title" | "status">;
 
@@ -82,33 +83,32 @@ export function AddAreaDialog({
       <DialogContent>
         <form className="flex flex-col gap-5" onSubmit={submit}>
           <DialogHeader>
-            <DialogTitle>Add an area</DialogTitle>
+            <DialogTitle>{t("componentsResponsibilitiesAreaDialogs.add.title")}</DialogTitle>
             <DialogDescription>
-              What do you care about? An area is broad, like Fundraising or Hiring. Nobody owns it and it has no
-              deadline; the responsibilities you own sit under it.
+              {t("componentsResponsibilitiesAreaDialogs.add.description")}
             </DialogDescription>
           </DialogHeader>
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="font-medium text-foreground">Name</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesAreaDialogs.name")}</span>
             <Input
               autoFocus
               value={title}
               maxLength={200}
-              placeholder="e.g. Fundraising"
+              placeholder={t("componentsResponsibilitiesAreaDialogs.add.placeholder")}
               onChange={(event) => setTitle(event.target.value)}
             />
           </label>
           {create.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t add the area. {describeError(create.error).body}
+              {t("componentsResponsibilitiesAreaDialogs.add.failed", { error: describeError(create.error).body })}
             </p>
           ) : null}
           <DialogFooter className="items-center sm:justify-between">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("componentsResponsibilitiesAreaDialogs.cancel")}
             </Button>
             <Button type="submit" disabled={!title.trim() || create.isPending}>
-              {create.isPending ? "Adding…" : "Add area"}
+              {create.isPending ? t("componentsResponsibilitiesAreaDialogs.add.adding") : t("componentsResponsibilitiesAreaDialogs.add.submit")}
             </Button>
           </DialogFooter>
         </form>
@@ -154,24 +154,24 @@ export function RenameAreaDialog({
       <DialogContent>
         <form className="flex flex-col gap-5" onSubmit={submit}>
           <DialogHeader>
-            <DialogTitle>Rename area</DialogTitle>
-            <DialogDescription>Everyone in the company sees the new name.</DialogDescription>
+            <DialogTitle>{t("componentsResponsibilitiesAreaDialogs.rename.title")}</DialogTitle>
+            <DialogDescription>{t("componentsResponsibilitiesAreaDialogs.rename.description")}</DialogDescription>
           </DialogHeader>
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="font-medium text-foreground">Name</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesAreaDialogs.name")}</span>
             <Input autoFocus value={title} maxLength={200} onChange={(event) => setTitle(event.target.value)} />
           </label>
           {rename.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t rename the area. {describeError(rename.error).body}
+              {t("componentsResponsibilitiesAreaDialogs.rename.failed", { error: describeError(rename.error).body })}
             </p>
           ) : null}
           <DialogFooter className="items-center sm:justify-between">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("componentsResponsibilitiesAreaDialogs.cancel")}
             </Button>
             <Button type="submit" disabled={!title.trim() || unchanged || rename.isPending}>
-              {rename.isPending ? "Saving…" : "Save name"}
+              {rename.isPending ? t("componentsResponsibilitiesAreaDialogs.rename.saving") : t("componentsResponsibilitiesAreaDialogs.rename.submit")}
             </Button>
           </DialogFooter>
         </form>
@@ -211,24 +211,24 @@ export function ArchiveAreaDialog({
     <AlertDialog open={area !== null} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Archive {area?.title}?</AlertDialogTitle>
+          <AlertDialogTitle>{t("componentsResponsibilitiesAreaDialogs.archive.title", { title: area?.title })}</AlertDialogTitle>
           <AlertDialogDescription>
-            It is archived for everyone in the company, and nothing new can be filed under it.
+            {t("componentsResponsibilitiesAreaDialogs.archive.description")}
             {ownedHere > 0
-              ? ` Your ${ownedHere === 1 ? "responsibility" : `${ownedHere} responsibilities`} in it stay${ownedHere === 1 ? "s" : ""} there until you move ${ownedHere === 1 ? "it" : "them"} to another area.`
+              ? ` ${t("componentsResponsibilitiesAreaDialogs.archive.ownedHere", { count: ownedHere })}`
               : ""}{" "}
-            You can restore it later.
+            {t("componentsResponsibilitiesAreaDialogs.archive.restoreLater")}
           </AlertDialogDescription>
         </AlertDialogHeader>
         {archive.error ? (
           <p role="alert" className="text-sm text-destructive">
-            Couldn’t archive the area. {describeError(archive.error).body}
+            {t("componentsResponsibilitiesAreaDialogs.archive.failed", { error: describeError(archive.error).body })}
           </p>
         ) : null}
         <AlertDialogFooter className="items-center sm:justify-between">
-          <AlertDialogCancel>Keep it</AlertDialogCancel>
+          <AlertDialogCancel>{t("componentsResponsibilitiesAreaDialogs.archive.keep")}</AlertDialogCancel>
           <Button disabled={archive.isPending} onClick={() => archive.mutate()}>
-            {archive.isPending ? "Archiving…" : "Archive area"}
+            {archive.isPending ? t("componentsResponsibilitiesAreaDialogs.archive.archiving") : t("componentsResponsibilitiesAreaDialogs.archive.submit")}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

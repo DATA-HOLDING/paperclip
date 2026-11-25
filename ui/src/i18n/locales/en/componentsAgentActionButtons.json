@@ -1,0 +1,37 @@
+{
+  "runNow": "Run now",
+  "resume": "Resume",
+  "pause": "Pause",
+  "clearErrorAria": "Clear error and return agent to idle",
+  "clearError": "Clear error",
+  "assignTask": "Assign Task",
+  "toast": {
+    "actionFailed": "Action failed",
+    "duplicated": "Agent duplicated",
+    "couldNotDuplicate": "Could not duplicate agent",
+    "copyFailed": "Copy failed",
+    "clipboardUnavailable": "Clipboard access is unavailable."
+  },
+  "errors": {
+    "notReadyToDuplicate": "Agent is not ready to duplicate",
+    "duplicateFailed": "Failed to duplicate agent",
+    "resetSessionFailed": "Failed to reset session"
+  },
+  "confirmDuplicate": "Duplicate {{name}} as {{nextName}}?",
+  "cancel": "Cancel",
+  "pauseAnyway": "Pause anyway",
+  "rawTracingTitle": "Exact provider traffic will be captured for future runs and retained for up to 24 hours.",
+  "rawTracingOn": "Raw tracing on",
+  "openActionsAria": "Open actions for {{name}}",
+  "duplicateAgent": "Duplicate agent",
+  "copyAgentId": "Copy agent ID",
+  "resetSessions": "Reset sessions",
+  "terminate": "Terminate",
+  "chatWithAria": "Chat with {{name}}",
+  "chatWithThisAgent": "Chat with this agent",
+  "chat": "Chat",
+  "finishSetup": "Finish setup",
+  "duplicateAgentTitle": "Duplicate Agent",
+  "copyAgentIdTitle": "Copy Agent ID",
+  "resetSessionsTitle": "Reset Sessions"
+}

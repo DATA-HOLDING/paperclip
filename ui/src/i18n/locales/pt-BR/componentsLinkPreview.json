@@ -1,0 +1,12 @@
+{
+  "state": {
+    "unknown": "Status desconhecido",
+    "open": "Aberto",
+    "merged": "Mesclado",
+    "conflicts": "Conflitos de mesclagem",
+    "draft": "Rascunho",
+    "closed": "Fechado"
+  },
+  "updated": "Atualizado",
+  "loadingPullRequest": "Carregando o pull request…"
+}

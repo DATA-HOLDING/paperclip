@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import {
   dashboardChangesDroppedWith,
   dashboardChangesKeptWith,
@@ -74,7 +75,7 @@ export function dashboardChangeWords(change: ResponsibilityDashboardChange): Das
       return {
         before: change.fromName,
         after: change.name,
-        note: change.sharedWith > 0 ? `Also renamed for ${change.sharedWith === 1 ? "1 other person" : `${change.sharedWith} other people`}` : null,
+        note: change.sharedWith > 0 ? t("libResponsibilityDashboard.alsoRenamed", { count: change.sharedWith }) : null,
       };
     case "remove_area":
       return { before: change.groupName, after: null, note: null };
@@ -83,9 +84,9 @@ export function dashboardChangeWords(change: ResponsibilityDashboardChange): Das
     case "reword_responsibility":
       return { before: change.fromSentence, after: change.sentence, note: null };
     case "move_responsibility":
-      return { before: null, after: change.fromSentence, note: change.fromAreaName ? `Moved from ${change.fromAreaName}` : "Moved here" };
+      return { before: null, after: change.fromSentence, note: change.fromAreaName ? t("libResponsibilityDashboard.movedFrom", { area: change.fromAreaName }) : t("libResponsibilityDashboard.movedHere") };
     case "remove_responsibility":
-      return { before: change.fromSentence, after: null, note: "Let go" };
+      return { before: change.fromSentence, after: null, note: t("libResponsibilityDashboard.letGo") };
   }
 }
 
@@ -148,15 +149,15 @@ export function dashboardVersionWho(
   version: Pick<ResponsibilityDashboardVersionSummary, "cause" | "actorAgentId"> & { interactionId?: string | null },
   agentName: (id: string) => string | undefined,
 ): string {
-  if (version.cause === "restore") return "Restored";
-  if (version.cause === "person") return "You";
-  const name = (version.actorAgentId ? agentName(version.actorAgentId) : undefined) ?? "An agent";
-  return version.interactionId === null ? `${name}, for you` : name;
+  if (version.cause === "restore") return t("libResponsibilityDashboard.restored");
+  if (version.cause === "person") return t("libResponsibilityDashboard.you");
+  const name = (version.actorAgentId ? agentName(version.actorAgentId) : undefined) ?? t("libResponsibilityDashboard.anAgent");
+  return version.interactionId === null ? t("libResponsibilityDashboard.forYou", { name }) : name;
 }
 
 /** The line the Dashboard shows right after a change, beside Undo. */
 export function dashboardChangeLine(version: Pick<ResponsibilityDashboardVersionSummary, "cause" | "summary">): string {
-  if (version.cause === "restore") return "Restored an earlier version.";
+  if (version.cause === "restore") return t("libResponsibilityDashboard.restoredEarlier");
   return `${version.summary}.`;
 }
 

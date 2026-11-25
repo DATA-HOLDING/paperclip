@@ -1,0 +1,36 @@
+{
+  "retry": "Retry",
+  "recoveryStep": {
+    "checkingPreviousRun": "Checking that the previous attempt stopped",
+    "savingPreviousFiles": "Saving files from the previous attempt",
+    "finishingRecovery": "Finishing recovery of saved work"
+  },
+  "budgetWait": "It is waiting for the budget to allow new work. Raise the budget in Costs.",
+  "budgetCouldntFinish": "Couldn’t finish this attempt. Your message is saved. {{wait}}",
+  "budgetNotStarted": "This task has not started. {{wait}}",
+  "blockerAction": {
+    "blocked": "Blocked: open it to Retry",
+    "cancelled": "Cancelled: remove or replace it",
+    "done": "Saving its files"
+  },
+  "takingLonger": "Taking longer than usual…",
+  "retryIn": "Trying again in {{time}}…",
+  "respondToQuestion": "Respond to the pending question to continue.",
+  "reviewAiAccount": "Review AI account",
+  "willRetry": "Paperclip will retry automatically.",
+  "checkBilling": "Check your provider account’s billing and usage allowance, then retry.",
+  "taskStatus": "Task status",
+  "waitingForAgent": "Waiting for the agent to finish other work. Paperclip continues this task by itself.",
+  "moveForward": "Move it forward now",
+  "task": "Task",
+  "runStopped": {
+    "waiting": "Paperclip can't confirm that the previous run stopped. Your message is saved.",
+    "question": "How did you confirm that no agent is still working on this task?",
+    "placeholder": "For example: no codex or claude process for this task is running on the server host.",
+    "resuming": "Starting your Retry…",
+    "confirm": "Confirm it stopped"
+  },
+  "workspaceFailure": "Couldn’t prepare the task folders. {{message}}",
+  "setupFailure": "Couldn’t set up the task workspace. {{message}}. Fix the command in the project’s workspace settings, then retry.",
+  "couldntFinish": "Couldn’t finish this attempt. Your message is saved."
+}

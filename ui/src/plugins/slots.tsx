@@ -18,6 +18,7 @@
  * @see PLUGIN_SPEC.md §19 — UI Extension Model
  * @see PLUGIN_SPEC.md §19.0.3 — Bundle Serving
  */
+import { t } from "@/i18n";
 import {
   Component,
   createElement,
@@ -763,7 +764,7 @@ class PluginSlotErrorBoundary extends Component<PluginSlotErrorBoundaryProps, Pl
       if (this.props.fallback !== undefined) return this.props.fallback;
       return (
         <div className={cn("rounded-md border border-destructive/30 bg-destructive/5 px-2 py-1 text-xs text-destructive", this.props.className)}>
-          {this.props.slot.pluginDisplayName}: failed to render
+          {t("pluginsSlots.failedToRender", { plugin: this.props.slot.pluginDisplayName })}
         </div>
       );
     }

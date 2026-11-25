@@ -1,0 +1,30 @@
+{
+  "filters": {
+    "all": "All"
+  },
+  "status": {
+    "inProgress": "In Progress",
+    "forReview": "For Review",
+    "completed": "Completed",
+    "changesRequested": "Changes Requested",
+    "failed": "Failed"
+  },
+  "documentFallback": "Document",
+  "title": "Artifacts",
+  "loading": "Loading...",
+  "empty": {
+    "none": "Your team's deliverables and plans will appear here as they're produced.",
+    "filtered": "No artifacts match this filter."
+  },
+  "generating": "Generating...",
+  "viewer": {
+    "loading": "Loading document...",
+    "notAvailable": "Document not available yet.",
+    "empty": "Document is empty.",
+    "needsReview": "This document needs your review.",
+    "approve": "Approve",
+    "reject": "Reject",
+    "approved": "Approved — hire tasks created",
+    "changesRequested": "Changes requested — CEO is revising"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "chat": "Chat",
+    "tasks": "Tasks",
+    "inbox": "Inbox",
+    "dashboard": "Dashboard",
+    "search": "Search",
+    "decisions": "Decisions",
+    "status": "Status",
+    "conferenceRoom": "Conference Room",
+    "work": "Work",
+    "projects": "Projects",
+    "routines": "Routines",
+    "artifacts": "Artifacts",
+    "cases": "Cases",
+    "goals": "Goals",
+    "workspaces": "Workspaces",
+    "org": "Org",
+    "agents": "Agents",
+    "skills": "Skills",
+    "connectors": "Connectors",
+    "audit": "Audit",
+    "organization": "Organization",
+    "timeline": "Timeline",
+    "costs": "Costs",
+    "activity": "Activity",
+    "commentary": "Commentary",
+    "settings": "Settings",
+    "company": "Company"
+  },
+  "badge": {
+    "unreadChats": "unread chats",
+    "unread": "unread",
+    "decisions": "decisions"
+  },
+  "newTask": "New Task",
+  "section": {
+    "org": "Org"
+  }
+}

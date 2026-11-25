@@ -1,0 +1,6 @@
+{
+  "waitingFor": "Aguardando {{agentName}}",
+  "slotsMax_one": "{{count}} vaga no máximo",
+  "slotsMax_other": "{{count}} vagas no máximo",
+  "positionInLine": "{{position}} de {{queuedCount}} na fila"
+}

@@ -16,6 +16,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useOptionalToastActions } from "@/context/ToastContext";
 import { EnvironmentVariableRow } from "./Row";
 import { parseDotenv } from "./parse-dotenv";
+import { t } from "@/i18n";
 import {
   computeDuplicateNames,
   computeRowHealth,
@@ -31,8 +32,7 @@ import type { EnvironmentVariableDirtyFields } from "./Row";
 
 const DEFAULT_RESERVED_PREFIXES = ["PAPERCLIP_"];
 
-const DEFAULT_HINT =
-  "Set the KEY to the env var name the process expects, for example GH_TOKEN. Choose a secret to resolve a stored value at run start. PAPERCLIP_* variables are injected automatically.";
+const DEFAULT_HINT = t("componentsEnvironmentVariablesEditor.editor.defaultHint");
 
 // Canonical entries for dirty comparison. Must mirror the emit semantics of
 // valueFromRows (trimmed names, incomplete refs dropped, last-writer-wins on
@@ -83,7 +83,7 @@ const CHANGE_SUMMARY_MAX_NAMES = 3;
 function formatChangedNames(names: readonly string[]): string {
   const shown = names.slice(0, CHANGE_SUMMARY_MAX_NAMES).join(", ");
   return names.length > CHANGE_SUMMARY_MAX_NAMES
-    ? `${shown} +${names.length - CHANGE_SUMMARY_MAX_NAMES} more`
+    ? t("componentsEnvironmentVariablesEditor.editor.changedNamesMore", { names: shown, extra: names.length - CHANGE_SUMMARY_MAX_NAMES })
     : shown;
 }
 
@@ -164,7 +164,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
   onDirtyChange,
   hideDraftActions = false,
   startWithEmptyRow = false,
-  addLabel = "Add variable",
+  addLabel = t("componentsEnvironmentVariablesEditor.editor.addVariable"),
 }: EnvironmentVariablesEditorProps, ref) {
   const toast = useOptionalToastActions();
   const editorRootRef = useRef<HTMLDivElement | null>(null);
@@ -275,9 +275,9 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
 
   const changeSummaryText = useMemo(() => {
     const parts: string[] = [];
-    if (changeSummary.added.length > 0) parts.push(`New: ${formatChangedNames(changeSummary.added)}`);
-    if (changeSummary.changed.length > 0) parts.push(`Edited: ${formatChangedNames(changeSummary.changed)}`);
-    if (changeSummary.removed.length > 0) parts.push(`Removed: ${formatChangedNames(changeSummary.removed)}`);
+    if (changeSummary.added.length > 0) parts.push(t("componentsEnvironmentVariablesEditor.editor.summary.new", { names: formatChangedNames(changeSummary.added) }));
+    if (changeSummary.changed.length > 0) parts.push(t("componentsEnvironmentVariablesEditor.editor.summary.edited", { names: formatChangedNames(changeSummary.changed) }));
+    if (changeSummary.removed.length > 0) parts.push(t("componentsEnvironmentVariablesEditor.editor.summary.removed", { names: formatChangedNames(changeSummary.removed) }));
     return parts.join(" · ");
   }, [changeSummary]);
 
@@ -327,7 +327,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
       const button = target.closest("button");
       if (!button || button.disabled) return;
       const label = `${button.getAttribute("aria-label") ?? ""} ${button.textContent ?? ""}`;
-      if (button.type === "submit" || /\b(save|create|update|test|import)\b/i.test(label)) {
+      if (button.type === "submit" || /\b(save|create|update|test|import|salvar|criar|atualizar|testar|importar)\b/i.test(label)) {
         flushPendingDraft();
       }
     }
@@ -385,7 +385,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
       }
     }
     updateDraft(working);
-    toast?.pushToast({ title: `Imported ${pairs.length} variable${pairs.length === 1 ? "" : "s"}`, tone: "success" });
+    toast?.pushToast({ title: t("componentsEnvironmentVariablesEditor.editor.imported", { count: pairs.length }), tone: "success" });
     return true;
   }
 
@@ -453,7 +453,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
       {attentionCount > 1 ? (
         <p className="inline-flex items-center gap-1.5 text-(length:--text-micro) font-medium text-amber-700 dark:text-amber-400">
           <AlertCircle className="size-3.5" />
-          {attentionCount} bindings need attention
+          {t("componentsEnvironmentVariablesEditor.editor.attention", { count: attentionCount })}
         </p>
       ) : null}
 
@@ -461,8 +461,8 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
         <>
           {/* Header (desktop only) */}
           <div className="hidden gap-x-1.5 @[40rem]/env:grid @[40rem]/env:grid-cols-(--gtc-14)">
-            <span className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">Name</span>
-            <span className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">Value</span>
+            <span className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">{t("componentsEnvironmentVariablesEditor.editor.header.name")}</span>
+            <span className="text-(length:--text-micro) font-medium uppercase tracking-wide text-muted-foreground">{t("componentsEnvironmentVariablesEditor.editor.header.value")}</span>
             <span />
           </div>
 
@@ -495,7 +495,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
           })}
         </>
       ) : (
-        <p className="text-sm text-muted-foreground">No environment variables</p>
+        <p className="text-sm text-muted-foreground">{t("componentsEnvironmentVariablesEditor.editor.empty")}</p>
       )}
 
       {/* Footer bar */}
@@ -514,7 +514,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="inline-flex items-center gap-1 text-(length:--text-micro) text-muted-foreground/70">
               <KeyRound className="size-3" />
-              Recently used:
+              {t("componentsEnvironmentVariablesEditor.editor.recentlyUsed")}
             </span>
             {quickBind.map((secret) => (
               <button
@@ -522,7 +522,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
                 type="button"
                 onClick={() => bindRecentSecret(secret)}
                 className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 font-mono text-(length:--text-micro) text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
-                title={`Bind ${secret.name}`}
+                title={t("componentsEnvironmentVariablesEditor.editor.bindSecret", { name: secret.name })}
               >
                 + {secret.name}
               </button>
@@ -540,7 +540,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
           <div className="flex min-w-0 flex-col gap-0.5">
             <div className="flex items-center gap-2 text-sm font-medium">
               <span className="size-2 rounded-full bg-amber-500 shadow-(--shadow-extract-13)" />
-              <span>Unsaved changes</span>
+              <span>{t("componentsEnvironmentVariablesEditor.editor.unsaved.title")}</span>
             </div>
             {changeSummaryText ? (
               <p className="min-w-0 truncate pl-4 text-xs text-amber-950/80 dark:text-amber-100/80" title={changeSummaryText}>
@@ -555,7 +555,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
               className="inline-flex h-9 items-center gap-1.5 rounded-md border border-amber-500/30 bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-amber-500/10 dark:bg-background/80"
             >
               <RotateCcw className="size-4" />
-              Revert
+              {t("componentsEnvironmentVariablesEditor.editor.unsaved.revert")}
             </button>
             <button
               type="button"
@@ -563,7 +563,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
               className="inline-flex h-9 items-center gap-1.5 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               <Save className="size-4" />
-              Save
+              {t("componentsEnvironmentVariablesEditor.editor.unsaved.save")}
             </button>
           </div>
         </div>
@@ -574,8 +574,7 @@ export const EnvironmentVariablesEditor = forwardRef<EnvironmentVariablesEditorH
         <p className="inline-flex items-start gap-1 text-(length:--text-micro) text-muted-foreground/70">
           <UserRound className="mt-0.5 size-3 shrink-0" />
           <span>
-            User secrets resolve from the user responsible for the run. Required bindings fail until that user
-            sets their value under Secrets → My secrets.
+            {t("componentsEnvironmentVariablesEditor.editor.userSecretsNote")}
           </span>
         </p>
       ) : null}

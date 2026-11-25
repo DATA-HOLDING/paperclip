@@ -1,0 +1,10 @@
+{
+  "selectOrganization": "Selecione uma organização primeiro.",
+  "error": {
+    "star": "Não foi possível favoritar {{name}}.",
+    "unstar": "Não foi possível desfavoritar {{name}}.",
+    "leave": "Não foi possível sair de {{name}}.",
+    "join": "Não foi possível entrar em {{name}}."
+  },
+  "tryAgain": "Tente novamente."
+}

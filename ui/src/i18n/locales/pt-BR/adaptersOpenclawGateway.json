@@ -1,0 +1,32 @@
+{
+  "labels": {
+    "gatewayUrl": "URL do gateway",
+    "agentId": "ID do agente",
+    "sessionStrategy": "Estratégia de sessão",
+    "sessionKey": "Chave de sessão",
+    "role": "Função",
+    "scopes": "Escopos (separados por vírgula)",
+    "apiUrlOverride": "Substituir URL da API do Paperclip",
+    "headersJson": "JSON de cabeçalhos",
+    "claimedApiKeyPath": "Caminho da chave de API reivindicada",
+    "disableDeviceAuth": "Desativar autenticação do dispositivo",
+    "autoPair": "Parear automaticamente na primeira conexão",
+    "deviceAuth": "Autenticação do dispositivo",
+    "timeout": "Tempo limite (segundos)",
+    "waitTimeout": "Tempo limite de espera (ms)",
+    "authToken": "Token de autenticação do gateway",
+    "password": "Senha (autenticação alternativa)"
+  },
+  "placeholders": {
+    "authToken": "Token do gateway do OpenClaw",
+    "password": "Senha compartilhada do gateway"
+  },
+  "strategy": {
+    "fixed": "Fixa",
+    "issue": "Por tarefa",
+    "run": "Por execução"
+  },
+  "skipDeviceAuth": "Pular a autenticação pela chave do dispositivo",
+  "autoApprovePairing": "Aprovar automaticamente o pareamento do dispositivo",
+  "deviceAuthHelp": "Quando ativado, o Paperclip guarda uma chave do dispositivo durante a integração para que as aprovações de pareamento fiquem estáveis entre execuções."
+}

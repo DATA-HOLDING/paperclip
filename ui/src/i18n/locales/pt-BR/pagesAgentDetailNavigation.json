@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "agent": "Agente",
+    "audit": "Auditoria"
+  },
+  "views": {
+    "overview": "Visão geral",
+    "instructions": "Identidade",
+    "runtime": "Harness / Runtime",
+    "secrets": "Segredos e variáveis",
+    "permissions": "Permissões / Confiança",
+    "advanced": "Avançado",
+    "activity": "Atividade",
+    "runs": "Execuções",
+    "costs": "Custos",
+    "budgets": "Orçamentos",
+    "skills": "Skills",
+    "tools": "Ferramentas",
+    "channels": "Canais",
+    "apiKeys": "Chaves de API",
+    "revisions": "Histórico do agente"
+  }
+}

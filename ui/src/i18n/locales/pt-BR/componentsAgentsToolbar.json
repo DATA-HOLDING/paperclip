@@ -1,0 +1,9 @@
+{
+  "ariaLabel": "Controles de agentes",
+  "searchLabel": "Buscar agentes",
+  "searchPlaceholder": "Buscar agentes…",
+  "viewGroupLabel": "Visualização de agentes",
+  "listView": "Visualização em lista",
+  "orgChartView": "Visualização em organograma",
+  "newAgent": "Novo agente"
+}

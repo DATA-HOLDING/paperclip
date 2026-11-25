@@ -1,0 +1,37 @@
+{
+  "category": {
+    "unknown": "Not yet resolved",
+    "open": "Open",
+    "waiting": "Waiting",
+    "running": "Running",
+    "succeeded": "Succeeded",
+    "failed": "Failed",
+    "blocked": "Blocked",
+    "closed": "Closed",
+    "archived": "Archived",
+    "authRequired": "Authorization required",
+    "rateLimited": "Rate limited",
+    "unreachable": "Unreachable"
+  },
+  "liveness": {
+    "unknown": "Not yet refreshed",
+    "fresh": "Fresh",
+    "stale": "Stale",
+    "authRequired": "Requires auth",
+    "rateLimited": "Rate limited",
+    "unreachable": "Unreachable"
+  },
+  "statusUnavailable": "Status unavailable",
+  "external": "External",
+  "objectType": {
+    "pullRequest": "pull request",
+    "issue": "issue",
+    "deployment": "deployment",
+    "workflowRun": "workflow run",
+    "ticket": "ticket",
+    "lead": "lead",
+    "urlLink": "URL"
+  },
+  "object": "object",
+  "displayLabel": "{{provider}} {{type}}"
+}

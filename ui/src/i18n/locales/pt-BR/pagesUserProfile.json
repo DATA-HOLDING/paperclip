@@ -1,0 +1,49 @@
+{
+  "window": {
+    "done": "{{rate}} concluídas",
+    "touched": "Mexidas",
+    "completed": "Concluídas",
+    "comments": "Comentários",
+    "actions": "Ações",
+    "tokens": "Tokens",
+    "spend": "Gasto",
+    "created": "Criadas",
+    "open": "Abertas"
+  },
+  "chart": {
+    "title": "Últimos 14 dias",
+    "tokensTotal": "tokens no total",
+    "barTitle": "{{date}}: {{tokens}} tokens, {{completed}} concluídas",
+    "tokensPerDay": "tokens / dia",
+    "completions": "conclusões"
+  },
+  "breadcrumbUsers": "Usuários",
+  "userFallback": "Usuário",
+  "usage": {
+    "paperclipServices": "Serviços do Paperclip",
+    "taskLinked": "Uso ligado a tarefas",
+    "billedThrough": "Cobrado por {{biller}}",
+    "agentAttribution": "Atribuição por agente",
+    "agentEmpty": "Nenhum uso de tokens ligado a tarefas ainda.",
+    "providerMix": "Divisão por provedor",
+    "providerEmpty": "Nenhum uso de provedor atribuído ainda."
+  },
+  "selectOrganization": "Selecione uma organização para ver perfis de usuário.",
+  "notFound": "Perfil de usuário não encontrado nesta organização.",
+  "joined": "entrou em {{date}}",
+  "editProfile": "Editar perfil",
+  "hero": {
+    "allTimeTokens": "Tokens desde o início",
+    "spent": "{{amount}} gastos",
+    "completed": "Concluídas",
+    "rate": "taxa de {{rate}}",
+    "openAssigned": "Abertas atribuídas",
+    "created": "{{value}} criadas",
+    "sevenDayActions": "Ações em 7 dias",
+    "comments": "{{value}} comentários"
+  },
+  "recentTasks": "Tarefas recentes",
+  "noTouchedTasks": "Nenhuma tarefa mexida ainda.",
+  "recentActivity": "Atividade recente",
+  "noActions": "Nenhuma ação direta do usuário registrada ainda."
+}

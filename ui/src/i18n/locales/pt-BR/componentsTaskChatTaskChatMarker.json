@@ -1,0 +1,13 @@
+{
+  "couldntStart": "{{agent}} não conseguiu iniciar",
+  "anAiCredential": "uma credencial de IA",
+  "noAccessYou": "{{agent}} está configurado para usar {{credential}}, mas você não tem acesso a essa credencial.",
+  "noAccessUser": "{{agent}} está configurado para usar {{credential}}, mas {{user}} não tem acesso a essa credencial.",
+  "chooseConnectionYou": "Escolha uma conexão de IA que você possa usar ou peça a um administrador para atualizar a conexão de {{agent}}. Depois tente novamente.",
+  "chooseConnectionUser": "Escolha uma conexão de IA que {{user}} possa usar ou peça a um administrador para atualizar a conexão de {{agent}}. Depois tente novamente.",
+  "changeAiConnection": "Trocar a conexão de IA",
+  "viewRun": "Ver a execução",
+  "tryingAgain": "Tentando novamente...",
+  "tryAgain": "Tentar novamente",
+  "viewSavedPlan": "Ver o plano salvo"
+}

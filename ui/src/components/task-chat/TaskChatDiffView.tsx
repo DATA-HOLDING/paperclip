@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { hunkLabel } from "./diff-lines";
 import type { TaskChatDiffLine } from "./task-chat-model";
+import { t } from "@/i18n";
 
 /** `+12 −3` in the diff hues. Unknown counts are omitted, not shown as zero. */
 export function TaskChatDiffCounts({
@@ -101,7 +102,7 @@ export function TaskChatDiffView({
                       line.kind === "context" ? "text-muted-foreground" : "text-foreground",
                     )}
                   >
-                    <span className="sr-only">{line.kind === "add" ? "Added: " : line.kind === "remove" ? "Removed: " : ""}</span>
+                    <span className="sr-only">{line.kind === "add" ? `${t("componentsTaskChatTaskChatDiffView.added")} ` : line.kind === "remove" ? `${t("componentsTaskChatTaskChatDiffView.removed")} ` : ""}</span>
                     {line.text || " "}
                   </td>
                 </tr>
@@ -118,10 +119,10 @@ export function TaskChatDiffView({
               className="text-foreground underline-offset-2 hover:underline"
               onClick={() => setShowAll(true)}
             >
-              Show {hidden} more {hidden === 1 ? "line" : "lines"}
+              {t("componentsTaskChatTaskChatDiffView.showMore", { count: hidden })}
             </button>
           ) : null}
-          {truncated && hidden === 0 ? <span>Diff shortened for display.</span> : null}
+          {truncated && hidden === 0 ? <span>{t("componentsTaskChatTaskChatDiffView.shortened")}</span> : null}
         </div>
       ) : null}
     </div>

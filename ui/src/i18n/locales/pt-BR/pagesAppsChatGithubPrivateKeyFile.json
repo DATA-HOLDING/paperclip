@@ -1,0 +1,5 @@
+{
+  "empty": "Esse arquivo está vazio. Escolha a chave privada baixada do seu GitHub App.",
+  "tooLarge": "Esse arquivo é grande demais. Escolha uma chave privada do GitHub App com menos de 64 KB.",
+  "readFailed": "O Paperclip não conseguiu ler esse arquivo. Escolha o arquivo .pem novamente ou cole a chave privada."
+}

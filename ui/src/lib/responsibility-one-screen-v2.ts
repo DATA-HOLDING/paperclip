@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type {
   ResponsibilityProjectSummary,
   ResponsibilityRecentRun,
@@ -20,23 +21,23 @@ const MONTH = 30 * DAY;
 /** "just now", "5m ago", "8h ago", "2d ago", "3w ago", "2mo ago", against `now`. */
 export function ago(at: Date | string, now: Date): string {
   const elapsed = Math.max(0, now.getTime() - new Date(at).getTime());
-  if (elapsed < MINUTE) return "just now";
-  if (elapsed < HOUR) return `${Math.floor(elapsed / MINUTE)}m ago`;
-  if (elapsed < DAY) return `${Math.floor(elapsed / HOUR)}h ago`;
-  if (elapsed < WEEK) return `${Math.floor(elapsed / DAY)}d ago`;
-  if (elapsed < MONTH) return `${Math.floor(elapsed / WEEK)}w ago`;
-  return `${Math.floor(elapsed / MONTH)}mo ago`;
+  if (elapsed < MINUTE) return t("libResponsibilityOneScreenV2.ago.justNow");
+  if (elapsed < HOUR) return t("libResponsibilityOneScreenV2.ago.minutes", { count: Math.floor(elapsed / MINUTE) });
+  if (elapsed < DAY) return t("libResponsibilityOneScreenV2.ago.hours", { count: Math.floor(elapsed / HOUR) });
+  if (elapsed < WEEK) return t("libResponsibilityOneScreenV2.ago.days", { count: Math.floor(elapsed / DAY) });
+  if (elapsed < MONTH) return t("libResponsibilityOneScreenV2.ago.weeks", { count: Math.floor(elapsed / WEEK) });
+  return t("libResponsibilityOneScreenV2.ago.months", { count: Math.floor(elapsed / MONTH) });
 }
 
 /** "Paused", "Not run yet", "Last successful run 8h ago", "Failed 2d ago", "Running, started 3h ago". */
 export function routineStat(routine: Pick<ResponsibilityRoutineSummary, "status" | "lastRun">, now: Date): string {
-  if (routine.status === "paused") return "Paused";
+  if (routine.status === "paused") return t("libResponsibilityOneScreenV2.routine.paused");
   const run = routine.lastRun;
-  if (!run) return "Not run yet";
+  if (!run) return t("libResponsibilityOneScreenV2.routine.notRunYet");
   const when = ago(run.at, now);
-  if (run.outcome === "succeeded") return `Last successful run ${when}`;
-  if (run.outcome === "failed") return `Failed ${when}`;
-  return `Running, started ${when}`;
+  if (run.outcome === "succeeded") return t("libResponsibilityOneScreenV2.routine.lastSuccessfulRun", { when });
+  if (run.outcome === "failed") return t("libResponsibilityOneScreenV2.routine.failed", { when });
+  return t("libResponsibilityOneScreenV2.routine.running", { when });
 }
 
 /** Whole calendar days from today (local) to a `YYYY-MM-DD` date; negative once it has passed. */
@@ -52,15 +53,15 @@ export function projectDueStat(project: Pick<ResponsibilityProjectSummary, "targ
   if (!project.targetDate) return null;
   const days = daysUntil(project.targetDate, now);
   if (days === null) return null;
-  if (days === 0) return "Due today";
-  if (days === 1) return "Due tomorrow";
-  if (days > 1) return `Due in ${days} days`;
-  return days === -1 ? "1 day late" : `${-days} days late`;
+  if (days === 0) return t("libResponsibilityOneScreenV2.due.today");
+  if (days === 1) return t("libResponsibilityOneScreenV2.due.tomorrow");
+  if (days > 1) return t("libResponsibilityOneScreenV2.due.inDays", { count: days });
+  return days === -1 ? t("libResponsibilityOneScreenV2.due.oneDayLate") : t("libResponsibilityOneScreenV2.due.daysLate", { count: -days });
 }
 
 /** "4 of 10 tasks done", for the progress meter's words. */
 export function projectProgressLabel(progress: NonNullable<ResponsibilityProjectSummary["progress"]>): string {
-  return `${progress.done} of ${progress.total} ${progress.total === 1 ? "task" : "tasks"} done`;
+  return t("libResponsibilityOneScreenV2.progress", { count: progress.total, done: progress.done, total: progress.total });
 }
 
 /** Open tasks in the order given, and the done ones the table can reveal (cancelled ones are not shown). */
@@ -75,16 +76,16 @@ export function splitTasksForTable(tasks: readonly ResponsibilityTaskSummary[]):
 }
 
 const RUN_ENDED: Record<string, string> = {
-  succeeded: "Succeeded",
-  failed: "Failed",
-  cancelled: "Cancelled",
-  timed_out: "Timed out",
+  succeeded: t("libResponsibilityOneScreenV2.runEnded.succeeded"),
+  failed: t("libResponsibilityOneScreenV2.runEnded.failed"),
+  cancelled: t("libResponsibilityOneScreenV2.runEnded.cancelled"),
+  timed_out: t("libResponsibilityOneScreenV2.runEnded.timedOut"),
 };
 
 /** "Succeeded 1d ago", "Failed 2d ago", "Running, started 3m ago", "Queued 3m ago". */
 export function runStat(run: Pick<ResponsibilityRecentRun, "status" | "createdAt" | "startedAt" | "finishedAt">, now: Date): string {
-  if (run.status === "running") return `Running, started ${ago(run.startedAt ?? run.createdAt, now)}`;
-  if (run.status === "queued") return `Queued ${ago(run.createdAt, now)}`;
+  if (run.status === "running") return t("libResponsibilityOneScreenV2.routine.running", { when: ago(run.startedAt ?? run.createdAt, now) });
+  if (run.status === "queued") return t("libResponsibilityOneScreenV2.run.queued", { when: ago(run.createdAt, now) });
   const word = RUN_ENDED[run.status] ?? `${run.status.charAt(0).toUpperCase()}${run.status.slice(1).replace(/_/g, " ")}`;
-  return `${word} ${ago(run.finishedAt ?? run.startedAt ?? run.createdAt, now)}`;
+  return t("libResponsibilityOneScreenV2.run.ended", { word, when: ago(run.finishedAt ?? run.startedAt ?? run.createdAt, now) });
 }

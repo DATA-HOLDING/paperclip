@@ -1,0 +1,12 @@
+{
+  "requestFailed": "Request failed ({{status}})",
+  "requestFailedGeneric": "The request failed. Try again in a moment.",
+  "headline": {
+    "promoted": "Retry promoted",
+    "alreadyPromoted": "Retry already running",
+    "waiting": "Retry waiting",
+    "noScheduledRetry": "No scheduled retry",
+    "gateSuppressed": "Couldn't retry now"
+  },
+  "errorToastTitle": "Couldn't retry now"
+}

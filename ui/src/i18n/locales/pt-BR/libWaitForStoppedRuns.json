@@ -1,0 +1,4 @@
+{
+  "verificationError": "A parada foi solicitada, mas não foi possível confirmá-la. Atualize e tente Parar de novo se o trabalho ainda estiver rodando.",
+  "stillStopping": "A parada foi solicitada, mas o trabalho ainda está parando. Tente Parar de novo se continuar."
+}

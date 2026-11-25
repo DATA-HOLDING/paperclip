@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { brandChipBadge, type BrandChipColor } from "@/lib/status-colors";
+import { t } from "@/i18n";
 
 /**
  * The load-bearing visual grammar for the built-in bundle status panel
@@ -33,40 +34,40 @@ interface VariantSpec {
 }
 
 const VARIANTS: Record<ResourceStatusVariant, VariantSpec> = {
-  ready: { color: "green", glyph: "●", label: "Ready", title: "Materialized and matches the shipped default" },
-  needs_setup: { color: "amber", glyph: "⚠", label: "Needs setup", title: "Present but not usable yet" },
-  missing: { color: "amber", glyph: "⚠", label: "Missing", title: "Expected resource absent; reconcile will recreate it" },
-  error: { color: "red", glyph: "✕", label: "Error", title: "Failed to load or reconcile" },
+  ready: { color: "green", glyph: "●", label: t("componentsResourceStatusChip.ready.label"), title: t("componentsResourceStatusChip.ready.title") },
+  needs_setup: { color: "amber", glyph: "⚠", label: t("componentsResourceStatusChip.needsSetup.label"), title: t("componentsResourceStatusChip.needsSetup.title") },
+  missing: { color: "amber", glyph: "⚠", label: t("componentsResourceStatusChip.missing.label"), title: t("componentsResourceStatusChip.missing.title") },
+  error: { color: "red", glyph: "✕", label: t("componentsResourceStatusChip.error.label"), title: t("componentsResourceStatusChip.error.title") },
   update_available: {
     color: "blue",
     glyph: "↑",
-    label: "Update available",
-    title: "Unedited — a newer shipped default can be applied",
+    label: t("componentsResourceStatusChip.updateAvailable.label"),
+    title: t("componentsResourceStatusChip.updateAvailable.title"),
   },
   drifted: {
     color: "gray",
     glyph: "✎",
-    label: "Drifted",
-    title: "You've edited this; your changes are kept, not overwritten",
+    label: t("componentsResourceStatusChip.drifted.label"),
+    title: t("componentsResourceStatusChip.drifted.title"),
   },
   schedule_off: {
     color: "gray",
     glyph: "◌",
-    label: "Schedule off",
-    title: "No background work runs until you enable it — costs zero tokens",
+    label: t("componentsResourceStatusChip.scheduleOff.label"),
+    title: t("componentsResourceStatusChip.scheduleOff.title"),
   },
-  schedule_on: { color: "green", glyph: "●", label: "Weekly", title: "Runs on the weekly schedule" },
+  schedule_on: { color: "green", glyph: "●", label: t("componentsResourceStatusChip.scheduleOn.label"), title: t("componentsResourceStatusChip.scheduleOn.title") },
   pending_approval: {
     color: "amber",
     glyph: "⚠",
-    label: "Pending approval",
-    title: "Waiting on board hire approval before it can run",
+    label: t("componentsResourceStatusChip.pendingApproval.label"),
+    title: t("componentsResourceStatusChip.pendingApproval.title"),
   },
   proposal_pending: {
     color: "blue",
     glyph: "↑",
-    label: "Proposal pending",
-    title: "A proposed update is waiting for your review",
+    label: t("componentsResourceStatusChip.proposalPending.label"),
+    title: t("componentsResourceStatusChip.proposalPending.title"),
   },
 };
 

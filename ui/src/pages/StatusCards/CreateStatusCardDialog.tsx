@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { t } from "@/i18n";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { defaultStatusCardRefreshPolicy } from "@paperclipai/shared";
 import { Loader2 } from "lucide-react";
@@ -20,9 +21,9 @@ import { queryKeys } from "@/lib/queryKeys";
 import { SummarizerAgentSelect } from "./SummarizerAgentSelect";
 
 const EXAMPLES = [
-  "issues about evals",
-  "everything blocked this week",
-  "is feature X live? if not, the exact next actions to ship it",
+  t("pagesStatusCards.create.examples.evals"),
+  t("pagesStatusCards.create.examples.blocked"),
+  t("pagesStatusCards.create.examples.featureLive"),
 ];
 
 export function CreateStatusCardDialog({
@@ -68,25 +69,24 @@ export function CreateStatusCardDialog({
       ]);
       close();
     },
-    onError: (err) => setError(describeError(err, { action: "create the card" }).body),
+    onError: (err) => setError(describeError(err, { action: t("pagesStatusCards.create.createAction") }).body),
   });
 
   return (
     <Dialog open={open} onOpenChange={(next) => (next ? onOpenChange(true) : close())}>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>New card</DialogTitle>
+          <DialogTitle>{t("pagesStatusCards.create.title")}</DialogTitle>
           <DialogDescription>
-            One message sets up the whole card: say what you want to watch and what each update
-            should tell you. The agent builds the query from it and writes every update against it.
+            {t("pagesStatusCards.create.description")}
           </DialogDescription>
         </DialogHeader>
 
-        {error ? <InlineBanner tone="danger" title="Create failed">{error}</InlineBanner> : null}
+        {error ? <InlineBanner tone="danger" title={t("pagesStatusCards.create.createFailed")}>{error}</InlineBanner> : null}
 
         <div className="space-y-3">
           <label htmlFor="status-card-prompt" className="block pb-1 text-sm font-semibold">
-            What do you want to keep an eye on?
+            {t("pagesStatusCards.create.promptLabel")}
           </label>
           <Textarea
             id="status-card-prompt"
@@ -94,11 +94,11 @@ export function CreateStatusCardDialog({
             onChange={(event) => setPrompt(event.target.value)}
             rows={5}
             autoFocus
-            placeholder="Keep an eye on the ID and Cloud projects. Tell me whether the service is live, and if not, the exact three actions needed to get it to production."
+            placeholder={t("pagesStatusCards.create.promptPlaceholder")}
             className="text-sm"
           />
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-medium text-muted-foreground">Examples</span>
+            <span className="text-xs font-medium text-muted-foreground">{t("pagesStatusCards.create.examplesLabel")}</span>
             {EXAMPLES.map((example) => (
               <button
                 key={example}
@@ -113,24 +113,24 @@ export function CreateStatusCardDialog({
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold">Agent</label>
+          <label className="block text-sm font-semibold">{t("pagesStatusCards.create.agentLabel")}</label>
           <SummarizerAgentSelect companyId={companyId} value={agentId} onChange={setAgentId} enabled={open} />
           <p className="text-xs text-muted-foreground">
-            Runs this card's setup and updates. Leave on the default unless another agent should own it.
+            {t("pagesStatusCards.create.agentHelp")}
           </p>
         </div>
 
         <DialogFooter>
           <div className="flex gap-2">
             <Button variant="outline" onClick={close} disabled={createMutation.isPending}>
-              Cancel
+              {t("pagesStatusCards.create.cancel")}
             </Button>
             <Button
               onClick={() => createMutation.mutate()}
               disabled={prompt.trim().length === 0 || createMutation.isPending}
             >
               {createMutation.isPending ? <Loader2 className="animate-spin" /> : null}
-              Create card
+              {t("pagesStatusCards.create.submit")}
             </Button>
           </div>
         </DialogFooter>

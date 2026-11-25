@@ -1,0 +1,24 @@
+{
+  "invalidUrl": "Invalid board claim URL.",
+  "loading": "Loading claim challenge...",
+  "unavailable": "Claim challenge unavailable.",
+  "claimed": {
+    "title": "Board ownership claimed",
+    "body": "This instance is now linked to your authenticated user.",
+    "open": "Open board"
+  },
+  "signIn": {
+    "title": "Sign in required",
+    "body": "Sign in or create an account, then return to this page to claim Board ownership.",
+    "action": "Sign in / Create account"
+  },
+  "claim": {
+    "title": "Claim Board ownership",
+    "body": "This will promote your user to instance admin and migrate organization ownership access from local trusted mode.",
+    "claiming": "Claiming…",
+    "action": "Claim ownership"
+  },
+  "errorActions": {
+    "loadChallenge": "load the board claim challenge"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "labels": {
+    "anyone": "Anyone",
+    "notCreator": "Anyone except creator",
+    "humanOnly": "Human only",
+    "addressed": "Addressed"
+  },
+  "effects": {
+    "anyone": "Anyone in the organization can respond — the board or any agent, including the one that asked.",
+    "notCreator": "Anyone in the organization except the agent that created the card, and its run. Use this when the answer has to come from someone else.",
+    "humanOnly": "Only a person on the board can respond. Agents are turned away."
+  },
+  "youMidSentence": "you",
+  "addressedUser": "the addressed user",
+  "addressedAgent": "the addressed agent",
+  "creatorFallback": "the agent that created it",
+  "summary": {
+    "onlyAddressee": "Only {{addressee}} can respond.",
+    "humanOnlyAssigned": "Assigned to {{addressee}}. Only a person on the board can respond — agents cannot resolve this card.",
+    "humanOnly": "Only a person on the board can respond — agents cannot resolve this card.",
+    "addresseeOrBoard": "Only {{addressee}} or a person on the board can respond.",
+    "notCreator": "Anyone in the organization except {{creator}} can respond.",
+    "anyone": "Anyone in the organization can respond — the board or any agent, including the one that asked."
+  },
+  "shortSummary": {
+    "onlyAddressee": "Only {{addressee}} can respond",
+    "humanOnlyAssigned": "Assigned to {{addressee}} · board only",
+    "humanOnly": "Only the board can respond",
+    "addresseeOrBoard": "Only {{addressee}} or the board can respond",
+    "notCreator": "Anyone except {{creator}} can respond",
+    "anyone": "Anyone can respond"
+  },
+  "narrowed": {
+    "governedAction": "This card runs a governed action, so it stays human-only whatever audience was requested.",
+    "companyCap": "Organization interaction governance narrowed this from {{from}} to {{to}}.",
+    "legacy": "Created before Anyone became the default, so it stays restricted. A new card would be open."
+  }
+}

@@ -8,6 +8,7 @@ import { useRef, type ReactNode } from "react";
 import type { ExecutionProjection } from "@paperclipai/shared";
 import { useSecondTick } from "@/hooks/useSecondTick";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 import type {
   TaskChatItem,
   TaskChatMessageItem,
@@ -96,10 +97,10 @@ function RunnerTurnStatus({
   const elapsed = formatCompactDuration(elapsedMs);
 
   const failed = terminalStatusFailed(status);
-  const label = terminal ? (failed ? "Stopped" : "Worked") : waitingLabel ?? "Working";
+  const label = terminal ? (failed ? t("componentsTaskChatTaskChatRunnerTurn.status.stopped") : t("componentsTaskChatTaskChatRunnerTurn.status.worked")) : waitingLabel ?? t("componentsTaskChatTaskChatRunnerTurn.status.working");
   const suffix = terminal
-    ? elapsed ? ` ${failed ? "after" : "for"} ${elapsed}` : ""
-    : elapsed ? `${waitingLabel ? " · " : " for "}${elapsed}` : "";
+    ? elapsed ? ` ${failed ? t("componentsTaskChatTaskChatRunnerTurn.status.after", { elapsed }) : t("componentsTaskChatTaskChatRunnerTurn.status.for", { elapsed })}` : ""
+    : elapsed ? (waitingLabel ? ` · ${elapsed}` : ` ${t("componentsTaskChatTaskChatRunnerTurn.status.for", { elapsed })}`) : "";
 
   return (
     <span
@@ -109,7 +110,7 @@ function RunnerTurnStatus({
       aria-live="polite"
       aria-atomic="true"
     >
-      {continuedAfterSteering ? <span data-conversation-meta="">Continued after steering · </span> : null}
+      {continuedAfterSteering ? <span data-conversation-meta="">{t("componentsTaskChatTaskChatRunnerTurn.continuedAfterSteering")} · </span> : null}
       {label}<span data-conversation-meta="">{suffix}</span>
     </span>
   );
@@ -119,7 +120,7 @@ function RunnerCurrentActivityTail({ status, waitingLabel }: { status: string; w
   const shimmer = useTaskChatShimmer("working");
   if (isTerminalRunStatus(status)) return null;
   return <div className="mt-2 flex min-h-8 min-w-0 items-center gap-2 px-1 py-1 text-xs text-muted-foreground" data-testid="task-chat-current-activity" data-turn-position="tail">
-    <span className={cn(!waitingLabel && shimmer && "shimmer-text shimmer-text-muted")} aria-live="polite" data-testid="task-chat-current-activity-label">{waitingLabel ?? "Thinking"}</span>
+    <span className={cn(!waitingLabel && shimmer && "shimmer-text shimmer-text-muted")} aria-live="polite" data-testid="task-chat-current-activity-label">{waitingLabel ?? t("componentsTaskChatTaskChatRunnerTurn.thinking")}</span>
   </div>;
 }
 

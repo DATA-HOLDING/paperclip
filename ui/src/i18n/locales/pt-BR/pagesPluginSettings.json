@@ -1,0 +1,130 @@
+{
+  "breadcrumbs": {
+    "organization": "Organização",
+    "settings": "Configurações",
+    "plugins": "Plugins",
+    "pluginDetails": "Detalhes do plugin"
+  },
+  "loadingDetails": "Carregando os detalhes do plugin",
+  "loadAction": "carregar este plugin",
+  "noDescription": "Nenhuma descrição informada.",
+  "tabs": {
+    "configuration": "Configuração",
+    "status": "Status"
+  },
+  "about": {
+    "title": "Sobre",
+    "description": "Descrição",
+    "author": "Autor",
+    "categories": "Categorias",
+    "none": "Nenhuma"
+  },
+  "settings": {
+    "title": "Configurações",
+    "configureFromEnvironments": "Configure este plugin em Configurações → Ambientes.",
+    "environmentDriversNote": "{{driver}} registra lá as configurações de runtime do ambiente para que o destino de execução continue no escopo da instância, enquanto os vínculos de segredos ainda são resolvidos pelo contexto da organização selecionada.",
+    "thisPlugin": "Este plugin",
+    "openEnvironments": "Abrir Ambientes",
+    "noSettings": "Este plugin não exige nenhuma configuração."
+  },
+  "runtime": {
+    "title": "Painel de runtime",
+    "description": "Processo worker, jobs agendados e entregas de webhook",
+    "worker": {
+      "title": "Processo worker",
+      "status": "Status",
+      "uptime": "Tempo ativo",
+      "pendingRpcs": "RPCs pendentes",
+      "crashes": "Falhas",
+      "crashCounts": "{{consecutive}} consecutivas / {{total}} no total",
+      "lastCrash": "Última falha",
+      "none": "Nenhum processo worker registrado."
+    },
+    "jobs": {
+      "title": "Execuções recentes de jobs",
+      "none": "Nenhuma execução de job registrada ainda."
+    },
+    "webhooks": {
+      "title": "Entregas recentes de webhook",
+      "none": "Nenhuma entrega de webhook registrada ainda."
+    },
+    "lastChecked": "Última verificação: {{time}}",
+    "unavailable": "O diagnóstico de runtime está indisponível no momento."
+  },
+  "logs": {
+    "title": "Logs recentes",
+    "description": "Últimas {{count}} entradas de log"
+  },
+  "health": {
+    "title": "Status de saúde",
+    "checking": "Verificando a saúde...",
+    "overall": "Geral",
+    "lifecycle": "Ciclo de vida",
+    "runsWhenReady": "As verificações de saúde rodam quando o plugin estiver pronto."
+  },
+  "details": {
+    "title": "Detalhes",
+    "pluginId": "ID do plugin",
+    "pluginKey": "Chave do plugin",
+    "npmPackage": "Pacote NPM",
+    "version": "Versão"
+  },
+  "permissions": {
+    "title": "Permissões",
+    "none": "Nenhuma permissão especial solicitada."
+  },
+  "folders": {
+    "selectOrganization": "Selecione uma organização para configurar as pastas locais deste plugin.",
+    "title": "Pastas locais",
+    "loadAction": "carregar as configurações de pastas locais",
+    "loading": "Carregando pastas locais",
+    "saved": "Pasta local salva.",
+    "savedNeedsAttention": "Pasta local salva, mas a validação ainda precisa de atenção.",
+    "pathRequired": "O caminho da pasta local é obrigatório.",
+    "pathAbsolute": "A pasta local precisa ser um caminho absoluto completo.",
+    "healthy": "Saudável",
+    "needsAttention": "Precisa de atenção",
+    "readWrite": "Leitura/escrita",
+    "readOnly": "Somente leitura",
+    "configured": "Configurada",
+    "readable": "Legível",
+    "writable": "Gravável",
+    "yes": "Sim",
+    "no": "Não",
+    "notRequested": "Não solicitado",
+    "configuredPath": "Caminho configurado",
+    "pathLabel": "Caminho da pasta local",
+    "save": "Salvar",
+    "validationProblems": "Problemas de validação"
+  },
+  "requirements": {
+    "requiredDirectories": "Diretórios obrigatórios",
+    "missingDirectories": "Diretórios ausentes",
+    "requiredFiles": "Arquivos obrigatórios",
+    "missingFiles": "Arquivos ausentes",
+    "notInspected": "Não inspecionado",
+    "missingCount": "{{count}} ausentes",
+    "present": "Presentes",
+    "noneDeclared": "Nenhum declarado.",
+    "rootNotInspected": "A raiz configurada não foi inspecionada."
+  },
+  "config": {
+    "selectOrganizationToSave": "Selecione uma organização antes de salvar a configuração do plugin.",
+    "saved": "Configuração salva.",
+    "selectOrganizationToTest": "Selecione uma organização antes de testar a configuração do plugin.",
+    "testPassed": "O teste da configuração passou.",
+    "testFailed": "O teste da configuração falhou.",
+    "loading": "Carregando a configuração...",
+    "saving": "Salvando...",
+    "save": "Salvar configuração",
+    "testing": "Testando...",
+    "test": "Testar configuração"
+  },
+  "relative": {
+    "justNow": "agora mesmo",
+    "seconds": "há {{count}}s",
+    "minutes": "há {{count}}min",
+    "hours": "há {{count}}h",
+    "days": "há {{count}}d"
+  }
+}

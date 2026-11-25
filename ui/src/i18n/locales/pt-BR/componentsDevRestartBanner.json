@@ -1,0 +1,28 @@
+{
+  "justNow": "agora mesmo",
+  "minutesAgo": "há {{n}} min",
+  "hoursAgo": "há {{n}} h",
+  "daysAgo": "há {{n}} d",
+  "reason": {
+    "both": "arquivos do backend mudaram e há migrações pendentes",
+    "migrations": "migrações pendentes precisam de uma nova inicialização",
+    "files": "arquivos do backend mudaram desde que este servidor iniciou"
+  },
+  "liveRuns_one": "{{count}} execução ativa",
+  "liveRuns_other": "{{count}} execuções ativas",
+  "confirmInterrupt": "Reiniciar o Paperclip agora? Isso pode interromper {{runs}}.",
+  "confirm": "Reiniciar o Paperclip agora?",
+  "requestFailed": "Falha ao solicitar a reinicialização",
+  "restartRequired": "Reinicialização necessária",
+  "autoRestartOn": "Reinício automático ligado",
+  "updated": " · atualizado {{time}}",
+  "changed": "Alterados: {{paths}}",
+  "more": " +{{n}} a mais",
+  "pendingMigrations": "Migrações pendentes: {{names}}",
+  "waitingFor": "Aguardando {{runs}} terminar",
+  "autoRestartIdle": "O reinício automático vai acontecer quando a instância estiver ociosa",
+  "manualBefore": "Reinicie ",
+  "manualAfter": " quando o trabalho ativo puder ser interrompido com segurança",
+  "restartRequested": "Reinicialização solicitada",
+  "restartNow": "Reiniciar agora"
+}

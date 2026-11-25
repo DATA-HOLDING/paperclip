@@ -1,0 +1,35 @@
+{
+  "engine": {
+    "label": "Mecanismo de execução",
+    "hint": "O padrão usa ACP. Se o ACP não estiver disponível, a execução falha com um erro de configuração. Escolha CLI explicitamente para usá-lo.",
+    "default": "Padrão (ACP)"
+  },
+  "acpCommand": {
+    "label": "Comando do servidor ACP",
+    "hint": "Substituição opcional do comando do servidor ACP do Gemini. O padrão é gemini --acp."
+  },
+  "sessionMode": {
+    "label": "Modo de sessão ACP",
+    "hint": "Persistente mantém o estado da sessão ACP entre execuções. Única começa do zero a cada execução.",
+    "persistent": "Persistente",
+    "oneshot": "Única"
+  },
+  "permissions": {
+    "label": "Permissões não interativas do ACP",
+    "hint": "Alternativa caso o agente ACP peça uma entrada fora de uma sessão interativa.",
+    "deny": "Negar",
+    "fail": "Falhar"
+  },
+  "stateDir": {
+    "label": "Diretório de estado do ACP",
+    "hint": "Diretório opcional do estado da sessão ACP. O padrão é o armazenamento gerenciado pelo Paperclip, com escopo de organização/agente."
+  },
+  "warmIdle": {
+    "label": "Ociosidade do processo ACP aquecido (ms)",
+    "hint": "O padrão é 0, que encerra o processo ACP após cada execução, mantendo o estado persistente da sessão."
+  },
+  "instructionsFile": {
+    "label": "Arquivo de instruções do agente",
+    "hint": "Caminho absoluto para um arquivo markdown (ex.: AGENTS.md) que define o comportamento deste agente. Adicionado no início do prompt do Gemini na execução."
+  }
+}

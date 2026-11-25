@@ -1,0 +1,19 @@
+{
+  "sort": {
+    "top": "Top",
+    "alphabetical": "Alphabetical",
+    "recent": "Recent"
+  },
+  "privateProject": "Private project",
+  "pausedByBudget": "Project paused by budget",
+  "openActions": "Open actions for {{name}}",
+  "leaving": "Leaving...",
+  "leave": "Leave project",
+  "section": {
+    "label": "Projects",
+    "newProject": "New project",
+    "actions": "Projects section actions",
+    "browse": "Browse projects",
+    "sort": "Project sort"
+  }
+}

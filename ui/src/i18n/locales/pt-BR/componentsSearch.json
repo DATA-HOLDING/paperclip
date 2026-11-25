@@ -1,0 +1,73 @@
+{
+  "status": {
+    "backlog": "Backlog",
+    "todo": "A fazer",
+    "in_progress": "Em andamento",
+    "monitoring": "Monitorando",
+    "in_review": "Em revisão",
+    "done": "Concluída",
+    "blocked": "Bloqueada",
+    "cancelled": "Cancelada"
+  },
+  "priority": {
+    "critical": "Crítica",
+    "high": "Alta",
+    "medium": "Média",
+    "low": "Baixa"
+  },
+  "assignee": {
+    "me": "Eu",
+    "unassigned": "Sem responsável"
+  },
+  "filters": {
+    "status": "Status",
+    "openItems": "Itens abertos",
+    "assignee": "Responsável",
+    "searchAssignees": "Buscar responsáveis…",
+    "noAssignees": "Nenhum responsável",
+    "project": "Projeto",
+    "searchProjects": "Buscar projetos…",
+    "noProjects": "Nenhum projeto",
+    "label": "Etiqueta",
+    "searchLabels": "Buscar etiquetas…",
+    "noLabels": "Nenhuma etiqueta",
+    "priority": "Prioridade",
+    "updated": "Atualizado"
+  },
+  "clearAll": "Limpar tudo",
+  "chips": {
+    "removeFilter": "Remover o filtro {{label}}"
+  },
+  "menu": {
+    "searchPlaceholder": "Buscar…",
+    "noOptions": "Nenhuma opção",
+    "filterBy": "Filtrar por {{label}}",
+    "clear": "Limpar"
+  },
+  "sheet": {
+    "showResults": "Mostrar resultados",
+    "showCount_one": "Mostrar {{count}} resultado",
+    "showCount_other": "Mostrar {{count}} resultados",
+    "filters": "Filtros",
+    "cancel": "Cancelar"
+  },
+  "sort": {
+    "sortResults": "Ordenar resultados",
+    "sortPrefix": "Ordenar:",
+    "sortBy": "Ordenar por"
+  },
+  "zero": {
+    "title": "Nenhum resultado com estes filtros",
+    "matches_one": "1 resultado corresponde",
+    "matches_other": "{{count}} resultados correspondem",
+    "butYour": ", mas",
+    "filtersHide_one": "o filtro ativo oculta",
+    "filtersHide_other": "os {{count}} filtros ativos ocultam",
+    "allOfThem": " todos eles.",
+    "loosen": "Afrouxe um filtro",
+    "remove": "Remover",
+    "additional_one": "+{{count}} resultado",
+    "additional_other": "+{{count}} resultados",
+    "clearAllFilters": "Limpar todos os filtros"
+  }
+}

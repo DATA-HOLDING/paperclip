@@ -30,6 +30,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { NativeSelect } from "@/components/ui/select";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 /** The task a routine would repeat, and what the form starts on. */
 export interface RoutineTaskTarget {
@@ -43,16 +44,16 @@ export interface RoutineTaskTarget {
 }
 
 const FREQUENCY_LABEL: Record<RoutineSuggestionFrequency, string> = {
-  daily: "Every day",
-  weekdays: "Every weekday",
-  weekly: "Every week",
-  monthly: "Every month",
+  daily: t("componentsResponsibilitiesMakeRoutineDialog.frequency.daily"),
+  weekdays: t("componentsResponsibilitiesMakeRoutineDialog.frequency.weekdays"),
+  weekly: t("componentsResponsibilitiesMakeRoutineDialog.frequency.weekly"),
+  monthly: t("componentsResponsibilitiesMakeRoutineDialog.frequency.monthly"),
 };
 
 const WEEKDAY_ORDER: readonly RoutineSuggestionWeekday[] = [...ROUTINE_SUGGESTION_WEEKDAYS.slice(1), ROUTINE_SUGGESTION_WEEKDAYS[0]];
 
 function capitalize(word: string) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return t(`componentsResponsibilitiesMakeRoutineDialog.weekday.${word}`, { defaultValue: word.charAt(0).toUpperCase() + word.slice(1) });
 }
 
 export function localTimeZone(): string {
@@ -112,7 +113,7 @@ export async function createRoutineUnderResponsibility(
 /** "Pricing", "Pricing and Market", "Pricing, Market and Ops". */
 function joinTitles(titles: readonly string[]): string {
   if (titles.length <= 1) return titles[0] ?? "";
-  return `${titles.slice(0, -1).join(", ")} and ${titles.at(-1)}`;
+  return t("componentsResponsibilitiesMakeRoutineDialog.joinTitles", { list: titles.slice(0, -1).join(", "), last: titles.at(-1) });
 }
 
 /**
@@ -179,7 +180,7 @@ export function MakeRoutineDialog({
     setDayOfMonth(start.dayOfMonth ?? 1);
     setTime(start.time);
     setAgentId("");
-    setHint(source === "offer" ? "The agent suggested this." : source === "title" ? "Suggested from the title." : null);
+    setHint(source === "offer" ? t("componentsResponsibilitiesMakeRoutineDialog.hint.offer") : source === "title" ? t("componentsResponsibilitiesMakeRoutineDialog.hint.title") : null);
   }, [open, task]);
 
   const effectiveAgentId = agentId || defaultRoutineAgentId(available, task?.assigneeAgentId ?? newFor?.assigneeAgentId ?? null);
@@ -243,30 +244,30 @@ export function MakeRoutineDialog({
       >
         <form className="flex flex-col gap-5" onSubmit={submit} data-make-routine-dialog="">
           <DialogHeader>
-            <DialogTitle>{fresh ? "New routine" : "Make it a routine"}</DialogTitle>
+            <DialogTitle>{fresh ? t("componentsResponsibilitiesMakeRoutineDialog.title.new") : t("componentsResponsibilitiesMakeRoutineDialog.title.fromTask")}</DialogTitle>
             <DialogDescription>
-              {fresh ? "An agent does this on a schedule." : "An agent repeats this on a schedule, so it no longer needs you to start it."}
+              {fresh ? t("componentsResponsibilitiesMakeRoutineDialog.description.new") : t("componentsResponsibilitiesMakeRoutineDialog.description.fromTask")}
             </DialogDescription>
           </DialogHeader>
 
           <label className="flex flex-col gap-2 text-sm">
-            <span className="font-medium text-foreground">What repeats</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.whatRepeats")}</span>
             <Input
               ref={titleInput}
               value={title}
               maxLength={200}
               onChange={(event) => setTitle(event.target.value)}
               required
-              aria-label="What repeats"
-              placeholder={fresh ? "e.g. Review the investor pipeline" : undefined}
+              aria-label={t("componentsResponsibilitiesMakeRoutineDialog.whatRepeats")}
+              placeholder={fresh ? t("componentsResponsibilitiesMakeRoutineDialog.titlePlaceholder") : undefined}
             />
           </label>
 
           <fieldset className="flex flex-col gap-2 text-sm">
-            <legend className="mb-2 font-medium text-foreground">How often</legend>
+            <legend className="mb-2 font-medium text-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.howOften")}</legend>
             <div className="flex flex-wrap items-center gap-2">
               <NativeSelect
-                aria-label="How often"
+                aria-label={t("componentsResponsibilitiesMakeRoutineDialog.howOften")}
                 className="w-auto"
                 value={frequency}
                 onChange={(event) => setFrequency(event.target.value as RoutineSuggestionFrequency)}
@@ -277,9 +278,9 @@ export function MakeRoutineDialog({
               </NativeSelect>
               {frequency === "weekly" ? (
                 <>
-                  <span className="text-muted-foreground">on</span>
+                  <span className="text-muted-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.on")}</span>
                   <NativeSelect
-                    aria-label="Day of the week"
+                    aria-label={t("componentsResponsibilitiesMakeRoutineDialog.dayOfWeek")}
                     className="w-auto"
                     value={dayOfWeek}
                     onChange={(event) => setDayOfWeek(event.target.value as RoutineSuggestionWeekday)}
@@ -292,9 +293,9 @@ export function MakeRoutineDialog({
               ) : null}
               {frequency === "monthly" ? (
                 <>
-                  <span className="text-muted-foreground">on day</span>
+                  <span className="text-muted-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.onDay")}</span>
                   <NativeSelect
-                    aria-label="Day of the month"
+                    aria-label={t("componentsResponsibilitiesMakeRoutineDialog.dayOfMonth")}
                     className="w-auto"
                     value={String(dayOfMonth)}
                     onChange={(event) => setDayOfMonth(Number(event.target.value))}
@@ -305,10 +306,10 @@ export function MakeRoutineDialog({
                   </NativeSelect>
                 </>
               ) : null}
-              <span className="text-muted-foreground">at</span>
+              <span className="text-muted-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.at")}</span>
               <Input
                 type="time"
-                aria-label="Time"
+                aria-label={t("componentsResponsibilitiesMakeRoutineDialog.time")}
                 className="w-auto"
                 value={time}
                 step={300}
@@ -316,51 +317,51 @@ export function MakeRoutineDialog({
               />
             </div>
             <p className="text-xs text-muted-foreground" data-cadence-preview="">
-              {cadenceLabel}, your time ({zone}).{hint ? ` ${hint}` : ""}
+              {t("componentsResponsibilitiesMakeRoutineDialog.cadencePreview", { cadence: cadenceLabel, zone })}{hint ? ` ${hint}` : ""}
             </p>
           </fieldset>
 
           <label className="flex flex-col gap-2 text-sm">
-            <span className="font-medium text-foreground">Who runs it</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.whoRuns")}</span>
             <NativeSelect
-              aria-label="Who runs it"
+              aria-label={t("componentsResponsibilitiesMakeRoutineDialog.whoRuns")}
               value={effectiveAgentId}
               onChange={(event) => setAgentId(event.target.value)}
               disabled={available.length === 0}
             >
-              {available.length === 0 ? <option value="">No agents yet</option> : null}
+              {available.length === 0 ? <option value="">{t("componentsResponsibilitiesMakeRoutineDialog.noAgents")}</option> : null}
               {available.map((agent) => (
                 <option key={agent.id} value={agent.id}>{agent.name}</option>
               ))}
             </NativeSelect>
             {available.length === 0 ? (
-              <span className="text-xs text-muted-foreground">Add an agent first: a routine needs one to run it.</span>
+              <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesMakeRoutineDialog.addAgentFirst")}</span>
             ) : null}
           </label>
 
           <p className="text-xs text-muted-foreground" data-routine-filing-note="">
-            {fresh ? `Filed under ${newFor!.responsibilityTitle}.` : (
+            {fresh ? t("componentsResponsibilitiesMakeRoutineDialog.filing.new", { title: newFor!.responsibilityTitle }) : (
               <>
-                The task itself stays as it is.{" "}
+                {t("componentsResponsibilitiesMakeRoutineDialog.filing.taskStays")}{" "}
                 {filedUnder.length > 0
-                  ? `The routine is filed under ${joinTitles(filedUnder)}, like the task.`
-                  : "The routine is filed wherever the task is."}
+                  ? t("componentsResponsibilitiesMakeRoutineDialog.filing.under", { titles: joinTitles(filedUnder) })
+                  : t("componentsResponsibilitiesMakeRoutineDialog.filing.wherever")}
               </>
             )}
           </p>
 
           {create.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t make the routine. {describeError(create.error).body}
+              {t("componentsResponsibilitiesMakeRoutineDialog.error")} {describeError(create.error).body}
             </p>
           ) : null}
 
           <DialogFooter className="sm:justify-between">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("componentsResponsibilitiesMakeRoutineDialog.cancel")}
             </Button>
             <Button type="submit" disabled={!canSubmit}>
-              {create.isPending ? "Making the routine…" : fresh ? "Make the routine" : "Make it a routine"}
+              {create.isPending ? t("componentsResponsibilitiesMakeRoutineDialog.submit.pending") : fresh ? t("componentsResponsibilitiesMakeRoutineDialog.submit.new") : t("componentsResponsibilitiesMakeRoutineDialog.title.fromTask")}
             </Button>
           </DialogFooter>
         </form>

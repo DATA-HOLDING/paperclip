@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { QueryErrorState, useQueryView } from "./QueryView";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function InstructionHistory({
   agentId,
@@ -71,7 +72,7 @@ export function InstructionHistory({
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
-        History
+        {t("componentsInstructionHistory.history")}
       </Button>
       {open && (
         <div className="space-y-3">
@@ -79,7 +80,7 @@ export function InstructionHistory({
             <QueryErrorState
               size="panel"
               error={historyView.error}
-              action="load revision history"
+              action={t("componentsInstructionHistory.loadHistoryAction")}
               onRetry={historyView.retry}
               retrying={historyView.isFetching}
             />
@@ -88,7 +89,7 @@ export function InstructionHistory({
             <QueryErrorState
               size="panel"
               error={diffView.error}
-              action="load the revision diff"
+              action={t("componentsInstructionHistory.loadDiffAction")}
               onRetry={diffView.retry}
               retrying={diffView.isFetching}
             />
@@ -97,7 +98,7 @@ export function InstructionHistory({
             <p role="alert" className="text-sm text-destructive">{describeError(restore.error).body}</p>
           )}
           {(historyView.kind === "loading" || historyView.kind === "reconnecting") && (
-            <p role="status" className="text-sm text-muted-foreground">Loading revisions…</p>
+            <p role="status" className="text-sm text-muted-foreground">{t("componentsInstructionHistory.loading")}</p>
           )}
           {history.data?.pages
             .flatMap((page) => page.revisions)
@@ -114,7 +115,7 @@ export function InstructionHistory({
                 <span className="text-sm text-muted-foreground">
                   {revision.source} ·{" "}
                   {new Date(revision.createdAt).toLocaleString()}
-                  {revision.id === currentRevisionId ? " · Current" : ""}
+                  {revision.id === currentRevisionId ? t("componentsInstructionHistory.current") : ""}
                 </span>
               </div>
             ))}
@@ -125,24 +126,24 @@ export function InstructionHistory({
               disabled={history.isFetchingNextPage}
               onClick={() => void history.fetchNextPage()}
             >
-              Older revisions
+              {t("componentsInstructionHistory.older")}
             </Button>
           )}
           {diff.data && (
             <>
-              <p className="text-sm text-muted-foreground">Selected revision</p>
+              <p className="text-sm text-muted-foreground">{t("componentsInstructionHistory.selected")}</p>
               <pre className={cn("whitespace-pre-wrap break-words rounded-md border border-border p-3 font-mono text-sm", ANALYTICS_MASK_CLASS)}>
                 {diff.data.from.content}
               </pre>
               <p className="text-sm text-muted-foreground">
-                Changes from selected revision to current
+                {t("componentsInstructionHistory.changes")}
               </p>
               <pre className={cn("whitespace-pre-wrap break-words rounded-md border border-border p-3 font-mono text-sm", ANALYTICS_MASK_CLASS)}>
-                {diff.data.removed && `Removed:\n${diff.data.removed}\n`}
-                {diff.data.added && `Added:\n${diff.data.added}`}
+                {diff.data.removed && `${t("componentsInstructionHistory.removed")}\n${diff.data.removed}\n`}
+                {diff.data.added && `${t("componentsInstructionHistory.added")}\n${diff.data.added}`}
                 {!diff.data.removed &&
                   !diff.data.added &&
-                  "No content changes."}
+                  t("componentsInstructionHistory.noChanges")}
               </pre>
               <Button
                 type="button"
@@ -153,11 +154,11 @@ export function InstructionHistory({
                 }
                 onClick={() => restore.mutate()}
               >
-                Restore as new revision
+                {t("componentsInstructionHistory.restore")}
               </Button>
               {disabled && (
                 <p className="text-sm text-muted-foreground">
-                  Save or cancel your edits before restoring.
+                  {t("componentsInstructionHistory.saveFirst")}
                 </p>
               )}
             </>

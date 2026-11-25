@@ -1,0 +1,29 @@
+{
+  "executingCommand": "Executing command",
+  "inspectInput": "Inspect {{name}} input",
+  "pathsStartingWith_one": "{{count}} paths, starting with {{first}}",
+  "pathsStartingWith_other": "{{count}} paths, starting with {{first}}",
+  "noInput": "No {{name}} input",
+  "payload": "{{key}} payload",
+  "fields_one": "{{count}} fields: {{keys}}",
+  "fields_other": "{{count}} fields: {{keys}}",
+  "labels": {
+    "command": "Command",
+    "input": "Input",
+    "intent": "Intent",
+    "path": "Path",
+    "directory": "Directory",
+    "query": "Query",
+    "target": "Target",
+    "prompt": "Prompt",
+    "pattern": "Pattern",
+    "name": "Name",
+    "paths": "Paths"
+  },
+  "moreSuffix": ", +{{count}} more",
+  "toolFailed": "Tool failed",
+  "waitingForResult": "Waiting for result",
+  "completed": "Completed",
+  "failedWithExitCode": "Failed with exit code {{exitCode}}",
+  "failed": "Failed"
+}

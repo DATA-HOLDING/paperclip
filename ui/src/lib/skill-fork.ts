@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type {
   CompanySkillForkSummary,
   CompanySkillOriginalSummary,
@@ -33,13 +34,13 @@ function sourceTypeFallbackLabel(sourceType: CompanySkillSourceType): string {
     case "skills_sh":
       return "skills.sh";
     case "url":
-      return "a URL";
+      return t("libSkillFork.sourceFallback.url");
     case "catalog":
-      return "the catalog";
+      return t("libSkillFork.sourceFallback.catalog");
     case "local_path":
-      return "a local path";
+      return t("libSkillFork.sourceFallback.localPath");
     default:
-      return "its source";
+      return t("libSkillFork.sourceFallback.default");
   }
 }
 
@@ -98,8 +99,8 @@ export function pickReusableFork(
 
 /** Unmissable agent-usage sentence for the dialog body (P3 hard requirement). */
 export function agentUsageSentence(count: number): string {
-  if (count <= 0) return "No agents currently use this skill";
-  return `${count} ${count === 1 ? "agent" : "agents"} currently use${count === 1 ? "s" : ""} this skill`;
+  if (count <= 0) return t("libSkillFork.agentUsage.none");
+  return t("libSkillFork.agentUsage.some", { count });
 }
 
 /** Agent ids to reassign when the "Switch these agents to the copy" toggle is on. */

@@ -1,0 +1,31 @@
+{
+  "inference": {
+    "title": "Registro de inferência",
+    "description": "Uso por requisição e execuções cobradas a partir de cost_events.",
+    "points": {
+      "tokens": "tokens + dólares cobrados",
+      "provider": "provedor, cobrador, modelo",
+      "subscription": "considera assinatura e excedente"
+    }
+  },
+  "finance": {
+    "title": "Registro financeiro",
+    "description": "Cobranças da conta que não são um par prompt-resposta.",
+    "points": {
+      "topUps": "recargas, reembolsos, taxas",
+      "bedrock": "cobranças de Bedrock provisionado ou de treinamento",
+      "credits": "expiração e ajustes de créditos"
+    }
+  },
+  "quotas": {
+    "title": "Cotas ao vivo",
+    "description": "Janelas do provedor ou do cobrador que podem interromper o tráfego em tempo real.",
+    "points": {
+      "windows": "janelas de cota do provedor",
+      "credits": "sistemas de crédito do cobrador",
+      "errors": "erros exibidos diretamente"
+    }
+  },
+  "title": "Modelo contábil",
+  "description": "O Paperclip agora separa o uso de inferência por requisição dos eventos financeiros da conta. Isso mantém os relatórios do provedor fiéis quando o cobrador é OpenRouter, Cloudflare, Bedrock ou outro intermediário."
+}

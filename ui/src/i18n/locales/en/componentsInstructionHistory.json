@@ -1,0 +1,15 @@
+{
+  "history": "History",
+  "loadHistoryAction": "load revision history",
+  "loadDiffAction": "load the revision diff",
+  "loading": "Loading revisions…",
+  "current": " · Current",
+  "older": "Older revisions",
+  "selected": "Selected revision",
+  "changes": "Changes from selected revision to current",
+  "removed": "Removed:",
+  "added": "Added:",
+  "noChanges": "No content changes.",
+  "restore": "Restore as new revision",
+  "saveFirst": "Save or cancel your edits before restoring."
+}

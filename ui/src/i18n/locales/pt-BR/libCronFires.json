@@ -1,0 +1,11 @@
+{
+  "disposition": {
+    "queued": "na fila",
+    "coalesced": "seria agrupada",
+    "skipped": "seria ignorada"
+  },
+  "note": {
+    "runsImmediately": "executa imediatamente",
+    "ifPreviousRunActive": "se a execução anterior ainda estiver ativa"
+  }
+}

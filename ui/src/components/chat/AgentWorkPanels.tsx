@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowUpDown, File, FileText, Image, Search, Video } from "lucide-react";
@@ -37,10 +38,10 @@ const ARTIFACT_MAX_PAGES = 5;
 export type AgentTaskSortField = "updated" | "created" | "status" | "title";
 
 const SORT_OPTIONS: ReadonlyArray<[AgentTaskSortField, string]> = [
-  ["updated", "Last updated"],
-  ["created", "Created"],
-  ["status", "Status"],
-  ["title", "Title"],
+  ["updated", t("componentsChat.agentWorkPanels.sort.updated")],
+  ["created", t("componentsChat.agentWorkPanels.sort.created")],
+  ["status", t("componentsChat.agentWorkPanels.sort.status")],
+  ["title", t("componentsChat.agentWorkPanels.sort.title")],
 ];
 
 export function sortAgentTasks(
@@ -151,15 +152,15 @@ export function AgentTasksPanel({
   const capped = (tasksQuery.data?.length ?? 0) >= AGENT_TASK_LIMIT;
 
   return (
-    <section className="flex flex-col gap-3" aria-label="Agent tasks">
+    <section className="flex flex-col gap-3" aria-label={t("componentsChat.agentWorkPanels.tasks.ariaLabel")}>
       <div className="flex items-center gap-1">
         <div className="relative min-w-0 flex-1">
           <Search className="pointer-events-none absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search tasks"
-            aria-label="Search tasks"
+            placeholder={t("componentsChat.agentWorkPanels.tasks.search")}
+            aria-label={t("componentsChat.agentWorkPanels.tasks.search")}
             className="h-8 pl-7 text-sm"
           />
         </div>
@@ -175,7 +176,7 @@ export function AgentTasksPanel({
         />
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title="Sort" aria-label="Sort tasks">
+            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" title={t("componentsChat.agentWorkPanels.tasks.sort")} aria-label={t("componentsChat.agentWorkPanels.tasks.sortAria")}>
               <ArrowUpDown className="h-3.5 w-3.5" />
             </Button>
           </PopoverTrigger>
@@ -209,30 +210,30 @@ export function AgentTasksPanel({
       </div>
 
       {tasksView.kind === "loading" || tasksView.kind === "reconnecting" ? (
-        <PanelMessage>Loading tasks…</PanelMessage>
+        <PanelMessage>{t("componentsChat.agentWorkPanels.tasks.loading")}</PanelMessage>
       ) : tasksView.kind === "error" ? (
         <div className="py-4">
           <QueryErrorState
             error={tasksQuery.error}
-            action="load this agent's tasks"
+            action={t("componentsChat.agentWorkPanels.tasks.errorAction")}
             onRetry={tasksView.retry}
             retrying={tasksView.isFetching}
           />
         </div>
       ) : total === 0 ? (
-        <PanelMessage>This agent hasn't worked on any tasks yet.</PanelMessage>
+        <PanelMessage>{t("componentsChat.agentWorkPanels.tasks.empty")}</PanelMessage>
       ) : visible.length === 0 ? (
         <PanelMessage>
           {capped
-            ? `No tasks match these filters among the ${AGENT_TASK_LIMIT} most recently updated.`
-            : "No tasks match these filters."}
+            ? t("componentsChat.agentWorkPanels.tasks.noMatchCapped", { limit: AGENT_TASK_LIMIT })
+            : t("componentsChat.agentWorkPanels.tasks.noMatch")}
         </PanelMessage>
       ) : (
         <div className="flex flex-col gap-2">
           {visible.map((task) => <AgentTaskCard key={task.id} task={task} />)}
           {capped ? (
             <p className="px-1 text-xs text-muted-foreground">
-              Showing the {AGENT_TASK_LIMIT} most recently updated tasks.
+              {t("componentsChat.agentWorkPanels.tasks.showingCapped", { limit: AGENT_TASK_LIMIT })}
             </p>
           ) : null}
         </div>
@@ -270,7 +271,7 @@ export function AgentArtifactCard({ artifact }: { artifact: CompanyArtifact }) {
         </span>
       </div>
       <div className="flex items-center gap-1.5 pl-6 text-xs text-muted-foreground">
-        <span>Updated {formatDate(artifact.updatedAt)}</span>
+        <span>{t("componentsChat.agentWorkPanels.artifacts.updated", { date: formatDate(artifact.updatedAt) })}</span>
         <span aria-hidden>·</span>
         <span className="font-mono">{artifact.issue.identifier}</span>
       </div>
@@ -303,13 +304,13 @@ export function AgentArtifactsPanel({ companyId, agentId }: { companyId: string;
 
   const artifactsView = useQueryView(artifactsQuery);
 
-  if (artifactsView.kind === "loading" || artifactsView.kind === "reconnecting") return <PanelMessage>Loading artifacts…</PanelMessage>;
+  if (artifactsView.kind === "loading" || artifactsView.kind === "reconnecting") return <PanelMessage>{t("componentsChat.agentWorkPanels.artifacts.loading")}</PanelMessage>;
   if (artifactsView.kind === "error") {
     return (
       <div className="py-4">
         <QueryErrorState
           error={artifactsQuery.error}
-          action="load this agent's artifacts"
+          action={t("componentsChat.agentWorkPanels.artifacts.errorAction")}
           onRetry={artifactsView.retry}
           retrying={artifactsView.isFetching}
         />
@@ -319,12 +320,12 @@ export function AgentArtifactsPanel({ companyId, agentId }: { companyId: string;
   const loaded = artifactsQuery.data;
   if (!loaded) return null;
   const { artifacts, truncated } = loaded;
-  if (artifacts.length === 0) return <PanelMessage>This agent hasn't produced any artifacts yet.</PanelMessage>;
+  if (artifacts.length === 0) return <PanelMessage>{t("componentsChat.agentWorkPanels.artifacts.empty")}</PanelMessage>;
   return (
-    <section className="flex flex-col gap-2" aria-label="Agent artifacts">
+    <section className="flex flex-col gap-2" aria-label={t("componentsChat.agentWorkPanels.artifacts.ariaLabel")}>
       {artifacts.map((artifact) => <AgentArtifactCard key={artifact.id} artifact={artifact} />)}
       {truncated ? (
-        <p className="px-1 text-xs text-muted-foreground">Showing this agent's {artifacts.length} most recent artifacts.</p>
+        <p className="px-1 text-xs text-muted-foreground">{t("componentsChat.agentWorkPanels.artifacts.showingTruncated", { n: artifacts.length })}</p>
       ) : null}
     </section>
   );

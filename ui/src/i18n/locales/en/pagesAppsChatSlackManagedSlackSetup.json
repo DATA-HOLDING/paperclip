@@ -1,0 +1,27 @@
+{
+  "errors": {
+    "manifestPending": "Your app was created. Retry to finish its configuration.",
+    "creationUncertain": "Slack may have created your app. Check Slack app settings before trying again.",
+    "loadWorkspaces": "Couldn't load your Slack workspaces. Try again."
+  },
+  "status": {
+    "openingSlack": "Opening Slack…",
+    "connectingAgent": "Connecting your agent…",
+    "settingUpApp": "Setting up your Slack app…",
+    "loadingSlack": "Loading Slack…"
+  },
+  "unavailable": "Managed Slack setup is unavailable. Try again later.",
+  "addAgent": {
+    "prefix": "Add",
+    "to": "to"
+  },
+  "workspaceLabel": "Slack workspace",
+  "workspacePlaceholder": "Choose a Slack workspace",
+  "connectAnother": "Connect another Slack workspace",
+  "openAppSettings": "Open Slack app settings",
+  "confirmNoApp": "I checked Slack and no app was created. Create a new app.",
+  "retry": "Retry",
+  "reconnectWorkspace": "Reconnect Slack workspace",
+  "continueInSlack": "Continue in Slack",
+  "continue": "Continue"
+}

@@ -1,0 +1,18 @@
+{
+  "breadcrumb": "Chat",
+  "loadingChat": "Carregando o chat…",
+  "disabled": {
+    "before": "O Chat com agentes está desligado nesta instância. Um administrador pode ativá-lo nas",
+    "link": "Configurações experimentais",
+    "after": ". A preferência do seu espaço de trabalho não muda a disponibilidade do Chat."
+  },
+  "selectCompany": "Selecione uma organização para começar uma conversa.",
+  "openingChat": "Abrindo o chat…",
+  "title": "Com quem você quer conversar?",
+  "subtitle": "Faça uma pergunta, explore uma ideia ou planeje o próximo passo com a sua equipe.",
+  "loadAction": "carregar seus chats",
+  "loadingAgents": "Carregando agentes…",
+  "openFailed": "Não foi possível abrir o chat. Tente novamente.",
+  "noAgents": "Adicione um agente para começar uma conversa.",
+  "browseAll": "Ver todos os agentes"
+}

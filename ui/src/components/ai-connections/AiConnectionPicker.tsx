@@ -16,6 +16,7 @@ import {
   type AiConnectionSummary,
 } from "./model";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 export interface AiConnectionPickerProps {
   requirement: AiConnectionRequirement;
@@ -82,7 +83,7 @@ export function AiConnectionPicker({
       grantId: connection.grantId,
     });
   return (
-    <section className="flex flex-col gap-4" aria-label="AI connection">
+    <section className="flex flex-col gap-4" aria-label={t("componentsAiConnections.picker.aiConnection")}>
       <div className="flex items-center gap-3">
         <AppLogo
           name={AI_PROVIDERS[requirement.provider].name}
@@ -92,7 +93,7 @@ export function AiConnectionPicker({
           size={32}
         />
         <div className="flex min-w-0 flex-col gap-1">
-        <h3 className="text-sm font-semibold">AI connection</h3>
+        <h3 className="text-sm font-semibold">{t("componentsAiConnections.picker.aiConnection")}</h3>
         <p className="text-xs text-muted-foreground">
           {AI_PROVIDERS[requirement.provider].name}
           {value && value.mode !== "responsible_user" && ` · ${aiMethodLabel(value.provider, value.method)}`}
@@ -100,7 +101,7 @@ export function AiConnectionPicker({
         </div>
       </div>
       {loading ? (
-        <div role="status" aria-label="Loading AI connections">
+        <div role="status" aria-label={t("componentsAiConnections.picker.loading")}>
           <Skeleton className="h-24 w-full" />
         </div>
       ) : error ? (
@@ -110,7 +111,7 @@ export function AiConnectionPicker({
           </p>
           {onRetry && (
             <Button type="button" variant="outline" onClick={onRetry}>
-              Retry connections
+              {t("componentsAiConnections.picker.retry")}
             </Button>
           )}
         </div>
@@ -120,15 +121,15 @@ export function AiConnectionPicker({
             disabled={readOnly}
             selectedId={value?.mode === "responsible_user" ? "responsible_user" : value?.connectionId}
             choices={[
-              { id: "responsible_user", name: "Responsible user’s connection", disabled: !defaultCompatible, description: <>
-                <span className="block">For you: <span className={ANALYTICS_MASK_CLASS}>{personalDefault?.name ?? "Not connected"}</span></span>
-                <span className="block">Other users’ tasks use their own {AI_PROVIDERS[requirement.provider].name} connection.</span>
-                {!defaultCompatible && <span className="block">Incompatible with this harness and model.</span>}
+              { id: "responsible_user", name: t("componentsAiConnections.picker.responsibleUser"), disabled: !defaultCompatible, description: <>
+                <span className="block">{t("componentsAiConnections.picker.forYou")}{" "}<span className={ANALYTICS_MASK_CLASS}>{personalDefault?.name ?? t("componentsAiConnections.picker.notConnected")}</span></span>
+                <span className="block">{t("componentsAiConnections.picker.otherUsers", { provider: AI_PROVIDERS[requirement.provider].name })}</span>
+                {!defaultCompatible && <span className="block">{t("componentsAiConnections.picker.incompatible")}</span>}
               </> },
               ...compatible.filter((connection) => connection.ownership === "shared").map((connection) => ({
                 id: connection.id, name: connection.name,
                 disabled: Boolean(aiConnectionProblem(connection)),
-                description: <>Company shared · {aiMethodLabel(connection.provider, connection.method)}{connection.accountLabel ? <span className={ANALYTICS_MASK_CLASS}>{` · ${connection.accountLabel}`}</span> : ""}{aiConnectionProblem(connection) ? ` · ${aiConnectionProblem(connection)}` : ""}</>,
+                description: <>{t("componentsAiConnections.picker.companyShared")}{aiMethodLabel(connection.provider, connection.method)}{connection.accountLabel ? <span className={ANALYTICS_MASK_CLASS}>{` · ${connection.accountLabel}`}</span> : ""}{aiConnectionProblem(connection) ? ` · ${aiConnectionProblem(connection)}` : ""}</>,
               })),
             ]}
             onSelect={(id) => {
@@ -143,13 +144,13 @@ export function AiConnectionPicker({
           )}
           {!readOnly && (
             <div className="flex justify-end gap-2">
-              {onReconnect && <Button type="button" variant="outline" onClick={onReconnect}>Reconnect account</Button>}
+              {onReconnect && <Button type="button" variant="outline" onClick={onReconnect}>{t("componentsAiConnections.picker.reconnectAccount")}</Button>}
               <Button
                 type="button"
                 variant="outline"
                 onClick={onConnect}
               >
-                Connect another account
+                {t("componentsAiConnections.picker.connectAnother")}
               </Button>
             </div>
           )}

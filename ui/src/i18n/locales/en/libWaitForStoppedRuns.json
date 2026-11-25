@@ -1,0 +1,4 @@
+{
+  "verificationError": "The stop was requested, but stopping could not be verified. Refresh and try Stop again if work is still running.",
+  "stillStopping": "The stop was requested, but work is still stopping. Try Stop again if it continues."
+}

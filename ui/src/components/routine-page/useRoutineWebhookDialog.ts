@@ -3,6 +3,7 @@ import type { RoutineTrigger } from "@paperclipai/shared";
 import { describeError } from "@/api/errors";
 import { routinesApi } from "@/api/routines";
 import type { RoutineWebhookDialogProps, WebhookSender } from "./RoutineWebhookDialog";
+import { t } from "@/i18n";
 
 /** A webhook key to show once, e.g. after a version restore recreated the webhook. */
 export type PendingWebhookKey = {
@@ -140,7 +141,7 @@ export function useRoutineWebhookDialog({
       // Stay open if this fails, so the error is seen and the webhook is not left in test mode unnoticed.
       const finished = await run(
         () => routinesApi.updateTrigger(current.id, { setupPending: false }).then(() => undefined),
-        current.id === created?.id ? "finish setting up the webhook" : "finish testing the webhook",
+        current.id === created?.id ? t("componentsRoutinePage.errorActions.finishSettingUpWebhook") : t("componentsRoutinePage.errorActions.finishTestingWebhook"),
       );
       if (!finished) return;
     }
@@ -170,18 +171,18 @@ export function useRoutineWebhookDialog({
         setCreated({ ...response.trigger, webhookUrl: response.secretMaterial?.webhookUrl ?? response.trigger.webhookUrl });
         setTriggerId(response.trigger.id);
         setSecret(response.secretMaterial?.webhookSecret ?? null);
-      }, "create the webhook");
+      }, t("componentsRoutinePage.errorActions.createWebhook"));
     },
     onReplaceKey: () => {
       if (!trigger) return;
       void run(async () => {
         const response = await routinesApi.rotateTriggerSecret(trigger.id);
         setSecret(response.secretMaterial.webhookSecret);
-      }, "replace the key");
+      }, t("componentsRoutinePage.errorActions.replaceKey"));
     },
     onSetPaused: (paused) => {
       if (!trigger) return;
-      void run(() => routinesApi.updateTrigger(trigger.id, { enabled: !paused }).then(() => undefined), paused ? "pause the webhook" : "resume the webhook");
+      void run(() => routinesApi.updateTrigger(trigger.id, { enabled: !paused }).then(() => undefined), paused ? t("componentsRoutinePage.errorActions.pauseWebhook") : t("componentsRoutinePage.errorActions.resumeWebhook"));
     },
     onRemove: () => {
       if (!trigger) return;
@@ -191,15 +192,15 @@ export function useRoutineWebhookDialog({
         setOpen(false);
         setSecret(null);
         onRemoved?.(removed);
-      }, "remove the webhook");
+      }, t("componentsRoutinePage.errorActions.removeWebhook"));
     },
     onStartTest: () => {
       if (!trigger) return;
-      void run(() => routinesApi.updateTrigger(trigger.id, { setupPending: true }).then(() => undefined), "start testing the webhook");
+      void run(() => routinesApi.updateTrigger(trigger.id, { setupPending: true }).then(() => undefined), t("componentsRoutinePage.errorActions.startTestingWebhook"));
     },
     onFinishTest: () => {
       if (!trigger) return;
-      void run(() => routinesApi.updateTrigger(trigger.id, { setupPending: false }).then(() => undefined), "finish testing the webhook");
+      void run(() => routinesApi.updateTrigger(trigger.id, { setupPending: false }).then(() => undefined), t("componentsRoutinePage.errorActions.finishTestingWebhook"));
     },
   };
 

@@ -1,0 +1,13 @@
+{
+  "onboarding": {
+    "addAgentTitle": "Adicionar outro agente a {{name}}",
+    "createAnotherTitle": "Criar outra organização",
+    "createFirstTitle": "Criar sua primeira organização",
+    "addAgentDescription": "Execute a integração de novo para adicionar um agente e uma tarefa inicial a esta organização.",
+    "createAnotherDescription": "Execute a integração de novo para criar outra organização e o primeiro agente dela.",
+    "createFirstDescription": "Comece criando uma organização e o seu primeiro agente.",
+    "addAgent": "Adicionar agente",
+    "start": "Iniciar integração"
+  },
+  "loadSettingsAction": "carregar suas configurações"
+}

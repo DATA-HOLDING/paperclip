@@ -1,0 +1,10 @@
+{
+  "noProject": "No project",
+  "noDefaultAgent": "No default agent",
+  "noResponsibleUser": "No responsible user",
+  "enabled": "Enabled",
+  "paused": "Paused",
+  "archived": "Archived",
+  "custom": "Custom",
+  "builtIn": "Built-in"
+}

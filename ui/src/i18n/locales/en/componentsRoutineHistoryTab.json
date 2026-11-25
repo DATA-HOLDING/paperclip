@@ -1,0 +1,130 @@
+{
+  "toast": {
+    "restoredTitle": "Restored revision {{from}} as revision {{to}}",
+    "restoredBodyWithSecrets": "Trigger enabled state was restored from the snapshot. New webhook secrets are available in the banner above.",
+    "restoredBody": "Trigger enabled state was restored from the snapshot.",
+    "restoreFailed": "Failed to restore revision",
+    "restoreAction": "restore the revision"
+  },
+  "loadAction": "load revisions",
+  "empty": {
+    "title": "No edits yet",
+    "description": "Revision 1 is the only history this routine has. Saving an edit creates the first additional revision."
+  },
+  "historical": {
+    "viewing": "Viewing revision {{number}} (read-only)",
+    "description": "Restoring this revision creates a new revision {{number}} with the same content. History stays append-only.",
+    "returnToCurrent": "Return to current",
+    "restoreAsNew": "Restore as new revision"
+  },
+  "theRoutine": "the routine",
+  "conflict": {
+    "title": "Unsaved routine edits",
+    "description": "You changed {{fields}} but haven't saved yet. Save or discard before previewing or restoring an older revision.",
+    "discard": "Discard changes",
+    "save": "Save and continue"
+  },
+  "list": {
+    "title": "Revisions",
+    "total": "{{count}} total",
+    "current": "Current",
+    "restored": "Restored",
+    "showOlder": "Show {{count}} older…"
+  },
+  "revShort": "rev {{number}}",
+  "preview": {
+    "restoreThis": "Restore this revision",
+    "savedBy": "Saved {{time}} by {{actor}}",
+    "compare": "Compare with current",
+    "structuredFields": "Structured fields",
+    "differs": "differs from current",
+    "noDescription": "No description",
+    "triggers": "Triggers ({{count}})",
+    "noTriggers": "No triggers in this revision.",
+    "webhookNote": "Webhook secrets are not stored in revisions. If a restored webhook trigger needs re-creation, Paperclip mints fresh secret material at restore time.",
+    "variables": "Variables ({{count}})",
+    "default": "default: {{value}}"
+  },
+  "fields": {
+    "title": "Title",
+    "priority": "Priority",
+    "status": "Status",
+    "defaultAgent": "Default agent",
+    "project": "Project",
+    "concurrency": "Concurrency",
+    "catchUp": "Catch-up",
+    "env": "Env",
+    "description": "Description",
+    "variables": "Variables"
+  },
+  "enabled": "enabled",
+  "disabled": "disabled",
+  "restore": {
+    "title": "Restore revision {{number}}?",
+    "description": "This creates a new revision {{next}} with the same content as revision {{number}}. Revisions {{number}}–{{current}} stay in history and are not modified.",
+    "fieldsRevert": "Routine field values, variables, and schedule cron will revert.",
+    "secretsRevert": "Routine secrets will revert: {{counts}}.",
+    "historyPreserved": "Previous run history is preserved.",
+    "webhookRecreated": "The webhook trigger {{label}} will be recreated with a new URL and secret. Paperclip will show the secret once after restore — copy it before closing.",
+    "summaryLabel": "Change summary (optional)",
+    "summaryPlaceholder": "Why are you restoring? Visible in history.",
+    "cancel": "Cancel",
+    "restoring": "Restoring…",
+    "confirm": "Restore as revision {{number}}"
+  },
+  "compare": {
+    "title": "Compare routine revisions",
+    "old": "Old",
+    "new": "New",
+    "fieldChanges": "Field changes",
+    "noFieldChanges": "No structural field changes.",
+    "field": "Field",
+    "oldValue": "Old value",
+    "newValue": "New value",
+    "descriptionDiff": "Description diff",
+    "close": "Close",
+    "restoreRev": "Restore rev {{number}} as new revision"
+  },
+  "diff": {
+    "noDescription": "No description on either revision.",
+    "identical": "Descriptions are identical.",
+    "content": "Content"
+  },
+  "actor": {
+    "board": "board",
+    "agent": "agent",
+    "system": "system"
+  },
+  "unassigned": "Unassigned",
+  "noProject": "No project",
+  "trigger": {
+    "replay": "replay {{seconds}}s",
+    "heartbeat": "Standing check on each wake-up",
+    "removed": "Trigger removed ({{label}})",
+    "added": "Trigger added ({{label}})",
+    "changed": "Trigger {{label}}"
+  },
+  "list2": "{{first}} and {{second}}",
+  "listMany": "{{rest}}, and {{last}}",
+  "env": {
+    "plainSet": "plain (set)",
+    "plainChanged": "plain (changed)",
+    "keys_one": "{{count}} key",
+    "keys_other": "{{count}} keys",
+    "keysWithSecrets_one": "{{keys}} ({{count}} secret ref)",
+    "keysWithSecrets_other": "{{keys}} ({{count}} secret refs)",
+    "added_one": "{{count}} key added",
+    "added_other": "{{count}} keys added",
+    "removed_one": "{{count}} key removed",
+    "removed_other": "{{count}} keys removed",
+    "changed_one": "{{count}} key changed",
+    "changed_other": "{{count}} keys changed",
+    "fieldAdded": "Env added ({{key}})",
+    "fieldRemoved": "Env removed ({{key}})",
+    "fieldBindingKind": "Env {{key}} binding kind",
+    "fieldSecret": "Env {{key}} secret",
+    "fieldVersion": "Env {{key}} version",
+    "fieldValue": "Env {{key}} value"
+  },
+  "none": "(none)"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Conectar iMessage Photon",
+  "intro": "Conecte {{agentName}} ao Photon Cloud. O Pro aceita mensagens diretas por uma linha compartilhada. Números dedicados também aceitam grupos ativados individualmente.",
+  "dashboardLink": "Painel do Photon",
+  "lineSetupLink": "Configuração de linha do Photon",
+  "reconnectKeeps": "Reconectar mantém este projeto e",
+  "sharedDmAllocation": "a alocação de DMs compartilhadas",
+  "dedicatedNumber": "o número dedicado",
+  "reconnectSecretHint": ". Deixe o segredo em branco para reutilizar a conexão salva.",
+  "projectId": "ID do projeto",
+  "projectSecret": "Segredo do projeto",
+  "inspecting": "Inspecionando o Photon…",
+  "inspect": "Inspecionar projeto do Photon",
+  "sharedDmsIn": "DMs compartilhadas em {{projectName}}",
+  "dedicatedNumbersIn": "Números dedicados em {{projectName}}",
+  "sharedTaken": "Este projeto compartilhado já pertence a outro canal. Use um projeto do Photon separado para cada agente.",
+  "noEligibleNumber": "Nenhum número dedicado elegível está disponível. Confira a alocação de linhas no Photon e os canais existentes do Paperclip.",
+  "sharedInfo": "Somente mensagens diretas. Cadastre cada remetente de teste na página Users do seu projeto do Photon e depois use o número que o Photon atribuir a esse remetente. A vinculação de identidade do Paperclip continua obrigatória. Não é possível ativar grupos neste canal.",
+  "connecting": "Conectando…",
+  "reconnect": "Reconectar Photon",
+  "connectShared": "Conectar DMs compartilhadas",
+  "connectSelected": "Conectar número selecionado"
+}

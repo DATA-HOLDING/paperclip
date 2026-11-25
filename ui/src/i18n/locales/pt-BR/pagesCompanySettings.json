@@ -1,0 +1,63 @@
+{
+  "organizationFallback": "Organização",
+  "breadcrumbs": {
+    "company": "Organização",
+    "settings": "Configurações"
+  },
+  "noSelection": "Nenhuma organização selecionada. Selecione uma organização no seletor acima.",
+  "archive": {
+    "toastTitle": "{{name}} foi arquivada",
+    "switchedTo": "Mudamos para {{name}}.",
+    "unarchiveFromList": "Você pode desarquivá-la nesta lista."
+  },
+  "general": {
+    "title": "Geral",
+    "nameLabel": "Nome da organização",
+    "nameHint": "O nome de exibição da sua organização.",
+    "renameWarning": "Renomear pode mudar o prefixo dos IDs de tarefa desta organização. Os IDs de tarefa existentes são renumerados e os links antigos de tarefas deixam de funcionar.",
+    "descriptionLabel": "Descrição",
+    "descriptionHint": "Descrição opcional mostrada no perfil da organização.",
+    "descriptionPlaceholder": "Descrição opcional da organização"
+  },
+  "appearance": {
+    "title": "Aparência",
+    "logoLabel": "Logo",
+    "logoHint": "Envie uma imagem de logo em PNG, JPEG, WEBP, GIF ou SVG.",
+    "removing": "Removendo...",
+    "removeLogo": "Remover logo",
+    "uploading": "Enviando logo..."
+  },
+  "saving": "Salvando...",
+  "saveChanges": "Salvar alterações",
+  "saved": "Salvo",
+  "ownerSaving": "Salvando…",
+  "hiring": {
+    "title": "Contratação",
+    "requireApproval": "Exigir aprovação do conselho para novas contratações",
+    "requireApprovalHint": "Novos agentes contratados ficam pendentes até a aprovação do conselho."
+  },
+  "decisions": {
+    "title": "Decisões",
+    "intro": "Cada responsável é salvo assim que você o escolhe.",
+    "defaultOwner": {
+      "label": "Responsável padrão pelas decisões",
+      "hint": "Quando um cartão precisa de uma pessoa mas não tem responsável explícito, ele vai para a lista Para você deste usuário. Deixe como Sem responsável para manter os cartões sem dono no grupo disponível.",
+      "unset": "Sem responsável (nenhum padrão)",
+      "saveFailed": "Não foi possível salvar o responsável padrão pelas decisões."
+    },
+    "budgetOwner": {
+      "label": "Responsável pelo orçamento",
+      "hint": "Uma parada rígida de orçamento também vai para a lista Para você deste usuário, com Aumentar limite e Manter pausado. A visão da Organização continua mostrando-a a todos os operadores.",
+      "unset": "Sem responsável pelo orçamento (só a visão da Organização)",
+      "saveFailed": "Não foi possível salvar o responsável pelo orçamento."
+    }
+  },
+  "danger": {
+    "title": "Zona de perigo",
+    "description": "Arquive esta organização para ocultá-la da barra lateral. Isso fica salvo no banco de dados.",
+    "confirm": "Arquivar a organização \"{{name}}\"? Ela será ocultada da barra lateral.",
+    "archiving": "Arquivando...",
+    "alreadyArchived": "Já arquivada",
+    "archive": "Arquivar organização"
+  }
+}

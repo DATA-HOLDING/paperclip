@@ -1,0 +1,43 @@
+{
+  "perMonth": "{{amount}}/mês",
+  "relative": {
+    "justNow": "agora mesmo",
+    "minutesAgo_one": "há {{count}} min",
+    "minutesAgo_other": "há {{count}} min",
+    "hoursAgo_one": "há {{count}} h",
+    "hoursAgo_other": "há {{count}} h",
+    "daysAgo_one": "há {{count}} d",
+    "daysAgo_other": "há {{count}} d"
+  },
+  "billingType": {
+    "meteredApi": "API medida",
+    "subscriptionIncluded": "Assinatura",
+    "subscriptionOverage": "Excedente da assinatura",
+    "credits": "Créditos",
+    "fixed": "Fixo",
+    "unknown": "Desconhecido"
+  },
+  "quotaSource": {
+    "codexRpc": "Servidor de app do Codex"
+  },
+  "financeEventKind": {
+    "inferenceCharge": "Cobrança de inferência",
+    "platformFee": "Taxa da plataforma",
+    "creditPurchase": "Compra de créditos",
+    "creditRefund": "Reembolso de créditos",
+    "creditExpiry": "Expiração de créditos",
+    "byokFee": "Taxa BYOK",
+    "gatewayOverhead": "Sobrecarga do gateway",
+    "logStorage": "Armazenamento de logs",
+    "logpush": "Logpush",
+    "provisionedCapacity": "Capacidade provisionada",
+    "training": "Treinamento",
+    "customModelImport": "Importação de modelo personalizado",
+    "customModelStorage": "Armazenamento de modelo personalizado",
+    "manualAdjustment": "Ajuste manual"
+  },
+  "direction": {
+    "credit": "Crédito",
+    "debit": "Débito"
+  }
+}

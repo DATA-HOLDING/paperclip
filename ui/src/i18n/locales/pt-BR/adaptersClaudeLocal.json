@@ -1,0 +1,38 @@
+{
+  "instructionsFile": {
+    "label": "Arquivo de instruções do agente",
+    "hint": "Caminho absoluto para um arquivo markdown (ex.: AGENTS.md) que define o comportamento deste agente. Injetado no prompt de sistema durante a execução."
+  },
+  "engine": {
+    "label": "Mecanismo de execução",
+    "hint": "O padrão usa ACP. Se o ACP estiver indisponível, a execução falha com um erro de configuração. Escolha CLI explicitamente para usá-lo.",
+    "default": "Padrão (ACP)"
+  },
+  "acpCommand": {
+    "label": "Comando do servidor ACP",
+    "hint": "Substituição opcional do comando do servidor ACP do Claude. O padrão é o binário claude-agent-acp local do pacote."
+  },
+  "acpMode": {
+    "label": "Modo de sessão ACP",
+    "hint": "Persistente mantém o estado da sessão ACP entre execuções. Única começa do zero a cada execução.",
+    "persistent": "Persistente",
+    "oneshot": "Única"
+  },
+  "acpPermissions": {
+    "label": "Permissões não interativas do ACP",
+    "hint": "Alternativa caso o agente ACP peça uma resposta fora de uma sessão interativa.",
+    "deny": "Negar",
+    "fail": "Falhar"
+  },
+  "acpStateDir": {
+    "label": "Diretório de estado do ACP",
+    "hint": "Diretório opcional de estado da sessão ACP. O padrão é o armazenamento gerenciado pelo Paperclip por organização/agente."
+  },
+  "acpWarmIdle": {
+    "label": "Ociosidade do processo ACP aquecido (ms)",
+    "hint": "O padrão é 0, que encerra o processo ACP após cada execução, mantendo o estado persistente da sessão."
+  },
+  "enableChrome": "Ativar Chrome",
+  "skipPermissions": "Ignorar permissões",
+  "maxTurnsPerRun": "Máximo de turnos por execução"
+}

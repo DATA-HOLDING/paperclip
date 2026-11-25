@@ -1,0 +1,50 @@
+{
+  "variables": "Variáveis",
+  "detectedPrefix": "Detectadas a partir dos placeholders `",
+  "detectedSuffix": "` no título e nas instruções.",
+  "promptUser": "Pedir este valor ao usuário antes de cada execução manual.",
+  "label": "Rótulo",
+  "type": "Tipo",
+  "defaultValue": "Valor padrão",
+  "required": "Obrigatória",
+  "noDefault": "Sem padrão",
+  "true": "Verdadeiro",
+  "false": "Falso",
+  "options": "Opções",
+  "defaultOption": "Opção padrão",
+  "columns": {
+    "name": "Nome",
+    "default": "Padrão"
+  },
+  "typeOf": "Tipo de {{name}}",
+  "defaultFor": "Padrão de {{name}}",
+  "isRequired": "{{name}} é obrigatória",
+  "optionsFor": "Opções de {{name}}",
+  "optionsPlaceholder": "Opções separadas por vírgulas: alta, média, baixa",
+  "builtin": {
+    "dateDescription": "Data atual no formato AAAA-MM-DD (UTC) no momento em que a rotina é executada.",
+    "timestampDescription": "Data e hora legíveis (UTC) no momento em que a rotina é executada."
+  },
+  "hint": {
+    "prefix": "Use placeholders `",
+    "suffix": "` no título ou nas instruções para pedir valores quando a rotina for executada.",
+    "showHelp": "Mostrar ajuda sobre variáveis"
+  },
+  "help": {
+    "title": "Variáveis da rotina",
+    "description": "Como pedir valores e quais variáveis o Paperclip preenche automaticamente.",
+    "customTitle": "Variáveis personalizadas",
+    "customType": "Digite",
+    "customBodyBefore": "em qualquer lugar do título ou das instruções. O Paperclip detecta cada placeholder, lista-o em",
+    "customBodyAfter": " e pede um valor antes de cada execução.",
+    "rule1": "Os nomes devem começar com uma letra e podem usar letras, números e sublinhados.",
+    "rule2": "Escolha um tipo (text, textarea, number, boolean, select, date), um valor padrão e se ela é obrigatória.",
+    "rule3": "Nomes de variáveis terminados em Date com D maiúsculo, como startDate, são criados como variáveis de data por padrão.",
+    "rule4": "O mesmo nome usado no título e nas instruções é tratado como uma única variável.",
+    "builtinTitle": "Variáveis embutidas",
+    "builtinBody": "Elas são preenchidas automaticamente — não exigem configuração e não aparecem na lista de Variáveis.",
+    "placeholder": "Placeholder",
+    "example": "Exemplo",
+    "descriptionColumn": "Descrição"
+  }
+}

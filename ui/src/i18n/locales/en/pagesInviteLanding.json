@@ -1,0 +1,103 @@
+{
+  "thisCompany": "this Paperclip company",
+  "thisAccount": "this account",
+  "auth": {
+    "thatEmail": "that email",
+    "accountExists": "An account already exists for {{email}}. Sign in below to continue with this invite.",
+    "invalidCredentials": "That email and password did not match an existing Paperclip account. Check both fields, or create an account first if you are new here.",
+    "accountMayExist": "An account may already exist for {{email}}. Try signing in instead.",
+    "failed": "Authentication failed"
+  },
+  "pending": {
+    "anAdmin": "An organization admin",
+    "title": "Request to join {{company}}",
+    "awaiting": "Your request is still awaiting approval. {{approver}} must approve your request to join.",
+    "approvalPage": "Approval page",
+    "settingsMembers": "Settings → Members",
+    "askVisitBefore": "Ask them to visit ",
+    "askVisitAfter": " to approve your request.",
+    "refresh": "Refresh this page after you've been approved — you'll be redirected automatically.",
+    "claimSecret": "Claim secret",
+    "onboarding": "Onboarding: "
+  },
+  "errors": {
+    "inviteNotFound": "Invite not found",
+    "checkingAccess": "Checking your organization access. Try again in a moment.",
+    "alreadyMember": "This account already belongs to the organization.",
+    "noAdapters": "No adapters are available for this invite."
+  },
+  "join": {
+    "continue": "Continue",
+    "openOrganization": "Open organization",
+    "acceptInvite": "Accept invite",
+    "submitRequest": "Submit request"
+  },
+  "invalidToken": "Invalid invite token.",
+  "loadingInvite": "Loading invite...",
+  "checkingAccess": "Checking your access...",
+  "openingOrganization": "Opening organization...",
+  "unavailable": {
+    "title": "Invite not available",
+    "expired": "This invite may be expired, revoked, or already used.",
+    "rejected": "This join request was not approved.",
+    "used": "This invite has already been used."
+  },
+  "bootstrapComplete": "Bootstrap complete",
+  "openBoard": "Open board",
+  "joined": "You joined the organization",
+  "working": "Working...",
+  "landing": {
+    "invited": "You've been invited to join Paperclip",
+    "setUp": "Set up Paperclip",
+    "join": "Join {{company}}",
+    "introAgent": "Review the invite details, then submit the agent information below to start the join request.",
+    "introNeedsAccount": "Create your Paperclip account first. If you already have one, switch to sign in and continue the invite with the same email.",
+    "introReady": "Your account is ready. Review the invite details, then accept it to continue.",
+    "organization": "Organization",
+    "invitedBy": "Invited by",
+    "paperclipBoard": "Paperclip board",
+    "requestedAccess": "Requested access",
+    "agentJoinRequest": "Agent join request",
+    "organizationAccess": "Organization access",
+    "inviteExpires": "Invite expires",
+    "messageFromInviter": "Message from inviter",
+    "signedInAs": "Signed in as "
+  },
+  "agent": {
+    "title": "Submit agent details",
+    "description": "This invite will create an approval request for a new agent in {{company}}.",
+    "name": "Agent name",
+    "adapterType": "Adapter type",
+    "noAdapter": "No available adapter",
+    "comingSoon": " (Coming soon)",
+    "capabilities": "Capabilities"
+  },
+  "account": {
+    "createTitle": "Create your account",
+    "signInTitle": "Sign in to continue",
+    "createIntro": "Start with a Paperclip account. After that, you'll come right back here to accept the invite for {{company}}.",
+    "signInIntro": "Use the Paperclip account that already matches this invite. If you do not have one yet, switch back to create account.",
+    "createAccount": "Create account",
+    "haveAccount": "I already have an account",
+    "fillRequired": "Please fill in all required fields.",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "signInContinue": "Sign in and continue",
+    "createContinue": "Create account and continue",
+    "alreadySignedUpHint": "Already signed up before? Use the existing-account option instead so the invite lands on the right Paperclip user.",
+    "noAccountHint": "No account yet? Switch back to create account so you can accept the invite with a new login."
+  },
+  "accept": {
+    "alreadyMember": "Already in this organization",
+    "completing": "Completing organization access",
+    "bootstrapTitle": "Accept bootstrap invite",
+    "orgTitle": "Accept organization invite",
+    "granting": "Granting your access to {{company}}.",
+    "belongs": "This account already belongs to {{company}}.",
+    "willFinishSetup": "This will finish setting up Paperclip.",
+    "willGrant": "This will grant or complete your access to {{company}}.",
+    "submitting": "Submitting request...",
+    "finishingSignIn": "Finishing sign-in..."
+  }
+}

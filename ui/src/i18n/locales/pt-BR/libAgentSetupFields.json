@@ -1,0 +1,9 @@
+{
+  "loginHints": {
+    "cursor": "Use uma chave de API do Cursor ou execute agent login no host do ambiente selecionado.",
+    "geminiLocal": "Use uma chave de API do Gemini ou um login compatível já existente do Gemini CLI no host do ambiente selecionado.",
+    "kimiLocal": "Use uma chave de API do Kimi e as configurações de modelo abaixo, ou execute kimi login no host do ambiente selecionado.",
+    "grokLocal": "O Grok Build usa o login da CLI. Execute grok login no host do ambiente selecionado e depois teste a conexão aqui.",
+    "hermesLocal": "Use uma chave de API do provedor ou a configuração de provedor do Hermes já existente no host do ambiente selecionado."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "loading": "Carregando…",
+  "project": {
+    "unavailable": "Esse projeto não está mais disponível para você. Ele pode ter sido excluído ou tornado privado.",
+    "addExisting": "Adicionar projeto existente",
+    "searchPlaceholder": "Buscar projetos…",
+    "searchLabel": "Buscar projetos",
+    "loadAction": "carregar os projetos",
+    "allLinked": "Todos os projetos correspondentes já estão aqui.",
+    "noneFound": "Nenhum projeto encontrado."
+  },
+  "task": {
+    "unavailable": "Essa tarefa não está mais disponível para você. Ela pode ter sido excluída ou tornada privada.",
+    "addExisting": "Adicionar tarefa existente",
+    "searchPlaceholder": "Buscar tarefas…",
+    "searchLabel": "Buscar tarefas",
+    "loadAction": "carregar as tarefas",
+    "allLinked": "Todas as tarefas correspondentes já estão aqui.",
+    "noneFound": "Nenhuma tarefa encontrada."
+  },
+  "routine": {
+    "unavailable": "Essa rotina não está mais disponível para você. Ela pode ter sido excluída ou tornada privada.",
+    "addExisting": "Adicionar rotina existente",
+    "searchPlaceholder": "Buscar rotinas…",
+    "searchLabel": "Buscar rotinas",
+    "loadAction": "carregar as rotinas",
+    "allLinked": "Todas as rotinas correspondentes já estão aqui.",
+    "noneFound": "Nenhuma rotina encontrada."
+  },
+  "skill": {
+    "unavailable": "Essa skill não está mais disponível para você. Ela pode ter sido excluída ou tornada privada.",
+    "addExisting": "Adicionar skill existente",
+    "searchPlaceholder": "Buscar skills…",
+    "searchLabel": "Buscar skills",
+    "loadAction": "carregar as skills",
+    "allLinked": "Todas as skills correspondentes já estão aqui.",
+    "noneFound": "Nenhuma skill encontrada."
+  }
+}

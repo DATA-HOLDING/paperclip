@@ -1,0 +1,7 @@
+{
+  "critical": "Crítica",
+  "high": "Alta",
+  "medium": "Média",
+  "low": "Baixa",
+  "changePriority": "Alterar prioridade (atual: {{current}})"
+}

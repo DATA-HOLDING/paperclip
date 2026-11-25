@@ -1,0 +1,17 @@
+{
+  "label": {
+    "expired": "Trace expired",
+    "capturing": "Raw tracing enabled",
+    "complete": "Trace captured",
+    "incomplete": "Trace incomplete",
+    "truncated": "Trace truncated",
+    "deleted": "Trace deleted",
+    "requested": "Trace requested",
+    "off": "Trace off"
+  },
+  "title": {
+    "summary": "{{frameCount}} frames · {{byteCount}} bytes · expires {{expiresAt}}",
+    "requested": "This run requested sensitive provider-frame capture.",
+    "disabled": "Raw provider-frame capture was disabled for this run."
+  }
+}

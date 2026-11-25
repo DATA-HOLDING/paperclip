@@ -1,0 +1,17 @@
+{
+  "in": "in",
+  "out": "out",
+  "providers_one": "{{count}} provider",
+  "providers_other": "{{count}} providers",
+  "models_one": "{{count}} model",
+  "models_other": "{{count}} models",
+  "periodSpend": "Period spend",
+  "ofCompanyBudget": "{{percent}}% of company budget",
+  "meteredRuns_one": "{{count}} metered run",
+  "meteredRuns_other": "{{count}} metered runs",
+  "subscriptionRuns_one": "{{count}} subscription run",
+  "subscriptionRuns_other": "{{count}} subscription runs",
+  "thisWeek": "{{amount}} this week",
+  "billingTypes": "Billing types",
+  "upstreamProviders": "Upstream providers"
+}

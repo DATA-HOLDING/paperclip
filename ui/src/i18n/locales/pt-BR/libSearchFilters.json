@@ -1,0 +1,31 @@
+{
+  "sort": {
+    "relevance": "Relevância",
+    "updated": "Atualizadas recentemente",
+    "created": "Criadas mais recentemente",
+    "priority": "Prioridade"
+  },
+  "updatedWithin": {
+    "24h": "Últimas 24 horas",
+    "7d": "Últimos 7 dias",
+    "30d": "Últimos 30 dias",
+    "90d": "Últimos 90 dias",
+    "other": "Atualizadas ≤ {{value}}"
+  },
+  "unassigned": "Sem responsável",
+  "agent": "Agente",
+  "me": "Eu",
+  "user": "Usuário",
+  "assignee": "Responsável",
+  "project": "Projeto",
+  "label": "Etiqueta",
+  "chip": {
+    "status": "Status: {{value}}",
+    "priority": "Prioridade: {{value}}",
+    "assignee": "Responsável: {{value}}",
+    "project": "Projeto: {{value}}",
+    "label": "Etiqueta: {{value}}",
+    "updated": "Atualizadas: {{value}}"
+  },
+  "updatedWindow": "Janela de atualização"
+}

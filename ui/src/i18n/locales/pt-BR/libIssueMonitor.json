@@ -1,0 +1,12 @@
+{
+  "todayAt": "Hoje, {{time}}",
+  "eta": {
+    "in": "em {{duration}}",
+    "dueNow": "previsto para agora",
+    "overdueBy": "atrasado em {{duration}}"
+  },
+  "offset": {
+    "now": "agora",
+    "ago": "há {{duration}}"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unsupportedBrowser": "This browser can't show this app's widget safely. The tool result is still in the activity.",
+  "wantsToSendAria": "{{applicationName}} wants to send a message",
+  "wantsToSend": "{{applicationName}} wants to send:",
+  "sendFailed": "The message could not be sent.",
+  "dismiss": "Dismiss",
+  "sending": "Sending…",
+  "send": "Send",
+  "viewCouldNotBeShown": "This app's view could not be shown.",
+  "app": "App",
+  "appLower": "app",
+  "loadingView": "Loading {{applicationName}} view",
+  "showingFullScreen": "Showing full screen",
+  "backToChat": "Back to chat",
+  "widgetFrom": "Widget from {{applicationName}}",
+  "exitFullScreen": "Exit full screen",
+  "viewNoLongerAvailable": "This {{applicationName}} view is no longer available.",
+  "couldNotShowView": "{{applicationName}} could not show this view. The tool result is still in the row above.",
+  "openFullScreenAria": "Open {{applicationName}} {{displayName}} full screen",
+  "openFullScreen": "Open full screen",
+  "notLoadedYet": "{{label}} (not loaded yet)",
+  "showMore": "Show {{count}} more"
+}

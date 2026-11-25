@@ -1,0 +1,125 @@
+{
+  "dashboardViews": {
+    "outline": "Outline",
+    "outlineV2": "Outline v2",
+    "board": "Board",
+    "exceptions": "Exceptions",
+    "automation": "Automation",
+    "agentStatus": "Agent status"
+  },
+  "views": {
+    "full": "Full"
+  },
+  "pageViews": {
+    "scorecard": "Scorecard",
+    "moving": "What's moving",
+    "oneScreen": "One screen",
+    "oneScreenV2": "One screen v2"
+  },
+  "standing": {
+    "noneOwned": "You do not own any responsibilities yet.",
+    "behindLead_one": "{{count}} responsibility is behind",
+    "behindLead_other": "{{count}} responsibilities are behind",
+    "behindAndAtRisk_one": "{{lead}} and {{count}} is at risk.",
+    "behindAndAtRisk_other": "{{lead}} and {{count}} are at risk.",
+    "behindOnly": "{{lead}}.",
+    "atRisk_one": "Nothing is behind. {{count}} responsibility is at risk.",
+    "atRisk_other": "Nothing is behind. {{count}} responsibilities are at risk.",
+    "allOnTrack": "Everything you own is on track.",
+    "notMeasured_one": "Nothing is behind or at risk. {{count}} responsibility is not measured yet.",
+    "notMeasured_other": "Nothing is behind or at risk. {{count}} responsibilities are not measured yet.",
+    "nothingMeasured": "Nothing you own is measured yet."
+  },
+  "onTrackShare": "{{percent}}% on track",
+  "ownedLabel_one": "{{count}} responsibility you own",
+  "ownedLabel_other": "{{count}} responsibilities you own",
+  "snapshot": {
+    "areasBehind": "{{count}} with something behind",
+    "noAreasBehind": "None with anything behind",
+    "behind": "{{count}} behind",
+    "noneBehind": "None behind"
+  },
+  "counts": {
+    "late": "{{count}} late",
+    "noneLate": "None late",
+    "blocked": "{{count}} blocked",
+    "noneBlocked": "None blocked",
+    "failed": "{{count}} failed",
+    "paused": "{{count}} paused",
+    "tasksLine": "{{blocked}}, {{agents}}",
+    "withAgents": "{{count}} with agents",
+    "noneWithAgents": "none with agents",
+    "noneFailedOrPaused": "None failed or paused"
+  },
+  "onTrackLine": "{{area}}: {{onTrack}} of {{total}} on track",
+  "notInArea": "Not in an area",
+  "kinds": {
+    "project": "Project",
+    "task": "Task",
+    "routine": "Routine"
+  },
+  "work": {
+    "lateDue": "Late · {{date}}",
+    "due": "Due {{date}}",
+    "blocked": "Blocked",
+    "failedLastRun": "Failed on its last run",
+    "paused": "Paused"
+  },
+  "gap": {
+    "points_one": "{{points}} point",
+    "points_other": "{{points}} points",
+    "yes": "Yes",
+    "notYet": "Not yet",
+    "belowRange": "{{amount}} below the range {{range}}",
+    "aboveRange": "{{amount}} above the range {{range}}",
+    "insideRange": "Inside the range {{range}}",
+    "overLimit": "{{amount}} over the limit of {{target}}",
+    "insideLimit": "{{amount}} inside the limit of {{target}}",
+    "atLimit": "Right at the limit of {{target}}",
+    "short": "{{amount}} short of {{target}}",
+    "pastTarget": "{{amount}} past the target of {{target}}",
+    "atTarget": "Right at the target of {{target}}"
+  },
+  "target": {
+    "noRange": "no range set",
+    "range": "range {{range}}",
+    "noTarget": "no target set",
+    "limit": "limit {{target}}",
+    "target": "target {{target}}",
+    "of": "of {{target}}"
+  },
+  "missing": {
+    "noNumber": "No number set: add what you measure and a target.",
+    "noAnswer": "No answer yet.",
+    "noRange": "No range set for {{name}}.",
+    "noTarget": "No target set for {{name}}.",
+    "noReading": "No reading of {{name}} yet."
+  },
+  "explain": {
+    "markedWithNote": "You marked it {{label}}: {{note}}",
+    "marked": "You marked it {{label}}.",
+    "noWork": "No work is filed under this yet.",
+    "noOpenWork": "Nothing under this is open right now."
+  },
+  "bearing": {
+    "anAgent": "an agent",
+    "daysLate_one": "{{count}} day late (due {{date}})",
+    "daysLate_other": "{{count}} days late (due {{date}})",
+    "dueInProgress": "Due {{date}}, in progress",
+    "inProgress": "In progress",
+    "ledBy": "led by {{name}}",
+    "notStarted": "Not started",
+    "stateDue": "{{state}}, due {{date}}",
+    "notAssigned": "Not assigned to anyone",
+    "inProgressWith": "In progress with {{name}}",
+    "inReviewWith": "In review with {{name}}",
+    "withNotStarted": "With {{name}}, not started",
+    "you": "you",
+    "aPerson": "a person",
+    "with": "With {{name}}",
+    "noAgent": "No agent runs it",
+    "activeWith": "Active, {{detail}}",
+    "active": "Active",
+    "completed": "Completed {{age}}"
+  }
+}

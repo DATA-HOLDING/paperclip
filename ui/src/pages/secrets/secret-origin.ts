@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { Activity, Bot, MessageSquare, Plug, Repeat } from "lucide-react";
+import { t } from "@/i18n";
 
 /**
  * Where a secret came from, inferred from the naming conventions of the
@@ -20,11 +21,11 @@ export interface SecretOriginGroup {
 }
 
 export const SECRET_ORIGIN_GROUPS: SecretOriginGroup[] = [
-  { id: "models", label: "Model sign-ins", detail: "Accounts and keys for the models your agents run on", icon: Bot },
-  { id: "connections", label: "Connections", detail: "Tokens for the apps you connected", icon: Plug },
-  { id: "chat", label: "Chat channels", detail: "Credentials for chat apps your agents answer in", icon: MessageSquare },
-  { id: "routines", label: "Routine webhooks", detail: "Signing secrets for routine triggers", icon: Repeat },
-  { id: "observability", label: "Agent observability", detail: "Headers for your trace exporter", icon: Activity },
+  { id: "models", label: t("pagesSecretsSecretOrigin.groups.models.label"), detail: t("pagesSecretsSecretOrigin.groups.models.detail"), icon: Bot },
+  { id: "connections", label: t("pagesSecretsSecretOrigin.groups.connections.label"), detail: t("pagesSecretsSecretOrigin.groups.connections.detail"), icon: Plug },
+  { id: "chat", label: t("pagesSecretsSecretOrigin.groups.chat.label"), detail: t("pagesSecretsSecretOrigin.groups.chat.detail"), icon: MessageSquare },
+  { id: "routines", label: t("pagesSecretsSecretOrigin.groups.routines.label"), detail: t("pagesSecretsSecretOrigin.groups.routines.detail"), icon: Repeat },
+  { id: "observability", label: t("pagesSecretsSecretOrigin.groups.observability.label"), detail: t("pagesSecretsSecretOrigin.groups.observability.detail"), icon: Activity },
 ];
 
 const UUID = "[0-9a-f]{8}[-_][0-9a-f]{4}[-_][0-9a-f]{4}[-_][0-9a-f]{4}[-_][0-9a-f]{12}";
@@ -64,11 +65,11 @@ export function managedSecretLabel(input: { key: string; name: string }, origin:
   const name = input.name.trim();
   if (origin === "chat") {
     const [, platform, , field] = name.split(".");
-    if (platform && field) return `${platformName(platform)} ${words(field)}`;
+    if (platform && field) return t("pagesSecretsSecretOrigin.managed.chatField", { platform: platformName(platform), field: words(field) });
   }
-  if (origin === "routines") return "Routine webhook secret";
-  if (origin === "observability") return "Trace exporter headers";
-  if (origin === "models" && MODEL_KEY.test(name)) return "Model provider key";
+  if (origin === "routines") return t("pagesSecretsSecretOrigin.managed.routineWebhook");
+  if (origin === "observability") return t("pagesSecretsSecretOrigin.managed.traceHeaders");
+  if (origin === "models" && MODEL_KEY.test(name)) return t("pagesSecretsSecretOrigin.managed.modelKey");
   if (origin === "connections") return name.replace(/\s+[0-9a-f]{8}$/i, "");
   return name;
 }

@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { IssueInboxArchiveFilter, SetIssueTitle } from "@paperclipai/shared";
 import { ISSUE_CHAT_BOOTSTRAP_MAX_IDS, ISSUE_SUMMARIES_MAX_IDS, type IssueChatBootstrap } from "@paperclipai/shared";
 import type { RunForIssue } from "./activity";
@@ -591,7 +592,7 @@ export const issuesApi = {
   interruptLatestQueuedComments: async (id: string, expectedTargetRunId: string | null): Promise<IssueQueuedCommentQueue> => {
     const queue = await issuesApi.getQueuedComments(id);
     if (!queue.queueId || (queue.targetRunId && queue.targetRunId !== expectedTargetRunId)) {
-      throw new Error("The queued messages changed. Refresh and try again.");
+      throw new Error(t("apiIssues.queuedMessagesChanged"));
     }
     return issuesApi.interruptQueuedComments(id, {
       queueId: queue.queueId, revision: queue.revision, targetRunId: queue.targetRunId,

@@ -5,7 +5,7 @@ import { lazy, Suspense, useEffect, type ReactNode } from "react";
 import type { ToolConnectionCredentialSource } from "@paperclipai/shared";
 import { Navigate, Outlet, Route, Routes, useActiveCompanyPrefix, useLocation, useParams } from "@/lib/router";
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/i18n";
+import { t, useTranslation } from "@/i18n";
 import { Layout } from "./components/Layout";
 import { ConferenceRoomChatGate } from "./components/ConferenceRoomChatGate";
 import { ResponsibilitiesGate } from "./components/ResponsibilitiesGate";
@@ -603,15 +603,15 @@ export function OnboardingRoutePage() {
   }
 
   const title = matchedCompany
-    ? `Add another agent to ${matchedCompany.name}`
+    ? t("App.onboarding.addAgentTitle", { name: matchedCompany.name })
     : companies.length > 0
-      ? "Create another organization"
-      : "Create your first organization";
+      ? t("App.onboarding.createAnotherTitle")
+      : t("App.onboarding.createFirstTitle");
   const description = matchedCompany
-    ? "Run onboarding again to add an agent and a starter task for this organization."
+    ? t("App.onboarding.addAgentDescription")
     : companies.length > 0
-      ? "Run onboarding again to create another organization and seed its first agent."
-      : "Get started by creating an organization and your first agent.";
+      ? t("App.onboarding.createAnotherDescription")
+      : t("App.onboarding.createFirstDescription");
 
   return (
     <div className="mx-auto max-w-xl py-10">
@@ -649,7 +649,7 @@ export function OnboardingRoutePage() {
                     : openOnboarding()
               }
             >
-              {matchedCompany ? "Add Agent" : "Start Onboarding"}
+              {matchedCompany ? t("App.onboarding.addAgent") : t("App.onboarding.start")}
             </Button>
           )}
         </div>
@@ -664,7 +664,7 @@ function CompanyRootRedirect() {
   const home = useCompanyHomePath();
 
   if (!loading && home.error) {
-    return <QueryErrorState error={home.error} size="page" action="load your settings" onRetry={home.retry} />;
+    return <QueryErrorState error={home.error} size="page" action={t("App.loadSettingsAction")} onRetry={home.retry} />;
   }
   if (loading || !home.loaded) {
     return <PaperclipLoading />;

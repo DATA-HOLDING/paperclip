@@ -1,0 +1,24 @@
+{
+  "claimed": "Claimed",
+  "claimedBody": "{{title}} is now in For you.",
+  "claimedBodyGeneric": "The card is now in For you.",
+  "claimFailed": "Could not claim this card",
+  "dismissFailed": "Could not dismiss this receipt",
+  "closeTitle": {
+    "withdraw": "Request withdrawn",
+    "archive": "Archived for you",
+    "snooze": "Snoozed for you"
+  },
+  "restored": "Restored",
+  "restoreFailed": "Could not restore this card",
+  "backAt": "Back {{when}}.",
+  "undo": "Undo",
+  "withdrawFailed": "Could not withdraw this request",
+  "hideFailed": "Could not hide this card",
+  "transferred": "Transferred to @{{name}}",
+  "transferFailed": "Could not transfer this card",
+  "alreadyAnswered": "{{count}} already answered by someone else.",
+  "couldNotWithdraw": "{{count}} could not be withdrawn.",
+  "withdrewStale_one": "Withdrew 1 stale request",
+  "withdrewStale_other": "Withdrew {{count}} stale requests"
+}

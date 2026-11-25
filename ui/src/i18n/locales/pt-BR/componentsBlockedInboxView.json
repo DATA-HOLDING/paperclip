@@ -1,0 +1,10 @@
+{
+  "errorTitle": "Não foi possível carregar a aba Bloqueadas.",
+  "otherTabsWork": "As outras abas da Caixa de entrada continuam funcionando.",
+  "loadAction": "carregar a aba Bloqueadas",
+  "trying": "Tentando…",
+  "tryAgain": "Tentar novamente",
+  "emptyTitle": "Nenhum trabalho está parado.",
+  "emptyHint": "Tarefas que precisam de uma decisão, recuperação ou ação externa aparecerão aqui.",
+  "noSearchResults": "Nenhum item parado corresponde à sua busca."
+}

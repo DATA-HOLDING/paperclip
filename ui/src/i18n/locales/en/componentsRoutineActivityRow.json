@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "testReceived": "Connection working · No run or task created",
+    "testRejected": "Update the key in your app and resend",
+    "received": "Authentication passed",
+    "rejected": "Check the key in your sending app",
+    "sourceWebhook": "Webhook",
+    "sourceSchedule": "Schedule",
+    "sourceManual": "Manual",
+    "taskCreated": "Task created"
+  },
+  "actions": {
+    "webhookTestReceived": "Connection test passed",
+    "webhookTestRejected": "Connection test rejected",
+    "webhookReceived": "Webhook event received",
+    "webhookRejected": "Webhook authentication failed",
+    "created": "Routine created",
+    "updated": "Routine updated",
+    "triggerCreated": "Trigger added",
+    "triggerUpdated": "Trigger updated",
+    "triggerDeleted": "Trigger removed",
+    "triggerRemoved": "Trigger removed",
+    "triggerRestored": "Trigger restored",
+    "triggerSetupFinished": "Webhook setup finished",
+    "triggerTestStarted": "Started testing a webhook",
+    "triggerSecretRotated": "Webhook key replaced",
+    "runTriggered": "Routine started",
+    "runCreated": "Run created"
+  }
+}

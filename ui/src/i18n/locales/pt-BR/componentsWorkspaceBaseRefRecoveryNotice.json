@@ -1,0 +1,39 @@
+{
+  "invalidBranch": "Informe um nome de branch válido, como master ou release/next.",
+  "refreshAndRetry": "Atualize a tarefa para conferir o estado atual e tente novamente.",
+  "title": {
+    "repaired": "Branch atualizada · nova tentativa solicitada",
+    "missingBefore": "A branch",
+    "missingAfter": "não foi encontrada",
+    "couldNotUse": "Não foi possível usar a branch"
+  },
+  "body": {
+    "repairedBefore": "Esta tarefa agora começa a partir de",
+    "repairedAfter": ". Uma nova tentativa foi solicitada para {{agentName}}.",
+    "hasNoBranchNamed": "não tem nenhuma branch chamada",
+    "couldNotResolve": "não conseguiu resolver a branch inicial. Confira o nome da branch e o acesso ao repositório.",
+    "notStarted": "{{agentName}} não começou."
+  },
+  "isDefaultBranch": "é a branch padrão do repositório.",
+  "changesOnlyThisTask": "Altera apenas a branch inicial desta tarefa.",
+  "confirmFailed": "Não foi possível confirmar o reparo.",
+  "startingBranch": "Branch inicial",
+  "branchNamePlaceholder": "Nome da branch",
+  "cancel": "Cancelar",
+  "saving": "Salvando e solicitando nova tentativa…",
+  "saveAndRetry": "Salvar branch e tentar novamente",
+  "chooseAnother": "Escolher outra branch",
+  "useBranchAndRetry": "Usar {{branch}} e tentar novamente",
+  "hideDetails": "Ocultar detalhes",
+  "whyDidThisHappen": "Por que isso aconteceu?",
+  "details": {
+    "setting": "Configuração",
+    "taskSpecific": "Branch inicial específica da tarefa",
+    "workspaceBranch": "Branch inicial do espaço de trabalho",
+    "requestedBranch": "Branch solicitada",
+    "setBy": "Definida por",
+    "whyStopped": "Por que parou",
+    "whyTaskOverride": "Uma branch explícita da tarefa substitui o padrão do repositório. O Paperclip não troca de branch silenciosamente.",
+    "whyWorkspace": "A branch inicial configurada precisa ser resolvida antes de o agente começar. Este reparo a substitui para esta tarefa."
+  }
+}

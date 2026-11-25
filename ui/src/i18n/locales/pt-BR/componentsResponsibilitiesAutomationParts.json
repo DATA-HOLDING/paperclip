@@ -1,0 +1,19 @@
+{
+  "copyLabel": "Copiar {{label}}",
+  "copied": "Copiado",
+  "copy": "Copiar",
+  "copyFailed": "Não foi possível copiar; selecione o texto e copie.",
+  "secured": {
+    "bearer": "Cada chamada envia o segredo como bearer token: Authorization: Bearer <secret>.",
+    "none": "As chamadas não são assinadas: o próprio endereço é o segredo.",
+    "signed": "As chamadas são assinadas com o segredo."
+  },
+  "intro": "Passe este endereço ao outro sistema. Cada chamada (POST) inicia uma execução.",
+  "addressToCall": "Endereço a chamar",
+  "secret": "Segredo",
+  "saveSecretNow": "Salve o segredo agora: ele só é mostrado esta vez.",
+  "secretShownOnce": "O segredo foi mostrado uma vez, quando foi configurado.",
+  "makeNewOneBefore": "Você pode criar um novo na ",
+  "automationPage": "página da automação",
+  "makeNewOneAfter": "."
+}

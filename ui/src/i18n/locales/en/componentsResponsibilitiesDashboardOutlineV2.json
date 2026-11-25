@@ -1,0 +1,7 @@
+{
+  "noArea": "No area",
+  "addTo": "Add a responsibility to {{name}}",
+  "addResponsibility": "Add a responsibility",
+  "noMatch": "Nothing matches “{{query}}”.",
+  "noAreas": "No areas yet."
+}

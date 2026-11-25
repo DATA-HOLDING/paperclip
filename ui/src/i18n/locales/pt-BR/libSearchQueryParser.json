@@ -1,0 +1,32 @@
+{
+  "suggestions": {
+    "openTodo": {
+      "label": "Tarefas a fazer abertas",
+      "description": "Filtrar pelo status da tarefa"
+    },
+    "blocked": {
+      "label": "Tarefas bloqueadas",
+      "description": "Encontrar trabalho bloqueado"
+    },
+    "assignedToMe": {
+      "label": "Atribuídas a mim",
+      "description": "Usar seu usuário atual do conselho"
+    },
+    "projectName": {
+      "label": "Nome do projeto",
+      "description": "Use aspas em nomes de projeto com várias palavras"
+    },
+    "label": {
+      "label": "Etiqueta",
+      "description": "Filtrar pela etiqueta da tarefa"
+    },
+    "highPriority": {
+      "label": "Prioridade alta",
+      "description": "Filtrar por prioridade"
+    },
+    "recentlyUpdated": {
+      "label": "Atualizadas recentemente",
+      "description": "Atualizadas nos últimos 7 dias"
+    }
+  }
+}

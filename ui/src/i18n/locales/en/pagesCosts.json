@@ -1,0 +1,117 @@
+{
+  "finance": {
+    "ledgerTitle": "Finance ledger",
+    "debits": "Debits",
+    "credits": "Credits",
+    "creditsSubtitle": "Refunds, offsets, and credit returns",
+    "net": "Net",
+    "netSubtitle": "Debit minus credit for the selected period",
+    "estimated": "Estimated",
+    "estimatedSubtitle": "Estimated debits that are not yet invoice-authoritative",
+    "byBiller": "By biller",
+    "byBillerDescription": "Account-level financial events grouped by who charged or credited them.",
+    "empty": "No finance events yet.",
+    "ledgerDescription": "Account-level charges that do not map to a single inference request.",
+    "debitsSubtitle_one": "{{count}} total event in range",
+    "debitsSubtitle_other": "{{count}} total events in range",
+    "providerReports": "Provider API cost reports: {{amount}}. Report totals overlap invoices and run estimates and are shown separately from recorded charges."
+  },
+  "providers": {
+    "all": "All providers",
+    "empty": "No cost events in this period."
+  },
+  "billers": {
+    "all": "All billers",
+    "empty": "No billable events in this period."
+  },
+  "selectOrganization": "Select an organization to view costs.",
+  "agentLoadFailed": "Could not load agent details. Totals below show recorded organization costs.",
+  "title": "Costs",
+  "dateRangeAria": "Cost date range",
+  "customRangeTo": "to",
+  "tiles": {
+    "apiSpend": "API spend",
+    "budget": "Budget",
+    "recordedCharges": "Recorded charges",
+    "financeEvents": "Finance events",
+    "apiUnavailable": "API usage is unavailable",
+    "apiLoading": "API usage is loading",
+    "budgetOpen": "Open",
+    "budgetPaused": "{{agents}} agents paused · {{projects}} projects paused",
+    "budgetThisMonth": "{{spend}} of {{budget}} this month",
+    "monthlyLimit": "Monthly limit",
+    "noMonthlyCap": "No monthly cap configured",
+    "debitsAmount": "{{amount}} debits",
+    "creditsAmount": "{{amount}} credits",
+    "financialUnavailable": "Financial data unavailable",
+    "estimatedInRange": "{{amount}} estimated in range"
+  },
+  "subscriptions": {
+    "checkFailed": "Connected accounts could not be checked. Existing subscription estimates are still shown.",
+    "retryCheck": "Retry account check",
+    "usageCharges": "Subscription accounts also have {{amount}} in recorded usage charges for this period, separate from monthly fees.",
+    "otherUsage": "Other billing usage: {{tokens}} tokens",
+    "otherUsageCharges": " · {{amount}} in recorded charges",
+    "otherUsageSuffix": ", included in the inference ledger.",
+    "stale": "Showing the last loaded API and subscription usage. Updates will resume automatically."
+  },
+  "tabs": {
+    "overview": "Overview",
+    "budgets": "Budgets",
+    "providers": "Providers",
+    "billers": "Billers",
+    "finance": "Finance",
+    "decisions": "Decisions",
+    "fastResponses": "Fast responses"
+  },
+  "selectDates": "Select a start and end date to load data.",
+  "costLoadFailed": "Cost data could not be loaded. Please try again shortly.",
+  "overview": {
+    "byAgent": "By agent",
+    "noCostEvents": "No cost events yet.",
+    "paperclipServices": "Paperclip services",
+    "byProject": "By project",
+    "noProjectCosts": "No project-attributed run costs yet.",
+    "agentCostsAria": "{{name}} costs",
+    "tokenSplit": "in {{input}} ({{cached}} cached) · out {{output}}",
+    "runsPrefix": "runs: ",
+    "apiRuns": "{{count}} api",
+    "subRuns": "{{count}} sub",
+    "tok": "{{tokens}} tok",
+    "userRefreshFailed": "User costs could not be refreshed. Showing the last loaded data.",
+    "userLoadFailed": "User costs could not be loaded. Please try again shortly.",
+    "unattributed": "Unattributed"
+  },
+  "budgets": {
+    "controlPlane": "Budget control plane",
+    "activeIncidents": "Active incidents",
+    "activeIncidentsSubtitle": "Open soft or hard threshold crossings",
+    "pendingApprovals": "Pending approvals",
+    "pendingApprovalsSubtitle": "Budget override approvals awaiting board action",
+    "pausedAgents": "Paused agents",
+    "pausedAgentsSubtitle": "Agent heartbeats blocked by budget",
+    "pausedProjects": "Paused projects",
+    "pausedProjectsSubtitle": "Project execution blocked by budget",
+    "policyUpdateFailed": "Could not update the budget policy. Review your settings and try again.",
+    "incidentUpdateFailed": "Could not update the budget. Check any pending runs or unpriced usage shown on this page, then try again.",
+    "controlPlaneDescription": "Hard-stop spend limits for agents and projects. Provider subscription quota stays separate and appears under Providers.",
+    "activeIncidentsDescription": "Raise the budget or keep a hard stop paused. Dismiss a warning when no action is needed.",
+    "scopeTitle": {
+      "company": "organization budgets",
+      "agent": "agent budgets",
+      "project": "project budgets"
+    },
+    "scopeDescription": {
+      "company": "Organization-wide monthly policy.",
+      "agent": "Recurring monthly spend policies for individual agents.",
+      "project": "Lifetime spend policies for execution-bound projects."
+    },
+    "empty": "No budget policies yet. Set agent and project budgets from their detail pages, or use the existing organization monthly budget control."
+  },
+  "financeLoadFailed": "Financial events could not be loaded. Please try again shortly.",
+  "museUnavailable": "{{name}}'s Muse activity has no reported usage or cost. Totals below show recorded organization charges only. Paperclip cannot enforce a Muse spend ceiling.",
+  "currencyNotice": "Finance headline totals are USD only. Other currencies are listed separately; no exchange-rate conversion is applied.",
+  "budgetLoadFailed": "Budget data could not be loaded. Please try again shortly.",
+  "staleData": "Showing the last loaded data. Updates will resume automatically.",
+  "loadingFinance": "Loading financial events…"
+}

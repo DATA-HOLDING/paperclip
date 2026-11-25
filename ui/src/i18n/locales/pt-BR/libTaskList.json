@@ -1,0 +1,13 @@
+{
+  "columns": {
+    "task": "Tarefa",
+    "taskId": "ID da tarefa",
+    "createdBy": "Criada por",
+    "assignee": "Responsável",
+    "project": "Projeto",
+    "parentTask": "Tarefa pai",
+    "tags": "Etiquetas",
+    "worktree": "Worktree",
+    "lastUpdated": "Última atualização"
+  }
+}

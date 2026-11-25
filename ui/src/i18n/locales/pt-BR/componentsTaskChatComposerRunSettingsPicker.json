@@ -1,0 +1,46 @@
+{
+  "chooseAnAgent": "Escolha um agente",
+  "unavailable": {
+    "noAgent": "Escolha um agente para selecionar o modelo e o esforço dele.",
+    "muse": "O Muse escolhe o próprio modelo e esforço. O Paperclip não tem ajuste por tarefa.",
+    "process": "Este agente executa um comando. O harness dele não expõe ajuste de modelo nem de esforço.",
+    "http": "Este agente chama um endpoint HTTP. O serviço de destino escolhe o modelo.",
+    "gateway": "Este gateway escolhe o modelo remotamente; o Paperclip não tem ajuste de modelo por tarefa para ele."
+  },
+  "default": "Padrão",
+  "noAssignee": "Sem responsável",
+  "unassigned": "Sem responsável",
+  "closePicker": "Fechar seletor",
+  "selectModelAndEffort": "Selecionar modelo e esforço",
+  "selectModel": "Selecionar modelo",
+  "selectAssignee": "Selecionar responsável",
+  "chooseAssignee": "Escolher responsável",
+  "resetToAgentDefault": "Voltar ao padrão do agente",
+  "chooseExactModel": "Escolher modelo exato",
+  "model": "Modelo",
+  "fastMode": "Modo rápido",
+  "thinking": "Raciocínio",
+  "effort": "Esforço",
+  "searchAssignees": "Buscar responsáveis",
+  "searchAssigneesPlaceholder": "Buscar responsáveis…",
+  "assignees": "Responsáveis",
+  "noMatches": "Nenhum resultado.",
+  "backToSelection": "Voltar à seleção",
+  "chooseModel": "Escolher modelo",
+  "searchModel": "Busque ou cole um ID de modelo",
+  "models": "Modelos",
+  "useAgentDefault": "Usar padrão do agente",
+  "agentDefault": "Padrão do agente",
+  "loadingModels": "Carregando modelos…",
+  "noCatalogMatch": "Nenhum resultado no catálogo.",
+  "useExactId": "Usar ID exato",
+  "invalid": {
+    "openrouter": "Use openrouter/provedor/modelo sem espaços.",
+    "spaces": "IDs de modelo não podem conter espaços."
+  },
+  "customHint": {
+    "openrouter": "IDs personalizados: openrouter/provedor/modelo. O acesso ao provedor é verificado quando a execução começa.",
+    "default": "IDs de modelo personalizados podem ser colados aqui. O acesso ao provedor é verificado quando a execução começa."
+  },
+  "agentRunSettings": "Configurações de execução do agente"
+}

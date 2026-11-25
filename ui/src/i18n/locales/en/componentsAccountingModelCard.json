@@ -1,0 +1,31 @@
+{
+  "inference": {
+    "title": "Inference ledger",
+    "description": "Request-scoped usage and billed runs from cost_events.",
+    "points": {
+      "tokens": "tokens + billed dollars",
+      "provider": "provider, biller, model",
+      "subscription": "subscription and overage aware"
+    }
+  },
+  "finance": {
+    "title": "Finance ledger",
+    "description": "Account-level charges that are not one prompt-response pair.",
+    "points": {
+      "topUps": "top-ups, refunds, fees",
+      "bedrock": "Bedrock provisioned or training charges",
+      "credits": "credit expiries and adjustments"
+    }
+  },
+  "quotas": {
+    "title": "Live quotas",
+    "description": "Provider or biller windows that can stop traffic in real time.",
+    "points": {
+      "windows": "provider quota windows",
+      "credits": "biller credit systems",
+      "errors": "errors surfaced directly"
+    }
+  },
+  "title": "Accounting model",
+  "description": "Paperclip now separates request-level inference usage from account-level finance events. That keeps provider reporting honest when the biller is OpenRouter, Cloudflare, Bedrock, or another intermediary."
+}

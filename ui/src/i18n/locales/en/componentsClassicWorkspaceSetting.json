@@ -1,0 +1,10 @@
+{
+  "title": "Classic workspace",
+  "description": "Use the previous workspace instead of the standard Coordinator workspace. This changes your interface across companies on this instance.",
+  "offByDefault": "Off by default. Turn it off to return to Coordinator. Your work and your teammates’ settings stay the same.",
+  "localBoard": "This local instance uses the shared Local Board identity.",
+  "enable": "Enable classic workspace",
+  "saving": "Saving your workspace…",
+  "loading": "Loading your preference…",
+  "retry": "Retry"
+}

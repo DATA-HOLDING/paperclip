@@ -1,0 +1,121 @@
+{
+  "search": {
+    "placeholder": "Search tasks...",
+    "aria": "Search tasks"
+  },
+  "progress": {
+    "aria": "Sub-tasks completion progress",
+    "noActive": "No active sub-tasks",
+    "allDone": "All sub-tasks done",
+    "noActionable": "No actionable sub-tasks",
+    "done": "{{done}}/{{total}} done",
+    "inProgress": "{{value}} in progress",
+    "blocked": "{{value}} blocked",
+    "runs_one": "{{value}} run",
+    "runs_other": "{{value}} runs",
+    "acrossSubtasks_one": "across {{count}} sub-task",
+    "acrossSubtasks_other": "across {{count}} sub-tasks",
+    "tokens": "{{value}} tokens",
+    "runtime": "{{value}} runtime",
+    "nextUp": "Next up",
+    "waitingOnBlockers": "Waiting on blockers"
+  },
+  "toolbar": {
+    "viewMode": "View mode",
+    "listView": "List view",
+    "boardView": "Board view",
+    "cardsPerColumn": "Cards per column",
+    "resetDensity": "Reset board density",
+    "columnsTitle": "Choose which task columns stay visible",
+    "sort": "Sort",
+    "group": "Group",
+    "controls": "Task controls",
+    "disableNesting": "Disable parent-child nesting",
+    "enableNesting": "Enable parent-child nesting",
+    "comfortableCards": "Use comfortable cards",
+    "compactCards": "Use compact cards",
+    "expandCold": "Expand cold lanes",
+    "collapseCold": "Collapse cold lanes",
+    "perColumn": "{{value}} per column"
+  },
+  "empty": "No tasks match the current filters or search.",
+  "row": {
+    "needsNextStep": "Needs next step",
+    "needsNextStepTitle": "This task needs a next step",
+    "subtasks": "(sub-tasks)",
+    "subtaskCount_one": "({{count}} sub-task)",
+    "subtaskCount_other": "({{count}} sub-tasks)",
+    "paused": "Paused",
+    "collapseSubtasks": "Collapse sub-tasks",
+    "expandSubtasks": "Expand sub-tasks"
+  },
+  "assignee": {
+    "search": "Search responsible...",
+    "me": "Me",
+    "label": "Assignee",
+    "none": "No responsible"
+  },
+  "externalRetry": "Retry external statuses",
+  "hierarchyRetry": "Retry hierarchy",
+  "status": {
+    "backlog": "Backlog",
+    "todo": "Todo",
+    "in_progress": "In progress",
+    "monitoring": "Monitoring",
+    "in_review": "In review",
+    "done": "Done",
+    "blocked": "Blocked",
+    "cancelled": "Cancelled"
+  },
+  "age": {
+    "day": "Older than a day",
+    "week": "Older than a week"
+  },
+  "creator": {
+    "board": "Board"
+  },
+  "groups": {
+    "noWorkspace": "No Workspace",
+    "noProject": "No Project",
+    "noParent": "No Parent",
+    "unassigned": "Unassigned"
+  },
+  "user": "User",
+  "create": {
+    "actionCustom": "Create {{label}}",
+    "action": "Create Task",
+    "buttonCustom": "New {{label}}",
+    "button": "New Task"
+  },
+  "sort": {
+    "workflow": "Workflow",
+    "status": "Status",
+    "priority": "Priority",
+    "title": "Title",
+    "created": "Created",
+    "updated": "Updated"
+  },
+  "groupBy": {
+    "assignee": "Responsible",
+    "project": "Project",
+    "workspace": "Workspace",
+    "parent": "Parent Task",
+    "none": "None"
+  },
+  "loadAction": "load tasks",
+  "externalFilterFailed": "Unable to filter tasks by external status:",
+  "searchLimit": "Showing up to {{limit}} matches. Refine the search to narrow further.",
+  "boardLimit": "Some board columns are showing up to {{limit}} tasks. Refine filters or search to reveal the rest.",
+  "loadHierarchyAction": "load task hierarchy",
+  "newTaskIn": "New task in {{group}}",
+  "blockers": {
+    "stepSuffix": " · step {{step}}",
+    "blockedBy": "blocked by {{label}}{{suffix}}",
+    "andMore": " ... and {{value}} more"
+  },
+  "loadMore": {
+    "loading": "Loading more tasks...",
+    "rendering": "Rendering {{shown}} of {{total}} tasks",
+    "scroll": "Scroll to load more tasks"
+  }
+}

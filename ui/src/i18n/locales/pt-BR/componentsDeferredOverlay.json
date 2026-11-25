@@ -1,0 +1,7 @@
+{
+  "loadingTitle": "Carregando {{title}}…",
+  "failedTitle": "Não foi possível abrir {{title}}",
+  "failedDescription": "Feche esta janela para continuar trabalhando. Recarregue a página antes de tentar novamente.",
+  "close": "Fechar",
+  "cancel": "Cancelar"
+}

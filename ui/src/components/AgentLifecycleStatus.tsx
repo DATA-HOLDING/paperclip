@@ -5,20 +5,24 @@ import type { Agent, AgentLifecycleState } from "@paperclipai/shared";
 import { Loader2 } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { t } from "@/i18n";
 
 const phases = {
-  preparing: ["Preparing agent", "Required resources are being prepared. Work stays queued."],
-  verifying: ["Verifying agent", "The saved execution configuration is being checked. Work stays queued."],
-  pausing: ["Pausing agent", "Waiting for execution and required resources to stop."],
-  resuming: ["Resuming agent", "Required resources are being started. Work stays queued."],
-  terminating: ["Terminating agent", "Stopping execution before resource cleanup."],
-  cleaning_up: ["Cleaning up agent", "Required resources are being removed. Termination is not complete."],
+  preparing: [t("componentsAgentLifecycleStatus.phases.preparing.label"), t("componentsAgentLifecycleStatus.phases.preparing.description")],
+  verifying: [t("componentsAgentLifecycleStatus.phases.verifying.label"), t("componentsAgentLifecycleStatus.phases.verifying.description")],
+  pausing: [t("componentsAgentLifecycleStatus.phases.pausing.label"), t("componentsAgentLifecycleStatus.phases.pausing.description")],
+  resuming: [t("componentsAgentLifecycleStatus.phases.resuming.label"), t("componentsAgentLifecycleStatus.phases.resuming.description")],
+  terminating: [t("componentsAgentLifecycleStatus.phases.terminating.label"), t("componentsAgentLifecycleStatus.phases.terminating.description")],
+  cleaning_up: [t("componentsAgentLifecycleStatus.phases.cleaningUp.label"), t("componentsAgentLifecycleStatus.phases.cleaningUp.description")],
 } satisfies Partial<Record<AgentLifecycleState, [string, string]>>;
 
 const failedPhases = {
-  preparing: "Agent preparation failed", verifying: "Agent verification failed",
-  pausing: "Agent pause failed", resuming: "Agent resume failed",
-  terminating: "Agent termination failed", cleaning_up: "Agent cleanup failed",
+  preparing: t("componentsAgentLifecycleStatus.failed.preparing"),
+  verifying: t("componentsAgentLifecycleStatus.failed.verifying"),
+  pausing: t("componentsAgentLifecycleStatus.failed.pausing"),
+  resuming: t("componentsAgentLifecycleStatus.failed.resuming"),
+  terminating: t("componentsAgentLifecycleStatus.failed.terminating"),
+  cleaning_up: t("componentsAgentLifecycleStatus.failed.cleaningUp"),
 };
 
 function pendingPhase(state?: AgentLifecycleState) {
@@ -50,7 +54,7 @@ export function AgentLifecycleStatus({ agent, onRetry, retryPending, refreshErro
   const phase = pendingPhase(agent.lifecycleState);
   if (!phase && !refreshError) return null;
   return <div role="status" aria-live="polite" className="space-y-2 text-sm">
-    {refreshError && <p className="text-destructive">Could not refresh agent lifecycle status.</p>}
+    {refreshError && <p className="text-destructive">{t("componentsAgentLifecycleStatus.refreshError")}</p>}
     {phase && <div className="flex flex-wrap items-center gap-2">
       <Badge variant={agent.lifecycleError ? "destructive" : "secondary"}>
         {!agent.lifecycleError && <Loader2 aria-hidden="true" className="mr-1 size-3 animate-spin motion-reduce:animate-none" />}
@@ -61,11 +65,11 @@ export function AgentLifecycleStatus({ agent, onRetry, retryPending, refreshErro
     {phase && agent.lifecycleError && <div className="flex flex-wrap items-center gap-2 text-destructive">
       <span>{agent.lifecycleError}</span>
       <Button variant="outline" size="sm" disabled={retryPending} onClick={onRetry}>
-        {retryPending ? "Retrying…" : "Retry now"}
+        {retryPending ? t("componentsAgentLifecycleStatus.retrying") : t("componentsAgentLifecycleStatus.retryNow")}
       </Button>
     </div>}
     {phase && agent.lifecycleError && <p className="text-muted-foreground">{agent.lifecycleState === "verifying" || agent.lifecycleState === "resuming"
-      ? "Retry now checks the saved configuration again immediately."
-      : "Paperclip retries automatically; Retry now checks again immediately."}</p>}
+      ? t("componentsAgentLifecycleStatus.retryHintManual")
+      : t("componentsAgentLifecycleStatus.retryHintAuto")}</p>}
   </div>;
 }

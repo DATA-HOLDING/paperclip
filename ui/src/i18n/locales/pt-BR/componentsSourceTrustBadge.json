@@ -1,0 +1,11 @@
+{
+  "promoted": "Promovido de baixa confiança.",
+  "promotedOn": "Promovido de baixa confiança em {{date}}.",
+  "lowTrust": "Criado por um agente de revisão de baixa confiança. O {{artifact}} bruto não é compartilhado automaticamente com agentes de maior confiança.",
+  "artifactLabels": {
+    "comment": "comentário",
+    "document": "documento",
+    "workProduct": "produto de trabalho",
+    "content": "conteúdo"
+  }
+}

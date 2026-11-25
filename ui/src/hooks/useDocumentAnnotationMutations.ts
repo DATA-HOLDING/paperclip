@@ -5,6 +5,7 @@ import { authApi } from "@/api/auth";
 import { documentAnnotationsApi, type DocumentAnnotationTarget } from "@/api/document-annotations";
 import { queryKeys } from "@/lib/queryKeys";
 import type { PendingAnchor } from "@/components/DocumentAnnotationLayer";
+import { t } from "@/i18n";
 
 interface MutationOptions {
   target: DocumentAnnotationTarget;
@@ -26,7 +27,7 @@ export function useDocumentAnnotationMutations(options: MutationOptions) {
   });
   const currentUser = useMemo(() => ({
     id: session?.user?.id ?? null,
-    name: session?.user?.name?.trim() || session?.user?.email?.trim() || "You",
+    name: session?.user?.name?.trim() || session?.user?.email?.trim() || t("hooksUseDocumentAnnotationMutations.you"),
     image: session?.user?.image ?? null,
   }), [session]);
   const queryKey = useMemo(() => options.target.kind === "routine"
@@ -64,7 +65,7 @@ export function useDocumentAnnotationMutations(options: MutationOptions) {
     },
     onError: (error, _body, context) => {
       if (context?.previous) queryClient.setQueryData(queryKey, context.previous);
-      setMutationError(messageFor(error, "Failed to create comment."));
+      setMutationError(messageFor(error, t("hooksUseDocumentAnnotationMutations.createFailed")));
     },
     onSuccess: (thread, _body, context) => {
       queryClient.setQueryData<DocumentAnnotationThreadWithComments[]>(queryKey, (current) =>
@@ -89,7 +90,7 @@ export function useDocumentAnnotationMutations(options: MutationOptions) {
     },
     onError: (error, _variables, context) => {
       if (context?.previous) queryClient.setQueryData(queryKey, context.previous);
-      setMutationError(messageFor(error, "Failed to add reply."));
+      setMutationError(messageFor(error, t("hooksUseDocumentAnnotationMutations.replyFailed")));
     },
     onSuccess: (_comment, variables) => {
       setMutationError(null);
@@ -109,7 +110,7 @@ export function useDocumentAnnotationMutations(options: MutationOptions) {
     },
     onError: (error, _variables, context) => {
       if (context?.previous) queryClient.setQueryData(queryKey, context.previous);
-      setMutationError(messageFor(error, "Failed to update comment status."));
+      setMutationError(messageFor(error, t("hooksUseDocumentAnnotationMutations.statusFailed")));
     },
     onSuccess: () => setMutationError(null),
     onSettled: invalidateAll,

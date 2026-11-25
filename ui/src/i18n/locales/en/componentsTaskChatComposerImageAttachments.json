@@ -1,0 +1,7 @@
+{
+  "uploading": "Uploading {{name}}…",
+  "remove": "Remove {{name}}",
+  "retry": "Retry {{name}}",
+  "uploadFailed": "Upload failed",
+  "groupLabel": "Image attachments"
+}

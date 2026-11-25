@@ -9,6 +9,7 @@ import { createIssueDetailPath } from "../lib/issueDetailBreadcrumb";
 import { useTaskRetry } from "../hooks/useTaskRetry";
 import { describeError } from "../api/errors";
 import { ProviderLimitMessage } from "./ProviderLimitMessage";
+import { t } from "@/i18n";
 
 /**
  * Children and blockers of this task that stopped on a recovery action that
@@ -44,7 +45,7 @@ function StalledDependencyList({ entries }: { entries: IssueBlockerStalledWakeCo
     >
       <div className="flex items-center gap-1.5 font-medium">
         <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden />
-        {rows.length === 1 ? "A dependency needs the board" : `${rows.length} dependencies need the board`}
+        {t("componentsStalledDependencyNotice.title", { count: rows.length })}
       </div>
       <ul className="mt-1.5 space-y-1.5">
         {rows.map(({ entry, child }) => <StalledDependencyRow key={entry.recoveryAction.id} entry={entry}
@@ -67,10 +68,10 @@ function StalledDependencyRow({ entry, child, readError, isFetching, refetch }: 
   return (
     <li data-testid="stalled-dependency-row" className="flex flex-wrap items-center gap-x-2 gap-y-1">
       <span className="text-xs text-amber-800 dark:text-amber-200">
-        {entry.relation === "child" ? "Child" : "Blocker"}
+        {entry.relation === "child" ? t("componentsStalledDependencyNotice.child") : t("componentsStalledDependencyNotice.blocker")}
       </span>
       <Link to={createIssueDetailPath(ref)} className="font-mono text-xs underline-offset-2 hover:underline">
-        {entry.stalledIssueIdentifier ?? "Task"}
+        {entry.stalledIssueIdentifier ?? t("componentsStalledDependencyNotice.task")}
       </Link>
       <span className="min-w-0 flex-1 truncate">{entry.stalledIssueTitle}</span>
       {entry.recoveryAction.nextAction ? (
@@ -78,9 +79,9 @@ function StalledDependencyRow({ entry, child, readError, isFetching, refetch }: 
       ) : null}
       {readError && !child ? (
         <span role="alert" className="flex basis-full items-center gap-2 text-xs text-destructive">
-          Could not load this task's state: {describeError(readError).body}
+          {t("componentsStalledDependencyNotice.loadError", { error: describeError(readError).body })}
           <Button size="sm" variant="outline" className="h-6 px-2" disabled={isFetching} onClick={refetch}>
-            Reload
+            {t("componentsStalledDependencyNotice.reload")}
           </Button>
         </span>
       ) : null}
@@ -88,7 +89,7 @@ function StalledDependencyRow({ entry, child, readError, isFetching, refetch }: 
         <span role="alert" className="basis-full text-xs text-destructive">{describeError(retry.error).body}</span>
       ) : null}
       {retry.takingLonger ? (
-        <span role="status" className="basis-full text-xs text-muted-foreground">Taking longer than usual…</span>
+        <span role="status" className="basis-full text-xs text-muted-foreground">{t("componentsStalledDependencyNotice.takingLonger")}</span>
       ) : null}
       {canRetry || failed || retry.takingLonger ? (
         <Button
@@ -96,11 +97,11 @@ function StalledDependencyRow({ entry, child, readError, isFetching, refetch }: 
           variant="outline"
           disabled={retry.optimistic && !retry.takingLonger}
           onClick={retry.retry}
-          aria-label={`Retry ${entry.stalledIssueIdentifier ?? "task"}`}
+          aria-label={t("componentsStalledDependencyNotice.retryAria", { name: entry.stalledIssueIdentifier ?? t("componentsStalledDependencyNotice.taskLower") })}
           className="h-7 gap-1 border-amber-300/80 bg-background/80 text-amber-950 shadow-none hover:bg-amber-100 dark:border-amber-500/50 dark:bg-background/40 dark:text-amber-100 dark:hover:bg-amber-500/15"
         >
           <RotateCcw className="h-3 w-3" aria-hidden />
-          {retry.optimistic && !retry.takingLonger ? "Retrying…" : "Retry"}
+          {retry.optimistic && !retry.takingLonger ? t("componentsStalledDependencyNotice.retrying") : t("componentsStalledDependencyNotice.retry")}
         </Button>
       ) : null}
     </li>

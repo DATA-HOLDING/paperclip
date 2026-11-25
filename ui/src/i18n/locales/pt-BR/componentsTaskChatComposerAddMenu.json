@@ -1,0 +1,21 @@
+{
+  "actions": {
+    "files": "Arquivos e imagens",
+    "privateTask": "Tarefa privada",
+    "goal": "Objetivo",
+    "goalDetail": "Continuar perseguindo",
+    "planMode": "Modo de planejamento",
+    "planDetail": "Planejar antes de agir",
+    "askMode": "Modo de pergunta",
+    "askDetail": "Responder sem fazer alterações"
+  },
+  "addToComposer": "Adicionar ao editor",
+  "add": "Adicionar",
+  "closeMenu": "Fechar menu Adicionar",
+  "removeMode": "Remover {{label}}",
+  "privacy": {
+    "explanation": "Só você e as pessoas com quem você compartilhar podem ler esta tarefa",
+    "remove": "Remover tarefa privada",
+    "chip": "Privada"
+  }
+}

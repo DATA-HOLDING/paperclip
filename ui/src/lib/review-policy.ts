@@ -1,5 +1,6 @@
 import { UserCheck, UserMinus, type LucideIcon } from "lucide-react";
 import { ISSUE_REVIEW_POLICIES, type IssueReviewPolicy } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * Copy for an issue's `reviewPolicy` (PAP-16506 P4).
@@ -32,23 +33,23 @@ export interface IssueReviewPolicyBadge {
 const BADGES: Partial<Record<IssueReviewPolicy, IssueReviewPolicyBadge>> = {
   not_creator: {
     value: "not_creator",
-    label: "Anyone else",
-    description: "Anyone except whoever asked for the review can approve it.",
+    label: t("libReviewPolicy.badges.notCreator.label"),
+    description: t("libReviewPolicy.badges.notCreator.description"),
     Icon: UserMinus,
   },
   human_only: {
     value: "human_only",
-    label: "Human only",
-    description: "Only a person can approve this review. Agents cannot give the verdict.",
+    label: t("libReviewPolicy.badges.humanOnly.label"),
+    description: t("libReviewPolicy.badges.humanOnly.description"),
     Icon: UserCheck,
   },
 };
 
 /** Mid-sentence wording for activity lines and field-change receipts. */
 const VALUE_LABELS: Record<IssueReviewPolicy, string> = {
-  anyone: "anyone",
-  not_creator: "anyone else",
-  human_only: "human only",
+  anyone: t("libReviewPolicy.values.anyone"),
+  not_creator: t("libReviewPolicy.values.notCreator"),
+  human_only: t("libReviewPolicy.values.humanOnly"),
 };
 
 /**

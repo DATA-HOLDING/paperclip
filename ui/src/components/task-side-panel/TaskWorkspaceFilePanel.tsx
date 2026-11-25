@@ -11,6 +11,7 @@ import type { FileViewerUrlState } from "@/context/FileViewerContext";
 import { copyTextToClipboard } from "@/lib/clipboard";
 import { queryKeys } from "@/lib/queryKeys";
 import type { TaskSidePanelTabPayload } from "@/lib/task-side-panel-state";
+import { t } from "@/i18n";
 
 type WorkspaceFilePayload = Extract<TaskSidePanelTabPayload, { kind: "workspace-file" }>;
 
@@ -65,8 +66,8 @@ export function TaskWorkspaceFilePanel({
               type="button"
               variant="ghost"
               size="icon-sm"
-              aria-label="Copy file contents"
-              title={copied ? "Copied" : "Copy file contents"}
+              aria-label={t("componentsTaskSidePanel.workspaceFile.copyContents")}
+              title={copied ? t("componentsTaskSidePanel.workspaceFile.copied") : t("componentsTaskSidePanel.workspaceFile.copyContents")}
               onClick={() => {
                 void copyTextToClipboard(contentQuery.data!.content.data).then(() => {
                   setCopied(true);
@@ -77,10 +78,10 @@ export function TaskWorkspaceFilePanel({
               {copied ? <Check aria-hidden /> : <Copy aria-hidden />}
             </Button>
           ) : null}
-          {renderedPreview && contentQuery.data ? <FilePreviewModeToggle mode={previewMode} onChange={setPreviewMode} label="File preview mode" /> : null}
+          {renderedPreview && contentQuery.data ? <FilePreviewModeToggle mode={previewMode} onChange={setPreviewMode} label={t("componentsTaskSidePanel.workspaceFile.previewMode")} /> : null}
           {downloadUrl ? (
             <Button asChild variant="ghost" size="icon-sm">
-              <a href={downloadUrl} download={resource?.title} aria-label="Download file" title="Download file">
+              <a href={downloadUrl} download={resource?.title} aria-label={t("componentsTaskSidePanel.workspaceFile.downloadFile")} title={t("componentsTaskSidePanel.workspaceFile.downloadFile")}>
                 <Download aria-hidden />
               </a>
             </Button>

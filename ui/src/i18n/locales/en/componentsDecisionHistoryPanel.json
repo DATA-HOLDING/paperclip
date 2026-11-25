@@ -1,0 +1,50 @@
+{
+  "group": {
+    "noTask": "No task",
+    "otherAgents": "Other agents",
+    "noProject": "No project"
+  },
+  "controls": "Decision history controls",
+  "searchLabel": "Search decision history",
+  "searchPlaceholder": "Search decisions or task IDs…",
+  "scope": {
+    "label": "Whose decision history",
+    "heading": "Whose decisions"
+  },
+  "outcome": {
+    "label": "Filter decision outcomes",
+    "heading": "Outcome",
+    "all": "All outcomes",
+    "handledForMe": "Handled for me"
+  },
+  "sort": {
+    "label": "Sort decision history",
+    "heading": "Sort by",
+    "newest": "Newest first",
+    "oldest": "Oldest first"
+  },
+  "agent": {
+    "label": "Filter decision history by agent",
+    "heading": "Agents",
+    "all": "All agents"
+  },
+  "project": {
+    "label": "Filter decision history by project",
+    "heading": "Projects",
+    "all": "All projects"
+  },
+  "groupBy": {
+    "label": "Group decision history",
+    "heading": "Group by",
+    "none": "No grouping",
+    "task": "By task",
+    "agent": "By agent",
+    "project": "By project"
+  },
+  "loading": "Loading decisions…",
+  "emptyMine": "No decisions handled by you or for you yet.",
+  "emptyFiltered": "No decisions match these filters.",
+  "showEveryone": "Show everyone's decisions",
+  "loadingMore": "Loading…",
+  "loadMore": "Load more decisions"
+}

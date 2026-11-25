@@ -1,0 +1,17 @@
+{
+  "kinds": {
+    "requestBoardApproval": "Pedido de aprovação do conselho",
+    "approveCeoStrategy": "Aprovação de estratégia",
+    "budgetOverrideRequired": "Pedido para exceder o orçamento"
+  },
+  "newAgent": "Novo agente",
+  "reportsTo": "Reporta a {{manager}}",
+  "role": "Função {{role}}",
+  "nameWithBudget": "{{name}} · {{budget}} / mês",
+  "viewConfiguration": "Ver configuração",
+  "createsAgentWithLimit": "A aprovação cria o agente com este limite de gasto mensal.",
+  "createsAgent": "A aprovação cria o agente.",
+  "approvalRequest": "Pedido de aprovação",
+  "viewDetails": "Ver detalhes",
+  "onApproval": "Ao aprovar: {{next}}"
+}

@@ -1,0 +1,9 @@
+{
+  "select": "Select organization",
+  "organizations": "Organizations",
+  "loadFailed": "Couldn't load organizations",
+  "tryAgain": "Try again",
+  "none": "No organizations",
+  "settings": "Settings",
+  "manage": "Manage Organizations"
+}

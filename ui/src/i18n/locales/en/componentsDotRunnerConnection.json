@@ -1,0 +1,32 @@
+{
+  "saveFirst": "Save the agent, then return here to pair your Dot.",
+  "intro": "Dot manages its model and external tools. Paperclip supplies task coordination, people, assigned skills, and connected app tools. Dot can start a task directly from its conversation. Enable Read task attachments below to send assigned task file contents to OpenAI. Enable workspace files and commands for work in the assigned workspace. Provider usage and cost are unavailable; stopping a Paperclip run revokes access without confirming an external stop.",
+  "enableExperimental": "Enable OpenAI Dot in experimental settings.",
+  "mcpUrl": "Private plugin MCP URL:",
+  "connectionStatus": "Connection: {{status}}. Event subscription: {{subscription}}.",
+  "subscription": {
+    "verified": "verified",
+    "required": "required"
+  },
+  "assignmentStatus": "Assignment: {{status}}.",
+  "assignment": {
+    "offered": "waiting for Dot to accept",
+    "accepted": "accepted by Dot"
+  },
+  "attentionRequired": "Dot has not reported useful activity for 15 minutes. Inspect the Dot before assigning replacement work; Paperclip cannot confirm its external stop.",
+  "setup": {
+    "label": "Set up with Dot",
+    "title": "Connect your Dot",
+    "description": "Paste into your Dot to connect this agent.",
+    "expires": "Setup prompt expires {{time}}."
+  },
+  "revokeAndRepair": "Revoke the pending connection and pair again to generate a fresh setup prompt.",
+  "actions": {
+    "pair": "Pair Dot",
+    "test": "Test event delivery",
+    "refresh": "Refresh connection",
+    "revoke": "Revoke connection"
+  },
+  "pendingChallenge": "Waiting for Dot to read and confirm the harmless mailbox challenge.",
+  "loadAction": "load the Dot connection"
+}

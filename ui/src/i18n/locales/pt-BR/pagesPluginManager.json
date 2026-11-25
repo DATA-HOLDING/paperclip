@@ -1,0 +1,77 @@
+{
+  "errorWithoutMessage": "O plugin entrou em estado de erro sem uma mensagem de erro armazenada.",
+  "experimental": "Experimental",
+  "breadcrumbs": {
+    "organization": "Organização",
+    "settings": "Configurações",
+    "plugins": "Plugins"
+  },
+  "toasts": {
+    "installed": "Plugin instalado com sucesso",
+    "installFailed": "Falha ao instalar o plugin",
+    "uninstalled": "Plugin desinstalado com sucesso",
+    "uninstallFailed": "Falha ao desinstalar o plugin",
+    "enabled": "Plugin ativado",
+    "enableFailed": "Falha ao ativar o plugin",
+    "disabled": "Plugin desativado",
+    "disableFailed": "Falha ao desativar o plugin"
+  },
+  "loading": "Carregando plugins...",
+  "loadAction": "carregar os plugins",
+  "title": "Gerenciador de plugins",
+  "installDialog": {
+    "title": "Instalar plugin",
+    "description": "Digite o nome do pacote npm do plugin que você deseja instalar.",
+    "packageName": "Nome do pacote npm"
+  },
+  "cancel": "Cancelar",
+  "close": "Fechar",
+  "install": "Instalar",
+  "installing": "Instalando...",
+  "enable": "Ativar",
+  "disable": "Desativar",
+  "uninstall": "Desinstalar",
+  "uninstalling": "Desinstalando...",
+  "alpha": {
+    "title": "Os plugins estão em versão alfa.",
+    "description": "O runtime e a API de plugins ainda estão mudando. Espere mudanças incompatíveis enquanto este recurso se estabiliza."
+  },
+  "available": {
+    "title": "Plugins disponíveis",
+    "bundled": "Incluídos",
+    "loading": "Carregando plugins incluídos...",
+    "loadAction": "carregar os plugins incluídos",
+    "empty": "Nenhum plugin incluído foi encontrado neste checkout.",
+    "notInstalled": "Não instalado",
+    "building": "Compilando o plugin...",
+    "openSettings": "Abrir configurações",
+    "review": "Revisar"
+  },
+  "tags": {
+    "firstParty": "Oficial",
+    "example": "Exemplo"
+  },
+  "installed": {
+    "title": "Plugins instalados",
+    "emptyTitle": "Nenhum plugin instalado",
+    "emptyDescription": "Instale um plugin para ampliar as funcionalidades.",
+    "noDescription": "Nenhuma descrição fornecida.",
+    "pluginError": "Erro no plugin",
+    "viewFullError": "Ver erro completo",
+    "configure": "Configurar"
+  },
+  "uninstallDialog": {
+    "title": "Desinstalar plugin",
+    "before": "Tem certeza de que deseja desinstalar",
+    "after": "? Esta ação não pode ser desfeita."
+  },
+  "errorDialog": {
+    "title": "Detalhes do erro",
+    "description": "{{name}} entrou em estado de erro.",
+    "plugin": "Plugin",
+    "whatErrored": "O que deu erro",
+    "noSummary": "Nenhum resumo do erro disponível.",
+    "fullOutput": "Saída completa do erro",
+    "noStoredMessage": "Nenhuma mensagem de erro armazenada."
+  }
+}

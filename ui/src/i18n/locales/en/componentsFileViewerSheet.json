@@ -1,0 +1,93 @@
+{
+  "somethingWentWrong": "Something went wrong.",
+  "denial": {
+    "blocked": {
+      "title": "Viewer blocked for this file",
+      "body": "This file is not available through the viewer because it may contain sensitive data."
+    },
+    "outside": {
+      "title": "Path is outside the workspace",
+      "body": "The viewer can only open files that live under the issue's workspace."
+    },
+    "archived": {
+      "title": "Workspace is no longer available",
+      "body": "The isolated worktree for this issue has been cleaned up, so files cannot be previewed."
+    },
+    "remote": {
+      "title": "Remote workspace preview not supported",
+      "body": "This workspace is hosted remotely and is not available for inline preview yet."
+    },
+    "tooLarge": {
+      "title": "File is too large to preview",
+      "body": "This file exceeds the supported preview size."
+    },
+    "unsupported": {
+      "title": "Preview not supported for this file type",
+      "body": "This file does not have a text, image, or video preview available."
+    },
+    "fallback": {
+      "title": "Can't preview this file",
+      "body": "The viewer was unable to load this file."
+    }
+  },
+  "metadata": {
+    "line": "Line {{line}}",
+    "column": ", Col {{column}}",
+    "loading": "Loading file details"
+  },
+  "imageUnavailable": "Image preview unavailable",
+  "videoUnavailable": "Video preview unavailable",
+  "videoPreviewAriaLabel": "Video preview: {{title}}",
+  "contentType": "Content type: {{contentType}}",
+  "sourceAriaLabel": "{{title}} source",
+  "previewMode": {
+    "group": "{{label}} preview mode",
+    "showRendered": "Show rendered {{label}}",
+    "rendered": "Rendered {{label}}",
+    "showRaw": "Show raw {{label}}",
+    "raw": "Raw {{label}}"
+  },
+  "renderedMarkdownAriaLabel": "{{title}} rendered Markdown",
+  "loadingPreview": "Loading file preview",
+  "loadingPreviewEllipsis": "Loading file preview...",
+  "announce": {
+    "unableToLoadFile": "Unable to load file.",
+    "unableToLoadContent": "Unable to load file content."
+  },
+  "copy": {
+    "failed": "Copy failed",
+    "contentsUnavailable": "File contents unavailable",
+    "copiedFileData": "Copied file data",
+    "copiedContents": "Copied contents",
+    "copiedLink": "Copied link",
+    "copiedFileContents": "Copied file contents",
+    "copyFileContents": "Copy file contents",
+    "copiedViewLink": "Copied file view link",
+    "copyViewLink": "Copy link to this file view",
+    "copyLink": "Copy link"
+  },
+  "browseWorkspace": "Browse workspace",
+  "browseDescription": "Search and preview files from this issue's workspace.",
+  "backToFiles": "Back to files",
+  "htmlView": "HTML view",
+  "downloadFile": "Download file",
+  "closeViewer": "Close file viewer",
+  "close": "Close",
+  "resizeTree": "Resize file tree",
+  "notFound": {
+    "title": "File not found",
+    "body": "That file was not found in the active workspace.",
+    "tryProject": "Try project workspace"
+  },
+  "retry": "Retry",
+  "noWorkspace": {
+    "title": "No workspace available",
+    "body": "This issue does not have a workspace that supports preview yet."
+  },
+  "remoteSoon": {
+    "title": "Remote workspace preview coming soon",
+    "body": "This workspace is hosted remotely; inline previews are not supported yet."
+  },
+  "fileLoaded_one": "File loaded, {{count}} line.",
+  "fileLoaded_other": "File loaded, {{count}} lines."
+}

@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "search": "Search",
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "routines": "Routines",
+    "artifacts": "Artifacts",
+    "agents": "Agents",
+    "skills": "Skills",
+    "connectors": "Connectors",
+    "audit": "Audit",
+    "settings": "Settings",
+    "cases": "Cases",
+    "chat": "Chat",
+    "tasks": "Tasks",
+    "inbox": "Inbox"
+  },
+  "recents": "Recents",
+  "newTask": "New task",
+  "globalSearch": "Global search",
+  "searchTooltip": "Search tasks, agents, projects",
+  "workspaceNavigation": "Workspace navigation",
+  "badge": {
+    "unreadChats": "unread chats",
+    "decisions": "decisions"
+  },
+  "morePages": "More workspace pages",
+  "more": "More"
+}

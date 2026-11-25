@@ -1,0 +1,22 @@
+{
+  "title": "Run routine",
+  "description": "Choose the agent and optional project for this one run. Routine defaults are prefilled and won't be changed.",
+  "agentLabel": "Agent *",
+  "agentPlaceholder": "Agent",
+  "selectAgent": "Select an agent",
+  "searchAgents": "Search agents...",
+  "noAgents": "No agents found.",
+  "projectLabel": "Project",
+  "noProject": "No project",
+  "searchProjects": "Search projects...",
+  "noProjects": "No projects found.",
+  "noValue": "No value",
+  "true": "True",
+  "false": "False",
+  "chooseValue": "Choose a value",
+  "agentRequired": "Default agent required for this run.",
+  "missing": "Missing: {{names}}",
+  "chooseWorkspace": "Choose an existing workspace before running.",
+  "cancel": "Cancel",
+  "running": "Running..."
+}

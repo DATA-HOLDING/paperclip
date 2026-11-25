@@ -1,0 +1,62 @@
+{
+  "author": {
+    "anAgent": "an agent",
+    "you": "you",
+    "owner": "the owner",
+    "teammate": "a teammate"
+  },
+  "record": {
+    "recorded": "Recorded.",
+    "failed": "Couldn’t record it.",
+    "aria": "Record a new reading",
+    "isTrueToday": "Is it true today?",
+    "yes": "Yes",
+    "no": "No",
+    "newReading": "New reading",
+    "placeholder": "e.g. 9",
+    "saving": "Saving…",
+    "record": "Record",
+    "enterNumber": "Enter a number"
+  },
+  "bar": {
+    "edit": "Edit the bar",
+    "set": "Set the bar",
+    "heading": "The bar",
+    "empty": "No bar yet. How is success measured?",
+    "editByHand": "Edit by hand"
+  },
+  "editDialog": {
+    "description": "How is success measured for {{title}}? The status follows from the reading, by the kind of measure you choose.",
+    "saveFailed": "Couldn’t save the bar.",
+    "cancel": "Cancel",
+    "save": "Save the bar"
+  },
+  "conversation": {
+    "talking": "You are talking the bar through with {{agent}}.",
+    "open": "Open the conversation",
+    "continue": "Continue the conversation",
+    "startFailed": "Couldn’t start the conversation.",
+    "editByHandHint": "You can still edit the bar by hand."
+  },
+  "override": {
+    "setByHand": "Set by hand.",
+    "fromNumberAlone": " From the number alone it is {{health}}.",
+    "notePlaceholder": "Why you set it (optional)",
+    "changeOrClear": "Change or clear",
+    "setByHandAction": "Set the status by hand",
+    "fromNumber": "From the number",
+    "behind": "Behind",
+    "atRisk": "At risk",
+    "onTrack": "On track",
+    "failed": "Couldn’t change the status."
+  },
+  "status": "Status",
+  "reading": {
+    "updated": "Updated {{age}}.",
+    "updatedBy": "Updated {{age}} by {{author}}.",
+    "none": "No reading yet. The agents working on this keep the number current; you can record one too."
+  },
+  "errorActions": {
+    "loadBarConversation": "load the bar conversation"
+  }
+}

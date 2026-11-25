@@ -1,0 +1,13 @@
+{
+  "whatYouOwn": "What you own",
+  "meetingBar": "Is each one meeting its bar?",
+  "hideLetGo": "Hide let-go responsibilities",
+  "showLetGo": "Show let-go responsibilities",
+  "showingOnly": "Showing only {{health}}.",
+  "showAll": "Show all",
+  "noneMatch": "None of your responsibilities are {{health}}.",
+  "nothingToShow": "Nothing to show.",
+  "nothingFiledHere": "Nothing you own is filed here yet.",
+  "addHere": "Add a responsibility here",
+  "noLetGo": "You have not let go of any responsibilities."
+}

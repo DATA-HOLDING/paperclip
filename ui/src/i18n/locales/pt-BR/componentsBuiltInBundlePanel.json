@@ -1,0 +1,66 @@
+{
+  "update": {
+    "title": "Atualizar {{label}} para o padrão mais recente?",
+    "body": "Você não editou isto, então o Paperclip vai substituí-lo pela versão mais nova. Nada do que você personalizou é afetado, e as credenciais e configurações do adaptador não são alteradas.",
+    "action": "Atualizar"
+  },
+  "reset": {
+    "title": "Redefinir {{label}} para o padrão original?",
+    "body": "Isto substitui a sua versão editada pelo padrão atual do Paperclip. Suas edições não poderão ser recuperadas. As credenciais e configurações do adaptador não são alteradas.",
+    "confirm": "Redefinir {{label}}",
+    "action": "Redefinir"
+  },
+  "recreate": {
+    "title": "Recriar {{label}}?",
+    "body": "Este recurso está faltando. O Paperclip vai recriá-lo a partir do padrão original. As credenciais e configurações do adaptador não são alteradas.",
+    "action": "Recriar"
+  },
+  "working": "Processando…",
+  "cancel": "Cancelar",
+  "drift": {
+    "modified": "Você editou isto. Suas alterações ficam até você redefinir.",
+    "updateAvailable": "O Paperclip lançou um padrão mais novo.",
+    "missing": "Ainda não foi criado — recrie-o a partir do padrão original."
+  },
+  "adapter": {
+    "pendingApproval": "Aguardando a aprovação de contratação do conselho antes que este coach possa rodar.",
+    "needsSetup": "Escolha um adaptador em que este coach possa rodar.",
+    "label": "Adaptador",
+    "configure": "Configurar"
+  },
+  "routine": {
+    "weeklySchedule": "Agenda semanal",
+    "label": "Rotina",
+    "enabledDetail": "A agenda semanal está ativada e pode criar trabalho em segundo plano.",
+    "disabledDetail": "Nada roda até você ativar a agenda semanal — por padrão, não gasta nenhum token.",
+    "lowerLabel": "rotina"
+  },
+  "view": "Ver",
+  "title": "Status do pacote",
+  "skill": {
+    "label": "Skill"
+  },
+  "instructions": {
+    "label": "Instruções"
+  },
+  "runOnce": {
+    "title": "Rodar o Reflection Coach uma vez?",
+    "body": "O Paperclip vai criar uma tarefa de rotina agora. Isso não ativa a agenda semanal nem liga o trabalho em segundo plano.",
+    "action": "Rodar uma vez"
+  },
+  "disable": {
+    "title": "Desativar a agenda semanal?",
+    "body": "O Paperclip vai parar as próximas execuções agendadas do Reflection Coach. O Rodar uma vez manual continua disponível.",
+    "action": "Desativar agenda"
+  },
+  "enable": {
+    "title": "Ativar a agenda semanal?",
+    "body": "O Paperclip vai permitir que o Reflection Coach crie tarefas de rotina na agenda semanal. Isso pode gastar tokens quando essas tarefas rodarem.",
+    "action": "Ativar semanal"
+  },
+  "proposal": {
+    "label": "Proposta",
+    "detail": "Uma atualização proposta do Reflection Coach está aguardando revisão.",
+    "review": "Revisar proposta"
+  }
+}

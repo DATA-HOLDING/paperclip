@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PROVIDER_QUOTA_MONITOR_SERVICE_NAME } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 const SECOND_MS = 1_000;
 const MINUTE_MS = 60 * SECOND_MS;
@@ -90,11 +91,33 @@ function formatDuration(durationMs: number): string {
   return hours > 0 ? `${days}d ${hours}h` : `${days}d`;
 }
 
-export function formatMonitorEta(nextCheckAt: MonitorDate, now: MonitorDate = new Date()): string {
+/** Where a monitor check sits relative to now: ahead, due inside the grace minute, or past it. */
+export type MonitorEtaKind = "upcoming" | "due" | "overdue";
+
+export interface MonitorEta {
+  kind: MonitorEtaKind;
+  /** Display text: "in 2h 12m" | "due now" | "overdue by 18m" (translated). */
+  label: string;
+}
+
+/**
+ * The ETA of a monitor check as a kind plus its display text. Callers that
+ * branch on the state read `kind`; the label is translated and never compared.
+ */
+export function describeMonitorEta(nextCheckAt: MonitorDate, now: MonitorDate = new Date()): MonitorEta {
   const deltaMs = toTimestamp(nextCheckAt) - toTimestamp(now);
-  if (deltaMs > 0) return `in ${formatDuration(deltaMs)}`;
-  if (deltaMs > -DUE_NOW_GRACE_MS) return "due now";
-  return `overdue by ${formatDuration(Math.abs(deltaMs))}`;
+  if (deltaMs > 0) {
+    return { kind: "upcoming", label: t("libIssueMonitor.eta.in", { duration: formatDuration(deltaMs) }) };
+  }
+  if (deltaMs > -DUE_NOW_GRACE_MS) return { kind: "due", label: t("libIssueMonitor.eta.dueNow") };
+  return {
+    kind: "overdue",
+    label: t("libIssueMonitor.eta.overdueBy", { duration: formatDuration(Math.abs(deltaMs)) }),
+  };
+}
+
+export function formatMonitorEta(nextCheckAt: MonitorDate, now: MonitorDate = new Date()): string {
+  return describeMonitorEta(nextCheckAt, now).label;
 }
 
 export function formatMonitorEtaLabel(nextCheckAt: MonitorDate, now: MonitorDate = new Date()): string {
@@ -145,7 +168,7 @@ export function formatMonitorAbsolute(
     targetYmd.year === referenceYmd.year &&
     targetYmd.month === referenceYmd.month &&
     targetYmd.day === referenceYmd.day;
-  if (isToday) return `Today, ${time}`;
+  if (isToday) return t("libIssueMonitor.todayAt", { time });
 
   const weekday = new Intl.DateTimeFormat(options.locale, {
     weekday: "short",
@@ -269,12 +292,31 @@ export function useMonitorCountdown(nextCheckAt: MonitorDate | null | undefined)
   return now;
 }
 
-export function formatMonitorOffset(nextCheckAt: MonitorDate): string {
+/** A due time relative to now: ahead, now (inside a minute-rounded zero or the grace minute), or past. */
+export type MonitorOffsetKind = "future" | "now" | "past";
+
+export interface MonitorOffset {
+  kind: MonitorOffsetKind;
+  /** Display text: "in 15m" | "now" | "3m ago" (translated). */
+  label: string;
+}
+
+/**
+ * The offset of a due time as a kind plus its display text. Callers branch on
+ * `kind` (e.g. `kind === "now"`), never on the translated label.
+ */
+export function describeMonitorOffset(nextCheckAt: MonitorDate): MonitorOffset {
   const now = new Date(Date.now());
   const deltaMs = toTimestamp(nextCheckAt) - now.getTime();
-  if (Math.round(Math.abs(deltaMs) / MINUTE_MS) === 0) return "now";
-  const eta = formatMonitorEta(nextCheckAt, now);
-  if (eta === "due now") return "now";
-  if (eta.startsWith("overdue by ")) return `${eta.slice("overdue by ".length)} ago`;
-  return eta;
+  if (Math.round(Math.abs(deltaMs) / MINUTE_MS) === 0) return { kind: "now", label: t("libIssueMonitor.offset.now") };
+  const eta = describeMonitorEta(nextCheckAt, now);
+  if (eta.kind === "due") return { kind: "now", label: t("libIssueMonitor.offset.now") };
+  if (eta.kind === "overdue") {
+    return { kind: "past", label: t("libIssueMonitor.offset.ago", { duration: formatDuration(Math.abs(deltaMs)) }) };
+  }
+  return { kind: "future", label: eta.label };
+}
+
+export function formatMonitorOffset(nextCheckAt: MonitorDate): string {
+  return describeMonitorOffset(nextCheckAt).label;
 }

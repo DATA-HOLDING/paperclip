@@ -1,0 +1,93 @@
+{
+  "somethingWentWrong": "Algo deu errado.",
+  "denial": {
+    "blocked": {
+      "title": "Visualizador bloqueado para este arquivo",
+      "body": "Este arquivo não está disponível no visualizador porque pode conter dados sensíveis."
+    },
+    "outside": {
+      "title": "O caminho está fora do espaço de trabalho",
+      "body": "O visualizador só abre arquivos que ficam no espaço de trabalho da tarefa."
+    },
+    "archived": {
+      "title": "O espaço de trabalho não está mais disponível",
+      "body": "A worktree isolada desta tarefa foi removida, então os arquivos não podem ser visualizados."
+    },
+    "remote": {
+      "title": "Prévia de espaço de trabalho remoto não suportada",
+      "body": "Este espaço de trabalho está hospedado remotamente e ainda não está disponível para prévia."
+    },
+    "tooLarge": {
+      "title": "O arquivo é grande demais para a prévia",
+      "body": "Este arquivo excede o tamanho de prévia suportado."
+    },
+    "unsupported": {
+      "title": "Prévia não suportada para este tipo de arquivo",
+      "body": "Este arquivo não tem prévia de texto, imagem ou vídeo disponível."
+    },
+    "fallback": {
+      "title": "Não é possível visualizar este arquivo",
+      "body": "O visualizador não conseguiu carregar este arquivo."
+    }
+  },
+  "metadata": {
+    "line": "Linha {{line}}",
+    "column": ", Col. {{column}}",
+    "loading": "Carregando detalhes do arquivo"
+  },
+  "imageUnavailable": "Prévia da imagem indisponível",
+  "videoUnavailable": "Prévia do vídeo indisponível",
+  "videoPreviewAriaLabel": "Prévia do vídeo: {{title}}",
+  "contentType": "Tipo de conteúdo: {{contentType}}",
+  "sourceAriaLabel": "Código-fonte de {{title}}",
+  "previewMode": {
+    "group": "Modo de prévia de {{label}}",
+    "showRendered": "Mostrar {{label}} renderizado",
+    "rendered": "{{label}} renderizado",
+    "showRaw": "Mostrar {{label}} bruto",
+    "raw": "{{label}} bruto"
+  },
+  "renderedMarkdownAriaLabel": "Markdown renderizado de {{title}}",
+  "loadingPreview": "Carregando prévia do arquivo",
+  "loadingPreviewEllipsis": "Carregando prévia do arquivo...",
+  "announce": {
+    "unableToLoadFile": "Não foi possível carregar o arquivo.",
+    "unableToLoadContent": "Não foi possível carregar o conteúdo do arquivo."
+  },
+  "copy": {
+    "failed": "Falha ao copiar",
+    "contentsUnavailable": "Conteúdo do arquivo indisponível",
+    "copiedFileData": "Dados do arquivo copiados",
+    "copiedContents": "Conteúdo copiado",
+    "copiedLink": "Link copiado",
+    "copiedFileContents": "Conteúdo do arquivo copiado",
+    "copyFileContents": "Copiar conteúdo do arquivo",
+    "copiedViewLink": "Link da visualização copiado",
+    "copyViewLink": "Copiar link desta visualização",
+    "copyLink": "Copiar link"
+  },
+  "browseWorkspace": "Navegar no espaço de trabalho",
+  "browseDescription": "Busque e visualize arquivos do espaço de trabalho desta tarefa.",
+  "backToFiles": "Voltar aos arquivos",
+  "htmlView": "Visualização HTML",
+  "downloadFile": "Baixar arquivo",
+  "closeViewer": "Fechar visualizador de arquivos",
+  "close": "Fechar",
+  "resizeTree": "Redimensionar árvore de arquivos",
+  "notFound": {
+    "title": "Arquivo não encontrado",
+    "body": "Esse arquivo não foi encontrado no espaço de trabalho ativo.",
+    "tryProject": "Tentar o espaço de trabalho do projeto"
+  },
+  "retry": "Tentar novamente",
+  "noWorkspace": {
+    "title": "Nenhum espaço de trabalho disponível",
+    "body": "Esta tarefa ainda não tem um espaço de trabalho com suporte a prévia."
+  },
+  "remoteSoon": {
+    "title": "Prévia de espaço de trabalho remoto em breve",
+    "body": "Este espaço de trabalho está hospedado remotamente; prévias ainda não são suportadas."
+  },
+  "fileLoaded_one": "Arquivo carregado, {{count}} linha.",
+  "fileLoaded_other": "Arquivo carregado, {{count}} linhas."
+}

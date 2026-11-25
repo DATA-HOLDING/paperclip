@@ -1,0 +1,49 @@
+{
+  "window": {
+    "done": "{{rate}} done",
+    "touched": "Touched",
+    "completed": "Completed",
+    "comments": "Comments",
+    "actions": "Actions",
+    "tokens": "Tokens",
+    "spend": "Spend",
+    "created": "Created",
+    "open": "Open"
+  },
+  "chart": {
+    "title": "Last 14 days",
+    "tokensTotal": "tokens total",
+    "barTitle": "{{date}}: {{tokens}} tokens, {{completed}} completed",
+    "tokensPerDay": "tokens / day",
+    "completions": "completions"
+  },
+  "breadcrumbUsers": "Users",
+  "userFallback": "User",
+  "usage": {
+    "paperclipServices": "Paperclip services",
+    "taskLinked": "Task-linked usage",
+    "billedThrough": "Billed through {{biller}}",
+    "agentAttribution": "Agent attribution",
+    "agentEmpty": "No issue-linked token usage yet.",
+    "providerMix": "Provider mix",
+    "providerEmpty": "No provider usage attributed yet."
+  },
+  "selectOrganization": "Select an organization to view user profiles.",
+  "notFound": "User profile not found for this organization.",
+  "joined": "joined {{date}}",
+  "editProfile": "Edit profile",
+  "hero": {
+    "allTimeTokens": "All-time tokens",
+    "spent": "{{amount}} spent",
+    "completed": "Completed",
+    "rate": "{{rate}} rate",
+    "openAssigned": "Open assigned",
+    "created": "{{value}} created",
+    "sevenDayActions": "7-day actions",
+    "comments": "{{value}} comments"
+  },
+  "recentTasks": "Recent tasks",
+  "noTouchedTasks": "No touched tasks yet.",
+  "recentActivity": "Recent activity",
+  "noActions": "No direct user actions recorded yet."
+}

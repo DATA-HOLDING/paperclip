@@ -1,0 +1,21 @@
+{
+  "reorder": "Reorder {{name}}",
+  "nounOrganization": "organization",
+  "nounCompany": "company",
+  "openSwitcherNamed": "Open {{name}} {{noun}} switcher",
+  "openSwitcher": "Open {{noun}} switcher",
+  "selectNoun": "Select {{noun}}",
+  "organizations": "Organizations",
+  "done": "Done",
+  "edit": "Edit",
+  "loadOrganizationsFailed": "Couldn't load organizations",
+  "loadCompaniesFailed": "Couldn't load companies",
+  "tryAgain": "Try again",
+  "noOrganizations": "No organizations",
+  "noCompanies": "No companies",
+  "createOrganization": "Create organization",
+  "invitePeopleTo": "Invite people to {{name}}",
+  "invitePeople": "Invite people",
+  "signingOut": "Signing out...",
+  "signOut": "Sign out"
+}

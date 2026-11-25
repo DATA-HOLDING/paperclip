@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { AiConnectionLoginIntent, LocalAiLoginAttempt, LocalAiLoginStatus } from "@paperclipai/shared";
 import { aiConnectionsApi } from "@/api/ai-connections";
 import { describeError } from "@/api/errors";
+import { t } from "@/i18n";
 
 /** Every authentication host uses the same local credential check and login lifecycle. */
 export function useLocalAiLogin(companyId: string | null, intent: AiConnectionLoginIntent, enabled: boolean) {
@@ -66,7 +67,7 @@ export function useLocalAiLogin(companyId: string | null, intent: AiConnectionLo
         setAuthorizationUrl(next.authorizationUrl ?? null);
         setCode(next.code ?? null);
         setAccountLabel(next.accountLabel ?? null);
-        setError(next.error ?? (next.status === "expired" ? "This sign-in attempt expired. Start sign-in again." : null));
+        setError(next.error ?? (next.status === "expired" ? t("componentsAiConnections.localLogin.expired") : null));
         // Stop polling a verified account. Focus rechecks after the provider
         // browser visit; sign-in never requires repeated Connect clicks.
         if (next.status === "sign_in_required") {
@@ -115,7 +116,7 @@ export function useLocalAiLogin(companyId: string | null, intent: AiConnectionLo
     },
     retry: () => { restartRequested.current = true; cancelCurrent(); setGeneration((value) => value + 1); },
     submitCode: async (browserCode: string) => {
-      if (!companyId || !attempt) throw new Error("Start sign-in before submitting a code.");
+      if (!companyId || !attempt) throw new Error(t("componentsAiConnections.localLogin.startFirst"));
       try {
         await aiConnectionsApi.submitLocalLoginCode(companyId, attempt.sessionId, browserCode);
         setError(null);
@@ -125,14 +126,14 @@ export function useLocalAiLogin(companyId: string | null, intent: AiConnectionLo
         if (latestIntent.current.provider === "google") {
           void checkRef.current?.();
         } else {
-          setError("Could not submit the authorization code. Start sign-in again.");
+          setError(t("componentsAiConnections.localLogin.submitFailed"));
         }
         throw cause;
       }
     },
     connect: (input = intent) => {
-      if (!companyId) throw new Error("Choose a company before connecting.");
-      if (isolated && !attempt) throw new Error("Prepare local sign-in before connecting.");
+      if (!companyId) throw new Error(t("componentsAiConnections.localLogin.chooseCompany"));
+      if (isolated && !attempt) throw new Error(t("componentsAiConnections.localLogin.prepareFirst"));
       return aiConnectionsApi.connectLocal(companyId, { ...input, ...(attempt ? { localSessionId: attempt.sessionId } : {}) });
     },
   };

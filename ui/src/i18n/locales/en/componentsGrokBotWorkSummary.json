@@ -1,0 +1,15 @@
+{
+  "refreshFailed": "Connection status could not be refreshed.",
+  "status": {
+    "recoveryNeeded": "Recovery needed",
+    "awaitingAcknowledgement": "Awaiting acknowledgement",
+    "working": "Working in Grok Bot",
+    "noActiveSession": "No active Paperclip work session",
+    "setupIncomplete": "Connection setup incomplete"
+  },
+  "queuedTasks": "Queued tasks:",
+  "checking": "Checking…",
+  "lastContact": "Last contact:",
+  "notObserved": "Not observed",
+  "footnote": "Shows Paperclip-reported activity. Open the Grok Bot desktop app to inspect the Bot’s complete activity."
+}

@@ -1,0 +1,37 @@
+{
+  "category": {
+    "unknown": "Ainda não resolvido",
+    "open": "Aberto",
+    "waiting": "Aguardando",
+    "running": "Em execução",
+    "succeeded": "Concluído com sucesso",
+    "failed": "Falhou",
+    "blocked": "Bloqueado",
+    "closed": "Fechado",
+    "archived": "Arquivado",
+    "authRequired": "Autorização necessária",
+    "rateLimited": "Limite de requisições atingido",
+    "unreachable": "Inacessível"
+  },
+  "liveness": {
+    "unknown": "Ainda não atualizado",
+    "fresh": "Atualizado",
+    "stale": "Desatualizado",
+    "authRequired": "Requer autenticação",
+    "rateLimited": "Limite de requisições atingido",
+    "unreachable": "Inacessível"
+  },
+  "statusUnavailable": "Status indisponível",
+  "external": "provedor externo",
+  "objectType": {
+    "pullRequest": "pull request",
+    "issue": "issue",
+    "deployment": "implantação",
+    "workflowRun": "execução de workflow",
+    "ticket": "ticket",
+    "lead": "lead",
+    "urlLink": "URL"
+  },
+  "object": "objeto",
+  "displayLabel": "{{type}} do {{provider}}"
+}

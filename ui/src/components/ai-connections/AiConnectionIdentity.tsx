@@ -8,6 +8,7 @@ import {
 } from "./model";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function AiConnectionIdentity({
   connection,
@@ -31,8 +32,8 @@ export function AiConnectionIdentity({
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
           <Icon aria-hidden className="size-3" />
           {connection.ownership === "shared"
-            ? "Company shared"
-            : `Personal · ${connection.ownerName ?? "Account owner"}`}
+            ? t("componentsAiConnections.identity.companyShared")
+            : t("componentsAiConnections.identity.personal", { owner: connection.ownerName ?? t("componentsAiConnections.identity.accountOwner") })}
         </span>
       </div>
     </div>

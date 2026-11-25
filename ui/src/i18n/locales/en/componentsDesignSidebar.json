@@ -1,0 +1,20 @@
+{
+  "globalSearch": "Global search",
+  "searchTooltip": "Search tasks, agents, projects",
+  "mainNavigation": "Main navigation",
+  "newTask": "New Task",
+  "dashboard": "Dashboard",
+  "chat": "Chat",
+  "work": "Work",
+  "tasks": "Tasks",
+  "projects": "Projects",
+  "routines": "Routines",
+  "artifacts": "Artifacts",
+  "org": "Org",
+  "agents": "Agents",
+  "skills": "Skills",
+  "connectors": "Connectors",
+  "audit": "Audit",
+  "recentTasks": "Recent Tasks",
+  "recentTasksRegion": "Recent tasks"
+}

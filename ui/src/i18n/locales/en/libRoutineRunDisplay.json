@@ -1,0 +1,8 @@
+{
+  "skipReasons": {
+    "noExternalActivity": "Skipped — no activity since last run",
+    "paused": "Skipped — routine paused",
+    "worktreeExecutionCutoff": "Skipped — worktree execution cutoff"
+  },
+  "runFailed": "Run failed"
+}

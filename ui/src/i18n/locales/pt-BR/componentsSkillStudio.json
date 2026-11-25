@@ -1,0 +1,138 @@
+{
+  "agentsUsing": {
+    "triggerLabel_one": "{{count}} agente usa esta skill",
+    "triggerLabel_other": "{{count}} agentes usam esta skill",
+    "updateFailedFallback": "Falha ao atualizar as skills do agente.",
+    "updateFailedTitle": "Falha na atualização",
+    "noPermission": "Você não tem permissão para alterar as skills deste agente.",
+    "title": "Agentes usando {{name}}",
+    "descriptionEmpty": "Nenhum agente tem esta skill atribuída ainda.",
+    "description_one": "{{count}} agente tem esta skill no conjunto desejado.",
+    "description_other": "{{count}} agentes têm esta skill no conjunto desejado.",
+    "emptyManage": "Adicione um agente abaixo para atribuir esta skill.",
+    "emptyReadOnly": "Esta skill não está atribuída a nenhum agente."
+  },
+  "agentRow": {
+    "versionAria": "Versão de {{name}}",
+    "skillVersionAria": "Versão da skill de {{name}}",
+    "latest": "Mais recente",
+    "behindLatest_one": "{{count}} versão atrás da mais recente",
+    "behindLatest_other": "{{count}} versões atrás da mais recente",
+    "confirmRemoveAria": "Confirmar remoção desta skill de {{name}}",
+    "remove": "Remover",
+    "cancel": "Cancelar",
+    "removeAria": "Remover esta skill de {{name}}"
+  },
+  "addAgent": {
+    "loading": "Carregando agentes...",
+    "placeholder": "Adicionar agente…",
+    "searchPlaceholder": "Buscar agentes...",
+    "empty": "Todos os agentes elegíveis já têm esta skill."
+  },
+  "fork": {
+    "successTitle": "Editando uma cópia",
+    "successBodySwitched_one": "Cópia de {{name}} criada e {{count}} agente passou a usá-la.",
+    "successBodySwitched_other": "Cópia de {{name}} criada e {{count}} agentes passaram a usá-la.",
+    "successBody": "Cópia de {{name}} criada. Agora ela pode ser editada.",
+    "errorTitle": "Não foi possível criar uma cópia",
+    "errorFallback": "A solicitação de cópia falhou.",
+    "createAndSwitch_one": "Criar cópia e trocar {{count}} agente",
+    "createAndSwitch_other": "Criar cópia e trocar {{count}} agentes",
+    "create": "Criar cópia",
+    "title": "Editar uma cópia de {{name}}",
+    "description": "{{name}} é somente leitura porque vem de uma fonte externa. Criar uma cópia totalmente editável no seu espaço de trabalho deixa o original intacto e ainda atualizável.",
+    "existingTitle": "Você já tem uma cópia",
+    "existingBody": "Já existe uma cópia não editada desta skill. Abra-a em vez de criar outra.",
+    "openExisting": "Abrir sua cópia existente",
+    "switchLabel": "Trocar estes agentes para a cópia",
+    "switchOn": "Estes agentes vão executar sua cópia em vez do original.",
+    "switchOff": "Estes agentes continuam executando o original — sua cópia não muda o que eles fazem.",
+    "noAgents": "Nada está atribuído a ela, então sua cópia não muda o comportamento de nenhum agente.",
+    "cancel": "Cancelar",
+    "createAnother": "Criar outra cópia"
+  },
+  "projectRepository": {
+    "aria": "Skills de {{project}}",
+    "defaultBranch": "Branch padrão",
+    "projectAccess": "Acesso do projeto",
+    "importing": "Importando…",
+    "retryImport": "Tentar importar novamente",
+    "importRemaining": "Importar skills restantes",
+    "importSkills": "Importar skills",
+    "starting": "Iniciando importação…",
+    "checking": "Procurando skills no repositório… Isso pode levar alguns minutos em repositórios grandes.",
+    "queued": "Importação na fila. As skills vão aparecer aqui quando estiverem prontas."
+  },
+  "policy": {
+    "dismiss": "Dispensar"
+  },
+  "provenance": {
+    "originalSkill": "a skill original",
+    "forkedFromTitle": "Copiada de {{label}}",
+    "forkedFrom": "Copiada de",
+    "workingTree": "a árvore de trabalho do projeto",
+    "livesIn": "Esta skill fica em",
+    "savesWrite": ". Os salvamentos são gravados na árvore de trabalho do projeto e não são commitados.",
+    "editCopy": "Editar uma cópia em vez disso"
+  },
+  "tabs": {
+    "installed": "Instaladas",
+    "discover": "Descobrir",
+    "authored": "Minhas skills",
+    "aria": "Visualizações de skills"
+  },
+  "branchRepair": {
+    "sourceChanged": "Esta fonte está sendo atualizada ou mudou. Seu branch continua selecionado. Tente salvar novamente.",
+    "refUnavailable": "O GitHub não encontrou esse branch ou revisão. Confira o nome ou escolha outro branch.",
+    "saveFailed": "Não foi possível trocar o branch. Tente novamente.",
+    "title": "Escolher um novo branch",
+    "currentlyTracking": "Acompanhando {{branch}}",
+    "defaultBranch": "o branch padrão",
+    "cancel": "Cancelar",
+    "changing": "Trocando branch…",
+    "change": "Trocar branch"
+  },
+  "connectionRepair": {
+    "title": "Escolher conexão do GitHub",
+    "description": "As atualizações automáticas vão usar seu acesso a esta conexão. As skills instaladas e as seleções continuam como estão.",
+    "loading": "Carregando conexões…",
+    "tryAgain": "Tentar novamente",
+    "connectToContinue": "Conecte o GitHub para continuar.",
+    "manage": "Gerenciar conexões do GitHub",
+    "sourceChanged": "Esta fonte foi atualizada. Sua conexão continua selecionada. Salve novamente para aplicá-la.",
+    "cancel": "Cancelar",
+    "saving": "Salvando…",
+    "save": "Salvar conexão",
+    "groupLabel": "Conexão do GitHub"
+  },
+  "sync": {
+    "automaticUpdates": "Atualizações automáticas",
+    "refreshing": "Atualizando…",
+    "refresh": "Atualizar"
+  },
+  "toolbar": {
+    "sort": {
+      "agents": "Mais agentes",
+      "stars": "Mais estrelas",
+      "forks": "Mais forks",
+      "recent": "Atualizadas recentemente",
+      "alphabetical": "Ordem alfabética"
+    },
+    "aria": "Controles de skills",
+    "sortLabel": "Ordenar",
+    "sourceLabel": "Fonte",
+    "all": "Todas",
+    "allSources": "Todas as fontes",
+    "scan": "Procurar skills nos espaços de trabalho dos projetos",
+    "newFolder": "Nova pasta",
+    "done": "Concluir",
+    "select": "Selecionar",
+    "new": "Nova",
+    "createSkill": "Criar nova skill",
+    "discover": "Descobrir skills",
+    "importGithub": "Importar do GitHub",
+    "manageSources": "Gerenciar fontes",
+    "importPath": "Importar de caminho ou URL",
+    "importProject": "Importar skills do projeto"
+  }
+}

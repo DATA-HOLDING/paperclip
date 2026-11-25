@@ -1,0 +1,4 @@
+{
+  "instanceContext": "URL da instância do Paperclip: {{origin}}\nUse esta instância na configuração. Não me pergunte a URL de novo, a menos que ela esteja indisponível ou eu peça para usar outra instância.",
+  "instanceUnavailable": "A URL da instância do Paperclip não está disponível. Pergunte-me antes de começar a configuração."
+}

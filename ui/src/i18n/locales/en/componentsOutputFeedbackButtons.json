@@ -1,0 +1,21 @@
+{
+  "helpful": "Helpful",
+  "needsWork": "Needs work",
+  "reasonTitle": "What could have been better?",
+  "reasonPlaceholder": "Add a short note",
+  "dismiss": "Dismiss",
+  "saving": "Saving...",
+  "saveNote": "Save note",
+  "alwaysAllow": "Always allow",
+  "dontAllow": "Don't allow",
+  "dialog": {
+    "title": "Save your feedback sharing preference",
+    "description": "Choose whether voted AI outputs can be shared with Paperclip Labs. This answer becomes the default for future thumbs up and thumbs down votes.",
+    "savedLocally": "This vote is always saved locally.",
+    "choose": "Choose",
+    "toShare": "to share this vote and future voted AI outputs. Choose",
+    "toKeepLocal": "to keep this vote and future votes local.",
+    "changeLater": "You can change this later in Settings > General.",
+    "terms": "Read our terms of service"
+  }
+}

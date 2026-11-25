@@ -1,8 +1,30 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
+// The UI copy lives in the English catalogs (src/i18n/locales/en/<area>.json)
+// and the components call t("<area>.<key>"). This contract reads the copy, so
+// each t("key" call is read as the English text it renders.
+const englishCatalogDir = new URL("../../../i18n/locales/en/", import.meta.url);
+const englishText = new Map<string, string>();
+for (const file of readdirSync(englishCatalogDir)) {
+  if (!file.endsWith(".json")) continue;
+  const area = file.slice(0, -".json".length);
+  const flatten = (prefix: string, node: unknown) => {
+    if (typeof node === "string") englishText.set(prefix, node);
+    else if (node && typeof node === "object") {
+      for (const [key, value] of Object.entries(node)) flatten(`${prefix}.${key}`, value);
+    }
+  };
+  flatten(area, JSON.parse(readFileSync(new URL(file, englishCatalogDir), "utf8")));
+}
+
 function source(relativePath: string) {
-  return readFileSync(new URL(relativePath, import.meta.url), "utf8");
+  const raw = readFileSync(new URL(relativePath, import.meta.url), "utf8");
+  return raw.replace(/\bt\("([^"]+)"(\))?/g, (call, key: string, closing: string | undefined) => {
+    const text = englishText.get(key);
+    if (text === undefined) return call;
+    return closing ? JSON.stringify(text) : `${JSON.stringify(text)}, (`;
+  });
 }
 
 describe("chat connector UI contract", () => {
@@ -184,9 +206,7 @@ describe("chat connector UI contract", () => {
     expect(setup).not.toContain("/setprivacy");
     expect(setup).toContain("/task@bot_username");
     expect(setup).toContain("registers its command menu automatically");
-    expect(setup).toContain(
-      "ordinary\n          mentions are not delivered to bots",
-    );
+    expect(setup).toMatch(/ordinary\s+mentions are not delivered to bots/);
     expect(setup).toContain("Create Azure Bot");
     expect(setup).toContain("Microsoft 365 work or school organization");
     expect(setup).toContain("teams.live.com");

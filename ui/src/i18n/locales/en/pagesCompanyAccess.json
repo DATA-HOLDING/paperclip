@@ -1,0 +1,100 @@
+{
+  "breadcrumbs": {
+    "organization": "Organization",
+    "settings": "Settings",
+    "members": "Members",
+    "access": "Access"
+  },
+  "toasts": {
+    "memberUpdated": "Member updated",
+    "updateFailed": "Failed to update member",
+    "joinApproved": "Join request approved",
+    "approveFailed": "Failed to approve join request",
+    "joinRejected": "Join request rejected",
+    "rejectFailed": "Failed to reject join request",
+    "memberRemoved": "Member removed",
+    "tasksCleanedUp_one": "{{count}} assigned task cleaned up.",
+    "tasksCleanedUp_other": "{{count}} assigned tasks cleaned up.",
+    "removeFailed": "Failed to remove member"
+  },
+  "selectOrganization": "Select an organization to manage access.",
+  "loading": "Loading organization access…",
+  "forbidden": "You do not have permission to manage organization members.",
+  "loadAction": "load organization members",
+  "title": "Organization Members",
+  "invitePeople": "Invite people",
+  "tabs": {
+    "members": "Members",
+    "invites": "Invites"
+  },
+  "instanceAdminNotice": "This account can manage access here through instance-admin privileges, but it does not currently hold an active organization membership.",
+  "pending": {
+    "title": "Pending human joins",
+    "description": "Review pending join requests before they become active organization members.",
+    "count": "{{count}} pending",
+    "unknownRequester": "Unknown human requester",
+    "noEmail": "No email available",
+    "joinInvite": "{{types}} join invite",
+    "defaultRole": " • default role {{role}}",
+    "noInviteMetadata": "Invite metadata unavailable",
+    "submitted": "Submitted {{time}}",
+    "approve": "Approve human",
+    "reject": "Reject human"
+  },
+  "table": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "action": "Action",
+    "empty": "No user memberships found for this organization yet."
+  },
+  "unset": "Unset",
+  "memberStatus": {
+    "pending": "pending",
+    "active": "active",
+    "suspended": "suspended",
+    "archived": "archived"
+  },
+  "edit": "Edit",
+  "remove": "Remove",
+  "cancel": "Cancel",
+  "editDialog": {
+    "title": "Edit member",
+    "description": "Update organization role and membership status for {{name}}.",
+    "role": "Organization role",
+    "status": "Membership status",
+    "statusOptions": {
+      "active": "Active",
+      "pending": "Pending",
+      "suspended": "Suspended"
+    },
+    "saving": "Saving…",
+    "save": "Save member"
+  },
+  "removeDialog": {
+    "title": "Remove member",
+    "description": "Archive {{name}} and move active assignments before hiding this user from assignment fields.",
+    "checking": "Checking assigned tasks...",
+    "openTasks_one": "{{count}} open assigned task",
+    "openTasks_other": "{{count}} open assigned tasks",
+    "reassignment": "Task reassignment",
+    "leaveUnassigned": "Leave unassigned",
+    "humans": "Humans",
+    "agents": "Agents",
+    "moreTasks_one": "{{count}} more task",
+    "moreTasks_other": "{{count}} more tasks",
+    "removing": "Removing..."
+  },
+  "legacy": {
+    "checking": "Checking for advanced permission extensions...",
+    "title": "Advanced Permissions",
+    "description": "Advanced access, scoped assignment, and explicit grant controls are provided by installed organization settings extensions.",
+    "unavailable": "Advanced permissions unavailable",
+    "unavailableDescription": "Core Paperclip keeps enforcing organization boundaries and any existing restrictive policy data, but editing advanced permissions requires an installed extension.",
+    "pluginError": "Plugin extensions unavailable: {{error}}",
+    "openMembers": "Open Members",
+    "openInvites": "Open Invites"
+  },
+  "thisMember": "this member"
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Anyone can email an unrestricted inbox",
+  "body": "Incoming email can create tasks and trigger agent work. Set up an allowlist in AgentMail to limit who can contact this inbox.",
+  "note": "Paperclip does not verify sender restrictions. AgentMail controls new messages and replies separately; check both lists.",
+  "openAgentMail": "Open AgentMail ↗",
+  "setUpAllowlists": "Set up allowlists ↗"
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Financial event mix",
+  "description": "Account-level charges grouped by event kind.",
+  "empty": "No finance events in this period.",
+  "events_one": "{{count}} event",
+  "events_other": "{{count}} events",
+  "billers_one": "{{count}} biller",
+  "billers_other": "{{count}} billers",
+  "debits": "{{amount}} debits"
+}

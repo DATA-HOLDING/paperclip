@@ -1,0 +1,4 @@
+{
+  "unknownParserError": "unknown parser error",
+  "parseError": "Chat transcript error: {{errorText}}. Falling back for line: {{preview}}"
+}

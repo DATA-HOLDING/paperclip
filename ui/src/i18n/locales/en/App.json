@@ -1,0 +1,13 @@
+{
+  "onboarding": {
+    "addAgentTitle": "Add another agent to {{name}}",
+    "createAnotherTitle": "Create another organization",
+    "createFirstTitle": "Create your first organization",
+    "addAgentDescription": "Run onboarding again to add an agent and a starter task for this organization.",
+    "createAnotherDescription": "Run onboarding again to create another organization and seed its first agent.",
+    "createFirstDescription": "Get started by creating an organization and your first agent.",
+    "addAgent": "Add Agent",
+    "start": "Start Onboarding"
+  },
+  "loadSettingsAction": "load your settings"
+}

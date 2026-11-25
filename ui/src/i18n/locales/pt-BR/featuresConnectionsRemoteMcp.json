@@ -1,0 +1,164 @@
+{
+  "providers": {
+    "zapier": {
+      "description": "Use os apps e as ações do seu servidor MCP do Zapier.",
+      "instructions": {
+        "0": "Crie um servidor MCP no Zapier e escolha Other como cliente.",
+        "1": "Conecte seus apps e selecione as ações a expor.",
+        "2": "Abra Connect, gere um token e copie a URL completa do servidor."
+      },
+      "placeholder": "Cole a URL completa do Zapier",
+      "urlHelp": "A URL completa do servidor pode conter um token secreto. Cole-a exatamente como o Zapier fornece.",
+      "authHelp": "Para um token separado, use https://mcp.zapier.com/api/v1/connect e escolha Bearer token."
+    },
+    "arcade": {
+      "description": "Use as ferramentas expostas pelo seu gateway do Arcade.",
+      "instructions": {
+        "0": "Crie um gateway no Arcade e selecione as ferramentas dele.",
+        "1": "Escolha a User Source e copie a URL do gateway.",
+        "2": "Cole a URL aqui e entre quando for solicitado."
+      },
+      "urlHelp": "Copie a URL do gateway MCP do Arcade. A autorização do app pode ser exigida na primeira vez que você usar uma ferramenta.",
+      "authHelp": "Para Arcade Headers, use uma chave de API como bearer token e adicione o cabeçalho Arcade-User-ID do usuário que age."
+    },
+    "composio": {
+      "description": "Descubra e use seus apps pelo Composio Connect.",
+      "instructions": {
+        "0": "Conecte-se ao Composio e entre com sua conta.",
+        "1": "Conecte os apps subjacentes no Composio quando for solicitado."
+      },
+      "urlHelp": "Cole a URL MCP da sua sessão existente do Composio. Se ela exigir cabeçalhos, adicione-os em Alterar.",
+      "authHelp": "As URLs de sessão e os cabeçalhos vêm da sua configuração externa do Composio. Sessões de ferramentas diretas expõem ações individuais."
+    },
+    "executor": {
+      "description": "Execute ferramentas pelo seu espaço de trabalho do Executor.",
+      "instructions": {
+        "0": "Conecte seus apps e configure as políticas de ações no Executor.",
+        "1": "Abra Integrations e copie a URL em “Connect an agent”.",
+        "2": "Cole-a aqui e entre quando for solicitado."
+      },
+      "placeholder": "Cole a URL MCP do seu espaço de trabalho do Executor",
+      "urlHelp": "Use a URL do espaço de trabalho hospedado ou um endpoint HTTP auto-hospedado acessível pelo Paperclip. A política de endpoints do servidor também se aplica.",
+      "authHelp": "Mantenha as opções da URL copiada. Se usar uma chave de API, use uma chave de usuário; chaves de espaço de trabalho e de organização não abrem sessão MCP."
+    }
+  },
+  "accountChoice": {
+    "titleThrough": "Conectar {{service}} por meio do {{provider}}",
+    "title": "Conectar {{provider}}",
+    "description": "Use uma conexão existente ou conecte uma nova conta. O acesso existente não muda.",
+    "externalBanner": "{{provider}} é um serviço externo que cuida da conexão e das solicitações para {{service}}. Reutilizar esta conta ainda não verifica o acesso ao app; o agente vai conferir e orientar qualquer autorização adicional.",
+    "accountAvailable": "Conta do provedor disponível",
+    "connectNew": "Conectar nova"
+  },
+  "common": {
+    "cancel": "Cancelar"
+  },
+  "designExample": {
+    "notice": "Apenas exemplo de design. Revise os estados interativos no Storybook → Apps / Connections. Nenhuma credencial é salva ou enviada."
+  },
+  "management": {
+    "title": "Configurações da conexão",
+    "reconnect": "Reconectar",
+    "manageIn": "Gerenciar no {{provider}}",
+    "disconnect": "Desconectar",
+    "confirmTitle": "Desconectar {{provider}}?",
+    "confirmDescription": "Exclui as credenciais salvas desta conexão e interrompe novas chamadas pelo Paperclip. As outras conexões não são afetadas. Ações já enviadas ao provedor ainda podem ser concluídas. Para conectar de novo, será preciso entrar ou informar uma chave novamente.",
+    "disconnecting": "Desconectando…",
+    "disconnectConnection": "Desconectar conexão"
+  },
+  "production": {
+    "credentialsRetained": "As credenciais salvas são mantidas quando estes campos ficam em branco. Informe um substituto só para alterá-las.",
+    "includeRequestingAgent": "Inclua o agente solicitante ou escolha todos os agentes para continuar esta tarefa.",
+    "headerIncomplete": "Informe um nome e um valor para cada cabeçalho.",
+    "consoleUrlInvalid": "Use uma URL de console HTTPS sem credenciais.",
+    "signInBlocked": "O Paperclip não conseguiu abrir a tela de entrada. Use o link de entrada abaixo para continuar.",
+    "loadSavedAccessAction": "carregar o acesso salvo",
+    "loadingSavedAccess": "Carregando o acesso salvo…"
+  },
+  "setup": {
+    "helpWith": "Ajuda sobre {{label}}",
+    "boundary": "O Paperclip controla o acesso às ferramentas listadas aqui. As permissões de apps e ações dentro dessas ferramentas são gerenciadas em",
+    "errors": {
+      "invalidUrl": {
+        "title": "Informe uma URL MCP válida",
+        "body": "Cole a URL completa do servidor, incluindo https:// ou http://. Uma página de painel não é um endpoint MCP."
+      },
+      "oauthFailed": {
+        "title": "Não foi possível conectar o {{provider}}",
+        "body": "A autorização não foi concluída. Sua conexão salva continua aqui, então você pode tentar novamente."
+      },
+      "rejected": {
+        "title": "As credenciais foram rejeitadas",
+        "body": "Confira ou substitua as credenciais do {{provider}} e reconecte. O acesso dos agentes e as escolhas de ferramentas são mantidos."
+      },
+      "unreachable": {
+        "title": "O Paperclip não conseguiu acessar este servidor",
+        "body": "Confira se o endpoint está no ar e acessível pelo Paperclip e tente novamente. Seu rascunho continua aqui."
+      }
+    },
+    "serverUrl": "URL do servidor MCP",
+    "consoleUrl": "URL do console (opcional)",
+    "executorConsoleUrl": "URL do console do Executor",
+    "consoleUrlHelp": "A URL da página de integrações da sua organização no Executor. Usada para abrir e gerenciar as contas importadas.",
+    "continueSetup": "Continue sua configuração",
+    "whoCanUse": "Quem pode usar esta conexão",
+    "reconnectProvider": "Reconectar {{provider}}",
+    "subtitle": {
+      "onYourBehalf": "O Paperclip vai usar o {{provider}} em seu nome.",
+      "readyToResume": "Sua configuração do {{provider}} está pronta para ser retomada.",
+      "manage": "Gerencie esta conexão do {{provider}}."
+    },
+    "connected": "Conectado",
+    "connectedAs": "Conectado como {{identity}}",
+    "actionsAvailable": "{{count}} ações disponíveis",
+    "connectStep": "Conectar",
+    "upstreamBanner": "{{provider}} cuida da conexão e das solicitações para {{service}}.",
+    "upstreamComposio": "Depois de conectar esta conta, entre no app pelo Composio.",
+    "upstreamOther": "Gerencie a entrada no app pelo provedor e depois atualize seu gateway aqui.",
+    "done": "Concluído",
+    "continue": "Continuar",
+    "permissions": "Permissões",
+    "openGuide": "Abrir o guia de configuração do {{provider}}",
+    "finishSignIn": "Conclua a entrada no {{provider}}",
+    "finishSignInBody": "Conclua a entrada na janela do provedor e volte para cá. O Paperclip está aguardando a confirmação.",
+    "windowDidNotOpen": "Se nenhuma janela abriu,",
+    "openSignInAgain": "abra a entrada novamente",
+    "cancelSignIn": "Cancelar entrada",
+    "waitingForSignIn": "Aguardando a entrada",
+    "cancelled": "Conexão cancelada. Os detalhes da configuração foram mantidos; tente novamente quando estiver pronto.",
+    "reuseSession": "Reutilizar uma sessão existente",
+    "authentication": "Autenticação",
+    "signInMethod": "Método de entrada",
+    "authOptions": {
+      "auto": "Automático (entrar se necessário)",
+      "bearer": "Bearer token",
+      "headers": "Cabeçalhos personalizados",
+      "none": "Sem autenticação adicional"
+    },
+    "bearerTokenLower": "bearer token",
+    "bearerHelp": "Cole apenas o token, sem a palavra Bearer. Ele fica guardado nas credenciais da conexão.",
+    "additionalHeaders": "Cabeçalhos adicionais",
+    "headers": "Cabeçalhos",
+    "headerName": "Nome do cabeçalho {{index}}",
+    "headerNamePlaceholder": "Nome do cabeçalho",
+    "headerValue": "Valor do cabeçalho {{index}}",
+    "removeHeader": "Remover cabeçalho {{index}}",
+    "addHeader": "Adicionar cabeçalho",
+    "discovering": "Conectando e descobrindo ferramentas…",
+    "back": "Voltar",
+    "connecting": "Conectando…",
+    "tryAgain": "Tentar novamente",
+    "disconnected": "Desconectado",
+    "disconnectedBody": "Os agentes não podem usar esta conexão. Reconecte para restaurar o acesso com as permissões salvas.",
+    "justMe": "Só eu",
+    "anyHuman": "Qualquer pessoa da organização",
+    "toolsCount": "{{count}} ferramentas",
+    "anyAgent": "Qualquer agente",
+    "agentsWithAccess": "{{count}} agentes com acesso",
+    "refreshHint": "Atualize o catálogo depois de alterar ferramentas no {{provider}}. As escolhas Desligado e Perguntar antes existentes são mantidas.",
+    "refreshing": "Atualizando…",
+    "refreshTools": "Atualizar ferramentas",
+    "draftKept": "Suas escolhas de acesso e o progresso da configuração ficam guardados nesta conexão.",
+    "resumeSetup": "Retomar configuração"
+  }
+}

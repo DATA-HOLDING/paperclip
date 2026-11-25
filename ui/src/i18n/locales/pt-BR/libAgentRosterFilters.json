@@ -1,0 +1,14 @@
+{
+  "connection": {
+    "notConfigured": "Não configurado",
+    "managedExternally": "Gerenciado externamente",
+    "localCredentials": "Credenciais locais",
+    "responsibleUserDefault": "Padrão do usuário responsável",
+    "connectionPool": "Pool de conexões",
+    "assignedConnection": "Conexão atribuída"
+  },
+  "model": {
+    "notAvailableYet": "Ainda não disponível",
+    "harnessDefault": "Padrão do harness"
+  }
+}

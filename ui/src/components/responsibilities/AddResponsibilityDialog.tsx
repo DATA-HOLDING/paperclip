@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useEffect, useState, type FormEvent } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ResponsibilityArea, ResponsibilityWithRollup } from "@paperclipai/shared";
@@ -60,7 +61,7 @@ export function AddResponsibilityDialog({
   const create = useMutation({
     mutationFn: async () => {
       const checked = validateBarDraft(draft);
-      if (!checked.ok) throw new Error("The form is incomplete");
+      if (!checked.ok) throw new Error(t("componentsResponsibilitiesAddResponsibilityDialog.formIncomplete"));
       let areaId: string | null = areaChoice === NO_AREA || areaChoice === NEW_AREA ? null : areaChoice;
       if (areaChoice === NEW_AREA) {
         // An existing area with this name comes back instead of a duplicate.
@@ -113,60 +114,60 @@ export function AddResponsibilityDialog({
       <DialogContent className="sm:max-w-xl">
         <form className="flex flex-col gap-5" onSubmit={submit} noValidate>
           <DialogHeader>
-            <DialogTitle>Add a responsibility</DialogTitle>
+            <DialogTitle>{t("componentsResponsibilitiesAddResponsibilityDialog.title")}</DialogTitle>
             <DialogDescription>
-              Something you own, with a bar for success and a number that shows whether you are meeting it.
+              {t("componentsResponsibilitiesAddResponsibilityDialog.description")}
             </DialogDescription>
           </DialogHeader>
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="font-medium text-foreground">What do you own?</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesAddResponsibilityDialog.titleLabel")}</span>
             <Input
               autoFocus
               value={title}
               maxLength={200}
-              placeholder="e.g. Investor pipeline"
+              placeholder={t("componentsResponsibilitiesAddResponsibilityDialog.titlePlaceholder")}
               aria-invalid={titleMissing || undefined}
               onChange={(event) => setTitle(event.target.value)}
             />
-            {titleMissing ? <span className="text-xs text-destructive">Name what you own</span> : null}
+            {titleMissing ? <span className="text-xs text-destructive">{t("componentsResponsibilitiesAddResponsibilityDialog.titleMissing")}</span> : null}
           </label>
           <div className="flex flex-col gap-1.5 text-sm">
             <label className="flex flex-col gap-1.5">
-              <span className="font-medium text-foreground">Area</span>
+              <span className="font-medium text-foreground">{t("componentsResponsibilitiesAddResponsibilityDialog.area")}</span>
               <NativeSelect value={areaChoice} onChange={(event) => setAreaChoice(event.target.value)}>
-                <option value={NO_AREA}>No area</option>
+                <option value={NO_AREA}>{t("componentsResponsibilitiesAddResponsibilityDialog.noArea")}</option>
                 {areas.map((area) => (
                   <option key={area.id} value={area.id}>{area.title}</option>
                 ))}
-                <option value={NEW_AREA}>New area…</option>
+                <option value={NEW_AREA}>{t("componentsResponsibilitiesAddResponsibilityDialog.newArea")}</option>
               </NativeSelect>
             </label>
             {areaChoice === NEW_AREA ? (
               <>
                 <Input
-                  aria-label="New area name"
+                  aria-label={t("componentsResponsibilitiesAddResponsibilityDialog.newAreaName")}
                   value={newAreaTitle}
                   maxLength={200}
-                  placeholder="e.g. Fundraising"
+                  placeholder={t("componentsResponsibilitiesAddResponsibilityDialog.newAreaPlaceholder")}
                   aria-invalid={newAreaMissing || undefined}
                   onChange={(event) => setNewAreaTitle(event.target.value)}
                 />
-                {newAreaMissing ? <span className="text-xs text-destructive">Name the new area</span> : null}
+                {newAreaMissing ? <span className="text-xs text-destructive">{t("componentsResponsibilitiesAddResponsibilityDialog.newAreaMissing")}</span> : null}
               </>
             ) : null}
           </div>
           <ResponsibilityBarFields draft={draft} onChange={setDraft} missing={missing} invalid={invalid} problems={problems} showCurrent />
           {create.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t add the responsibility. {describeError(create.error).body}
+              {t("componentsResponsibilitiesAddResponsibilityDialog.error", { message: describeError(create.error).body })}
             </p>
           ) : null}
           <DialogFooter className="items-center sm:justify-between">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("componentsResponsibilitiesAddResponsibilityDialog.cancel")}
             </Button>
             <Button type="submit" disabled={create.isPending}>
-              {create.isPending ? "Adding…" : "Add responsibility"}
+              {create.isPending ? t("componentsResponsibilitiesAddResponsibilityDialog.adding") : t("componentsResponsibilitiesAddResponsibilityDialog.submit")}
             </Button>
           </DialogFooter>
         </form>

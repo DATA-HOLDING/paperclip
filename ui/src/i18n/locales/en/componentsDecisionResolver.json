@@ -1,0 +1,20 @@
+{
+  "issueFallback": "issue {{id}}",
+  "effect": {
+    "comment": "Comment on {{target}}",
+    "create": "Create “{{title}}”",
+    "setStatus": "Set {{target}} to {{status}}",
+    "reassign": "Reassign {{target}}",
+    "unblock": "Unblock {{target}}",
+    "cancelTree": "Cancel {{target}} and its sub-tree",
+    "default": "Apply effect"
+  },
+  "required": "Required",
+  "options": "Options",
+  "targetChanged": "Target changed",
+  "staleNote": "A target changed since this was proposed, so options that need it unchanged are off.",
+  "submitting": "Submitting…",
+  "submit": "Submit choice",
+  "loading": "Loading decision…",
+  "gone": "This decision is no longer available — it may have been resolved elsewhere."
+}

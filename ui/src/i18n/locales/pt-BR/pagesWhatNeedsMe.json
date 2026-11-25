@@ -1,0 +1,45 @@
+{
+  "title": "Decisões",
+  "selectOrganization": "Selecione uma organização primeiro.",
+  "loadAction": "carregar suas decisões",
+  "history": "Histórico de decisões",
+  "aging": {
+    "label": "Envelhecendo",
+    "description": "Paradas há mais de {{days}} dias — fora da mesa. Mantenha as que você ainda quer em destaque."
+  },
+  "decided": {
+    "label": "Decididas",
+    "loading": "Carregando decisões decididas…",
+    "empty": "Nenhuma decisão decidida."
+  },
+  "expired": {
+    "label": "Expiradas",
+    "loading": "Carregando decisões expiradas…",
+    "empty": "Nenhuma decisão expirada."
+  },
+  "bundle": {
+    "proposed_one": "{{agent}} propôs {{count}} decisão",
+    "proposed_other": "{{agent}} propôs {{count}} decisões",
+    "anAgent": "Um agente",
+    "from": "· de ",
+    "pending": "· {{count}} pendentes"
+  },
+  "caughtUp": {
+    "mine": "Você está em dia.",
+    "unassigned": "Nenhum cartão precisa de responsável.",
+    "company": "Nenhum alerta da organização agora.",
+    "archived": "Nada arquivado.",
+    "all": "Nenhum cartão aberto para ninguém."
+  },
+  "noMatch": "Nenhuma decisão corresponde à sua busca ou aos filtros.",
+  "snoozedBelow": "Nenhum cartão arquivado. Os cartões adiados estão abaixo.",
+  "adjustFilters": "Ajuste ou limpe a busca e os filtros para ver o restante.",
+  "zeroState": {
+    "title": "Você está em dia",
+    "mine": "Nada precisa de uma decisão sua agora.",
+    "unassigned": "Todo cartão aberto tem um responsável.",
+    "company": "Nenhuma execução com falha, erro de agente, parada por orçamento ou pedido de entrada.",
+    "archived": "Os cartões que você arquiva ou adia para si aparecem aqui. Restaure um para vê-lo de novo.",
+    "all": "Ninguém tem um cartão aguardando agora."
+  }
+}

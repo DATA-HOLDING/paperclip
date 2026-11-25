@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { t } from "@/i18n";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FlaskConical, Loader2, Plus } from "lucide-react";
 
@@ -35,7 +36,7 @@ export function StatusCards() {
   const [actionError, setActionError] = useState<string | null>(null);
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Status" }]);
+    setBreadcrumbs([{ label: t("pagesStatusCards.page.breadcrumb") }]);
   }, [setBreadcrumbs]);
 
   const activeQuery = useQuery({
@@ -78,25 +79,25 @@ export function StatusCards() {
     mutationFn: (id: string) => statusCardsApi.refresh(id),
     onMutate: () => setActionError(null),
     onSuccess: () => invalidateLists(),
-    onError: (err) => setActionError(describeError(err, { action: "refresh the card" }).body),
+    onError: (err) => setActionError(describeError(err, { action: t("pagesStatusCards.page.refreshAction") }).body),
   });
   const recompileMutation = useMutation({
     mutationFn: (id: string) => statusCardsApi.recompile(id),
     onMutate: () => setActionError(null),
     onSuccess: () => invalidateLists(),
-    onError: (err) => setActionError(describeError(err, { action: "run the card" }).body),
+    onError: (err) => setActionError(describeError(err, { action: t("pagesStatusCards.page.runAction") }).body),
   });
   const archiveMutation = useMutation({
     mutationFn: (id: string) => statusCardsApi.patch(id, { archived: true }),
     onMutate: () => setActionError(null),
     onSuccess: () => invalidateLists(),
-    onError: (err) => setActionError(describeError(err, { action: "archive the card" }).body),
+    onError: (err) => setActionError(describeError(err, { action: t("pagesStatusCards.page.archiveAction") }).body),
   });
   const restoreMutation = useMutation({
     mutationFn: (id: string) => statusCardsApi.patch(id, { archived: false }),
     onMutate: () => setActionError(null),
     onSuccess: () => invalidateLists(),
-    onError: (err) => setActionError(describeError(err, { action: "restore the card" }).body),
+    onError: (err) => setActionError(describeError(err, { action: t("pagesStatusCards.page.restoreAction") }).body),
   });
 
   const openDetail = (id: string, tab: string = "summary") => {
@@ -119,44 +120,44 @@ export function StatusCards() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <h1 className="text-xl font-bold">Status</h1>
+          <h1 className="text-xl font-bold">{t("pagesStatusCards.page.title")}</h1>
           <Badge variant="secondary" className="gap-1">
             <FlaskConical className="h-3 w-3" />
-            Experimental
+            {t("pagesStatusCards.page.experimental")}
           </Badge>
         </div>
         <div className="flex items-center gap-4">
           {showCostMeter ? (
             <span className="text-xs text-muted-foreground">
-              Today: {formatTokens(todayTotals.tokens)} · ~{formatCents(todayTotals.cents)}
+              {t("pagesStatusCards.page.today", { tokens: formatTokens(todayTotals.tokens), cost: formatCents(todayTotals.cents) })}
             </span>
           ) : null}
           <Button onClick={() => setCreateOpen(true)} disabled={!selectedCompanyId}>
             <Plus className="h-4 w-4" />
-            New card
+            {t("pagesStatusCards.page.newCard")}
           </Button>
         </div>
       </div>
 
-      {actionError ? <InlineBanner tone="warning" title="Heads up">{actionError}</InlineBanner> : null}
+      {actionError ? <InlineBanner tone="warning" title={t("pagesStatusCards.page.headsUp")}>{actionError}</InlineBanner> : null}
 
       {activeView.kind === "loading" || activeView.kind === "reconnecting" ? (
         <div className="flex items-center gap-2 py-12 text-sm text-muted-foreground">
-          <Loader2 className="h-4 w-4 animate-spin" /> Loading cards…
+          <Loader2 className="h-4 w-4 animate-spin" /> {t("pagesStatusCards.page.loading")}
         </div>
       ) : activeView.kind === "error" ? (
         <QueryErrorState
           error={activeView.error}
-          action="load status cards"
+          action={t("pagesStatusCards.page.loadAction")}
           onRetry={activeView.retry}
           retrying={activeView.isFetching}
         />
       ) : activeCards.length === 0 ? (
         <EmptyState
           icon={FlaskConical}
-          title="No status cards yet"
-          message="Create a card to keep a living summary of the issues you care about."
-          action={selectedCompanyId ? "New card" : undefined}
+          title={t("pagesStatusCards.page.emptyTitle")}
+          message={t("pagesStatusCards.page.emptyMessage")}
+          action={selectedCompanyId ? t("pagesStatusCards.page.newCard") : undefined}
           onAction={() => setCreateOpen(true)}
         />
       ) : (
@@ -186,7 +187,7 @@ export function StatusCards() {
             onClick={() => setShowArchived((prev) => !prev)}
             className="text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
           >
-            {showArchived ? "Hide archived" : `Show archived (${archivedCards.length})`}
+            {showArchived ? t("pagesStatusCards.page.hideArchived") : t("pagesStatusCards.page.showArchived", { count: archivedCards.length })}
           </button>
           {showArchived
             ? archivedCards.map((card) => (

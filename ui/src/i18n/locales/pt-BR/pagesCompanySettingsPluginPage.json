@@ -1,0 +1,10 @@
+{
+  "breadcrumb": "Configurações",
+  "selectOrganization": "Selecione uma organização para ver esta página.",
+  "loading": "Carregando...",
+  "loadAction": "carregar as extensões de plugin",
+  "duplicateRoute": {
+    "before": "Mais de um plugin declara a rota de configurações da organização",
+    "after": ". Desative um dos plugins ou mude a rota dele."
+  }
+}

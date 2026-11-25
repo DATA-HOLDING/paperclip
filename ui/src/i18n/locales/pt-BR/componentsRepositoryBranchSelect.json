@@ -1,0 +1,14 @@
+{
+  "branch": "Branch",
+  "chooseBranch": "Escolha uma branch",
+  "searchPlaceholder": "Busque ou digite o nome de uma branch…",
+  "defaultBranchGroup": "Branch padrão",
+  "branchesGroup": "Branches",
+  "emptyLoading": "As branches estão carregando. Você ainda pode digitar um nome.",
+  "emptyNoMatch": "Nenhuma branch encontrada. Digite o nome de uma branch para usá-la.",
+  "useEntered": "Usar “{{name}}”",
+  "defaultBadge": "Padrão",
+  "loading": "Carregando branches…",
+  "errorHint": "Você ainda pode digitar o nome de uma branch.",
+  "tryAgain": "Tentar novamente"
+}

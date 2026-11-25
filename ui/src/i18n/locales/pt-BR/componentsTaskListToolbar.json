@@ -1,0 +1,14 @@
+{
+  "taskListControls": "Controles da lista de tarefas",
+  "taskView": "Visualização de tarefas: {{label}}",
+  "taskViews": "Visualizações de tarefas",
+  "views": "Visualizações",
+  "searchTasks": "Buscar tarefas",
+  "searchTasksPlaceholder": "Buscar tarefas…",
+  "taskLayout": "Layout das tarefas",
+  "listView": "Visualização em lista",
+  "boardView": "Visualização em quadro",
+  "collapseAll": "Recolher todas as tarefas",
+  "expandAll": "Expandir todas as tarefas",
+  "newTask": "Nova tarefa"
+}

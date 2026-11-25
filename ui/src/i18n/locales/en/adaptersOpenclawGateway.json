@@ -1,0 +1,32 @@
+{
+  "labels": {
+    "gatewayUrl": "Gateway URL",
+    "agentId": "Agent ID",
+    "sessionStrategy": "Session strategy",
+    "sessionKey": "Session key",
+    "role": "Role",
+    "scopes": "Scopes (comma-separated)",
+    "apiUrlOverride": "Paperclip API URL override",
+    "headersJson": "Headers JSON",
+    "claimedApiKeyPath": "Claimed API key path",
+    "disableDeviceAuth": "Disable device auth",
+    "autoPair": "Auto-pair on first connect",
+    "deviceAuth": "Device auth",
+    "timeout": "Timeout (seconds)",
+    "waitTimeout": "Wait timeout (ms)",
+    "authToken": "Gateway auth token",
+    "password": "Password (alternative auth)"
+  },
+  "placeholders": {
+    "authToken": "OpenClaw gateway token",
+    "password": "Gateway shared password"
+  },
+  "strategy": {
+    "fixed": "Fixed",
+    "issue": "Per issue",
+    "run": "Per run"
+  },
+  "skipDeviceAuth": "Skip device key authentication",
+  "autoApprovePairing": "Automatically approve device pairing",
+  "deviceAuthHelp": "When enabled, Paperclip persists a device key during onboarding so pairing approvals remain stable across runs."
+}

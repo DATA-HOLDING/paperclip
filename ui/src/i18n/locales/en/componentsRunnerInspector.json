@@ -1,0 +1,179 @@
+{
+  "views": {
+    "overview": "Overview",
+    "pipeline": "Pipeline",
+    "trace": "Exact trace"
+  },
+  "badge": {
+    "capturing": "Raw trace enabled",
+    "incomplete": "Incomplete",
+    "truncated": "Truncated",
+    "deleted": "Deleted",
+    "expired": "Expired",
+    "expiresIn": "Expires in {{hours}}h"
+  },
+  "visibility": {
+    "unregistered": "No production surface registration exists for this event type.",
+    "primaryTurn": "primary run turn",
+    "collapsedActivity": "collapsed activity",
+    "render": "render",
+    "fold": "fold",
+    "operatorOnly": "operator only"
+  },
+  "operation": {
+    "providerFrame": "Provider frame",
+    "frame": "frame {{id}}",
+    "frames": "frames {{from}}–{{to}}",
+    "prpEvents_one": "{{count}} PRP event",
+    "prpEvents_other": "{{count}} PRP events",
+    "eventSeq": "event {{seq}}",
+    "noRawCorrelation": "no raw correlation",
+    "visibleEvent": "Visible production event",
+    "hiddenEvent": "Hidden production event",
+    "noEvent": "No production event",
+    "framesBadge": "{{frames}} frames"
+  },
+  "json": {
+    "collapse": "Collapse JSON value",
+    "expand": "Expand JSON value",
+    "pathCopied": "JSON path copied",
+    "copyFailed": "Copy failed",
+    "copyPath": "Copy JSON path",
+    "valueCopied": "Value copied",
+    "copyValue": "Copy value",
+    "noMatch": "No fields match.",
+    "search": "Search this JSON"
+  },
+  "stage": {
+    "notCarried": "Field was not carried into the next stage",
+    "action": "Action",
+    "providerPath": "Provider path",
+    "outputPath": "Output path",
+    "reason": "Reason",
+    "noMapping": "No field-level mapping was recorded at this stage."
+  },
+  "prpFields": {
+    "eventType": "Event type",
+    "sourceEvent": "Source event",
+    "sequence": "Sequence",
+    "itemType": "Item type",
+    "status": "Status",
+    "query": "Query"
+  },
+  "surfacePreview": "Production surface: {{surface}} · {{action}} in {{container}}",
+  "confirm": {
+    "reveal": "This exact provider frame may contain prompts, tool arguments, secrets, or reasoning. Reveal it now?",
+    "download": "Download the exact raw trace? It may contain sensitive prompts, tool arguments, and provider-only fields.",
+    "delete": "Delete this raw trace immediately? This cannot be undone."
+  },
+  "title": "Runner Inspector",
+  "description": "Correlate exact provider traffic with every interpretation stage, canonical PRP event, and production surface.",
+  "viewsLabel": "Runner inspector views",
+  "loadAction": "load the runner inspection",
+  "deleteAction": "delete the raw trace",
+  "noAccess": {
+    "title": "Raw provider traces require an instance administrator.",
+    "body": "Canonical PRP events and presentation decisions remain inspectable below."
+  },
+  "captureOff": {
+    "title": "Raw provider capture was off for this run.",
+    "body": "Canonical PRP events and persisted presentation decisions remain available below.",
+    "rerun": "Re-run with provider trace"
+  },
+  "loading": "Loading run pipeline…",
+  "stats": {
+    "provider": "Provider",
+    "prpOnly": "PRP only",
+    "capturedThrough": "captured through {{provider}}",
+    "captureWasOff": "capture was off",
+    "rawFrames": "Raw frames",
+    "noExactBytes": "no exact bytes",
+    "operations": "Operations",
+    "correlatedGroups": "correlated groups",
+    "prpEvents": "PRP events",
+    "visible": "{{count}} visible",
+    "mappings": "Mappings",
+    "ignored": "{{count}} ignored",
+    "runStatus": "Run status",
+    "rawCaptureOff": "Raw capture off"
+  },
+  "unknown": "unknown",
+  "overview": {
+    "outcomes": "Interpretation outcomes",
+    "noRecords": "No interpretation records were persisted.",
+    "recent": "Recent correlated operations",
+    "sensitiveTitle": "Sensitive debug data",
+    "sensitiveBody": "Parsed frames are redacted on the server. Exact reveals and downloads are administrator-only, warned, audited, and automatically expire."
+  },
+  "filters": {
+    "search": "Search operations, fields, and events",
+    "direction": "Direction",
+    "allDirections": "All directions",
+    "clientToProvider": "Client → provider",
+    "providerToClient": "Provider → client",
+    "providerStderr": "Provider stderr",
+    "nativeMethod": "Native method",
+    "allNativeMethods": "All native methods",
+    "mapping": "Mapping",
+    "allMappings": "All mappings",
+    "prpType": "PRP type",
+    "allPrpTypes": "All PRP types",
+    "visibility": "Visibility",
+    "visibleAndHidden": "Visible + hidden",
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "noMatch": "No operations match these filters."
+  },
+  "pipeline": {
+    "rawFrames_one": "{{count}} raw frame",
+    "rawFrames_other": "{{count}} raw frames",
+    "mappingStages_one": "{{count}} mapping stage",
+    "mappingStages_other": "{{count}} mapping stages",
+    "providerFrames": "Provider frames",
+    "serverRedacted": "server-redacted by default",
+    "withheldPaths": "Withheld paths: {{paths}}",
+    "reveal": "Reveal exact frame",
+    "exactUnredacted": "Exact unredacted frame",
+    "searchExactFrame": "Search exact frame",
+    "noRawFrame": "This PRP event has no recoverable raw frame.",
+    "interpretationStages": "Interpretation stages",
+    "noStage": "No interpretation stage was recorded for this frame.",
+    "canonicalEvents": "Canonical PRP events",
+    "seq": "seq {{seq}}",
+    "whyNotVisible": "Why isn’t this visible?",
+    "canonicalEventJson": "Canonical event JSON",
+    "noCanonicalEvents": "This provider operation emitted no canonical PRP events.",
+    "productionPresentation": "Production presentation",
+    "surfacePreview": "Production surface preview",
+    "noSurface": "No presentation surface was emitted for this operation.",
+    "resolvedDecision": "Resolved final response decision",
+    "selectOperation": "Select a correlated operation to inspect its pipeline."
+  },
+  "decision": {
+    "visible": "Visible",
+    "yes": "yes",
+    "no": "no",
+    "surface": "Surface",
+    "container": "Container",
+    "state": "State",
+    "action": "Action",
+    "reason": "Reason",
+    "reasonCode": "Reason code"
+  },
+  "lineage": {
+    "title": "Semantic finalization lineage",
+    "body": "Provider-native transport and model-authored tool arguments are separate layers. PRP normalized the model payload, then server policy chose the issue disposition.",
+    "environmentConstraint": "was model-authored tool payload data, not a Codex app-server event. It was normalized into a non-blocking verification caveat.",
+    "policy": "Policy",
+    "decisionReason": "Decision reason",
+    "caveats": "Normalized caveats and ignored requests"
+  },
+  "trace": {
+    "noFrames": "No raw frames were captured for this run.",
+    "frameTitle": "Exact trace frame #{{id}}",
+    "selectFrame": "Select a frame from the chronological trace."
+  },
+  "footer": "{{frames}} frames · {{size}} · expires {{date}}",
+  "downloadTrace": "Download exact trace",
+  "deleteTrace": "Delete trace"
+}

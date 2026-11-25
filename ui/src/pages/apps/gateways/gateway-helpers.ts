@@ -7,6 +7,7 @@ import type {
   ToolProfileWithDetails,
 } from "@paperclipai/shared";
 import { humanizeConnectionDisplayName, isToolConnectionAttentionHealth } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /** Days before expiry at which we surface a token as "Expiring". */
 export const TOKEN_EXPIRING_WINDOW_DAYS = 14;
@@ -40,11 +41,11 @@ export function tokenStatus(
 }
 
 export const TOKEN_STATUS_LABEL: Record<TokenStatus, string> = {
-  pending: "Not revealed",
-  active: "Active",
-  expiring: "Expiring",
-  expired: "Expired",
-  revoked: "Revoked",
+  pending: t("pagesAppsGateways.helpers.status.pending"),
+  active: t("pagesAppsGateways.helpers.status.active"),
+  expiring: t("pagesAppsGateways.helpers.status.expiring"),
+  expired: t("pagesAppsGateways.helpers.status.expired"),
+  revoked: t("pagesAppsGateways.helpers.status.revoked"),
 };
 
 /** Count of tokens that can currently authenticate (not revoked, not expired). */
@@ -80,23 +81,23 @@ export function formatScope(
 ): string {
   if (gateway.contextScopeType !== "none" && gateway.contextScopeId) {
     if (gateway.contextScopeType === "project") {
-      return `Project · ${projectNames.get(gateway.contextScopeId) ?? shortId(gateway.contextScopeId)}`;
+      return t("pagesAppsGateways.helpers.scopeProject", { name: projectNames.get(gateway.contextScopeId) ?? shortId(gateway.contextScopeId) });
     }
     if (gateway.contextScopeType === "agent") {
-      return `Agent · ${agentNames.get(gateway.contextScopeId) ?? shortId(gateway.contextScopeId)}`;
+      return t("pagesAppsGateways.helpers.scopeAgent", { name: agentNames.get(gateway.contextScopeId) ?? shortId(gateway.contextScopeId) });
     }
     return `${gateway.contextScopeType} · ${shortId(gateway.contextScopeId)}`;
   }
-  if (gateway.projectId) return `Project · ${projectNames.get(gateway.projectId) ?? shortId(gateway.projectId)}`;
-  if (gateway.agentId) return `Agent · ${agentNames.get(gateway.agentId) ?? shortId(gateway.agentId)}`;
-  return "Organization";
+  if (gateway.projectId) return t("pagesAppsGateways.helpers.scopeProject", { name: projectNames.get(gateway.projectId) ?? shortId(gateway.projectId) });
+  if (gateway.agentId) return t("pagesAppsGateways.helpers.scopeAgent", { name: agentNames.get(gateway.agentId) ?? shortId(gateway.agentId) });
+  return t("pagesAppsGateways.helpers.scopeOrganization");
 }
 
 export function formatOwner(gateway: ToolMcpGatewayWithTokens, agentNames: Map<string, string>): string {
   if (gateway.createdByAgentId) {
-    return agentNames.get(gateway.createdByAgentId) ?? `Agent ${shortId(gateway.createdByAgentId)}`;
+    return agentNames.get(gateway.createdByAgentId) ?? t("pagesAppsGateways.helpers.ownerAgent", { id: shortId(gateway.createdByAgentId) });
   }
-  return "Board";
+  return t("pagesAppsGateways.helpers.ownerBoard");
 }
 
 /** Whether the gateway is exposing tools to clients right now. */
@@ -106,14 +107,14 @@ export function isGatewayOn(gateway: ToolMcpGatewayWithTokens): boolean {
 
 /** Human summary of how many tools a profile allows. */
 export function allowedToolsLabel(profile: ToolProfileWithDetails | undefined): string {
-  if (!profile) return "Profile unavailable";
+  if (!profile) return t("pagesAppsGateways.helpers.profileUnavailable");
   const { accessMode, allowedToolCount, totalToolCount, excludedToolCount } = profile.summary;
   const count =
     accessMode === "all_except"
       ? Math.max(totalToolCount - excludedToolCount, 0)
       : allowedToolCount;
-  if (count === 0) return "No tools allowed";
-  return `${count} ${count === 1 ? "tool" : "tools"}`;
+  if (count === 0) return t("pagesAppsGateways.helpers.noToolsAllowed");
+  return count === 1 ? t("pagesAppsGateways.helpers.toolCount_one", { count }) : t("pagesAppsGateways.helpers.toolCount_other", { count });
 }
 
 export type GatewayAppRow = {
@@ -178,7 +179,7 @@ export function deriveGatewayApps(
       toolCount: toolCountByApp.get(applicationId) ?? 0,
       needsAttention: Boolean(attentionConnection),
       attentionReason: attentionConnection
-        ? "Sign-in expired — reconnect to restore access."
+        ? t("pagesAppsGateways.helpers.signInExpired")
         : null,
     });
   }

@@ -1,0 +1,17 @@
+{
+  "browseInGallery": "Browse {{filename}} in gallery",
+  "openFile": "Open {{filename}}",
+  "downloadFile": "Download {{filename}}",
+  "taskOutputs": "Task outputs",
+  "output": "Output",
+  "alsoProduced": "Also produced",
+  "metadataUnavailable": "Output metadata is unavailable — this file can’t be played or downloaded here.",
+  "primary": "Primary",
+  "browse": "Browse",
+  "open": "Open",
+  "download": "Download",
+  "fileDetailsUnavailable": "File details unavailable",
+  "openInNewTab": "Open in new tab",
+  "videoOutputNamed": "Video output: {{title}}",
+  "videoOutput": "Video output"
+}

@@ -1,4 +1,5 @@
 import type { ToolCatalogEntry } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 export type ActionPermissionSummary = {
   allowedCount: number;
@@ -28,14 +29,14 @@ export function summarizeActionPermissions(
   return { allowedCount, askFirstCount, offCount };
 }
 
-function summaryCount(label: string, count: number): string {
-  return `${label} ${count}${count === 1 ? " action" : ""}`;
+function summaryCount(key: "allowed" | "askFirst" | "off", count: number): string {
+  return t(`pagesAppsAppDetail.actionPermissionSummary.${key}`, { count });
 }
 
 export function formatActionPermissionSummary(summary: ActionPermissionSummary): string {
   return [
-    summaryCount("Allowed for", summary.allowedCount),
-    summaryCount("Ask first for", summary.askFirstCount),
-    summaryCount("Off for", summary.offCount),
+    summaryCount("allowed", summary.allowedCount),
+    summaryCount("askFirst", summary.askFirstCount),
+    summaryCount("off", summary.offCount),
   ].join(" · ");
 }

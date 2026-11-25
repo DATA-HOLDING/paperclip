@@ -1,0 +1,19 @@
+{
+  "sort": {
+    "top": "Mais usados",
+    "alphabetical": "Alfabética",
+    "recent": "Recentes"
+  },
+  "privateProject": "Projeto privado",
+  "pausedByBudget": "Projeto pausado pelo orçamento",
+  "openActions": "Abrir ações de {{name}}",
+  "leaving": "Saindo...",
+  "leave": "Sair do projeto",
+  "section": {
+    "label": "Projetos",
+    "newProject": "Novo projeto",
+    "actions": "Ações da seção de projetos",
+    "browse": "Navegar pelos projetos",
+    "sort": "Ordenação dos projetos"
+  }
+}

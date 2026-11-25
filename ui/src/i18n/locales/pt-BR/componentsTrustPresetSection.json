@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "project_one": "{{count}} projeto",
+    "project_other": "{{count}} projetos",
+    "issue_one": "{{count}} tarefa",
+    "issue_other": "{{count}} tarefas",
+    "agent_one": "{{count}} agente",
+    "agent_other": "{{count}} agentes",
+    "binding_one": "{{count}} vínculo",
+    "binding_other": "{{count}} vínculos"
+  },
+  "targets": {
+    "project": "Projeto",
+    "rootIssue": "Tarefa raiz",
+    "issue": "Tarefa"
+  },
+  "containmentActive": "Contenção ativa",
+  "containmentMissing": "Contenção não configurada",
+  "containmentActiveBody": "Este agente só pode ler e alterar trabalho dentro do limite de revisão atribuído a ele. A saída bruta fica em quarentena para agentes de maior confiança até que um revisor confiável a promova.",
+  "containmentMissingBody": "Este agente está em revisão de baixa confiança, mas nenhum escopo de projeto, tarefa raiz ou tarefa foi definido na política principal. Adicione um escopo para que este agente possa executar sem ser negado.",
+  "boundaryType": "Tipo de limite",
+  "loading": "Carregando…",
+  "noProjects": "Nenhum projeto disponível",
+  "noIssues": "Nenhuma tarefa disponível",
+  "selectBoundary": "Selecione o limite",
+  "ceNote": "O CE salva um limite de contenção por vez. As políticas salvas incluem o id desta organização.",
+  "clearBoundary": "Limpar limite",
+  "managedByEe": "Gerenciado pelo EE/API",
+  "managedByEeBody": "Esta política tem {{summary}} e não pode ser editada pelo editor de limite único do CE.",
+  "moreBoundaries": "Quer definir mais de um limite de contenção?",
+  "getEe": "Obtenha o Paperclip EE.",
+  "viewPolicy": "Ver política",
+  "policy": {
+    "preset": "Predefinição",
+    "presetValue": "Revisão de baixa confiança v1",
+    "rawOutput": "Saída bruta",
+    "rawOutputValue": "Em quarentena para agentes de maior confiança",
+    "projects": "Projetos",
+    "rootIssue": "Tarefa raiz",
+    "explicitIssues": "Tarefas explícitas",
+    "allowedAgents": "Agentes permitidos",
+    "allowedTools": "Ferramentas permitidas",
+    "allowedSecrets": "Segredos permitidos",
+    "promotionTarget": "Destino da promoção",
+    "eeFields": "Campos do EE",
+    "customFields": "Campos avançados personalizados da política preservados"
+  },
+  "trustPreset": "Predefinição de confiança",
+  "advancedNote": "As permissões avançadas continuam editáveis pela extensão de permissões do EE, quando instalada.",
+  "trust": "Confiança",
+  "trustPresetHint": "Escolha o quanto este agente pode ler e agir sobre os objetos de trabalho do Paperclip."
+}

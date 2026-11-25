@@ -1,0 +1,25 @@
+{
+  "retry": "Tentar novamente",
+  "loadingConfiguration": "Carregando configuração…",
+  "invalidYaml": "YAML inválido",
+  "reloadBeforeSaving": "Recarregue a versão salva antes de salvar de novo.",
+  "agentSaved": "Agente salvo",
+  "intro": "Configurações omitidas permanecem inalteradas. O conteúdo dos arquivos de instruções, o acesso herdado e o histórico estão disponíveis nas abas de configuração correspondentes.",
+  "createdCredentials": "Credenciais criadas",
+  "copyKeyNow": "Copie esta chave agora. Ela não será mostrada de novo depois que você sair desta página.",
+  "tokenLabel": "Token de {{label}}",
+  "changesToApply_one": "{{count}} alteração a aplicar",
+  "changesToApply_other": "{{count}} alterações a aplicar",
+  "changesOrder": "As alterações são salvas nesta ordem. Se uma falhar, as anteriores continuam salvas.",
+  "reloadSaved": "Recarregar versão salva",
+  "status": {
+    "saving": "Salvando: {{progress}}…",
+    "configuration": "configuração",
+    "noChanges": "Nenhuma alteração de configuração",
+    "unsaved": "Alterações não salvas",
+    "noUnsaved": "Nenhuma alteração não salva"
+  },
+  "saving": "Salvando…",
+  "saveChanges": "Salvar alterações",
+  "yamlLabel": "Configuração YAML do agente"
+}

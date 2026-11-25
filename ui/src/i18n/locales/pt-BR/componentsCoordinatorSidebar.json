@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "search": "Buscar",
+    "dashboard": "Painel",
+    "projects": "Projetos",
+    "routines": "Rotinas",
+    "artifacts": "Artefatos",
+    "agents": "Agentes",
+    "skills": "Skills",
+    "connectors": "Conectores",
+    "audit": "Auditoria",
+    "settings": "Configurações",
+    "cases": "Casos",
+    "chat": "Chat",
+    "tasks": "Tarefas",
+    "inbox": "Caixa de entrada"
+  },
+  "recents": "Recentes",
+  "newTask": "Nova tarefa",
+  "globalSearch": "Busca global",
+  "searchTooltip": "Buscar tarefas, agentes, projetos",
+  "workspaceNavigation": "Navegação do espaço de trabalho",
+  "badge": {
+    "unreadChats": "chats não lidos",
+    "decisions": "decisões"
+  },
+  "morePages": "Mais páginas do espaço de trabalho",
+  "more": "Mais"
+}

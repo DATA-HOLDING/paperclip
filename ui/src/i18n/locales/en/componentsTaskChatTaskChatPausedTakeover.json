@@ -1,0 +1,10 @@
+{
+  "subtreePaused": "Subtree is paused.",
+  "taskPaused": "Task is paused.",
+  "resumeSubtreeHint": "Resume this subtree to send a message.",
+  "resumeTaskHint": "Resume this task to send a message.",
+  "draftSaved": "Your draft is saved.",
+  "resumeSubtree": "Resume subtree",
+  "resuming": "Resuming…",
+  "resumeTask": "Resume task"
+}

@@ -47,6 +47,7 @@ import {
 import { outlineV2Counts, outlineV2CountsLabel, outlineV2Groups } from "@/lib/responsibility-outline-v2";
 import { DASHBOARD_DEFAULT_VIEW, DASHBOARD_VIEW_OPTIONS } from "@/lib/responsibility-views";
 import { cn, formatShortDate } from "@/lib/utils";
+import { t } from "@/i18n";
 
 type AreaRef = Pick<ResponsibilityArea, "id" | "title" | "status">;
 
@@ -70,8 +71,8 @@ function ProvenanceLine({
   const name = provenance.agentId ? agentName(provenance.agentId) : undefined;
   return (
     <p className="text-xs text-muted-foreground">
-      {name ? `Drafted by ${name} during onboarding.` : "Drafted during onboarding."}
-      {provenance.confirmedAt ? ` Confirmed by you on ${formatShortDate(provenance.confirmedAt)}.` : null}
+      {name ? t("pagesResponsibilities.provenance.draftedBy", { name }) : t("pagesResponsibilities.provenance.drafted")}
+      {provenance.confirmedAt ? ` ${t("pagesResponsibilities.provenance.confirmed", { date: formatShortDate(provenance.confirmedAt) })}` : null}
     </p>
   );
 }
@@ -84,7 +85,7 @@ function ProvenanceLine({
 export function Responsibilities() {
   const { selectedCompanyId } = useCompany();
   const viewer = useResolvedViewerId();
-  if (viewer.error) return <QueryErrorState error={viewer.error} action="load your dashboard" onRetry={() => { void viewer.retry(); }} />;
+  if (viewer.error) return <QueryErrorState error={viewer.error} action={t("pagesResponsibilities.loadDashboardAction")} onRetry={() => { void viewer.retry(); }} />;
   if (!selectedCompanyId || !viewer.userId) return <PageSkeleton variant="dashboard" />;
   return <OwnerDashboard key={JSON.stringify([selectedCompanyId, viewer.userId])} selectedCompanyId={selectedCompanyId} ownerUserId={viewer.userId} />;
 }
@@ -111,7 +112,7 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
   useAgentlessOnboardingAutoOpen();
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Dashboard" }]);
+    setBreadcrumbs([{ label: t("pagesResponsibilities.title") }]);
   }, [setBreadcrumbs]);
 
   const overviewQuery = useQuery({
@@ -174,8 +175,8 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
               <ToolbarSearch
                 query={search}
                 onQueryChange={setSearch}
-                label="Search your dashboard"
-                placeholder="Search"
+                label={t("pagesResponsibilities.searchLabel")}
+                placeholder={t("pagesResponsibilities.searchPlaceholder")}
                 inputType="search"
               />
               <p className="text-sm text-muted-foreground" data-dashboard-counts="">{outlineV2CountsLabel(outlineCounts)}</p>
@@ -183,10 +184,10 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
           ) : null
         ) : (
           <div className="flex min-w-0 flex-col gap-1">
-            <h1 className="text-2xl font-semibold text-foreground">Dashboard</h1>
+            <h1 className="text-2xl font-semibold text-foreground">{t("pagesResponsibilities.title")}</h1>
             {view === "full" ? (
               <>
-                <p className="text-sm text-muted-foreground">What you own, whether each one is meeting its bar, and the work underneath.</p>
+                <p className="text-sm text-muted-foreground">{t("pagesResponsibilities.subtitle")}</p>
                 {overview ? <ProvenanceLine responsibilities={overview.responsibilities} agentName={agentName} /> : null}
               </>
             ) : null}
@@ -195,26 +196,26 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
         <div className="flex flex-wrap items-center justify-end gap-2">
           {visiting ? (
             <Button variant="ghost" onClick={leave} data-dashboard-back="">
-              Back
+              {t("pagesResponsibilities.back")}
             </Button>
           ) : null}
           {view === "outline_v2" ? (
             // The page's one primary action, last in the row after search.
             <Button onClick={() => setAddingArea(true)}>
               <Plus aria-hidden="true" />
-              New area
+              {t("pagesResponsibilities.newArea")}
             </Button>
           ) : null}
           {view === "full" || view === "board" ? (
             <>
               <Button variant="outline" onClick={() => setAddingArea(true)}>
                 <Plus aria-hidden="true" />
-                Add area
+                {t("pagesResponsibilities.addArea")}
               </Button>
               {isEmpty ? null : (
                 <Button onClick={() => openAdd(null)}>
                   <Plus aria-hidden="true" />
-                  Add responsibility
+                  {t("pagesResponsibilities.addResponsibility")}
                 </Button>
               )}
             </>
@@ -224,14 +225,14 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
 
       {restore.error ? (
         <p role="alert" className="text-sm text-destructive">
-          Couldn’t restore the area. {describeError(restore.error).body}
+          {t("pagesResponsibilities.restoreError", { message: describeError(restore.error).body })}
         </p>
       ) : null}
 
       <QueryView
         query={overviewQuery}
         size="page"
-        action="load your responsibilities"
+        action={t("pagesResponsibilities.loadResponsibilitiesAction")}
         loading={<PageSkeleton variant="dashboard" />}
       >
         {(loaded) => {
@@ -272,7 +273,7 @@ function OwnerDashboard({ selectedCompanyId, ownerUserId }: { selectedCompanyId:
         <div className="pointer-events-auto">
           {agentsView.kind === "error" ? (
             <div className="mb-2 rounded-lg border border-border bg-background px-4 py-3" data-dashboard-chat="error">
-              <QueryErrorState error={agentsView.error} size="inline" action="load your agents"
+              <QueryErrorState error={agentsView.error} size="inline" action={t("pagesResponsibilities.loadAgentsAction")}
                 onRetry={agentsView.retry} retrying={agentsView.isFetching} />
             </div>
           ) : null}

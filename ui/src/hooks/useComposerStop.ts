@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { StopVerificationError } from "@/lib/wait-for-stopped-runs";
+import { t } from "@/i18n";
 
 /** Keeps stop requests independent of draft submission and prevents double clicks. */
 export function useComposerStop(onStop?: () => Promise<void>, pending = false, confirmedStoppedRunIds?: ReadonlySet<string>) {
@@ -21,7 +22,7 @@ export function useComposerStop(onStop?: () => Promise<void>, pending = false, c
     try {
       await onStop();
     } catch (err) {
-      setFailure({ message: err instanceof Error ? err.message : "Unable to stop. Try again.",
+      setFailure({ message: err instanceof Error ? err.message : t("hooksUseComposerStop.unableToStop"),
         ...(err instanceof StopVerificationError ? { runIds: err.runIds } : {}) });
     } finally {
       inFlight.current = false;

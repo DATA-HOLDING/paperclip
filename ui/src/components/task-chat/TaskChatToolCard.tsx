@@ -17,6 +17,7 @@ import { ProviderToolIcon, useProviderToolIcons } from "@/components/ProviderToo
 import type { ToolCallProgressSnapshot } from "@paperclipai/shared";
 import { TaskChatToolProgress, useToolCallProgress } from "./tool-call-progress";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 const STATUS_ICON = {
   pending: { Icon: Loader2, spin: false, tone: "text-muted-foreground" },
@@ -117,7 +118,7 @@ export function TaskChatToolCard({ item, progress: givenProgress }: {
               ) : (
                 <ShieldX className="h-3 w-3" />
               )}
-              {item.decision}
+              {t(`componentsTaskChatTaskChatToolCard.decision.${item.decision}`)}
             </span>
           ) : null}
           {expandable ? (
@@ -135,7 +136,7 @@ export function TaskChatToolCard({ item, progress: givenProgress }: {
           />
           {item.status === "interrupted" ? (
             <span className="text-(length:--text-micro) text-muted-foreground">
-              Interrupted
+              {t("componentsTaskChatTaskChatToolCard.interrupted")}
             </span>
           ) : null}
         </span>
@@ -165,7 +166,7 @@ export function TaskChatToolCard({ item, progress: givenProgress }: {
             data-testid="task-chat-tool-change-summary"
           >
             <div className="flex min-w-0 items-center gap-2 text-(length:--text-micro) text-muted-foreground">
-              <span className="shrink-0">Changed</span>
+              <span className="shrink-0">{t("componentsTaskChatTaskChatToolCard.changed")}</span>
               {item.diff.path ? (
                 <span className="min-w-0 truncate font-mono text-foreground">
                   {item.diff.path}

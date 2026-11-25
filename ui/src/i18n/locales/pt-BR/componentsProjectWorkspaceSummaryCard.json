@@ -1,0 +1,21 @@
+{
+  "kind": {
+    "execution": "Espaço de trabalho de execução",
+    "project": "Espaço de trabalho do projeto"
+  },
+  "updated": "Atualizado {{time}}",
+  "services": "{{running}}/{{total}} serviços",
+  "stopServices": "Parar serviços",
+  "startServices": "Iniciar serviços",
+  "retryClose": "Tentar fechar novamente",
+  "closeWorkspace": "Fechar espaço de trabalho",
+  "branch": "Branch",
+  "branchCopied": "Branch copiado",
+  "copyBranch": "Copiar branch",
+  "path": "Caminho",
+  "pathCopied": "Caminho copiado",
+  "copyPath": "Copiar caminho",
+  "service": "Serviço",
+  "linkedTasks": "Tarefas vinculadas",
+  "more": "+{{count}} mais"
+}

@@ -1,0 +1,4 @@
+{
+  "staleRetry": "This attempt was already replaced, so Retry did not start new work. The task now shows its current state.",
+  "alreadyMovedOn": "The task already moved on, so nothing new was started. It now shows its current state."
+}

@@ -1,0 +1,10 @@
+{
+  "selectOrganization": "Select an organization first.",
+  "error": {
+    "star": "Couldn't star {{name}}.",
+    "unstar": "Couldn't unstar {{name}}.",
+    "leave": "Couldn't leave {{name}}.",
+    "join": "Couldn't join {{name}}."
+  },
+  "tryAgain": "Try again."
+}

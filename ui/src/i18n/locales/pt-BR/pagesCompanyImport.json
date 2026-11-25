@@ -1,0 +1,150 @@
+{
+  "selectFile": "Selecione um arquivo para pré-visualizar o conteúdo.",
+  "binaryUnavailable": "A pré-visualização de arquivos binários não está disponível para este tipo de arquivo.",
+  "renames": {
+    "title": "Renomeações",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} itens",
+    "skipped": "ignorado",
+    "skip": "ignorar",
+    "confirmed": "confirmado",
+    "confirm": "confirmar renomeação"
+  },
+  "adapters": {
+    "openaiDotExperimental": "OpenAI Dot (experimental)",
+    "museExperimental": "Muse — Agente pessoal (experimental)",
+    "musePersonal": "Muse — Agente pessoal",
+    "title": "Adaptadores",
+    "agents_one": "{{count}} agente",
+    "agents_other": "{{count}} agentes",
+    "agentBadge": "agente",
+    "chooseAvailable": "Escolha um harness disponível",
+    "configure": "configurar adaptador",
+    "fallback": "o adaptador de origem {{source}} não está instalado aqui — este agente usará {{target}}",
+    "runnerUnavailable": "O Paperclip Runner não está disponível aqui. Escolha outro harness.",
+    "runnerProviderExperimental": "O provedor {{provider}} do Paperclip Runner exige que o recurso experimental dele esteja ativado. Esta importação mantém o harness salvo até você escolher outro."
+  },
+  "errors": {
+    "selectZip": "Selecione um pacote de organização em .zip.",
+    "emptyZip": "Nenhum arquivo de pacote foi encontrado no arquivo zip selecionado.",
+    "jobLost": "O servidor não informa mais este job de importação — ele pode ter reiniciado durante a importação.",
+    "statusUnreadable": "Não é mais possível ler o status da importação — sua sessão pode ter expirado. Recarregue a página e entre para conferir.",
+    "serverFailed": "A importação falhou no servidor.",
+    "partFailed": "Falha ao enviar a parte {{part}} de {{total}}.",
+    "chooseCloudHarness": "Escolha um harness de Cloud disponível para cada agente importado.",
+    "unknownProvider": "Provedor do Paperclip Runner desconhecido: {{provider}}. Mantenha a configuração do pacote ou escolha explicitamente outro harness.",
+    "dotBilling": "O OpenAI Dot exige a confirmação da cobrança externa. Configure o adaptador Dot e ative Permitir provedor cobrado externamente.",
+    "museBilling": "O Muse exige a confirmação da cobrança externa. Configure o Muse e ative Permitir provedor cobrado externamente."
+  },
+  "transferProgress": "Enviando a parte {{current}} de {{total}} — {{uploaded}} de {{size}} enviados.",
+  "resumesFromParts": "{{progress}} Um envio interrompido continua a partir das partes concluídas.",
+  "localZipHelp": "Envie um .zip exportado diretamente do Paperclip. Arquivos recompactados pelo Finder, Explorer ou outras ferramentas de zip podem não ser importados corretamente.",
+  "breadcrumbs": {
+    "company": "Organização",
+    "settings": "Configurações",
+    "import": "Importar"
+  },
+  "toast": {
+    "previewFailed": "Falha na pré-visualização",
+    "completed": "Importação concluída",
+    "completedBody": "Abra a organização para vê-la.",
+    "importFailed": "Falha na importação",
+    "packageReadFailed": "Falha ao ler o pacote",
+    "activationPartial": "Alguns itens não foram ativados",
+    "activationPartialBody_one": "{{count}} item não foi ativado; os demais foram ativados.",
+    "activationPartialBody_other": "{{count}} itens não foram ativados; os demais foram ativados."
+  },
+  "expired": {
+    "title": "Importação concluída",
+    "namedBefore": "A importação terminou e",
+    "namedAfter": "está pronta. O resumo detalhado não está mais disponível.",
+    "unnamed": "A importação terminou e sua organização está pronta. O resumo detalhado não está mais disponível, mas a organização foi adicionada — selecione-a no seletor de organizações para vê-la.",
+    "paused": "Os agentes importados chegaram pausados — retome-os na página Agentes da organização para que as tarefas atribuídas possam começar.",
+    "openDashboard": "Abrir o painel da organização"
+  },
+  "complete": {
+    "title": "Importação concluída",
+    "summary": "{{name}}: {{agents}}, {{skills}}, {{projects}} e {{routines}} processados.",
+    "agents_one": "{{count}} agente",
+    "agents_other": "{{count}} agentes",
+    "skills_one": "{{count}} skill",
+    "skills_other": "{{count}} skills",
+    "projects_one": "{{count}} projeto",
+    "projects_other": "{{count}} projetos",
+    "routines_one": "{{count}} rotina",
+    "routines_other": "{{count}} rotinas",
+    "skillResults": "Resultados da importação de skills",
+    "asSlug": "como {{slug}}",
+    "goToDashboard": "Ir para o painel"
+  },
+  "activation": {
+    "title": "Ativar agentes e rotinas importados",
+    "importedPaused": "importados pausados",
+    "activated": "ativado",
+    "failed": "falhou: {{error}}",
+    "paused": "pausado",
+    "activating": "Ativando...",
+    "activateSelected": "Ativar selecionados ({{n}})",
+    "leftPausedHint": "O que continuar pausado aqui fica visível nas páginas Agentes e Rotinas da organização, que oferecem as mesmas ações de retomada — nada se perde se você sair desta página."
+  },
+  "resume": {
+    "title": "Retomar o acompanhamento da importação",
+    "body": "Uma importação que você iniciou antes ainda está em execução no servidor.",
+    "running": "Importação em execução no servidor — você pode continuar aguardando com segurança; reconectar não a interrompe."
+  },
+  "selectOrganization": "Selecione uma organização para onde importar.",
+  "source": {
+    "title": "Origem da importação",
+    "description": "Escolha um repositório do GitHub ou envie um pacote zip local do Paperclip.",
+    "github": "Repositório do GitHub",
+    "local": "Zip local",
+    "chooseZip": "Escolher zip",
+    "localPackage_one": "{{name}} com {{count}} arquivo",
+    "localPackage_other": "{{name}} com {{count}} arquivos",
+    "zipSize": "(zip de {{size}})",
+    "githubUrl": "URL do GitHub",
+    "githubUrlHint": "Caminho da árvore do repositório ou URL de blob até o COMPANY.md (ex.: github.com/owner/repo/tree/main/company)."
+  },
+  "target": {
+    "label": "Destino",
+    "hint": "Importe para esta organização ou crie uma nova.",
+    "new": "Criar nova organização",
+    "existing": "Organização existente: {{name}}",
+    "newName": "Nome da nova organização",
+    "newNameHint": "Opcional. Deixe em branco para usar o nome do pacote.",
+    "newNamePlaceholder": "Organização importada"
+  },
+  "collision": {
+    "label": "Estratégia para conflitos",
+    "hint": "Importações do conselho podem renomear, ignorar ou substituir o conteúdo da organização que corresponder.",
+    "rename": "Renomear em caso de conflito",
+    "skip": "Ignorar em caso de conflito",
+    "replace": "Substituir o existente"
+  },
+  "preview": {
+    "previewing": "Gerando pré-visualização...",
+    "button": "Pré-visualizar importação",
+    "chooseFirst": "Escolha um pacote acima para ativar a pré-visualização.",
+    "importInProgress": "Importação em andamento — o pacote e as configurações são liberados quando ela terminar.",
+    "analyzing": "Enviando e analisando seu pacote{{size}} — pacotes grandes podem levar alguns minutos. Mantenha esta página aberta.",
+    "failedPrefix": "Falha na pré-visualização:",
+    "failedSuffix": "Tente novamente ou exporte o pacote de novo sem anexos grandes para reduzi-lo."
+  },
+  "bar": {
+    "title": "Pré-visualização da importação",
+    "selected_one": "{{selected}} / {{total}} arquivo selecionado",
+    "selected_other": "{{selected}} / {{total}} arquivos selecionados",
+    "conflicts_one": "{{count}} conflito",
+    "conflicts_other": "{{count}} conflitos",
+    "errors_one": "{{count}} erro",
+    "errors_other": "{{count}} erros",
+    "startPaused": "Iniciar agentes e rotinas importados pausados",
+    "importing": "Importando...",
+    "importFiles_one": "Importar {{count}} arquivo",
+    "importFiles_other": "Importar {{count}} arquivos",
+    "runningOnServer": "Importação em execução no servidor — você pode continuar aguardando com segurança; reconectar não a interrompe. Pacotes grandes podem levar vários minutos.",
+    "failedPrefix": "Falha na importação:",
+    "failedSuffix": "Talvez nada tenha sido criado, ou a importação parou no meio — confira a organização de destino antes de tentar novamente."
+  },
+  "packageFiles": "Arquivos do pacote"
+}

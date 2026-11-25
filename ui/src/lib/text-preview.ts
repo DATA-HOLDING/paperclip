@@ -1,8 +1,9 @@
+import { t } from "@/i18n";
 export const TEXT_PREVIEW_MAX_BYTES = 512 * 1024;
 
 export async function readTextPreview(response: Response) {
-  if (!response.ok) throw Object.assign(new Error(`Could not load file (${response.status}).`), { status: response.status });
-  if (!response.body) throw new Error("The file response is empty.");
+  if (!response.ok) throw Object.assign(new Error(t("libTextPreview.errors.loadFailed", { status: response.status })), { status: response.status });
+  if (!response.body) throw new Error(t("libTextPreview.errors.empty"));
   const reader = response.body.getReader();
   const decoder = new TextDecoder("utf-8", { fatal: true });
   let bytes = 0;
@@ -12,11 +13,11 @@ export async function readTextPreview(response: Response) {
       const chunk = await reader.read();
       if (chunk.done) break;
       bytes += chunk.value.byteLength;
-      if (bytes > TEXT_PREVIEW_MAX_BYTES) throw new Error("This file is too large to preview. Download it instead.");
+      if (bytes > TEXT_PREVIEW_MAX_BYTES) throw new Error(t("libTextPreview.errors.tooLarge"));
       text += decoder.decode(chunk.value, { stream: true });
     }
     text += decoder.decode();
-    if (text.includes("\0")) throw new Error("This file contains binary data. Download it instead.");
+    if (text.includes("\0")) throw new Error(t("libTextPreview.errors.binary"));
     return text;
   } finally {
     await reader.cancel();
@@ -26,7 +27,7 @@ export async function readTextPreview(response: Response) {
 
 export async function loadAttachmentText(contentPath: string, signal?: AbortSignal) {
   if (!/^\/api\/attachments\/[a-zA-Z0-9-]+\/content$/.test(contentPath)) {
-    throw new Error("File preview is unavailable. Download the file to view it.");
+    throw new Error(t("libTextPreview.errors.unavailable"));
   }
   return readTextPreview(await fetch(contentPath, { credentials: "same-origin", redirect: "error", signal }));
 }

@@ -1,0 +1,15 @@
+{
+  "standing": {
+    "heading": "Situação atual",
+    "total_one": "{{count}} responsabilidade",
+    "total_other": "{{count}} responsabilidades",
+    "filterByStatus": "Filtrar por status"
+  },
+  "agentPowered": {
+    "heading": "Movido por agentes",
+    "meterLabel": "Tarefas abertas executadas por um agente",
+    "meterValue": "{{label}} das tarefas abertas",
+    "runByAgent": "Executadas por um agente",
+    "onYouAlone": "Só com você"
+  }
+}

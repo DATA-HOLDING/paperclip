@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "needsDecision": "Precisa de decisão",
+    "stalled": "Cadeia de bloqueios parada",
+    "needsAttention": "Precisa de atenção",
+    "recoveryRequired": "Recuperação necessária",
+    "externalWait": "Aguardando terceiros",
+    "ownerPaused": "Responsável pausado"
+  },
+  "reasons": {
+    "pendingBoardDecision": "Decisão do conselho pendente",
+    "pendingUserDecision": "Decisão do usuário pendente",
+    "missingSuccessfulRunDisposition": "Escolher destino",
+    "blockedChainStalled": "Cadeia de bloqueios parada",
+    "blockedByUnassignedIssue": "Bloqueio sem responsável",
+    "blockedByAssignedBacklogIssue": "Bloqueio estacionado",
+    "blockedByCancelledIssue": "Bloqueio cancelado",
+    "inReviewWithoutActionPath": "Revisão sem caminho de ação",
+    "invalidReviewParticipant": "Participante de revisão inválido",
+    "openRecoveryIssue": "Recuperação em andamento",
+    "externalOwnerAction": "Ação de responsável externo",
+    "blockedByUninvokableAssignee": "Responsável pausado",
+    "fallback": "Parada"
+  },
+  "groupOptions": {
+    "blockerType": "Tipo de bloqueio",
+    "none": "Nenhum"
+  },
+  "sortOptions": {
+    "urgency": "Mais urgentes",
+    "mostRecent": "Mais recentes",
+    "longestStopped": "Paradas há mais tempo"
+  },
+  "stoppedAge": {
+    "stopped": "parada",
+    "justNow": "parada agora mesmo",
+    "minutes": "parada há {{value}} min",
+    "hours": "parada há {{value}} h",
+    "days": "parada há {{value}} d",
+    "weeks": "parada há {{value}} sem",
+    "months_one": "parada há {{count}} mês",
+    "months_other": "parada há {{count}} meses"
+  }
+}

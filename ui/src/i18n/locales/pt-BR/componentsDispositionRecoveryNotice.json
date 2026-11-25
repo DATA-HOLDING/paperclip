@@ -1,0 +1,47 @@
+{
+  "unavailable": {
+    "noContext": "Abra a tarefa para revisar o estado atual.",
+    "notActive": "Este aviso de recuperação não está mais ativo.",
+    "stateChanged": "O estado da tarefa mudou. Revise o estado atual antes de tentar novamente.",
+    "recoveryChanged": "O estado de recuperação da tarefa mudou. Atualize para ver a ação atual.",
+    "agentChanged": "O agente responsável mudou. Revise a tarefa antes de tentar novamente.",
+    "pendingInteraction": "Responda à pergunta ou confirmação pendente antes de tentar novamente.",
+    "activeRun": "A tarefa já tem uma execução ativa. Aguarde ela terminar.",
+    "waitingReview": "A tarefa está aguardando uma revisão ou aprovação.",
+    "blockers": "Resolva os bloqueios da tarefa antes de tentar novamente.",
+    "agentPaused": "O agente responsável está pausado. Retome o agente antes de tentar novamente.",
+    "agentTerminated": "O agente responsável não está mais disponível."
+  },
+  "description": {
+    "start": "O agente parou sem registrar um resultado ou um próximo passo.",
+    "budgetBlocked": "{{start}} A recuperação automática parou porque um limite de gasto ou de pausa impede o agente de rodar.",
+    "notInvokable": "{{start}} A recuperação automática parou porque o agente responsável está indisponível.",
+    "two": "Duas",
+    "exhausted_one": "{{start}} {{attempts}} tentativa automática de resolver isto falhou.",
+    "exhausted_other": "{{start}} {{attempts}} tentativas automáticas de resolver isto falharam.",
+    "stopped": "{{start}} A recuperação automática parou. Revise os detalhes antes de tentar novamente."
+  },
+  "theAssignedAgent": "o agente responsável",
+  "refreshAndRetry": "Atualize a tarefa para conferir o estado atual e tente novamente.",
+  "title": {
+    "requested": "Nova tentativa solicitada",
+    "historical": "O agente precisou de atenção",
+    "needsAttention": "O agente precisa de atenção"
+  },
+  "returnedToTodo": "A tarefa voltou para A fazer para {{agentName}}.",
+  "retryUnavailable": "Nova tentativa indisponível. ",
+  "couldntConfirm": "Não foi possível confirmar a nova tentativa. {{error}}",
+  "requestingRetry": "Solicitando nova tentativa…",
+  "retryAgent": "Tentar o agente de novo",
+  "hideDetails": "Ocultar detalhes",
+  "viewDetails": "Ver detalhes",
+  "details": {
+    "assigned": "Responsável quando a recuperação parou",
+    "attempts": "Tentativas automáticas",
+    "attemptsValue": "{{count}} de {{max}}",
+    "retries": "Novas tentativas automáticas desta recuperação",
+    "stopped": "Paradas",
+    "explanation": "A recuperação pediu ao agente responsável que registrasse um resultado ou um próximo passo. Tentar novamente mantém a mesma tarefa e o mesmo agente e confere os controles atuais da tarefa antes de continuar.",
+    "technicalReason": "Motivo técnico"
+  }
+}

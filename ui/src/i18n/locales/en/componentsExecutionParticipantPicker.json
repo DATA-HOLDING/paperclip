@@ -1,0 +1,12 @@
+{
+  "user": "User",
+  "reviewers": "Reviewers",
+  "approvers": "Approvers",
+  "policyUnavailable": "Execution policy unavailable. Refresh to try again.",
+  "searchReviewers": "Search reviewers...",
+  "searchApprovers": "Search approvers...",
+  "noReviewers": "No reviewers",
+  "noApprovers": "No approvers",
+  "assignToMe": "Assign to me",
+  "requester": "Requester"
+}

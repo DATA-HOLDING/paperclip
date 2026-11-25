@@ -1,0 +1,19 @@
+{
+  "pending": "pending",
+  "description": "Deterministic local fixture for measuring the current direct-render issue chat path with hundreds of merged thread rows, markdown-heavy assistant bodies, linked runs, documents, sub-issues, and sidebar context.",
+  "metric": {
+    "fixtureRows": "Fixture rows",
+    "markdownRows": "Markdown rows",
+    "profilerCommits": "Profiler commits",
+    "mountDuration": "Mount duration",
+    "latestDuration": "Latest duration",
+    "maxDuration": "Max duration",
+    "totalDuration": "Total duration"
+  },
+  "card": {
+    "issueDocuments": "Issue documents",
+    "subIssues": "Sub-issues",
+    "baselineMetrics": "Baseline metrics",
+    "fixtureShape": "Fixture shape"
+  }
+}

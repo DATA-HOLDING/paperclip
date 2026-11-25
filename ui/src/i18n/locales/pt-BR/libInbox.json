@@ -1,0 +1,20 @@
+{
+  "workspace": {
+    "defaultNamed": "{{name}} (padrão)",
+    "default": "Espaço de trabalho padrão",
+    "none": "Sem espaço de trabalho"
+  },
+  "kind": {
+    "issue": "Tarefas",
+    "approval": "Aprovações",
+    "failedRun": "Execuções com falha",
+    "joinRequest": "Pedidos de entrada"
+  },
+  "assignee": {
+    "user": "Usuário",
+    "none": "Sem responsável"
+  },
+  "project": {
+    "none": "Sem projeto"
+  }
+}

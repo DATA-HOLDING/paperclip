@@ -1,0 +1,10 @@
+{
+  "subtreePaused": "A subárvore está pausada.",
+  "taskPaused": "A tarefa está pausada.",
+  "resumeSubtreeHint": "Retome esta subárvore para enviar uma mensagem.",
+  "resumeTaskHint": "Retome esta tarefa para enviar uma mensagem.",
+  "draftSaved": "Seu rascunho está salvo.",
+  "resumeSubtree": "Retomar subárvore",
+  "resuming": "Retomando…",
+  "resumeTask": "Retomar tarefa"
+}

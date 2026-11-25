@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
   AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
@@ -8,19 +9,18 @@ import { Button } from "@/components/ui/button";
 export function LegacyBoardSendNotice({ onDiscard }: { onDiscard: () => void }) {
   return <AlertDialog>
     <AlertDialogTrigger asChild>
-      <Button size="sm" variant="outline">Discard saved delivery record</Button>
+      <Button size="sm" variant="outline">{t("componentsChat.legacyBoardSendNotice.trigger")}</Button>
     </AlertDialogTrigger>
     <AlertDialogContent>
       <AlertDialogHeader>
-        <AlertDialogTitle>Discard saved delivery record?</AlertDialogTitle>
+        <AlertDialogTitle>{t("componentsChat.legacyBoardSendNotice.title")}</AlertDialogTitle>
         <AlertDialogDescription>
-          First check Activity. Discarding this browser record does not cancel an update
-          that was already accepted. It lets you start a new update.
+          {t("componentsChat.legacyBoardSendNotice.description")}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>Keep record</AlertDialogCancel>
-        <AlertDialogAction onClick={onDiscard}>Discard record</AlertDialogAction>
+        <AlertDialogCancel>{t("componentsChat.legacyBoardSendNotice.keep")}</AlertDialogCancel>
+        <AlertDialogAction onClick={onDiscard}>{t("componentsChat.legacyBoardSendNotice.discard")}</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>;

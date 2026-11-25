@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Agent } from "@paperclipai/shared";
 import { describeError } from "@/api/errors";
@@ -42,23 +43,23 @@ export function EmailConnectionAccess({
     return (
       <QueryErrorState
         error={failedView.error}
-        action="load connection access"
+        action={t("componentsEmailConnectionAccess.loadAction")}
         onRetry={failedView.retry}
         retrying={failedView.isFetching}
       />
     );
   if (grants.isLoading || installs.isLoading || grantsView.kind === "reconnecting" || installsView.kind === "reconnecting")
-    return <p className="text-sm text-muted-foreground">Loading access…</p>;
+    return <p className="text-sm text-muted-foreground">{t("componentsEmailConnectionAccess.loading")}</p>;
   const active = grants.data?.grants.filter((g) => g.status === "active") ?? [];
   const everyone = active.some((g) => g.kind === "organization");
   const personal = active.find((g) => g.kind === "user");
   const humanLabel = everyone
-    ? "Any human in the organization"
+    ? t("componentsEmailConnectionAccess.human.organization")
     : personal
       ? personal.subjectUserId === grants.data?.currentUserId
-        ? "Just me"
-        : "Only the credential owner"
-      : "Access revoked";
+        ? t("componentsEmailConnectionAccess.human.justMe")
+        : t("componentsEmailConnectionAccess.human.owner")
+      : t("componentsEmailConnectionAccess.human.revoked");
   const allAgents =
     installs.data?.installs.some((i) => i.targetType === "company") ?? false;
   const selected = new Set(
@@ -71,22 +72,22 @@ export function EmailConnectionAccess({
     <div className="space-y-8">
       <section className="space-y-3">
         <h2 className="text-sm font-semibold">
-          Which humans can use this credential?
+          {t("componentsEmailConnectionAccess.whichHumans")}
         </h2>
         <p className="text-sm">{humanLabel}</p>
       </section>
       <section className="space-y-4">
         <h2 className="text-sm font-semibold">
-          Which agents can use this connection?
+          {t("componentsEmailConnectionAccess.whichAgents")}
         </h2>
         <RadioCardGroup
-          ariaLabel="Which agents can use this connection"
+          ariaLabel={t("componentsEmailConnectionAccess.whichAgentsLabel")}
           value={allAgents ? "all" : "selected"}
           disabled={disabled}
           className="sm:grid-cols-2"
           options={[
-            { value: "selected", title: "Just agents I pick" },
-            { value: "all", title: "Any agent" },
+            { value: "selected", title: t("componentsEmailConnectionAccess.justAgentsIPick") },
+            { value: "all", title: t("componentsEmailConnectionAccess.anyAgent") },
           ]}
           onValueChange={(value) =>
             save.mutate(
@@ -115,7 +116,7 @@ export function EmailConnectionAccess({
           />
         )}
         <p className="text-xs text-muted-foreground">
-          Removing an assigned agent stops receiving and sending from its inbox.
+          {t("componentsEmailConnectionAccess.removingNote")}
         </p>
         {save.error && (
           <p role="alert" className="text-sm text-destructive">

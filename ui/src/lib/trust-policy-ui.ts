@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import {
   DEFAULT_TRUST_PRESET,
   LOW_TRUST_REVIEW_PRESET,
@@ -16,14 +17,14 @@ export type LowTrustBoundaryTarget =
   | { type: "issue"; id: string };
 
 export const TRUST_PRESET_LABELS: Record<TrustPreset, string> = {
-  standard: "Standard",
-  low_trust_review: "Low-trust review",
+  standard: t("libTrustPolicyUi.presets.standard.label"),
+  low_trust_review: t("libTrustPolicyUi.presets.lowTrustReview.label"),
 };
 
 export const TRUST_PRESET_DESCRIPTIONS: Record<TrustPreset, string> = {
-  standard: "Organization-visible collaboration. This is the default for normal work.",
+  standard: t("libTrustPolicyUi.presets.standard.description"),
   low_trust_review:
-    "Contained for hostile or untrusted input. Narrow Paperclip API, quarantined output. Use for PR review and external-content triage.",
+    t("libTrustPolicyUi.presets.lowTrustReview.description"),
 };
 
 export function getTrustPreset(permissions: Partial<AgentPermissions> | null | undefined): TrustPreset {
@@ -163,11 +164,11 @@ export function summarizeLowTrustBoundaryTarget(
   boundary: LowTrustBoundary | null | undefined,
 ) {
   const target = getSingleLowTrustBoundaryTarget(boundary);
-  if (target?.type === "project") return `Project ${target.id.slice(0, 8)}`;
-  if (target?.type === "root_issue") return `Root issue ${target.id.slice(0, 8)}`;
-  if (target?.type === "issue") return `Issue ${target.id.slice(0, 8)}`;
-  if (!boundary || countBoundaryTargets(boundary) === 0) return "No boundary selected";
-  return `${countBoundaryTargets(boundary)} boundaries`;
+  if (target?.type === "project") return t("libTrustPolicyUi.boundary.project", { id: target.id.slice(0, 8) });
+  if (target?.type === "root_issue") return t("libTrustPolicyUi.boundary.rootIssue", { id: target.id.slice(0, 8) });
+  if (target?.type === "issue") return t("libTrustPolicyUi.boundary.issue", { id: target.id.slice(0, 8) });
+  if (!boundary || countBoundaryTargets(boundary) === 0) return t("libTrustPolicyUi.boundary.none");
+  return t("libTrustPolicyUi.boundary.many", { n: countBoundaryTargets(boundary) });
 }
 
 export function lowTrustBoundaryHasScope(boundary: LowTrustBoundary | null | undefined) {
@@ -176,6 +177,6 @@ export function lowTrustBoundaryHasScope(boundary: LowTrustBoundary | null | und
 
 export function sourceTrustLabel(sourceTrust: SourceTrustMetadata | null | undefined) {
   if (!sourceTrust || sourceTrust.preset !== LOW_TRUST_REVIEW_PRESET) return null;
-  if (sourceTrust.disposition === "promoted") return "Promoted from low-trust";
-  return "Low-trust source";
+  if (sourceTrust.disposition === "promoted") return t("libTrustPolicyUi.source.promoted");
+  return t("libTrustPolicyUi.source.lowTrust");
 }

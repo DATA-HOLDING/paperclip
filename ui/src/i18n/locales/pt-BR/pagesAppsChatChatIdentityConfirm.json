@@ -1,0 +1,33 @@
+{
+  "loadAccountAction": "carregar sua conta",
+  "loadLinkAction": "carregar o link de identidade",
+  "unavailable": {
+    "title": "Este link de identidade não está disponível",
+    "body": "O link é inválido, expirou, já foi usado ou pertence a outra organização do Paperclip."
+  },
+  "checking": "Verificando o link de identidade…",
+  "localBoard": "Conselho local",
+  "signedInAccount": "a conta conectada",
+  "linked": {
+    "title": "Identidade vinculada",
+    "body": "As próximas mensagens de {{externalLabel}} usam suas permissões atuais do Paperclip em {{companyName}}.",
+    "returnToSlack": "Voltar ao Slack"
+  },
+  "title": "Vincule sua identidade externa",
+  "fields": {
+    "provider": "Provedor",
+    "externalIdentity": "Identidade externa",
+    "paperclipAccount": "Conta do Paperclip",
+    "agent": "Agente",
+    "defaultAgent": "Agente do Paperclip"
+  },
+  "confirmHint": "Confirme só se esta for a sua identidade no {{provider}}. O Paperclip vai verificar sua participação atual na organização a cada ação.",
+  "confirmError": "Não foi possível confirmar este link. Ele pode ter expirado ou sido revogado.",
+  "access": {
+    "membershipRequired": "Você precisa ser membro de {{companyName}} antes de vincular esta conta.",
+    "requested": "Acesso solicitado. Um administrador pode aprová-lo no Paperclip. Depois da aprovação, volte aqui para confirmar; se este link expirar, envie o comando de conexão no Slack de novo.",
+    "request": "Solicitar acesso",
+    "error": "Não foi possível solicitar acesso. O link pode ter expirado. Envie o comando de conexão de novo e tente novamente."
+  },
+  "confirm": "Confirmar identidade"
+}

@@ -1,0 +1,12 @@
+{
+  "state": {
+    "provisioning": "Provisioning",
+    "validating": "Validating clone",
+    "ready": "Ready",
+    "degraded": "Degraded",
+    "repairing": "Repairing",
+    "failed": "Failed"
+  },
+  "snapshotCredentials": "Signs in with the snapshot-local credentials captured when this clone was made.",
+  "loginHandoff": "Uses a single-use login handoff — no password needed."
+}

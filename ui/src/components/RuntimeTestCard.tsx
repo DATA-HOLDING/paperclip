@@ -8,42 +8,43 @@ import {
 import type { AdapterEnvironmentTestResult } from "@paperclipai/shared";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 export type TestState = "idle" | "running" | "pass" | "fail";
 
 const copy = {
   idle: {
-    title: "Test your agent",
-    description: "Check that your runtime and model can respond.",
-    action: "Run test",
+    title: t("componentsRuntimeTestCard.connection.idle.title"),
+    description: t("componentsRuntimeTestCard.connection.idle.description"),
+    action: t("componentsRuntimeTestCard.connection.idle.action"),
   },
   running: {
-    title: "Testing connection",
-    description: "Checking the runtime and waiting for a model response…",
-    action: "Testing…",
+    title: t("componentsRuntimeTestCard.connection.running.title"),
+    description: t("componentsRuntimeTestCard.connection.running.description"),
+    action: t("componentsRuntimeTestCard.connection.running.action"),
   },
   pass: {
-    title: "Connection successful",
-    description: "Your runtime checks passed. Review the details below.",
-    action: "Test again",
+    title: t("componentsRuntimeTestCard.connection.pass.title"),
+    description: t("componentsRuntimeTestCard.connection.pass.description"),
+    action: t("componentsRuntimeTestCard.connection.pass.action"),
   },
   warn: {
-    title: "Connection needs attention",
-    description: "Review the test details before running your agent.",
-    action: "Test again",
+    title: t("componentsRuntimeTestCard.connection.warn.title"),
+    description: t("componentsRuntimeTestCard.connection.warn.description"),
+    action: t("componentsRuntimeTestCard.connection.warn.action"),
   },
   fail: {
-    title: "Couldn't connect",
-    description: "Check your model and provider connection, then try again.",
-    action: "Retry test",
+    title: t("componentsRuntimeTestCard.connection.fail.title"),
+    description: t("componentsRuntimeTestCard.connection.fail.description"),
+    action: t("componentsRuntimeTestCard.connection.fail.action"),
   },
 } as const;
 
 const prerequisiteCopy = {
-  idle: { title: "Check prerequisites", description: "Check instance settings and public connection configuration.", action: "Check setup" },
-  running: { title: "Checking prerequisites", description: "Checking instance settings and public connection configuration…", action: "Checking…" },
-  pass: { title: "Setup checks passed", description: "Review the setup details before assigning work.", action: "Check again" },
-  warn: { title: "Pairing required", description: "Create this agent, then pair it and verify event delivery.", action: "Check again" },
-  fail: { title: "Prerequisite check failed", description: "Review the setup details and retry.", action: "Retry check" },
+  idle: { title: t("componentsRuntimeTestCard.prerequisites.idle.title"), description: t("componentsRuntimeTestCard.prerequisites.idle.description"), action: t("componentsRuntimeTestCard.prerequisites.idle.action") },
+  running: { title: t("componentsRuntimeTestCard.prerequisites.running.title"), description: t("componentsRuntimeTestCard.prerequisites.running.description"), action: t("componentsRuntimeTestCard.prerequisites.running.action") },
+  pass: { title: t("componentsRuntimeTestCard.prerequisites.pass.title"), description: t("componentsRuntimeTestCard.prerequisites.pass.description"), action: t("componentsRuntimeTestCard.prerequisites.pass.action") },
+  warn: { title: t("componentsRuntimeTestCard.prerequisites.warn.title"), description: t("componentsRuntimeTestCard.prerequisites.warn.description"), action: t("componentsRuntimeTestCard.prerequisites.warn.action") },
+  fail: { title: t("componentsRuntimeTestCard.prerequisites.fail.title"), description: t("componentsRuntimeTestCard.prerequisites.fail.description"), action: t("componentsRuntimeTestCard.prerequisites.fail.action") },
 } as const;
 
 export function RuntimeTestCard({
@@ -69,12 +70,12 @@ export function RuntimeTestCard({
     ? result?.checks.find(check => check.code === "acpx_runtime_package_missing")
     : undefined;
   const content = missingRuntime
-    ? { ...copy.fail, title: "Runtime missing", description: missingRuntime.message }
+    ? { ...copy.fail, title: t("componentsRuntimeTestCard.runtimeMissing"), description: missingRuntime.message }
     : (variant === "prerequisites" ? prerequisiteCopy : copy)[state];
   const description = metadataOnly && state === "idle"
-    ? "Verify your saved token, runtime installation, and selected model without sending a model prompt."
+    ? t("componentsRuntimeTestCard.metadataOnly.idle")
     : metadataOnly && state === "running"
-      ? "Checking the saved token, runtime, and selected model…"
+      ? t("componentsRuntimeTestCard.metadataOnly.running")
       : content.description;
   const Icon =
     state === "running"
@@ -86,7 +87,7 @@ export function RuntimeTestCard({
           : Play;
   return (
     <section
-      aria-label="Runtime test"
+      aria-label={t("componentsRuntimeTestCard.ariaLabel")}
       data-agent-tile={tone === "tile" ? "" : undefined}
       className={tone === "tile" ? "rounded-lg bg-(--agent-detail-tile)" : "rounded-lg border border-border bg-card"}
     >
@@ -142,7 +143,7 @@ export function RuntimeTestCard({
               aria-hidden="true"
               className="size-3 transition-transform group-open:rotate-90"
             />
-            Test details
+            {t("componentsRuntimeTestCard.testDetails")}
           </summary>
           <ul className="space-y-3 px-4 pb-4">
             {result.checks.map((check) => (

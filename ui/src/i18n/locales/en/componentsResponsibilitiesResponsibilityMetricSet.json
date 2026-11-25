@@ -1,0 +1,28 @@
+{
+  "starterLabel": "Starter metrics from your work so far",
+  "readLine": {
+    "weekByWeek": "Counted from the work, week by week",
+    "justNow": "Counted from the work just now",
+    "noReadings": "No readings yet",
+    "read": "Read {{age}}"
+  },
+  "noReading": "No reading yet",
+  "towardBar": "{{title}}, toward its bar",
+  "howMeasuredLabel": "How “{{title}}” is measured",
+  "howMeasured": "How it is measured",
+  "removeLabel": "Remove “{{title}}”",
+  "removeThis": "Remove this metric",
+  "chosenWith": "Chosen with {{name}}",
+  "anAgent": "an agent",
+  "setByHand": "Set by hand",
+  "metrics": "Metrics",
+  "noMetrics": "No metrics yet.",
+  "removeDialog": {
+    "title": "Remove “{{title}}”?",
+    "description": "It stops showing on this responsibility, and agents stop recording it. Its readings are kept. To choose other metrics, talk the bar through with an agent.",
+    "failed": "Couldn’t remove it.",
+    "keep": "Keep it",
+    "removing": "Removing…",
+    "remove": "Remove metric"
+  }
+}

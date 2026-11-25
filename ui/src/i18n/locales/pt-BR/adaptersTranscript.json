@@ -1,0 +1,4 @@
+{
+  "unknownParserError": "erro desconhecido do analisador",
+  "parseError": "Erro na transcrição do chat: {{errorText}}. Usando alternativa para a linha: {{preview}}"
+}

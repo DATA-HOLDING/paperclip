@@ -1,0 +1,72 @@
+{
+  "paused": {
+    "canCheckHint": "This task is blocked. You can ask the agent to check now.",
+    "resumeHint": "Resume this task to continue checking.",
+    "title": "Automatic checks paused"
+  },
+  "provider": {
+    "title": "Waiting for the sandbox provider",
+    "bannerMeta": "The sandbox provider is unavailable. Work continues automatically when it is back.",
+    "stripMeta": "Work continues automatically when the sandbox provider is back."
+  },
+  "workspace": {
+    "title": "Waiting for workspace",
+    "bannerMeta": "Another task is using this workspace. Work starts automatically when it is available.",
+    "stripMeta": "Work starts automatically when the workspace is available."
+  },
+  "executionWait": {
+    "hint": "The check can start after the current run finishes saving its work.",
+    "title": "Monitor waits for current run",
+    "scheduledYourTime": "Scheduled for {{absolute}} (your time)",
+    "scheduled": "Scheduled for {{absolute}}"
+  },
+  "review": {
+    "title": "Pull request review requested",
+    "nextCheckYourTime": "Next check {{eta}} · {{absolute}} (your time)",
+    "nextCheck": "Next check {{eta}} · {{absolute}}"
+  },
+  "pool": {
+    "title": "Pool exhausted",
+    "recheckYourTime": "Usage recheck {{eta}} · {{absolute}} (your time)",
+    "recheck": "Usage recheck {{eta}} · {{absolute}}",
+    "bannerHint": "Tasks with a selected account keep it while waiting. Work resumes when usage permits or the agent uses a different account.",
+    "stripHint": "Tasks with a selected account keep it while waiting."
+  },
+  "state": {
+    "agentResumes": "Agent resumes {{eta}}",
+    "waitingResumes": "Waiting on monitor — resumes {{eta}}",
+    "resumes": "Resumes {{eta}}",
+    "agentRetryDueNow": "Agent retry due now",
+    "waitingDueNow": "Waiting on monitor — due now",
+    "dueNow": "Due now",
+    "checkingMomentarily": "Checking momentarily…",
+    "agentRetry": "Agent retry {{eta}}",
+    "waiting": "Waiting on monitor — {{eta}}",
+    "firesNextTick": "Fires on next tick"
+  },
+  "meta": {
+    "attempt": "Attempt {{count}}",
+    "watching": "Watching: {{service}}",
+    "yourTime": "{{absolute}} (your time)"
+  },
+  "actions": {
+    "checking": "Checking…",
+    "checkStatus": "Check status",
+    "checkNow": "Check now"
+  },
+  "cancel": {
+    "failed": "Unable to cancel the monitor. Try again.",
+    "button": "Cancel monitor",
+    "title": "Cancel monitor?",
+    "description": "This removes the scheduled monitor check. The agent will no longer resume from this monitor. You can send a message to continue the task.",
+    "keep": "Keep monitor",
+    "cancelling": "Cancelling…"
+  },
+  "footer": {
+    "reviewWhileRun": "Review on GitHub while the current run finishes saving its work.",
+    "reviewThenCheck": "Review on GitHub, then check status to have the agent verify the result.",
+    "keepSending": "You can keep sending instructions while the agent waits.",
+    "usageWait": "Sending a reply checks usage again now. The agent starts as soon as usage is available.",
+    "wakesNow": "Sending a reply wakes the agent now — before the scheduled check."
+  }
+}

@@ -48,18 +48,19 @@ import { NeedsYouAudience, NeedsYouReceiptCard, NeedsYouRequester, NeedsYouTaskL
 import { CoordinatorNeedsYouSidePanel, needsYouReviewTab, needsYouReviewTabId, needsYouTabArtifact, type NeedsYouReviewPayload } from "./CoordinatorNeedsYouSidePanel";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 type Group = "type" | "none" | "task" | "agent" | "project";
 
 const inboxFolders = [
-  { value: "needs", label: "Needs you", description: "Review open requests and decide what happens next." },
-  { value: "waiting", label: "Waiting", description: "See what you’ve snoozed and which tasks are waiting for an automatic retry." },
-  { value: "history", label: "History", description: "Look back at past decisions and see what happened to failed runs." },
+  { value: "needs", label: t("componentsCoordinator.needsYou.folders.needs.label"), description: t("componentsCoordinator.needsYou.folders.needs.description") },
+  { value: "waiting", label: t("componentsCoordinator.needsYou.folders.waiting.label"), description: t("componentsCoordinator.needsYou.folders.waiting.description") },
+  { value: "history", label: t("componentsCoordinator.needsYou.folders.history.label"), description: t("componentsCoordinator.needsYou.folders.history.description") },
 ] as const;
 
 /** Rule 7: a card that cannot answer inline links to the exact control, named by its verb. */
 function openLabel(item: AttentionItem) {
-  return (item.decisionVerbs ?? []).find((verb) => verb.id === "open_recovery" || verb.id === "inspect")?.label ?? "Open to review";
+  return (item.decisionVerbs ?? []).find((verb) => verb.id === "open_recovery" || verb.id === "inspect")?.label ?? t("componentsCoordinator.needsYou.openToReview");
 }
 
 /** Say each thing once (IA4): a quoted excerpt of the title is not a second line. */
@@ -77,11 +78,11 @@ function documentKeyLabel(key: string) {
 }
 
 const EMPTY_VIEW_TEXT: Record<AttentionPersonalView, string> = {
-  mine: "You're caught up.",
-  unassigned: "No cards need an owner.",
-  company: "No company alerts right now.",
-  archived: "Nothing archived. Cards you archive or snooze for yourself show here.",
-  all: "No open cards for anyone.",
+  mine: t("componentsCoordinator.needsYou.emptyView.mine"),
+  unassigned: t("componentsCoordinator.needsYou.emptyView.unassigned"),
+  company: t("componentsCoordinator.needsYou.emptyView.company"),
+  archived: t("componentsCoordinator.needsYou.emptyView.archived"),
+  all: t("componentsCoordinator.needsYou.emptyView.all"),
 };
 
 export function CoordinatorNeedsYou() {
@@ -209,8 +210,8 @@ export function CoordinatorNeedsYou() {
   const groups = useMemo(() => {
     const result = new Map<string, AttentionItem[]>();
     for (const item of currentItems.slice(0, renderLimit)) {
-      const label = groupBy === "type" ? needsYouSection(item) : groupBy === "task" ? item.relatedIssue?.identifier ?? item.relatedIssue?.title ?? "Other decisions"
-        : groupBy === "agent" ? item.originAgentName ?? "Other agents" : groupBy === "project" ? item.project?.name ?? "No project" : "";
+      const label = groupBy === "type" ? needsYouSection(item) : groupBy === "task" ? item.relatedIssue?.identifier ?? item.relatedIssue?.title ?? t("componentsCoordinator.needsYou.groups.otherDecisions")
+        : groupBy === "agent" ? item.originAgentName ?? t("componentsCoordinator.needsYou.groups.otherAgents") : groupBy === "project" ? item.project?.name ?? t("componentsCoordinator.needsYou.groups.noProject") : "";
       result.set(label, [...(result.get(label) ?? []), item]);
     }
     // By type, decisions come before problems (Paper "A · Compact cards").
@@ -241,10 +242,10 @@ export function CoordinatorNeedsYou() {
   const assigneeOptions = useMemo(() => {
     const people = [...userLabelMap].filter(([id]) => id !== userId).sort(([, a], [, b]) => a.localeCompare(b));
     return [
-      { value: "me" as CoordinatorAssignee, label: "Assigned to you" },
-      ...(everyone ? [{ value: "all" as CoordinatorAssignee, label: "All assignees" }, ...people.map(([id, name]) => ({ value: `user:${id}` as CoordinatorAssignee, label: name }))] : []),
-      { value: "unassigned" as CoordinatorAssignee, label: "No owner yet" },
-      { value: "company" as CoordinatorAssignee, label: "Company alerts" },
+      { value: "me" as CoordinatorAssignee, label: t("componentsCoordinator.needsYou.assignee.me") },
+      ...(everyone ? [{ value: "all" as CoordinatorAssignee, label: t("componentsCoordinator.needsYou.assignee.all") }, ...people.map(([id, name]) => ({ value: `user:${id}` as CoordinatorAssignee, label: name }))] : []),
+      { value: "unassigned" as CoordinatorAssignee, label: t("componentsCoordinator.needsYou.assignee.unassigned") },
+      { value: "company" as CoordinatorAssignee, label: t("componentsCoordinator.needsYou.assignee.company") },
     ];
   }, [userLabelMap, userId, everyone]);
   const chooseAssignee = (value: CoordinatorAssignee) => { const target = coordinatorAssigneeTarget(value, userId); setView(target.view, target.forUserId); };
@@ -264,7 +265,7 @@ export function CoordinatorNeedsYou() {
     const open = new Set(pendingItems.map(item => item.id));
     for (const tab of reviewTabs.tabs) if (!open.has(tab.payload.itemId)) closeReviewTab(tab.id);
   }, [pendingItems, reviewTabs.tabs, closeReviewTab]);
-  useEffect(() => { setBreadcrumbs([{ label: "Inbox" }]); }, [setBreadcrumbs]);
+  useEffect(() => { setBreadcrumbs([{ label: t("componentsCoordinator.needsYou.inbox") }]); }, [setBreadcrumbs]);
   useEffect(() => {
     setSettling([]); setReviewPanelOpen(false); resetReviewTabs({ tabs: [], activeTabId: null }); setNow(Date.now()); closePanel();
     return closePanel;
@@ -319,9 +320,9 @@ export function CoordinatorNeedsYou() {
     // The artifact opens beside the card from the first row of its context panel (IA5).
     const artifactRow = artifact && artifact.kind !== "approval" ? <NeedsYouPanelRow
       icon={artifact.kind === "images" ? <ImageIcon /> : <FileText />}
-      title={artifact.kind === "document" && !artifact.title ? (artifact.key === "plan" ? "Plan" : documentKeyLabel(artifact.key)) : needsYouArtifactLabel(artifact)}
-      meta={reviewingOwn ? "Open in sidebar · Showing" : "Open in sidebar"}
-      label={`${reviewingOwn ? "Close" : "Open"} ${needsYouArtifactLabel(artifact)} in the sidebar`}
+      title={artifact.kind === "document" && !artifact.title ? (artifact.key === "plan" ? t("componentsCoordinator.needsYou.plan") : documentKeyLabel(artifact.key)) : needsYouArtifactLabel(artifact)}
+      meta={reviewingOwn ? t("componentsCoordinator.needsYou.openInSidebarShowing") : t("componentsCoordinator.needsYou.openInSidebar")}
+      label={reviewingOwn ? t("componentsCoordinator.needsYou.closeInSidebar", { label: needsYouArtifactLabel(artifact) }) : t("componentsCoordinator.needsYou.openArtifactInSidebar", { label: needsYouArtifactLabel(artifact) })}
       onOpen={() => reviewingOwn ? closeReviewTab(needsYouReviewTabId(item)) : showReview(item)} /> : null;
     // A plan, document, approval or attachment the card links to opens as a
     // side-panel tab beside the card, not a page change (PAP-775, IA5).
@@ -349,7 +350,7 @@ export function CoordinatorNeedsYou() {
       {/* What to do (with whose card it is) on the left; who asked, when, and ⋯ on the right (Paper "A · Compact cards"). */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
-          {item.providerLimit ? <span className="text-sm font-medium">Provider usage limit</span> : <NeedsYouTypeLabel item={item} currentUserId={userId} userLabelMap={userLabelMap} />}
+          {item.providerLimit ? <span className="text-sm font-medium">{t("componentsCoordinator.needsYou.providerUsageLimit")}</span> : <NeedsYouTypeLabel item={item} currentUserId={userId} userLabelMap={userLabelMap} />}
           <AttentionHiddenChip item={item} />
           <AttentionStaleChip item={item} />
         </div>
@@ -373,7 +374,7 @@ export function CoordinatorNeedsYou() {
         onResolved(item);
       }} />
         : decision ? <DecisionResolver companyId={selectedCompanyId!} decisionId={item.subject.id} originIssue={item.relatedIssue} agentMap={agentMap} leading={taskLink} onResolved={() => onResolved(item)} />
-        : stalledReview ? <><div className="space-y-1.5"><h2>Choose how this task continues</h2><p className="text-sm text-muted-foreground">This task is still in review with no active reviewer or continuation. Return it to work, request changes, or mark the task done.</p></div><BlockedTaskCardBody item={item} companyId={selectedCompanyId!} agentMap={agentMap} userLabelMap={userLabelMap} leading={taskLink} footerContext={footerContext} onOpen={navigate} onResolved={refetchAll} /></>
+        : stalledReview ? <><div className="space-y-1.5"><h2>{t("componentsCoordinator.needsYou.stalled.title")}</h2><p className="text-sm text-muted-foreground">{t("componentsCoordinator.needsYou.stalled.body")}</p></div><BlockedTaskCardBody item={item} companyId={selectedCompanyId!} agentMap={agentMap} userLabelMap={userLabelMap} leading={taskLink} footerContext={footerContext} onOpen={navigate} onResolved={refetchAll} /></>
         : failedRun ? <>{heading}<FailedRunActions item={item} companyId={selectedCompanyId!} leading={taskLink} footerContext={footerContext} presentation="card" onResolved={refetchAll} /></>
         : budget ? <>{heading}<BudgetAlertActions item={item} companyId={selectedCompanyId!} leading={taskLink} footerContext={footerContext} presentation="card" onResolved={refetchAll} /></>
         : approval ? <>{heading}<ApprovalResolver item={item} companyId={selectedCompanyId!} toggle={taskLink} footerContext={footerContext} presentation="card" onViewDetails={isMobile ? undefined : () => showReview(item)} shareDraft onResolved={() => onResolved(item)} /></>
@@ -387,13 +388,13 @@ export function CoordinatorNeedsYou() {
     </CoordinatorTaskMotion>
     </motion.div>;
   };
-  if (!selectedCompanyId) return <p className="text-sm text-muted-foreground">Choose a company to see its decisions.</p>;
+  if (!selectedCompanyId) return <p className="text-sm text-muted-foreground">{t("componentsCoordinator.needsYou.chooseCompany")}</p>;
   // Decision history is a view of the main pane (PAP-770), not a side panel
   // that repeats Recent Decisions beside them.
   const activeFolder = inboxFolders.find(({ value }) =>
     value === "needs" ? !waitingOpen && !historyOpen && !archivedView : value === folder);
   const folders = <div className="space-y-2" data-inbox-folders>
-    <nav className="flex gap-1" aria-label="Inbox views">{inboxFolders.map(({ value, label }) => {
+    <nav className="flex gap-1" aria-label={t("componentsCoordinator.needsYou.inboxViews")}>{inboxFolders.map(({ value, label }) => {
       const selected = value === activeFolder?.value;
       const waitingCount = feed.data?.waitingCount;
       return <Button key={value} size="sm" variant={selected ? "secondary" : "ghost"} aria-current={selected ? "page" : undefined}
@@ -402,12 +403,12 @@ export function CoordinatorNeedsYou() {
     {activeFolder && <p className="text-sm text-muted-foreground">{activeFolder.description}</p>}
   </div>;
   const receipts = feed.data?.receipts ?? [];
-  if (historyOpen) return <section className="coordinator-needs-you w-full space-y-6" aria-label="Decision history" data-coordinator-decision-history>
+  if (historyOpen) return <section className="coordinator-needs-you w-full space-y-6" aria-label={t("componentsCoordinator.needsYou.decisionHistory")} data-coordinator-decision-history>
     <DecisionHistoryPanel companyId={selectedCompanyId} agents={agentQuery.data ?? []} userLabelMap={userLabelMap} afterControls={<>
       {folders}
-      {receipts.length > 0 && <section className="space-y-3"><h2>Updates</h2>{receipts.map(entry => <NeedsYouReceiptCard key={entry.id} receipt={entry} userLabelMap={userLabelMap} onOpen={navigate}
+      {receipts.length > 0 && <section className="space-y-3"><h2>{t("componentsCoordinator.sections.updates")}</h2>{receipts.map(entry => <NeedsYouReceiptCard key={entry.id} receipt={entry} userLabelMap={userLabelMap} onOpen={navigate}
           onDismiss={receiptActions.dismiss} dismissing={receiptActions.dismissingId === entry.id} />)}</section>}
-      <h1 className="text-2xl font-medium">Decision history</h1>
+      <h1 className="text-2xl font-medium">{t("componentsCoordinator.needsYou.decisionHistory")}</h1>
     </>} />
     <InboxRunHistory companyId={selectedCompanyId} userId={userId} />
   </section>;
@@ -418,33 +419,33 @@ export function CoordinatorNeedsYou() {
   const sectionHeading = (section: NeedsYouSection) => <h2 className="text-base font-medium" data-needs-you-section={section}>
     {NEEDS_YOU_SECTIONS[section].title}
   </h2>;
-  return <LayoutGroup id="coordinator-decisions"><section className="coordinator-needs-you w-full space-y-6" aria-label="Inbox">
-    {archivedView ? <div className="flex items-center gap-2"><Button variant="ghost" size="icon-sm" aria-label="Back to Needs You" onClick={() => setView("mine")}><ArrowLeft className="size-4" /></Button><h1 className="text-2xl font-medium">Archived</h1></div> : null}
+  return <LayoutGroup id="coordinator-decisions"><section className="coordinator-needs-you w-full space-y-6" aria-label={t("componentsCoordinator.needsYou.inbox")}>
+    {archivedView ? <div className="flex items-center gap-2"><Button variant="ghost" size="icon-sm" aria-label={t("componentsCoordinator.needsYou.backToNeedsYou")} onClick={() => setView("mine")}><ArrowLeft className="size-4" /></Button><h1 className="text-2xl font-medium">{t("componentsCoordinator.needsYou.archived")}</h1></div> : null}
     {/* Assigned to you by default (PAP-775); the assignee filter widens to all
         assignees, one person, no owner yet or company alerts. Archived and
         Decision history sit in View. */}
-    <div data-canonical-toolbar="inbox" className="design-page-toolbar" role="toolbar" aria-label="Decisions controls">
-      <ToolbarSearch query={query} onQueryChange={setQuery} label="Search decisions" placeholder="Search…" />
+    <div data-canonical-toolbar="inbox" className="design-page-toolbar" role="toolbar" aria-label={t("componentsCoordinator.needsYou.toolbar.controls")}>
+      <ToolbarSearch query={query} onQueryChange={setQuery} label={t("componentsCoordinator.needsYou.toolbar.searchLabel")} placeholder={t("componentsCoordinator.needsYou.toolbar.searchPlaceholder")} />
       <div className="design-toolbar-actions">
-        <InboxFilter label="Filter decisions by agent" heading="Agents" value={agentFilter} onChange={setAgentFilter}
-          defaultLabel={agentFilter ? undefined : "By agents"}
-          options={[{ value: "", label: "All agents" }, ...(agentQuery.data ?? []).map(agent => ({ value: agent.id, label: agent.name }))]} />
-        <InboxFilter label="Filter decisions by project" heading="Projects" value={projectFilter} onChange={setProjectFilter}
-          defaultLabel={projectFilter ? undefined : "By projects"}
-          options={[{ value: "", label: "All projects" }, ...projects.map(([value, label]) => ({ value, label }))]} />
-        {!waitingOpen && assignee && <InboxFilter label="Filter decisions by assignee" heading="Assigned to" value={assignee} onChange={chooseAssignee}
-          defaultLabel={assignee === "me" ? "By assigned" : undefined}
+        <InboxFilter label={t("componentsCoordinator.needsYou.toolbar.agentFilter")} heading={t("componentsCoordinator.needsYou.toolbar.agents")} value={agentFilter} onChange={setAgentFilter}
+          defaultLabel={agentFilter ? undefined : t("componentsCoordinator.needsYou.toolbar.byAgents")}
+          options={[{ value: "", label: t("componentsCoordinator.needsYou.toolbar.allAgents") }, ...(agentQuery.data ?? []).map(agent => ({ value: agent.id, label: agent.name }))]} />
+        <InboxFilter label={t("componentsCoordinator.needsYou.toolbar.projectFilter")} heading={t("componentsCoordinator.needsYou.toolbar.projects")} value={projectFilter} onChange={setProjectFilter}
+          defaultLabel={projectFilter ? undefined : t("componentsCoordinator.needsYou.toolbar.byProjects")}
+          options={[{ value: "", label: t("componentsCoordinator.needsYou.toolbar.allProjects") }, ...projects.map(([value, label]) => ({ value, label }))]} />
+        {!waitingOpen && assignee && <InboxFilter label={t("componentsCoordinator.needsYou.toolbar.assigneeFilter")} heading={t("componentsCoordinator.needsYou.toolbar.assignedTo")} value={assignee} onChange={chooseAssignee}
+          defaultLabel={assignee === "me" ? t("componentsCoordinator.needsYou.toolbar.byAssigned") : undefined}
           options={assignee.startsWith("user:") && !assigneeOptions.some(option => option.value === assignee)
-            ? [...assigneeOptions, { value: assignee, label: "Someone else" }] : assigneeOptions} />}
-        <InboxFilter<Group> label="Group decisions" heading="Group by" value={groupBy} onChange={setGroupBy}
-          options={[{ value: "type", label: "By type" }, { value: "task", label: "By task" }, { value: "agent", label: "By agent" },
-            { value: "project", label: "By project" }, { value: "none", label: "No grouping" }]} />
+            ? [...assigneeOptions, { value: assignee, label: t("componentsCoordinator.needsYou.toolbar.someoneElse") }] : assigneeOptions} />}
+        <InboxFilter<Group> label={t("componentsCoordinator.needsYou.toolbar.groupLabel")} heading={t("componentsCoordinator.needsYou.toolbar.groupBy")} value={groupBy} onChange={setGroupBy}
+          options={[{ value: "type", label: t("componentsCoordinator.needsYou.toolbar.byType") }, { value: "task", label: t("componentsCoordinator.needsYou.toolbar.byTask") }, { value: "agent", label: t("componentsCoordinator.needsYou.toolbar.byAgent") },
+            { value: "project", label: t("componentsCoordinator.needsYou.toolbar.byProject") }, { value: "none", label: t("componentsCoordinator.needsYou.toolbar.noGrouping") }]} />
         <DropdownMenu>
-          <DropdownMenuTrigger asChild><Button variant="ghost" size="sm" data-attention-view-menu>View<ChevronDown className="size-4" /></Button></DropdownMenuTrigger>
+          <DropdownMenuTrigger asChild><Button variant="ghost" size="sm" data-attention-view-menu>{t("componentsCoordinator.needsYou.toolbar.view")}<ChevronDown className="size-4" /></Button></DropdownMenuTrigger>
           <DropdownMenuContent align="end" collisionPadding={8} className="w-(--sz-260px)">
-            <DropdownMenuLabel>View</DropdownMenuLabel>
-            <DropdownMenuItem onSelect={() => setView("archived")}>Archived{viewCounts.archived ? ` · ${viewCounts.archived}` : ""}</DropdownMenuItem>
-            <DropdownMenuItem onSelect={showHistory}>Decision history</DropdownMenuItem>
+            <DropdownMenuLabel>{t("componentsCoordinator.needsYou.toolbar.view")}</DropdownMenuLabel>
+            <DropdownMenuItem onSelect={() => setView("archived")}>{t("componentsCoordinator.needsYou.archived")}{viewCounts.archived ? ` · ${viewCounts.archived}` : ""}</DropdownMenuItem>
+            <DropdownMenuItem onSelect={showHistory}>{t("componentsCoordinator.needsYou.decisionHistory")}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -452,22 +453,21 @@ export function CoordinatorNeedsYou() {
     {folders}
     {feed.data && !waitingOpen && summarySections.length > 0 ? <p className="text-sm text-muted-foreground" data-needs-you-summary>
       {summarySections.map((section, index) => {
-        const label = NEEDS_YOU_SECTIONS[section].title.toLocaleLowerCase();
-        return <span key={section}>{index ? " · " : ""}{counts[section]} {counts[section] === 1 ? label.slice(0, -1) : label}</span>;
+        return <span key={section}>{index ? " · " : ""}{t(`componentsCoordinator.needsYou.summary.${section}`, { count: counts[section] })}</span>;
       })}
     </p> : null}
-    {feedWaiting ? <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Loading decisions…</p> : null}
+    {feedWaiting ? <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />{t("componentsCoordinator.needsYou.loading")}</p> : null}
     {feedView.kind === "error" ? <QueryErrorState error={feedView.error} onRetry={feedView.retry} /> : null}
     {!feedWaiting && feedView.kind !== "error" && currentItems.length === 0 && (
       staleItems.length || snoozedItems.length
-        ? <p className="py-8 text-center text-sm text-muted-foreground">{staleItems.length ? "No current cards. Stale cards are below." : "No archived cards. Snoozed cards are below."}</p>
-        : <EmptyState placement="upper" message={pendingItems.length ? "No open decisions match these filters." : waitingOpen ? "Nothing is waiting." : view === "mine" && feed.data?.waitingCount ? `You’re caught up. ${feed.data.waitingCount} ${feed.data.waitingCount === 1 ? "item is" : "items are"} waiting.` : EMPTY_VIEW_TEXT[view]} />
+        ? <p className="py-8 text-center text-sm text-muted-foreground">{staleItems.length ? t("componentsCoordinator.needsYou.staleBelow") : t("componentsCoordinator.needsYou.snoozedBelow")}</p>
+        : <EmptyState placement="upper" message={pendingItems.length ? t("componentsCoordinator.needsYou.noMatch") : waitingOpen ? t("componentsCoordinator.needsYou.nothingWaiting") : view === "mine" && feed.data?.waitingCount ? t("componentsCoordinator.needsYou.caughtUpWaiting", { count: feed.data.waitingCount }) : EMPTY_VIEW_TEXT[view]} />
     )}
     {groups.map(([label, items], index) => <div key={label} className="space-y-3" role={groupBy === "type" ? "group" : undefined} aria-label={groupBy === "type" ? NEEDS_YOU_SECTIONS[label as NeedsYouSection].title : undefined}>
       {groupBy === "type" ? index > 0 ? sectionHeading(label as NeedsYouSection) : null : label ? <h2 className="text-sm font-medium text-muted-foreground">{label}</h2> : null}
       <InboxLimitCards items={items} renderCard={renderCard} />
     </div>)}
-    {currentItems.length > renderLimit ? <Button variant="outline" onClick={() => setRenderLimit((value) => value + 40)}>Show more decisions</Button> : null}
+    {currentItems.length > renderLimit ? <Button variant="outline" onClick={() => setRenderLimit((value) => value + 40)}>{t("componentsCoordinator.needsYou.showMore")}</Button> : null}
     <AttentionStaleGroup items={staleItems} open={staleOpen} onToggle={() => setStaleOpen(open => !open)} onWithdrawAll={closeActions.withdrawAll}
       busy={closeActions.bulkPending} currentUserId={userId} userLabelMap={userLabelMap} titleOf={coordinatorCardTitle}>
       <InboxLimitCards items={staleItems} renderCard={renderCard} />

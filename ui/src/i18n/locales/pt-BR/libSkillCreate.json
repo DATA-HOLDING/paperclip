@@ -1,0 +1,13 @@
+{
+  "defaultName": "Nova skill",
+  "defaultSummary": "Descreva quando os agentes devem usar esta skill.",
+  "template": {
+    "whenToUse": "Quando usar",
+    "whenToUseItem": "Use esta skill quando a tarefa precisar do fluxo de trabalho especializado dela.",
+    "workflow": "Fluxo de trabalho",
+    "step1": "Examine o contexto da tarefa.",
+    "step2": "Aplique o fluxo de trabalho com cuidado.",
+    "step3": "Informe o que mudou e como foi verificado."
+  },
+  "forkName": "{{name}} (fork)"
+}

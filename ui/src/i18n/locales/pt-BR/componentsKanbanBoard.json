@@ -1,0 +1,12 @@
+{
+  "showMore": "Mostrar mais {{count}}",
+  "showing": "Mostrando {{visible}} de {{total}}",
+  "needsNextStepTitle": "Esta tarefa precisa de um próximo passo",
+  "needsNextStepAria": "Precisa de próximo passo",
+  "nextStep": "Próximo passo",
+  "live": "Ao vivo",
+  "subtasksRunning_one": "{{count}} subtarefa em execução abaixo",
+  "subtasksRunning_other": "{{count}} subtarefas em execução abaixo",
+  "liveBelow": "{{count}} ao vivo abaixo",
+  "columnsLabel": "Colunas do quadro de tarefas"
+}

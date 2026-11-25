@@ -6,6 +6,7 @@ import { flattenSelfTalk } from "./transcript-adapter";
 import { TaskChatReasoningSummary } from "./TaskChatReasoningSummary";
 import { latestReasoningHeadline } from "./reasoning-summary";
 import { useTaskChatShimmer } from "./TaskChatShimmer";
+import { t } from "@/i18n";
 
 /** Provider-authored reasoning summaries and deltas; never reconstructed hidden reasoning. */
 export function TaskChatThinking({
@@ -26,10 +27,10 @@ export function TaskChatThinking({
   const shimmer = useTaskChatShimmer(item.id);
   const body = item.lines.join("\n").trim();
   const preview = latestReasoningHeadline(body) ?? flattenSelfTalk(body);
-  const baseLabel = item.channel === "detail" ? "Reasoning detail" : "Reasoning";
+  const baseLabel = item.channel === "detail" ? t("componentsTaskChatTaskChatThinking.reasoningDetail") : t("componentsTaskChatTaskChatThinking.reasoning");
   const label = active
-    ? body ? `${baseLabel}…` : "Thinking…"
-    : item.summaryLabel ?? (body ? baseLabel : "Thought");
+    ? body ? `${baseLabel}…` : t("componentsTaskChatTaskChatThinking.thinking")
+    : item.summaryLabel ?? (body ? baseLabel : t("componentsTaskChatTaskChatThinking.thought"));
 
   if (body && !active) {
     return (
@@ -71,7 +72,7 @@ export function TaskChatThinking({
       <button
         type="button"
         aria-expanded={open}
-        aria-label={`${open ? "Collapse" : "Expand"} ${baseLabel.toLowerCase()}: ${preview}`}
+        aria-label={t(open ? "componentsTaskChatTaskChatThinking.collapseAria" : "componentsTaskChatTaskChatThinking.expandAria", { label: baseLabel.toLowerCase(), preview })}
         onClick={() => setOpen((value) => !value)}
         className={cn("group/thinking -mx-1.5 flex w-full min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-sm px-1.5 py-0.5 text-left font-normal text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring", rowClassName)}
       >

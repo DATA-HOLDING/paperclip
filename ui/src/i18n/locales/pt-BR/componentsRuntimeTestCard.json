@@ -1,0 +1,63 @@
+{
+  "connection": {
+    "idle": {
+      "title": "Testar seu agente",
+      "description": "Verifique se seu runtime e seu modelo conseguem responder.",
+      "action": "Executar teste"
+    },
+    "running": {
+      "title": "Testando conexão",
+      "description": "Verificando o runtime e aguardando a resposta do modelo…",
+      "action": "Testando…"
+    },
+    "pass": {
+      "title": "Conexão bem-sucedida",
+      "description": "As verificações do runtime passaram. Revise os detalhes abaixo.",
+      "action": "Testar novamente"
+    },
+    "warn": {
+      "title": "A conexão precisa de atenção",
+      "description": "Revise os detalhes do teste antes de executar seu agente.",
+      "action": "Testar novamente"
+    },
+    "fail": {
+      "title": "Não foi possível conectar",
+      "description": "Verifique a conexão do modelo e do provedor e tente novamente.",
+      "action": "Repetir teste"
+    }
+  },
+  "prerequisites": {
+    "idle": {
+      "title": "Verificar pré-requisitos",
+      "description": "Verifique as configurações da instância e a configuração de conexão pública.",
+      "action": "Verificar configuração"
+    },
+    "running": {
+      "title": "Verificando pré-requisitos",
+      "description": "Verificando as configurações da instância e a configuração de conexão pública…",
+      "action": "Verificando…"
+    },
+    "pass": {
+      "title": "As verificações de configuração passaram",
+      "description": "Revise os detalhes da configuração antes de atribuir trabalho.",
+      "action": "Verificar novamente"
+    },
+    "warn": {
+      "title": "Pareamento necessário",
+      "description": "Crie este agente, depois faça o pareamento e verifique a entrega de eventos.",
+      "action": "Verificar novamente"
+    },
+    "fail": {
+      "title": "A verificação de pré-requisitos falhou",
+      "description": "Revise os detalhes da configuração e tente novamente.",
+      "action": "Repetir verificação"
+    }
+  },
+  "runtimeMissing": "Runtime ausente",
+  "metadataOnly": {
+    "idle": "Verifique seu token salvo, a instalação do runtime e o modelo selecionado sem enviar um prompt ao modelo.",
+    "running": "Verificando o token salvo, o runtime e o modelo selecionado…"
+  },
+  "ariaLabel": "Teste de runtime",
+  "testDetails": "Detalhes do teste"
+}

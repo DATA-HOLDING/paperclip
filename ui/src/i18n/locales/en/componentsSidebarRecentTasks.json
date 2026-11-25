@@ -1,0 +1,34 @@
+{
+  "sectionLabel": "Recent Tasks",
+  "idle": "Idle",
+  "moreActions": "More actions for {{title}}",
+  "menu": {
+    "rename": "Rename",
+    "archive": "Archive",
+    "pauseRestart": "Pause/Restart"
+  },
+  "toast": {
+    "renamed": "Task renamed",
+    "renameFailed": "Task rename failed",
+    "renameFailedBody": "Unable to rename this task.",
+    "archived": "Task archived from inbox",
+    "archiveFailed": "Task archive failed",
+    "archiveFailedBody": "Unable to archive this task from the inbox.",
+    "restarted": "Task restarted",
+    "paused": "Task paused",
+    "pauseFailed": "Task pause update failed",
+    "pauseFailedBody": "Unable to pause or restart this task."
+  },
+  "errors": {
+    "wakeSkipped": "The assignee wake was skipped.",
+    "pausedByParent": "This task is paused by a parent task. Restart it from the pause root."
+  },
+  "renameDialog": {
+    "title": "Rename task",
+    "description": "Choose a short, clear name for this task.",
+    "taskName": "Task name",
+    "cancel": "Cancel",
+    "saving": "Saving...",
+    "save": "Save"
+  }
+}

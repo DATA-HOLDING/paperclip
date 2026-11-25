@@ -10,6 +10,7 @@ import { QueryErrorState, useQueryView } from "./QueryView";
 import type { EmailPublicationSummary } from "@paperclipai/shared";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 // Email actions belong to the agent's task conversation. Only surface mail
 // without a task comment yet and delivery outcomes that need attention here.
@@ -66,7 +67,7 @@ export function EmailTaskActivity({
       <QueryErrorState
         size="inline"
         error={threadView.error}
-        action="load email activity"
+        action={t("componentsEmailTaskActivity.loadAction")}
         onRetry={threadView.retry}
         retrying={threadView.isFetching}
       />
@@ -94,35 +95,34 @@ function EmailDelivery({
     <div className="space-y-2 text-xs text-muted-foreground">
       {p.request && !p.providerMessageId && (
         <article
-          aria-label="Email send intent"
+          aria-label={t("componentsEmailTaskActivity.sendIntent")}
           className={cn("task-context-notice space-y-3", ANALYTICS_MASK_CLASS)}
         >
-          <p className="font-semibold">{p.request.subject ?? "Email reply"}</p>
-          {p.request.to && <p>To: {p.request.to.join(", ")}</p>}
+          <p className="font-semibold">{p.request.subject ?? t("componentsEmailTaskActivity.emailReply")}</p>
+          {p.request.to && <p>{t("componentsEmailTaskActivity.to", { recipients: p.request.to.join(", ") })}</p>}
           <div className="whitespace-pre-wrap break-words text-sm text-foreground">
             {p.request.text}
           </div>
         </article>
       )}
       <p>
-        Email {p.outcome}
+        {t("componentsEmailTaskActivity.outcome", { outcome: p.outcome })}
         {p.error ? ` — ${p.error}` : ""}
       </p>
       {p.outcome === "uncertain" && (
         <details>
           <summary className="cursor-pointer">
-            Resolve delivery after checking AgentMail
+            {t("componentsEmailTaskActivity.resolveSummary")}
           </summary>
           <div className="space-y-2 py-2">
             <p>
-              Confirm the outcome in AgentMail before resolving. This action
-              does not resend.
+              {t("componentsEmailTaskActivity.confirmHint")}
             </p>
             <Input
-              aria-label="Provider message ID"
+              aria-label={t("componentsEmailTaskActivity.providerMessageId")}
               value={messageId}
               onChange={(e) => setMessageId(e.target.value)}
-              placeholder="Provider message ID"
+              placeholder={t("componentsEmailTaskActivity.providerMessageId")}
             />
             <div className="flex gap-2">
               <Button
@@ -131,7 +131,7 @@ function EmailDelivery({
                 disabled={!messageId || resolve.isPending}
                 onClick={() => resolve.mutate("sent")}
               >
-                Confirm sent
+                {t("componentsEmailTaskActivity.confirmSent")}
               </Button>
               <Button
                 size="sm"
@@ -139,7 +139,7 @@ function EmailDelivery({
                 disabled={resolve.isPending}
                 onClick={() => resolve.mutate("failed")}
               >
-                Confirm not sent
+                {t("componentsEmailTaskActivity.confirmNotSent")}
               </Button>
             </div>
             {resolve.isError && ( // query-error-ok: mutation result

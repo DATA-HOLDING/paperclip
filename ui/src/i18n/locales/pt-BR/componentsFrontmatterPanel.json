@@ -1,0 +1,36 @@
+{
+  "validation": {
+    "needsName": "O SKILL.md precisa de um name.",
+    "slug": "Use letras minúsculas, números e hifens.",
+    "needsDescription": "O SKILL.md precisa de uma description.",
+    "expectedList": "Era esperada uma lista — edite em YAML."
+  },
+  "title": "Frontmatter",
+  "none": "Nenhum",
+  "fields": "Campos",
+  "fieldsDisabledTooltip": "Mude para YAML para editar. Este frontmatter usa recursos de YAML que o formulário não consegue reproduzir com segurança (por exemplo, comentários, âncoras ou ordenação personalizada). Editar aqui preserva cada byte.",
+  "addFrontmatter": "Adicionar frontmatter",
+  "issues_one": "{{count}} problema",
+  "issues_other": "{{count}} problemas",
+  "noFrontmatter": "Este arquivo não tem frontmatter.",
+  "summary": {
+    "tools_one": "{{count}} ferramenta",
+    "tools_other": "{{count}} ferramentas",
+    "metadata": "{{n}} metadados"
+  },
+  "addToolPlaceholder": "Adicione uma ferramenta…",
+  "complexValue": "Valor complexo — edite em YAML.",
+  "metadata": {
+    "keyAria": "Chave de metadados {{n}}",
+    "keyPlaceholder": "chave",
+    "valueAria": "Valor de {{field}}",
+    "field": "campo {{n}}",
+    "valuePlaceholder": "valor",
+    "addField": "adicionar campo"
+  },
+  "remove": "Remover {{item}}",
+  "addToolAria": "Adicionar ferramenta",
+  "rawYamlNotice": "Editando o YAML bruto para preservar a formatação que o formulário não consegue reconstruir.",
+  "yamlAria": "YAML do frontmatter",
+  "rawYamlHint": "Neste modo, o YAML bruto é a fonte da verdade."
+}

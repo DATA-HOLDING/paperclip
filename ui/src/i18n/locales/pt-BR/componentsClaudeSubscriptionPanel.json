@@ -1,0 +1,6 @@
+{
+  "resets": "Reinicia em {{time}}",
+  "title": "Assinatura da Anthropic",
+  "description": "Cota da assinatura do Claude conectada a este servidor.",
+  "used": "{{percent}}% usado"
+}

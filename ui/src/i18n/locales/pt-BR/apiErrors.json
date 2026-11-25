@@ -1,0 +1,80 @@
+{
+  "unavailableBody": "O Paperclip está temporariamente indisponível. Tente novamente em instantes.",
+  "codes": {
+    "tenantAppUnavailable": {
+      "title": "Reconectando ao Paperclip",
+      "body": "O Paperclip está reiniciando ou sendo atualizado. Tente novamente em instantes."
+    },
+    "tenantAppStarting": {
+      "title": "O Paperclip está iniciando",
+      "body": "O Paperclip está iniciando. Tente novamente em alguns segundos."
+    },
+    "workerUnavailable": {
+      "title": "Plugin indisponível",
+      "body": "Este plugin está reiniciando. Tente novamente em instantes."
+    },
+    "timeout": {
+      "title": "A solicitação expirou",
+      "body": "Isso demorou demais para responder. Tente novamente em instantes."
+    },
+    "queueChanged": {
+      "title": "A fila mudou",
+      "body": "A fila mudou em outra sessão. Sua edição continua aqui; salve de novo para aplicá-la à fila mais recente."
+    },
+    "queuedMessageChanged": {
+      "title": "A mensagem na fila mudou",
+      "body": "Esta mensagem na fila já foi enviada ou removida. Seu texto continua aqui; você pode colocá-lo na fila como uma nova mensagem."
+    },
+    "cannotRespond": {
+      "title": "Você não pode responder a este cartão"
+    },
+    "audienceDenied": {
+      "body": "Você não faz parte do público que pode resolver este cartão."
+    },
+    "forbidden": {
+      "body": "Você não tem permissão para responder a este cartão."
+    },
+    "settled": {
+      "title": "Já resolvido",
+      "body": "Esta solicitação não está mais aguardando uma decisão."
+    },
+    "submitFailed": {
+      "title": "Não foi possível enviar",
+      "body": "Não foi possível enviar. Tente novamente."
+    }
+  },
+  "kinds": {
+    "transient": {
+      "title": "Conexão interrompida"
+    },
+    "auth": {
+      "title": "Sessão encerrada",
+      "body": "Sua sessão terminou. Entre novamente para continuar."
+    },
+    "forbidden": {
+      "title": "Não permitido",
+      "body": "Você não tem permissão para fazer isso."
+    },
+    "notFound": {
+      "title": "Não encontrado",
+      "body": "Este item não existe ou foi movido."
+    },
+    "conflict": {
+      "title": "Desatualizado",
+      "body": "Isto mudou desde que você carregou. Atualize e tente novamente."
+    },
+    "invalid": {
+      "title": "Confira os dados informados",
+      "body": "Alguns dados não são válidos. Revise-os e tente novamente."
+    },
+    "aborted": {
+      "title": "Cancelado",
+      "body": "A solicitação foi cancelada."
+    },
+    "unknown": {
+      "title": "Algo deu errado",
+      "body": "Ocorreu um erro inesperado. Tente novamente."
+    }
+  },
+  "couldNot": "Não foi possível {{action}}"
+}

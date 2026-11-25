@@ -1,0 +1,8 @@
+{
+  "refreshToSync": "Atualize esta fonte para sincronizar todos os arquivos",
+  "removedFromSource": "Removida da fonte · última versão instalada mantida",
+  "notSyncing": "Sem sincronizar · cópia instalada mantida",
+  "updateFailed": "Falha na atualização · última versão instalada mantida",
+  "syncedFromGithub": "Sincronizada do GitHub",
+  "manageSource": "Gerenciar fonte"
+}

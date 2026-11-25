@@ -1,0 +1,14 @@
+{
+  "ariaLabel": "Encerramento do watchdog resolvido na origem",
+  "eyebrow": "ENCERRAMENTO RESOLVIDO NA ORIGEM",
+  "systemAudit": "auditoria do sistema",
+  "description": "Esta execução foi encerrada como um falso positivo resolvido na origem.",
+  "sourceTask": "Tarefa de origem",
+  "sameRunEvidence": "Evidência da mesma execução",
+  "at": "em {{when}}",
+  "silenceAge": "Tempo de silêncio antes do encerramento",
+  "silenceStarted": " (silêncio iniciado em {{when}})",
+  "unknown": "desconhecido",
+  "processCleanup": "Limpeza do processo",
+  "evaluationTask": "Tarefa de avaliação"
+}

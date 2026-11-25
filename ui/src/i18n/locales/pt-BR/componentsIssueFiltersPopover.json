@@ -1,0 +1,41 @@
+{
+  "inboxCategory": {
+    "everything": "Todas as categorias",
+    "issuesITouched": "Minhas tarefas recentes",
+    "joinRequests": "Pedidos de entrada",
+    "approvals": "Aprovações",
+    "failedRuns": "Execuções com falha",
+    "alerts": "Alertas"
+  },
+  "approvalStatus": {
+    "all": "Todos os status de aprovação",
+    "actionable": "Requer ação",
+    "resolved": "Resolvidas"
+  },
+  "searchOptionPlaceholder": "Buscar {{label}}...",
+  "searchOptionAriaLabel": "Buscar {{label}}",
+  "filtersCount": "Filtros: {{count}}",
+  "filter": "Filtrar",
+  "filters": "Filtros",
+  "clear": "Limpar",
+  "category": "Categoria",
+  "approvalStatusLabel": "Status de aprovação",
+  "quickFilters": "Filtros rápidos",
+  "status": "Status",
+  "priority": "Prioridade",
+  "responsible": "Responsável",
+  "noResponsible": "Sem responsável",
+  "me": "Eu",
+  "creator": "Criador",
+  "removeCreator": "Remover criador {{label}}",
+  "searchCreators": "Buscar criadores...",
+  "noCreatorsMatch": "Nenhum criador corresponde.",
+  "project": "Projeto",
+  "projects": "Projetos",
+  "labels": "Etiquetas",
+  "externalObjectStatus": "Status do objeto externo",
+  "visibility": "Visibilidade",
+  "liveRunsOnly": "Somente execuções ao vivo",
+  "showAgentCreatedTasks": "Mostrar tarefas criadas por agentes",
+  "routineTasks": "Tarefas de rotina"
+}

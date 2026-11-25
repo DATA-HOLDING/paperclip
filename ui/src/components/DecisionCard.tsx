@@ -23,6 +23,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { MarkdownBody } from "./MarkdownBody";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 /**
  * Presentational card for a single Decisions-v1 decision (PAP-14966 / PAP-14939
@@ -67,18 +68,18 @@ export interface DecisionCardProps {
 // --- small helpers ----------------------------------------------------------
 
 function humanStatus(status: string | null | undefined): string {
-  if (!status) return "unknown";
+  if (!status) return t("componentsDecisionCard.unknownStatus");
   return status.replaceAll("_", " ");
 }
 
 function issueLabel(ref: DecisionIssueRef | null, fallbackId: string): string {
   if (ref?.identifier) return ref.identifier;
   if (ref?.title) return ref.title;
-  return `issue ${fallbackId.slice(0, 8)}`;
+  return t("componentsDecisionCard.issueFallback", { id: fallbackId.slice(0, 8) });
 }
 
-function pluralize(count: number, singular: string): string {
-  return `${count} ${count === 1 ? singular : `${singular}s`}`;
+function pluralize(count: number, unit: "blocker" | "issue" | "target"): string {
+  return t(`componentsDecisionCard.counts.${unit}`, { count });
 }
 
 function isDestructiveOption(option: DecisionOption): boolean {
@@ -100,34 +101,34 @@ function effectSummary(
   const target = issueLabel(resolve(effect.targetIssueId), effect.targetIssueId);
   switch (effect.type) {
     case "comment_on_issue":
-      return `Comment on ${target}`;
+      return t("componentsDecisionCard.effects.comment", { target });
     case "create_issue": {
       const parent = effect.draft.parentId
         ? issueLabel(resolve(effect.draft.parentId), effect.draft.parentId)
         : target;
-      return `Create issue “${effect.draft.title}” under ${parent}`;
+      return t("componentsDecisionCard.effects.createIssue", { title: effect.draft.title, parent });
     }
     case "update_issue_status":
-      return `Set ${target} to ${humanStatus(effect.status)}`;
+      return t("componentsDecisionCard.effects.setStatus", { target, status: humanStatus(effect.status) });
     case "assign_issue":
-      return `Reassign ${target}`;
+      return t("componentsDecisionCard.effects.reassign", { target });
     case "resolve_blocker":
-      return `Unblock ${target} — remove ${pluralize(effect.removeBlockedByIssueIds.length, "blocker")}`;
+      return t("componentsDecisionCard.effects.unblock", { target, blockers: pluralize(effect.removeBlockedByIssueIds.length, "blocker") });
     case "cancel_issue_tree": {
       const snapshot = snapshots[effect.targetIssueId];
       const descendantCount = snapshot?.descendantCount ?? snapshot?.descendantIds?.length ?? snapshot?.childCount ?? 0;
-      return `Cancel ${target} and its sub-tree (${pluralize(descendantCount + 1, "issue")})`;
+      return t("componentsDecisionCard.effects.cancelTree", { target, issues: pluralize(descendantCount + 1, "issue") });
     }
     default:
-      return "Apply effect";
+      return t("componentsDecisionCard.effects.apply");
   }
 }
 
 const FAILURE_CAUSE: Record<string, string> = {
-  deny_decision_intersection: "blocked by the permission boundary (fail-closed)",
-  invalid_effect_reference: "a referenced issue no longer exists",
-  target_changed: "the target changed since this was proposed",
-  effect_execution_failed: "the effect errored while running",
+  deny_decision_intersection: t("componentsDecisionCard.failureCauses.denyIntersection"),
+  invalid_effect_reference: t("componentsDecisionCard.failureCauses.invalidReference"),
+  target_changed: t("componentsDecisionCard.failureCauses.targetChanged"),
+  effect_execution_failed: t("componentsDecisionCard.failureCauses.executionFailed"),
 };
 
 interface ResultRow {
@@ -145,43 +146,43 @@ function executionRow(
   const target = issueLabel(targetRef, execution.targetIssueId);
   const result = execution.result ?? {};
   if (execution.status === "skipped") {
-    return { key: execution.id, status: "skipped", summary: `Skipped ${target} — target changed since proposal`, link: targetRef };
+    return { key: execution.id, status: "skipped", summary: t("componentsDecisionCard.results.skipped", { target }), link: targetRef };
   }
   if (execution.status === "failed") {
-    const cause = FAILURE_CAUSE[execution.error ?? ""] ?? execution.error ?? "the effect could not run";
-    return { key: execution.id, status: "failed", summary: `Failed on ${target} — ${cause}`, link: targetRef };
+    const cause = FAILURE_CAUSE[execution.error ?? ""] ?? execution.error ?? t("componentsDecisionCard.failureCauses.generic");
+    return { key: execution.id, status: "failed", summary: t("componentsDecisionCard.results.failed", { target, cause }), link: targetRef };
   }
   if (execution.status === "claimed") {
-    return { key: execution.id, status: "claimed", summary: `Running on ${target}…`, link: targetRef };
+    return { key: execution.id, status: "claimed", summary: t("componentsDecisionCard.results.running", { target }), link: targetRef };
   }
   // executed
   switch (execution.effectType) {
     case "comment_on_issue":
-      return { key: execution.id, status: "executed", summary: `Commented on ${target}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.commented", { target }), link: targetRef };
     case "create_issue": {
       const createdId = typeof result.issueId === "string" ? result.issueId : null;
       const created = createdId ? resolve(createdId) : null;
       return {
         key: execution.id,
         status: "executed",
-        summary: `Created ${created ? issueLabel(created, createdId!) : "a new issue"}`,
+        summary: t("componentsDecisionCard.results.created", { issue: created ? issueLabel(created, createdId!) : t("componentsDecisionCard.results.aNewIssue") }),
         link: created ?? targetRef,
       };
     }
     case "update_issue_status":
-      return { key: execution.id, status: "executed", summary: `Set ${target} to ${humanStatus(typeof result.status === "string" ? result.status : null)}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.setStatus", { target, status: humanStatus(typeof result.status === "string" ? result.status : null) }), link: targetRef };
     case "assign_issue":
-      return { key: execution.id, status: "executed", summary: `Reassigned ${target}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.reassigned", { target }), link: targetRef };
     case "resolve_blocker": {
       const removed = Array.isArray(result.removedBlockedByIssueIds) ? result.removedBlockedByIssueIds.length : 0;
-      return { key: execution.id, status: "executed", summary: `Removed ${pluralize(removed, "blocker")} from ${target}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.removedBlockers", { blockers: pluralize(removed, "blocker"), target }), link: targetRef };
     }
     case "cancel_issue_tree": {
       const cancelled = Array.isArray(result.cancelledIssueIds) ? result.cancelledIssueIds.length : 0;
-      return { key: execution.id, status: "executed", summary: `Cancelled ${pluralize(cancelled, "issue")} under ${target}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.cancelledIssues", { issues: pluralize(cancelled, "issue"), target }), link: targetRef };
     }
     default:
-      return { key: execution.id, status: "executed", summary: `Applied effect on ${target}`, link: targetRef };
+      return { key: execution.id, status: "executed", summary: t("componentsDecisionCard.results.applied", { target }), link: targetRef };
   }
 }
 
@@ -272,19 +273,20 @@ export function DecisionCard({
             ? "partial"
             : "failed";
 
-  const badgeLabel = open
-    ? "Pending"
+  const badgeState = open
+    ? "pending"
     : decision.status === "expired"
-      ? "Expired"
+      ? "expired"
       : decision.status === "cancelled"
-        ? "Cancelled"
+        ? "cancelled"
         : dismissed
-          ? "Dismissed"
+          ? "dismissed"
           : decision.executionStatus === "succeeded"
-            ? "Decided"
+            ? "decided"
             : decision.executionStatus === "partial"
-              ? "Partial"
-              : "Failed";
+              ? "partial"
+              : "failed";
+  const badgeLabel = t(`componentsDecisionCard.badges.${badgeState}`);
 
   const requiredUnmet = (decision.inputs ?? []).some(
     (field) => field.required && !(inputValues[field.id] ?? "").trim(),
@@ -328,7 +330,7 @@ export function DecisionCard({
         className,
         ANALYTICS_MASK_CLASS,
       )}
-      data-decision-state={badgeLabel.toLowerCase()}
+      data-decision-state={badgeState}
     >
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -336,7 +338,7 @@ export function DecisionCard({
         <div className="flex shrink-0 items-center gap-1.5">
           {open && hasCancelTree && (
             <span className={cn("inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-(length:--text-micro) font-semibold uppercase tracking-wide", BADGE.destructive)}>
-              <ShieldAlert className="h-3 w-3" aria-hidden /> Destructive
+              <ShieldAlert className="h-3 w-3" aria-hidden /> {t("componentsDecisionCard.badges.destructive")}
             </span>
           )}
           <span className={cn("inline-flex items-center rounded-full border px-2 py-0.5 text-(length:--text-micro) font-semibold uppercase tracking-wide", BADGE[tone])}>
@@ -347,10 +349,10 @@ export function DecisionCard({
 
       {/* Provenance */}
       <p className="mt-1 text-xs text-muted-foreground">
-        Proposed by <span className="font-medium text-foreground">{originAgentName ?? "an agent"}</span>
+        {t("componentsDecisionCard.provenance.proposedBy")}{" "}<span className="font-medium text-foreground">{originAgentName ?? t("componentsDecisionCard.provenance.anAgent")}</span>
         {originIssue && (
           <>
-            {" "}while running{" "}
+            {" "}{t("componentsDecisionCard.provenance.whileRunning")}{" "}
             <a href={originIssue.href} className="font-medium text-primary underline-offset-2 hover:underline">
               {issueLabel(originIssue, originIssue.id)}
             </a>
@@ -358,7 +360,7 @@ export function DecisionCard({
         )}
         {targetRefs.length > 0 && (
           <>
-            {" · applies to "}
+            {t("componentsDecisionCard.provenance.appliesTo")}
             {targetRefs.map(({ id, ref }, index) => (
               <span key={id}>
                 {index > 0 && ", "}
@@ -376,7 +378,7 @@ export function DecisionCard({
         {runHref && (
           <>
             {" · "}
-            <a href={runHref} className="hover:underline">view run</a>
+            <a href={runHref} className="hover:underline">{t("componentsDecisionCard.provenance.viewRun")}</a>
           </>
         )}
       </p>
@@ -393,7 +395,7 @@ export function DecisionCard({
         <div className="mt-3 rounded-lg border border-amber-500/50 bg-amber-500/10 px-3 py-2">
           <div className="flex items-center gap-2 text-sm font-medium text-amber-800 dark:text-amber-200">
             <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden />
-            {pluralize(staleTargetIds.length, "target")} changed since this was proposed
+            {t("componentsDecisionCard.stale.changed", { targets: pluralize(staleTargetIds.length, "target") })}
           </div>
           <ul className="mt-1.5 space-y-1 text-xs text-amber-900/90 dark:text-amber-100/90">
             {staleTargetIds.map((id) => {
@@ -404,13 +406,13 @@ export function DecisionCard({
                   <span className="font-medium">{issueLabel(ref, id)}:</span>
                   <span className="tabular-nums">{humanStatus(from?.status)}</span>
                   <ArrowRight className="h-3 w-3" aria-hidden />
-                  <span className="tabular-nums">{humanStatus(ref?.status) || "changed"}</span>
+                  <span className="tabular-nums">{humanStatus(ref?.status) || t("componentsDecisionCard.stale.changedValue")}</span>
                 </li>
               );
             })}
           </ul>
           <p className="mt-1.5 text-xs text-amber-800/80 dark:text-amber-200/80">
-            Options that require an unchanged target are disabled below.
+            {t("componentsDecisionCard.stale.optionsDisabled")}
           </p>
         </div>
       )}
@@ -470,7 +472,7 @@ export function DecisionCard({
                     </span>
                     {blockedStale && (
                       <span className="shrink-0 rounded-full border border-amber-500/60 bg-amber-500/10 px-2 py-0.5 text-(length:--text-micro) font-medium text-amber-800 dark:text-amber-200">
-                        Blocked · stale
+                        {t("componentsDecisionCard.stale.blocked")}
                       </span>
                     )}
                   </div>
@@ -499,12 +501,12 @@ export function DecisionCard({
                 {confirming && cancelTree && (
                   <div className="rounded-lg border border-rose-500/50 bg-rose-500/5 p-3">
                     <div className="flex items-center gap-2 text-sm font-semibold text-rose-700 dark:text-rose-300">
-                      <Ban className="h-4 w-4" aria-hidden /> This cancels an entire issue tree
+                      <Ban className="h-4 w-4" aria-hidden /> {t("componentsDecisionCard.confirm.title")}
                     </div>
                     {previewRows && previewRows.length > 0 ? (
                       <>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          {pluralize(previewRows.length, "issue")} will be cancelled:
+                          {t("componentsDecisionCard.confirm.willBeCancelled", { issues: pluralize(previewRows.length, "issue") })}
                         </p>
                         <ul className="mt-1 max-h-40 space-y-0.5 overflow-auto text-xs">
                           {previewRows.map((row) => (
@@ -520,17 +522,17 @@ export function DecisionCard({
                       </>
                     ) : (
                       <p className="mt-1 text-xs text-muted-foreground">
-                        This issue and every sub-issue beneath it will be cancelled.
+                        {t("componentsDecisionCard.confirm.wholeTree")}
                       </p>
                     )}
                     <p className="mt-2 text-xs text-muted-foreground">
-                      Type <span className="font-mono font-medium text-foreground">{confirmToken}</span> to confirm.
+                      {t("componentsDecisionCard.confirm.typeBefore")}{" "}<span className="font-mono font-medium text-foreground">{confirmToken}</span>{" "}{t("componentsDecisionCard.confirm.typeAfter")}
                     </p>
                     <Input
                       value={confirmText}
                       onChange={(event) => setConfirmText(event.target.value)}
                       placeholder={confirmToken}
-                      aria-label="Type the issue identifier to confirm"
+                      aria-label={t("componentsDecisionCard.confirm.ariaLabel")}
                       autoFocus
                       className="mt-1"
                     />
@@ -543,7 +545,7 @@ export function DecisionCard({
                           setConfirmText("");
                         }}
                       >
-                        Cancel
+                        {t("componentsDecisionCard.confirm.cancel")}
                       </Button>
                       <Button
                         variant="destructive"
@@ -552,7 +554,7 @@ export function DecisionCard({
                         onClick={() => onDecide?.(option.id, inputValues)}
                       >
                         {busy && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-                        {previewRows ? `Cancel ${pluralize(previewRows.length, "issue")}` : "Cancel tree"}
+                        {previewRows ? t("componentsDecisionCard.confirm.cancelIssues", { issues: pluralize(previewRows.length, "issue") }) : t("componentsDecisionCard.confirm.cancelTree")}
                       </Button>
                     </div>
                   </div>
@@ -571,26 +573,26 @@ export function DecisionCard({
           {decision.status === "expired" && (
             <div className="rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-2 font-medium text-foreground">
-                <Clock className="h-4 w-4" aria-hidden /> The decision window closed
+                <Clock className="h-4 w-4" aria-hidden /> {t("componentsDecisionCard.terminal.windowClosed")}
               </div>
               <p className="mt-1">
                 {expiredReason === "target_gone"
-                  ? "A target issue was cancelled before this was decided."
+                  ? t("componentsDecisionCard.terminal.targetGone")
                   : expiredReason === "target_completed"
-                    ? "All target issues were completed before this was decided."
-                    : "No response before the expiry deadline."}
-                {decision.continuationPolicy === "wake_origin_agent" && " The proposer was re-woken."}
+                    ? t("componentsDecisionCard.terminal.targetCompleted")
+                    : t("componentsDecisionCard.terminal.noResponse")}
+                {decision.continuationPolicy === "wake_origin_agent" && t("componentsDecisionCard.terminal.rewoken")}
               </p>
             </div>
           )}
           {decision.status === "cancelled" && (
             <p className="rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
-              This decision was withdrawn by the proposer before a response.
+              {t("componentsDecisionCard.terminal.withdrawn")}
             </p>
           )}
           {decision.status === "decided" && dismissed && (
             <p className="rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
-              Dismissed — no effects were run.
+              {t("componentsDecisionCard.terminal.dismissed")}
             </p>
           )}
           {decision.status === "decided" && !dismissed && (executions ?? []).length > 0 && (
@@ -609,7 +611,7 @@ export function DecisionCard({
               </ul>
               {decision.executionStatus !== "succeeded" && (
                 <p className="text-xs text-muted-foreground">
-                  Some effects may already have been applied. Review the results before asking the proposer to re-propose.
+                  {t("componentsDecisionCard.terminal.partialNote")}
                 </p>
               )}
             </>

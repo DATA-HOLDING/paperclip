@@ -1,0 +1,30 @@
+{
+  "research": {
+    "query": "Query",
+    "results_one": "{{count}} result",
+    "results_other": "{{count}} results",
+    "sources": "Research sources",
+    "showMore_one": "Show {{count}} more result",
+    "showMore_other": "Show {{count}} more results",
+    "showFewer": "Show fewer results",
+    "additionalOutput": "Additional provider output is available in Runner Inspector."
+  },
+  "planSteps": "Plan steps",
+  "delegatedAgents": "Delegated agents",
+  "outputTruncated": "Output truncated to 8 KiB.",
+  "noChangedFiles": "No changed-file details were reported.",
+  "changedFiles": "Changed files",
+  "moreFiles_one": "{{count}} more file not shown",
+  "moreFiles_other": "{{count}} more files not shown",
+  "previewUnavailable": "Preview unavailable.",
+  "previewTruncated": "Preview truncated by the runner.",
+  "moreSources": "+{{n}} more",
+  "timeLeft": "{{duration}} left",
+  "notice": {
+    "noMessage": "The provider reported a notice without a message.",
+    "error": "Error",
+    "providerUpdate": "Provider update",
+    "warning": "Warning",
+    "details": "Details"
+  }
+}

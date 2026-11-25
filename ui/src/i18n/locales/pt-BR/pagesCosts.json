@@ -1,0 +1,117 @@
+{
+  "finance": {
+    "ledgerTitle": "Livro financeiro",
+    "debits": "Débitos",
+    "credits": "Créditos",
+    "creditsSubtitle": "Reembolsos, compensações e devoluções de crédito",
+    "net": "Líquido",
+    "netSubtitle": "Débito menos crédito no período selecionado",
+    "estimated": "Estimado",
+    "estimatedSubtitle": "Débitos estimados que ainda não constam em fatura",
+    "byBiller": "Por faturador",
+    "byBillerDescription": "Eventos financeiros da conta agrupados por quem cobrou ou creditou.",
+    "empty": "Nenhum evento financeiro ainda.",
+    "ledgerDescription": "Cobranças da conta que não correspondem a uma única requisição de inferência.",
+    "debitsSubtitle_one": "{{count}} evento no período",
+    "debitsSubtitle_other": "{{count}} eventos no período",
+    "providerReports": "Relatórios de custo da API dos provedores: {{amount}}. Os totais dos relatórios se sobrepõem a faturas e estimativas de execução e aparecem separados das cobranças registradas."
+  },
+  "providers": {
+    "all": "Todos os provedores",
+    "empty": "Nenhum evento de custo neste período."
+  },
+  "billers": {
+    "all": "Todos os faturadores",
+    "empty": "Nenhum evento faturável neste período."
+  },
+  "selectOrganization": "Selecione uma organização para ver os custos.",
+  "agentLoadFailed": "Não foi possível carregar os detalhes do agente. Os totais abaixo mostram os custos registrados da organização.",
+  "title": "Custos",
+  "dateRangeAria": "Período dos custos",
+  "customRangeTo": "até",
+  "tiles": {
+    "apiSpend": "Gasto com API",
+    "budget": "Orçamento",
+    "recordedCharges": "Cobranças registradas",
+    "financeEvents": "Eventos financeiros",
+    "apiUnavailable": "Uso da API indisponível",
+    "apiLoading": "Carregando uso da API",
+    "budgetOpen": "Livre",
+    "budgetPaused": "{{agents}} agentes pausados · {{projects}} projetos pausados",
+    "budgetThisMonth": "{{spend}} de {{budget}} neste mês",
+    "monthlyLimit": "Limite mensal",
+    "noMonthlyCap": "Nenhum teto mensal configurado",
+    "debitsAmount": "{{amount}} em débitos",
+    "creditsAmount": "{{amount}} em créditos",
+    "financialUnavailable": "Dados financeiros indisponíveis",
+    "estimatedInRange": "{{amount}} estimados no período"
+  },
+  "subscriptions": {
+    "checkFailed": "Não foi possível verificar as contas conectadas. As estimativas de assinatura existentes continuam aparecendo.",
+    "retryCheck": "Verificar contas novamente",
+    "usageCharges": "As contas de assinatura também têm {{amount}} em cobranças de uso registradas neste período, além das mensalidades.",
+    "otherUsage": "Outro uso cobrado: {{tokens}} tokens",
+    "otherUsageCharges": " · {{amount}} em cobranças registradas",
+    "otherUsageSuffix": ", incluído no livro de inferência.",
+    "stale": "Mostrando o último uso de API e assinaturas carregado. As atualizações voltarão automaticamente."
+  },
+  "tabs": {
+    "overview": "Visão geral",
+    "budgets": "Orçamentos",
+    "providers": "Provedores",
+    "billers": "Faturadores",
+    "finance": "Financeiro",
+    "decisions": "Decisões",
+    "fastResponses": "Respostas rápidas"
+  },
+  "selectDates": "Selecione uma data inicial e uma final para carregar os dados.",
+  "costLoadFailed": "Não foi possível carregar os dados de custo. Tente novamente em instantes.",
+  "overview": {
+    "byAgent": "Por agente",
+    "noCostEvents": "Nenhum evento de custo ainda.",
+    "paperclipServices": "Serviços do Paperclip",
+    "byProject": "Por projeto",
+    "noProjectCosts": "Nenhum custo de execução atribuído a projeto ainda.",
+    "agentCostsAria": "Custos de {{name}}",
+    "tokenSplit": "entrada {{input}} ({{cached}} em cache) · saída {{output}}",
+    "runsPrefix": "execuções: ",
+    "apiRuns": "{{count}} api",
+    "subRuns": "{{count}} assin.",
+    "tok": "{{tokens}} tok",
+    "userRefreshFailed": "Não foi possível atualizar os custos por usuário. Mostrando os últimos dados carregados.",
+    "userLoadFailed": "Não foi possível carregar os custos por usuário. Tente novamente em instantes.",
+    "unattributed": "Sem atribuição"
+  },
+  "budgets": {
+    "controlPlane": "Painel de controle de orçamento",
+    "activeIncidents": "Incidentes ativos",
+    "activeIncidentsSubtitle": "Limites flexíveis ou rígidos ultrapassados em aberto",
+    "pendingApprovals": "Aprovações pendentes",
+    "pendingApprovalsSubtitle": "Aprovações de exceção de orçamento aguardando o conselho",
+    "pausedAgents": "Agentes pausados",
+    "pausedAgentsSubtitle": "Heartbeats de agentes bloqueados pelo orçamento",
+    "pausedProjects": "Projetos pausados",
+    "pausedProjectsSubtitle": "Execução de projetos bloqueada pelo orçamento",
+    "policyUpdateFailed": "Não foi possível atualizar a política de orçamento. Revise suas configurações e tente novamente.",
+    "incidentUpdateFailed": "Não foi possível atualizar o orçamento. Confira as execuções pendentes ou o uso sem preço mostrados nesta página e tente novamente.",
+    "controlPlaneDescription": "Limites rígidos de gasto para agentes e projetos. A cota de assinatura dos provedores fica separada e aparece em Provedores.",
+    "activeIncidentsDescription": "Aumente o orçamento ou mantenha a parada rígida pausada. Dispense um aviso quando nenhuma ação for necessária.",
+    "scopeTitle": {
+      "company": "orçamentos da organização",
+      "agent": "orçamentos de agentes",
+      "project": "orçamentos de projetos"
+    },
+    "scopeDescription": {
+      "company": "Política mensal para toda a organização.",
+      "agent": "Políticas recorrentes de gasto mensal para agentes individuais.",
+      "project": "Políticas de gasto total para projetos com execução vinculada."
+    },
+    "empty": "Nenhuma política de orçamento ainda. Defina orçamentos de agentes e projetos nas páginas de detalhe deles ou use o controle de orçamento mensal da organização."
+  },
+  "financeLoadFailed": "Não foi possível carregar os eventos financeiros. Tente novamente em instantes.",
+  "museUnavailable": "A atividade do Muse de {{name}} não tem uso nem custo informados. Os totais abaixo mostram apenas as cobranças registradas da organização. O Paperclip não consegue impor um teto de gasto do Muse.",
+  "currencyNotice": "Os totais financeiros principais são só em USD. Outras moedas aparecem separadas; nenhuma conversão de câmbio é aplicada.",
+  "budgetLoadFailed": "Não foi possível carregar os dados de orçamento. Tente novamente em instantes.",
+  "staleData": "Mostrando os últimos dados carregados. As atualizações voltarão automaticamente.",
+  "loadingFinance": "Carregando eventos financeiros…"
+}

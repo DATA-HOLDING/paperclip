@@ -1,0 +1,199 @@
+{
+  "agentChannelsPanel": {
+    "title": "Canais",
+    "description": "Identidades de chat e e-mail conectadas a este agente.",
+    "connectChannel": "Conectar um canal",
+    "loading": "Carregando canais…",
+    "emptyTitle": "Nenhum canal conectado",
+    "emptyConnectAgent": "Conecte uma identidade de agente em Conectores.",
+    "emptyConnectAgentMail": "Conecte o AgentMail em Conectores.",
+    "openConnectors": "Abrir Conectores",
+    "providerIdentity": "Identidade do provedor",
+    "openConnection": "Abrir conexão"
+  },
+  "chatDetailSidebar": {
+    "ariaLabel": "Conexão de chat",
+    "settings": "Configurações",
+    "access": "Acesso",
+    "reviews": "Revisões",
+    "conversations": "Conversas",
+    "activity": "Atividade"
+  },
+  "chatSetupNavigation": {
+    "chooseAgent": "Escolher agente",
+    "connectProvider": "Conectar provedor",
+    "tryIt": "Experimentar",
+    "ariaLabel": "Progresso da configuração da conexão"
+  },
+  "legacyBoardSendNotice": {
+    "trigger": "Descartar registro de envio salvo",
+    "title": "Descartar registro de envio salvo?",
+    "description": "Confira a Atividade primeiro. Descartar este registro do navegador não cancela uma atualização que já foi aceita. Isso permite que você comece uma nova atualização.",
+    "keep": "Manter registro",
+    "discard": "Descartar registro"
+  },
+  "agentWorkPanels": {
+    "sort": {
+      "updated": "Última atualização",
+      "created": "Criação",
+      "status": "Status",
+      "title": "Título"
+    },
+    "tasks": {
+      "ariaLabel": "Tarefas do agente",
+      "search": "Buscar tarefas",
+      "sort": "Ordenar",
+      "sortAria": "Ordenar tarefas",
+      "loading": "Carregando tarefas…",
+      "errorAction": "carregar as tarefas deste agente",
+      "empty": "Este agente ainda não trabalhou em nenhuma tarefa.",
+      "noMatchCapped": "Nenhuma tarefa corresponde a estes filtros entre as {{limit}} atualizadas mais recentemente.",
+      "noMatch": "Nenhuma tarefa corresponde a estes filtros.",
+      "showingCapped": "Mostrando as {{limit}} tarefas atualizadas mais recentemente."
+    },
+    "artifacts": {
+      "updated": "Atualizado em {{date}}",
+      "loading": "Carregando artefatos…",
+      "errorAction": "carregar os artefatos deste agente",
+      "empty": "Este agente ainda não produziu nenhum artefato.",
+      "ariaLabel": "Artefatos do agente",
+      "showingTruncated": "Mostrando os {{n}} artefatos mais recentes deste agente."
+    }
+  },
+  "banner": {
+    "feedback": {
+      "awaitingConsent": {
+        "title": "Aguardando consentimento do arquivo",
+        "body": "O destinatário precisa aceitar o cartão do arquivo no Microsoft Teams. O arquivo ainda não foi entregue; a identidade deste envio é mantida enquanto o Paperclip aguarda."
+      },
+      "published": {
+        "title": "Enviado ao canal",
+        "body": "A atualização do conselho foi publicada na conversa conectada."
+      },
+      "pending": {
+        "title": "Na fila do canal",
+        "body": "A entrega ainda está pendente. Seu rascunho é mantido até o Paperclip confirmar a publicação."
+      },
+      "streaming": {
+        "title": "Publicando no canal",
+        "body": "A entrega ainda está em andamento. Seu rascunho é mantido até o Paperclip confirmar a publicação."
+      },
+      "retry": {
+        "title": "Nova tentativa de entrega agendada",
+        "body": "O Paperclip tentará esta publicação novamente. Seu rascunho e a identidade da nova tentativa são mantidos."
+      },
+      "deliveryUnknown": {
+        "title": "Entrega não confirmada",
+        "body": "O provedor pode ter aceitado esta atualização. Resolva-a na Atividade antes de tentar novamente para evitar uma duplicata."
+      },
+      "failed": {
+        "title": "Falha na entrega ao canal",
+        "body": "Seu rascunho é mantido. Abra a Atividade para tentar esta mesma publicação novamente com segurança."
+      },
+      "cancelled": {
+        "title": "Entrega ao canal cancelada",
+        "body": "Seu rascunho é mantido. Algumas partes podem já ter sido publicadas; confira a Atividade antes de iniciar um novo envio."
+      }
+    },
+    "filePhase": {
+      "consentPending": "Cartão de consentimento na fila",
+      "consentSending": "Enviando cartão de consentimento",
+      "consentUnknown": "Entrega do cartão de consentimento não confirmada",
+      "awaitingConsent": "Aguardando consentimento",
+      "uploadPending": "Envio do arquivo na fila",
+      "uploading": "Enviando arquivo",
+      "uploadUnknown": "Envio do arquivo não confirmado",
+      "fileInfoPending": "Notificação do arquivo na fila",
+      "fileInfoSending": "Enviando notificação do arquivo",
+      "fileInfoUnknown": "Notificação do arquivo não confirmada",
+      "delivered": "Entregue",
+      "declined": "Recusado",
+      "expired": "Consentimento expirado",
+      "cancelled": "Cancelado; os bytes remotos podem permanecer",
+      "conflict": "A entrega do arquivo precisa de revisão"
+    },
+    "storage": {
+      "unknownSender": "Uma atualização anterior tem um remetente desconhecido. Abra a Atividade para conferir a entrega dela antes de iniciar uma nova atualização.",
+      "unreadable": "Não foi possível ler a identidade de entrega salva. Confira a Atividade e restaure o armazenamento do navegador antes de iniciar outro envio.",
+      "rejectionNotSaved": "Não foi possível salvar o envio rejeitado. Restaure o armazenamento do navegador e tente esta mesma solicitação novamente para recuperar o comprovante.",
+      "recordNotDiscarded": "Não foi possível descartar o registro de envio salvo. Restaure o armazenamento do navegador e tente novamente.",
+      "rejectionNotCleared": "Não foi possível limpar a rejeição salva. Restaure o armazenamento do navegador antes de editar este envio.",
+      "identityNotCleared": "Não foi possível limpar a identidade de entrega salva. Restaure o armazenamento do navegador antes de iniciar outro envio.",
+      "notPreserved": "O armazenamento do navegador não conseguiu preservar esta identidade de entrega. Nenhuma atualização foi enviada. Restaure o armazenamento do navegador e recarregue para tentar novamente."
+    },
+    "accountChanged": "Sua conta mudou. Reabra esta tarefa para enviar pela sua conta atual.",
+    "viewActivity": "Ver atividade",
+    "rejected": {
+      "title": "A atualização não foi enviada",
+      "toastBody": "Um arquivo selecionado já pertence a outro comentário. Edite o envio rejeitado para corrigir a seleção.",
+      "body": "Um arquivo selecionado já pertence a outro comentário. Esta solicitação foi rejeitada antes de qualquer mensagem entrar na fila do canal. Seu rascunho exato é mantido.",
+      "edit": "Editar envio rejeitado"
+    },
+    "unconfirmedToast": {
+      "title": "Não foi possível confirmar a entrega ao canal",
+      "body": "{{detail}} Seu rascunho é mantido; tentar novamente aqui reutiliza a mesma identidade da solicitação."
+    },
+    "uploadError": "{{detail}} Nenhuma mensagem foi enviada ao canal. Confira os arquivos da tarefa antes de tentar o envio novamente.",
+    "selectedFileUnavailable": "Arquivo da tarefa selecionado (detalhes indisponíveis)",
+    "mixed": {
+      "title": "Entrega concluída com resultados mistos",
+      "body": "Nem todas as partes tiveram a entrega confirmada. Revise os resultados abaixo; dispensar este comprovante não reenvia nada."
+    },
+    "remainingConsent": {
+      "title": "Aguardando o consentimento dos arquivos restantes",
+      "body": "Algumas partes foram concluídas. Os cartões dos arquivos restantes ainda precisam da resposta do destinatário; este envio fica bloqueado até que todo o lote seja resolvido."
+    },
+    "ariaLabel": "Conversa externa",
+    "connectedTo": "Conectado ao {{provider}}",
+    "slackMirrored": "As mensagens que você envia aqui e as respostas do agente também são publicadas no Slack.",
+    "assignmentFixed": "A atribuição do agente é fixa para esta tarefa externa.",
+    "openProvider": "Abrir {{provider}}",
+    "sendToChannel": "Enviar ao canal",
+    "connection": "Conexão",
+    "boardUpdate": "Atualização do conselho",
+    "placeholder": "Escreva apenas o que deve ficar visível na conversa do provedor.",
+    "addMessage": "Adicione uma mensagem para enviar com seus arquivos.",
+    "attachAria": "Anexar arquivo à atualização do canal",
+    "uploading": "Enviando…",
+    "attachFile": "Anexar arquivo",
+    "filesStay": "Os arquivos ficam nesta tarefa até você enviá-los ao canal.",
+    "selectionNotice": "Um arquivo já anexado a outro comentário foi removido desta seleção. Anexe uma nova cópia ou compartilhe o link da tarefa; sua mensagem não mudou.",
+    "filesInSend": "Arquivos neste envio",
+    "includeTaskFiles": "Incluir arquivos da tarefa",
+    "filesHint": {
+      "github": "Os GitHub Apps não podem enviar o conteúdo de arquivos em comentários. Os arquivos marcados ficam na tarefa do Paperclip; o GitHub recebe um link autenticado da tarefa quando este Conselho tem uma URL pública, ou um aviso de tarefa privada caso contrário.",
+      "teams": "Em chats pessoais do Teams, os destinatários aceitam cada arquivo antes do envio. Canais e chats em grupo recebem as imagens compatíveis diretamente; os outros arquivos ficam na tarefa, com um link da tarefa ou um aviso de tarefa privada.",
+      "locked": "Estes são os arquivos selecionados para este envio. A seleção fica bloqueada até a entrega ser resolvida.",
+      "default": "Apenas os arquivos marcados serão publicados na conversa externa."
+    },
+    "unnamedAttachment": "Anexo sem nome",
+    "openActivity": "Abrir Atividade",
+    "resend": {
+      "stalledTitle": "Ainda não foi possível enviar esta atualização.",
+      "waitingTitle": "Enviando quando reconectar…",
+      "unconfirmedTitle": "Resultado da entrega não confirmado",
+      "stalledBody": "Seu rascunho exato e a identidade da solicitação são mantidos. Os reenvios automáticos pararam; escolha Reenviar agora para tentar novamente sem criar uma duplicata.",
+      "waitingBody": "Seu rascunho exato e a identidade da solicitação são mantidos. Ele é reenviado sozinho sem criar uma duplicata.",
+      "unconfirmedBody": "Seu rascunho exato e a identidade da solicitação são mantidos. Tente novamente com segurança para saber o estado oficial da publicação sem criar uma duplicata."
+    },
+    "batch": {
+      "published": "{{n}} publicadas",
+      "awaitingConsent": "{{n}} aguardando consentimento",
+      "declined": "{{n}} recusadas",
+      "expired": "{{n}} expiradas",
+      "cancelled": "{{n}} canceladas",
+      "ofTotal": "{{published}} de {{total}} partes publicadas."
+    },
+    "fileOutcomesAria": "Resultados da entrega dos arquivos",
+    "statusRefreshFailed": "Não foi possível atualizar o status da entrega. Seu rascunho é mantido; o Paperclip vai verificar novamente sem enviar outra atualização.",
+    "providerDetail": "Detalhe do provedor: {{detail}}",
+    "dismissReceipt": "Dispensar comprovante de entrega",
+    "footer": {
+      "slack": "Sua mensagem é publicada no Slack com o seu nome e inicia o agente.",
+      "default": "Os comentários comuns do conselho ficam apenas no Paperclip."
+    },
+    "sending": "Enviando…",
+    "resendNow": "Reenviar agora",
+    "retrySafely": "Tentar novamente com segurança"
+  }
+}

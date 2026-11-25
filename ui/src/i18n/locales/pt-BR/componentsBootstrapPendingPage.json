@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "title": "Prefere concluir a configuração pelo host?",
+    "activeInvite": "Já existe um convite de inicialização ativo. Confira os logs de inicialização do Paperclip para achar a URL do primeiro administrador ou rode este comando no host para gerar outra:",
+    "runCommand": "Rode este comando no host que executa o Paperclip para exibir uma URL de convite de uso único para o primeiro administrador:"
+  },
+  "claimError": {
+    "conflictTitle": "Outra pessoa já assumiu esta instância.",
+    "conflictBody": "Atualize a página para entrar ou peça ao administrador atual que convide você em Configurações -> Acesso.",
+    "expired": "Sua sessão expirou. Entre novamente para assumir esta instância.",
+    "unreachable": "Não conseguimos falar com o servidor. Tente novamente em instantes."
+  },
+  "waiting": {
+    "title": "Este Paperclip está aguardando o primeiro administrador",
+    "body": "Esta instância funciona só por convite. Quem opera o servidor precisa gerar no host uma URL de convite de uso único para o primeiro administrador. Com o link em mãos, abra-o neste navegador para concluir a configuração.",
+    "note": "Assumir pelo navegador fica desativado de propósito no modo público, para que ninguém na rede possa se promover a administrador."
+  },
+  "success": {
+    "title": "Você é o administrador da instância",
+    "body": "A configuração foi concluída. Levando você ao onboarding para criar sua primeira organização...",
+    "redirecting": "Redirecionando...",
+    "continue": "Continuar para o painel"
+  },
+  "finish": {
+    "title": "Conclua a configuração deste Paperclip",
+    "signedOutBody": "Nenhum administrador assumiu esta instância ainda. Entre ou crie sua conta do Paperclip para se tornar o primeiro administrador por este navegador.",
+    "signIn": "Entrar / Criar conta",
+    "signedInBody": "Nenhum administrador assumiu esta instância ainda. Assuma agora para se tornar o primeiro administrador e começar o onboarding.",
+    "claiming": "Assumindo...",
+    "claim": "Assumir esta instância",
+    "signedInAs": "Conectado como",
+    "wrongAccount": "Conta errada?",
+    "switchAccount": "Trocar de conta"
+  }
+}

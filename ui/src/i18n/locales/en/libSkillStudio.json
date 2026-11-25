@@ -1,0 +1,16 @@
+{
+  "testTask": {
+    "expired": "Test task expired",
+    "deleted": "Test task deleted",
+    "unavailable": "Test task unavailable"
+  },
+  "runGate": {
+    "noFiles": "This skill has no files to test",
+    "pickAgent": "Pick an agent to run",
+    "addInput": "Add or paste input text to run",
+    "saveEdits": "Save skill edits before running",
+    "inProgress": "A run is already in progress"
+  },
+  "harnessUnavailableBody": "Stored run snapshots are still shown. Harness documents, attachments, and work products are no longer available.",
+  "unknownEditor": "Unknown editor"
+}

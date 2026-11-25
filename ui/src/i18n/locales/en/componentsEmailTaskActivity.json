@@ -1,0 +1,12 @@
+{
+  "loadAction": "load email activity",
+  "sendIntent": "Email send intent",
+  "emailReply": "Email reply",
+  "to": "To: {{recipients}}",
+  "outcome": "Email {{outcome}}",
+  "resolveSummary": "Resolve delivery after checking AgentMail",
+  "confirmHint": "Confirm the outcome in AgentMail before resolving. This action does not resend.",
+  "providerMessageId": "Provider message ID",
+  "confirmSent": "Confirm sent",
+  "confirmNotSent": "Confirm not sent"
+}

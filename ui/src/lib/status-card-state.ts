@@ -1,4 +1,5 @@
 import type { StatusCard, StatusCardRefreshPolicy } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * The lifecycle states a status card renders as on the board (plan §7,
@@ -52,60 +53,60 @@ export const STATUS_CARD_LIFECYCLE_PRESENTATION: Record<
   StatusCardLifecyclePresentation
 > = {
   compiling: {
-    label: "Setting up",
+    label: t("libStatusCardState.lifecycle.compiling.label"),
     dotClassName: "bg-cyan-400 animate-pulse",
-    description: "Just created; setting up and generating the first summary.",
+    description: t("libStatusCardState.lifecycle.compiling.description"),
     dashedBorder: true,
     keepsLastSummary: false,
   },
   fresh: {
-    label: "Fresh",
+    label: t("libStatusCardState.lifecycle.fresh.label"),
     dotClassName: "bg-emerald-400",
-    description: "Summary reflects all known changes; nothing pending.",
+    description: t("libStatusCardState.lifecycle.fresh.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   stale: {
-    label: "Stale",
+    label: t("libStatusCardState.lifecycle.stale.label"),
     dotClassName: "bg-amber-400",
-    description: "Changes are pending since the last update.",
+    description: t("libStatusCardState.lifecycle.stale.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   updating: {
     // Blue (distinct from fresh-emerald and compiling-cyan) so an in-flight
     // update never reads as "fresh" on a glance-scan of the board.
-    label: "Updating",
+    label: t("libStatusCardState.lifecycle.updating.label"),
     dotClassName: "bg-blue-500 animate-pulse",
-    description: "An update is streaming in now.",
+    description: t("libStatusCardState.lifecycle.updating.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   error: {
-    label: "Error",
+    label: t("libStatusCardState.lifecycle.error.label"),
     dotClassName: "bg-red-500",
-    description: "The last run failed; the last good summary stays visible.",
+    description: t("libStatusCardState.lifecycle.error.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   paused_budget: {
-    label: "Paused — budget",
+    label: t("libStatusCardState.lifecycle.pausedBudget.label"),
     dotClassName: "bg-orange-400",
-    description: "The daily token cap was hit; auto-updates are suspended.",
+    description: t("libStatusCardState.lifecycle.pausedBudget.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   paused_hours: {
-    label: "Paused — hours",
+    label: t("libStatusCardState.lifecycle.pausedHours.label"),
     dotClassName: "bg-orange-400",
-    description: "Outside active hours; changes batch into one update at window open.",
+    description: t("libStatusCardState.lifecycle.pausedHours.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
   archived: {
-    label: "Archived",
+    label: t("libStatusCardState.lifecycle.archived.label"),
     dotClassName: "bg-muted-foreground/50",
-    description: "No auto-updates and no watches. Restore to start watching again.",
+    description: t("libStatusCardState.lifecycle.archived.description"),
     dashedBorder: false,
     keepsLastSummary: true,
   },
@@ -128,16 +129,16 @@ export function formatUsdFromCents(cents: number): string {
 export function describeRefreshPolicy(policy: StatusCardRefreshPolicy): string {
   switch (policy.mode) {
     case "manual":
-      return "manual";
+      return t("libStatusCardState.refresh.manual");
     case "interval":
       return policy.intervalMinutes
-        ? `every ${policy.intervalMinutes}m if changed`
-        : "on a schedule if changed";
+        ? t("libStatusCardState.refresh.everyMinutes", { minutes: policy.intervalMinutes })
+        : t("libStatusCardState.refresh.onSchedule");
     case "reactive": {
       const debounce = policy.debounceSeconds ?? 60;
-      return `on change (${debounce}s)`;
+      return t("libStatusCardState.refresh.onChange", { seconds: debounce });
     }
     default:
-      return "manual";
+      return t("libStatusCardState.refresh.manual");
   }
 }

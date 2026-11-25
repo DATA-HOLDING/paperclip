@@ -1,0 +1,9 @@
+{
+  "columns": {
+    "project": "Project",
+    "agent": "Agent",
+    "responsibleUser": "Responsible user",
+    "lastRun": "Last run",
+    "enabled": "Enabled"
+  }
+}

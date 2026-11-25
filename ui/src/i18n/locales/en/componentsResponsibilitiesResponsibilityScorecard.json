@@ -1,0 +1,14 @@
+{
+  "noReading": "No reading yet",
+  "meterLabel": "{{name}}, toward its bar",
+  "noNumber": "No number to track yet",
+  "workAriaLabel": "The work",
+  "routines": "Routines",
+  "projects": "Projects",
+  "tasks": "Tasks",
+  "skills": "Skills",
+  "noneYet": "None yet",
+  "andMore": " and {{count}} more",
+  "artifacts": "Artifacts",
+  "newest": "Newest:"
+}

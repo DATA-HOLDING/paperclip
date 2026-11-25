@@ -1,0 +1,39 @@
+{
+  "loading": "Loading…",
+  "project": {
+    "unavailable": "That project is no longer available to you. It may have been deleted or made private.",
+    "addExisting": "Add existing project",
+    "searchPlaceholder": "Search projects…",
+    "searchLabel": "Search projects",
+    "loadAction": "load projects",
+    "allLinked": "Every matching project is already here.",
+    "noneFound": "No projects found."
+  },
+  "task": {
+    "unavailable": "That task is no longer available to you. It may have been deleted or made private.",
+    "addExisting": "Add existing task",
+    "searchPlaceholder": "Search tasks…",
+    "searchLabel": "Search tasks",
+    "loadAction": "load tasks",
+    "allLinked": "Every matching task is already here.",
+    "noneFound": "No tasks found."
+  },
+  "routine": {
+    "unavailable": "That routine is no longer available to you. It may have been deleted or made private.",
+    "addExisting": "Add existing routine",
+    "searchPlaceholder": "Search routines…",
+    "searchLabel": "Search routines",
+    "loadAction": "load routines",
+    "allLinked": "Every matching routine is already here.",
+    "noneFound": "No routines found."
+  },
+  "skill": {
+    "unavailable": "That skill is no longer available to you. It may have been deleted or made private.",
+    "addExisting": "Add existing skill",
+    "searchPlaceholder": "Search skills…",
+    "searchLabel": "Search skills",
+    "loadAction": "load skills",
+    "allLinked": "Every matching skill is already here.",
+    "noneFound": "No skills found."
+  }
+}

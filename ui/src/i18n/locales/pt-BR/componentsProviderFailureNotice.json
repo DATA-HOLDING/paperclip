@@ -1,0 +1,17 @@
+{
+  "category": {
+    "rateLimit": "Limite de requisições atingido",
+    "quotaExhausted": "Cota de uso esgotada",
+    "authentication": "Falha na autenticação",
+    "permission": "Acesso negado",
+    "modelUnavailable": "Modelo indisponível",
+    "invalidRequest": "Requisição rejeitada",
+    "overloaded": "Provedor sem capacidade",
+    "timeout": "O provedor excedeu o tempo",
+    "unknown": "Erro do provedor"
+  },
+  "sandboxProvider": "Provedor de sandbox",
+  "failedBeforeStart": "Falhou antes de o trabalho começar",
+  "failedDuring": "Falhou durante o trabalho",
+  "request": "Requisição: {{id}}"
+}

@@ -1,0 +1,24 @@
+{
+  "level": {
+    "company": "Organization",
+    "team": "Team",
+    "agent": "Agent",
+    "task": "Task"
+  },
+  "noOrganization": "No organization selected",
+  "newSubGoal": "New sub-goal",
+  "newGoal": "New goal",
+  "titlePlaceholder": "Goal title",
+  "descriptionPlaceholder": "Add description...",
+  "status": {
+    "planned": "planned",
+    "active": "active",
+    "achieved": "achieved",
+    "cancelled": "cancelled"
+  },
+  "parentGoal": "Parent goal",
+  "noParent": "No parent",
+  "creating": "Creating…",
+  "createSubGoal": "Create sub-goal",
+  "createGoal": "Create goal"
+}

@@ -5,6 +5,7 @@ import { issuesApi } from "@/api/issues";
 import { useConfirmTaskCancellation } from "@/context/TaskCancellationContext";
 import { bindAccount } from "@/lib/account-scope";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 export class TaskCancellationDismissedError extends Error {
   constructor() { super("Task cancellation dismissed"); this.name = "AbortError"; }
@@ -33,7 +34,7 @@ export function useTaskCancellation() {
     const filters = { descendantOf: root.id, includeAgentCreatedTasks: true, includeRoutineExecutions: true };
     const subtasks = (await issuesApi.listAll(root.companyId, filters, { cache: "no-store" })).filter(active);
     assertCurrentAccount();
-    if (subtasks.length && !confirm) throw new Error("Task cancellation is unavailable. Refresh and try again.");
+    if (subtasks.length && !confirm) throw new Error(t("hooksUseTaskCancellation.unavailable"));
     const choice = subtasks.length ? await confirm!(subtasks) : "task_only";
     assertCurrentAccount();
     if (choice === "dismiss") throw new TaskCancellationDismissedError();
@@ -50,7 +51,7 @@ export function useTaskCancellation() {
         .filter(task => confirmedIds.has(task.id) && active(task));
     } catch (error) {
       assertCurrentAccount();
-      throw new SubtaskCancellationError("The task was canceled, but its subtasks could not be refreshed. Try canceling them again.", { cause: error });
+      throw new SubtaskCancellationError(t("hooksUseTaskCancellation.subtasksNotRefreshed"), { cause: error });
     }
     assertCurrentAccount();
     const failed: string[] = [];
@@ -72,7 +73,7 @@ export function useTaskCancellation() {
     }
     assertCurrentAccount();
     void client.invalidateQueries({ queryKey: queryKeys.issues.list(root.companyId) });
-    if (failed.length) throw new SubtaskCancellationError(`The task was canceled, but these subtasks could not be canceled: ${failed.join(", ")}. Try canceling them again.`);
+    if (failed.length) throw new SubtaskCancellationError(t("hooksUseTaskCancellation.subtasksNotCanceled", { tasks: failed.join(", ") }));
     return result;
   }, [client, confirm]);
 }

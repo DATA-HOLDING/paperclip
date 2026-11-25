@@ -1,0 +1,20 @@
+{
+  "received": "E-mail recebido",
+  "sent": "E-mail enviado",
+  "external": "Externo",
+  "to": "Para: {{list}}",
+  "cc": "Cc: {{list}}",
+  "noTextBody": "(Sem corpo de texto)",
+  "openAttachment": "Abrir anexo",
+  "details": "Detalhes do e-mail",
+  "bcc": "Cco: {{list}}",
+  "messageId": "ID da mensagem: {{id}}",
+  "outcome": {
+    "delivered": "Entregue",
+    "failed": "Falha na entrega",
+    "uncertain": "Entrega incerta",
+    "queued": "Na fila",
+    "sent": "Enviado"
+  },
+  "attachmentsError": "Não foi possível carregar os anexos."
+}

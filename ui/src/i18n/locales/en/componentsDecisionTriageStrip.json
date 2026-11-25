@@ -1,0 +1,43 @@
+{
+  "snooze": {
+    "oneHour": "1 hour",
+    "fourHours": "4 hours",
+    "tomorrow": "Tomorrow",
+    "nextWeek": "Next week"
+  },
+  "expiry": {
+    "expired": "Expired",
+    "minutes": "Expires in {{n}}m",
+    "hours": "Expires in {{n}}h",
+    "days": "Expires in {{n}}d"
+  },
+  "errors": {
+    "couldNot": "Could not {{verb}}",
+    "tryAgain": "Please try again.",
+    "noLinkedTask": "This decision has no linked task to route from.",
+    "couldNotCreateQueue": "Could not create queue"
+  },
+  "verbs": {
+    "setDecideBy": "set when to decide",
+    "snooze": "snooze",
+    "addToQueue": "add to queue",
+    "removeFromQueue": "remove from queue",
+    "askAgent": "ask that agent for a recommendation"
+  },
+  "askedAgent": "Asked {{name}} for a recommendation",
+  "whenToDecide": "When to decide",
+  "pickDate": "Pick date",
+  "queues": "Queues",
+  "removeFrom": "Remove from {{title}}",
+  "snoozedUntil": "Snoozed until {{date}}",
+  "clear": "Clear",
+  "snoozeButton": "Snooze",
+  "noLinkedTaskToAsk": "No linked task to ask about",
+  "queueButton": "Queue",
+  "newQueuePlaceholder": "New queue name…",
+  "cancel": "Cancel",
+  "create": "Create",
+  "noOtherQueues": "No other queues yet.",
+  "newQueue": "New queue…",
+  "askAgent": "Ask agent for recommendation"
+}

@@ -1,0 +1,45 @@
+{
+  "range": {
+    "chooseDates": "Choose a start and end date.",
+    "startBeforeEnd": "Start date must be before end date.",
+    "label": "Range",
+    "today": "Today",
+    "sevenDays": "7 days",
+    "thirtyDays": "30 days",
+    "startAria": "Timeline start date",
+    "to": "to",
+    "endAria": "Timeline end date"
+  },
+  "legend": {
+    "delegated": "Delegated",
+    "automation": "Automation",
+    "cancelled": "Cancelled",
+    "now": "Now"
+  },
+  "stats": {
+    "runs": "Runs",
+    "agents": "Agents",
+    "runTime": "Run time",
+    "tokensUsed": "Tokens used",
+    "notTracked": "Not tracked"
+  },
+  "breadcrumb": "Timeline",
+  "projectTimeline": "Project Timeline",
+  "workTimeline": "Work Timeline",
+  "selectOrganization": "Select an organization to view its work timeline.",
+  "zoom": {
+    "controls": "Timeline zoom controls",
+    "out": "Zoom out",
+    "in": "Zoom in",
+    "reset": "Reset zoom"
+  },
+  "loadFailed": "Couldn't load the timeline. The aggregation endpoint may be unavailable.",
+  "noProjectActivity": "No project activity in this window.",
+  "noActivity": "No activity in this window.",
+  "footer": {
+    "runCount_one": "{{count}} run",
+    "runCount_other": "{{count}} runs",
+    "window": "{{from}} to {{to}}",
+    "capped": " · window capped"
+  }
+}

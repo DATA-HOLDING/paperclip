@@ -23,6 +23,7 @@ function NoIcon() {
 }
 import type { AccessDraft, AppDetailSectionProps } from "./types";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 type ActionPermission = "off" | "ask" | "allowed";
 type ActionKindFilter = "all" | "read" | "write";
@@ -137,14 +138,14 @@ function AgentAccessSection({
   return (
     <section className="space-y-4 border-t border-border pt-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-sm font-semibold text-foreground">Which agents can use this connection?</h2>
-        {disabled ? <span className="text-xs text-muted-foreground">Saving…</span> : null}
+        <h2 className="text-sm font-semibold text-foreground">{t("pagesAppsAppDetail.permissions.agentsHeading")}</h2>
+        {disabled ? <span className="text-xs text-muted-foreground">{t("pagesAppsAppDetail.permissions.saving")}</span> : null}
       </div>
 
       {canManage ? (
         <div className="space-y-3">
           <RadioCardGroup
-            ariaLabel="Which agents can use this connection"
+            ariaLabel={t("pagesAppsAppDetail.permissions.agentsHeadingLabel")}
             value={access.mode}
             disabled={disabled}
             className="sm:grid-cols-2"
@@ -158,16 +159,16 @@ function AgentAccessSection({
             options={[
               {
                 value: "specific",
-                title: "Just agents I pick",
+                title: t("pagesAppsAppDetail.permissions.justPicked"),
                 description: install.onAll
-                  ? "Unavailable while this connection is installed for every agent."
-                  : "Available only to selected agents.",
+                  ? t("pagesAppsAppDetail.permissions.unavailableInstalledAll")
+                  : t("pagesAppsAppDetail.permissions.selectedOnly"),
                 disabled: install.onAll,
               },
               {
                 value: "all",
-                title: "Any agent",
-                description: "Available across your company.",
+                title: t("pagesAppsAppDetail.permissions.anyAgent"),
+                description: t("pagesAppsAppDetail.permissions.anyAgentHelp"),
               },
             ]}
           />
@@ -178,11 +179,11 @@ function AgentAccessSection({
               selectedAgentIds={access.agentIds}
               disabled={disabled}
               triggerLabel={access.agentIds.size === 0
-                ? "Choose agents"
-                : `${access.agentIds.size} ${access.agentIds.size === 1 ? "agent" : "agents"} selected`}
-              emptyMessage="You cannot edit any agents yet."
+                ? t("pagesAppsAppDetail.permissions.chooseAgents")
+                : t("pagesAppsAppDetail.permissions.agentsSelected", { count: access.agentIds.size })}
+              emptyMessage={t("pagesAppsAppDetail.permissions.cannotEditAgents")}
               isAgentDisabled={(agent) => requiredAgentIds.has(agent.id)}
-              getDescription={(agent) => requiredAgentIds.has(agent.id) ? "Required by this connection's install setting" : agent.title}
+              getDescription={(agent) => requiredAgentIds.has(agent.id) ? t("pagesAppsAppDetail.permissions.requiredByInstall") : agent.title}
               onChange={(agentIds) => onSave({
                 mode: "specific",
                 agentIds: new Set([...agentIds, ...requiredAgentIds]),
@@ -191,9 +192,9 @@ function AgentAccessSection({
           ) : null}
         </div>
       ) : access.mode === "all" ? (
-        <p className="text-sm text-muted-foreground">Any agent can use this connection.</p>
+        <p className="text-sm text-muted-foreground">{t("pagesAppsAppDetail.permissions.anyAgentCanUse")}</p>
       ) : selectedAgents.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No agents can use this connection.</p>
+        <p className="text-sm text-muted-foreground">{t("pagesAppsAppDetail.permissions.noAgentsCanUse")}</p>
       ) : (
         <div className="space-y-0.5">
           {selectedAgents.map((agent) => (
@@ -259,10 +260,10 @@ export function ActionsSection({
     <TooltipProvider>
     <section className="space-y-6 border-t border-border pt-8">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-lg font-semibold text-foreground">Actions</h2>
+        <h2 className="text-lg font-semibold text-foreground">{t("pagesAppsAppDetail.permissions.actions")}</h2>
         {canConfigure ? (
           <div className="flex items-center gap-2">
-            {disabled ? <span className="text-xs text-muted-foreground">Saving…</span> : null}
+            {disabled ? <span className="text-xs text-muted-foreground">{t("pagesAppsAppDetail.permissions.saving")}</span> : null}
             <Button
               variant="outline"
               size="sm"
@@ -274,7 +275,7 @@ export function ActionsSection({
               ) : (
                 <RefreshCw className="mr-1.5 h-3.5 w-3.5" />
               )}
-              Refresh actions
+              {t("pagesAppsAppDetail.permissions.refreshActions")}
             </Button>
           </div>
         ) : null}
@@ -299,30 +300,30 @@ export function ActionsSection({
           <div className="relative min-w-(--sz-12rem) flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              aria-label="Find an action"
-              placeholder="Find an action…"
+              aria-label={t("pagesAppsAppDetail.permissions.findAction")}
+              placeholder={t("pagesAppsAppDetail.permissions.findActionPlaceholder")}
               className="pl-9"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
             />
           </div>
-          <FilterChip label={`All ${readOnly.length + canChange.length}`} active={kindFilter === "all"} onClick={() => setKindFilter("all")} />
-          <FilterChip label={`Read ${readOnly.length}`} active={kindFilter === "read"} onClick={() => setKindFilter("read")} />
-          <FilterChip label={`Write ${canChange.length}`} active={kindFilter === "write"} onClick={() => setKindFilter("write")} />
+          <FilterChip label={t("pagesAppsAppDetail.permissions.filterAll", { count: readOnly.length + canChange.length })} active={kindFilter === "all"} onClick={() => setKindFilter("all")} />
+          <FilterChip label={t("pagesAppsAppDetail.permissions.filterRead", { count: readOnly.length })} active={kindFilter === "read"} onClick={() => setKindFilter("read")} />
+          <FilterChip label={t("pagesAppsAppDetail.permissions.filterWrite", { count: canChange.length })} active={kindFilter === "write"} onClick={() => setKindFilter("write")} />
         </div>
-        <p className="text-xs text-muted-foreground">{visibleCount} matches · sorted A–Z</p>
+        <p className="text-xs text-muted-foreground">{t("pagesAppsAppDetail.permissions.matches", { count: visibleCount })}</p>
       </div>
 
       {visibleCount === 0 ? (
         <div className="py-6 text-center text-sm text-muted-foreground">
-          No actions match “{query}”. Clear the search to see them all.
+          {t("pagesAppsAppDetail.permissions.noMatch", { query })}
         </div>
       ) : (
         <div className="space-y-6">
           <ActionGroup
             key={`read:${needle}:${kindFilter}`}
             kind="read"
-            title={`Read (${visibleRead.length})`}
+            title={t("pagesAppsAppDetail.permissions.readGroup", { count: visibleRead.length })}
             actions={visibleRead}
             connectionId={connectionId}
             appName={appName}
@@ -336,7 +337,7 @@ export function ActionsSection({
           <ActionGroup
             key={`write:${needle}:${kindFilter}`}
             kind="write"
-            title={`Write (${visibleWrite.length})`}
+            title={t("pagesAppsAppDetail.permissions.writeGroup", { count: visibleWrite.length })}
             actions={visibleWrite}
             connectionId={connectionId}
             appName={appName}
@@ -427,9 +428,9 @@ function ActionGroup({
           // connection's writes is one choice rather than one per action;
           // per-row overrides stay underneath.
           <label className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="sr-only">{`Set every action in ${title}`}</span>
+            <span className="sr-only">{t("pagesAppsAppDetail.permissions.setEvery", { title })}</span>
             <select
-              aria-label={`Set every action in ${title}`}
+              aria-label={t("pagesAppsAppDetail.permissions.setEvery", { title })}
               value={groupValue}
               disabled={disabled}
               onChange={(event) => {
@@ -440,9 +441,9 @@ function ActionGroup({
               }}
               className="h-7 rounded-md border border-input bg-background px-2 text-xs text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30"
             >
-              {groupValue === "" ? <option value="">Mixed</option> : null}
+              {groupValue === "" ? <option value="">{t("pagesAppsAppDetail.permissions.mixed")}</option> : null}
               {PERMISSION_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>{`Set all: ${option.label}`}</option>
+                <option key={option.value} value={option.value}>{t("pagesAppsAppDetail.permissions.setAll", { label: option.label })}</option>
               ))}
             </select>
           </label>
@@ -465,7 +466,7 @@ function ActionGroup({
       </div>
       {visibleLimit < actions.length ? (
         <Button type="button" variant="outline" size="sm" className="mt-3" onClick={() => setVisibleLimit(limit => limit + ACTION_PAGE_SIZE)}>
-          Show more {kind} actions
+          {kind === "read" ? t("pagesAppsAppDetail.permissions.showMoreRead") : t("pagesAppsAppDetail.permissions.showMoreWrite")}
         </Button>
       ) : null}
     </div>
@@ -478,9 +479,9 @@ const PERMISSION_OPTIONS: Array<{
   description: string;
   icon: typeof Ban;
 }> = [
-  { value: "off", label: "Off", description: "Agents cannot run this action.", icon: Ban },
-  { value: "ask", label: "Ask first", description: "A human must approve each call.", icon: ShieldQuestion },
-  { value: "allowed", label: "Allowed", description: "Runs without approval.", icon: Check },
+  { value: "off", label: t("pagesAppsAppDetail.permissions.options.off"), description: t("pagesAppsAppDetail.permissions.options.offHelp"), icon: Ban },
+  { value: "ask", label: t("pagesAppsAppDetail.permissions.options.ask"), description: t("pagesAppsAppDetail.permissions.options.askHelp"), icon: ShieldQuestion },
+  { value: "allowed", label: t("pagesAppsAppDetail.permissions.options.allowed"), description: t("pagesAppsAppDetail.permissions.options.allowedHelp"), icon: Check },
 ];
 
 const ActionRow = memo(function ActionRow({
@@ -531,7 +532,7 @@ const ActionRow = memo(function ActionRow({
                 glance to spot and one click to move. */}
             <span
               className="rounded-full border border-border px-1.5 py-px text-xs font-medium uppercase tracking-wide text-muted-foreground"
-              title={`Paperclip classified this action as ${action.riskLevel}`}
+              title={t("pagesAppsAppDetail.permissions.classifiedAs", { riskLevel: action.riskLevel })}
             >
               {action.riskLevel}
             </span>
@@ -544,7 +545,7 @@ const ActionRow = memo(function ActionRow({
           {canConfigure ? (
               <div
                 role="radiogroup"
-                aria-label={`${title} permission`}
+                aria-label={t("pagesAppsAppDetail.permissions.rowPermission", { title })}
                 className="inline-flex rounded-md border border-border bg-muted/40 p-0.5"
               >
               {PERMISSION_OPTIONS.map((option) => {
@@ -584,7 +585,7 @@ const ActionRow = memo(function ActionRow({
           )}
           <Button type="button" size="sm" variant="outline" onClick={() => setTestOpen(true)}>
             <FlaskConical className="mr-1.5 h-3.5 w-3.5" />
-            Test
+            {t("pagesAppsAppDetail.permissions.test")}
           </Button>
         </div>
       </div>

@@ -1,0 +1,25 @@
+{
+  "runStatus": {
+    "running": "Em execução",
+    "queued": "Na fila",
+    "succeeded": "Concluída",
+    "failed": "Falhou",
+    "timedOut": "Tempo esgotado",
+    "cancelled": "Cancelada",
+    "interrupted": "Interrompida"
+  },
+  "title": "Agentes",
+  "empty": "Nenhuma execução recente de agente.",
+  "moreRuns_one": "Mais {{count}} execução ativa/recente",
+  "moreRuns_other": "Mais {{count}} execuções ativas/recentes",
+  "viewAllRuns": "Ver todas as execuções",
+  "finished": "Concluída {{time}}",
+  "started": "Iniciada {{time}}",
+  "queuedAt": "Na fila {{time}}",
+  "taskUnavailable": "Tarefa indisponível",
+  "loadingTask": "Carregando tarefa…",
+  "viewRunAria": "{{agent}} — {{status}}. Ver execução",
+  "taskStatus": "Tarefa {{status}}",
+  "scheduledHeartbeat": "heartbeat agendado",
+  "noLinkedTask": "Nenhuma tarefa vinculada"
+}

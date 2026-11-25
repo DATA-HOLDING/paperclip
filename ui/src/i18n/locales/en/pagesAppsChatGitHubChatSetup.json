@@ -1,0 +1,62 @@
+{
+  "continueToGitHub": "Continue to GitHub",
+  "breadcrumbs": {
+    "connectors": "Connectors",
+    "bot": "GitHub Code Review Bot"
+  },
+  "resume": {
+    "title": "Resume GitHub setup",
+    "loadError": "Could not load this connection. Try again to resume your draft.",
+    "loading": "Loading your draft…"
+  },
+  "tryAgain": "Try again",
+  "reconnectGitHub": "Reconnect GitHub",
+  "chooseAgent": "Choose agent",
+  "connectGitHub": "Connect GitHub",
+  "connectYourAccount": "Connect your account",
+  "checkSetupAction": "check GitHub setup",
+  "continue": "Continue",
+  "checkingConnection": "Checking your GitHub connection…",
+  "identity": {
+    "linkedPrefix": "GitHub account",
+    "linkedSuffix": "connected. You can now mention this bot on GitHub.",
+    "connectPrefix": "Connect GitHub account",
+    "connectSuffix": "to your Paperclip account.",
+    "confirmMyAccount": "Confirm my account",
+    "linkDescription": "Link your GitHub account so your mentions use your Paperclip permissions.",
+    "existingConnection": "Existing GitHub connection",
+    "chooseAccount": "Choose an account",
+    "accountLabel": "GitHub account:",
+    "addPersonalConnection": "Add a personal GitHub connection, then return to this draft",
+    "checkMyAccount": "Check my account",
+    "connectMyGitHubAccount": "Connect my GitHub account"
+  },
+  "install": {
+    "waiting": "Waiting for GitHub installation or administrator approval…",
+    "continueOnGitHub": "Continue installation on GitHub"
+  },
+  "enrollment": {
+    "description": "Paperclip Cloud receives GitHub events and securely delivers them to this instance.",
+    "connect": "Connect Paperclip Cloud",
+    "startFailed": "Cloud enrollment could not be started"
+  },
+  "recovery": {
+    "useExistingCredentials": "Use existing App credentials",
+    "appNotCreated": "I haven't created this App on GitHub."
+  },
+  "verify": {
+    "deliveryVerified": "GitHub delivery verified. Checking App and repository access…",
+    "checkingAccess": "Checking GitHub access…",
+    "connectionSettings": "Connection settings"
+  },
+  "create": {
+    "githubAccount": "GitHub account",
+    "myAccount": "My account",
+    "anotherOrganization": "Another organization",
+    "loadAccountsError": "Could not load some connected GitHub accounts. Choose Another organization to enter a name.",
+    "organization": "Organization",
+    "organizationPlaceholder": "GitHub organization name",
+    "appName": "App name",
+    "alreadyHaveApp": "I already have an App"
+  }
+}

@@ -2,6 +2,7 @@ import type { McpConnection, ToolConnection } from "@paperclipai/shared";
 import { humanizeConnectionDisplayName } from "@paperclipai/shared";
 import { Identity } from "@/components/Identity";
 import type { CompanyUserProfile } from "@/lib/company-members";
+import { t } from "@/i18n";
 
 export type ConnectionOwnerProfile = CompanyUserProfile;
 
@@ -11,20 +12,22 @@ export function connectionOwnerProfile(
 ): ConnectionOwnerProfile | null {
   if (!connection.createdByUserId) return null;
   return profiles.get(connection.createdByUserId) ?? {
-    label: connection.createdByUserId === "local-board" ? "Board" : "Board member",
+    label: connection.createdByUserId === "local-board" ? t("pagesApps.owner.board") : t("pagesApps.owner.boardMember"),
     image: null,
   };
 }
 
 function ownerGivenName(label: string): string {
   const trimmed = label.trim();
-  if (!trimmed) return "Board";
+  if (!trimmed) return t("pagesApps.owner.board");
   const first = trimmed.split(/\s+/)[0] ?? trimmed;
-  return first.includes("@") ? first.split("@")[0] || "Board" : first;
+  return first.includes("@") ? first.split("@")[0] || t("pagesApps.owner.board") : first;
 }
 
-function possessive(label: string): string {
-  return label.toLowerCase().endsWith("s") ? `${label}’` : `${label}’s`;
+function ownedName(label: string, thing: string): string {
+  return label.toLowerCase().endsWith("s")
+    ? t("pagesApps.owner.ownedTrailingS", { name: label, thing })
+    : t("pagesApps.owner.owned", { name: label, thing });
 }
 
 /**
@@ -49,18 +52,19 @@ export function connectionDisplayNameForOwner(
   if (connectionName.trim().toLocaleLowerCase() !== applicationName.trim().toLocaleLowerCase()) {
     return connectionName;
   }
-  return `${possessive(ownerGivenName(owner.label))} ${applicationName}`;
+  return ownedName(ownerGivenName(owner.label), applicationName);
 }
 
 /** Use the same owner naming as outbound connections, without changing OAuth client identity. */
 export function assistantConnectionDisplayName(connection: McpConnection): string {
   const clientName = connection.clientName.trim();
-  const owner = connection.user ? `${possessive(ownerGivenName(connection.user.name))} ` : "";
-  return `${owner}${clientName} connection`;
+  return connection.user
+    ? ownedName(ownerGivenName(connection.user.name), t("pagesApps.owner.clientConnection", { client: clientName }))
+    : t("pagesApps.owner.clientConnection", { client: clientName });
 }
 
 export function ConnectionOwnerIdentity({ owner }: { owner: ConnectionOwnerProfile | null }) {
-  if (!owner) return <span className="text-xs text-muted-foreground">Unknown</span>;
+  if (!owner) return <span className="text-xs text-muted-foreground">{t("pagesApps.owner.unknown")}</span>;
   return (
     <Identity
       name={owner.label}

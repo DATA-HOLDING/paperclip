@@ -1,0 +1,22 @@
+{
+  "summary": "Continue from saved sources",
+  "destroyed": "The original workspace was destroyed before its edits were saved. Its last run will remain failed.",
+  "instructions": "Select task attachments to rebuild from and record what remains missing. Paperclip starts a fresh session through its normal execution checks. Existing work limits still apply.",
+  "attachmentsLegend": "Saved source attachments",
+  "attachment": "Attachment",
+  "attachmentLabel": "{{name}} ({{size}} bytes)",
+  "loading": "Loading saved attachments…",
+  "attachFirst": "Attach the surviving source files to this task first.",
+  "missingWork": "Missing work and reconstruction plan",
+  "previousActions": "Previously completed external actions",
+  "outcome": {
+    "mixed": "Some completed, some not performed",
+    "notPerformed": "None performed",
+    "completed": "All completed"
+  },
+  "evidence": "Evidence and actions that must not be repeated",
+  "acknowledge": "Continue from these sources. The missing edits have not been recovered.",
+  "queuing": "Queuing…",
+  "rebuild": "Rebuild and continue",
+  "boardOnly": "A board member with runtime access can continue from the surviving task attachments."
+}

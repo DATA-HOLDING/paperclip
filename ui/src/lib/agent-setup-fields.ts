@@ -3,6 +3,7 @@ import { claudeLocalReasoningEffortsForModel, DEFAULT_CLAUDE_LOCAL_MODEL } from 
 import { grokLocalReasoningEffortsForModel } from "@paperclipai/adapter-grok-local";
 import { codexReasoningEffortOptions } from "./codex-reasoning-effort";
 import { PROVIDER_ENV_KEYS } from "./provider-credential";
+import { t } from "@/i18n";
 
 /** Only controls consumed by each adapter's config builder and runtime belong here. */
 export const SETUP_CREDENTIAL_KEYS: Record<string, string> = {
@@ -45,13 +46,13 @@ export function setupEfforts(adapter: string, model = ""): string[] {
 
 export const SETUP_LOGIN_HINTS: Record<string, string> = {
   cursor:
-    "Use a Cursor API key, or run agent login on the selected environment's host.",
+    t("libAgentSetupFields.loginHints.cursor"),
   gemini_local:
-    "Use a Gemini API key, or an existing supported Gemini CLI login on the selected environment's host.",
+    t("libAgentSetupFields.loginHints.geminiLocal"),
   kimi_local:
-    "Use a Kimi API key and model settings below, or run kimi login on the selected environment's host.",
+    t("libAgentSetupFields.loginHints.kimiLocal"),
   grok_local:
-    "Grok Build uses its CLI sign-in. Run grok login on the selected environment's host, then test the connection here.",
+    t("libAgentSetupFields.loginHints.grokLocal"),
   hermes_local:
-    "Use a provider API key, or the existing Hermes provider configuration on the selected environment's host.",
+    t("libAgentSetupFields.loginHints.hermesLocal"),
 };

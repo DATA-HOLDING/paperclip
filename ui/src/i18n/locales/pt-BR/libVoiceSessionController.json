@@ -1,0 +1,17 @@
+{
+  "errors": {
+    "closeFailed": "Não foi possível encerrar a chamada por completo. Tente encerrá-la de novo antes de iniciar outra.",
+    "creditsRequired": "O Speko precisa de créditos para iniciar uma chamada. Adicione créditos no Speko e tente novamente.",
+    "previousClosed": "A chamada anterior foi encerrada. Inicie a voz de novo para reconectar; sua tarefa foi preservada.",
+    "connectFailed": "Não foi possível conectar a voz. Confira as permissões do microfone e a sua conexão e tente novamente.",
+    "microphone": "Não foi possível mudar o estado do microfone. Tente novamente ou encerre a chamada.",
+    "updateNotDelivered": "Não foi possível entregar uma atualização da tarefa por voz. Abra a tarefa para lê-la.",
+    "repeatFailed": "Não foi possível repetir a resposta. Abra a tarefa para lê-la.",
+    "playbackBlocked": "A reprodução de áudio está bloqueada. Confira as configurações de som deste navegador."
+  },
+  "announcement": {
+    "user": "Você: {{text}}",
+    "agent": "Agente: {{text}}"
+  },
+  "taskUpdateAvailable": "Há uma atualização da tarefa."
+}

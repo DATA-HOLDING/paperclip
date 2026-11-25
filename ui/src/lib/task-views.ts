@@ -1,4 +1,5 @@
 import type { InboxTab } from "./inbox";
+import { t } from "@/i18n";
 
 /**
  * The single view registry behind the merged Tasks surface (PAP-670).
@@ -52,24 +53,24 @@ export interface TaskViewGroup {
 
 export const TASK_VIEW_GROUPS: TaskViewGroup[] = [
   {
-    label: "My work",
+    label: t("libTaskViews.groups.myWork"),
     views: [
-      { key: "mine", label: "Mine", surface: "inbox", inboxTab: "mine", hint: "Assigned to you or waiting on you" },
-      { key: "unread", label: "Unread", surface: "inbox", inboxTab: "unread", hint: "Tasks you touched with new activity" },
-      { key: "blocked", label: "Blocked", surface: "inbox", inboxTab: "blocked", hint: "Blocked tasks, grouped by blocker" },
-      { key: "recent", label: "Recent", surface: "inbox", inboxTab: "recent", hint: "Everything you touched lately" },
-      { key: "everything", label: "Everything", surface: "inbox", inboxTab: "all", hint: "Tasks, approvals, failed runs and join requests" },
-      { key: "archived", label: "Archived", surface: "issues", statuses: [], hint: "Tasks archived for you" },
+      { key: "mine", label: t("libTaskViews.mine.label"), surface: "inbox", inboxTab: "mine", hint: t("libTaskViews.mine.hint") },
+      { key: "unread", label: t("libTaskViews.unread.label"), surface: "inbox", inboxTab: "unread", hint: t("libTaskViews.unread.hint") },
+      { key: "blocked", label: t("libTaskViews.blocked.label"), surface: "inbox", inboxTab: "blocked", hint: t("libTaskViews.blocked.hint") },
+      { key: "recent", label: t("libTaskViews.recent.label"), surface: "inbox", inboxTab: "recent", hint: t("libTaskViews.recent.hint") },
+      { key: "everything", label: t("libTaskViews.everything.label"), surface: "inbox", inboxTab: "all", hint: t("libTaskViews.everything.hint") },
+      { key: "archived", label: t("libTaskViews.archived.label"), surface: "issues", statuses: [], hint: t("libTaskViews.archived.hint") },
     ],
   },
   {
-    label: "Organization",
+    label: t("libTaskViews.groups.organization"),
     views: [
-      { key: "needs_attention", label: "Needs attention", surface: "issues", statuses: [], hint: "Tasks with pending decisions", coordinatorOnly: true },
-      { key: "all", label: "All tasks", surface: "issues", statuses: [], hint: "Every task in the organization" },
-      { key: "active", label: "Active", surface: "issues", statuses: ["todo", "in_progress", "monitoring", "in_review", "blocked"], hint: "Open tasks, running or not" },
-      { key: "backlog", label: "Backlog", surface: "issues", statuses: ["backlog"], hint: "Not started yet" },
-      { key: "done", label: "Done", surface: "issues", statuses: ["done", "cancelled"], hint: "Completed and cancelled" },
+      { key: "needs_attention", label: t("libTaskViews.needsAttention.label"), surface: "issues", statuses: [], hint: t("libTaskViews.needsAttention.hint"), coordinatorOnly: true },
+      { key: "all", label: t("libTaskViews.all.label"), surface: "issues", statuses: [], hint: t("libTaskViews.all.hint") },
+      { key: "active", label: t("libTaskViews.active.label"), surface: "issues", statuses: ["todo", "in_progress", "monitoring", "in_review", "blocked"], hint: t("libTaskViews.active.hint") },
+      { key: "backlog", label: t("libTaskViews.backlog.label"), surface: "issues", statuses: ["backlog"], hint: t("libTaskViews.backlog.hint") },
+      { key: "done", label: t("libTaskViews.done.label"), surface: "issues", statuses: ["done", "cancelled"], hint: t("libTaskViews.done.hint") },
     ],
   },
 ];

@@ -1,0 +1,8 @@
+{
+  "ariaLabel": "Analytics choice",
+  "withRecordings": "Paperclip uses analytics and session recordings to improve the product. Recordings hide what you type and your messages, documents and connected accounts, but may show page names like task titles. ",
+  "analyticsOnly": "Paperclip uses analytics to improve the product. ",
+  "privacyPolicy": "Privacy policy",
+  "decline": "Decline",
+  "accept": "Accept"
+}

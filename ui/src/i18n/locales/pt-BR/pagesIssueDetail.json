@@ -1,0 +1,278 @@
+{
+  "stopFinalize": {
+    "updateFailedWithReason": "A execução foi interrompida, mas a atualização da tarefa falhou: {{reason}}",
+    "updateFailed": "A execução foi interrompida, mas a atualização da tarefa falhou. Tente atualizar o status da tarefa novamente."
+  },
+  "plan": {
+    "approved": "Plano aprovado",
+    "requestedChanges": "Alterações solicitadas",
+    "title": "Plano"
+  },
+  "treePreview": {
+    "forbidden": "Só usuários do conselho podem pré-visualizar os controles da subárvore.",
+    "stale": "A prévia está desatualizada porque o estado de retenção da subárvore mudou. Tente novamente para atualizar.",
+    "invalid": "Esta ação de subárvore não é válida no momento para as tarefas selecionadas.",
+    "loadFailed": "Não foi possível carregar a prévia."
+  },
+  "actor": {
+    "system": "Sistema",
+    "board": "Conselho",
+    "unknown": "Desconhecido",
+    "user": "Usuário"
+  },
+  "attribution": {
+    "assignee": "Responsável",
+    "originating": "Origem",
+    "labelVia": "{{label}}: {{name}} · via {{via}}",
+    "label": "{{label}}: {{name}}",
+    "via": "via {{via}}",
+    "people": "Pessoas da tarefa"
+  },
+  "loadingConversation": "Carregando a conversa",
+  "header": {
+    "routineExecution": "Execução de rotina da rotina {{id}}",
+    "routine": "Rotina",
+    "noProject": "Sem projeto",
+    "live": "Ao vivo",
+    "watchdogTitle": "Esta é uma tarefa de vigilância gerada. Ela verifica se o trabalho interrompido na árvore de tarefas observada é legítimo.",
+    "watchdog": "Vigilância",
+    "workMode": "Esta tarefa está em {{mode}}.",
+    "parkedBlockerTitle": "Bloqueada por trabalho estacionado — pelo menos um bloqueio atribuído está no backlog e não vai acordar o responsável.",
+    "parkedBlocker": "Bloqueada por trabalho estacionado"
+  },
+  "mobile": {
+    "backToInbox": "Voltar para a caixa de entrada",
+    "moreActions": "Mais ações"
+  },
+  "archiveFromInbox": "Arquivar da caixa de entrada",
+  "copyAsMarkdown": "Copiar como markdown",
+  "properties": "Propriedades",
+  "hideTask": "Ocultar esta tarefa",
+  "retry": {
+    "failedRunMissing": "A execução que falhou não está mais disponível.",
+    "queuedTitle": "Nova tentativa na fila",
+    "queuedBody": "A mesma solicitação será repetida quando esta tarefa estiver pronta.",
+    "failedTitle": "Falha ao tentar a execução novamente",
+    "failedBody": "Não foi possível tentar a execução novamente"
+  },
+  "queue": {
+    "awaitingAckOne": "A mensagem na fila está aguardando a confirmação do servidor.",
+    "awaitingAckMany": "As mensagens na fila estão aguardando a confirmação do servidor.",
+    "noRunTarget": "A mensagem na fila não tem mais uma execução ativa como destino.",
+    "stillQueued": "As mensagens ainda estão na fila.",
+    "interruptFailed": "Não foi possível interromper. A mensagem continua na fila.",
+    "alreadySendingTitle": "A mensagem já está sendo enviada",
+    "alreadySendingBody": "A continuação começou antes de o descarte ser confirmado, então o Paperclip não conseguiu cancelar o envio."
+  },
+  "comments": {
+    "loadingEarlier": "Carregando comentários anteriores...",
+    "loadEarlier": "Carregar comentários anteriores",
+    "moreMessages": "Mais mensagens"
+  },
+  "grok": {
+    "stop": "Parar o trabalho do Paperclip",
+    "pause": "Pausar o trabalho",
+    "stopping": "Parando o trabalho do Paperclip…",
+    "pausing": "Pausando...",
+    "notice": "Roda no Grok Bot · Uso não informado. Parar o trabalho do Paperclip revoga a autoridade desta sessão; a execução remota pode continuar. Abra o app de desktop do Grok Bot para inspecioná-la."
+  },
+  "previewAgent": "Agente de prévia",
+  "cost": {
+    "title": "Resumo de custos",
+    "none": "Nenhum dado de custo ainda.",
+    "thisTask": "Esta tarefa",
+    "noDirect": "Nenhum dado de custo direto.",
+    "includingSubtasks": "Incluindo subtarefas",
+    "tokens": "Tokens {{tokens}}",
+    "breakdownCached": " (entrada {{input}}, saída {{output}}, em cache {{cached}})",
+    "breakdown": " (entrada {{input}}, saída {{output}})",
+    "runtime": "Tempo de execução {{duration}}",
+    "runs_one": " ({{count}} execução)",
+    "runs_other": " ({{count}} execuções)",
+    "tasks_one": "{{count}} tarefa",
+    "tasks_other": "{{count}} tarefas"
+  },
+  "breadcrumb": {
+    "tasks": "Tarefas"
+  },
+  "roles": {
+    "owner": "Dono"
+  },
+  "attachment": "Anexo",
+  "me": "Eu",
+  "inbox": {
+    "restored": "Tarefa restaurada na caixa de entrada",
+    "undoFailed": "Falha ao desfazer",
+    "restoreFailed": "Não foi possível restaurar esta tarefa na caixa de entrada",
+    "archived": "Tarefa arquivada da caixa de entrada",
+    "undo": "Desfazer",
+    "archiveFailed": "Falha ao arquivar",
+    "archiveFailedBody": "Não foi possível arquivar esta tarefa da caixa de entrada"
+  },
+  "recovery": {
+    "failedTitle": "Falha ao resolver a recuperação",
+    "failedBody": "Não foi possível resolver a ação de recuperação",
+    "stateChanged": "O estado da tarefa mudou. Atualize para ver o estado atual."
+  },
+  "tree": {
+    "noPauseHold": "Não há uma pausa ativa na subárvore para retomar.",
+    "wakeFailures_one": "A pausa foi liberada, mas {{count}} tarefa não pôde iniciar. {{message}} Verifique os agentes afetados e tente iniciá-los novamente.",
+    "wakeFailures_other": "A pausa foi liberada, mas {{count}} tarefas não puderam iniciar. {{message}} Verifique os agentes afetados e tente iniciá-los novamente."
+  },
+  "stop": {
+    "doneOk": "Execução interrompida e tarefa concluída",
+    "cancelledOk": "Execução interrompida e tarefa cancelada",
+    "subtasksNotCanceled": "Algumas subtarefas não puderam ser canceladas",
+    "updateFailed": "Execução interrompida; a atualização da tarefa falhou",
+    "doneFailed": "Falha ao parar e concluir",
+    "cancelFailed": "Falha ao parar e cancelar",
+    "failedBody": "Não foi possível parar a execução e atualizar a tarefa"
+  },
+  "monitor": {
+    "queued": "Verificação do monitor na fila",
+    "failed": "Falha na verificação do monitor",
+    "failedBody": "Não foi possível acionar o monitor agora"
+  },
+  "approval": {
+    "approved": "Aprovação aprovada",
+    "rejected": "Aprovação rejeitada",
+    "approveFailed": "Falha na aprovação",
+    "rejectFailed": "Falha na rejeição",
+    "updateFailed": "Não foi possível atualizar a aprovação"
+  },
+  "cancelFailed": "Falha ao cancelar",
+  "queuedComment": {
+    "cancelFailedBody": "Não foi possível cancelar o comentário na fila",
+    "canceled": "Comentário na fila cancelado",
+    "restored": "A mensagem na fila foi restaurada no editor."
+  },
+  "interaction": {
+    "requestConfirmed": "Solicitação confirmada",
+    "selectionConfirmed": "Seleção confirmada",
+    "acceptedSkipped_one": "{{count}} rascunho aceito e {{skipped}} ignorados",
+    "acceptedSkipped_other": "{{count}} rascunhos aceitos e {{skipped}} ignorados",
+    "suggestedAccepted": "Tarefas sugeridas aceitas",
+    "acceptFailed": "Falha ao aceitar",
+    "suggestionRejected": "Sugestão rejeitada",
+    "rejectFailed": "Falha ao rejeitar",
+    "answersSubmitted": "Respostas enviadas",
+    "submitFailed": "Falha ao enviar",
+    "allVerdicts": "Todos os veredictos aplicados",
+    "appliedDecisions_one": "{{count}} decisão aplicada",
+    "appliedDecisions_other": "{{count}} decisões aplicadas",
+    "applyFailed": "Falha ao aplicar",
+    "applyFailedBody": "Não foi possível aplicar os veredictos",
+    "questionCancelled": "Pergunta cancelada",
+    "cancelQuestionFailed": "Não foi possível cancelar a pergunta",
+    "skipFailed": "Falha ao pular",
+    "skipFailedBody": "Não foi possível pular esta solicitação"
+  },
+  "comment": {
+    "deleted": "Comentário excluído",
+    "deletedBody": "A conversa agora mostra um marcador de comentário excluído.",
+    "deleteFailedBody": "Não foi possível excluir o comentário"
+  },
+  "deleteFailed": "Falha ao excluir",
+  "feedback": {
+    "savedShare": "Feedback salvo. Os próximos votos serão compartilhados",
+    "savedLocal": "Feedback salvo. Os próximos votos ficarão locais",
+    "savedSharing": "Feedback salvo e compartilhamento ativado",
+    "saved": "Feedback salvo",
+    "failed": "Falha ao salvar o feedback"
+  },
+  "unknownError": "Erro desconhecido",
+  "detailsLoading": "Os detalhes da tarefa ainda estão carregando. Tente novamente.",
+  "upload": {
+    "failed": "Falha no envio",
+    "importFailed": "Falha ao importar o documento",
+    "uploading": "Enviando...",
+    "attachment": "Enviar anexo",
+    "short": "Enviar"
+  },
+  "subtasks": {
+    "createLabel": "Subtarefa",
+    "title": "Subtarefas",
+    "new": "Nova subtarefa"
+  },
+  "privateTask": "Tarefa privada",
+  "copy": {
+    "copied": "Copiado para a área de transferência",
+    "failed": "Falha ao copiar",
+    "failedBody": "Não foi possível copiar o markdown da tarefa"
+  },
+  "finalize": {
+    "cancel": "Parar e cancelar",
+    "cancelPending": "Parando e cancelando...",
+    "done": "Parar e concluir",
+    "donePending": "Parando e marcando como concluída..."
+  },
+  "resume": {
+    "noAssignee": "Nenhum agente responsável"
+  },
+  "reissue": {
+    "notLoaded": "A tarefa ainda não foi carregada.",
+    "created": "Nova emissão isolada criada",
+    "createdBody": "{{identifier}} vai rodar em um novo espaço de trabalho isolado.",
+    "createdFallback": "Uma nova emissão isolada foi criada.",
+    "failed": "Falha na nova emissão",
+    "failedBody": "Não foi possível criar uma nova emissão isolada."
+  },
+  "reconcile": {
+    "repaired": "Espaço de trabalho reparado",
+    "repairedBody": "As alterações não salvas foram isoladas em uma branch de resgate e a branch registrada foi restaurada; a tarefa vai continuar.",
+    "reconciled": "Branch do espaço de trabalho reconciliada",
+    "reconciledBody": "A branch registrada agora corresponde à branch ativa; a tarefa vai continuar.",
+    "failed": "Falha ao reconciliar",
+    "failedBody": "Não foi possível reconciliar a branch do espaço de trabalho.",
+    "noWorkspace": "Esta tarefa não tem um espaço de trabalho de execução para reconciliar."
+  },
+  "repair": {
+    "failed": "Falha no reparo",
+    "noWorkspace": "Esta tarefa não tem um espaço de trabalho de execução para reparar."
+  },
+  "paused": "Pausada",
+  "composer": {
+    "reopenHint": "O espaço de trabalho isolado desta tarefa foi arquivado. Seu próximo comentário ou retomada o reabre e reconstrói o worktree.",
+    "agentChatDisabled": "O Chat com agentes está desativado nas configurações experimentais."
+  },
+  "actions": {
+    "copyMarkdown": "Copiar tarefa como markdown",
+    "openFile": "Abrir arquivo... (g f)",
+    "openFileLabel": "Abrir arquivo nesta tarefa",
+    "moreTaskActions": "Mais ações da tarefa",
+    "showActivity": "Mostrar atividade da tarefa",
+    "addSubtask": "Adicionar subtarefa"
+  },
+  "description": {
+    "placeholder": "Adicione uma descrição..."
+  },
+  "detailsError": "Alguns detalhes da tarefa não puderam ser carregados.",
+  "retryButton": "Tentar novamente",
+  "replySent": "Resposta enviada. Envie uma mensagem para continuar.",
+  "hidden": "Esta tarefa está oculta",
+  "artifacts": "Artefatos",
+  "tabs": {
+    "chat": "Chat",
+    "activity": "Atividade",
+    "relatedWork": "Trabalho relacionado"
+  },
+  "unavailable": {
+    "repairPermission": "Você não tem permissão para reparar o espaço de trabalho desta tarefa.",
+    "retryPermission": "Você não tem permissão para tentar esta tarefa novamente.",
+    "pauseCheck": "Não foi possível verificar se esta tarefa está pausada. Atualize para tentar novamente.",
+    "resumeTask": "Retome a tarefa antes de tentar novamente.",
+    "resumeProject": "Retome o projeto antes de tentar novamente.",
+    "pendingInteraction": "Responda à pergunta ou confirmação pendente antes de tentar novamente.",
+    "recoveryPermission": "Você não tem permissão para tentar esta ação de recuperação novamente.",
+    "taskPaused": "A tarefa está pausada. Retome-a antes de tentar novamente.",
+    "projectPaused": "O projeto está pausado. Retome-o antes de tentar novamente."
+  },
+  "createdTasksError": "Não foi possível carregar as tarefas criadas.",
+  "agent": "Agente",
+  "sidePanel": "Painel lateral da tarefa",
+  "errorActions": {
+    "loadTask": "carregar esta tarefa",
+    "postComment": "publicar o comentário",
+    "checkMonitor": "verificar o monitor"
+  }
+}

@@ -7,11 +7,13 @@ import { planToolChanges } from "./tools";
 import { planChannelChanges } from "./channels";
 import { requireItem, unique, type ConfigurationStep, type AddConfigurationStep } from "./steps";
 import { resolveAgentConfiguration } from "./resolve";
+import { t } from "@/i18n";
 
 export interface ConfigurationReceipt { label: string; id: string; token?: string }
 export class ConfigurationSaveInterrupted extends Error {
   constructor(label: string, completed: string[], cause: unknown) {
-    super(`${completed.length ? `Saved: ${completed.join(", ")}. ` : ""}Could not complete ${label}: ${cause instanceof Error ? cause.message : "Request failed"}. Some changes may have been saved. Reload saved before saving again.`);
+    const reason = cause instanceof Error ? cause.message : t("libAgentConfiguration.save.requestFailed");
+    super(`${completed.length ? t("libAgentConfiguration.save.interruptedSaved", { steps: completed.join(", ") }) : ""}${t("libAgentConfiguration.save.interrupted", { label, reason })}`);
   }
 }
 
@@ -20,21 +22,21 @@ function planInstructions(snapshot: AgentConfigurationSnapshot, document: AgentC
   if (!next) return;
   const previous = snapshot.document.spec.instructions!;
   if (equal(previous, next)) return;
-  if (!snapshot.bundle.editable && !next.mode) throw new Error("Choose managed or external instructions mode before adding files.");
-  if (next.mode === null && previous.mode !== null) throw new Error("Choose managed or external instructions mode.");
-  if (next.mode === "external" && !next.rootPath?.startsWith("/")) throw new Error("External instructions require an absolute rootPath.");
-  if (Object.hasOwn(previous.files, next.entryFile) && !Object.hasOwn(next.files, next.entryFile)) throw new Error("The instructions entry file cannot be removed.");
+  if (!snapshot.bundle.editable && !next.mode) throw new Error(t("libAgentConfiguration.instructions.chooseModeBeforeFiles"));
+  if (next.mode === null && previous.mode !== null) throw new Error(t("libAgentConfiguration.instructions.chooseMode"));
+  if (next.mode === "external" && !next.rootPath?.startsWith("/")) throw new Error(t("libAgentConfiguration.instructions.externalAbsolute"));
+  if (Object.hasOwn(previous.files, next.entryFile) && !Object.hasOwn(next.files, next.entryFile)) throw new Error(t("libAgentConfiguration.instructions.entryFileRequired"));
   for (const path of Object.keys(next.files)) {
     const existing = snapshot.bundle.files.find(file => file.path === path);
-    if (existing && (!existing.editable || existing.binary || existing.virtual)) throw new Error(`Instruction file ${path} cannot be edited as text.`);
+    if (existing && (!existing.editable || existing.binary || existing.virtual)) throw new Error(t("libAgentConfiguration.instructionFileNotText", { path }));
   }
   const bundleChanged = previous.mode !== next.mode || previous.rootPath !== next.rootPath || previous.entryFile !== next.entryFile;
   if (bundleChanged) {
-    if (!equal(previous.files, next.files)) throw new Error("Save the instructions location or entry file first, then edit the files loaded from that location.");
+    if (!equal(previous.files, next.files)) throw new Error(t("libAgentConfiguration.instructions.saveLocationFirst"));
     if (next.mode === "managed" && previous.mode === "managed" && next.rootPath !== previous.rootPath) {
-      throw new Error("The managed instructions root is assigned by Paperclip. Choose external mode to use another folder.");
+      throw new Error(t("libAgentConfiguration.instructions.managedRootAssigned"));
     }
-    add("Instructions location (load the destination files)", () => agentsApi.updateInstructionsBundle(snapshot.agent.id, {
+    add(t("libAgentConfiguration.instructions.steps.location"), () => agentsApi.updateInstructionsBundle(snapshot.agent.id, {
       ...(next.mode ? { mode: next.mode } : {}), rootPath: next.rootPath, entryFile: next.entryFile,
     }, snapshot.agent.companyId));
     return;
@@ -42,7 +44,7 @@ function planInstructions(snapshot: AgentConfigurationSnapshot, document: AgentC
   const currentFiles = snapshot.files;
   for (const [path, content] of Object.entries(next.files)) {
     if (previous.files[path] === content) continue;
-    add(`Instructions: ${path}`, () => {
+    add(t("libAgentConfiguration.instructions.steps.file", { path }), () => {
       const file = currentFiles.get(path);
       if (file?.content === content) return Promise.resolve();
       return agentsApi.saveInstructionsFile(snapshot.agent.id, {
@@ -52,7 +54,7 @@ function planInstructions(snapshot: AgentConfigurationSnapshot, document: AgentC
   }
   for (const path of Object.keys(previous.files)) {
     if (Object.hasOwn(next.files, path)) continue;
-    add(`Remove instruction file: ${path}`, async () => {
+    add(t("libAgentConfiguration.instructions.steps.removeFile", { path }), async () => {
       const file = currentFiles.get(path);
       if (!file) return;
       return agentsApi.deleteInstructionsFile(snapshot.agent.id, path, snapshot.agent.companyId, file.contentHash);
@@ -68,25 +70,25 @@ function planSecrets(snapshot: AgentConfigurationSnapshot, document: AgentConfig
   unique(next.update.map(row => row.id), "secrets.update");
   unique(next.proposals.map(row => row.id), "secrets.proposals");
   unique(next.create.map(row => row.secret.key ?? row.secret.name), "secrets.create");
-  for (const operation of [...next.rotate, ...next.update]) requireItem(snapshot.secrets, secret => secret.id === operation.id, `Secret ${operation.id}`);
+  for (const operation of [...next.rotate, ...next.update]) requireItem(snapshot.secrets, secret => secret.id === operation.id, t("libAgentConfiguration.labels.secret", { id: operation.id }));
   unique(next.create.flatMap(operation => operation.bind.env), "secrets.create.bind.env");
   unique(next.create.flatMap(operation => operation.bind.api), "secrets.create.bind.api");
   const env = (config: Record<string, unknown>) => config.env && typeof config.env === "object" && !Array.isArray(config.env) ? config.env as Record<string, unknown> : {};
   for (const operation of next.create) {
     for (const key of operation.bind.env) {
-      if (!equal(env(document.spec.adapterConfig)[key], env(snapshot.document.spec.adapterConfig)[key])) throw new Error(`Set env.${key} either in adapterConfig or secrets.create.bind, not both in one save.`);
+      if (!equal(env(document.spec.adapterConfig)[key], env(snapshot.document.spec.adapterConfig)[key])) throw new Error(t("libAgentConfiguration.secrets.envBoth", { key }));
     }
     for (const alias of operation.bind.api) {
-      if (!equal(document.spec.adapterConfig[`access.${alias}`], snapshot.document.spec.adapterConfig[`access.${alias}`])) throw new Error(`Set access.${alias} either in adapterConfig or secrets.create.bind, not both in one save.`);
+      if (!equal(document.spec.adapterConfig[`access.${alias}`], snapshot.document.spec.adapterConfig[`access.${alias}`])) throw new Error(t("libAgentConfiguration.secrets.accessBoth", { alias }));
     }
     const assertBindingsCurrent = (config: Record<string, unknown>) => {
-      for (const key of operation.bind.env) if (!equal(env(config)[key], env(snapshot.document.spec.adapterConfig)[key])) throw new Error(`env.${key} changed before secret binding. Reload saved before saving.`);
-      for (const alias of operation.bind.api) if (!equal(config[`access.${alias}`], snapshot.document.spec.adapterConfig[`access.${alias}`])) throw new Error(`access.${alias} changed before secret binding. Reload saved before saving.`);
+      for (const key of operation.bind.env) if (!equal(env(config)[key], env(snapshot.document.spec.adapterConfig)[key])) throw new Error(t("libAgentConfiguration.secrets.envChanged", { key }));
+      for (const alias of operation.bind.api) if (!equal(config[`access.${alias}`], snapshot.document.spec.adapterConfig[`access.${alias}`])) throw new Error(t("libAgentConfiguration.secrets.accessChanged", { alias }));
     };
-    add(`Create secret: ${operation.secret.name}`, async () => {
+    add(t("libAgentConfiguration.secrets.steps.create", { name: operation.secret.name }), async () => {
       if (operation.bind.env.length || operation.bind.api.length) assertBindingsCurrent((await agentsApi.getConfiguration(id, companyId)).adapterConfig);
       const created = await secretsApi.create(companyId, operation.secret);
-      receipt({ label: `Secret: ${created.name}`, id: created.id });
+      receipt({ label: t("libAgentConfiguration.secrets.receipt", { name: created.name }), id: created.id });
       if (!operation.bind.env.length && !operation.bind.api.length) return;
       const current = await agentsApi.getConfiguration(id, companyId);
       assertBindingsCurrent(current.adapterConfig);
@@ -98,12 +100,12 @@ function planSecrets(snapshot: AgentConfigurationSnapshot, document: AgentConfig
       await agentsApi.update(id, { adapterConfig, replaceAdapterConfig: true, expectedConfigurationRevision: current.configurationRevision }, companyId);
     });
   }
-  for (const operation of next.rotate) add(`Rotate secret: ${operation.id}`, () => secretsApi.rotate(operation.id, operation.input));
-  for (const operation of next.update) add(`Update secret: ${operation.id}`, () => secretsApi.update(operation.id, operation.input));
+  for (const operation of next.rotate) add(t("libAgentConfiguration.secrets.steps.rotate", { id: operation.id }), () => secretsApi.rotate(operation.id, operation.input));
+  for (const operation of next.update) add(t("libAgentConfiguration.secrets.steps.update", { id: operation.id }), () => secretsApi.update(operation.id, operation.input));
   for (const operation of next.proposals) {
-    requireItem(snapshot.proposals, proposal => proposal.id === operation.id && (proposal.target?.id === id || proposal.proposedBy.id === id), `Secret proposal ${operation.id}`);
-    if (operation.decision === "reject" && !operation.reason?.trim()) throw new Error("A rejected secret proposal requires a reason.");
-    add(`Secret proposal: ${operation.id}`, () => operation.decision === "approve"
+    requireItem(snapshot.proposals, proposal => proposal.id === operation.id && (proposal.target?.id === id || proposal.proposedBy.id === id), t("libAgentConfiguration.labels.secretProposal", { id: operation.id }));
+    if (operation.decision === "reject" && !operation.reason?.trim()) throw new Error(t("libAgentConfiguration.secrets.rejectReason"));
+    add(t("libAgentConfiguration.secrets.steps.proposal", { id: operation.id }), () => operation.decision === "approve"
       ? secretsApi.approveProposal(companyId, operation.id)
       : secretsApi.rejectProposal(companyId, operation.id, { reason: operation.reason! }));
   }
@@ -116,27 +118,27 @@ export function planAgentConfiguration(snapshot: AgentConfigurationSnapshot, inp
 function planResolvedConfiguration(snapshot: AgentConfigurationSnapshot, document: AgentConfigurationDocument, receipt: (value: ConfigurationReceipt) => void) {
   const steps: ConfigurationStep[] = [];
   const add: AddConfigurationStep = (label, apply) => { steps.push({ label, apply }); };
-  if (!equal(document.observed, snapshot.document.observed)) throw new Error("observed is read-only. Edit spec to change configuration.");
-  for (const key of ownedAdapterKeys) if (Object.hasOwn(document.spec.adapterConfig, key)) throw new Error(`Use the ${key === "paperclipSkillSync" ? "skills" : "instructions"} section instead of adapterConfig.${key}.`);
+  if (!equal(document.observed, snapshot.document.observed)) throw new Error(t("libAgentConfiguration.save.observedReadOnly"));
+  for (const key of ownedAdapterKeys) if (Object.hasOwn(document.spec.adapterConfig, key)) throw new Error(key === "paperclipSkillSync" ? t("libAgentConfiguration.save.useSkillsSection", { key }) : t("libAgentConfiguration.save.useInstructionsSection", { key }));
   const adapterConfig = { ...document.spec.adapterConfig };
   for (const key of ownedAdapterKeys) if (Object.hasOwn(snapshot.core.adapterConfig, key)) adapterConfig[key] = snapshot.core.adapterConfig[key];
   const corePatch = agentConfigurationPatch({ ...document, spec: { ...document.spec, adapterConfig } }, snapshot.core);
-  if (Object.keys(corePatch).length) add("Agent configuration", () => agentsApi.update(snapshot.agent.id, {
+  if (Object.keys(corePatch).length) add(t("libAgentConfiguration.save.steps.agentConfiguration"), () => agentsApi.update(snapshot.agent.id, {
     ...corePatch, expectedConfigurationRevision: snapshot.core.configurationRevision,
   }, snapshot.agent.companyId));
   if (document.spec.permissions && !document.spec.permissions.canAssignTasks && (document.spec.role === "ceo" || document.spec.permissions.canCreateAgents)) {
-    throw new Error("CEO agents and agents that can create agents also have task assignment authority. Set canAssignTasks to true.");
+    throw new Error(t("libAgentConfiguration.save.canAssignTasksRequired"));
   }
   planInstructions(snapshot, document, add);
   if (document.spec.skills && !equal(document.spec.skills, snapshot.document.spec.skills)) {
     unique(document.spec.skills.map(skill => typeof skill === "string" ? skill : skill.key), "skills");
-    add("Skills and version pins", () => agentsApi.syncSkills(snapshot.agent.id, document.spec.skills!, "replace", snapshot.agent.companyId));
+    add(t("libAgentConfiguration.save.steps.skills"), () => agentsApi.syncSkills(snapshot.agent.id, document.spec.skills!, "replace", snapshot.agent.companyId));
   }
   planToolChanges(snapshot, document, add);
   planChannelChanges(snapshot, document, add);
   planSecrets(snapshot, document, add, receipt);
   if (document.spec.permissions && !equal(document.spec.permissions, snapshot.document.spec.permissions)) {
-    add("Permissions and trust", () => agentsApi.updatePermissions(snapshot.agent.id, { ...document.spec.permissions!,
+    add(t("libAgentConfiguration.save.steps.permissions"), () => agentsApi.updatePermissions(snapshot.agent.id, { ...document.spec.permissions!,
       authorizationPolicy: document.spec.permissions!.authorizationPolicy ?? {},
     }, snapshot.agent.companyId));
   }
@@ -145,19 +147,19 @@ function planResolvedConfiguration(snapshot: AgentConfigurationSnapshot, documen
     unique(keys.revoke, "apiKeys.revoke");
     unique(keys.create.map(key => key.name), "apiKeys.create");
     for (const id of keys.revoke) {
-      const key = requireItem(snapshot.keys, key => key.id === id, `API key ${id}`);
-      if (!key.revokedAt) add(`Revoke API key: ${key.name}`, () => agentsApi.revokeKey(snapshot.agent.id, id, snapshot.agent.companyId));
+      const key = requireItem(snapshot.keys, key => key.id === id, t("libAgentConfiguration.labels.apiKey", { id }));
+      if (!key.revokedAt) add(t("libAgentConfiguration.save.steps.revokeApiKey", { name: key.name }), () => agentsApi.revokeKey(snapshot.agent.id, id, snapshot.agent.companyId));
     }
-    for (const input of keys.create) add(`Create API key: ${input.name}`, async () => {
+    for (const input of keys.create) add(t("libAgentConfiguration.save.steps.createApiKey", { name: input.name }), async () => {
       const key = await agentsApi.createKey(snapshot.agent.id, input.name, snapshot.agent.companyId, input.scope);
-      receipt({ label: `API key: ${key.name}`, id: key.id, token: key.token });
+      receipt({ label: t("libAgentConfiguration.save.apiKeyReceipt", { name: key.name }), id: key.id, token: key.token });
     });
   }
   if (document.spec.revisions?.restore) {
     const id = document.spec.revisions.restore;
-    requireItem(snapshot.revisions, revision => revision.id === id, `Revision ${id}`);
-    if (steps.length) throw new Error("Restore a revision in its own save, then edit the restored configuration.");
-    add("Restore configuration revision", () => agentsApi.rollbackConfigRevision(snapshot.agent.id, id, snapshot.agent.companyId));
+    requireItem(snapshot.revisions, revision => revision.id === id, t("libAgentConfiguration.labels.revision", { id }));
+    if (steps.length) throw new Error(t("libAgentConfiguration.save.restoreAlone"));
+    add(t("libAgentConfiguration.save.steps.restoreRevision"), () => agentsApi.rollbackConfigRevision(snapshot.agent.id, id, snapshot.agent.companyId));
   }
   return steps;
 }
@@ -168,10 +170,10 @@ export async function saveAgentConfiguration(snapshot: AgentConfigurationSnapsho
   const initialPlan = planResolvedConfiguration(snapshot, document, onReceipt);
   if (!initialPlan.length) return snapshot;
   const current = await loadAgentConfiguration(snapshot.agent.id, snapshot.agent.companyId);
-  if (current.core.configurationRevision !== snapshot.core.configurationRevision) throw new Error("Agent configuration changed while you were editing. Reload saved before saving.");
+  if (current.core.configurationRevision !== snapshot.core.configurationRevision) throw new Error(t("libAgentConfiguration.save.agentChanged"));
   for (const key of ["permissions", "instructions", "skills", "tools", "channels"] as const) {
     if (document.spec[key] !== undefined && !equal(document.spec[key], snapshot.document.spec[key]) && !equal(current.document.spec[key], snapshot.document.spec[key])) {
-      throw new Error(`${key} changed while you were editing. Reload saved before saving.`);
+      throw new Error(t("libAgentConfiguration.save.sectionChanged", { key }));
     }
   }
   const spec = { ...document.spec };
@@ -180,7 +182,7 @@ export async function saveAgentConfiguration(snapshot: AgentConfigurationSnapsho
   }
   for (const operation of [...(document.spec.secrets?.rotate ?? []), ...(document.spec.secrets?.update ?? [])]) {
     const previous = snapshot.secrets.find(secret => secret.id === operation.id);
-    if (!equal(previous, current.secrets.find(secret => secret.id === operation.id))) throw new Error(`Secret ${operation.id} changed. Reload saved before saving.`);
+    if (!equal(previous, current.secrets.find(secret => secret.id === operation.id))) throw new Error(t("libAgentConfiguration.save.secretChanged", { id: operation.id }));
   }
   for (const profile of document.spec.tools?.profiles ?? []) {
     if (!profile.profileId) continue;
@@ -188,7 +190,7 @@ export async function saveAgentConfiguration(snapshot: AgentConfigurationSnapsho
     if (originalRow && equal(originalRow, profile)) continue;
     const before = snapshot.profiles.find(value => value.id === profile.profileId);
     const fresh = current.profiles.find(value => value.id === profile.profileId);
-    if (!equal(before, fresh)) throw new Error(`Tool profile ${profile.profileId} changed while you were editing. Reload saved before saving.`);
+    if (!equal(before, fresh)) throw new Error(t("libAgentConfiguration.save.profileChanged", { id: profile.profileId }));
   }
   const steps = planResolvedConfiguration(current, { ...document, spec, observed: current.document.observed }, onReceipt);
   const completed: string[] = [];
@@ -209,5 +211,5 @@ export async function saveAgentConfiguration(snapshot: AgentConfigurationSnapsho
     if (warnings.length) refreshed.agent = { ...refreshed.agent, configurationWarnings: warnings };
     return refreshed;
   }
-  catch (cause) { throw new ConfigurationSaveInterrupted("refreshing the saved configuration", completed, cause); }
+  catch (cause) { throw new ConfigurationSaveInterrupted(t("libAgentConfiguration.save.refreshing"), completed, cause); }
 }

@@ -1,0 +1,12 @@
+{
+  "loadAction": "carregar a atividade de e-mail",
+  "sendIntent": "Intenção de envio de e-mail",
+  "emailReply": "Resposta por e-mail",
+  "to": "Para: {{recipients}}",
+  "outcome": "E-mail {{outcome}}",
+  "resolveSummary": "Resolver a entrega depois de verificar no AgentMail",
+  "confirmHint": "Confirme o resultado no AgentMail antes de resolver. Esta ação não reenvia.",
+  "providerMessageId": "ID da mensagem no provedor",
+  "confirmSent": "Confirmar enviado",
+  "confirmNotSent": "Confirmar não enviado"
+}

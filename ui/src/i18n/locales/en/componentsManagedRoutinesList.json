@@ -1,0 +1,12 @@
+{
+  "empty": "No managed routines.",
+  "configure": "Configure",
+  "managedBy": "Managed by {{name}}",
+  "schedule": "Schedule {{cron}}",
+  "missing": "Missing {{refs}}",
+  "canRepair": "Routine defaults can be repaired.",
+  "reconciling": "Reconciling...",
+  "reconcile": "Reconcile",
+  "resetting": "Resetting...",
+  "reset": "Reset"
+}

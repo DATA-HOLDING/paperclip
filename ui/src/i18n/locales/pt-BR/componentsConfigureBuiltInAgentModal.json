@@ -1,0 +1,20 @@
+{
+  "modelUnavailable": "O modelo “{{model}}” não está disponível para {{adapterType}}. Escolha um modelo conhecido.",
+  "configureAndEnable": "Configurar e ativar {{name}}",
+  "provision": "Provisionar {{name}}",
+  "configureFailed": "Não foi possível configurar o agente integrado.",
+  "title": "Configurar {{name}}",
+  "intro": {
+    "creates": "Cria",
+    "inRoster": "na sua equipe, com o selo",
+    "builtIn": "Integrado",
+    "queued": ". Organizações que exigem aprovação de contratação colocarão isto na fila do Conselho."
+  },
+  "harness": "Harness",
+  "needsFields": "Este adaptador precisa dos campos de comando ou endpoint antes de executar. Provisione o agente integrado agora e depois preencha esses campos na configuração completa do agente.",
+  "monthlyBudget": "Orçamento mensal (opcional)",
+  "budgetHint": "Deixe em branco para não ter limite.",
+  "perMonth": "/ mês",
+  "notNow": "Agora não",
+  "configuring": "Configurando…"
+}

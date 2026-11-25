@@ -1,0 +1,6 @@
+{
+  "openAriaLabel": "Open {{identifier}}: {{title}}",
+  "task": "task",
+  "subtaskCreated": "Subtask created",
+  "taskCreated": "Task created"
+}

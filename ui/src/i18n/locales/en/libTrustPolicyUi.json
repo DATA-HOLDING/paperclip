@@ -1,0 +1,23 @@
+{
+  "presets": {
+    "standard": {
+      "label": "Standard",
+      "description": "Organization-visible collaboration. This is the default for normal work."
+    },
+    "lowTrustReview": {
+      "label": "Low-trust review",
+      "description": "Contained for hostile or untrusted input. Narrow Paperclip API, quarantined output. Use for PR review and external-content triage."
+    }
+  },
+  "boundary": {
+    "project": "Project {{id}}",
+    "rootIssue": "Root issue {{id}}",
+    "issue": "Issue {{id}}",
+    "none": "No boundary selected",
+    "many": "{{n}} boundaries"
+  },
+  "source": {
+    "promoted": "Promoted from low-trust",
+    "lowTrust": "Low-trust source"
+  }
+}

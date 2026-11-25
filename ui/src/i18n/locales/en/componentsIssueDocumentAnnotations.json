@@ -1,0 +1,14 @@
+{
+  "disabled": {
+    "historical": "New comments are disabled while previewing a historical revision.",
+    "conflict": "Resolve the document conflict before adding new comments.",
+    "dirty": "Save the draft to anchor new comments.",
+    "noRevision": "Document has no saved revision yet."
+  },
+  "chip": {
+    "openComments": "Open comments on {{docKey}}",
+    "openUnresolved": "Open {{openCount}} unresolved comments on {{docKey}}",
+    "commentLabel_one": "comment",
+    "commentLabel_other": "comments"
+  }
+}

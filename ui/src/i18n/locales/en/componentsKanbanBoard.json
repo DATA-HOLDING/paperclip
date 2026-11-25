@@ -1,0 +1,12 @@
+{
+  "showMore": "Show {{count}} more",
+  "showing": "Showing {{visible}} of {{total}}",
+  "needsNextStepTitle": "This task needs a next step",
+  "needsNextStepAria": "Needs next step",
+  "nextStep": "Next step",
+  "live": "Live",
+  "subtasksRunning_one": "{{count}} sub-task running below",
+  "subtasksRunning_other": "{{count}} sub-tasks running below",
+  "liveBelow": "{{count}} live below",
+  "columnsLabel": "Task board columns"
+}

@@ -5,6 +5,7 @@ import { ShieldAlert, ShieldCheck, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { queryKeys } from "@/lib/queryKeys";
 import { toolsApi } from "@/api/tools";
+import { t } from "@/i18n";
 
 /**
  * Persistent enforcement-state banner for the Tools & Access surface (PAP-10389).
@@ -151,9 +152,8 @@ export function EnforcementBanner(props: EnforcementBannerProps) {
       <div className="min-w-0 flex-1">
         {variant === "denied-detected" ? (
           <p>
-            <span className="font-medium">{computedCount}</span> governed tool call
-            {computedCount === 1 ? " was" : "s were"} denied or failed in the last hour. Access is enforced
-            server-side by the tool gateway — open the affected connector to review what was blocked and why.
+            <span className="font-medium">{computedCount}</span>
+            {t("componentsEnforcementBanner.denied", { count: computedCount })}
           </p>
         ) : (
           <p>

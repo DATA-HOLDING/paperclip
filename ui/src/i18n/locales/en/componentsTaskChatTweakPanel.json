@@ -1,0 +1,10 @@
+{
+  "title": "Motion tweak panel",
+  "resetAll": "Reset all",
+  "expand": "Expand",
+  "minimize": "Minimize",
+  "copyAsTheme": "Copy as @theme",
+  "copied": "Copied to clipboard",
+  "copyFailed": "Copy failed — select the text and copy it manually",
+  "clickToCopy": "Click the box to copy"
+}

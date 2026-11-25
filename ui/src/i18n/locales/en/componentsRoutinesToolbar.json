@@ -1,0 +1,44 @@
+{
+  "controls": "Routines controls",
+  "newRoutine": "New routine",
+  "searchLabel": "Search routines",
+  "searchPlaceholder": "Search routines…",
+  "sort": {
+    "title": "Sort",
+    "ariaLabel": "Sort routines",
+    "updated": "Updated",
+    "created": "Created",
+    "lastRun": "Last run",
+    "titleField": "Title",
+    "asc": "Asc",
+    "desc": "Desc"
+  },
+  "filter": {
+    "title": "Filter",
+    "ariaLabel": "Filter routines",
+    "ariaLabelCount": "Filter routines ({{count}})",
+    "header": "Filters",
+    "clear": "Clear",
+    "project": "Project",
+    "agent": "Agent",
+    "enabled": "Enabled",
+    "responsibleUser": "Responsible user",
+    "source": "Source",
+    "noOptions": "No options"
+  },
+  "group": {
+    "title": "Group",
+    "ariaLabel": "Group routines",
+    "folder": "Folder",
+    "project": "Project",
+    "agent": "Agent",
+    "none": "None",
+    "newFolder": "New folder"
+  },
+  "columns": {
+    "title": "Columns",
+    "ariaLabel": "Routine columns",
+    "reset": "Reset columns"
+  },
+  "viewAllTasks": "View all tasks"
+}

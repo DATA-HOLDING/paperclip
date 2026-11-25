@@ -1,0 +1,25 @@
+{
+  "retry": "Retry",
+  "loadingConfiguration": "Loading configuration…",
+  "invalidYaml": "Invalid YAML",
+  "reloadBeforeSaving": "Reload saved before saving again.",
+  "agentSaved": "Agent saved",
+  "intro": "Omitted settings stay unchanged. Instruction file contents, inherited access, and history are available in their settings tabs.",
+  "createdCredentials": "Created credentials",
+  "copyKeyNow": "Copy this key now. It won’t be shown again after leaving this page.",
+  "tokenLabel": "{{label}} token",
+  "changesToApply_one": "{{count}} change to apply",
+  "changesToApply_other": "{{count}} changes to apply",
+  "changesOrder": "Changes save in this order. If one fails, earlier changes remain saved.",
+  "reloadSaved": "Reload saved",
+  "status": {
+    "saving": "Saving: {{progress}}…",
+    "configuration": "configuration",
+    "noChanges": "No configuration changes",
+    "unsaved": "Unsaved changes",
+    "noUnsaved": "No unsaved changes"
+  },
+  "saving": "Saving…",
+  "saveChanges": "Save changes",
+  "yamlLabel": "Agent YAML configuration"
+}

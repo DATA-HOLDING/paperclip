@@ -3,6 +3,7 @@ import { Hourglass } from "lucide-react";
 import { Link } from "@/lib/router";
 import { agentQueueConfigureHref, agentQueueWaitParts } from "@/lib/agent-queue-wait";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 /**
  * A run that waits for one of its agent's concurrency slots:
@@ -40,9 +41,9 @@ export function AgentQueueWait({
           <Link
             to={agentQueueConfigureHref(queue)}
             className="text-foreground/80 underline-offset-2 hover:text-foreground hover:underline"
-            aria-label={`Configure ${queue.agentName}'s concurrent run limit`}
+            aria-label={t("componentsAgentQueueWait.configureAriaLabel", { agentName: queue.agentName })}
           >
-            Configure
+            {t("componentsAgentQueueWait.configure")}
           </Link>
         </>
       ) : null}
@@ -52,7 +53,7 @@ export function AgentQueueWait({
 
 /** List-row form: one muted word, the full sentence on hover. */
 export function AgentQueueWaitChip({ queue }: { queue: ExecutionAgentQueue | null }) {
-  const title = queue ? agentQueueWaitParts(queue).join(" · ") : "Waiting to start";
+  const title = queue ? agentQueueWaitParts(queue).join(" · ") : t("componentsAgentQueueWait.waitingToStart");
   return (
     <span
       className="inline-flex shrink-0 items-center gap-1 text-xs text-muted-foreground"
@@ -61,7 +62,7 @@ export function AgentQueueWaitChip({ queue }: { queue: ExecutionAgentQueue | nul
       data-testid="agent-queue-wait-chip"
     >
       <Hourglass className="size-3" aria-hidden="true" />
-      Waiting
+      {t("componentsAgentQueueWait.waiting")}
     </span>
   );
 }

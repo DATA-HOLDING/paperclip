@@ -1,0 +1,7 @@
+{
+  "loadFailed": "Budget data could not be loaded. Showing the agent's saved monthly budget.",
+  "updateFailed": "Could not update {{name}}'s budget. Review the amount and try again.",
+  "keepPausedFailed": "Could not keep this agent paused.",
+  "raiseFailed": "Could not raise the budget and resume.",
+  "tryAgain": "Try again."
+}

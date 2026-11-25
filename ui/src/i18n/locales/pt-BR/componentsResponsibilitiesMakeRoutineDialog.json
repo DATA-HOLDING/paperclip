@@ -1,0 +1,55 @@
+{
+  "frequency": {
+    "daily": "Todos os dias",
+    "weekdays": "Todo dia útil",
+    "weekly": "Toda semana",
+    "monthly": "Todo mês"
+  },
+  "weekday": {
+    "monday": "Segunda-feira",
+    "tuesday": "Terça-feira",
+    "wednesday": "Quarta-feira",
+    "thursday": "Quinta-feira",
+    "friday": "Sexta-feira",
+    "saturday": "Sábado",
+    "sunday": "Domingo"
+  },
+  "joinTitles": "{{list}} e {{last}}",
+  "hint": {
+    "offer": "O agente sugeriu isto.",
+    "title": "Sugerido a partir do título."
+  },
+  "title": {
+    "new": "Nova rotina",
+    "fromTask": "Transformar em rotina"
+  },
+  "description": {
+    "new": "Um agente faz isto de forma agendada.",
+    "fromTask": "Um agente repete isto de forma agendada, então não precisa mais que você o inicie."
+  },
+  "whatRepeats": "O que se repete",
+  "titlePlaceholder": "ex.: Revisar o funil de investidores",
+  "howOften": "Com que frequência",
+  "on": "na",
+  "dayOfWeek": "Dia da semana",
+  "onDay": "no dia",
+  "dayOfMonth": "Dia do mês",
+  "at": "às",
+  "time": "Horário",
+  "cadencePreview": "{{cadence}}, no seu horário ({{zone}}).",
+  "whoRuns": "Quem executa",
+  "noAgents": "Nenhum agente ainda",
+  "addAgentFirst": "Adicione um agente primeiro: uma rotina precisa de um para ser executada.",
+  "filing": {
+    "new": "Arquivada em {{title}}.",
+    "taskStays": "A tarefa em si continua como está.",
+    "under": "A rotina é arquivada em {{titles}}, como a tarefa.",
+    "wherever": "A rotina é arquivada onde a tarefa estiver."
+  },
+  "error": "Não foi possível criar a rotina.",
+  "cancel": "Cancelar",
+  "submit": {
+    "pending": "Criando a rotina…",
+    "new": "Criar a rotina"
+  }
+}

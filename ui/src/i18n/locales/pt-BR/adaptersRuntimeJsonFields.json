@@ -1,0 +1,4 @@
+{
+  "runtimeServices": "JSON dos serviços de runtime",
+  "payloadTemplate": "JSON do modelo de payload"
+}

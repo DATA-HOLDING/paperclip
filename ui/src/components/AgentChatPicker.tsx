@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
+import { t } from "@/i18n";
 
 export interface AgentChatPickerProps {
   agents: Agent[];
@@ -26,8 +27,8 @@ export function AgentChatPicker({ open, onOpenChange, trigger, ...props }: Agent
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent aria-describedby={undefined} className="gap-0 overflow-hidden p-0 sm:max-w-md">
         <div className="px-4 pt-4 pb-3">
-          <DialogTitle>Chat with an agent</DialogTitle>
-          {props.existingChatAgentIds && <p className="mt-2 text-sm text-muted-foreground">One conversation per agent. Pick up where you left off.</p>}
+          <DialogTitle>{t("componentsAgentChatPicker.title")}</DialogTitle>
+          {props.existingChatAgentIds && <p className="mt-2 text-sm text-muted-foreground">{t("componentsAgentChatPicker.oneConversation")}</p>}
         </div>
         {/* The dialog unmounts its content on close, so each search starts empty. */}
         <AgentChatPickerResults key={String(open)} {...props} onComplete={() => onOpenChange(false)} />
@@ -57,7 +58,7 @@ function AgentChatPickerResults({ agents, onSelect, onComplete, loading, error, 
       await onSelect(agent, request.signal);
       if (mounted.current) onComplete();
     } catch (error) {
-      setSelectionError(error instanceof Error ? error.message : "Couldn’t open chat. Try again.");
+      setSelectionError(error instanceof Error ? error.message : t("componentsAgentChatPicker.openFailed"));
     } finally {
       setOpeningId(null);
     }
@@ -65,29 +66,29 @@ function AgentChatPickerResults({ agents, onSelect, onComplete, loading, error, 
   return (
     <Command>
       <CommandInput
-        aria-label="Search agents by name or role"
-        placeholder="Search by name or role…"
+        aria-label={t("componentsAgentChatPicker.searchAria")}
+        placeholder={t("componentsAgentChatPicker.searchPlaceholder")}
         value={search}
         onValueChange={setSearch}
       />
       {selectionError && <p role="alert" className="px-4 py-3 text-sm text-destructive">{selectionError}</p>}
-      {openingId && <p role="status" className="sr-only">Opening conversation…</p>}
+      {openingId && <p role="status" className="sr-only">{t("componentsAgentChatPicker.opening")}</p>}
       {error ? (
         <div role="alert" className="flex flex-col items-start gap-2 p-4 text-sm">
-          <p>Couldn’t load agents. Try again.</p>
-          {onRetry && <Button variant="outline" size="sm" onClick={onRetry}>Retry</Button>}
+          <p>{t("componentsAgentChatPicker.loadFailed")}</p>
+          {onRetry && <Button variant="outline" size="sm" onClick={onRetry}>{t("componentsAgentChatPicker.retry")}</Button>}
         </div>
       ) : loading ? (
-        <p role="status" className="p-4 text-sm text-muted-foreground">Loading agents…</p>
+        <p role="status" className="p-4 text-sm text-muted-foreground">{t("componentsAgentChatPicker.loading")}</p>
       ) : (
         <CommandList>
           <CommandEmpty>
             <div className="flex flex-col items-center gap-2 px-4">
-              <span>{agents.length ? `No agents match “${search}”` : "No agents yet."}</span>
+              <span>{agents.length ? t("componentsAgentChatPicker.noMatch", { search }) : t("componentsAgentChatPicker.noAgents")}</span>
               {agents.length ? <>
-                <span className="text-xs text-muted-foreground">Try another name or role.</span>
-                <Button variant="ghost" size="sm" onClick={() => setSearch("")}>Clear search</Button>
-              </> : <span className="text-xs text-muted-foreground">Create an agent from the Agents page to start chatting.</span>}
+                <span className="text-xs text-muted-foreground">{t("componentsAgentChatPicker.tryAnother")}</span>
+                <Button variant="ghost" size="sm" onClick={() => setSearch("")}>{t("componentsAgentChatPicker.clearSearch")}</Button>
+              </> : <span className="text-xs text-muted-foreground">{t("componentsAgentChatPicker.createHint")}</span>}
             </div>
           </CommandEmpty>
           <CommandGroup>
@@ -107,11 +108,11 @@ function AgentChatPickerResults({ agents, onSelect, onComplete, loading, error, 
                     <span className="truncate font-medium">{agent.name}</span>
                     <span className="truncate text-xs text-muted-foreground">{agent.title ?? agent.role}</span>
                   </span>
-                  {unreadCount > 0 && <Badge variant="ghost" aria-label={`${unreadCount} unread ${unreadCount === 1 ? "message" : "messages"} from ${agent.name}`} className="shrink-0 bg-primary font-mono tabular-nums text-primary-foreground">{unreadCount}</Badge>}
-                  {existingChatAgentIds && <span className="shrink-0 text-xs text-muted-foreground">{existingIds.has(agent.id) ? "Open chat" : "New chat"}</span>}
-                  {agent.status === "paused" && <span className="text-xs text-(--status-agent-paused)">Paused</span>}
-                  {agent.status === "terminated" && <span className="text-xs text-muted-foreground">Terminated</span>}
-                  {agent.status === "pending_approval" && <span className="text-xs text-muted-foreground">Awaiting approval</span>}
+                  {unreadCount > 0 && <Badge variant="ghost" aria-label={t("componentsAgentChatPicker.unread", { count: unreadCount, name: agent.name })} className="shrink-0 bg-primary font-mono tabular-nums text-primary-foreground">{unreadCount}</Badge>}
+                  {existingChatAgentIds && <span className="shrink-0 text-xs text-muted-foreground">{existingIds.has(agent.id) ? t("componentsAgentChatPicker.openChat") : t("componentsAgentChatPicker.newChat")}</span>}
+                  {agent.status === "paused" && <span className="text-xs text-(--status-agent-paused)">{t("componentsAgentChatPicker.status.paused")}</span>}
+                  {agent.status === "terminated" && <span className="text-xs text-muted-foreground">{t("componentsAgentChatPicker.status.terminated")}</span>}
+                  {agent.status === "pending_approval" && <span className="text-xs text-muted-foreground">{t("componentsAgentChatPicker.status.pendingApproval")}</span>}
                 </CommandItem>
               );
             })}

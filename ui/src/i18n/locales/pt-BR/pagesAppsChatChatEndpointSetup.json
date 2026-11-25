@@ -1,0 +1,340 @@
+{
+  "breadcrumbs": {
+    "connectors": "Conectores",
+    "chooseConnection": "Escolher conexão",
+    "connectChat": "Conectar chat"
+  },
+  "purpose": {
+    "chooseAgent": "Escolher agente",
+    "connect": "Conectar",
+    "title": "Escolha como conectar",
+    "question": "O que esta conexão com o {{provider}} deve fazer?",
+    "chatDescription": "As pessoas no {{provider}} podem iniciar e continuar tarefas do Paperclip.",
+    "toolDescription": "Permita que os agentes usem ações e dados do {{provider}} enquanto trabalham.",
+    "chatWithAgent": "Conversar com um agente",
+    "useAsTool": "Usar esta conexão como ferramenta de agente"
+  },
+  "errors": {
+    "slackSetupLoading": "A configuração do Slack ainda está carregando. Tente novamente."
+  },
+  "toasts": {
+    "startSetupFailed": "Não foi possível iniciar a configuração",
+    "switchSlackSetupFailed": "Não foi possível trocar a configuração do Slack",
+    "tryAgain": "Tente novamente.",
+    "generateSecretFailed": "Não foi possível gerar o segredo do webhook",
+    "finishSetupFailed": "Não foi possível concluir a configuração",
+    "testNotComplete": "Teste não concluído",
+    "copyFailed": "Não foi possível copiar para a área de transferência",
+    "copyManually": "Selecione e copie o valor manualmente."
+  },
+  "unsupportedProvider": "Este provedor de chat não é compatível.",
+  "selectOrganization": "Selecione uma organização para conectar o chat.",
+  "agentStep": {
+    "title": "Com qual agente você quer conversar?",
+    "description": "Este agente é permanente para a conexão. Conecte outro canal para representar um agente diferente.",
+    "assignedAgent": "Agente atribuído",
+    "chooseActiveAgent": "Escolha um agente ativo",
+    "noActiveAgents": "Nenhum agente ativo disponível.",
+    "saveSlackDetailsFailed": "Não foi possível salvar os detalhes do app do Slack. Tente novamente antes de continuar.",
+    "useOwnApp": "Usar seu próprio app",
+    "loadSlackSetupFailed": "Não foi possível carregar a configuração do Slack.",
+    "loadingSlack": "Carregando o Slack…"
+  },
+  "retry": "Tentar novamente",
+  "continue": "Continuar",
+  "connectionFailed": "Falha na conexão",
+  "speko": {
+    "title": "Teste sua conexão de voz com o Speko",
+    "description": "Peça ao agente para fazer algum trabalho, adicione um acompanhamento falado e ouça o resultado. O trabalho aceito permanece no Paperclip quando você encerrar a chamada.",
+    "verify": "Verificar conversa de teste"
+  },
+  "success": {
+    "avatarLabel": "Avatar de {{name}}",
+    "title": "Sucesso",
+    "talkInSlack": "Agora você pode conversar com {{name}} no Slack"
+  },
+  "openSlack": "Abrir o Slack",
+  "done": "Concluir",
+  "saveAndExit": "Salvar e sair",
+  "endpointUnavailable": "Este endpoint não está disponível. Verifique a URL pública do servidor.",
+  "paperclipWebhookUrl": "URL do webhook do Paperclip",
+  "slack": {
+    "openAppSettings": "Abra as configurações do app do Slack",
+    "andChoose": "e escolha",
+    "choose": "Escolha",
+    "besidePrefilled": "Ao lado da",
+    "click": " preenchida, clique em",
+    "ifNotVerified": "se ela não estiver verificada. Salve as alterações se o Slack pedir.",
+    "sendMessageToAgent": "Envie uma mensagem ao seu agente",
+    "confirmReach": "O Slack precisa confirmar que consegue acessar sua instância do Paperclip.",
+    "connectionWorking": "Sua conexão com o Slack está funcionando.",
+    "finishingSetup": " Concluindo a configuração…",
+    "openingMessageTest": " Abrindo o teste de mensagem…",
+    "checkVerificationFailed": "Não foi possível verificar. Continuaremos tentando; verifique sua conexão se isso persistir.",
+    "waitingForMessage": "Aguardando sua mensagem…",
+    "waitingForSlack": "Aguardando o Slack. Continuaremos automaticamente.",
+    "didntWork": "Não funcionou?",
+    "troubleshooting": "Solução de problemas",
+    "troubleshootingHelp": "Se a Request URL estiver ausente ou diferente, cole esta URL em Event Subscriptions. Se a verificação falhar, confira se o seu servidor HTTPS público está acessível e se o Signing Secret está correto.",
+    "httpsRequired": "URL HTTPS pública necessária",
+    "httpsRequiredDescription": "O Slack precisa de uma URL HTTPS pública para enviar mensagens ao Paperclip. Configure uma para esta instância antes de criar ou conectar seu app do Slack.",
+    "learnHttps": "Saiba como configurar o HTTPS",
+    "titles": {
+      "connect": "Conectar ao Slack",
+      "configToken": "Token de acesso de configuração do app",
+      "createApp": "Criar um app do Slack",
+      "installApp": "Instalar o app do Slack",
+      "addCredentials": "Adicionar credenciais do Slack"
+    },
+    "viewManifest": "Ver o manifesto do app do Slack",
+    "manifestTitle": "Manifesto do app do Slack",
+    "manifestDescription": "Gerado a partir do nome do app, do nome do bot e do comando de barra. Edite esses campos para atualizar o manifesto.",
+    "manifestCopied": "Manifesto copiado",
+    "copyManifest": "Copiar manifesto",
+    "alreadyCreated": "Já criei o app",
+    "findTwoSecrets": "Agora você precisa encontrar dois segredos. Eles ficam em duas telas diferentes do Slack.",
+    "credentialsSaved": "Suas credenciais estão salvas. Deixe os campos em branco para mantê-las ou informe substitutas.",
+    "copyAndPaste": "Copie e cole seu",
+    "savedPlaceholder": "Salvo — deixe em branco para manter",
+    "botTokenPrefixWarning": "Seu Bot User OAuth Token deve começar com",
+    "copyItFrom": ". Copie-o de",
+    "useThe": "Use o",
+    "signingSecretWarning": ", NÃO um token de app ou de bot. O Signing Secret não tem prefixo de token.",
+    "reconnectApp": "Reconectar app do Slack",
+    "connectApp": "Conectar app do Slack",
+    "verifyConnection": "Verificar a conexão com o Slack",
+    "reconnectDescription": "A reconexão verifica ou substitui as credenciais deste mesmo app do Slack. Ela não reinstala o app nem muda o espaço de trabalho dele ou a participação em canais. Deixe as credenciais em branco para reutilizar os valores salvos.",
+    "createApp": "Criar app do Slack"
+  },
+  "try": {
+    "title": "Experimente {{agent}} no {{provider}}",
+    "description": "Conclua esta conversa real para finalizar a configuração.",
+    "checkingReadiness": "Verificando a identidade e a preparação para convidados…",
+    "openProvider": "Abrir {{provider}}",
+    "sentTestMessage": "Enviei a mensagem de teste",
+    "photon": {
+      "sharedEnroll": "No seu projeto Photon, cadastre seu remetente em Users e encontre o número atribuído em Get started. Envie uma nova mensagem para esse número pelo Apple Messages.",
+      "openMessages": "Abra o Apple Messages e envie uma nova mensagem para {{target}}.",
+      "dedicatedNumber": "o número dedicado",
+      "linkSender": "Vincule o remetente descoberto a uma pessoa do Paperclip em Acesso e depois envie uma nova solicitação.",
+      "waitForReply": "Aguarde a resposta real do agente. A configuração é concluída depois que essa resposta for entregue.",
+      "dmsOnly": "Este canal compatível com o Pro aceita apenas mensagens diretas. Mensagens de grupo não iniciam trabalho.",
+      "group": "Para um grupo: adicione o número no Messages, envie uma mensagem, ative o grupo descoberto em Configurações e depois envie uma nova solicitação.",
+      "copyNumberFailed": "Não foi possível copiar o número. Selecione-o nas instruções abaixo.",
+      "numberCopied": "Número copiado",
+      "copyNumber": "Copiar {{number}}"
+    },
+    "discord": {
+      "openChannel": "Abra um canal de texto onde o bot esteja instalado.",
+      "mention": "Mencione {{bot}} em uma nova mensagem raiz.",
+      "reply": "Responda uma vez dentro da nova conversa de {{agent}} no Discord."
+    },
+    "telegram": {
+      "openChat": "Abra o chat privado do bot.",
+      "tapStart": "Toque em Start.",
+      "send": "Envie “Help me test this”."
+    },
+    "github": {
+      "open": "Abra uma issue ou pull request instalado.",
+      "mention": "Mencione {{bot}} em um comentário.",
+      "continue": "Adicione outro comentário para continuar a mesma tarefa."
+    },
+    "teams": {
+      "open": "Abra um canal instalado e inicie uma nova publicação.",
+      "mention": "Mencione {{bot}} na publicação.",
+      "reply": "Responda uma vez abaixo da publicação."
+    },
+    "slack": {
+      "invite": "Abra um canal e convide {{bot}}, se necessário.",
+      "mention": "Mencione {{bot}} em uma nova mensagem do canal.",
+      "reply": "Responda uma vez na conversa de {{agent}}.",
+      "openDm": "Abrir sua DM no Slack",
+      "copied": "Copiado",
+      "copyMessage": "Copiar mensagem",
+      "selectBot": "Selecione o bot nas sugestões de @menção do Slack.",
+      "continueThread": "Continue a conversa na thread.",
+      "copyFailed": "Não foi possível copiar. Selecione e copie o comando acima.",
+      "testMessage": "está aí?"
+    },
+    "fresh": {
+      "photon": "envie uma nova mensagem para o seu número do Photon",
+      "telegram": "inicie uma nova conversa com /new e envie a mensagem de teste de novo",
+      "github": "inicie uma nova conversa em uma issue ou pull request e mencione o agente de novo",
+      "teams": "inicie uma nova publicação no canal e mencione o agente de novo",
+      "other": "envie uma nova menção principal ao agente"
+    },
+    "identity": {
+      "photon": {
+        "title": "Vincule a sua identidade do Mensagens",
+        "body": "Envie uma mensagem para descobrir o seu número de telefone ou o endereço da sua conta Apple e vincule exatamente essa identidade em Acesso. Envie uma nova solicitação depois de vincular; mensagens anteriores não iniciam trabalho."
+      },
+      "checkFailed": {
+        "title": "Não foi possível conferir se a identidade está pronta",
+        "body": "Revise Acesso antes de esperar uma resposta do agente. Depois de vincular a conta que você está testando, {{instruction}}."
+      },
+      "linkTesting": {
+        "title": "Vincule a conta que você está testando",
+        "telegramBody": "Toque em Start no Telegram para descobrir a sua conta; a mensagem de boas-vindas não inicia uma execução do agente. Vincule a conta de forma privada em Acesso, depois volte e envie a mensagem de teste.",
+        "body": "A sua primeira mensagem no {{provider}} descobre a conta externa, mas o trabalho isolado de convidados está desativado, então ela não pode iniciar {{agent}} com segurança. Envie-a uma vez, vincule essa conta de forma privada em Acesso e depois {{instruction}}."
+      },
+      "firstMessage": {
+        "title": "A sua primeira mensagem identifica a sua conta",
+        "telegramBody": "Toque em Start no Telegram para descobrir a sua conta. Até ser vinculada, ela é uma convidada restrita e ainda precisa de uma execução isolada em sandbox; teste esse caminho de propósito ou vincule-a em Acesso e depois envie a mensagem de teste.",
+        "body": "Até ser vinculada, a conta é uma convidada restrita e ainda precisa de uma execução isolada em sandbox. Teste esse caminho de convidado de propósito ou vincule a conta em Acesso e depois {{instruction}}."
+      },
+      "unlinkedOff": {
+        "body": "Uma conta externa observada não está vinculada e o trabalho isolado de convidados está desativado, então ela não pode iniciar {{agent}} com segurança. Vincule a conta em Acesso e depois {{instruction}}; o Paperclip não repete a solicitação recusada."
+      },
+      "unlinked": {
+        "title": "Identidade não vinculada detectada",
+        "body": "Uma conta não vinculada é uma convidada restrita e ainda precisa de uma execução isolada em sandbox. Teste o acesso de convidado de propósito ou vincule a conta em Acesso e depois {{instruction}}."
+      }
+    },
+    "reviewAccess": "Revisar o acesso das identidades"
+  },
+  "botToken": "Token do bot",
+  "httpsBeforeConnecting": "Configure uma URL HTTPS pública para esta instância do Paperclip antes de conectar o {{provider}}.",
+  "and": "e",
+  "discord": {
+    "title": "Conectar {{agent}} ao Discord",
+    "reconnectDescription": "A reconexão verifica este mesmo aplicativo do Discord e a instalação no servidor. Ela não adiciona nem remove o bot do servidor. Deixe os campos em branco para reutilizar as credenciais salvas.",
+    "description": "Crie um aplicativo e um bot do Discord dedicados a este agente do Paperclip.",
+    "steps": {
+      "createApp": "No Discord Developer Portal, crie um aplicativo. Copie o Application ID dele em General Information.",
+      "createBot": "Abra Bot, crie o bot, ative Message Content Intent e, em seguida, redefina e copie o token.",
+      "serverId": "Ative o Developer Mode no Discord, clique com o botão direito no servidor de destino e copie o Server ID dele.",
+      "install": "Informe esses valores abaixo e use o link de instalação gerado para adicionar o bot a esse servidor."
+    },
+    "openPortal": "Abrir o Discord Developer Portal",
+    "applicationId": "ID do aplicativo (Application ID)",
+    "serverId": "ID do servidor (Server ID)",
+    "installBot": "Instalar o bot neste servidor",
+    "permissionsNote": "O link de instalação concede apenas View Channels, Send Messages, Create Public Threads, Send Messages in Threads, Read Message History, Add Reactions, Embed Links e Attach Files. O Paperclip ainda exige que cada canal descoberto seja ativado em Acesso.",
+    "reconnect": "Reconectar o bot do Discord",
+    "connect": "Conectar o bot do Discord"
+  },
+  "telegram": {
+    "title": "Criar {{agent}} no Telegram",
+    "reconnectDescription": "A reconexão verifica este mesmo bot do BotFather e atualiza automaticamente o webhook e o menu de comandos dele no Paperclip. Ela não recria o bot nem muda as participações dele em chats. Deixe o token em branco para reutilizar a credencial salva.",
+    "description": "Crie um bot com o BotFather e cole o token que ele fornecer.",
+    "steps": {
+      "openAndSend": "Abra o BotFather e envie",
+      "displayName": "Informe o nome de exibição do bot.",
+      "username": "Escolha um nome de usuário disponível terminado em"
+    },
+    "privacyNote": "O Paperclip funciona com o modo de privacidade padrão dos bots do Telegram e registra o menu de comandos automaticamente. Em um grupo, menções comuns não são entregues a bots: inicie ou continue o trabalho com",
+    "privacyNoteEnd": " ou responda diretamente a uma mensagem do bot.",
+    "openBotFather": "Abrir o BotFather",
+    "reconnect": "Reconectar o bot",
+    "connect": "Conectar o bot"
+  },
+  "teams": {
+    "title": "Conectar {{agent}} ao Microsoft Teams",
+    "reconnectDescription": "A reconexão verifica este mesmo aplicativo da Microsoft, o locatário e a identidade do bot. Ela não envia nem reinstala o aplicativo do Teams. Deixe os campos em branco para reutilizar as credenciais salvas.",
+    "description": "Use as credenciais do seu próprio aplicativo da Microsoft para este bot.",
+    "requirements": "Esta configuração exige uma organização corporativa ou educacional do Microsoft 365 em que você possa registrar um aplicativo no Entra, criar um Azure Bot e enviar ou instalar um aplicativo do Teams. Contas pessoais ou gratuitas do Teams em teams.live.com não conseguem concluir esta configuração. Esta versão é compatível apenas com locatários da nuvem comercial do Microsoft 365; GCC, GCC High, DoD e Microsoft 365 operado pela 21Vianet ainda não são compatíveis.",
+    "steps": {
+      "entra": "No Microsoft Entra, crie um registro de aplicativo de locatário único. Copie o Application (client) ID e o Directory (tenant) ID dele e, em seguida, crie um segredo do cliente e copie o valor.",
+      "azure": "No Azure, crie um Azure Bot. Escolha Single Tenant, use esse Application ID, defina o endpoint de mensagens como a URL do Paperclip abaixo e adicione o canal do Microsoft Teams.",
+      "portal": "No Teams Developer Portal, crie um aplicativo, adicione um bot com o mesmo Application ID e aplique as configurações do manifesto mostradas abaixo. O bloco vincula as permissões de consentimento específico do recurso (RSC) do Teams a esse aplicativo do Entra; elas não são permissões do Microsoft Graph no Entra. Essas permissões permitem que o aplicativo instalado receba todas as mensagens de uma equipe ou chat em grupo sem @menção, então descreva esse acesso a quem for instalar. Baixe o pacote e instale-o na equipe ou no chat em grupo de destino."
+    },
+    "openEntra": "Abrir o Microsoft Entra",
+    "createAzureBot": "Criar o Azure Bot",
+    "openPortal": "Abrir o Teams Developer Portal",
+    "messagingEndpoint": "Endpoint de mensagens do Paperclip",
+    "clientId": "ID do aplicativo / cliente (Application / Client ID)",
+    "tenantId": "ID do diretório / locatário (Directory / Tenant ID)",
+    "clientSecret": "Valor do segredo do cliente",
+    "fieldMap": {
+      "title": "Mapa dos campos nos portais da Microsoft",
+      "description": "Use exatamente estas seções dos portais e reutilize o mesmo Application ID nos três lugares.",
+      "select": "selecione",
+      "entra": {
+        "choose": ", escolha",
+        "thenSelect": " e selecione",
+        "copy": ". Copie",
+        "selectNew": ", selecione",
+        "copyIts": "e copie o",
+        "notSecretId": ", não o Secret ID."
+      },
+      "under": ". Em",
+      "azure": {
+        "set": "defina",
+        "to": "como",
+        "setAgain": ", defina",
+        "enterIds": " e informe o Application ID e o Tenant ID acima. Depois de criar, abra",
+        "pasteEndpoint": "e cole o endereço do Paperclip em",
+        "thenOpen": "; depois abra",
+        "enable": "e ative"
+      },
+      "portal": {
+        "addBot": ", adicione um bot existente usando o mesmo Application ID; ative os escopos",
+        "commaAnd": " e",
+        "scopes": ", além do suporte a arquivos. Em",
+        "addRsc": ", adicione as duas permissões RSC",
+        "complete": " mostradas abaixo. Preencha os detalhes e os ícones exigidos do aplicativo, explique que ele pode receber todas as mensagens de uma equipe ou chat em grupo onde estiver instalado e baixe o pacote do aplicativo."
+      },
+      "upload": {
+        "rest": ", escolha o pacote baixado e instale-o em cada chat pessoal, chat em grupo ou equipe desejado. Uma instalação na equipe cobre os canais padrão dela. Canais privados e compartilhados exigem uma instalação separada do aplicativo e não são compatíveis com esta versão. Se o envio não estiver disponível, um administrador do Teams precisa ativar ou aprovar aplicativos personalizados."
+      }
+    },
+    "manifestBlock": "Bloco obrigatório do manifesto do aplicativo do Teams",
+    "manifestCopied": "Configurações do manifesto copiadas",
+    "copyManifest": "Copiar configurações do manifesto",
+    "manifestNote": "Informe o Application / Client ID acima antes de copiar, para que o bloco contenha a identidade real do bot. Este bloco contém os campos específicos do Paperclip para conferir no Developer Portal ou mesclar em um manifesto completo do aplicativo do Teams. Ele não é um pacote completo do aplicativo; o Developer Portal fornece os metadados obrigatórios restantes e empacota o manifesto com os ícones do seu aplicativo.",
+    "ssoNote": "O Paperclip não usa o logon único do Teams nesta versão. A entrada",
+    "ssoNoteEnd": "copiada apenas associa as permissões RSC ao mesmo Application ID do Entra. O recurso preenchido dela é um marcador de RSC; você não precisa registrar um Application ID URI no Entra nem adicionar permissões delegadas do Microsoft Graph.",
+    "rscNote": "As duas permissões RSC de aplicativo permitem que o bot receba todas as mensagens, sem @menção, em cada equipe ou chat em grupo em que estiver instalado. O Paperclip guarda e atua apenas sobre as mensagens admitidas pelas suas regras de alcance e acesso do Paperclip. Deixe esse acesso do provedor claro na descrição do aplicativo mostrada a quem for instalar.",
+    "scopeNote": "Esta versão é compatível com chats pessoais, chats em grupo e canais padrão de equipes, mas não com canais privados.",
+    "scopeNoteEnd": "ativa o recebimento nativo de arquivos e o envio com consentimento em chats pessoais; arquivos de canais e de chats em grupo precisam de uma conexão separada do Microsoft Graph e não são recebidos aqui.",
+    "reconnect": "Reconectar o aplicativo da Microsoft",
+    "verify": "Verificar as credenciais da Microsoft"
+  },
+  "github": {
+    "reconnectTitle": "Reconectar o GitHub App",
+    "createTitle": "Criar ou conectar um GitHub App",
+    "reconnectDescription": "A reconexão verifica este mesmo App e a instalação e, em seguida, atualiza a URL do webhook, o segredo e as configurações de entrega segura. Ela não reinstala o App nem muda o acesso aos repositórios. Deixe o App ID e a chave privada em branco para reutilizar as credenciais salvas. Mantenha Webhooks · Active ativado no GitHub; envie uma conversa de teste depois de reconectar.",
+    "description": "Configure o webhook e as permissões dele e, em seguida, verifique o App com o Paperclip.",
+    "steps": {
+      "create": "No usuário ou na organização de destino, crie um novo GitHub App. Dê a ele um nome único em todo o GitHub (34 caracteres ou menos), use a URL da página inicial do Paperclip abaixo e deixe a autorização de usuário desativada.",
+      "keep": "Mantenha",
+      "webhookOn": " ativado. Informe abaixo a URL do webhook do Paperclip e o segredo de webhook gerado pelo Paperclip, e mantenha",
+      "selected": " selecionado.",
+      "underRepo": "Em Repository permissions, defina",
+      "to": "como",
+      "leaveDefault": ". Deixe todas as outras permissões no padrão; Metadata continua somente leitura.",
+      "subscribe": "Assine",
+      "githubSends": ". O GitHub envia",
+      "toEveryApp": " a todo GitHub App automaticamente; eles não podem ser selecionados aqui.",
+      "choose": "Escolha",
+      "install": ", crie o App, copie o App ID dele, gere uma chave privada e instale-o nos repositórios selecionados."
+    },
+    "homepageUrl": "URL da página inicial do Paperclip",
+    "openSettings": "Abrir as configurações do GitHub App",
+    "openNewForm": "Abrir o formulário de novo GitHub App",
+    "appId": "App ID do GitHub",
+    "privateKey": "Chave privada (PEM)",
+    "hidePrivateKey": "Ocultar chave privada",
+    "showPrivateKey": "Mostrar chave privada",
+    "choosePrivateKeyFile": "Escolher o arquivo da chave privada do GitHub App",
+    "choosePemFile": "Escolher arquivo .pem",
+    "readingPrivateKey": "Lendo o arquivo da chave privada…",
+    "privateKeyLoaded": "Chave privada carregada. Ela fica neste formulário até você conectar.",
+    "webhookSecret": "Segredo do webhook",
+    "generatedWebhookSecret": "Segredo do webhook gerado",
+    "webhookSecretCopied": "Segredo do webhook copiado",
+    "copyFailedInline": "Não foi possível copiar — selecione manualmente",
+    "copyWebhookSecret": "Copiar segredo do webhook",
+    "copyNow": "Copie este valor agora. O Paperclip não vai mostrá-lo de novo.",
+    "secretConfigured": "Um segredo de webhook está configurado e não pode ser mostrado de novo.",
+    "generateHint": "Gere o segredo no Paperclip e cole-o no GitHub App.",
+    "regenerateSecret": "Gerar novo segredo do webhook",
+    "generateSecret": "Gerar segredo do webhook",
+    "regenerateWarning": "Gerar de novo invalida na hora as assinaturas dos webhooks do GitHub até você trocar o segredo nas configurações do GitHub App.",
+    "generateAnotherWarning": "Gerar outro segredo substitui o valor anterior. Cole o valor mais recente no GitHub antes de continuar.",
+    "webhookVerified": "O GitHub verificou este webhook.",
+    "waitingForPing": "Aguardando o GitHub entregar o ping assinado do webhook…",
+    "reconnectAndVerify": "Reconectar e verificar",
+    "connectAndVerify": "Conectar e verificar"
+  }
+}

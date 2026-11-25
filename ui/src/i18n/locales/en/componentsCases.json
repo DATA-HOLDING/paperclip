@@ -1,0 +1,82 @@
+{
+  "documentPreview": {
+    "task": "Task",
+    "taskDocument": "Task document",
+    "loading": "Loading document…",
+    "loadError": "This document couldn’t be loaded.",
+    "empty": "This document is empty.",
+    "revisionHistory": "Revision history",
+    "savedOnCase": "{{caseIdentifier}} · Saved on case",
+    "revision": " · Revision {{number}}"
+  },
+  "handoffs": {
+    "agentFallback": "Agent",
+    "ariaLabel": "Case handoffs",
+    "title": "Handoffs",
+    "loading": "Loading handoffs…",
+    "loadError": "Handoffs couldn’t be loaded.",
+    "empty": "No handoffs yet.",
+    "loadOlder": "Load older handoffs",
+    "state": {
+      "appliedDeliveryCancelled": "Applied · delivery cancelled",
+      "cancelledBeforeTransfer": "Cancelled before transfer",
+      "waitingForCompletion": "Waiting for task completion",
+      "appliedWaitingDelivery": "Applied · waiting for delivery",
+      "pendingTransfer": "Pending transfer"
+    },
+    "done": "Done",
+    "user": "User",
+    "system": "System",
+    "caseInstructions": "Case instructions"
+  },
+  "listControls": {
+    "columns": "Columns",
+    "visibleFields": "Visible fields",
+    "resetDefaults": "Reset defaults",
+    "filterCases": "Filter cases",
+    "filter": "Filter",
+    "caseFilters": "Case filters",
+    "filters": "Filters",
+    "sort": "Sort",
+    "sortCases": "Sort cases",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "group": "Group",
+    "groupCases": "Group cases",
+    "filterCasesActive": "Filter cases ({{count}} active)"
+  },
+  "listRow": {
+    "agent": "Agent",
+    "unassigned": "Unassigned",
+    "taskUnavailable": "Task unavailable",
+    "noTaskLinked": "No task linked"
+  },
+  "status": {
+    "draft": "Draft",
+    "inProgress": "In progress",
+    "inReview": "In review",
+    "approved": "Approved",
+    "done": "Done",
+    "cancelled": "Cancelled"
+  },
+  "work": {
+    "agent": "Agent",
+    "previousAgent": "the previous agent",
+    "receivingAgent": "the receiving agent",
+    "willClose": "Case will close when the task is complete.",
+    "ariaLabel": "Case work",
+    "title": "Work",
+    "task": "Task",
+    "workflow": "Workflow",
+    "caseInstructions": "Case instructions",
+    "phase": "Phase",
+    "unassigned": "Unassigned",
+    "taskStatus": "Task status",
+    "primaryUnavailable": "The primary task is unavailable.",
+    "noTaskLinked": "No task linked",
+    "waitingToFinish": "Waiting for {{name}} to finish.",
+    "paused": "{{name}} is paused.",
+    "waitingToStart": "Waiting for {{name}} to start.",
+    "next": "Next: {{name}} · {{phase}}"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "resets": "Resets {{time}}",
+  "title": "Codex subscription",
+  "description": "Quota from the Codex subscription connected to this server.",
+  "accountWindows": "Account windows",
+  "modelWindows": "Model windows",
+  "usedPercent": "{{percent}}% used"
+}

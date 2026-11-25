@@ -1,0 +1,14 @@
+{
+  "taskList": "Lista de tarefas",
+  "taskListColumns": "Colunas da lista de tarefas",
+  "sortAriaLabel": "{{label}}: ordenar {{direction}}",
+  "direction": {
+    "ascending": "crescente",
+    "descending": "decrescente"
+  },
+  "dragInstructions": "Clique para ordenar. Arraste na horizontal para reordenar ou use Alt com a seta para a esquerda ou para a direita.",
+  "reorderHelp": "Arraste para reordenar as colunas ou use Alt com a seta para a esquerda ou para a direita. Clique para ordenar.",
+  "taskHierarchy": "Hierarquia de tarefas",
+  "columns": "Colunas",
+  "resetDefaults": "Restaurar padrões"
+}

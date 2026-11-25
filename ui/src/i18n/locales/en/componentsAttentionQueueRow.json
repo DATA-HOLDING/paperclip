@@ -1,0 +1,50 @@
+{
+  "collapseDecision": "Collapse decision",
+  "expandDecision": "Expand decision",
+  "seeLess": "See less",
+  "seeMore": "See more",
+  "open": "Open",
+  "setByTitle": "Set by {{name}}",
+  "setBy": "· set by {{name}}",
+  "missingIssueReference": "Missing issue reference for this decision.",
+  "completeFromDetail": "This decision must be completed from its detail view.",
+  "couldNot": {
+    "sentForRevision": "Could not sent for revision",
+    "approved": "Could not approved",
+    "rejected": "Could not rejected"
+  },
+  "decisionActions": "Decision actions",
+  "approvalResult": {
+    "sentForRevision": "Approval sent for revision",
+    "approved": "Approval approved",
+    "rejected": "Approval rejected"
+  },
+  "joinRequestResult": {
+    "sentForRevision": "Join request sent for revision",
+    "approved": "Join request approved",
+    "rejected": "Join request rejected"
+  },
+  "confirmationAccepted": "Confirmation accepted",
+  "confirmationDeclined": "Confirmation declined",
+  "moreCount": "{{count}} more",
+  "viewIssue": "View issue",
+  "anAgent": "an agent",
+  "you": "you",
+  "decisionSaveFailed": "The decision could not be saved.",
+  "alreadySending": "This approval is already being sent.",
+  "viewConfiguration": "View configuration",
+  "viewDetails": "View details",
+  "reject": "Reject",
+  "approveHire": "Approve hire",
+  "approve": "Approve",
+  "notePlaceholder": "Optional decision note…",
+  "requestRevision": "Request revision",
+  "joinRequestSaveFailed": "The join request could not be saved.",
+  "joinRequest": "Join request",
+  "agentAccess": "Agent access",
+  "memberAccess": "Member access",
+  "approvalAddsAgent": "Approval adds this agent to the company.",
+  "approvalAddsMember": "Approval adds them to the company as a member.",
+  "decline": "Decline",
+  "approveAccess": "Approve access"
+}

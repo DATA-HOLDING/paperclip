@@ -1,0 +1,9 @@
+{
+  "title": "Decision record",
+  "loading": "Loading decision…",
+  "loadFailed": "Could not load this decision.",
+  "retry": "Retry",
+  "notAvailable": "This decision is not available in this task.",
+  "recordedChoice": "Recorded choice",
+  "dismissed": "Dismissed"
+}

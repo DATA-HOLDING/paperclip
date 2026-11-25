@@ -3,11 +3,12 @@ import type { ResponsibilityWorkSignal } from "@paperclipai/shared";
 import { Link } from "@/lib/router";
 import { RESPONSIBILITY_SIGNAL_TONE_VAR, signalHref } from "@/lib/responsibilities";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 const TONE_LABEL: Record<ResponsibilityWorkSignal["tone"], string> = {
-  attention: "Needs attention",
+  attention: t("componentsResponsibilitiesWorkSignalList.tone.attention"),
   neutral: "",
-  good: "Going well",
+  good: t("componentsResponsibilitiesWorkSignalList.tone.good"),
 };
 
 function ToneDot({ tone }: { tone: ResponsibilityWorkSignal["tone"] }) {

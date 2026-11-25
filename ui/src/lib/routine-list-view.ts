@@ -1,12 +1,13 @@
+import { t } from "@/i18n";
 export type RoutineGroupBy = "folder" | "none" | "project" | "assignee";
 export type RoutineSortField = "updated" | "created" | "title" | "lastRun";
 export type RoutineSortDir = "asc" | "desc";
 export const routineColumns = [
-  { id: "project", label: "Project" },
-  { id: "assignee", label: "Agent" },
-  { id: "responsibleUser", label: "Responsible user" },
-  { id: "lastRun", label: "Last run" },
-  { id: "enabled", label: "Enabled" },
+  { id: "project", label: t("libRoutineListView.columns.project") },
+  { id: "assignee", label: t("libRoutineListView.columns.agent") },
+  { id: "responsibleUser", label: t("libRoutineListView.columns.responsibleUser") },
+  { id: "lastRun", label: t("libRoutineListView.columns.lastRun") },
+  { id: "enabled", label: t("libRoutineListView.columns.enabled") },
 ] as const;
 export type RoutineColumn = typeof routineColumns[number]["id"];
 export const routineFilterKeys = ["projects", "agents", "statuses", "responsibleUsers", "origins"] as const;

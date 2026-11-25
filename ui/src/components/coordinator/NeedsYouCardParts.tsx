@@ -18,6 +18,7 @@ import { timeAgo } from "@/lib/timeAgo";
 import { DecisionCardFooter } from "@/components/DecisionCardFooter";
 import { NeedsYouPanel, NeedsYouPanelRow, needsYouCardLabel } from "./NeedsYouCardKit";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 /**
  * Who is asking (PAP-775, UI2): the requester's avatar and name, agent or
@@ -33,9 +34,9 @@ export function NeedsYouRequester({ item, agentMap, userLabelMap, currentUserId 
   const base = "inline-flex min-w-0 items-center gap-2 text-xs leading-4.5 text-muted-foreground";
   if (requester?.kind === "user") {
     if (requester.id === currentUserId) return null;
-    const name = userLabelMap?.get(requester.id) ?? requester.name ?? "A teammate";
+    const name = userLabelMap?.get(requester.id) ?? requester.name ?? t("componentsCoordinator.cardParts.aTeammate");
     return <span data-attention-requester="user" className={base} title={name}>
-      <Avatar size="xs" aria-hidden="true"><AvatarFallback>{deriveInitials(name)}</AvatarFallback></Avatar><span className="truncate">from {name}</span>
+      <Avatar size="xs" aria-hidden="true"><AvatarFallback>{deriveInitials(name)}</AvatarFallback></Avatar><span className="truncate">{t("componentsCoordinator.cardParts.fromName", { name })}</span>
     </span>;
   }
   const agent = requester?.kind === "agent" ? agentMap.get(requester.id) : undefined;
@@ -43,7 +44,7 @@ export function NeedsYouRequester({ item, agentMap, userLabelMap, currentUserId 
   if (!name) return null;
   return <span data-attention-requester="agent" className={base} title={name}>
     <AgentAvatar agent={agent ?? { id: requester?.id, name }} name={name} size={20} />
-    <span className="truncate">from {name}</span>
+    <span className="truncate">{t("componentsCoordinator.cardParts.fromName", { name })}</span>
   </span>;
 }
 
@@ -59,9 +60,9 @@ export function NeedsYouTypeLabel({ item, currentUserId, userLabelMap }: {
 }) {
   const description = currentUserId ? describeAttentionAudience(item, currentUserId) : null;
   const forUserId = description?.kind === "other" ? description.userId : null;
-  const why = description?.kind === "mine" ? `Why me? ${description.text}${description.transferredByUserId ? ` @${userLabelMap?.get(description.transferredByUserId) ?? "someone"}` : ""}` : undefined;
+  const why = description?.kind === "mine" ? t("componentsCoordinator.cardParts.whyMe", { text: description.text }) + (description.transferredByUserId ? ` @${userLabelMap?.get(description.transferredByUserId) ?? t("componentsCoordinator.cardParts.someone")}` : "") : undefined;
   return <span data-attention-type-label className="min-w-0 truncate text-xs leading-4.5 text-muted-foreground" title={why}>
-    {forUserId ? <span data-attention-for-user={forUserId} className="text-foreground">@{userLabelMap?.get(forUserId) ?? "someone"} </span> : null}
+    {forUserId ? <span data-attention-for-user={forUserId} className="text-foreground">@{userLabelMap?.get(forUserId) ?? t("componentsCoordinator.cardParts.someone")} </span> : null}
     {needsYouCardLabel(item)}
   </span>;
 }
@@ -84,12 +85,12 @@ export function NeedsYouAudience({ item, currentUserId, userLabelMap, onClaim, c
   const responders = attentionResponderText(item, description, userLabelMap);
   const alternative = onClaim ? attentionClaimAlternative(item) : null;
   return <div className="flex shrink-0 items-center gap-2 text-xs leading-4.5 text-muted-foreground" data-attention-audience={description.kind} title={responders ?? undefined}>
-    {description.kind === "pool" ? <span className="inline-flex items-center gap-1"><UserRound className="size-3.5" aria-hidden="true" />No owner yet</span> : null}
+    {description.kind === "pool" ? <span className="inline-flex items-center gap-1"><UserRound className="size-3.5" aria-hidden="true" />{t("componentsCoordinator.cardParts.noOwnerYet")}</span> : null}
     {description.claimable && onClaim ? <Button type="button" variant="outline" size="xs" disabled={claiming} onClick={(event) => { event.stopPropagation(); onClaim(item); }}>
-      <Hand className="h-3 w-3" />{claiming ? "Claiming…" : "Claim"}
+      <Hand className="h-3 w-3" />{claiming ? t("componentsCoordinator.cardParts.claiming") : t("componentsCoordinator.cardParts.claim")}
     </Button> : null}
     {alternative?.kind === "assign" ? <Button asChild variant="outline" size="xs">
-      <Link to={alternative.href} disableIssueQuicklook data-attention-open-to-assign onClick={(event) => event.stopPropagation()}>Open to assign</Link>
+      <Link to={alternative.href} disableIssueQuicklook data-attention-open-to-assign onClick={(event) => event.stopPropagation()}>{t("componentsCoordinator.cardParts.openToAssign")}</Link>
     </Button> : null}
     {alternative?.kind === "none" ? <span data-attention-no-claim className="sr-only">{ATTENTION_NO_CLAIM_TEXT}</span> : null}
   </div>;
@@ -115,7 +116,7 @@ export function NeedsYouTaskLink({ task, short = false, onOpen }: {
   return <button type="button" data-attention-task-link title={task.title ?? undefined} onClick={() => onOpen(href)}
     className={cn("flex min-w-0 items-center gap-1.5 text-left text-(length:--text-compact) leading-5 text-muted-foreground hover:text-foreground", short ? "shrink-0" : "max-w-full")}>
     {task.status ? <StatusIcon status={task.status} size="sm" /> : null}
-    <span className="min-w-0 truncate">{task.identifier ?? "Open task"}{short || !task.title ? null : ` · ${task.title}`}</span>
+    <span className="min-w-0 truncate">{task.identifier ?? t("componentsCoordinator.common.openTask")}{short || !task.title ? null : ` · ${task.title}`}</span>
     <ArrowUpRight className="size-4 shrink-0" />
   </button>;
 }
@@ -132,19 +133,19 @@ export function NeedsYouReceiptCard({ receipt, userLabelMap, onDismiss, onOpen, 
   onOpen: (href: string) => void;
   dismissing?: boolean;
 }) {
-  const actor = userLabelMap?.get(receipt.actorUserId) ?? "Someone";
+  const actor = userLabelMap?.get(receipt.actorUserId) ?? t("componentsCoordinator.cardParts.someoneCap");
   const href = receipt.href ?? receipt.issue?.href ?? null;
   const negative = receipt.outcome === "rejected" || receipt.outcome === "withdrawn";
   return <article className="coordinator-decision-card space-y-3" data-attention-receipt={receipt.outcome} aria-label={attentionReceiptLine(receipt, userLabelMap)}>
     <div className="flex items-center justify-between gap-4">
-      <span className="text-xs leading-4.5 text-muted-foreground">View a request update</span>
+      <span className="text-xs leading-4.5 text-muted-foreground">{t("componentsCoordinator.cardParts.viewRequestUpdate")}</span>
       <div className="flex shrink-0 items-center gap-3 text-xs leading-4.5 text-muted-foreground">
-        <span className="inline-flex items-center gap-1"><Avatar size="xs" aria-hidden="true"><AvatarFallback>{deriveInitials(actor)}</AvatarFallback></Avatar>from {actor}</span>
+        <span className="inline-flex items-center gap-1"><Avatar size="xs" aria-hidden="true"><AvatarFallback>{deriveInitials(actor)}</AvatarFallback></Avatar>{t("componentsCoordinator.cardParts.fromName", { name: actor })}</span>
         <time dateTime={receipt.createdAt} title={new Date(receipt.createdAt).toLocaleString()}>{timeAgo(receipt.createdAt)}</time>
       </div>
     </div>
     <div className="space-y-1.5">
-      <h2 className={ANALYTICS_MASK_CLASS}>{receipt.title ?? "Your request"}</h2>
+      <h2 className={ANALYTICS_MASK_CLASS}>{receipt.title ?? t("componentsCoordinator.cardParts.yourRequest")}</h2>
       {receipt.reason ? <p className={cn("text-sm text-muted-foreground", ANALYTICS_MASK_CLASS)}>{receipt.reason}</p> : null}
     </div>
     <NeedsYouPanel>
@@ -152,8 +153,8 @@ export function NeedsYouReceiptCard({ receipt, userLabelMap, onDismiss, onOpen, 
         title={attentionReceiptLine(receipt, userLabelMap).replace(/@/g, "")} />
     </NeedsYouPanel>
     <DecisionCardFooter leading={receipt.issue?.href ? <NeedsYouTaskLink task={{ kind: "issue", id: receipt.issue.id, companyId: "", title: receipt.issue.title, identifier: receipt.issue.identifier, status: null, href: receipt.issue.href, metadata: {} }} onOpen={onOpen} /> : null}>
-      <Button type="button" variant="ghost" disabled={dismissing} onClick={() => onDismiss(receipt)}>Dismiss</Button>
-      {href ? <Button type="button" variant="outline" onClick={() => onOpen(href)}>View request</Button> : null}
+      <Button type="button" variant="ghost" disabled={dismissing} onClick={() => onDismiss(receipt)}>{t("componentsCoordinator.cardParts.dismiss")}</Button>
+      {href ? <Button type="button" variant="outline" onClick={() => onOpen(href)}>{t("componentsCoordinator.cardParts.viewRequest")}</Button> : null}
     </DecisionCardFooter>
   </article>;
 }

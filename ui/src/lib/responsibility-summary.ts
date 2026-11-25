@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { ResponsibilitySummary } from "@paperclipai/shared";
 import { timeAgo } from "./timeAgo";
 
@@ -42,8 +43,8 @@ export function summaryAttribution(
   stillWaiting: boolean,
 ): SummaryAttribution {
   return {
-    source: summary.source === "model" ? "Written by AI" : "Summarized from the numbers",
+    source: summary.source === "model" ? t("libResponsibilitySummary.source.model") : t("libResponsibilitySummary.source.computed"),
     when: timeAgo(summary.generatedAt),
-    pending: summary.refreshing && stillWaiting && summary.source !== "model" ? "AI summary on the way" : null,
+    pending: summary.refreshing && stillWaiting && summary.source !== "model" ? t("libResponsibilitySummary.pending") : null,
   };
 }

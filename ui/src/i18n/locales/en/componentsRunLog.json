@@ -1,0 +1,62 @@
+{
+  "logViewer": {
+    "loadEventsFailed": "Could not load events. Try again.",
+    "loadingRunLogs": "Loading run logs...",
+    "noLogEvents": "No log events.",
+    "transcriptCount": "Transcript ({{count}})",
+    "modeNice": "nice",
+    "modeRaw": "raw",
+    "jumpToLive": "Jump to live",
+    "live": "Live",
+    "waitingForTranscript": "Waiting for transcript...",
+    "noPersistedTranscript": "No persisted transcript for this run.",
+    "loading": "Loading...",
+    "loadMoreLog": "Load more log",
+    "showingFirstKb": "Showing the first {{size}} KB",
+    "ofKb": " of {{size}} KB",
+    "failureDetails": "Failure details",
+    "errorLabel": "Error: ",
+    "stderrExcerpt": "stderr excerpt",
+    "adapterResultJson": "adapter result JSON",
+    "stdoutExcerpt": "stdout excerpt",
+    "eventsCount": "Events ({{count}})",
+    "retryEvents": "Retry events",
+    "loadMoreEvents": "Load more events"
+  },
+  "runDetails": {
+    "invocation": "Invocation",
+    "adapter": "Adapter: ",
+    "workingDir": "Working dir: ",
+    "details": "Details",
+    "command": "Command: ",
+    "commandNotes": "Command notes",
+    "prompt": "Prompt",
+    "context": "Context",
+    "environment": "Environment",
+    "phase": {
+      "worktreePrepare": "Worktree setup",
+      "configFreshness": "Config freshness",
+      "provision": "Provision",
+      "teardown": "Teardown",
+      "worktreeCleanup": "Worktree cleanup"
+    },
+    "hideFullLog": "Hide full log",
+    "showFullLog": "Show full log",
+    "loadingLog": "Loading log...",
+    "noPersistedLogLines": "No persisted log lines.",
+    "workspaceCount": "Workspace ({{count}})",
+    "toTime": " to {{time}}",
+    "branch": "Branch: ",
+    "baseRef": "Base ref: ",
+    "worktree": "Worktree: ",
+    "repoRoot": "Repo root: ",
+    "cleanup": "Cleanup: ",
+    "createdByRun": "Created by this run",
+    "reusedWorkspace": "Reused existing workspace",
+    "stderrExcerpt": "stderr excerpt",
+    "stdoutExcerpt": "stdout excerpt"
+  },
+  "errorActions": {
+    "loadRunLog": "load the run log"
+  }
+}

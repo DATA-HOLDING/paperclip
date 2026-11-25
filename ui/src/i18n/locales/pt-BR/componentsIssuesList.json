@@ -1,0 +1,121 @@
+{
+  "search": {
+    "placeholder": "Buscar tarefas...",
+    "aria": "Buscar tarefas"
+  },
+  "progress": {
+    "aria": "Progresso de conclusão das subtarefas",
+    "noActive": "Nenhuma subtarefa ativa",
+    "allDone": "Todas as subtarefas concluídas",
+    "noActionable": "Nenhuma subtarefa acionável",
+    "done": "{{done}}/{{total}} concluídas",
+    "inProgress": "{{value}} em andamento",
+    "blocked": "{{value}} bloqueadas",
+    "runs_one": "{{value}} execução",
+    "runs_other": "{{value}} execuções",
+    "acrossSubtasks_one": "em {{count}} subtarefa",
+    "acrossSubtasks_other": "em {{count}} subtarefas",
+    "tokens": "{{value}} tokens",
+    "runtime": "{{value}} de execução",
+    "nextUp": "A seguir",
+    "waitingOnBlockers": "Aguardando bloqueios"
+  },
+  "toolbar": {
+    "viewMode": "Modo de exibição",
+    "listView": "Visualização em lista",
+    "boardView": "Visualização em quadro",
+    "cardsPerColumn": "Cartões por coluna",
+    "resetDensity": "Redefinir densidade do quadro",
+    "columnsTitle": "Escolha quais colunas de tarefa ficam visíveis",
+    "sort": "Ordenar",
+    "group": "Agrupar",
+    "controls": "Controles de tarefas",
+    "disableNesting": "Desativar aninhamento pai-filho",
+    "enableNesting": "Ativar aninhamento pai-filho",
+    "comfortableCards": "Usar cartões confortáveis",
+    "compactCards": "Usar cartões compactos",
+    "expandCold": "Expandir colunas frias",
+    "collapseCold": "Recolher colunas frias",
+    "perColumn": "{{value}} por coluna"
+  },
+  "empty": "Nenhuma tarefa corresponde aos filtros ou à busca atuais.",
+  "row": {
+    "needsNextStep": "Precisa de próximo passo",
+    "needsNextStepTitle": "Esta tarefa precisa de um próximo passo",
+    "subtasks": "(subtarefas)",
+    "subtaskCount_one": "({{count}} subtarefa)",
+    "subtaskCount_other": "({{count}} subtarefas)",
+    "paused": "Pausada",
+    "collapseSubtasks": "Recolher subtarefas",
+    "expandSubtasks": "Expandir subtarefas"
+  },
+  "assignee": {
+    "search": "Buscar responsável...",
+    "me": "Eu",
+    "label": "Responsável",
+    "none": "Sem responsável"
+  },
+  "externalRetry": "Tentar status externos novamente",
+  "hierarchyRetry": "Tentar hierarquia novamente",
+  "status": {
+    "backlog": "Backlog",
+    "todo": "A fazer",
+    "in_progress": "Em andamento",
+    "monitoring": "Monitorando",
+    "in_review": "Em revisão",
+    "done": "Concluída",
+    "blocked": "Bloqueada",
+    "cancelled": "Cancelada"
+  },
+  "age": {
+    "day": "Mais de um dia",
+    "week": "Mais de uma semana"
+  },
+  "creator": {
+    "board": "Conselho"
+  },
+  "groups": {
+    "noWorkspace": "Sem espaço de trabalho",
+    "noProject": "Sem projeto",
+    "noParent": "Sem tarefa pai",
+    "unassigned": "Sem responsável"
+  },
+  "user": "Usuário",
+  "create": {
+    "actionCustom": "Criar {{label}}",
+    "action": "Criar tarefa",
+    "buttonCustom": "Novo(a) {{label}}",
+    "button": "Nova tarefa"
+  },
+  "sort": {
+    "workflow": "Fluxo",
+    "status": "Status",
+    "priority": "Prioridade",
+    "title": "Título",
+    "created": "Criação",
+    "updated": "Atualização"
+  },
+  "groupBy": {
+    "assignee": "Responsável",
+    "project": "Projeto",
+    "workspace": "Espaço de trabalho",
+    "parent": "Tarefa pai",
+    "none": "Nenhum"
+  },
+  "loadAction": "carregar as tarefas",
+  "externalFilterFailed": "Não foi possível filtrar tarefas pelo status externo:",
+  "searchLimit": "Mostrando até {{limit}} resultados. Refine a busca para restringir mais.",
+  "boardLimit": "Algumas colunas do quadro mostram até {{limit}} tarefas. Refine os filtros ou a busca para ver o restante.",
+  "loadHierarchyAction": "carregar a hierarquia de tarefas",
+  "newTaskIn": "Nova tarefa em {{group}}",
+  "blockers": {
+    "stepSuffix": " · passo {{step}}",
+    "blockedBy": "bloqueada por {{label}}{{suffix}}",
+    "andMore": " ... e mais {{value}}"
+  },
+  "loadMore": {
+    "loading": "Carregando mais tarefas...",
+    "rendering": "Exibindo {{shown}} de {{total}} tarefas",
+    "scroll": "Role para carregar mais tarefas"
+  }
+}

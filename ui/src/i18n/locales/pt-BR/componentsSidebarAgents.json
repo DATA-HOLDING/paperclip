@@ -1,0 +1,33 @@
+{
+  "sort": {
+    "top": "Principais",
+    "alphabetical": "Alfabética",
+    "recent": "Recentes"
+  },
+  "resumeAgent": "Retomar agente",
+  "pauseAgent": "Pausar agente",
+  "updating": "Atualizando...",
+  "budgetPaused": "Pausado pelo orçamento",
+  "invalidOrgChain": "Cadeia do organograma inválida",
+  "invalidReportingChain": "Cadeia de reporte inválida",
+  "pausedByBudget": "Agente pausado pelo orçamento",
+  "openActions": "Abrir ações de {{name}}",
+  "removeFromStarred": "Remover dos favoritos",
+  "starAgent": "Favoritar agente",
+  "editAgent": "Editar agente",
+  "pausedByBudgetLimits": "O agente foi pausado pelos limites do orçamento",
+  "leaving": "Saindo...",
+  "leaveAgent": "Sair do agente",
+  "toast": {
+    "paused": "Agente pausado",
+    "resumed": "Agente retomado",
+    "pauseFailed": "Não foi possível pausar o agente",
+    "resumeFailed": "Não foi possível retomar o agente"
+  },
+  "sectionLabel": "Agentes",
+  "newAgent": "Novo agente",
+  "sectionActions": "Ações da seção de agentes",
+  "browseAgents": "Ver agentes",
+  "sortLabel": "Ordenação dos agentes",
+  "seeAllAgents": "Ver todos os agentes"
+}

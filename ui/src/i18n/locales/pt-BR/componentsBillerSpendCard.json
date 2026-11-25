@@ -1,0 +1,17 @@
+{
+  "in": "de entrada",
+  "out": "de saída",
+  "providers_one": "{{count}} provedor",
+  "providers_other": "{{count}} provedores",
+  "models_one": "{{count}} modelo",
+  "models_other": "{{count}} modelos",
+  "periodSpend": "Gasto no período",
+  "ofCompanyBudget": "{{percent}}% do orçamento da organização",
+  "meteredRuns_one": "{{count}} execução tarifada",
+  "meteredRuns_other": "{{count}} execuções tarifadas",
+  "subscriptionRuns_one": "{{count}} execução por assinatura",
+  "subscriptionRuns_other": "{{count}} execuções por assinatura",
+  "thisWeek": "{{amount}} nesta semana",
+  "billingTypes": "Tipos de cobrança",
+  "upstreamProviders": "Provedores de origem"
+}

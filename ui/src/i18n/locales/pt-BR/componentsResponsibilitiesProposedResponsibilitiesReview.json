@@ -1,0 +1,18 @@
+{
+  "adjustAriaLabel": "Ajustar {{title}}",
+  "whatYouOwn": "Pelo que você é responsável",
+  "nameWhatYouOwn": "Diga pelo que você é responsável",
+  "leaveBlank": "Você pode deixar a medição em branco e configurá-la depois.",
+  "cancel": "Cancelar",
+  "saveAndConfirm": "Salvar e confirmar",
+  "heading": "Propostas para você",
+  "description": "Seu guia rascunhou estas a partir do que aprendeu. Confirme cada uma pela qual você é responsável como está, ajuste o critério ou os números, ou descarte-a.",
+  "addFieldsToConfirm": "Adicione {{fields}} para confirmar.",
+  "saveError": "Não foi possível salvar sua resposta para “{{title}}”. {{details}}",
+  "confirming": "Confirmando…",
+  "confirmAll": "Confirmar todas as {{count}}",
+  "noArea": "Sem área",
+  "confirm": "Confirmar",
+  "adjust": "Ajustar",
+  "dismiss": "Descartar"
+}

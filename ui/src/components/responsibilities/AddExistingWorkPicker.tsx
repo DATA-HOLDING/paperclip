@@ -14,13 +14,12 @@ import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from "@
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { companyProjectsQuery } from "@/lib/company-projects-query";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 export type ResponsibilityWorkKind = "project" | "task" | "routine" | "skill";
 
 const TASK_SEARCH_LIMIT = 20;
 const TASK_SEARCH_DEBOUNCE_MS = 200;
-
-const NOUN: Record<ResponsibilityWorkKind, string> = { project: "project", task: "task", routine: "routine", skill: "skill" };
 
 interface PickerOption {
   id: string;
@@ -34,7 +33,7 @@ interface PickerOption {
  */
 export function describeLinkError(error: unknown, kind: ResponsibilityWorkKind): string {
   if (error instanceof ApiError && error.status === 404) {
-    return `That ${NOUN[kind]} is no longer available to you. It may have been deleted or made private.`;
+    return t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.unavailable`);
   }
   return describeError(error).body;
 }
@@ -161,7 +160,7 @@ export function AddExistingWorkPicker({
         <PopoverTrigger asChild>
           <Button size="sm" variant="ghost">
             <Plus aria-hidden="true" />
-            Add existing {NOUN[kind]}
+            {t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.addExisting`)}
           </Button>
         </PopoverTrigger>
       )}
@@ -170,8 +169,8 @@ export function AddExistingWorkPicker({
           <CommandInput
             value={query}
             onValueChange={setQuery}
-            placeholder={`Search ${NOUN[kind]}s…`}
-            aria-label={`Search ${NOUN[kind]}s`}
+            placeholder={t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.searchPlaceholder`)}
+            aria-label={t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.searchLabel`)}
           />
           <CommandList>
             {sourceView.kind === "error" ? (
@@ -179,19 +178,19 @@ export function AddExistingWorkPicker({
                 <QueryErrorState
                   error={sourceView.error}
                   size="inline"
-                  action={`load ${NOUN[kind]}s`}
+                  action={t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.loadAction`)}
                   onRetry={sourceView.retry}
                   retrying={sourceView.isFetching}
                 />
               </div>
             ) : !sourceView.data ? (
-              <p className="px-3 py-4 text-sm text-muted-foreground" role="status">Loading…</p>
+              <p className="px-3 py-4 text-sm text-muted-foreground" role="status">{t("componentsResponsibilitiesAddExistingWorkPicker.loading")}</p>
             ) : (
               <>
                 <CommandEmpty>
                   {options.length > 0 && available.length === 0
-                    ? `Every matching ${NOUN[kind]} is already here.`
-                    : `No ${NOUN[kind]}s found.`}
+                    ? t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.allLinked`)
+                    : t(`componentsResponsibilitiesAddExistingWorkPicker.${kind}.noneFound`)}
                 </CommandEmpty>
                 {available.map((option) => (
                   <CommandItem

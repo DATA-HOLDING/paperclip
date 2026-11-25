@@ -1,0 +1,12 @@
+{
+  "refreshToRetry": "Atualize a tarefa para tentar novamente.",
+  "waitForCurrentRun": "Aguarde a execução atual terminar.",
+  "agentUnavailable": "O agente responsável está indisponível.",
+  "completePendingReview": "Conclua a revisão ou aprovação pendente antes de tentar novamente.",
+  "resolveBlockers": "Resolva os bloqueios da tarefa antes de tentar novamente.",
+  "taskChanged": "A tarefa mudou. Atualize e tente novamente.",
+  "defaultRepository": "O repositório da tarefa",
+  "repairStale": "Este reparo não corresponde mais à tarefa. Atualize para revisar o estado atual.",
+  "defaultAgentName": "O agente responsável",
+  "taskChangedWhileSaving": "A tarefa mudou durante o salvamento. Atualize para conferir o estado atual."
+}

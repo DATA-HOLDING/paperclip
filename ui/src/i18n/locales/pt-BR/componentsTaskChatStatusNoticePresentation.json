@@ -1,0 +1,24 @@
+{
+  "retry": {
+    "afterOverload": "Tentando novamente após sobrecarga",
+    "reconnecting": "Reconectando",
+    "connection": "Tentando a conexão novamente",
+    "afterRateLimit": "Tentando novamente após limite de requisições",
+    "default": "Tentando novamente"
+  },
+  "attemptOfMax": " (tentativa {{attempt}} de {{max}})",
+  "attempt": " (tentativa {{attempt}})",
+  "providerError": "Erro do provedor",
+  "providerErrorNoMessage": "O provedor informou um erro sem mensagem.",
+  "compactionFailed": "Falha ao compactar o contexto",
+  "compactionStopped": "Compactação interrompida",
+  "compactingContext": "Compactando o contexto",
+  "contextCompacted": "Contexto compactado",
+  "retryStopped": "Nova tentativa interrompida",
+  "recoveredAfterRetry": "Recuperado após nova tentativa",
+  "fellBackTo": "Recorreu a {{model}}",
+  "fellBackToAnother": "Recorreu a outro modelo",
+  "providerWarning": "Aviso do provedor",
+  "providerUpdate": "Atualização do provedor",
+  "commandOutput": "Saída do comando"
+}

@@ -1,0 +1,73 @@
+{
+  "unfiled": "Sem pasta",
+  "roots": {
+    "mySkills": "Minhas skills",
+    "projects": "Projetos",
+    "bundled": "Incluídas",
+    "organization": "Organização"
+  },
+  "newFolder": "Nova pasta",
+  "moveTo": "Mover para...",
+  "railAriaLabel": "Pastas de {{items}}",
+  "folders": "Pastas",
+  "system": "Sistema",
+  "folderActions": "Ações da pasta {{name}}",
+  "rename": "Renomear",
+  "editColor": "Editar cor",
+  "delete": "Excluir",
+  "suggestion": {
+    "text": "Agrupe estes {{items}} em pastas para manter tudo organizado.",
+    "createFirst": "Crie sua primeira pasta",
+    "dismiss": "Dispensar sugestão de pastas"
+  },
+  "sheetTitle": "Pastas de {{items}}",
+  "searchFolders": "Buscar pastas",
+  "noFoldersMatch": "Nenhuma pasta corresponde.",
+  "newFolderEllipsis": "Nova pasta...",
+  "form": {
+    "editTitle": "Editar pasta",
+    "createFolder": "Criar pasta",
+    "routineDescription": "Organize as rotinas desta organização.",
+    "skillDescription": "Organize as skills instaladas da organização.",
+    "name": "Nome",
+    "color": "Cor",
+    "useColor": "Usar a cor de pasta {{color}}",
+    "none": "Nenhuma",
+    "saving": "Salvando...",
+    "save": "Salvar"
+  },
+  "cancel": "Cancelar",
+  "deleteDialog": {
+    "title": "Excluir pasta",
+    "description": "Os {{count}} {{items}} desta pasta não serão excluídos. Eles serão movidos para Sem pasta.",
+    "deleting": "Excluindo..."
+  },
+  "bulk": {
+    "selected": "{{count}} selecionados",
+    "deselectAll": "Desmarcar tudo",
+    "done": "Concluir"
+  },
+  "tree": {
+    "allSkills": "Todas as skills",
+    "current": "atual",
+    "navAriaLabel": "Pastas de skills",
+    "noOrganizationFolders": "Nenhuma pasta da organização ainda.",
+    "tags": "Tags",
+    "resize": "Redimensionar pastas de skills",
+    "newLabelFolder": "Nova pasta: {{label}}",
+    "collapse": "Recolher pasta",
+    "expand": "Expandir pasta",
+    "newSubfolder": "Nova subpasta",
+    "moveToRoot": "Mover para {{root}}",
+    "folderPath": "Caminho da pasta",
+    "readOnly": "somente leitura",
+    "newFolderInside": "Nova pasta dentro…",
+    "newTopLevelFolder": "Nova pasta de nível superior…",
+    "movingTo": "Movendo para",
+    "pickDestination": "Escolha uma pasta de destino.",
+    "moving": "Movendo…",
+    "moveHere": "Mover para cá",
+    "folderName": "Nome da pasta",
+    "add": "Adicionar"
+  }
+}

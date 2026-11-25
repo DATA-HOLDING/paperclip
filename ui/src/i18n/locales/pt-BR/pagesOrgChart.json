@@ -1,0 +1,38 @@
+{
+  "preview": {
+    "planLaunch": "Planejar o lançamento do produto",
+    "buildOnboarding": "Criar o fluxo de onboarding",
+    "reviewRelease": "Revisar a prontidão do lançamento"
+  },
+  "runningTask": "Tarefa em execução",
+  "breadcrumb": "Organograma",
+  "tasksToggle": "Tarefas",
+  "selectOrganization": "Selecione uma organização para ver o organograma.",
+  "selectCompany": "Selecione uma organização para ver o organograma.",
+  "loadAction": "carregar o organograma",
+  "noHierarchy": "Nenhuma hierarquia organizacional definida.",
+  "importOrganization": "Importar organização",
+  "exportOrganization": "Exportar organização",
+  "importCompany": "Importar organização",
+  "exportCompany": "Exportar organização",
+  "idle": "Ocioso",
+  "legend": {
+    "simulated": "{{count}} tarefas em execução simuladas · apenas prévia",
+    "loadRunningAction": "carregar as tarefas em execução",
+    "loadTitlesAction": "carregar os títulos das tarefas",
+    "paused": "Atualizações das tarefas pausadas durante a reconexão…",
+    "loading": "Carregando tarefas em execução…",
+    "running_one": "{{count}} tarefa em execução",
+    "running_other": "{{count}} tarefas em execução",
+    "first100": " · mostrando as primeiras 100 execuções",
+    "none": "Nenhuma tarefa em execução"
+  },
+  "taskTitle": "{{task}} · {{title}} · Trabalhando: {{agents}}",
+  "simulatedTask": "Tarefa simulada",
+  "task": "Tarefa",
+  "agent": "Agente",
+  "zoomIn": "Aproximar",
+  "zoomOut": "Afastar",
+  "fitToScreen": "Ajustar à tela",
+  "fitChartToScreen": "Ajustar o organograma à tela"
+}

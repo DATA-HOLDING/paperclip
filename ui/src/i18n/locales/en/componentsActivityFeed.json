@@ -1,0 +1,30 @@
+{
+  "filter": {
+    "all": "All",
+    "inProgress": "In Progress",
+    "inReview": "In Review",
+    "done": "Done"
+  },
+  "actor": {
+    "system": "System",
+    "board": "Board",
+    "unknown": "Unknown"
+  },
+  "madeUpdates": "made {{count}} updates to",
+  "earlier": "Earlier",
+  "otherActivity": "Other activity",
+  "empty": {
+    "noAgents": "No agents set up yet. Add an agent to get started.",
+    "allPaused": "All agents are paused. Resume agents from the sidebar to see activity.",
+    "running": "Your agents are running — activity will appear here shortly.",
+    "default": "Activity from your agents will appear here."
+  },
+  "title": "Agent Feed",
+  "subtitle": "Live activity from your agents",
+  "groupByTaskAria": "group by task",
+  "groupByTask": "Group by task",
+  "showFlat": "Show flat",
+  "filterByAria": "filter by",
+  "filterBy": "Filter by",
+  "showAllActivity": "Show all activity"
+}

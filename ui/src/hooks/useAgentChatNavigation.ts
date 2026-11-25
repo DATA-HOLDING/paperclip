@@ -13,6 +13,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { useNavigate } from "@/lib/router";
 import { agentRouteRef } from "@/lib/utils";
 import { useAgentChatEnabled } from "./useAgentChatEnabled";
+import { t } from "@/i18n";
 
 export function useAgentChatNavigation() {
   const { selectedCompanyId: companyId } = useCompany();
@@ -74,7 +75,7 @@ export function useStartAgentChat(companyId: string | null, userId: string | nul
     return () => { current.mounted = false; };
   }, [companyId, userId]);
   return useCallback(async ({ agent, body, files = [], runSettings, clientRequestId }: StartAgentChatMessage) => {
-    if (!companyId || agent.companyId !== companyId) throw new Error("Choose an agent from this company.");
+    if (!companyId || agent.companyId !== companyId) throw new Error(t("hooksUseAgentChatNavigation.chooseAgentFromCompany"));
     const current = scope.current;
     const chat = await agentChatsApi.ensure(companyId, agent.id);
     rememberChat(client, companyId, userId, agent.id, chat);
@@ -124,7 +125,7 @@ export function useOpenAgentChat(companyId: string | null, userId: string | null
     return () => { current.mounted = false; };
   }, [companyId, userId]);
   return useCallback(async (agent: Agent, signal?: AbortSignal) => {
-    if (!companyId || agent.companyId !== companyId) throw new Error("Choose an agent from this company.");
+    if (!companyId || agent.companyId !== companyId) throw new Error(t("hooksUseAgentChatNavigation.chooseAgentFromCompany"));
     const current = scope.current;
     const chat = await agentChatsApi.ensure(companyId, agent.id);
     rememberChat(client, companyId, userId, agent.id, chat);

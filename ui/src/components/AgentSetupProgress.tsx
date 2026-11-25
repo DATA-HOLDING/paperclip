@@ -17,6 +17,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { cn } from "@/lib/utils";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { agentSetupHandoffStorageKey, storeAgentSetupHandoff, storedAgentSetupHandoff } from "@/lib/agent-setup-handoff-storage";
+import { t } from "@/i18n";
 
 /**
  * Live setup progress from a person's own agent. A page that offers "Set it up
@@ -152,7 +153,7 @@ export function useAgentSetupProgress({
     expired,
     error: handoffQuery.error
       ? describeError(handoffQuery.error).body
-      : accountFailed ? "Paperclip couldn’t confirm who is signed in." : null,
+      : accountFailed ? t("componentsAgentSetupProgress.accountUnconfirmed") : null,
     /** A refresh of the checklist failed; the last one stays on screen. */
     refreshError: query.error && progress ? describeError(query.error).body : null,
     retryRefresh: () => { void query.refetch(); },
@@ -189,9 +190,9 @@ const ITEM_GLYPH: Record<AgentSetupProgressItemStatus, string> = {
 };
 const ITEM_LABEL: Record<AgentSetupProgressItemStatus, string | null> = {
   pending: null,
-  in_progress: "In progress",
-  done: "Done",
-  failed: "Failed",
+  in_progress: t("componentsAgentSetupProgress.itemStatus.inProgress"),
+  done: t("componentsAgentSetupProgress.itemStatus.done"),
+  failed: t("componentsAgentSetupProgress.itemStatus.failed"),
 };
 
 export interface AgentSetupProgressPanelProps {
@@ -223,10 +224,10 @@ export function AgentSetupProgressPanel({
   const items = progress?.items ?? [];
   const status = progress?.status ?? "waiting";
   const heading = status === "done"
-    ? `Your agent set up ${subject}`
+    ? t("componentsAgentSetupProgress.heading.done", { subject })
     : status === "failed"
-      ? `Your agent couldn’t finish setting up ${subject}`
-      : `Your agent is setting up ${subject}`;
+      ? t("componentsAgentSetupProgress.heading.failed", { subject })
+      : t("componentsAgentSetupProgress.heading.working", { subject });
 
   return (
     <section
@@ -237,14 +238,14 @@ export function AgentSetupProgressPanel({
     >
       <div className="space-y-1">
         <h3 id={headingId} className="text-sm font-medium text-foreground">
-          {expired ? "This setup prompt expired" : heading}
+          {expired ? t("componentsAgentSetupProgress.expiredHeading") : heading}
         </h3>
         <p className={cn("text-sm text-muted-foreground", ANALYTICS_MASK_CLASS)}>
           {expired
-            ? "Its progress link stopped working before your agent finished. Start again for a new prompt, then give it to your agent."
+            ? t("componentsAgentSetupProgress.description.expired")
             : status === "waiting"
-            ? "Paste the prompt into your agent. Its steps appear here as it works."
-            : progress?.summary ?? (status === "done" ? "Every step is done." : "Keep your agent running; its steps update here.")}
+            ? t("componentsAgentSetupProgress.description.waiting")
+            : progress?.summary ?? (status === "done" ? t("componentsAgentSetupProgress.description.done") : t("componentsAgentSetupProgress.description.working"))}
         </p>
       </div>
 
@@ -260,27 +261,27 @@ export function AgentSetupProgressPanel({
               </div>
               {ITEM_LABEL[item.status] ? (
                 <span className="shrink-0 text-xs text-muted-foreground">{ITEM_LABEL[item.status]}</span>
-              ) : <span className="sr-only">Not started</span>}
+              ) : <span className="sr-only">{t("componentsAgentSetupProgress.notStarted")}</span>}
             </li>
           ))}
         </ol>
       ) : null}
 
       {progress && status !== "waiting" ? (
-        <p className="text-xs text-muted-foreground">Last update {timeAgo(progress.updatedAt)}</p>
+        <p className="text-xs text-muted-foreground">{t("componentsAgentSetupProgress.lastUpdate", { timeAgo: timeAgo(progress.updatedAt) })}</p>
       ) : null}
       {refreshError ? (
         <p className="flex flex-wrap items-center gap-2 text-xs text-destructive" role="alert">
-          Couldn’t refresh your agent’s progress: {refreshError}
-          {onRetryRefresh ? <Button type="button" variant="outline" size="sm" onClick={onRetryRefresh}>Retry</Button> : null}
+          {t("componentsAgentSetupProgress.refreshError", { error: refreshError })}
+          {onRetryRefresh ? <Button type="button" variant="outline" size="sm" onClick={onRetryRefresh}>{t("componentsAgentSetupProgress.retry")}</Button> : null}
         </p>
       ) : null}
       {(expired || status === "failed") && onRenew ? (
         <div className="space-y-1">
           {status === "failed" && !expired ? (
-            <p className="text-xs text-muted-foreground">Fix what stopped it, then start again for a new prompt.</p>
+            <p className="text-xs text-muted-foreground">{t("componentsAgentSetupProgress.fixAndRestart")}</p>
           ) : null}
-          <Button type="button" variant="outline" size="sm" onClick={onRenew}>Start again</Button>
+          <Button type="button" variant="outline" size="sm" onClick={onRenew}>{t("componentsAgentSetupProgress.startAgain")}</Button>
         </div>
       ) : null}
     </section>

@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
 import { useMemo, useRef, useState } from "react";
 import { cn } from "../lib/utils";
@@ -216,18 +217,18 @@ export function parseFrontmatter(content: string): { data: FrontmatterData; body
 }
 
 export const FRONTMATTER_FIELD_LABELS: Record<string, string> = {
-  name: "Name",
-  title: "Title",
-  kind: "Kind",
-  reportsTo: "Reports to",
-  skills: "Skills",
-  status: "Status",
-  description: "Description",
-  priority: "Priority",
-  assignee: "Responsible",
-  project: "Project",
-  recurring: "Recurring",
-  targetDate: "Target date",
+  name: t("componentsFileTree.frontmatter.name"),
+  title: t("componentsFileTree.frontmatter.title"),
+  kind: t("componentsFileTree.frontmatter.kind"),
+  reportsTo: t("componentsFileTree.frontmatter.reportsTo"),
+  skills: t("componentsFileTree.frontmatter.skills"),
+  status: t("componentsFileTree.frontmatter.status"),
+  description: t("componentsFileTree.frontmatter.description"),
+  priority: t("componentsFileTree.frontmatter.priority"),
+  assignee: t("componentsFileTree.frontmatter.assignee"),
+  project: t("componentsFileTree.frontmatter.project"),
+  recurring: t("componentsFileTree.frontmatter.recurring"),
+  targetDate: t("componentsFileTree.frontmatter.targetDate"),
 };
 
 // -- File tree component -----------------------------------------------------
@@ -384,13 +385,13 @@ export function FileTree({
                 statusBadge.error ?? statusBadgeDefault,
               )}
             >
-              error
+              {t("componentsFileTree.errorBadge")}
             </Badge>
             <span className="min-w-0 text-destructive">{describeError(new Error(error.message)).body}</span>
           </div>
           {error.retry && (
             <Button type="button" size="xs" variant="outline" onClick={error.retry}>
-              Retry
+              {t("componentsFileTree.retry")}
             </Button>
           )}
         </div>
@@ -402,9 +403,9 @@ export function FileTree({
     return (
       <div aria-label={ariaLabel} role="tree" className="p-3">
         <div className="rounded-md border border-dashed border-border px-4 py-8 text-center">
-          <div className="text-sm font-medium">{empty?.title ?? "No files"}</div>
+          <div className="text-sm font-medium">{empty?.title ?? t("componentsFileTree.empty.title")}</div>
           <div className="mt-1 text-xs text-muted-foreground">
-            {empty?.description ?? "Files will appear here when they are available."}
+            {empty?.description ?? t("componentsFileTree.empty.description")}
           </div>
         </div>
       </div>
@@ -466,7 +467,7 @@ export function FileTree({
             {layout === "explorer" && (node.kind === "dir" ? (
               <button type="button" disabled={disabled} className="flex size-4 shrink-0 items-center justify-center rounded-sm hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50"
                 onClick={event => { event.stopPropagation(); onToggleDir(node.path); }}
-                aria-label={expanded ? `Collapse ${node.name}` : `Expand ${node.name}`}>
+                aria-label={expanded ? t("componentsFileTree.collapse", { name: node.name }) : t("componentsFileTree.expand", { name: node.name })}>
                 {expanded ? <ChevronDown className="size-3.5" /> : <ChevronRight className="size-3.5" />}
               </button>
             ) : <span className="size-4 shrink-0" aria-hidden="true" />)}
@@ -474,7 +475,7 @@ export function FileTree({
               <label className={cn("flex items-center", layout === "explorer" ? "size-4 shrink-0 justify-center" : "pl-2")} onClick={(event) => event.stopPropagation()}>
                 <input
                   type="checkbox"
-                  aria-label={checkboxLabel?.(node) ?? `Select ${node.path}`}
+                  aria-label={checkboxLabel?.(node) ?? t("componentsFileTree.select", { path: node.path })}
                   disabled={disabled}
                   checked={allChecked}
                   ref={(element) => {
@@ -523,7 +524,7 @@ export function FileTree({
                   event.stopPropagation();
                   onToggleDir(node.path);
                 }}
-                aria-label={expanded ? `Collapse ${node.name}` : `Expand ${node.name}`}
+                aria-label={expanded ? t("componentsFileTree.collapse", { name: node.name }) : t("componentsFileTree.expand", { name: node.name })}
               >
                 {expanded ? (
                   <ChevronDown className="h-3.5 w-3.5" />

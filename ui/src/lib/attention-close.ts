@@ -5,6 +5,7 @@ import {
   type AttentionCloseMode,
   type AttentionItem,
 } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * The Close… menu (PAP-749 plan §2, Rule 6) and the Stale group (§3). Pure
@@ -47,7 +48,7 @@ export function attentionUserLabel(
   userId: string,
   userLabelMap: ReadonlyMap<string, string> | null | undefined,
 ): string {
-  return userLabelMap?.get(userId) ?? "another person";
+  return userLabelMap?.get(userId) ?? t("libAttentionClose.anotherPerson");
 }
 
 /** People the card can go to: everyone in the directory but the viewer and the current owner. */
@@ -85,15 +86,15 @@ export function attentionHiddenState(item: AttentionItem): AttentionHiddenState 
 /** "Archived Oct 29" or "Back Fri, Oct 31, 9:00 AM" (local time). */
 export function attentionHiddenText(hidden: AttentionHiddenState): string {
   if (hidden.kind === "snoozed") {
-    return `Back ${new Date(hidden.until).toLocaleString(undefined, {
+    return t("libAttentionClose.back", { date: new Date(hidden.until).toLocaleString(undefined, {
       weekday: "short",
       month: "short",
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
-    })}`;
+    }) });
   }
-  return `Archived ${new Date(hidden.since).toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+  return t("libAttentionClose.archived", { date: new Date(hidden.since).toLocaleDateString(undefined, { month: "short", day: "numeric" }) });
 }
 
 /**
@@ -167,10 +168,10 @@ export function attentionAlreadyClosedText(
   details: AttentionAlreadyClosedDetails,
   userLabelMap: ReadonlyMap<string, string> | null | undefined,
 ): string {
-  if (details.resolvedByUserId) return `Already answered by @${attentionUserLabel(details.resolvedByUserId, userLabelMap)}`;
-  return details.resolvedByAgentId ? "Already answered by an agent" : "Already answered";
+  if (details.resolvedByUserId) return t("libAttentionClose.alreadyAnsweredBy", { name: attentionUserLabel(details.resolvedByUserId, userLabelMap) });
+  return details.resolvedByAgentId ? t("libAttentionClose.alreadyAnsweredByAgent") : t("libAttentionClose.alreadyAnswered");
 }
 
 export function attentionForOtherText(name: string, verb: "withdraw" | "continue"): string {
-  return verb === "withdraw" ? `This is for @${name}. Withdraw anyway?` : `This is for @${name}. Continue?`;
+  return verb === "withdraw" ? t("libAttentionClose.forOtherWithdraw", { name }) : t("libAttentionClose.forOtherContinue", { name });
 }

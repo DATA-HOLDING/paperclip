@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { attentionCardKind, attentionCardType, type AttentionCardType, type AttentionItem } from "@paperclipai/shared";
 import { cn } from "@/lib/utils";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 /**
  * The parts every Needs You card is built from (PAP-775, Paper "A · Compact
@@ -12,45 +13,45 @@ import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
  */
 
 const CARD_TYPE_LABELS: Record<AttentionCardType, string> = {
-  answer_questions: "Answer questions",
-  make_choice: "Make a choice",
-  review_plan: "Review a plan",
-  confirm: "Confirm or decline",
-  suggested_tasks: "Accept suggested tasks",
-  review_deliverable: "Review a deliverable",
-  review_items: "Review items",
-  board_approval: "Approve a request",
-  join_request: "Review a join request",
-  tool_access: "Approve tool or secret access",
-  connect_service: "Connect a service",
-  review_task: "Review a task",
-  failed_run: "Fix a failed run",
-  budget_stop: "Resolve a budget stop",
-  blocked_task: "Unblock a task",
-  recovery: "Recover a run",
+  answer_questions: t("componentsCoordinator.cardTypes.answerQuestions"),
+  make_choice: t("componentsCoordinator.cardTypes.makeChoice"),
+  review_plan: t("componentsCoordinator.cardTypes.reviewPlan"),
+  confirm: t("componentsCoordinator.cardTypes.confirm"),
+  suggested_tasks: t("componentsCoordinator.cardTypes.suggestedTasks"),
+  review_deliverable: t("componentsCoordinator.cardTypes.reviewDeliverable"),
+  review_items: t("componentsCoordinator.cardTypes.reviewItems"),
+  board_approval: t("componentsCoordinator.cardTypes.boardApproval"),
+  join_request: t("componentsCoordinator.cardTypes.joinRequest"),
+  tool_access: t("componentsCoordinator.cardTypes.toolAccess"),
+  connect_service: t("componentsCoordinator.cardTypes.connectService"),
+  review_task: t("componentsCoordinator.cardTypes.reviewTask"),
+  failed_run: t("componentsCoordinator.cardTypes.failedRun"),
+  budget_stop: t("componentsCoordinator.cardTypes.budgetStop"),
+  blocked_task: t("componentsCoordinator.cardTypes.blockedTask"),
+  recovery: t("componentsCoordinator.cardTypes.recovery"),
 };
 
 const APPROVAL_LABELS: Record<string, string> = {
-  hire_agent: "Approve an agent hire",
-  approve_ceo_strategy: "Approve a strategy",
-  budget_override_required: "Approve a budget override",
+  hire_agent: t("componentsCoordinator.approvalTypes.hireAgent"),
+  approve_ceo_strategy: t("componentsCoordinator.approvalTypes.ceoStrategy"),
+  budget_override_required: t("componentsCoordinator.approvalTypes.budgetOverride"),
 };
 
 /** The card's type, said as what to do ("Review a plan"). */
 export function needsYouCardLabel(item: AttentionItem): string {
   const type = attentionCardType(item);
   if (type === "board_approval") return APPROVAL_LABELS[String(item.subject.metadata?.type ?? "")] ?? CARD_TYPE_LABELS.board_approval;
-  if (type === "failed_run" && item.sourceKind === "agent_error_alert") return "Fix an agent error";
-  if (type === "budget_stop" && item.subject.metadata?.thresholdType === "soft") return "Review a budget warning";
+  if (type === "failed_run" && item.sourceKind === "agent_error_alert") return t("componentsCoordinator.cardTypes.agentError");
+  if (type === "budget_stop" && item.subject.metadata?.thresholdType === "soft") return t("componentsCoordinator.cardTypes.budgetWarning");
   return CARD_TYPE_LABELS[type];
 }
 
 export type NeedsYouSection = "decisions" | "problems" | "updates";
 
 export const NEEDS_YOU_SECTIONS: Record<NeedsYouSection, { title: string }> = {
-  decisions: { title: "Decisions" },
-  problems: { title: "Problems" },
-  updates: { title: "Updates" },
+  decisions: { title: t("componentsCoordinator.sections.decisions") },
+  problems: { title: t("componentsCoordinator.sections.problems") },
+  updates: { title: t("componentsCoordinator.sections.updates") },
 };
 
 export function needsYouSection(item: AttentionItem): NeedsYouSection {

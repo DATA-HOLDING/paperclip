@@ -1,0 +1,28 @@
+{
+  "nonSetterTooltip": "Only the task owner or an admin can change who can see this task.",
+  "blocked": {
+    "checkFailed": "Couldn't check task privacy. Retry before making this task public.",
+    "checking": "Checking task privacy…",
+    "parent": "Move this task out of its private parent before making it public.",
+    "project": "Move this task out of its private project before making it public."
+  },
+  "toast": {
+    "nowPrivate": "Task is now private",
+    "nowPublic": "Task is now public",
+    "changeFailed": "Couldn't change visibility"
+  },
+  "menu": {
+    "share": "Share…",
+    "makePublic": "Make public",
+    "retryCheck": "Retry access check",
+    "makePrivate": "Make private"
+  },
+  "dialog": {
+    "title": "Make this task public?",
+    "body": "Everyone in the company will be able to read this task, its comments, documents, and run history. Existing private subtasks keep their privacy.",
+    "leavesPersonalProject": "This task will also leave its personal project. ",
+    "cannotTakeBack": "Content already seen by others cannot be taken back.",
+    "keepPrivate": "Keep private",
+    "makingPublic": "Making public…"
+  }
+}

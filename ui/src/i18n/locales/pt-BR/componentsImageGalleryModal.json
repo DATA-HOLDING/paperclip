@@ -1,0 +1,10 @@
+{
+  "title": "Galeria de imagens",
+  "openOriginal": "Abrir original",
+  "openOriginalFile": "Abrir original {{filename}}",
+  "download": "Baixar",
+  "downloadFile": "Baixar {{filename}}",
+  "close": "Fechar",
+  "previous": "Anterior",
+  "next": "Próxima"
+}

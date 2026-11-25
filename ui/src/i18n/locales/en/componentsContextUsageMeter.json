@@ -1,0 +1,21 @@
+{
+  "compacting": "Compacting…",
+  "compactNow": "Compact now",
+  "pendingHint": "The agent is summarizing its conversation. This usually takes under a minute.",
+  "availableHint": "Summarizes the conversation so far so the agent has room to keep working.",
+  "contextWindow": "Context window",
+  "usedOfWindow": "{{used}} of {{window}} tokens",
+  "updated": " · updated {{time}}",
+  "compactsNear": "Compacts automatically near {{tokens}}.",
+  "closeToFull": "Close to full. The agent will compact its context soon.",
+  "input": "Input",
+  "inputCached": "{{input}} · {{cached}} cached",
+  "output": "Output",
+  "reasoning": "Reasoning",
+  "lastRequest": "Last request",
+  "lastRequestValue": "{{input}} in · {{output}} out",
+  "cost": "Cost",
+  "compactions": "Compactions",
+  "meterAriaLabel": "Context window: {{percent}}% of {{window}} tokens used",
+  "ofWindow": " of {{window}}"
+}

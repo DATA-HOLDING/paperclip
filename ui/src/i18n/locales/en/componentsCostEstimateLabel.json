@@ -1,0 +1,6 @@
+{
+  "title_one": "{{count}} estimated charge. Calculated from token usage and published rates; provider bills may differ.",
+  "title_other": "{{count}} estimated charges. Calculated from token usage and published rates; provider bills may differ.",
+  "estimated": "Estimated",
+  "partiallyEstimated": "Partially estimated"
+}

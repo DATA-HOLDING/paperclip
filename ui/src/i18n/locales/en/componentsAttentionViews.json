@@ -1,0 +1,15 @@
+{
+  "decisionViews": "Decision views",
+  "openUnassigned": "Open Unassigned",
+  "whyMe": "Why me?",
+  "someone": "someone",
+  "anotherPerson": "another person",
+  "forUser": "For @{{name}}",
+  "openToAssign": "Open to assign",
+  "claiming": "Claiming…",
+  "claim": "Claim",
+  "receipts": "Receipts",
+  "reason": "Reason: {{reason}}",
+  "open": "Open",
+  "dismissReceipt": "Dismiss receipt"
+}

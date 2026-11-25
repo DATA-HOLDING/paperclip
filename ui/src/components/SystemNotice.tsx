@@ -9,6 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export type SystemNoticeTone = "neutral" | "info" | "success" | "warning" | "danger";
 
@@ -256,11 +257,11 @@ export function SystemNotice({
   const resolvedLabel =
     label ??
     {
-      neutral: "System notice",
-      info: "System notice",
-      success: "System notice",
-      warning: "System warning",
-      danger: "System alert",
+      neutral: t("componentsSystemNotice.label.notice"),
+      info: t("componentsSystemNotice.label.notice"),
+      success: t("componentsSystemNotice.label.notice"),
+      warning: t("componentsSystemNotice.label.warning"),
+      danger: t("componentsSystemNotice.label.alert"),
     }[tone];
 
   return (
@@ -326,7 +327,7 @@ export function SystemNotice({
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
             )}
           >
-            <span>{open ? "Hide details" : "Details"}</span>
+            <span>{open ? t("componentsSystemNotice.hideDetails") : t("componentsSystemNotice.details")}</span>
             <ChevronDown
               className={cn(
                 "h-3.5 w-3.5 transition-transform duration-150",

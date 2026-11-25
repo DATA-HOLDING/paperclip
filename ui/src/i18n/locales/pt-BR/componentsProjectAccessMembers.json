@@ -1,0 +1,35 @@
+{
+  "unknownUser": "Usuário desconhecido",
+  "groups": {
+    "people": "Pessoas",
+    "agents": "Agentes"
+  },
+  "toast": {
+    "added": "Acesso ao projeto adicionado",
+    "addFailed": "Não foi possível adicionar o acesso ao projeto",
+    "removed": "Acesso ao projeto removido",
+    "removeFailed": "Não foi possível remover o acesso ao projeto"
+  },
+  "manageAccess": "Gerenciar acesso",
+  "viewAccess": "Ver acesso",
+  "dialog": {
+    "title": "Acesso ao projeto privado",
+    "description": "Os membros podem encontrar este projeto e ler todas as tarefas dele. Uma tarefa ainda pode ser compartilhada diretamente."
+  },
+  "directoryError": "Não foi possível carregar o diretório de acesso da organização.",
+  "addPlaceholder": "Adicionar uma pessoa ou agente",
+  "searchPlaceholder": "Buscar pessoas e agentes",
+  "emptyMessage": "Não há mais membros da organização para adicionar",
+  "add": "Adicionar",
+  "sharedAgentWarning": "Este agente pode guardar o contexto privado do projeto na memória e no espaço de trabalho para execuções futuras. Remover o acesso não apaga o que ele já aprendeu.",
+  "unknownMember": "Membro desconhecido",
+  "kind": {
+    "owner": "Dono",
+    "agent": "Agente",
+    "person": "Pessoa"
+  },
+  "removeMember": "Remover {{name}}",
+  "member": "membro",
+  "loading": "Carregando acesso…",
+  "membersError": "Não foi possível carregar os membros com acesso ao projeto."
+}

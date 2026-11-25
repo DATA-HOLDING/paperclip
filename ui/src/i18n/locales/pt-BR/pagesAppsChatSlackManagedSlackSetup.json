@@ -1,0 +1,27 @@
+{
+  "errors": {
+    "manifestPending": "Seu app foi criado. Tente novamente para concluir a configuração.",
+    "creationUncertain": "O Slack pode ter criado seu app. Confira as configurações de apps do Slack antes de tentar novamente.",
+    "loadWorkspaces": "Não foi possível carregar seus workspaces do Slack. Tente novamente."
+  },
+  "status": {
+    "openingSlack": "Abrindo o Slack…",
+    "connectingAgent": "Conectando seu agente…",
+    "settingUpApp": "Configurando seu app do Slack…",
+    "loadingSlack": "Carregando o Slack…"
+  },
+  "unavailable": "A configuração gerenciada do Slack está indisponível. Tente novamente mais tarde.",
+  "addAgent": {
+    "prefix": "Adicionar",
+    "to": "a"
+  },
+  "workspaceLabel": "Workspace do Slack",
+  "workspacePlaceholder": "Escolha um workspace do Slack",
+  "connectAnother": "Conectar outro workspace do Slack",
+  "openAppSettings": "Abrir as configurações de apps do Slack",
+  "confirmNoApp": "Conferi no Slack e nenhum app foi criado. Criar um novo app.",
+  "retry": "Tentar novamente",
+  "reconnectWorkspace": "Reconectar workspace do Slack",
+  "continueInSlack": "Continuar no Slack",
+  "continue": "Continuar"
+}

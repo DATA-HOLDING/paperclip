@@ -6,6 +6,7 @@ import { PROPERTIES_PANE_HEADER_SLOT_ID } from "@/components/PropertiesPanel";
 import { SidePanelLauncher, SidePanelTabs, type SidePanelLauncherItem, type SidePanelLauncherSection, type SidePanelTabItem, type SidePanelTabRecord } from "@/components/side-panel";
 import { Button } from "@/components/ui/button";
 import { needsYouArtifact, needsYouArtifactId, needsYouArtifactLabel, type NeedsYouArtifact } from "./CoordinatorReviewPanel";
+import { t } from "@/i18n";
 
 /**
  * A Needs You side-panel tab: what one pending card is deciding on (a plan,
@@ -34,7 +35,7 @@ export function needsYouTabArtifact(item: AttentionItem, payload: NeedsYouReview
 
 function documentLabel(item: AttentionItem, artifact?: NeedsYouArtifact | null) {
   const shown = artifact ?? needsYouArtifact(item);
-  return shown ? needsYouArtifactLabel(shown) : "Document";
+  return shown ? needsYouArtifactLabel(shown) : t("componentsCoordinator.sidePanel.document");
 }
 
 /** "NEE-39 plan": the artifact and its task, where several are listed or open. */
@@ -79,7 +80,7 @@ export function CoordinatorNeedsYouSidePanel({ tabs, activeTabId, items, reviewa
   })), [tabs]);
   const sections = useMemo<SidePanelLauncherSection[]>(() => [{
     id: "waiting",
-    label: "Waiting on you",
+    label: t("componentsCoordinator.sidePanel.waitingOnYou"),
     items: reviewable.map((item): SidePanelLauncherItem => ({
       id: item.id,
       label: needsYouReviewTabLabel(item),
@@ -94,16 +95,16 @@ export function CoordinatorNeedsYouSidePanel({ tabs, activeTabId, items, reviewa
     if (item) onOpenItem(item);
   };
   const launcher = <SidePanelLauncher sections={sections} onSelect={select} presentation="popover" open={launcherOpen} onOpenChange={setLauncherOpen}
-    emptyMessage="Nothing else is waiting on you."
-    trigger={<Button type="button" variant="ghost" size="icon-sm" className="h-(--side-panel-tab-height) w-(--side-panel-tab-height) shrink-0 rounded-md text-muted-foreground hover:text-foreground focus-visible:text-foreground" aria-label="Open a new tab"><Plus aria-hidden /></Button>} />;
+    emptyMessage={t("componentsCoordinator.sidePanel.nothingElseWaiting")}
+    trigger={<Button type="button" variant="ghost" size="icon-sm" className="h-(--side-panel-tab-height) w-(--side-panel-tab-height) shrink-0 rounded-md text-muted-foreground hover:text-foreground focus-visible:text-foreground" aria-label={t("componentsCoordinator.sidePanel.openNewTab")}><Plus aria-hidden /></Button>} />;
   const header = <SidePanelTabs tabs={visualTabs} activeTabId={activeTabId} onActiveTabChange={onSelectTab} onCloseTab={onCloseTab}
     onReorderTabs={onReorderTabs} addControl={launcher} appearance="streamlined-task" />;
   const active = tabs.find(tab => tab.id === activeTabId) ?? null;
   const item = active ? byId.get(active.payload.itemId) ?? null : null;
   return <div className="flex min-h-full flex-col" data-coordinator-side-panel>
     {slot ? createPortal(header, slot) : header}
-    {!active ? <SidePanelLauncher sections={sections} onSelect={select} emptyMessage="Nothing else is waiting on you." />
+    {!active ? <SidePanelLauncher sections={sections} onSelect={select} emptyMessage={t("componentsCoordinator.sidePanel.nothingElseWaiting")} />
       : item ? renderReview(item, active)
-      : <p className="text-sm text-muted-foreground">This is no longer waiting on you.</p>}
+      : <p className="text-sm text-muted-foreground">{t("componentsCoordinator.sidePanel.noLongerWaiting")}</p>}
   </div>;
 }

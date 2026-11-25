@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { deriveAgentUrlKey, deriveProjectUrlKey, normalizeProjectUrlKey, hasNonAsciiContent } from "@paperclipai/shared";
 import type { BillingType, FinanceDirection, FinanceEventKind } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -40,7 +41,7 @@ export function formatNumber(n: number, options?: Intl.NumberFormatOptions): str
  */
 export function formatProjectBudget(budget: { amountCents: number; windowKind: string }): string {
   const amount = formatCents(budget.amountCents);
-  return budget.windowKind === "calendar_month_utc" ? `${amount}/mo` : amount;
+  return budget.windowKind === "calendar_month_utc" ? t("libUtils.perMonth", { amount }) : amount;
 }
 
 export function formatDate(date: Date | string): string {
@@ -77,13 +78,13 @@ export function relativeTime(date: Date | string): string {
   const now = Date.now();
   const then = new Date(date).getTime();
   const diffSec = Math.round((now - then) / 1000);
-  if (diffSec < 60) return "just now";
+  if (diffSec < 60) return t("libUtils.relative.justNow");
   const diffMin = Math.round(diffSec / 60);
-  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffMin < 60) return t("libUtils.relative.minutesAgo", { count: diffMin });
   const diffHr = Math.round(diffMin / 60);
-  if (diffHr < 24) return `${diffHr}h ago`;
+  if (diffHr < 24) return t("libUtils.relative.hoursAgo", { count: diffHr });
   const diffDay = Math.round(diffHr / 24);
-  if (diffDay < 30) return `${diffDay}d ago`;
+  if (diffDay < 30) return t("libUtils.relative.daysAgo", { count: diffDay });
   return formatDate(date);
 }
 
@@ -131,12 +132,12 @@ export function providerDisplayName(provider: string): string {
 
 export function billingTypeDisplayName(billingType: BillingType): string {
   const map: Record<BillingType, string> = {
-    metered_api: "Metered API",
-    subscription_included: "Subscription",
-    subscription_overage: "Subscription overage",
-    credits: "Credits",
-    fixed: "Fixed",
-    unknown: "Unknown",
+    metered_api: t("libUtils.billingType.meteredApi"),
+    subscription_included: t("libUtils.billingType.subscriptionIncluded"),
+    subscription_overage: t("libUtils.billingType.subscriptionOverage"),
+    credits: t("libUtils.billingType.credits"),
+    fixed: t("libUtils.billingType.fixed"),
+    unknown: t("libUtils.billingType.unknown"),
   };
   return map[billingType];
 }
@@ -146,7 +147,7 @@ export function quotaSourceDisplayName(source: string): string {
     "anthropic-oauth": "Anthropic OAuth",
     "claude-cli": "Claude CLI",
     "bedrock": "AWS Bedrock",
-    "codex-rpc": "Codex app server",
+    "codex-rpc": t("libUtils.quotaSource.codexRpc"),
     "codex-wham": "ChatGPT WHAM",
   };
   return map[source] ?? source;
@@ -226,26 +227,26 @@ export function visibleRunCostUsd(
 
 export function financeEventKindDisplayName(eventKind: FinanceEventKind): string {
   const map: Record<FinanceEventKind, string> = {
-    inference_charge: "Inference charge",
-    platform_fee: "Platform fee",
-    credit_purchase: "Credit purchase",
-    credit_refund: "Credit refund",
-    credit_expiry: "Credit expiry",
-    byok_fee: "BYOK fee",
-    gateway_overhead: "Gateway overhead",
-    log_storage_charge: "Log storage",
-    logpush_charge: "Logpush",
-    provisioned_capacity_charge: "Provisioned capacity",
-    training_charge: "Training",
-    custom_model_import_charge: "Custom model import",
-    custom_model_storage_charge: "Custom model storage",
-    manual_adjustment: "Manual adjustment",
+    inference_charge: t("libUtils.financeEventKind.inferenceCharge"),
+    platform_fee: t("libUtils.financeEventKind.platformFee"),
+    credit_purchase: t("libUtils.financeEventKind.creditPurchase"),
+    credit_refund: t("libUtils.financeEventKind.creditRefund"),
+    credit_expiry: t("libUtils.financeEventKind.creditExpiry"),
+    byok_fee: t("libUtils.financeEventKind.byokFee"),
+    gateway_overhead: t("libUtils.financeEventKind.gatewayOverhead"),
+    log_storage_charge: t("libUtils.financeEventKind.logStorage"),
+    logpush_charge: t("libUtils.financeEventKind.logpush"),
+    provisioned_capacity_charge: t("libUtils.financeEventKind.provisionedCapacity"),
+    training_charge: t("libUtils.financeEventKind.training"),
+    custom_model_import_charge: t("libUtils.financeEventKind.customModelImport"),
+    custom_model_storage_charge: t("libUtils.financeEventKind.customModelStorage"),
+    manual_adjustment: t("libUtils.financeEventKind.manualAdjustment"),
   };
   return map[eventKind];
 }
 
 export function financeDirectionDisplayName(direction: FinanceDirection): string {
-  return direction === "credit" ? "Credit" : "Debit";
+  return direction === "credit" ? t("libUtils.direction.credit") : t("libUtils.direction.debit");
 }
 
 /** Build an issue URL using the human-readable identifier when available. */

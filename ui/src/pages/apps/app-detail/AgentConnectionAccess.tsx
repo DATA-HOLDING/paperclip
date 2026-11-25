@@ -4,6 +4,7 @@ import { AgentAvatar } from "@/components/AgentAvatar";
 import { Button } from "@/components/ui/button";
 import { describeError } from "@/api/errors";
 import { actionLabel } from "./action-permissions";
+import { t } from "@/i18n";
 
 export function AgentConnectionAccess({ connectionId, profiles, policies, catalog, agents, canManage, onRemove }: {
   connectionId: string;
@@ -63,8 +64,8 @@ export function AgentConnectionAccess({ connectionId, profiles, policies, catalo
 
   return <section className="space-y-4 border-t border-border pt-8">
     <div className="space-y-2">
-      <h2 className="text-sm font-semibold">Additional agent access</h2>
-      <p className="text-sm text-muted-foreground">These agents can use the listed actions in addition to the permissions above. Removing a grant restores their other permissions.</p>
+      <h2 className="text-sm font-semibold">{t("pagesAppsAppDetail.agentAccess.title")}</h2>
+      <p className="text-sm text-muted-foreground">{t("pagesAppsAppDetail.agentAccess.description")}</p>
     </div>
     {grants.map(profile => {
       const agentId = profile.metadata!.agentId as string;
@@ -73,11 +74,11 @@ export function AgentConnectionAccess({ connectionId, profiles, policies, catalo
       return <div key={profile.id} className="space-y-3 rounded-lg border border-border p-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <AgentAvatar agent={agent ?? { id: agentId, name: "Agent" }} size={32} />
-            <span className="text-sm font-medium">{agent?.name ?? "Agent"}</span>
+            <AgentAvatar agent={agent ?? { id: agentId, name: t("pagesAppsAppDetail.agentAccess.agent") }} size={32} />
+            <span className="text-sm font-medium">{agent?.name ?? t("pagesAppsAppDetail.agentAccess.agent")}</span>
           </div>
           {canManage && <Button variant="outline" size="sm" disabled={pending !== null} onClick={() => void remove(profile.id)}>
-            {pending === profile.id ? "Removing…" : "Remove grant"}
+            {pending === profile.id ? t("pagesAppsAppDetail.agentAccess.removing") : t("pagesAppsAppDetail.agentAccess.removeGrant")}
           </Button>}
         </div>
         <ul className="space-y-2">
@@ -85,7 +86,7 @@ export function AgentConnectionAccess({ connectionId, profiles, policies, catalo
             const askFirst = approvalKeys.has(`${agentId}:${tool.id}`);
             return <li key={tool.id} className="flex items-center justify-between gap-4 text-sm">
               <span className="min-w-0 break-all">{actionLabel(tool)}</span>
-              <span className="shrink-0 text-muted-foreground">{askFirst ? "Ask first" : "Allowed"}</span>
+              <span className="shrink-0 text-muted-foreground">{askFirst ? t("pagesAppsAppDetail.agentAccess.askFirst") : t("pagesAppsAppDetail.agentAccess.allowed")}</span>
             </li>;
           })}
         </ul>

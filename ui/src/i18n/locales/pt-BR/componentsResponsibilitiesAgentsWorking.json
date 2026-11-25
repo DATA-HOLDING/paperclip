@@ -1,0 +1,6 @@
+{
+  "noAgents": "Nenhum agente nisto ainda",
+  "anAgent": "Um agente",
+  "agentsOnThis": "Agentes nisto: {{names}}",
+  "noneAtWork": "Nenhum agente está trabalhando nisto ainda. Dê a um deles uma tarefa, uma rotina ou um projeto abaixo."
+}

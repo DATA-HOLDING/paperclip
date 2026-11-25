@@ -1,0 +1,20 @@
+{
+  "workspace": {
+    "defaultNamed": "{{name}} (default)",
+    "default": "Default workspace",
+    "none": "No workspace"
+  },
+  "kind": {
+    "issue": "Tasks",
+    "approval": "Approvals",
+    "failedRun": "Failed runs",
+    "joinRequest": "Join requests"
+  },
+  "assignee": {
+    "user": "User",
+    "none": "Unassigned"
+  },
+  "project": {
+    "none": "No project"
+  }
+}

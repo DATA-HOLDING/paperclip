@@ -1,0 +1,23 @@
+{
+  "you": "You",
+  "notInArea": "Not in an area",
+  "archivedSuffix": " · Archived",
+  "nothingFiled": "Nothing you own is filed here yet.",
+  "newResponsibility": "New responsibility",
+  "overview": {
+    "title": "Overview",
+    "subtitle": "A snapshot of your work"
+  },
+  "figures": {
+    "areas": "Areas",
+    "responsibilities": "Responsibilities",
+    "projects": "Projects",
+    "tasks": "Tasks"
+  },
+  "areas": {
+    "title": "Areas",
+    "subtitle": "What do you care about?",
+    "newArea": "New area",
+    "empty": "Nothing you own yet. Review what was proposed for you, or add a new responsibility."
+  }
+}

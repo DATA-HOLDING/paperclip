@@ -1,0 +1,19 @@
+{
+  "pending": "pendente",
+  "description": "Fixture local determinística para medir o caminho atual de renderização direta do chat da tarefa com centenas de linhas de conversa mescladas, corpos de assistente com muito markdown, execuções vinculadas, documentos, subtarefas e contexto da barra lateral.",
+  "metric": {
+    "fixtureRows": "Linhas da fixture",
+    "markdownRows": "Linhas com markdown",
+    "profilerCommits": "Commits do profiler",
+    "mountDuration": "Duração da montagem",
+    "latestDuration": "Duração mais recente",
+    "maxDuration": "Duração máxima",
+    "totalDuration": "Duração total"
+  },
+  "card": {
+    "issueDocuments": "Documentos da tarefa",
+    "subIssues": "Subtarefas",
+    "baselineMetrics": "Métricas de referência",
+    "fixtureShape": "Formato da fixture"
+  }
+}

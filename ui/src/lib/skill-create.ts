@@ -3,6 +3,7 @@ import type {
   CompanySkillDetail,
   CompanySkillSharingScope,
 } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 export const SKILL_CREATE_ACCENTS = [
   "#6366f1", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444",
@@ -49,8 +50,8 @@ export function splitCategoryDraft(value: string) {
 }
 
 export function defaultSkillMarkdown(name: string, tagline: string) {
-  const title = name.trim() || "New Skill";
-  const summary = tagline.trim() || "Describe when agents should use this skill.";
+  const title = name.trim() || t("libSkillCreate.defaultName");
+  const summary = tagline.trim() || t("libSkillCreate.defaultSummary");
   return [
     "---",
     `name: ${title}`,
@@ -61,15 +62,15 @@ export function defaultSkillMarkdown(name: string, tagline: string) {
     "",
     summary,
     "",
-    "## When To Use",
+    `## ${t("libSkillCreate.template.whenToUse")}`,
     "",
-    "- Use this skill when the task needs its specialized workflow.",
+    `- ${t("libSkillCreate.template.whenToUseItem")}`,
     "",
-    "## Workflow",
+    `## ${t("libSkillCreate.template.workflow")}`,
     "",
-    "1. Inspect the task context.",
-    "2. Apply the workflow carefully.",
-    "3. Report what changed and how it was verified.",
+    `1. ${t("libSkillCreate.template.step1")}`,
+    `2. ${t("libSkillCreate.template.step2")}`,
+    `3. ${t("libSkillCreate.template.step3")}`,
     "",
   ].join("\n");
 }
@@ -99,7 +100,7 @@ export function buildBlankSkillDraft(): SkillCreateDraft {
 }
 
 export function buildForkSkillDraft(skill: CompanySkillDetail): SkillCreateDraft {
-  const name = `${skill.name} Fork`;
+  const name = t("libSkillCreate.forkName", { name: skill.name });
   const slug = normalizeSkillDraftSlug(`${skill.slug}-fork`);
   return {
     name,

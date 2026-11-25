@@ -1,0 +1,33 @@
+{
+  "author": {
+    "agent": "Agente",
+    "user": "Usuário",
+    "system": "Sistema"
+  },
+  "via": "via",
+  "actor": {
+    "agent": "agente",
+    "board": "conselho",
+    "system": "sistema"
+  },
+  "revisionOption": "rev. {{number}} - {{time}} - {{actor}}",
+  "diffTitle": "Diferenças -",
+  "old": "Antiga",
+  "new": "Nova",
+  "oldRevision": "Revisão antiga",
+  "newRevision": "Revisão nova",
+  "selectRevision": "Selecione a revisão",
+  "selectTwo": "Selecione duas revisões para comparar.",
+  "sameRevision": "Os dois lados são a mesma revisão.",
+  "content": "Conteúdo",
+  "loading": "Carregando revisões…",
+  "empty": "Nenhuma revisão ainda.",
+  "revisions": "Revisões",
+  "diff": "Diferenças",
+  "revisionNumber": "rev. {{number}}",
+  "latest": "mais recente",
+  "noBody": "Esta revisão não tem conteúdo.",
+  "errorActions": {
+    "loadRevisions": "carregar as revisões"
+  }
+}

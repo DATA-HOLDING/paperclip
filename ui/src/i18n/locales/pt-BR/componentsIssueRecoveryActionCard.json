@@ -1,0 +1,229 @@
+{
+  "kind": {
+    "missing_disposition": "Destino ausente",
+    "deliberate_wait_without_target": "Espera sem alvo",
+    "stranded_assigned_issue": "Tarefa parada",
+    "workspace_validation": "Validação do espaço de trabalho",
+    "configuration_validation": "Validação da configuração",
+    "active_run_watchdog": "Vigilância ativa",
+    "issue_graph_liveness": "Tarefa precisa de próximo passo"
+  },
+  "headline": {
+    "missing_disposition": "A execução desta tarefa terminou, mas nenhum próximo passo foi escolhido. Escolha o que acontece agora — tentar a tarefa de novo, marcá-la como concluída ou enviá-la para revisão.",
+    "deliberate_wait_without_target": "A última execução desta tarefa parou para esperar, mas não há revisor, bloqueio, monitor ou aprovação a aguardar. O Paperclip está corrigindo o próximo passo; a tarefa continua com o responsável.",
+    "stranded_assigned_issue": "O Paperclip tentou de novo a última execução desta tarefa, mas ainda não há execução na fila, revisor, bloqueio ou outro próximo responsável. Para destravá-la, escolha o que acontece agora — tentar a tarefa de novo, marcá-la como concluída ou enviá-la para revisão.",
+    "workspace_validation": "O Paperclip interrompeu esta execução porque o espaço de trabalho git da tarefa não pôde ser validado.",
+    "configuration_validation": "O Paperclip parou antes de despachar esta execução porque faltam vínculos obrigatórios de segredo/variável de ambiente.",
+    "active_run_watchdog": "A execução ativa está em silêncio. A recuperação está observando sem interrompê-la.",
+    "issue_graph_liveness": "O Paperclip não encontrou um próximo passo claro para esta tarefa aberta. Escolha se quer continuar o trabalho, enviá-la para revisão, marcá-la como concluída ou registrar o que a bloqueia."
+  },
+  "state": {
+    "needed": "RECUPERAÇÃO NECESSÁRIA",
+    "in_progress": "RECUPERAÇÃO EM ANDAMENTO",
+    "observe_only": "OBSERVANDO EXECUÇÃO ATIVA",
+    "escalated": "RECUPERAÇÃO ESCALADA",
+    "resolved": "RECUPERAÇÃO RESOLVIDA"
+  },
+  "outcome": {
+    "restored": "restaurada",
+    "handed_back": "devolvida ao responsável original",
+    "owner_completed": "concluída pelo responsável da recuperação",
+    "delegated": "delegada para acompanhamento",
+    "false_positive": "falso positivo",
+    "blocked": "bloqueada",
+    "escalated": "escalada",
+    "cancelled": "cancelada"
+  },
+  "ancestry": {
+    "ancestor": "Só para frente",
+    "diverged": "Divergente",
+    "unknown": "Ancestralidade desconhecida"
+  },
+  "branch": {
+    "detachedUnknown": "desanexado / desconhecido",
+    "detached": "desanexado"
+  },
+  "divergence": {
+    "title": "Diagnóstico da divergência",
+    "expectedRecorded": "Esperado · registrado",
+    "liveCheckedOut": "Ativo · em checkout"
+  },
+  "contention": {
+    "claimedBy": "Worktree ocupada por",
+    "activeRun": "(execução ativa)",
+    "claimHeld": "(reserva mantida)",
+    "after": " — o reparo sem perdas não pode rodar enquanto outro espaço de trabalho ocupa o branch ativo.",
+    "issueLabel": "tarefa {{id}}",
+    "anotherTask": "outra tarefa"
+  },
+  "breakGlass": {
+    "trigger": "Já verifiquei — reconciliar mesmo assim",
+    "title": "Reconciliação de emergência",
+    "descriptionBefore": "Isto ignora a verificação de segurança do Paperclip e aponta o espaço de trabalho registrado para o branch ativo",
+    "withoutProof": "sem prova de ancestralidade",
+    "descriptionAfter": ". Confirme a divergência abaixo e registre o motivo antes de continuar.",
+    "recordedExpected": "Registrado · esperado",
+    "ancestryVerdict": "Veredito de ancestralidade",
+    "reason": "Motivo",
+    "reasonRequired": "(obrigatório — registrado no log de auditoria)",
+    "reasonPlaceholder": "ex.: Verifiquei que o branch ativo tem só os commits de continuação esperados; é seguro adotá-lo.",
+    "reconciling": "Reconciliando…",
+    "confirm": "Reconciliar mesmo assim (emergência)"
+  },
+  "repair": {
+    "uncommittedChanges": "Alterações não commitadas",
+    "trigger": "Reparar espaço de trabalho — isolar alterações e restaurar branch",
+    "title": "Reparar espaço de trabalho",
+    "description": "Isto não perde nada — nenhum motivo é necessário. Suas alterações não commitadas são commitadas num novo branch de resgate e, depois, o branch registrado é restaurado para a tarefa continuar. O branch ativo fica exatamente como está.",
+    "dirtyChanges": "Alterações pendentes",
+    "liveBranch": "Branch ativo",
+    "leftUntouched": "(não é alterado)",
+    "rescueBranch": "Branch de resgate",
+    "restoreTo": "Restaurar para",
+    "recordedBranch": "branch registrado",
+    "repairing": "Reparando…",
+    "confirm": "Isolar alterações e restaurar branch",
+    "heldByReissue": "Ocupado por {{label}} — recrie em um espaço de trabalho isolado.",
+    "heldBy": "Ocupado por {{label}}.",
+    "uncommittedCount_one": "{{count}} alteração não commitada",
+    "uncommittedCount_other": "{{count}} alterações não commitadas"
+  },
+  "wake": {
+    "wakeOwner": "Um agente será chamado para escolher o próximo passo",
+    "boundedOwnerRepair": "O Paperclip está tentando de novo com o responsável original",
+    "boundedRecoveryOwner": "Um agente está escolhendo o próximo passo",
+    "boardEscalation": "Aguardando você",
+    "manual": "Acompanhamento manual necessário",
+    "manualRepairRequired": "Precisa de correção antes de tentar novamente",
+    "checkScheduledEvery": "Verificação agendada · {{interval}}",
+    "checkScheduled": "Verificação agendada",
+    "retryExpired": "A nova tentativa agendada não rodou — é preciso tentar de novo ou decidir",
+    "exhausted": "As novas tentativas automáticas acabaram — é preciso decidir"
+  },
+  "time": {
+    "inMinutes": "em {{minutes}}m",
+    "minutesAgo": "há {{minutes}}m"
+  },
+  "agentLabel": "agente {{id}}",
+  "runLabel": "execução {{id}}",
+  "lineage": {
+    "nativeRun": {
+      "live": "O Paperclip está recuperando a execução existente.",
+      "exhausted": "O Paperclip não conseguiu recuperar a execução existente dentro do limite de tentativas. Revise a falha registrada antes de tentar novamente.",
+      "retryExpired": "A nova tentativa da execução existente venceu e não começou. Revise a falha registrada e tente novamente quando estiver pronto.",
+      "scheduled": "O Paperclip agendou outra tentativa de retomar a execução existente.",
+      "needsRecovery": "A execução existente ainda precisa de recuperação. Revise a falha registrada antes de tentar novamente."
+    },
+    "retryExpired": "A nova tentativa automática desta tarefa venceu e não rodou, então nada a está fazendo avançar agora. Alguém precisa tentar de novo ou registrar o próximo passo.",
+    "sourceOwner": {
+      "exhausted": "A última execução desta tarefa parou para esperar, mas nada estava esperando por ela. O responsável original já usou todas as tentativas automáticas de reparo, então o próximo passo precisa de uma decisão. A tarefa continua com o responsável.",
+      "retrying": "A última execução desta tarefa parou para esperar, mas nada estava esperando por ela. O Paperclip está tentando de novo com o responsável original para registrar um próximo passo real. A tarefa continua com o responsável, e nenhuma ação é necessária ainda."
+    },
+    "recoveryOwner": "O responsável original não conseguiu registrar um próximo passo dentro do limite de tentativas. Um responsável pela recuperação agora está corrigindo só o caminho — a tarefa em si continua sendo do responsável original.",
+    "board": "A recuperação automática se esgotou, então o conselho precisa escolher o próximo passo. A tarefa em si continua sendo do responsável original."
+  },
+  "resolve": {
+    "todo": {
+      "label": "Tentar novamente",
+      "description": "Dispensar a recuperação e voltar a tarefa de origem para a fazer."
+    },
+    "done": {
+      "label": "Marcar tarefa como concluída",
+      "description": "Restaurar registrando o trabalho pedido como concluído."
+    },
+    "in_review": {
+      "label": "Enviar para revisão",
+      "description": "Passar para um revisor com um caminho de revisão real."
+    },
+    "false_positive_done": {
+      "label": "Falso positivo, concluída",
+      "description": "Dispensar a recuperação e marcar a tarefa de origem como concluída."
+    },
+    "false_positive_in_review": {
+      "label": "Falso positivo, revisão",
+      "description": "Dispensar a recuperação e enviar a tarefa de origem para revisão."
+    },
+    "title": "Resolver recuperação",
+    "trigger": "Resolver…"
+  },
+  "resolvedHeadline": "Recuperação resolvida como {{outcome}}.",
+  "humanDecisionHeadline": "Esta recuperação precisa de uma decisão humana. Revise a falha registrada e escolha o próximo passo.",
+  "aria": {
+    "needed": "necessária",
+    "in_progress": "em andamento",
+    "observe_only": "observando execução ativa",
+    "escalated": "escalada",
+    "resolved": "resolvida"
+  },
+  "ariaLabel": "Ação de recuperação: {{state}}",
+  "meta": {
+    "taskOwner": "Responsável pela tarefa",
+    "keepsThisTask": "continua com esta tarefa",
+    "recoveryOwner": "Responsável pela recuperação",
+    "recoversExistingRun": "recupera a execução existente",
+    "originalOwnerRetrying": "Responsável original — tentando de novo",
+    "repairsNextStep": "corrige só o próximo passo",
+    "board": "Conselho",
+    "decidesNextStep": "decide só o próximo passo",
+    "userLabel": "usuário {{id}}",
+    "unassignedPick": "sem responsável — escolha um para acioná-lo",
+    "retryProgress": "Progresso das tentativas",
+    "attemptsNotBounded": "Tentativas sem limite",
+    "attemptRunningNow": "Tentativa em execução agora",
+    "retryMissedAt": "Tentativa perdida {{offset}}",
+    "retryMissed": "Tentativa perdida",
+    "nextTryNow": "Próxima tentativa agora",
+    "nextTryAt": "Próxima tentativa {{offset}}",
+    "retriesUsedUp": "Tentativas automáticas esgotadas",
+    "ownerRetries": "Tentativas do responsável",
+    "ownerUsedAttempts": "O responsável original usou {{used}} de {{max}} tentativas automáticas.",
+    "owner": "Responsável",
+    "recovery": "Recuperação:",
+    "system": "Sistema",
+    "returnsTo": "→ Volta para:",
+    "sourceRun": "Execução de origem",
+    "correctiveRun": "Execução corretiva",
+    "evidence": "Evidência",
+    "nextAction": "Próxima ação",
+    "followUp": "Acompanhamento",
+    "attemptOf": "tentativa {{count}} de {{max}}",
+    "soon": "em breve",
+    "timesOut": "Expira {{when}}",
+    "resolution": "Resolução",
+    "resolvedAs": "Resolvida como {{outcome}}"
+  },
+  "unassigned": "sem responsável",
+  "reconcileForward": "Reconciliar para frente e continuar",
+  "reissue": {
+    "title": "Recriar em espaço de trabalho isolado",
+    "recommended": "Recomendado",
+    "description": "Cria uma cópia nova desta tarefa em uma worktree git isolada baseada no branch ativo. Seu espaço de trabalho atual e os commits dele não são alterados.",
+    "baseRef": "Ref base",
+    "recorded": "Registrado",
+    "ancestry": "Ancestralidade",
+    "creating": "Criando…",
+    "confirm": "Criar recriação isolada"
+  },
+  "footer": {
+    "observing": "A recuperação está observando sem interromper a execução ativa.",
+    "staysOpen": "O cartão fica aberto até uma decisão explícita ser registrada."
+  },
+  "containment": {
+    "confirmError": "Confirme as duas paradas no host original e revise os resultados das ações.",
+    "ariaLabel": "Recuperação do controlador original",
+    "title": "Verifique se a execução original parou",
+    "description": "O Paperclip não consegue comparar IDs de processo entre hosts ou sessões do kernel. Pare o controlador e o provedor no host original antes de registrar a evidência. A concessão salva também precisa expirar e a limpeza do ambiente/espaço de trabalho precisa terminar. Registrar a contenção não tenta a tarefa de novo.",
+    "controllerStopped": "Verifiquei que o controlador original parou no host original.",
+    "providerStopped": "Verifiquei que o provedor original e as ferramentas dele pararam no host original.",
+    "outcomesLabel": "Resultados das ações externas revisados",
+    "outcomePlaceholder": "Selecione só depois de revisar os efeitos",
+    "outcomeCompleted": "Todas concluídas",
+    "outcomeNotPerformed": "Nenhuma realizada",
+    "outcomeMixed": "Algumas concluídas e outras não realizadas",
+    "evidenceLabel": "Evidência de contenção no host original e ações que não devem ser repetidas",
+    "unknownHint": "Se o resultado de alguma ação ainda for desconhecido, mantenha esta retenção. Depois que a evidência e a limpeza se resolverem, use a ação comum de Tentar novamente da tarefa separadamente.",
+    "recording": "Registrando…",
+    "record": "Registrar contenção",
+    "needsAdmin": "Um dono da organização, um administrador da organização ou um administrador da instância precisa revisar esta execução no host original."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "chip": {
+    "changesRequested": "Changes requested",
+    "review": "Review",
+    "failed": "Failed",
+    "opening": "Opening",
+    "pending": "Pending",
+    "open": "Open",
+    "draft": "Draft",
+    "merged": "Merged",
+    "closed": "Closed",
+    "running": "Running",
+    "stopped": "Stopped",
+    "down": "Down",
+    "unhealthy": "Unhealthy"
+  },
+  "action": {
+    "openOnGithub": "Open on GitHub",
+    "openPreview": "Open preview",
+    "openGallery": "Open gallery",
+    "download": "Download",
+    "openDocument": "Open document",
+    "openService": "Open service"
+  },
+  "meta": {
+    "branch": "Branch",
+    "branchNoRemote": "Branch · no remote link",
+    "image": "Image",
+    "video": "Video",
+    "file": "File",
+    "document": "Document",
+    "rev": "rev {{revision}}",
+    "port": "port {{port}}"
+  },
+  "fileCount_one": "{{count}} file",
+  "fileCount_other": "{{count}} files",
+  "noLink": "No link was provided for this work product.",
+  "updated": "Updated {{date}}",
+  "savedDescription": "Saved description",
+  "openInTabLabel": "Open in tab: {{title}}",
+  "openInTab": "Open in tab",
+  "hideDetailsLabel": "Hide details: {{title}}",
+  "showDetailsLabel": "Show details: {{title}}",
+  "hideDetails": "Hide details",
+  "showDetails": "Show details"
+}

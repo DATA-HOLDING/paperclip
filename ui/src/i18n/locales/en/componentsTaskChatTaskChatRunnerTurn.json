@@ -1,0 +1,11 @@
+{
+  "status": {
+    "stopped": "Stopped",
+    "worked": "Worked",
+    "working": "Working",
+    "after": "after {{elapsed}}",
+    "for": "for {{elapsed}}"
+  },
+  "continuedAfterSteering": "Continued after steering",
+  "thinking": "Thinking"
+}

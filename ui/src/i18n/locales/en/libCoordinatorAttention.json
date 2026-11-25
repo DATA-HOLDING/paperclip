@@ -1,0 +1,31 @@
+{
+  "ask": {
+    "blocker": "Get “{{title}}” moving again",
+    "agentError": "{{agent}} hit an error and needs help",
+    "review": "Review “{{title}}”",
+    "approval": "Approve “{{title}}”?",
+    "joinRequest": "Let {{title}} join the company?"
+  },
+  "detail": {
+    "blockerHolding_one": "It's holding up {{count}} task, and no one is working on it. Unblock it, reassign it, or nudge its owner.",
+    "blockerHolding_other": "It's holding up {{count}} tasks, and no one is working on it. Unblock it, reassign it, or nudge its owner.",
+    "blockerIdle": "No one is working on it. Unblock it, reassign it, or nudge its owner."
+  },
+  "outcome": {
+    "accepted": "Approved",
+    "answered": "Answered",
+    "rejected": "Changes requested",
+    "decided": "Decided",
+    "withdrawn": "Withdrawn",
+    "expired": "Expired",
+    "issueClosed": "Closed with task",
+    "cancelled": "Cancelled"
+  },
+  "scope": {
+    "mine": "Handled by me or for me",
+    "all": "Everyone"
+  },
+  "someone": "someone",
+  "withdrawnBy": "Withdrawn by @{{actorLabel}}",
+  "approvalContext": "Approval · {{title}}"
+}

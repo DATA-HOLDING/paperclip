@@ -22,6 +22,7 @@ import {
 import { connectionAddress } from "./AppDetail";
 import { ReviewPanel } from "./app-detail/ReviewPanel";
 import { appApplicationTabHref, appTabHref, appTabLabel, isAppTabKey, type AppTabKey } from "./app-tabs";
+import { t } from "@/i18n";
 
 export function AppNotConnected() {
   const { applicationId = "", tab } = useParams<{ applicationId: string; tab?: string }>();
@@ -79,11 +80,11 @@ export function AppNotConnected() {
   const connectionsView = useQueryView(connectionsQuery);
   const grantsView = useQueryView(grantsQuery);
 
-  const appName = application?.name ?? "App";
+  const appName = application?.name ?? t("pagesApps.common.app");
   useEffect(() => {
     if (!activeTab) return;
     setBreadcrumbs([
-      { label: "Connectors", href: "/apps" },
+      { label: t("pagesApps.common.connectors"), href: "/apps" },
       { label: appName, href: appApplicationTabHref(applicationId, "permissions") },
       { label: appTabLabel(activeTab) },
     ]);
@@ -97,7 +98,7 @@ export function AppNotConnected() {
     return <Navigate to={appApplicationTabHref(applicationId, "permissions")} replace />;
   }
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select an organization to manage apps.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">{t("pagesApps.notConnected.selectOrganization")}</div>;
   }
   if (!applicationId || !activeTab) {
     return <Navigate to={applicationId ? appApplicationTabHref(applicationId, "permissions") : "/apps"} replace />;
@@ -108,7 +109,7 @@ export function AppNotConnected() {
       <QueryErrorState
         size="page"
         error={loadFailure.error}
-        action="load this app"
+        action={t("pagesApps.errorActions.loadApp")}
         onRetry={loadFailure.retry}
         retrying={loadFailure.isFetching}
       />
@@ -128,8 +129,8 @@ export function AppNotConnected() {
   if (!application) {
     return (
       <div className="max-w-3xl space-y-3 p-6 text-sm text-muted-foreground">
-        <p>This app doesn’t exist anymore.</p>
-        <Button variant="outline" size="sm" onClick={() => navigate("/apps")}>Back to connectors</Button>
+        <p>{t("pagesApps.notConnected.missing")}</p>
+        <Button variant="outline" size="sm" onClick={() => navigate("/apps")}>{t("pagesApps.tailscale.backToConnectors")}</Button>
       </div>
     );
   }
@@ -167,13 +168,13 @@ export function AppNotConnected() {
       )
       : grantsQuery.data?.capabilities.canConfigure === true);
   const reconnectUnavailableMessage = grantsQuery.isLoading || grantsView.kind === "reconnecting"
-    ? "Checking who can reconnect this identity…"
+    ? t("pagesApps.notConnected.checkingReconnect")
     : grantsView.kind === "error"
-      ? "We couldn't verify who can reconnect this identity. Reload the page to try again."
+      ? t("pagesApps.notConnected.verifyFailed")
       : previousConnection?.credentialPolicy === "per_user"
         && retainedPersonalUserId !== grantsQuery.data?.currentUserId
-        ? "The person this connection belongs to must reconnect it."
-        : "You don't have permission to reconnect this identity.";
+        ? t("pagesApps.notConnected.ownerMustReconnect")
+        : t("pagesApps.notConnected.noPermission");
   const connectHref = newConnectionHref({
     applicationId,
     appName: application.name,
@@ -204,8 +205,8 @@ export function AppNotConnected() {
           <ReviewPanel connectionId={previousConnection.id} />
         ) : (
           <EmptyTab
-            title="Nothing is waiting for your OK right now."
-            body="Review requests will appear here after this app is connected."
+            title={t("pagesApps.reviewQueue.empty")}
+            body={t("pagesApps.notConnected.reviewEmptyBody")}
           />
         )
       )}
@@ -236,7 +237,7 @@ function ApplicationHeader({
         <div className="flex items-center gap-2">
           <h1 className="truncate text-2xl font-bold tracking-tight">{applicationName}</h1>
           <span className="inline-flex items-center rounded-full border border-border bg-background px-2 py-0.5 text-xs font-medium text-muted-foreground">
-            {connectedCount > 0 ? `${connectedCount} connected` : "Not connected"}
+            {connectedCount > 0 ? t("pagesApps.notConnected.connectedCount", { count: connectedCount }) : t("pagesApps.notConnected.notConnected")}
           </span>
         </div>
         {description && (
@@ -264,21 +265,21 @@ function ConnectionCallout({
     <section className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border px-4 py-3">
       <div>
         <h2 className="text-sm font-semibold text-foreground">
-          {previousConnection ? "Needs attention" : "Not connected"}
+          {previousConnection ? t("pagesApps.notConnected.needsAttention") : t("pagesApps.notConnected.notConnected")}
         </h2>
         <p className="mt-0.5 text-sm text-muted-foreground">
           {previousConnection
             ? previousConnection.authKind === "oauth"
-              ? `Sign in to ${applicationName} again to restore access.`
-              : `Add a working ${applicationName} key to restore access.`
-            : `Connect ${applicationName} so agents can use it.`}
+              ? t("pagesApps.notConnected.signInAgain", { app: applicationName })
+              : t("pagesApps.notConnected.addKey", { app: applicationName })
+            : t("pagesApps.notConnected.connectPrompt", { app: applicationName })}
         </p>
         {previousConnection && !canReconnect ? (
           <p className="mt-1 text-sm text-muted-foreground">{reconnectUnavailableMessage}</p>
         ) : null}
       </div>
       {!previousConnection || canReconnect ? (
-        <Button onClick={onConnect}>{previousConnection ? "Reconnect" : "Connect"}</Button>
+        <Button onClick={onConnect}>{previousConnection ? t("pagesApps.tailscale.reconnect") : t("pagesApps.common.connect")}</Button>
       ) : null}
     </section>
   );
@@ -287,13 +288,13 @@ function ConnectionCallout({
 function PermissionsTab({ previousConnection }: { previousConnection: ToolConnection | null }) {
   return (
     <section>
-      <h2 className="text-sm font-bold text-foreground">Permissions paused</h2>
+      <h2 className="text-sm font-bold text-foreground">{t("pagesApps.notConnected.permissionsPaused")}</h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Reconnect this app to edit who can use it and which actions need a human first.
+        {t("pagesApps.notConnected.permissionsPausedBody")}
       </p>
       {previousConnection && (
         <p className="mt-3 text-xs text-muted-foreground">
-          Previous setup is retained for reconnect, but access controls stay read-only until the app is online.
+          {t("pagesApps.notConnected.previousSetup")}
         </p>
       )}
     </section>

@@ -1,0 +1,34 @@
+{
+  "tooltip": {
+    "runs_one": "{{date}}: {{count}} run",
+    "runs_other": "{{date}}: {{count}} runs",
+    "succeeded": "succeeded: {{count}}",
+    "recovered": "recovered: {{count}} (retry succeeded)",
+    "failed": "failed: {{count}}",
+    "other": "other: {{count}}",
+    "issues": "{{date}}: {{count}} issues"
+  },
+  "noRuns": "No runs yet",
+  "noTasks": "No tasks",
+  "legend": {
+    "succeeded": "Succeeded",
+    "recovered": "Recovered",
+    "failed": "Failed",
+    "other": "Other"
+  },
+  "priority": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "status": {
+    "todo": "To Do",
+    "inProgress": "In Progress",
+    "inReview": "In Review",
+    "done": "Done",
+    "blocked": "Blocked",
+    "cancelled": "Cancelled",
+    "backlog": "Backlog"
+  }
+}

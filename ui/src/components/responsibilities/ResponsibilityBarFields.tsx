@@ -10,6 +10,7 @@ import {
   type BarDraft,
   type BarField,
 } from "@/lib/responsibilities";
+import { t } from "@/i18n";
 
 function Field({
   label,
@@ -28,7 +29,7 @@ function Field({
     <label className="flex min-w-0 flex-col gap-1.5 text-sm">
       <span className="font-medium text-foreground">
         {label}
-        {optional ? <span className="font-normal text-muted-foreground"> (optional)</span> : null}
+        {optional ? <span className="font-normal text-muted-foreground">{t("componentsResponsibilitiesResponsibilityBarFields.optional")}</span> : null}
       </span>
       {hint ? <span className="text-xs text-muted-foreground">{hint}</span> : null}
       {children}
@@ -64,7 +65,7 @@ export function ResponsibilityBarFields({
 }) {
   const set = (patch: Partial<BarDraft>) => onChange({ ...draft, ...patch });
   const errorFor = (field: BarField, required: string) =>
-    missing?.has(field) ? required : invalid?.has(field) ? problems?.[field] ?? "Enter a number" : null;
+    missing?.has(field) ? required : invalid?.has(field) ? problems?.[field] ?? t("componentsResponsibilitiesResponsibilityBarFields.enterNumber") : null;
   const kind = draft.metricKind;
   const template = METRIC_KIND_OPTIONS.find((option) => option.value === kind);
   const rule = describeDraftStatusRule(draft);
@@ -78,20 +79,20 @@ export function ResponsibilityBarFields({
     />
   );
   const unitField = (
-    <Field label="Unit" optional>
+    <Field label={t("componentsResponsibilitiesResponsibilityBarFields.unit")} optional>
       <Input
         value={draft.metricUnit}
         maxLength={40}
-        placeholder={kind === "range" ? "e.g. months, $" : "e.g. $, days"}
+        placeholder={kind === "range" ? t("componentsResponsibilitiesResponsibilityBarFields.unitPlaceholderRange") : t("componentsResponsibilitiesResponsibilityBarFields.unitPlaceholder")}
         onChange={(event) => set({ metricUnit: event.target.value })}
       />
     </Field>
   );
   const directionField = (
-    <Field label="Better when it is">
+    <Field label={t("componentsResponsibilitiesResponsibilityBarFields.direction")}>
       <NativeSelect
         value={draft.metricDirection}
-        aria-label="Better when it is"
+        aria-label={t("componentsResponsibilitiesResponsibilityBarFields.direction")}
         onChange={(event) => set({ metricDirection: event.target.value as ResponsibilityMetricDirection })}
       >
         {METRIC_DIRECTION_OPTIONS.map((option) => (
@@ -103,22 +104,22 @@ export function ResponsibilityBarFields({
   return (
     <div className="flex flex-col gap-4">
       <Field
-        label="The bar"
-        hint="How is success measured? One sentence."
-        error={errorFor("standard", "Describe the bar")}
+        label={t("componentsResponsibilitiesResponsibilityBarFields.bar.label")}
+        hint={t("componentsResponsibilitiesResponsibilityBarFields.bar.hint")}
+        error={errorFor("standard", t("componentsResponsibilitiesResponsibilityBarFields.bar.required"))}
       >
         <Textarea
           rows={2}
           value={draft.standard}
-          placeholder="e.g. Every investor conversation has a next step within a week"
+          placeholder={t("componentsResponsibilitiesResponsibilityBarFields.bar.placeholder")}
           aria-invalid={missing?.has("standard") || undefined}
           onChange={(event) => set({ standard: event.target.value })}
         />
       </Field>
-      <Field label="Kind of measure" hint={template?.summary}>
+      <Field label={t("componentsResponsibilitiesResponsibilityBarFields.kind")} hint={template?.summary}>
         <NativeSelect
           value={kind}
-          aria-label="Kind of measure"
+          aria-label={t("componentsResponsibilitiesResponsibilityBarFields.kind")}
           onChange={(event) => set({ metricKind: event.target.value as ResponsibilityMetricKind, metricCurrent: "" })}
         >
           {METRIC_KIND_OPTIONS.map((option) => (
@@ -127,13 +128,13 @@ export function ResponsibilityBarFields({
         </NativeSelect>
       </Field>
       <Field
-        label={kind === "yes_no" ? "What should be true" : "What you measure"}
-        error={errorFor("metricName", kind === "yes_no" ? "Say what should be true" : "Name what you measure")}
+        label={kind === "yes_no" ? t("componentsResponsibilitiesResponsibilityBarFields.metric.labelYesNo") : t("componentsResponsibilitiesResponsibilityBarFields.metric.label")}
+        error={errorFor("metricName", kind === "yes_no" ? t("componentsResponsibilitiesResponsibilityBarFields.metric.requiredYesNo") : t("componentsResponsibilitiesResponsibilityBarFields.metric.required"))}
       >
         <Input
           value={draft.metricName}
           maxLength={200}
-          placeholder={kind === "yes_no" ? "e.g. Board pack sent a week before the meeting" : kind === "range" ? "e.g. Runway" : "e.g. Investors contacted"}
+          placeholder={kind === "yes_no" ? t("componentsResponsibilitiesResponsibilityBarFields.metric.placeholderYesNo") : kind === "range" ? t("componentsResponsibilitiesResponsibilityBarFields.metric.placeholderRange") : t("componentsResponsibilitiesResponsibilityBarFields.metric.placeholder")}
           aria-invalid={missing?.has("metricName") || undefined}
           onChange={(event) => set({ metricName: event.target.value })}
         />
@@ -141,46 +142,46 @@ export function ResponsibilityBarFields({
       {kind === "volume" ? (
         <div className="grid gap-4 sm:grid-cols-3">
           {directionField}
-          <Field label="Target" error={errorFor("metricTarget", "Set a target")}>{numberInput("metricTarget", "e.g. 20")}</Field>
+          <Field label={t("componentsResponsibilitiesResponsibilityBarFields.target")} error={errorFor("metricTarget", t("componentsResponsibilitiesResponsibilityBarFields.setTarget"))}>{numberInput("metricTarget", t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 20 }))}</Field>
           {unitField}
         </div>
       ) : kind === "percentage" ? (
         <div className="grid gap-4 sm:grid-cols-3">
           {directionField}
-          <Field label="Target (%)" error={errorFor("metricTarget", "Set a target")}>{numberInput("metricTarget", "e.g. 90")}</Field>
+          <Field label={t("componentsResponsibilitiesResponsibilityBarFields.targetPercent")} error={errorFor("metricTarget", t("componentsResponsibilitiesResponsibilityBarFields.setTarget"))}>{numberInput("metricTarget", t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 90 }))}</Field>
         </div>
       ) : kind === "range" ? (
         <div className="grid gap-4 sm:grid-cols-3">
-          <Field label="Low" error={errorFor("metricLow", "Set the low bound")}>{numberInput("metricLow", "e.g. 12")}</Field>
-          <Field label="High" error={errorFor("metricHigh", "Set the high bound")}>{numberInput("metricHigh", "e.g. 24")}</Field>
+          <Field label={t("componentsResponsibilitiesResponsibilityBarFields.low")} error={errorFor("metricLow", t("componentsResponsibilitiesResponsibilityBarFields.setLow"))}>{numberInput("metricLow", t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 12 }))}</Field>
+          <Field label={t("componentsResponsibilitiesResponsibilityBarFields.high")} error={errorFor("metricHigh", t("componentsResponsibilitiesResponsibilityBarFields.setHigh"))}>{numberInput("metricHigh", t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 24 }))}</Field>
           {unitField}
         </div>
       ) : null}
       {rule ? <p className="text-xs text-muted-foreground" data-testid="bar-status-rule">{rule}.</p> : null}
       {showCurrent ? (
         kind === "yes_no" ? (
-          <Field label="Where it is now" optional hint="Is it true today? The agents working on this keep it current.">
+          <Field label={t("componentsResponsibilitiesResponsibilityBarFields.current.label")} optional hint={t("componentsResponsibilitiesResponsibilityBarFields.current.hintYesNo")}>
             <NativeSelect
               value={draft.metricCurrent}
-              aria-label="Where it is now"
+              aria-label={t("componentsResponsibilitiesResponsibilityBarFields.current.label")}
               onChange={(event) => set({ metricCurrent: event.target.value })}
             >
-              <option value="">Not known yet</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
+              <option value="">{t("componentsResponsibilitiesResponsibilityBarFields.current.unknown")}</option>
+              <option value="yes">{t("componentsResponsibilitiesResponsibilityBarFields.current.yes")}</option>
+              <option value="no">{t("componentsResponsibilitiesResponsibilityBarFields.current.no")}</option>
             </NativeSelect>
           </Field>
         ) : (
           <Field
-            label="Where it is now"
+            label={t("componentsResponsibilitiesResponsibilityBarFields.current.label")}
             optional
-            hint="The latest reading, if you know it. The agents working on this keep it current."
+            hint={t("componentsResponsibilitiesResponsibilityBarFields.current.hint")}
             error={errorFor("metricCurrent", "")}
           >
             <Input
               inputMode="decimal"
               value={draft.metricCurrent}
-              placeholder={kind === "percentage" ? "e.g. 85" : "e.g. 9"}
+              placeholder={kind === "percentage" ? t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 85 }) : t("componentsResponsibilitiesResponsibilityBarFields.example", { value: 9 })}
               aria-invalid={invalid?.has("metricCurrent") || undefined}
               onChange={(event) => set({ metricCurrent: event.target.value })}
             />

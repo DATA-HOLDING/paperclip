@@ -2,6 +2,7 @@ import type { Agent, AiConnectionList } from "@paperclipai/shared";
 import { getAdapterLabel } from "@/adapters/adapter-display-registry";
 import { pendingAgentSetupDisplayAdapter } from "./agent-setup-choice";
 import { agentConnection, agentDefaultModel, bulkAgentHarness } from "./bulk-agent-settings";
+import { t } from "@/i18n";
 
 export const agentRosterFilterFields = ["model", "status", "harness", "connection"] as const;
 export type AgentRosterFilterField = (typeof agentRosterFilterFields)[number];
@@ -23,16 +24,16 @@ export function buildAgentRosterIndex(agents: readonly Agent[], accounts?: AiCon
     const model = agentDefaultModel(agent);
     const binding = agentConnection(agent);
     let connection: AgentRosterOption;
-    if (pending) connection = { value: "unconfigured", label: "Not configured" };
-    else if (["http", "process"].includes(agent.adapterType)) connection = { value: "external", label: "Managed externally" };
-    else if (!binding) connection = { value: "local", label: "Local credentials" };
-    else if (binding.mode === "responsible_user") connection = { value: "responsible_user", label: "Responsible user's default" };
-    else if (binding.mode === "router") connection = { value: `pool:${binding.connectionId}`, label: poolNames.get(binding.connectionId) ?? "Connection pool" };
-    else connection = { value: `connection:${binding.connectionId}`, label: connectionNames.get(JSON.stringify([binding.connectionId, binding.grantId])) ?? "Assigned connection" };
+    if (pending) connection = { value: "unconfigured", label: t("libAgentRosterFilters.connection.notConfigured") };
+    else if (["http", "process"].includes(agent.adapterType)) connection = { value: "external", label: t("libAgentRosterFilters.connection.managedExternally") };
+    else if (!binding) connection = { value: "local", label: t("libAgentRosterFilters.connection.localCredentials") };
+    else if (binding.mode === "responsible_user") connection = { value: "responsible_user", label: t("libAgentRosterFilters.connection.responsibleUserDefault") };
+    else if (binding.mode === "router") connection = { value: `pool:${binding.connectionId}`, label: poolNames.get(binding.connectionId) ?? t("libAgentRosterFilters.connection.connectionPool") };
+    else connection = { value: `connection:${binding.connectionId}`, label: connectionNames.get(JSON.stringify([binding.connectionId, binding.grantId])) ?? t("libAgentRosterFilters.connection.assignedConnection") };
     const values: Record<AgentRosterFilterField, AgentRosterOption> = {
       harness: { value: harness, label: getAdapterLabel(harness) },
-      model: pending ? { value: "unconfigured", label: "Not available yet" }
-        : model ? { value: `model:${model}`, label: model } : { value: "default", label: "Harness default" },
+      model: pending ? { value: "unconfigured", label: t("libAgentRosterFilters.model.notAvailableYet") }
+        : model ? { value: `model:${model}`, label: model } : { value: "default", label: t("libAgentRosterFilters.model.harnessDefault") },
       status: { value: agent.status, label: agent.status.charAt(0).toUpperCase() + agent.status.slice(1) },
       connection,
     };

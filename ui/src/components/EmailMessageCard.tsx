@@ -10,6 +10,7 @@ import { useEmailThread } from "@/hooks/useEmailThread";
 import { issuesApi } from "@/api/issues";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 const EmailContext = createContext<EmailThreadSummary | null>(null);
 export function EmailThreadProvider({
   companyId,
@@ -59,14 +60,14 @@ export function EmailMessageCard({
   return (
     <article
       aria-label={
-        message.direction === "inbound" ? "Email received" : "Email sent"
+        message.direction === "inbound" ? t("componentsEmailMessageCard.received") : t("componentsEmailMessageCard.sent")
       }
       className={cn(contextNotice ? "task-context-notice space-y-3" : "space-y-4 rounded-xl border border-border bg-card p-5", ANALYTICS_MASK_CLASS)}
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="flex items-center gap-2 text-sm font-semibold">
           <Mail className="size-4" />
-          {message.direction === "inbound" ? "Email received" : "Email sent"}
+          {message.direction === "inbound" ? t("componentsEmailMessageCard.received") : t("componentsEmailMessageCard.sent")}
         </span>
         <span className="text-xs text-muted-foreground">
           {new Date(message.timestamp).toLocaleString()}
@@ -77,22 +78,22 @@ export function EmailMessageCard({
           {message.from}
           {message.direction === "inbound" && (
             <span className="ml-2 rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
-              External
+              {t("componentsEmailMessageCard.external")}
             </span>
           )}
         </p>
         <p className="break-words text-xs text-muted-foreground">
-          To: {message.to.join(", ")}
+          {t("componentsEmailMessageCard.to", { list: message.to.join(", ") })}
         </p>
         {!!message.cc?.length && (
           <p className="break-words text-xs text-muted-foreground">
-            Cc: {message.cc.join(", ")}
+            {t("componentsEmailMessageCard.cc", { list: message.cc.join(", ") })}
           </p>
         )}
         <p className="text-sm font-semibold">{message.subject}</p>
       </div>
       <div className="whitespace-pre-wrap break-words text-sm">
-        {message.text || "(No text body)"}
+        {message.text || t("componentsEmailMessageCard.noTextBody")}
       </div>
       {!!message.attachmentIds.length && (
         <div className="flex flex-wrap gap-2">
@@ -107,17 +108,17 @@ export function EmailMessageCard({
                 className="flex items-center gap-2 rounded-md border border-border px-3 py-2 text-xs"
               >
                 <Paperclip className="size-3.5" />
-                {attachment?.originalFilename ?? "Open attachment"}
+                {attachment?.originalFilename ?? t("componentsEmailMessageCard.openAttachment")}
               </a>
             );
           })}
         </div>
       )}
       <details className="text-xs text-muted-foreground">
-        <summary className="cursor-pointer">Email details</summary>
+        <summary className="cursor-pointer">{t("componentsEmailMessageCard.details")}</summary>
         <div className="space-y-2 pt-3">
-          {!!message.bcc?.length && <p>Bcc: {message.bcc.join(", ")}</p>}
-          <p className="break-all">Message ID: {message.providerMessageId}</p>
+          {!!message.bcc?.length && <p>{t("componentsEmailMessageCard.bcc", { list: message.bcc.join(", ") })}</p>}
+          <p className="break-all">{t("componentsEmailMessageCard.messageId", { id: message.providerMessageId })}</p>
           {message.fullText !== message.text && (
             <div className="whitespace-pre-wrap break-words">
               {message.fullText}
@@ -128,20 +129,20 @@ export function EmailMessageCard({
       {publication && (
         <p className="border-t border-border pt-3 text-xs text-muted-foreground">
           {publication.outcome === "delivered"
-            ? "Delivered"
+            ? t("componentsEmailMessageCard.outcome.delivered")
             : publication.outcome === "failed"
-              ? "Delivery failed"
+              ? t("componentsEmailMessageCard.outcome.failed")
               : publication.outcome === "uncertain"
-                ? "Delivery uncertain"
+                ? t("componentsEmailMessageCard.outcome.uncertain")
                 : publication.outcome === "queued"
-                  ? "Queued"
-                  : "Sent"}
+                  ? t("componentsEmailMessageCard.outcome.queued")
+                  : t("componentsEmailMessageCard.outcome.sent")}
           {publication.error ? ` · ${publication.error}` : ""}
         </p>
       )}
       {attachments.error && (
         <p role="alert" className="text-xs text-destructive">
-          Attachments could not be loaded.
+          {t("componentsEmailMessageCard.attachmentsError")}
         </p>
       )}
     </article>

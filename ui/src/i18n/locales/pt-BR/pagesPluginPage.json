@@ -1,0 +1,10 @@
+{
+  "breadcrumbPlugins": "Plugins",
+  "selectOrganization": "Selecione uma organização para ver esta página.",
+  "loading": "Carregando…",
+  "duplicateRoute": {
+    "before": "Vários plugins declaram a rota",
+    "after": ". Use a rota pelo id do plugin até o conflito ser resolvido."
+  },
+  "back": "Voltar"
+}

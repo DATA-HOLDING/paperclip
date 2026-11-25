@@ -5,6 +5,7 @@ import { tailscaleApi } from "@/api/tailscale";
 import { describeError } from "@/api/errors";
 import { Button } from "@/components/ui/button";
 import { tailscaleConnectionsKey } from "@/hooks/useTailscaleConnections";
+import { t } from "@/i18n";
 
 export function TailscaleDeviceSignIn({ connection, cancel, disabled }: {
   connection: TailscaleConnection; cancel: () => void; disabled: boolean;
@@ -29,15 +30,15 @@ export function TailscaleDeviceSignIn({ connection, cancel, disabled }: {
     return () => window.clearTimeout(timer);
   }, [status.data?.expiresAt]);
   return <div className="space-y-3">
-    <p className="text-sm text-muted-foreground" role="status">{expired ? "Sign-in expired. Cancel and connect again."
-      : status.data?.needsApproval ? "Waiting for a Tailscale administrator to approve this device."
-        : "Approve the connection in Tailscale. This page will update when you finish."}</p>
-    {status.error && <p role="alert" className="text-sm text-destructive">{describeError(status.error, { action: "check Tailscale sign-in" }).body}</p>}
+    <p className="text-sm text-muted-foreground" role="status">{expired ? t("pagesApps.tailscale.signIn.expired")
+      : status.data?.needsApproval ? t("pagesApps.tailscale.signIn.needsApproval")
+        : t("pagesApps.tailscale.signIn.approve")}</p>
+    {status.error && <p role="alert" className="text-sm text-destructive">{describeError(status.error, { action: t("pagesApps.errorActions.checkTailscaleSignIn") }).body}</p>}
     <div className="flex flex-wrap items-center gap-3">
-      {!expired && status.data?.authorizationUrl && <Button variant="outline" asChild><a href={status.data.authorizationUrl} target="_blank" rel="noopener noreferrer">Continue to Tailscale</a></Button>}
-      {status.data?.needsApproval && !expired && <Button variant="outline" asChild><a href="https://login.tailscale.com/admin/machines" target="_blank" rel="noopener noreferrer">Open Tailscale devices</a></Button>}
-      {status.error && !expired && <Button variant="outline" onClick={() => void status.refetch()}>Check again</Button>}
-      <Button variant="ghost" disabled={disabled} onClick={cancel}>Cancel sign-in</Button>
+      {!expired && status.data?.authorizationUrl && <Button variant="outline" asChild><a href={status.data.authorizationUrl} target="_blank" rel="noopener noreferrer">{t("pagesApps.tailscale.signIn.continue")}</a></Button>}
+      {status.data?.needsApproval && !expired && <Button variant="outline" asChild><a href="https://login.tailscale.com/admin/machines" target="_blank" rel="noopener noreferrer">{t("pagesApps.tailscale.signIn.openDevices")}</a></Button>}
+      {status.error && !expired && <Button variant="outline" onClick={() => void status.refetch()}>{t("pagesApps.tailscale.signIn.checkAgain")}</Button>}
+      <Button variant="ghost" disabled={disabled} onClick={cancel}>{t("pagesApps.tailscale.signIn.cancel")}</Button>
     </div>
   </div>;
 }

@@ -7,6 +7,7 @@ import { useSidebar } from "../context/SidebarContext";
 import type { LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TruncatedText } from "./TruncatedText";
+import { t } from "@/i18n";
 
 interface SidebarNavItemProps {
   to: string;
@@ -122,7 +123,7 @@ export function SidebarNavItem({
                 <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-600 dark:bg-blue-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-400" />
               </span>
-              <span className="text-(length:--text-micro) font-medium text-blue-600 dark:text-blue-400">{liveCount} live</span>
+              <span className="text-(length:--text-micro) font-medium text-blue-600 dark:text-blue-400">{t("componentsSidebarNavItem.live", { live: liveCount })}</span>
             </>
           )}
         </span>

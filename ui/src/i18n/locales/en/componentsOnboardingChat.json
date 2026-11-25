@@ -1,0 +1,52 @@
+{
+  "cycling": {
+    "queued": {
+      "wakingUp": "Heartbeat triggered, waking up...",
+      "initializing": "Initializing...",
+      "gettingReady": "Getting ready..."
+    },
+    "running": {
+      "working": "Working on a response...",
+      "reading": "Reading the conversation...",
+      "thinking": "Thinking through the plan...",
+      "drafting": "Drafting a response...",
+      "stillWorking": "Still working...",
+      "almostThere": "Almost there..."
+    },
+    "waiting": {
+      "waiting": "Waiting to wake up...",
+      "pending": "Heartbeat pending...",
+      "soon": "Should wake up soon..."
+    }
+  },
+  "status": {
+    "succeeded": "{{name}} finished",
+    "failed": "{{name}} encountered an error",
+    "cancelled": "{{name}}'s run was cancelled",
+    "timedOut": "{{name}}'s run timed out",
+    "thinking": "{{name}} is thinking..."
+  },
+  "loading": "Loading conversation...",
+  "discussMessage": "I want to discuss the plan before you get started.",
+  "startMessage": "Yes, get started on the hiring plan!",
+  "you": "You",
+  "planDetected": "Hiring plan detected",
+  "planReady": {
+    "title": "{{name}} has prepared a hiring plan",
+    "description": "Review it, make edits, then approve.",
+    "reviewButton": "Review plan"
+  },
+  "placeholder": {
+    "revise": "Ask {{name}} to revise the plan...",
+    "message": "Message {{name}}..."
+  },
+  "welcome": {
+    "greeting": "Hi! Thanks for bringing me on to lead",
+    "mission": "Our mission is:",
+    "ready": "I'm ready to put together a plan for who we should bring on. Want me to get started?",
+    "discussChip": "Let's discuss first",
+    "startChip": "Yes, get started!",
+    "wakingUp": "{{name}} is waking up...",
+    "composing": "{{name}} is composing a message..."
+  }
+}

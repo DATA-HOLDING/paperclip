@@ -1,0 +1,15 @@
+{
+  "tone": {
+    "notice": "System notice",
+    "warning": "System warning",
+    "alert": "System alert"
+  },
+  "row": {
+    "detail": "Detail",
+    "code": "Code",
+    "task": "Task",
+    "unknown": "unknown",
+    "agent": "Agent",
+    "run": "Run"
+  }
+}

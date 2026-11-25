@@ -1,6 +1,7 @@
 import { Navigate } from "@/lib/router";
 import { QueryErrorState } from "@/components/QueryView";
 import { useCompanyHomePath } from "@/hooks/useCompanyHomePath";
+import { t } from "@/i18n";
 
 /**
  * Redirects to the company home (Dashboard, or Responsibilities when that
@@ -11,7 +12,7 @@ import { useCompanyHomePath } from "@/hooks/useCompanyHomePath";
  */
 export function CompanyHomeRedirect() {
   const { path, loaded, error, retry } = useCompanyHomePath();
-  if (error) return <QueryErrorState error={error} size="page" action="load your settings" onRetry={retry} />;
+  if (error) return <QueryErrorState error={error} size="page" action={t("componentsCompanyHomeRedirect.errorActions.loadSettings")} onRetry={retry} />;
   if (!loaded) return null;
   return <Navigate to={path} replace />;
 }

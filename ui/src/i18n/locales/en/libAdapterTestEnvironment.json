@@ -1,0 +1,3 @@
+{
+  "managedSandboxUnavailable": "This instance runs agents only in its managed sandbox environment, but no managed sandbox environment is available to test in. Check that the managed sandbox provider is active, then retry the test."
+}

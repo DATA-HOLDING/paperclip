@@ -1,0 +1,87 @@
+{
+  "contextAria": "Projeto e worktrees da tarefa",
+  "dismiss": "Dispensar",
+  "assignee": {
+    "placeholder": "Responsável",
+    "none": "Sem responsável",
+    "search": "Buscar responsáveis…",
+    "empty": "Nenhum resultado.",
+    "mobileTitle": "Selecionar responsável"
+  },
+  "placeholder": {
+    "mobile": {
+      "planning": "Planejar com {{agent}}…",
+      "ask": "Perguntar a {{agent}}…"
+    },
+    "work": "Trabalhar com {{agent}}",
+    "planning": "Planejar com {{agent}} — molda o documento do plano, sem mudar código…",
+    "ask": "Fazer uma pergunta a {{agent}} — só leitura, nada é executado…",
+    "editQueued": "Editar mensagem na fila…",
+    "disabled": "Editor desativado"
+  },
+  "unassigned": "Sem responsável",
+  "theAgent": "o agente",
+  "commands": {
+    "plan": {
+      "name": "Planejar",
+      "description": "Planeje antes de agir. Nada muda até você aceitar o plano."
+    },
+    "goal": {
+      "name": "Objetivo",
+      "verifyLater": "O suporte será verificado quando a sessão começar.",
+      "description": "Persiga o trabalho ao longo de vários turnos."
+    },
+    "new": {
+      "name": "Nova sessão",
+      "description": "Comece um contexto novo aqui, preservando o histórico da conversa."
+    }
+  },
+  "goalUnsupported": "Este agente não suporta objetivos de sessão.",
+  "errors": {
+    "noFileUrl": "O envio não retornou a URL do arquivo",
+    "fileTypeNotAllowed": "Este tipo de arquivo não pode ser anexado aqui",
+    "swarmOnCreate": "Crie a tarefa primeiro e depois envie /swarm em um comentário nela.",
+    "swarmEmpty": "Escreva o que o swarm deve fazer depois de /swarm.",
+    "swarmTooLong": "Este pedido de swarm está longo demais. Mantenha o que vem depois de /swarm abaixo de {{max}} caracteres.",
+    "swarmReassign": "Envie /swarm sem mudar o responsável.",
+    "goalInConversation": "Crie uma tarefa separada para trabalho que precisa de um objetivo de execução contínuo.",
+    "goalWithAttachments": "Remova os anexos antes de usar /goal.",
+    "goalNeedsAgent": "Selecione um agente antes de iniciar um objetivo de sessão.",
+    "goalFailed": "Não foi possível aplicar a ação do objetivo.",
+    "skipFailed": "Não foi possível pular esta solicitação."
+  },
+  "actions": {
+    "uploadFile": "enviar o arquivo",
+    "createTask": "criar a tarefa",
+    "saveQueued": "salvar esta mensagem na fila",
+    "sendMessage": "enviar esta mensagem"
+  },
+  "takeover": {
+    "skip": "Pular",
+    "pending_one": "{{count}} pendente",
+    "pending_other": "{{count}} pendentes",
+    "dismissAria": "Dispensar {{label}}",
+    "pendingInput": "Entrada pendente"
+  },
+  "pausedNewHint": "Envie /new para começar uma sessão nova e retomar esta conversa.",
+  "attachments": {
+    "uploading": "Enviando…",
+    "uploadFailed": "Falha no envio",
+    "retryAria": "Tentar enviar {{name}} novamente",
+    "removeAria": "Remover {{name}}"
+  },
+  "queued": {
+    "changed": "A mensagem na fila mudou",
+    "editing": "Editando mensagem na fila"
+  },
+  "send": {
+    "stopping": "Parando…",
+    "stopResponse": "Parar a resposta",
+    "stop": "Parar",
+    "queueAsNew": "Enfileirar como nova mensagem",
+    "saveQueued": "Salvar mensagem na fila",
+    "waitingUpload": "Aguardando o envio terminar",
+    "removeFailed": "Remova o anexo com falha para enviar",
+    "send": "Enviar"
+  }
+}

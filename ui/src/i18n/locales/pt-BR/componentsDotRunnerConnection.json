@@ -1,0 +1,32 @@
+{
+  "saveFirst": "Salve o agente e depois volte aqui para parear seu Dot.",
+  "intro": "O Dot gerencia o próprio modelo e as ferramentas externas. O Paperclip fornece a coordenação de tarefas, as pessoas, as skills atribuídas e as ferramentas dos apps conectados. O Dot pode iniciar uma tarefa direto da conversa dele. Ative Ler anexos da tarefa abaixo para enviar o conteúdo dos arquivos das tarefas atribuídas à OpenAI. Ative arquivos e comandos do espaço de trabalho para trabalhar no espaço de trabalho atribuído. O uso e o custo do provedor não estão disponíveis; parar uma execução do Paperclip revoga o acesso sem confirmar uma parada externa.",
+  "enableExperimental": "Ative o OpenAI Dot nas configurações experimentais.",
+  "mcpUrl": "URL MCP privada do plugin:",
+  "connectionStatus": "Conexão: {{status}}. Assinatura de eventos: {{subscription}}.",
+  "subscription": {
+    "verified": "verificada",
+    "required": "obrigatória"
+  },
+  "assignmentStatus": "Atribuição: {{status}}.",
+  "assignment": {
+    "offered": "aguardando o Dot aceitar",
+    "accepted": "aceita pelo Dot"
+  },
+  "attentionRequired": "O Dot não relata atividade útil há 15 minutos. Verifique o Dot antes de atribuir trabalho substituto; o Paperclip não consegue confirmar a parada externa dele.",
+  "setup": {
+    "label": "Configurar com o Dot",
+    "title": "Conecte seu Dot",
+    "description": "Cole no seu Dot para conectar este agente.",
+    "expires": "O prompt de configuração expira às {{time}}."
+  },
+  "revokeAndRepair": "Revogue a conexão pendente e pareie de novo para gerar um novo prompt de configuração.",
+  "actions": {
+    "pair": "Parear Dot",
+    "test": "Testar entrega de eventos",
+    "refresh": "Atualizar conexão",
+    "revoke": "Revogar conexão"
+  },
+  "pendingChallenge": "Aguardando o Dot ler e confirmar o desafio inofensivo da caixa de correio.",
+  "loadAction": "carregar a conexão do Dot"
+}

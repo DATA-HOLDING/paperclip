@@ -1,0 +1,9 @@
+{
+  "label": {
+    "notice": "Aviso do sistema",
+    "warning": "Alerta do sistema",
+    "alert": "Alerta crítico do sistema"
+  },
+  "hideDetails": "Ocultar detalhes",
+  "details": "Detalhes"
+}

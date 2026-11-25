@@ -10,6 +10,7 @@ import type {
 } from "@paperclipai/shared";
 import { tenantSessionRecovery } from "@/lib/tenant-session-recovery";
 import { api, type RequestOptions } from "./client";
+import { t } from "@/i18n";
 
 export interface RunLivenessFields {
   livenessState: HeartbeatRun["livenessState"];
@@ -197,7 +198,7 @@ export const heartbeatsApi = {
       const recovery = tenantSessionRecovery.recoverIfNeeded(response.status, body);
       if (recovery) return recovery;
       throw new Error(
-        body?.error ?? `Trace download failed: ${response.status}`,
+        body?.error ?? t("apiHeartbeats.traceDownloadFailed", { status: response.status }),
       );
     }
     return response.blob();
@@ -226,7 +227,7 @@ export const heartbeatsApi = {
         && intent.intentId === `native-cancellation:${options.cancellationRequestId}` && intent.scope === "run"
         && intent.dispatchState === "pending" && intent.dispatched === false
         && typeof intent.intentAuditId === "string" && intent.intentAuditId.length > 0;
-      if (!pending) throw new Error("Stop was not accepted because the run changed.");
+      if (!pending) throw new Error(t("apiHeartbeats.stopNotAccepted"));
     }
     return run;
   },

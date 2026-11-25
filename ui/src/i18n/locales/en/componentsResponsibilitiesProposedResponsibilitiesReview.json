@@ -1,0 +1,18 @@
+{
+  "adjustAriaLabel": "Adjust {{title}}",
+  "whatYouOwn": "What you own",
+  "nameWhatYouOwn": "Name what you own",
+  "leaveBlank": "You can leave what you measure blank and set it up later.",
+  "cancel": "Cancel",
+  "saveAndConfirm": "Save and confirm",
+  "heading": "Proposed for you",
+  "description": "Your guide drafted these from what it learned. Confirm each one you own as it is, adjust its bar or numbers, or dismiss it.",
+  "addFieldsToConfirm": "Add {{fields}} to confirm it.",
+  "saveError": "Couldn’t save your answer for “{{title}}”. {{details}}",
+  "confirming": "Confirming…",
+  "confirmAll": "Confirm all {{count}}",
+  "noArea": "No area",
+  "confirm": "Confirm",
+  "adjust": "Adjust",
+  "dismiss": "Dismiss"
+}

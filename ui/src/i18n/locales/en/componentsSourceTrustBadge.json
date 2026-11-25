@@ -1,0 +1,11 @@
+{
+  "promoted": "Promoted from low-trust.",
+  "promotedOn": "Promoted from low-trust on {{date}}.",
+  "lowTrust": "Authored by a low-trust review agent. Raw {{artifact}} is not auto-shared with higher-trust agents.",
+  "artifactLabels": {
+    "comment": "comment",
+    "document": "document",
+    "workProduct": "work product",
+    "content": "content"
+  }
+}

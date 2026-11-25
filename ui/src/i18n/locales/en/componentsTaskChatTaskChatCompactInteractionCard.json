@@ -1,0 +1,134 @@
+{
+  "kind": {
+    "suggestTasks": {
+      "fallbackTitle": "Suggested tasks",
+      "label": "Tasks"
+    },
+    "askUserQuestions": {
+      "fallbackTitle": "Questions",
+      "label": "Questions"
+    },
+    "requestConfirmation": {
+      "fallbackTitle": "Confirmation",
+      "label": "Confirmation"
+    },
+    "requestCheckboxConfirmation": {
+      "fallbackTitle": "Choose options",
+      "label": "Selection"
+    },
+    "requestItemVerdicts": {
+      "fallbackTitle": "Review items",
+      "label": "Review"
+    },
+    "connectionIntent": {
+      "fallbackTitle": "Connect service",
+      "label": "Connection"
+    },
+    "suggestRoutine": {
+      "fallbackTitle": "Routine offer",
+      "label": "Routine"
+    },
+    "proposeResponsibilityBar": {
+      "fallbackTitle": "Proposed bar",
+      "label": "Bar"
+    },
+    "proposeAutomation": {
+      "fallbackTitle": "Proposed automation",
+      "label": "Automation"
+    },
+    "proposeDashboardChanges": {
+      "fallbackTitle": "Proposed dashboard changes",
+      "label": "Dashboard"
+    }
+  },
+  "status": {
+    "pending": "pending",
+    "accepted": "accepted",
+    "rejected": "rejected",
+    "answered": "answered",
+    "cancelled": "cancelled",
+    "expired": "expired",
+    "failed": "failed"
+  },
+  "verdict": {
+    "approve": "approve",
+    "reject": "reject",
+    "defer": "defer"
+  },
+  "details": "Details",
+  "attachment": "Attachment",
+  "openTarget": "Open {{label}}",
+  "planLower": "plan",
+  "planRevision": "plan revision {{revision}}",
+  "receipt": {
+    "thePlan": "the plan",
+    "planVersion": "Plan v{{revision}}",
+    "approved": "Approved {{plan}}",
+    "requestedChangesWithReason": "Requested changes to {{plan}}: {{reason}}",
+    "requestedChanges": "Requested changes to {{plan}}"
+  },
+  "answerLabel": "Answer:",
+  "noAnswer": "No answer",
+  "noOptionsSelected": "No options selected",
+  "noVerdicts": "No verdicts submitted",
+  "noTasksCreated": "No tasks created",
+  "connectionRequested": "{{agent}} requested access to {{service}}.",
+  "routineRepeat": "Repeat {{title}}: {{cadence}}.",
+  "dashboardChanges_one": "{{count}} change to the dashboard.",
+  "dashboardChanges_other": "{{count}} changes to the dashboard.",
+  "riskLevel": "{{risk}} risk",
+  "expires": "Expires",
+  "secret": {
+    "secret": "Secret",
+    "binding": "Binding",
+    "why": "Why",
+    "expires": "Expires"
+  },
+  "reasonLabel": "Reason:",
+  "questionsAnswered": "Questions answered",
+  "viewOriginal": "View original request and resolution",
+  "acceptPlan": "Do you accept this plan?",
+  "arguments": "Arguments",
+  "whatShouldChange": "What should change?",
+  "optional": "optional",
+  "describeChange": "Describe what should change",
+  "addShortNote": "Add a short note",
+  "back": "Back",
+  "reject": "Reject",
+  "approve": "Approve",
+  "countHint": {
+    "range": "{{selected}} selected · choose {{minimum}}–{{maximum}}",
+    "atLeast": "{{selected}} selected · at least {{minimum}}",
+    "selected": "{{selected}} selected"
+  },
+  "filterOptions": "Filter options",
+  "decline": "Decline",
+  "confirmSelection": "Confirm selection",
+  "hiddenFollowUp": "{{count}} hidden follow-up",
+  "selectTasks": "Select the tasks to create.",
+  "filterSuggestedTasks": "Filter suggested tasks",
+  "suggestedTasks": "Suggested tasks",
+  "whyTasksChange": "Why should these tasks change? (optional)",
+  "selectedOf": "{{selected}} of {{total}} selected",
+  "cancel": "Cancel",
+  "requestRevision": "Request revision",
+  "sendBack": "Send back",
+  "reviseEllipsis": "Revise…",
+  "revise": "Revise",
+  "create": "Create",
+  "createSelected": "Create selected",
+  "decided": "{{count}} decided",
+  "itemPagination": "Item pagination",
+  "previousItem": "Previous item",
+  "pagePosition": "{{page}} of {{total}}",
+  "nextItem": "Next item",
+  "open": "Open",
+  "verdictFor": "Verdict for {{label}}",
+  "reason": "Reason",
+  "addShortReason": "Add a short reason",
+  "submitRejectionReason": "Submit rejection reason",
+  "applyCount": "Apply {{count}}",
+  "applyDecisions": "Apply decisions",
+  "you": "You",
+  "suggestedTask": "Suggested Task"
+}

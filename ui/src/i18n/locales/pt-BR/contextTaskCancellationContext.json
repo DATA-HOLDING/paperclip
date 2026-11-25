@@ -1,0 +1,7 @@
+{
+  "title_one": "Cancelar {{count}} subtarefa ativa?",
+  "title_other": "Cancelar {{count}} subtarefas ativas?",
+  "listAria": "Subtarefas ativas",
+  "taskOnly": "Cancelar só a tarefa",
+  "taskAndSubtasks": "Cancelar a tarefa e as subtarefas"
+}

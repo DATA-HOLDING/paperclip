@@ -1,0 +1,13 @@
+{
+  "whatYouOwn": "O que é seu",
+  "meetingBar": "Cada uma está atingindo o padrão esperado?",
+  "hideLetGo": "Ocultar responsabilidades liberadas",
+  "showLetGo": "Mostrar responsabilidades liberadas",
+  "showingOnly": "Mostrando apenas: {{health}}.",
+  "showAll": "Mostrar tudo",
+  "noneMatch": "Nenhuma das suas responsabilidades está: {{health}}.",
+  "nothingToShow": "Nada para mostrar.",
+  "nothingFiledHere": "Nada seu está arquivado aqui ainda.",
+  "addHere": "Adicionar uma responsabilidade aqui",
+  "noLetGo": "Você não liberou nenhuma responsabilidade."
+}

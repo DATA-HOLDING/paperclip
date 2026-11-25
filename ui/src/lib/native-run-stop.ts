@@ -3,6 +3,7 @@ import { detachInflightGet } from "../api/client";
 import { heartbeatsApi } from "../api/heartbeats";
 import { clearPendingSend, pendingSendKeyFor, readPendingSend, writePendingSend, type PendingSend } from "./pending-send";
 import { createUuid } from "./uuid";
+import { t } from "@/i18n";
 
 type StopScope = { runId: string; companyId: string; actorUserId: string };
 const memoryRequests = new Map<string, PendingSend<StopScope>>();
@@ -13,9 +14,9 @@ export async function stopFailedNativeRun(runId: string, companyId: string) {
   detachInflightGet(`/heartbeat-runs/${runId}`);
   detachInflightGet("/cli-auth/me");
   const [run, access] = await Promise.all([heartbeatsApi.get(runId), accessApi.getCurrentBoardAccess()]);
-  if (run.id !== runId || run.companyId !== companyId) throw new Error("Stop was not accepted because the run changed.");
+  if (run.id !== runId || run.companyId !== companyId) throw new Error(t("libNativeRunStop.runChanged"));
   const actorUserId = access.userId;
-  if (!actorUserId) throw new Error("Stop was not accepted because your session changed.");
+  if (!actorUserId) throw new Error(t("libNativeRunStop.sessionChanged"));
   const key = pendingSendKeyFor(`paperclip:native-run-stop:${companyId}:${runId}`, actorUserId);
   const matchesScope = (value: unknown): value is StopScope => {
     const scope = record(value);
@@ -25,8 +26,8 @@ export async function stopFailedNativeRun(runId: string, companyId: string) {
   const canonicalId = startup.cancellationRequestId;
   if (canonicalId !== undefined) {
     const actor = record(startup.requestedBy);
-    if (actor.type !== "board" || actor.userId !== actorUserId) throw new Error("This Stop request belongs to another operator.");
-    if (typeof canonicalId !== "string" || !uuid.test(canonicalId)) throw new Error("Stop was not accepted because the run changed.");
+    if (actor.type !== "board" || actor.userId !== actorUserId) throw new Error(t("libNativeRunStop.anotherOperator"));
+    if (typeof canonicalId !== "string" || !uuid.test(canonicalId)) throw new Error(t("libNativeRunStop.runChanged"));
   }
   const saved = readPendingSend(key, matchesScope, "session") ?? memoryRequests.get(key);
   const id = typeof canonicalId === "string" ? canonicalId

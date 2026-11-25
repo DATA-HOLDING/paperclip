@@ -1,0 +1,28 @@
+{
+  "visible": {
+    "weeks_one": "{{count}} semana visível",
+    "weeks_other": "{{count}} semanas visíveis",
+    "days_one": "{{count}} dia visível",
+    "days_other": "{{count}} dias visíveis",
+    "daysHours": "{{days}}d {{hours}}h visíveis",
+    "daysShort": "{{days}}d visíveis",
+    "hours_one": "{{count}} hora visível",
+    "hours_other": "{{count}} horas visíveis",
+    "hoursMinutes": "{{hours}}h {{minutes}}min visíveis",
+    "minutes": "{{count}} minutos visíveis"
+  },
+  "connector": {
+    "dashed": "passagem tracejada: nova tentativa ou alterações solicitadas",
+    "solid": "passagem contínua: delegação ou atribuição"
+  },
+  "tooltip": {
+    "runFallback": "execução",
+    "now": "agora",
+    "kickedOffBy": "iniciada por: {{name}}",
+    "retry": "nova tentativa"
+  },
+  "minimap": {
+    "leftHandle": "Arraste a borda esquerda para redimensionar o intervalo visível",
+    "rightHandle": "Arraste a borda direita para redimensionar o intervalo visível"
+  }
+}

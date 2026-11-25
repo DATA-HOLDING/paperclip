@@ -12,6 +12,7 @@ import { ToolbarSearch } from "@/components/ToolbarSearch";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/EmptyState";
 import { InboxFilter } from "@/components/InboxFilter";
+import { t } from "@/i18n";
 
 type Group = "none" | "task" | "agent" | "project";
 
@@ -59,33 +60,33 @@ export function DecisionHistoryPanel({
   const items = history.data?.pages.flatMap((page) => page.items) ?? [];
   const groups = new Map<string, typeof items>();
   for (const item of items) {
-    const label = groupBy === "task" ? item.issueIdentifier ?? item.issueTitle ?? "No task" : groupBy === "agent" ? item.agentName ?? "Other agents" : groupBy === "project" ? item.projectName ?? "No project" : "";
+    const label = groupBy === "task" ? item.issueIdentifier ?? item.issueTitle ?? t("componentsDecisionHistoryPanel.group.noTask") : groupBy === "agent" ? item.agentName ?? t("componentsDecisionHistoryPanel.group.otherAgents") : groupBy === "project" ? item.projectName ?? t("componentsDecisionHistoryPanel.group.noProject") : "";
     groups.set(label, [...(groups.get(label) ?? []), item]);
   }
   return <div className="space-y-5" data-decision-history>
-    <div role="toolbar" aria-label="Decision history controls" className="space-y-5">
-      <ToolbarSearch query={search} onQueryChange={setSearch} label="Search decision history" placeholder="Search decisions or task IDs…" />
+    <div role="toolbar" aria-label={t("componentsDecisionHistoryPanel.controls")} className="space-y-5">
+      <ToolbarSearch query={search} onQueryChange={setSearch} label={t("componentsDecisionHistoryPanel.searchLabel")} placeholder={t("componentsDecisionHistoryPanel.searchPlaceholder")} />
       <div data-canonical-toolbar="history">
-        <InboxFilter<DecisionHistoryScope> label="Whose decision history" heading="Whose decisions" value={scope}
+        <InboxFilter<DecisionHistoryScope> label={t("componentsDecisionHistoryPanel.scope.label")} heading={t("componentsDecisionHistoryPanel.scope.heading")} value={scope}
           options={DECISION_HISTORY_SCOPE_OPTIONS} onChange={setScope} />
-        <InboxFilter label="Filter decision outcomes" heading="Outcome" value={outcome} onChange={setOutcome}
-          options={[{ value: "", label: "All outcomes" }, ...DECISION_HISTORY_OUTCOME_OPTIONS, { value: HANDLED_FOR_ME, label: "Handled for me" }]} />
-        <InboxFilter<typeof sort> label="Sort decision history" heading="Sort by" value={sort} onChange={setSort}
-          options={[{ value: "newest", label: "Newest first" }, { value: "oldest", label: "Oldest first" }]} />
-        <InboxFilter label="Filter decision history by agent" heading="Agents" value={agentId} onChange={setAgentId}
-          options={[{ value: "", label: "All agents" }, ...agents.map(agent => ({ value: agent.id, label: agent.name }))]} />
-        <InboxFilter label="Filter decision history by project" heading="Projects" value={projectId} onChange={setProjectId}
-          options={[{ value: "", label: "All projects" }, ...(projects.data ?? []).map(project => ({ value: project.id, label: project.name }))]} />
-        <InboxFilter<Group> label="Group decision history" heading="Group by" value={groupBy} onChange={setGroupBy}
-          options={[{ value: "none", label: "No grouping" }, { value: "task", label: "By task" }, { value: "agent", label: "By agent" }, { value: "project", label: "By project" }]} />
+        <InboxFilter label={t("componentsDecisionHistoryPanel.outcome.label")} heading={t("componentsDecisionHistoryPanel.outcome.heading")} value={outcome} onChange={setOutcome}
+          options={[{ value: "", label: t("componentsDecisionHistoryPanel.outcome.all") }, ...DECISION_HISTORY_OUTCOME_OPTIONS, { value: HANDLED_FOR_ME, label: t("componentsDecisionHistoryPanel.outcome.handledForMe") }]} />
+        <InboxFilter<typeof sort> label={t("componentsDecisionHistoryPanel.sort.label")} heading={t("componentsDecisionHistoryPanel.sort.heading")} value={sort} onChange={setSort}
+          options={[{ value: "newest", label: t("componentsDecisionHistoryPanel.sort.newest") }, { value: "oldest", label: t("componentsDecisionHistoryPanel.sort.oldest") }]} />
+        <InboxFilter label={t("componentsDecisionHistoryPanel.agent.label")} heading={t("componentsDecisionHistoryPanel.agent.heading")} value={agentId} onChange={setAgentId}
+          options={[{ value: "", label: t("componentsDecisionHistoryPanel.agent.all") }, ...agents.map(agent => ({ value: agent.id, label: agent.name }))]} />
+        <InboxFilter label={t("componentsDecisionHistoryPanel.project.label")} heading={t("componentsDecisionHistoryPanel.project.heading")} value={projectId} onChange={setProjectId}
+          options={[{ value: "", label: t("componentsDecisionHistoryPanel.project.all") }, ...(projects.data ?? []).map(project => ({ value: project.id, label: project.name }))]} />
+        <InboxFilter<Group> label={t("componentsDecisionHistoryPanel.groupBy.label")} heading={t("componentsDecisionHistoryPanel.groupBy.heading")} value={groupBy} onChange={setGroupBy}
+          options={[{ value: "none", label: t("componentsDecisionHistoryPanel.groupBy.none") }, { value: "task", label: t("componentsDecisionHistoryPanel.groupBy.task") }, { value: "agent", label: t("componentsDecisionHistoryPanel.groupBy.agent") }, { value: "project", label: t("componentsDecisionHistoryPanel.groupBy.project") }]} />
       </div>
     </div>
     {afterControls}
-    {waiting ? <p role="status" className="text-sm text-muted-foreground">Loading decisions…</p> : null}
+    {waiting ? <p role="status" className="text-sm text-muted-foreground">{t("componentsDecisionHistoryPanel.loading")}</p> : null}
     {historyView.kind === "error" ? <QueryErrorState error={historyView.error} onRetry={historyView.retry} /> : null}
     {!waiting && historyView.kind !== "error" && !items.length && <EmptyState placement="upper"
-      message={scope === "mine" && !search && !outcome && !agentId && !projectId ? "No decisions handled by you or for you yet." : "No decisions match these filters."}
-      action={scope === "mine" ? "Show everyone's decisions" : undefined}
+      message={scope === "mine" && !search && !outcome && !agentId && !projectId ? t("componentsDecisionHistoryPanel.emptyMine") : t("componentsDecisionHistoryPanel.emptyFiltered")}
+      action={scope === "mine" ? t("componentsDecisionHistoryPanel.showEveryone") : undefined}
       onAction={() => setScope("all")}
       hideActionIcon
     />}
@@ -93,6 +94,6 @@ export function DecisionHistoryPanel({
       {label && <h3 className="text-sm font-medium text-muted-foreground">{label}</h3>}
       {entries.map(item => <Receipt key={item.id} item={item} onOpen={navigate} userLabelMap={userLabelMap} showTimestamp />)}
     </section>)}</div>
-    {history.hasNextPage ? <Button variant="outline" disabled={history.isFetchingNextPage} onClick={() => void history.fetchNextPage()}>{history.isFetchingNextPage ? "Loading…" : "Load more decisions"}</Button> : null}
+    {history.hasNextPage ? <Button variant="outline" disabled={history.isFetchingNextPage} onClick={() => void history.fetchNextPage()}>{history.isFetchingNextPage ? t("componentsDecisionHistoryPanel.loadingMore") : t("componentsDecisionHistoryPanel.loadMore")}</Button> : null}
   </div>;
 }

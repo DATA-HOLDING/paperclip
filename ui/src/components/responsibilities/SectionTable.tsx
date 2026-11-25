@@ -4,6 +4,7 @@ import { AgentAvatar } from "@/components/AgentAvatar";
 import { Card } from "@/components/ui/card";
 import { Link } from "@/lib/router";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 /**
  * One section of the "One screen v2" responsibility page as a table: a
@@ -156,7 +157,7 @@ export function SectionTableNote({ children, alert = false }: { children: ReactN
 export function WhoAvatar({ agentId, agentsById }: { agentId: string | null; agentsById: ReadonlyMap<string, Agent> }) {
   if (!agentId) return null;
   const agent = agentsById.get(agentId);
-  const name = agent?.name ?? "An agent";
+  const name = agent?.name ?? t("componentsResponsibilitiesSectionTable.anAgent");
   return (
     <span title={name} className="flex shrink-0">
       <AgentAvatar agent={agent ?? { id: agentId }} name={agent?.name} size={20} label={name} />

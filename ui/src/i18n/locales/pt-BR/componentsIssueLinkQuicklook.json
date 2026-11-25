@@ -1,0 +1,12 @@
+{
+  "status": {
+    "backlog": "Backlog",
+    "todo": "A fazer",
+    "in_progress": "Em andamento",
+    "in_review": "Em revisão",
+    "done": "Concluída",
+    "blocked": "Bloqueada",
+    "cancelled": "Cancelada"
+  },
+  "loadFailed": "Não foi possível carregar a prévia da tarefa."
+}

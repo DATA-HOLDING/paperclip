@@ -1,0 +1,34 @@
+{
+  "sectionLabel": "Tarefas recentes",
+  "idle": "Ociosa",
+  "moreActions": "Mais ações para {{title}}",
+  "menu": {
+    "rename": "Renomear",
+    "archive": "Arquivar",
+    "pauseRestart": "Pausar/Reiniciar"
+  },
+  "toast": {
+    "renamed": "Tarefa renomeada",
+    "renameFailed": "Falha ao renomear a tarefa",
+    "renameFailedBody": "Não foi possível renomear esta tarefa.",
+    "archived": "Tarefa arquivada da caixa de entrada",
+    "archiveFailed": "Falha ao arquivar a tarefa",
+    "archiveFailedBody": "Não foi possível arquivar esta tarefa da caixa de entrada.",
+    "restarted": "Tarefa reiniciada",
+    "paused": "Tarefa pausada",
+    "pauseFailed": "Falha ao atualizar a pausa da tarefa",
+    "pauseFailedBody": "Não foi possível pausar ou reiniciar esta tarefa."
+  },
+  "errors": {
+    "wakeSkipped": "O despertar do responsável foi ignorado.",
+    "pausedByParent": "Esta tarefa está pausada por uma tarefa pai. Reinicie-a a partir da raiz da pausa."
+  },
+  "renameDialog": {
+    "title": "Renomear tarefa",
+    "description": "Escolha um nome curto e claro para esta tarefa.",
+    "taskName": "Nome da tarefa",
+    "cancel": "Cancelar",
+    "saving": "Salvando...",
+    "save": "Salvar"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "errors": {
+    "incompleteState": "Onboarding state is incomplete. Please restart onboarding and try again.",
+    "resolveEnvironment": "Could not resolve the execution environment.",
+    "loadEnvironmentSettings": "Could not load execution environment settings. Retry setup.",
+    "loadRunnerAvailability": "Could not load runner availability. Retry setup.",
+    "runnerAvailabilityMissing": "Runner availability is missing for this harness. Retry setup.",
+    "configurationChanged": "Configuration changed during setup. Connect again to test the current settings.",
+    "noAdapters": "No agent adapters are available on this instance.",
+    "createSetup": "Could not create agent setup.",
+    "switchedOrganization": "Organization created, but onboarding switched to another organization.",
+    "openChat": "Failed to open your chat. Please try again.",
+    "storeApiKeyDetail": "Could not store the API key: {{details}}",
+    "storeApiKey": "Could not store the API key.",
+    "chooseSubscription": "Choose a subscription account in Connections, then retry setup.",
+    "saveSetup": "Could not save agent setup.",
+    "selectOrganizationFirst": "Create or select an organization before testing adapter environment.",
+    "loadEnvironmentForTest": "Could not load environment settings to determine which environment to test in. Retry the test.",
+    "confirmCodexRunner": "Could not confirm Codex runner availability for this environment. Retry setup.",
+    "platformQualification": "The environment's platform qualification could not be confirmed. Retry the connection probe.",
+    "defaultRunner": "Could not confirm the environment's default runner. Retry setup.",
+    "environmentTestFailed": "Adapter environment test failed",
+    "createOrganization": "Failed to create organization",
+    "chooseGatewayModel": "Choose a model for this gateway connection before connecting your agent.",
+    "opencodeExplicitModel": "OpenCode requires an explicit model in provider/model format.",
+    "opencodeLoadModels": "Failed to load OpenCode models.",
+    "opencodeLoading": "OpenCode models are still loading. Please wait and try again.",
+    "opencodeNoModels": "No OpenCode models discovered. Run `opencode models` and authenticate providers.",
+    "opencodeModelUnavailable": "Configured OpenCode model is unavailable: {{model}}",
+    "chooseApiAccount": "Choose a connected API account before continuing.",
+    "chooseApiAccountOrKey": "Choose a connected API account or Enter a new API key to replace this agent’s connected account.",
+    "cloudConnectFailed": "Paperclip couldn't finish connecting this agent. Try connecting again.",
+    "environmentTestFailedFix": "The environment test failed. Fix the reported checks before you hire this agent.",
+    "noAuthentication": "No working authentication was found. Fix the reported checks before you hire this agent.",
+    "createAgent": "Failed to create agent",
+    "unsetRetryStillFailing": "Retried with ANTHROPIC_API_KEY unset in adapter config, but the environment test is still failing.",
+    "unsetFailed": "Failed to unset ANTHROPIC_API_KEY and retry."
+  },
+  "progress": {
+    "creatingAgent": "Creating your agent…",
+    "testingConnection": "Testing connection…",
+    "connecting": "Connecting…"
+  },
+  "cta": {
+    "retry": "Retry",
+    "retrySignIn": "Retry sign-in",
+    "testing": "Testing…",
+    "submitCode": "Submit code",
+    "waitingForAuth": "Waiting for auth…",
+    "waitingForCode": "Waiting for code…",
+    "connecting": "Connecting",
+    "signInTo": "Sign in to {{source}}",
+    "connect": "Connect",
+    "next": "Next"
+  },
+  "heading": {
+    "organizationName": "What is the name of your organization?",
+    "createAgent": "Create your first agent",
+    "connectModel": "Connect a model",
+    "getStarted": "Let's get started..."
+  },
+  "lede": {
+    "connect": "Paperclip works with your subscription or API keys.",
+    "yourFirstAgent": "Your first agent",
+    "ready": "{{name}} is ready to work!"
+  },
+  "company": {
+    "nameLabel": "Name",
+    "namePlaceholder": "e.g. Northwind Labs"
+  },
+  "agent": {
+    "nameLabel": "Agent name",
+    "namePlaceholder": "e.g. Chief of staff"
+  },
+  "connect": {
+    "modelSource": "Model source",
+    "noRecommended": "Claude and Codex are unavailable on this instance. Ask an administrator to enable one, or exit setup and choose New Agent on the Agents page to use another provider.",
+    "savedKeys_one": "{{count}} saved API key available.",
+    "existingConnection": "An existing provider connection is available.",
+    "chooseModelForConnection": "Choose a model for your saved connection",
+    "chooseSavedKey": "Choose a saved API key or enter a new one",
+    "provideKey": "Provide your {{source}} API key to connect",
+    "apiKey": "API key",
+    "apiKeyPlaceholder": "Enter API key here",
+    "defaultAccount": "This will be your default {{source}} account.",
+    "gatewayLoadFailed": "Your saved gateway connection could not be loaded. Retry to choose a model and connect your agent.",
+    "retryLoading": "Retry loading connection",
+    "loadingGateway": "Loading your saved gateway connection…",
+    "gatewaySaved": "Gateway connection saved. Choose a model, then Connect to test it and finish setting up your agent.",
+    "useDifferentKey": "Use a different API key",
+    "savedKeys_other": "{{count}} saved API keys available.",
+    "noBrowserSignIn": "This environment does not support browser sign-in. Go back to use an API key or choose another model.",
+    "advanced": "Advanced",
+    "gatewayUrl": "Gateway URL",
+    "webhookUrl": "Webhook URL"
+  },
+  "env": {
+    "retrySetup": "Retry setup",
+    "passed": "Passed",
+    "unsetHint": {
+      "before": "Claude failed while",
+      "after": "is set. You can clear it in this adapter config and retry the probe."
+    },
+    "retrying": "Retrying...",
+    "unsetKey": "Unset ANTHROPIC_API_KEY",
+    "manualDebug": "Manual debug",
+    "authFailsSubscription": "If authentication fails, connect your subscription in the browser above or use an API key.",
+    "authFails": {
+      "set": "If auth fails, set",
+      "orRun": "in env or run"
+    },
+    "loginRequired": "If login is required, connect the provider above and retry.",
+    "warnings": "Warnings",
+    "failed": "Failed",
+    "hint": "Hint: {{hint}}"
+  },
+  "footer": {
+    "continue": "Continue",
+    "getStarted": "Get started",
+    "creating": "Creating...",
+    "launching": "Launching..."
+  }
+}

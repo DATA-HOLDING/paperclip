@@ -1,0 +1,21 @@
+{
+  "browseGallery": "Browse gallery",
+  "browseInGallery": "Browse {{filename}} in gallery",
+  "openInNewTab": "Open in new tab",
+  "open": "Open {{filename}}",
+  "download": "Download",
+  "downloadFile": "Download {{filename}}",
+  "deleteAttachment": "Delete attachment",
+  "meta": "Attachment · {{contentType}} · {{size}}",
+  "loadingPreview": "Loading preview...",
+  "previewError": "Could not load markdown preview.",
+  "title": "Attachments",
+  "altFallback": "attachment",
+  "confirmShort": "Delete?",
+  "yes": "Yes",
+  "no": "No",
+  "confirmLong": "Delete this attachment? This cannot be undone.",
+  "cancel": "Cancel",
+  "deleting": "Deleting...",
+  "delete": "Delete"
+}

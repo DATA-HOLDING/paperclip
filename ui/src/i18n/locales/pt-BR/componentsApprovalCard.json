@@ -1,0 +1,17 @@
+{
+  "requestedBy": "Solicitado por",
+  "createdAgo": "Solicitação de aprovação criada {{timeAgo}}",
+  "status": {
+    "pending": "pendente",
+    "approved": "aprovada",
+    "rejected": "rejeitada",
+    "revision_requested": "revisão solicitada",
+    "cancelled": "cancelada"
+  },
+  "decisionNote": "Nota da decisão.",
+  "approving": "Aprovando...",
+  "approve": "Aprovar",
+  "rejecting": "Rejeitando...",
+  "reject": "Rejeitar",
+  "viewDetails": "Ver detalhes"
+}

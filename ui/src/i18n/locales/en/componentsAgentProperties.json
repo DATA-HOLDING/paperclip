@@ -1,0 +1,13 @@
+{
+  "status": "Status",
+  "errorReason": "Error reason",
+  "role": "Role",
+  "title": "Title",
+  "adapter": "Adapter",
+  "session": "Session",
+  "lastError": "Last error",
+  "lastRunError": "Last run error",
+  "lastHeartbeat": "Last Heartbeat",
+  "reportsTo": "Reports To",
+  "created": "Created"
+}

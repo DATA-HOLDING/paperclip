@@ -1,0 +1,9 @@
+{
+  "saving": "Saving…",
+  "saved": "Saved",
+  "waiting": "Will save when reconnected",
+  "stalled": "Automatic saving paused",
+  "errorWithReason": "Couldn't save ({{reason}})",
+  "error": "Couldn't save",
+  "defaultAction": "save"
+}

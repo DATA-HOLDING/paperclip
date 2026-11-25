@@ -1,0 +1,16 @@
+{
+  "title": "GitHub connected",
+  "access": {
+    "unavailable": "Repository access unavailable",
+    "label": "Repository access",
+    "none": "No repositories enabled",
+    "enabled_one": "{{count}} repository enabled",
+    "enabled_other": "{{count}} repositories enabled"
+  },
+  "beforeFirstReview": "Before your first review",
+  "tryTitle": "Try your bot",
+  "tryEnable": "Enable a repository in Access to try your bot.",
+  "tryPost": "Post this on a pull request in an enabled repository.",
+  "copyMention": "Copy mention",
+  "done": "Done"
+}

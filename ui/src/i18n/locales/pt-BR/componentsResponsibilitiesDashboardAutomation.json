@@ -1,0 +1,76 @@
+{
+  "hint": {
+    "schedule": "Poderia rodar em um agendamento",
+    "webhook": "Poderia começar por um webhook",
+    "standingCheck": "Poderia ser uma verificação contínua"
+  },
+  "summary": {
+    "title": "Quanto roda sem você",
+    "responsibilities_one": "{{count}} responsabilidade",
+    "responsibilities_other": "{{count}} responsabilidades",
+    "filterLabel": "Mostrar responsabilidades por nível de automação",
+    "automations_one": "{{count}} automação rodando",
+    "automations_other": "{{count}} automações rodando",
+    "manualTasks_one": "{{count}} tarefa manual nos últimos {{days}} dias",
+    "manualTasks_other": "{{count}} tarefas manuais nos últimos {{days}} dias",
+    "showAll": "Mostrar tudo"
+  },
+  "automatedNow": "“{{title}}” agora está automatizado: {{cadence}}.",
+  "offer": {
+    "offeredToRepeat": "{{agent}} se ofereceu para repetir: {{cadence}}",
+    "accepting": "Aceitando…",
+    "accept": "Aceitar",
+    "change": "Alterar"
+  },
+  "yourAgent": "Seu agente",
+  "unclearWithAgent": "Pelo título não dá para saber como poderia rodar; defina isso com {{agent}}.",
+  "unclear": "Pelo título não dá para saber como poderia rodar.",
+  "conversation": {
+    "proposed": "{{agent}} propôs uma automação",
+    "talking": "Conversando sobre isso com {{agent}}"
+  },
+  "yourAgentLower": "seu agente",
+  "errors": {
+    "openConversation": "Não foi possível abrir a conversa.",
+    "acceptOffer": "Não foi possível aceitar a oferta."
+  },
+  "noAgentTitle": "Nenhum agente pode assumir isto; configure manualmente",
+  "opening": "Abrindo…",
+  "setUpByHand": "Configurar manualmente",
+  "dismiss": {
+    "noThanksLabel": "Não, obrigado, não repetir {{title}}",
+    "doesntRepeatLabel": "{{title}} não se repete",
+    "noThanks": "Não, obrigado",
+    "doesntRepeat": "Não se repete"
+  },
+  "standing": {
+    "resumeLabel": "Retomar {{title}}",
+    "pauseLabel": "Pausar {{title}}",
+    "resume": "Retomar",
+    "pause": "Pausar",
+    "removeLabel": "Remover {{title}}",
+    "remove": "Remover",
+    "changeFailed": "Não foi possível alterar."
+  },
+  "anAgent": "Um agente",
+  "otherStarts_one": " · +{{count}} outra forma de começar",
+  "otherStarts_other": " · +{{count}} outras formas de começar",
+  "notCounted": "Ainda não contado.",
+  "running": {
+    "title": "Roda sem você",
+    "more_one": "e mais {{count}} automação",
+    "more_other": "e mais {{count}} automações",
+    "none": "Nada roda sozinho ainda.",
+    "notRunning": "Parado"
+  },
+  "manual": {
+    "title": "Tarefas manuais que poderiam ser automatizadas",
+    "more_one": "e mais {{count}} tarefa manual",
+    "more_other": "e mais {{count}} tarefas manuais",
+    "unlisted": "e mais {{count}} na página da responsabilidade"
+  },
+  "notInArea": "Fora de uma área",
+  "loading": "Carregando o nível de automação das suas responsabilidades",
+  "dismissMade": "Dispensar",
+  "loadAction": "carregar o nível de automação das suas responsabilidades"
+}

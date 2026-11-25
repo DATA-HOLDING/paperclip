@@ -1,0 +1,4 @@
+{
+  "instructionsFileLabel": "Agent instructions file",
+  "instructionsFileHint": "Absolute path to a markdown file (e.g. AGENTS.md) that defines this agent's behavior. Injected into the system prompt at runtime."
+}

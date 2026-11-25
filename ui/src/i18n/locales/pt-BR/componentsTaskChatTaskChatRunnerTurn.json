@@ -1,0 +1,11 @@
+{
+  "status": {
+    "stopped": "Parou",
+    "worked": "Trabalhou",
+    "working": "Trabalhando",
+    "after": "depois de {{elapsed}}",
+    "for": "por {{elapsed}}"
+  },
+  "continuedAfterSteering": "Continuou após o redirecionamento",
+  "thinking": "Pensando"
+}

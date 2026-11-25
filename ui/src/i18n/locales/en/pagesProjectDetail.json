@@ -1,0 +1,42 @@
+{
+  "toast": {
+    "archived": "\"{{name}}\" has been archived",
+    "unarchived": "\"{{name}}\" has been unarchived",
+    "saved": "Project saved",
+    "archiveFailed": "Failed to archive project",
+    "unarchiveFailed": "Failed to unarchive project"
+  },
+  "picker": {
+    "ariaLabel": "Change project icon and color",
+    "icon": "Icon",
+    "searchIcons": "Search icons...",
+    "noIcons": "No icons match",
+    "color": "Color",
+    "resetGray": "Reset to neutral gray",
+    "neutral": "Neutral (default)",
+    "selectColor": "Select color {{color}}"
+  },
+  "loadTasksAction": "load project tasks",
+  "fallbackName": "Project",
+  "breadcrumbs": {
+    "projects": "Projects"
+  },
+  "loadAction": "load this project",
+  "leftNotice": "You left this project. It no longer appears in your sidebar.",
+  "dismissLeftNotice": "Dismiss project membership notice",
+  "pausedByBudget": "Paused by budget hard stop",
+  "managedBy": "Managed by {{plugin}}",
+  "summary": {
+    "title": "Project summary",
+    "description": "Summarizer keeps the latest project status, next step, and operator-needed items here."
+  },
+  "tabs": {
+    "tasks": "Tasks",
+    "pluginOperations": "Plugin operations",
+    "workspaces": "Workspaces",
+    "configuration": "Configuration",
+    "budget": "Budget"
+  },
+  "loadWorkspacesAction": "load workspaces",
+  "loadingWorkspaces": "Loading workspaces..."
+}

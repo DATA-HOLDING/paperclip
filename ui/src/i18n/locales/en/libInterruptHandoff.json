@@ -1,0 +1,47 @@
+{
+  "runStatus": {
+    "interrupted": "interrupted",
+    "interruptedHint": "interrupted by board comment",
+    "timedOut": "timed out"
+  },
+  "preview": {
+    "interruptHandOff": "Interrupt current run, hand off to",
+    "wake": "Wake",
+    "handOff": "Hand off to",
+    "noAgentNotifiedSuffix": "— no agent will be notified",
+    "clearResponsible": "Clear responsible — no agent will be notified",
+    "notify": "Notify",
+    "mentionedAgent": "the mentioned agent",
+    "plainTextOnly": "No agent will be notified. Use @ to mention an agent."
+  },
+  "handoff": {
+    "responsibleAgent": "the responsible agent",
+    "queuedFor": "queued for {{who}}",
+    "queuedForWithRun": "queued for {{who}} (interrupted run attached)",
+    "userHandoff": "not created — this is a handoff to a board user",
+    "unassigned": "not created — no agent selected. Mention @agent or pick a responsible to dispatch."
+  },
+  "reassign": {
+    "anAgent": "An agent",
+    "banner": "{{who}} is running — changing the responsible will interrupt this run.",
+    "confirmTitle": "Interrupt the current run?",
+    "confirmAction": "Interrupt & assign",
+    "cancelAction": "Cancel"
+  },
+  "pauseBucket": {
+    "label": {
+      "liveRuns": "Live agent runs",
+      "queuedWakes": "Queued wakes",
+      "agentOwned": "Agent-owned",
+      "humanOwned": "Human-owned",
+      "static": "Static"
+    },
+    "detail": {
+      "liveRuns": "interrupted now, re-queued when you resume",
+      "queuedWakes": "held — they won't start until you resume",
+      "agentOwned": "responsible agent; no run is live",
+      "humanOwned": "owned by a board user; pausing won't notify them",
+      "static": "no responsible; nothing was going to run"
+    }
+  }
+}

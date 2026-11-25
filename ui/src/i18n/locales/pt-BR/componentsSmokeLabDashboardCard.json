@@ -1,0 +1,11 @@
+{
+  "health": {
+    "green": "Todos os caminhos passando",
+    "amber": "Precisa de uma execução",
+    "red": "Caminhos com falha",
+    "unknown": "Nenhuma execução ainda"
+  },
+  "title": "Smoke de integração",
+  "lastRun": "Última execução {{time}}",
+  "runOne": "Execute uma na aba Smoke Lab"
+}

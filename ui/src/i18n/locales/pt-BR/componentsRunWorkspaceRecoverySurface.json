@@ -1,0 +1,30 @@
+{
+  "repaired": {
+    "title": "Espaço de trabalho reparado",
+    "body": "As alterações não salvas foram isoladas em uma branch de resgate e a branch registrada foi restaurada; a tarefa será retomada."
+  },
+  "reconciled": {
+    "title": "Branch do espaço de trabalho reconciliada",
+    "body": "A branch registrada agora corresponde à branch ativa; a tarefa será retomada."
+  },
+  "reconcileFailed": {
+    "title": "Falha na reconciliação",
+    "body": "Não foi possível reconciliar a branch do espaço de trabalho."
+  },
+  "taskNotLoaded": "A tarefa ainda não foi carregada.",
+  "reissueCreated": {
+    "title": "Reemissão isolada criada",
+    "bodyWithId": "{{identifier}} será executada em um novo espaço de trabalho isolado.",
+    "body": "Uma nova reemissão isolada foi criada."
+  },
+  "reissueFailed": {
+    "title": "Falha na reemissão",
+    "body": "Não foi possível criar uma reemissão isolada."
+  },
+  "noRecoveryAction": "Nenhuma ação de recuperação para resolver.",
+  "resolveFailed": {
+    "title": "Falha ao resolver a recuperação",
+    "body": "Não foi possível resolver a ação de recuperação"
+  },
+  "heading": "Recuperação do espaço de trabalho"
+}

@@ -1,0 +1,20 @@
+{
+  "advanced": "Advanced",
+  "fields": {
+    "appName": {
+      "label": "Slack app name",
+      "help": "The name of your app in Slack’s app directory and settings.",
+      "helpAria": "Help with slack app name"
+    },
+    "botName": {
+      "label": "Bot display name",
+      "help": "The name people see when your bot sends a message.",
+      "helpAria": "Help with bot display name"
+    },
+    "command": {
+      "label": "Slash command",
+      "help": "The command people type in Slack to talk to this agent.",
+      "helpAria": "Help with slash command"
+    }
+  }
+}

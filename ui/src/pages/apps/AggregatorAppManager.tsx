@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function AggregatorAppManager({ app, connections, initialConnectionId, onClose }: {
   app: AggregatorAppCatalogEntry; connections: ToolConnection[]; initialConnectionId?: string; onClose: () => void;
@@ -22,14 +23,14 @@ export function AggregatorAppManager({ app, connections, initialConnectionId, on
   const connection = connections.find(candidate => candidate.id === connectionId);
   const provider = connection?.config?.sourceTemplateKey;
   return <Dialog open onOpenChange={open => { if (!open) onClose(); }}><DialogContent className={ANALYTICS_MASK_CLASS}>
-    <DialogHeader><DialogTitle>Manage {app.name}</DialogTitle>
-      <DialogDescription>Accounts and sign-in are managed in {isAppAggregator(provider) ? AGGREGATOR_NAMES[provider] : "the provider"}.</DialogDescription>
+    <DialogHeader><DialogTitle>{t("pagesApps.aggregatorManager.title", { name: app.name })}</DialogTitle>
+      <DialogDescription>{t("pagesApps.aggregatorManager.description", { provider: isAppAggregator(provider) ? AGGREGATOR_NAMES[provider] : t("pagesApps.aggregatorManager.theProvider") })}</DialogDescription>
     </DialogHeader>
-    {connections.length > 1 ? <div className="space-y-2"><Label htmlFor="manage-aggregator-gateway">Connection</Label>
+    {connections.length > 1 ? <div className="space-y-2"><Label htmlFor="manage-aggregator-gateway">{t("pagesApps.aggregatorManager.connection")}</Label>
       <select id="manage-aggregator-gateway" className={cn("h-9 w-full rounded-md border border-input bg-background px-3 text-sm", ANALYTICS_MASK_CLASS)} value={connectionId} onChange={event => setConnectionId(event.target.value)}>
         {connections.map(candidate => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}
       </select></div> : null}
-    {connection ? <AccountObservations key={connection.id} app={app} connection={connection} onClose={onClose} /> : <p role="alert">This connection is no longer available.</p>}
+    {connection ? <AccountObservations key={connection.id} app={app} connection={connection} onClose={onClose} /> : <p role="alert">{t("pagesApps.aggregatorManager.unavailable")}</p>}
   </DialogContent></Dialog>;
 }
 
@@ -43,21 +44,21 @@ function AccountObservations({ app, connection, onClose }: { app: AggregatorAppC
   const accounts = snapshots.flatMap(snapshot => snapshot.accounts.map(account => ({ account, snapshot })));
   const refresh = useMutation({ mutationFn: async () => { const result = await toolsApi.refreshAggregatorApps(connection.id, snapshots.map(snapshot => snapshot.toolkit)); queries.setQueryData(key, result); } });
   const provider = query.data?.provider;
-  const name = provider ? AGGREGATOR_NAMES[provider] : "provider";
+  const name = provider ? AGGREGATOR_NAMES[provider] : t("pagesApps.aggregatorManager.provider");
   const managementUrl = provider ? aggregatorManagementUrl(provider, accounts[0]?.account.managementUrl ?? (typeof connection.config?.managementUrl === "string" ? connection.config?.managementUrl : null)) : null;
   return <>
-    {queryView.kind === "error" ? <QueryErrorState error={query.error} action={`load ${name} accounts`} onRetry={queryView.retry} retrying={queryView.isFetching} /> : null}
-    {refresh.error || query.data?.sync.status === "error" ? <p role="alert" className="text-sm text-destructive">Couldn’t check {name}. Last known accounts are shown.</p> : null}
-    {query.isLoading || queryView.kind === "reconnecting" ? <p role="status" className="text-sm text-muted-foreground">Loading accounts…</p> : accounts.length ? <div className="divide-y divide-border">
+    {queryView.kind === "error" ? <QueryErrorState error={query.error} action={t("pagesApps.errorActions.loadAggregatorAccounts", { name })} onRetry={queryView.retry} retrying={queryView.isFetching} /> : null}
+    {refresh.error || query.data?.sync.status === "error" ? <p role="alert" className="text-sm text-destructive">{t("pagesApps.aggregatorManager.checkFailed", { name })}</p> : null}
+    {query.isLoading || queryView.kind === "reconnecting" ? <p role="status" className="text-sm text-muted-foreground">{t("pagesApps.aggregatorManager.loadingAccounts")}</p> : accounts.length ? <div className="divide-y divide-border">
       {accounts.map(({ account, snapshot }) => <div key={`${snapshot.toolkit}:${account.id}`} className="py-3">
-        <p className={cn("text-sm font-medium", ANALYTICS_MASK_CLASS)}>{account.alias || `${app.name} account`}</p>
-        <p className="text-xs text-muted-foreground">{snapshot.freshness === "stale" || snapshot.errorAt || Date.now() - new Date(snapshot.checkedAt).getTime() > 5 * 60_000 || account.status === "UNVERIFIED" ? "Not verified" : account.status === "ACTIVE" ? "Connected" : account.status === "INITIATED" ? "Waiting for sign-in" : "Needs sign-in"}</p>
+        <p className={cn("text-sm font-medium", ANALYTICS_MASK_CLASS)}>{account.alias || t("pagesApps.aggregatorManager.accountFallback", { name: app.name })}</p>
+        <p className="text-xs text-muted-foreground">{snapshot.freshness === "stale" || snapshot.errorAt || Date.now() - new Date(snapshot.checkedAt).getTime() > 5 * 60_000 || account.status === "UNVERIFIED" ? t("pagesApps.accountStatus.notVerified") : account.status === "ACTIVE" ? t("pagesApps.accountStatus.connected") : account.status === "INITIATED" ? t("pagesApps.accountStatus.waitingForSignIn") : t("pagesApps.accountStatus.needsSignIn")}</p>
       </div>)}
-    </div> : <p className="text-sm text-muted-foreground">{query.data?.discovery.message ?? `No connected ${app.name} accounts.`}</p>}
-    <p className="text-xs text-muted-foreground">Via <Link to={`/apps/${connection.id}/permissions`} onClick={onClose} className={cn("underline underline-offset-2", ANALYTICS_MASK_CLASS)}>“{connection.name}”</Link></p>
-    <DialogFooter className="sm:justify-between"><Button variant="ghost" onClick={onClose}>Close</Button><div className="flex flex-wrap items-center gap-2">
-      <Button variant="ghost" disabled={!settled || refresh.isPending || query.data?.discovery.availability !== "available"} onClick={() => refresh.mutate()}>Refresh</Button>
-      {managementUrl ? <Button asChild><a href={managementUrl} target="_blank" rel="noopener noreferrer">Open in {name}<ExternalLink className="size-4" /></a></Button> : null}
+    </div> : <p className="text-sm text-muted-foreground">{query.data?.discovery.message ?? t("pagesApps.aggregatorManager.noAccounts", { name: app.name })}</p>}
+    <p className="text-xs text-muted-foreground">{t("pagesApps.aggregatorManager.via")} <Link to={`/apps/${connection.id}/permissions`} onClick={onClose} className={cn("underline underline-offset-2", ANALYTICS_MASK_CLASS)}>“{connection.name}”</Link></p>
+    <DialogFooter className="sm:justify-between"><Button variant="ghost" onClick={onClose}>{t("pagesApps.common.close")}</Button><div className="flex flex-wrap items-center gap-2">
+      <Button variant="ghost" disabled={!settled || refresh.isPending || query.data?.discovery.availability !== "available"} onClick={() => refresh.mutate()}>{t("pagesApps.common.refresh")}</Button>
+      {managementUrl ? <Button asChild><a href={managementUrl} target="_blank" rel="noopener noreferrer">{t("pagesApps.common.openIn", { name })}<ExternalLink className="size-4" /></a></Button> : null}
     </div></DialogFooter>
   </>;
 }

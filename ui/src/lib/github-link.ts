@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 export interface GitHubLink {
   kind: "github" | "repository" | "pull_request" | "issue";
   label: string | null;
@@ -42,11 +43,13 @@ export function parseGitHubLink(href: string | null | undefined): GitHubLink | n
     return {
       kind: type === "pull" ? "pull_request" : "issue",
       label,
-      description: `GitHub ${type === "pull" ? "pull request" : "issue"}: ${label}`,
+      description: type === "pull"
+        ? t("libGithubLink.pullRequest", { label })
+        : t("libGithubLink.issue", { label }),
     };
   }
   if (segments.length === 2) {
-    return { kind: "repository", label: repo, description: `GitHub repository: ${repo}` };
+    return { kind: "repository", label: repo, description: t("libGithubLink.repository", { repo }) };
   }
   return fallback;
 }

@@ -1,0 +1,57 @@
+{
+  "status": {
+    "stillQueuedReady": "As mensagens ainda estão na fila. Serão enviadas quando a tarefa estiver pronta."
+  },
+  "savedResponse": "Resposta salva",
+  "steer": {
+    "unsupported": "Este runner não suporta redirecionamento",
+    "temporarilyUnavailable": "O redirecionamento está temporariamente indisponível",
+    "available": "Redirecionar esta mensagem para o turno ativo"
+  },
+  "row": {
+    "images": "Imagens",
+    "reorder": "Reordenar mensagem na fila: {{label}}",
+    "queuedImages": "Imagens na fila",
+    "sendQueued": "Enviar mensagens da fila",
+    "interruptTitle": "Interromper o turno ativo e enviar as mensagens da fila",
+    "sendNowTitle": "Enviar as mensagens da fila agora",
+    "interrupt": "Interromper",
+    "send": "Enviar",
+    "steer": "Redirecionar",
+    "discardTitle": "Descartar mensagem da fila",
+    "discardAriaLabel": "Descartar mensagem da fila: {{label}}",
+    "actionsTitle": "Ações da mensagem na fila",
+    "actionsAriaLabel": "Ações da mensagem na fila: {{label}}",
+    "editMessage": "Editar mensagem"
+  },
+  "autoSteer": {
+    "sendingIn": "Enviando em {{seconds}}s",
+    "editTitle": "Edite antes de ser enviada",
+    "edit": "Editar",
+    "cancelTitle": "Manter esta mensagem na fila",
+    "cancel": "Cancelar"
+  },
+  "announce": {
+    "autoSteer": "A mensagem na fila será enviada ao turno ativo em alguns segundos. Edite ou cancele para mantê-la.",
+    "moved": "Mensagem da fila movida para a posição {{position}} de {{total}}.",
+    "steering": "Redirecionando a mensagem da fila.",
+    "sending": "Enviando as mensagens da fila.",
+    "discarding": "Descartando a mensagem da fila.",
+    "stillQueued": "As mensagens ainda estão na fila.",
+    "steered": "Mensagem redirecionada para o turno ativo.",
+    "willSendAfterStop": "As mensagens da fila serão enviadas quando a execução anterior parar.",
+    "submitted": "Mensagens da fila enviadas. Aguardando o agente.",
+    "discarded": "Mensagem da fila descartada."
+  },
+  "error": {
+    "reorderConflict": "A fila mudou em outra sessão. A ordem mais recente foi restaurada.",
+    "reorderFailed": "Não foi possível reordenar. A ordem anterior foi restaurada.",
+    "alreadySending": "Tarde demais para descartar: esta mensagem já está sendo enviada.",
+    "steerFailed": "Não foi possível redirecionar. A mensagem continua na fila.",
+    "interruptFailed": "Não foi possível interromper. A mensagem continua na fila.",
+    "sendFailed": "Não foi possível enviar. A mensagem continua na fila.",
+    "discardConflict": "A fila mudou em outra sessão. Revise-a e tente novamente.",
+    "discardFailed": "Não foi possível descartar. A mensagem continua na fila."
+  },
+  "ariaLabel": "Mensagens na fila"
+}

@@ -1,0 +1,10 @@
+{
+  "presets": {
+    "mtd": "Mês até hoje",
+    "7d": "7 dias",
+    "30d": "30 dias",
+    "ytd": "Ano até hoje",
+    "all": "Todo o período",
+    "custom": "Personalizado"
+  }
+}

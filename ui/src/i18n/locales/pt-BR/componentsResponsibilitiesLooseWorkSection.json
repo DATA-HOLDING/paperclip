@@ -1,0 +1,20 @@
+{
+  "fileUnder": {
+    "filed": "“{{label}}” arquivado em {{responsibility}}.",
+    "failed": "Não foi possível arquivar “{{label}}”. {{error}}",
+    "ariaLabel": "Arquivar {{label}} em uma responsabilidade",
+    "button": "Arquivar em…",
+    "noArea": "Sem área"
+  },
+  "list": {
+    "showFewer": "Mostrar menos",
+    "showAll": "Mostrar todos ({{count}})"
+  },
+  "taskNote": "Mostrando as {{shown}} atualizadas mais recentemente de {{total}} tarefas abertas.",
+  "heading": "Fora das suas responsabilidades",
+  "description": "Trabalho na organização que não está arquivado em uma responsabilidade. Nem tudo precisa estar: uma reunião diária ou uma tarefa avulsa pode ficar aqui.",
+  "projects": "Projetos",
+  "due": "Prazo {{label}}",
+  "openTasks": "Tarefas abertas",
+  "routines": "Rotinas"
+}

@@ -1,0 +1,38 @@
+{
+  "tryAgain": "Tentar novamente",
+  "history": {
+    "loading": "Carregando respostas rápidas…",
+    "loadError": "Não foi possível carregar as respostas rápidas."
+  },
+  "settings": {
+    "title": "Resposta rápida",
+    "viewUsage": "Ver uso",
+    "description": "Envie uma confirmação curta enquanto seu agente começa o trabalho. O uso é cobrado da conexão de API compartilhada selecionada.",
+    "connected": "Conectada",
+    "needsAttention": "Precisa de atenção",
+    "noChoices": "Adicione uma conexão de API compartilhada em Apps para começar.",
+    "addConnection": "Adicionar conexão",
+    "manageConnections": "Gerenciar conexões",
+    "savedUnavailable": "A conexão salva não está disponível. Desative as respostas rápidas ou escolha outra conexão.",
+    "model": "Modelo",
+    "modelPlaceholder": "Escolha ou digite o ID de um modelo",
+    "enable": "Ativar respostas rápidas",
+    "allowSponsored": "Permitir respostas rápidas patrocinadas pela organização",
+    "allowSponsoredHelp": "Cobre mensagens externas aceitas de pessoas sem uma conta Paperclip vinculada.",
+    "testSummary": "{{seconds}} segundos · {{input}} tokens de entrada / {{output}} de saída · Uso registrado em Custos.",
+    "timeout": "O modelo não respondeu em três segundos. Tente um modelo mais rápido.",
+    "testFailed": "Não foi possível gerar uma resposta. Verifique a conexão e o modelo e tente novamente.",
+    "testing": "Testando…",
+    "testResponse": "Testar resposta",
+    "saveBeforeTesting": "Salve as alterações antes de testar.",
+    "testHelp": "Executa uma pequena amostra com cobrança de API.",
+    "saving": "Salvando…",
+    "save": "Salvar resposta rápida",
+    "loading": "Carregando resposta rápida…",
+    "loadError": "Não foi possível carregar as configurações de resposta rápida.",
+    "modelsError": "Não foi possível carregar os modelos. Digite o ID de um modelo ou tente mais tarde.",
+    "addDialogTitle": "Adicionar uma conexão de resposta rápida",
+    "addDialogDescription": "Use uma conexão de API compartilhada para confirmações curtas.",
+    "sharedApiConnection": "Conexão de API compartilhada"
+  }
+}

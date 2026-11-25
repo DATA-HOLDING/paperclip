@@ -1,0 +1,42 @@
+{
+  "lifecycle": {
+    "compiling": {
+      "label": "Configurando",
+      "description": "Recém-criado; configurando e gerando o primeiro resumo."
+    },
+    "fresh": {
+      "label": "Atualizado",
+      "description": "O resumo reflete todas as mudanças conhecidas; nada pendente."
+    },
+    "stale": {
+      "label": "Desatualizado",
+      "description": "Há mudanças pendentes desde a última atualização."
+    },
+    "updating": {
+      "label": "Atualizando",
+      "description": "Uma atualização está chegando agora."
+    },
+    "error": {
+      "label": "Erro",
+      "description": "A última execução falhou; o último resumo válido continua visível."
+    },
+    "pausedBudget": {
+      "label": "Pausado — orçamento",
+      "description": "O limite diário de tokens foi atingido; as atualizações automáticas estão suspensas."
+    },
+    "pausedHours": {
+      "label": "Pausado — horário",
+      "description": "Fora do horário ativo; as mudanças se juntam em uma atualização quando a janela abrir."
+    },
+    "archived": {
+      "label": "Arquivado",
+      "description": "Sem atualizações automáticas nem monitoramento. Restaure para voltar a monitorar."
+    }
+  },
+  "refresh": {
+    "manual": "manual",
+    "everyMinutes": "a cada {{minutes}} min se houver mudança",
+    "onSchedule": "em um agendamento se houver mudança",
+    "onChange": "ao mudar ({{seconds}}s)"
+  }
+}

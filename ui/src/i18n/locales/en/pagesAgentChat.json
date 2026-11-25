@@ -1,0 +1,14 @@
+{
+  "greetingFailed": "The welcome could not start.",
+  "loading": "Loading conversation…",
+  "disabled": {
+    "before": "Agent Chat is disabled for this instance. An administrator can enable it in",
+    "link": "Experimental settings",
+    "after": "Your workspace preference does not change Chat availability. Existing history remains available through task links."
+  },
+  "notFound": "Agent not found.",
+  "retryWelcome": "Retry welcome",
+  "errorActions": {
+    "loadConversation": "load this conversation"
+  }
+}

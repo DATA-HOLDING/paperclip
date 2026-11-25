@@ -1,0 +1,9 @@
+{
+  "unnamedProject": "Projeto sem nome",
+  "taskWaitingOnApproval": "Tarefa aguardando esta aprovação",
+  "taskInReview": "Tarefa em revisão",
+  "blockedByThisRun": "Bloqueada por esta execução",
+  "blockedWork": "Trabalho bloqueado",
+  "alsoFailed": "Também falhou",
+  "approvalThisAnswers": "Aprovação que isto responde"
+}

@@ -110,12 +110,14 @@ describe("describeInteractionAudience", () => {
   /**
    * PAP-17859, caught by rendering the card rather than reading it:
    * `formatAssigneeUserLabel` returns the display-cased "You" for the signed-in
-   * reader, which is correct in a badge and wrong inside a sentence.
+   * reader, which is correct in a badge and wrong inside a sentence. The reader
+   * is recognized by id, not by the (translated) label text.
    */
   it("lowercases a self-referring label inside the summary sentence", () => {
     const addressed = describeInteractionAudience({
       interaction: confirmation({ addresseeUserId: "user-me" }),
       addresseeLabel: "You",
+      currentUserId: "user-me",
     });
     expect(addressed.summary).toBe("Only you can respond.");
     expect(addressed.shortSummary).toBe("Only you can respond");
@@ -125,8 +127,11 @@ describe("describeInteractionAudience", () => {
         requestedResolverPolicy: "not_creator",
         effectiveResolverPolicy: "not_creator",
         resolverPolicyProvenance: "explicit",
+        createdByAgentId: null,
+        createdByUserId: "user-me",
       }),
       creatorLabel: "You",
+      currentUserId: "user-me",
     });
     expect(excluded.summary).toBe("Anyone in the organization except you can respond.");
   });

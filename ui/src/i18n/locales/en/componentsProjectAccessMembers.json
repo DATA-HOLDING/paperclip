@@ -1,0 +1,35 @@
+{
+  "unknownUser": "Unknown user",
+  "groups": {
+    "people": "People",
+    "agents": "Agents"
+  },
+  "toast": {
+    "added": "Project access added",
+    "addFailed": "Couldn't add project access",
+    "removed": "Project access removed",
+    "removeFailed": "Couldn't remove project access"
+  },
+  "manageAccess": "Manage access",
+  "viewAccess": "View access",
+  "dialog": {
+    "title": "Private project access",
+    "description": "Members can discover this project and read every task in it. A task can still be shared directly."
+  },
+  "directoryError": "Couldn't load the company access directory.",
+  "addPlaceholder": "Add a person or agent",
+  "searchPlaceholder": "Search people and agents",
+  "emptyMessage": "No more company members to add",
+  "add": "Add",
+  "sharedAgentWarning": "This agent can retain private project context in its memory and workspace for later runs. Removing access cannot erase what it has already learned.",
+  "unknownMember": "Unknown member",
+  "kind": {
+    "owner": "Owner",
+    "agent": "Agent",
+    "person": "Person"
+  },
+  "removeMember": "Remove {{name}}",
+  "member": "member",
+  "loading": "Loading access…",
+  "membersError": "Couldn't load project access members."
+}

@@ -1,0 +1,5 @@
+{
+  "agentFallback": "Agente",
+  "navigationAriaLabel": "Navegação de {{name}}",
+  "apps": "Apps"
+}

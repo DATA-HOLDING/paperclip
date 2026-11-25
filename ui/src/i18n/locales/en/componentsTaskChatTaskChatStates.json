@@ -1,0 +1,22 @@
+{
+  "label": {
+    "sessionStart": "Session start",
+    "humanMessage": "Human message",
+    "finalResponse": "Final response",
+    "thinking": "Thinking",
+    "progressUpdateStreaming": "Progress update (streaming)",
+    "progressUpdateBurst": "Progress update burst",
+    "toolCall": "Tool call",
+    "diff": "Diff",
+    "working": "Working",
+    "running": "Running",
+    "completedCollapsed": "Completed (collapsed)",
+    "longRunActivityPhases": "Long-run activity phases",
+    "awaitingApproval": "Awaiting approval",
+    "planTodo": "Plan / todo",
+    "interrupted": "Interrupted",
+    "refused": "Refused",
+    "truncated": "Truncated",
+    "liveTokenCost": "Live token / cost"
+  }
+}

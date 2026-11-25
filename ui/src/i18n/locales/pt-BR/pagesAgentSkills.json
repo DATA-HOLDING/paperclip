@@ -1,0 +1,58 @@
+{
+  "releasePicker": {
+    "defaultLabel": "Padrão — atual (recomendado)",
+    "release": "Versão",
+    "optionLabel": "{{name}} · lançada em {{date}}",
+    "ariaLabel": "Versão da skill",
+    "beta": "Beta"
+  },
+  "source": {
+    "localFolder": "Pasta local",
+    "catalog": "Catálogo",
+    "paperclipManaged": "Gerenciada pelo Paperclip"
+  },
+  "row": {
+    "readOnly": "Somente leitura",
+    "disableSkill": "Desativar {{name}}",
+    "enableSkill": "Ativar {{name}}"
+  },
+  "tab": {
+    "materializationNote": "As skills ativadas são incorporadas ao pacote estável de prompts gerenciado pelo Paperclip na próxima execução do agente.",
+    "mode": {
+      "persistent": "Mantidas no espaço de trabalho",
+      "ephemeral": "Aplicadas na próxima execução",
+      "unsupported": "Apenas registradas"
+    },
+    "unsupported": {
+      "customAcp": "O Paperclip ainda não consegue gerenciar skills de comandos ACP personalizados.",
+      "openclaw": "O Paperclip não consegue gerenciar skills do OpenClaw aqui. Acesse sua instância do OpenClaw para gerenciar as skills deste agente.",
+      "adapter": "O Paperclip ainda não consegue gerenciar skills deste adaptador. Gerencie-as diretamente no adaptador."
+    },
+    "legacyPaperclipBlocked": "O Paperclip Runner usa coordenação semântica nativa e não pode anexar a skill operacional legada do Paperclip.",
+    "betaBadge": "Beta · {{release}}",
+    "enabledCount": "{{enabled}} de {{total}} ativadas",
+    "toolbarLabel": "Controles das skills do agente",
+    "searchSkills": "Buscar skills",
+    "browseStore": "Explorar a loja de skills",
+    "staleKey": "está ativada, mas não existe na biblioteca da organização.",
+    "remove": "Remover",
+    "enabledSection": "Ativadas neste agente",
+    "noEnabledMatch": "Nenhuma skill ativada corresponde à sua busca.",
+    "noEnabled": "Nenhuma skill ativada neste agente ainda.",
+    "availableSection": "Disponíveis na biblioteca",
+    "noAvailableMatch": "Nenhuma skill disponível corresponde à sua busca.",
+    "importToEnable": "Importe skills para a biblioteca da organização para ativá-las aqui.",
+    "allEnabled": "Todas as skills da biblioteca estão ativadas neste agente.",
+    "detectedSection": "Skills automáticas e detectadas (somente leitura)",
+    "noDetectedMatch": "Nenhuma skill detectada corresponde à sua busca.",
+    "adapter": "Adaptador: {{adapter}}",
+    "status": {
+      "saving": "Salvando…",
+      "error": "Não foi possível salvar",
+      "unsaved": "Salvando em breve…",
+      "saved": "Salvo"
+    },
+    "emptyLibraryTitle": "Nenhuma skill na biblioteca da organização",
+    "emptyLibraryBody": "Instale skills na organização e depois ative-as neste agente."
+  }
+}

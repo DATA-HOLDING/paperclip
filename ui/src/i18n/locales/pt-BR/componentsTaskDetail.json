@@ -1,0 +1,42 @@
+{
+  "issueCreatedFromNote": {
+    "createdFrom": "Criada a partir de",
+    "byAgent": "por {{name}}"
+  },
+  "tasksPanel": {
+    "goToProject": "Ir para o projeto {{name}}",
+    "project": "Projeto",
+    "noProject": "Sem projeto",
+    "relatedTasks": "Tarefas relacionadas",
+    "createdFrom": "Criada a partir de",
+    "ancestors": "Ancestrais",
+    "ancestorTasksAria": "Tarefas ancestrais, da raiz até a mãe",
+    "subtasks": "Subtarefas",
+    "groupTasksAria": "Tarefas de {{name}}",
+    "loading": "Carregando tarefas…",
+    "loadError": "Não foi possível carregar todas as tarefas.",
+    "retry": "Tentar novamente",
+    "empty": "Nenhuma tarefa ainda."
+  },
+  "relationsPanel": {
+    "subtasks": "Subtarefas",
+    "progress": "Progresso",
+    "completeCount": "{{completed}} de {{total}} concluídas",
+    "subtaskCompletion": "Conclusão das subtarefas",
+    "rootBlocker": "Bloqueio raiz",
+    "blockedSubtask": "Subtarefa bloqueada",
+    "nextAction": "Próxima ação",
+    "nextSubtaskAction": "Próxima ação de subtarefa",
+    "allComplete": "Todas as subtarefas estão concluídas.",
+    "noRemaining": "Nenhuma ação de subtarefa restante.",
+    "noSubtasks": "Nenhuma subtarefa ainda.",
+    "otherSubtasks": "Outras subtarefas",
+    "addSubtask": "Adicionar subtarefa",
+    "referenced": "Referenciadas",
+    "referencedEmpty": "Esta tarefa não referencia outra tarefa.",
+    "referencedTasks": "Tarefas referenciadas",
+    "mentionedIn": "Mencionada em",
+    "mentionedInEmpty": "Nenhuma outra tarefa menciona esta tarefa.",
+    "mentionedInTasks": "Tarefas que mencionam esta tarefa"
+  }
+}

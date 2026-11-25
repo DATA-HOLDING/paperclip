@@ -1,0 +1,62 @@
+{
+  "author": {
+    "anAgent": "um agente",
+    "you": "você",
+    "owner": "o responsável",
+    "teammate": "um colega"
+  },
+  "record": {
+    "recorded": "Registrado.",
+    "failed": "Não foi possível registrar.",
+    "aria": "Registrar uma nova leitura",
+    "isTrueToday": "Isso é verdade hoje?",
+    "yes": "Sim",
+    "no": "Não",
+    "newReading": "Nova leitura",
+    "placeholder": "ex.: 9",
+    "saving": "Salvando…",
+    "record": "Registrar",
+    "enterNumber": "Informe um número"
+  },
+  "bar": {
+    "edit": "Editar a meta",
+    "set": "Definir a meta",
+    "heading": "A meta",
+    "empty": "Nenhuma meta ainda. Como o sucesso é medido?",
+    "editByHand": "Editar manualmente"
+  },
+  "editDialog": {
+    "description": "Como o sucesso é medido em {{title}}? O status decorre da leitura, conforme o tipo de medida que você escolher.",
+    "saveFailed": "Não foi possível salvar a meta.",
+    "cancel": "Cancelar",
+    "save": "Salvar a meta"
+  },
+  "conversation": {
+    "talking": "Você está discutindo a meta com {{agent}}.",
+    "open": "Abrir a conversa",
+    "continue": "Continuar a conversa",
+    "startFailed": "Não foi possível iniciar a conversa.",
+    "editByHandHint": "Você ainda pode editar a meta manualmente."
+  },
+  "override": {
+    "setByHand": "Definido manualmente.",
+    "fromNumberAlone": " Só pelo número, estaria {{health}}.",
+    "notePlaceholder": "Por que você definiu (opcional)",
+    "changeOrClear": "Alterar ou limpar",
+    "setByHandAction": "Definir o status manualmente",
+    "fromNumber": "Pelo número",
+    "behind": "Atrasado",
+    "atRisk": "Em risco",
+    "onTrack": "No caminho certo",
+    "failed": "Não foi possível alterar o status."
+  },
+  "status": "Status",
+  "reading": {
+    "updated": "Atualizado {{age}}.",
+    "updatedBy": "Atualizado {{age}} por {{author}}.",
+    "none": "Nenhuma leitura ainda. Os agentes que trabalham nisso mantêm o número em dia; você também pode registrar uma."
+  },
+  "errorActions": {
+    "loadBarConversation": "carregar a conversa sobre a meta"
+  }
+}

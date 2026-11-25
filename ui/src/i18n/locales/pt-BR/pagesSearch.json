@@ -1,0 +1,65 @@
+{
+  "title": "Buscar",
+  "scopes": {
+    "all": "Tudo",
+    "issues": "Tarefas",
+    "comments": "Comentários",
+    "documents": "Documentos",
+    "artifacts": "Artefatos",
+    "agents": "Agentes",
+    "projects": "Projetos"
+  },
+  "allScopes": "Todos os escopos",
+  "unknownError": "Erro desconhecido",
+  "runSearchAction": "executar essa busca",
+  "input": {
+    "placeholder": "Buscar tarefas, comentários, documentos, artefatos, agentes, projetos…",
+    "label": "Termo de busca",
+    "clear": "Limpar busca"
+  },
+  "insertOperator": "Inserir operador {{token}}",
+  "operatorHint": {
+    "try": "Experimente",
+    "or": "ou"
+  },
+  "initial": {
+    "title": "Digite para buscar na memória da organização.",
+    "description": "Tarefas, comentários, documentos de plano, artefatos, agentes, projetos — tudo no mesmo lugar, ordenado por relevância.",
+    "recentSearches": "Buscas recentes"
+  },
+  "tips": {
+    "identifierLabel": "Busca por identificador:",
+    "identifierBefore": "digite",
+    "identifierAfter": "para ir direto a uma tarefa.",
+    "quotedLabel": "Frases entre aspas:",
+    "quotedText": "coloque uma frase entre aspas para encontrar a sequência exata.",
+    "commandPaletteText": "reabre a paleta de comandos já com sua busca atual."
+  },
+  "error": {
+    "title": "Não foi possível executar essa busca",
+    "serverReturned": "O servidor retornou {{status}}.",
+    "requestFailed": "A requisição falhou.",
+    "stillHere": "Seu texto e seus filtros continuam aqui, então você pode tentar novamente ou usar o filtro de Tarefas.",
+    "retry": "Tentar novamente"
+  },
+  "openTasksFilterView": "Abrir o filtro de Tarefas",
+  "searchingFor": "Buscando por “{{query}}”…",
+  "empty": {
+    "title": "Nenhum resultado para “{{query}}”",
+    "description": "Não encontramos nada em {{scope}}. Tente ampliar o escopo ou reformular sua busca.",
+    "searchAllScopes": "Buscar em todos os escopos",
+    "createTask": "Criar tarefa a partir desta busca",
+    "tipFewerTokens": "Tente usar menos termos ou um único termo bem específico.",
+    "tipIdentifier": "Use um atalho de identificador, como",
+    "tipQuotes": "Coloque frases com várias palavras entre aspas."
+  },
+  "results": {
+    "partial": "{{shown}} de {{total}} resultados",
+    "count_one": "{{count}} resultado",
+    "count_other": "{{count}} resultados",
+    "sortedBy": " · ordenado por {{sort}}",
+    "filtersActive_one": " · {{count}} filtro ativo",
+    "filtersActive_other": " · {{count}} filtros ativos",
+    "updating": "Atualizando…"
+  }
+}

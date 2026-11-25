@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { routineColumns, type RoutineColumn } from "@/lib/routine-list-view";
+import { t } from "@/i18n";
 export type { RoutineColumn } from "@/lib/routine-list-view";
 
 export function routineColumnGrid(columns: RoutineColumn[], selectMode = false) {
@@ -8,10 +9,10 @@ export function routineColumnGrid(columns: RoutineColumn[], selectMode = false) 
 export function RoutineTable({ columns, children, label, selectMode = false }: { columns: RoutineColumn[]; children: ReactNode; label: string; selectMode?: boolean }) {
   return <div className="overflow-x-auto"><div role="table" aria-label={label} className="routine-table">
     <div role="row" className="routine-table-grid px-3 py-2 text-xs text-muted-foreground" style={{ gridTemplateColumns: routineColumnGrid(columns, selectMode) }}>
-      {selectMode ? <span role="columnheader"><span className="sr-only">Select</span></span> : null}
-      <span role="columnheader">Routine</span>
+      {selectMode ? <span role="columnheader"><span className="sr-only">{t("componentsRoutineTable.select")}</span></span> : null}
+      <span role="columnheader">{t("componentsRoutineTable.routine")}</span>
       {columns.map(id => <span role="columnheader" key={id}>{routineColumns.find(column => column.id === id)!.label}</span>)}
-      <span role="columnheader" className="text-right">Actions</span>
+      <span role="columnheader" className="text-right">{t("componentsRoutineTable.actions")}</span>
     </div>
     <div role="rowgroup">{children}</div>
   </div></div>;

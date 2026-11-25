@@ -1,0 +1,62 @@
+{
+  "continueToGitHub": "Continuar no GitHub",
+  "breadcrumbs": {
+    "connectors": "Conectores",
+    "bot": "Bot de revisão de código do GitHub"
+  },
+  "resume": {
+    "title": "Retomar a configuração do GitHub",
+    "loadError": "Não foi possível carregar esta conexão. Tente novamente para retomar seu rascunho.",
+    "loading": "Carregando seu rascunho…"
+  },
+  "tryAgain": "Tentar novamente",
+  "reconnectGitHub": "Reconectar GitHub",
+  "chooseAgent": "Escolher agente",
+  "connectGitHub": "Conectar GitHub",
+  "connectYourAccount": "Conecte sua conta",
+  "checkSetupAction": "verificar a configuração do GitHub",
+  "continue": "Continuar",
+  "checkingConnection": "Verificando sua conexão com o GitHub…",
+  "identity": {
+    "linkedPrefix": "Conta do GitHub",
+    "linkedSuffix": "conectada. Agora você pode mencionar este bot no GitHub.",
+    "connectPrefix": "Conecte a conta do GitHub",
+    "connectSuffix": "à sua conta do Paperclip.",
+    "confirmMyAccount": "Confirmar minha conta",
+    "linkDescription": "Vincule sua conta do GitHub para que suas menções usem suas permissões do Paperclip.",
+    "existingConnection": "Conexão existente com o GitHub",
+    "chooseAccount": "Escolha uma conta",
+    "accountLabel": "Conta do GitHub:",
+    "addPersonalConnection": "Adicione uma conexão pessoal com o GitHub e depois volte a este rascunho",
+    "checkMyAccount": "Verificar minha conta",
+    "connectMyGitHubAccount": "Conectar minha conta do GitHub"
+  },
+  "install": {
+    "waiting": "Aguardando a instalação no GitHub ou a aprovação de um administrador…",
+    "continueOnGitHub": "Continuar a instalação no GitHub"
+  },
+  "enrollment": {
+    "description": "O Paperclip Cloud recebe os eventos do GitHub e os entrega com segurança a esta instância.",
+    "connect": "Conectar Paperclip Cloud",
+    "startFailed": "Não foi possível iniciar o registro no Cloud"
+  },
+  "recovery": {
+    "useExistingCredentials": "Usar credenciais existentes do App",
+    "appNotCreated": "Não criei este App no GitHub."
+  },
+  "verify": {
+    "deliveryVerified": "Entrega do GitHub verificada. Verificando o acesso ao App e aos repositórios…",
+    "checkingAccess": "Verificando o acesso ao GitHub…",
+    "connectionSettings": "Configurações da conexão"
+  },
+  "create": {
+    "githubAccount": "Conta do GitHub",
+    "myAccount": "Minha conta",
+    "anotherOrganization": "Outra organização",
+    "loadAccountsError": "Não foi possível carregar algumas contas do GitHub conectadas. Escolha Outra organização para informar um nome.",
+    "organization": "Organização",
+    "organizationPlaceholder": "Nome da organização no GitHub",
+    "appName": "Nome do App",
+    "alreadyHaveApp": "Já tenho um App"
+  }
+}

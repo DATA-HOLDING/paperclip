@@ -7,6 +7,7 @@ import { formatDateTime } from "@/lib/utils";
 import { AppLogo } from "../AppLogo";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function conversationDestination(
   row: ChatConversation,
@@ -40,19 +41,19 @@ export function ChatConversationList({
     return (
       <EmptyState
         icon={MessageSquare}
-        message="No conversations yet"
+        message={t("pagesAppsChatChatConversationList.empty.title")}
         description={
           provider === "speko"
-            ? "Open an assigned task and choose Talk to agent."
+            ? t("pagesAppsChatChatConversationList.empty.speko")
             : provider === "agentmail"
-            ? "Send an email to this agent’s address to start one."
-            : "Mention the agent in an enabled destination to start one."
+            ? t("pagesAppsChatChatConversationList.empty.agentmail")
+            : t("pagesAppsChatChatConversationList.empty.default")
         }
       />
     );
   return (
     <ul
-      aria-label="Conversations"
+      aria-label={t("pagesAppsChatChatConversationList.ariaLabel")}
       className="divide-y divide-border border-y border-border"
     >
       {rows.map((row) => (
@@ -75,11 +76,11 @@ export function ChatConversationList({
                   className="break-words font-medium hover:underline"
                   to={`/issues/${row.issueId}`}
                 >
-                  {row.issueTitle ?? row.issueIdentifier ?? "Paperclip task"}
+                  {row.issueTitle ?? row.issueIdentifier ?? t("pagesAppsChatChatConversationList.paperclipTask")}
                 </Link>
               ) : (
                 <span className="font-medium">
-                  {row.issueTitle ?? "Waiting for task"}
+                  {row.issueTitle ?? t("pagesAppsChatChatConversationList.waitingForTask")}
                 </span>
               )}
             </div>
@@ -101,7 +102,7 @@ export function ChatConversationList({
                   {formatDateTime(row.updatedAt)}
                 </time>
               )}
-              {row.state === "completed" && <span>Completed</span>}
+              {row.state === "completed" && <span>{t("pagesAppsChatChatConversationList.completed")}</span>}
             </div>
           </div>
           {row.state !== "active" && row.state !== "completed" && (

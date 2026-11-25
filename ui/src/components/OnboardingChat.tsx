@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { MarkdownBody } from "./MarkdownBody";
 import { cn } from "../lib/utils";
 import { Loader2, Send, CheckCircle2, ArrowRight } from "lucide-react";
+import { t } from "@/i18n";
 
 interface OnboardingChatProps {
   taskId: string;
@@ -34,24 +35,24 @@ function detectHiringPlan(body: string): boolean {
 }
 
 const QUEUED_MESSAGES = [
-  "Heartbeat triggered, waking up...",
-  "Initializing...",
-  "Getting ready...",
+  t("componentsOnboardingChat.cycling.queued.wakingUp"),
+  t("componentsOnboardingChat.cycling.queued.initializing"),
+  t("componentsOnboardingChat.cycling.queued.gettingReady"),
 ];
 
 const RUNNING_MESSAGES = [
-  "Working on a response...",
-  "Reading the conversation...",
-  "Thinking through the plan...",
-  "Drafting a response...",
-  "Still working...",
-  "Almost there...",
+  t("componentsOnboardingChat.cycling.running.working"),
+  t("componentsOnboardingChat.cycling.running.reading"),
+  t("componentsOnboardingChat.cycling.running.thinking"),
+  t("componentsOnboardingChat.cycling.running.drafting"),
+  t("componentsOnboardingChat.cycling.running.stillWorking"),
+  t("componentsOnboardingChat.cycling.running.almostThere"),
 ];
 
 const WAITING_MESSAGES = [
-  "Waiting to wake up...",
-  "Heartbeat pending...",
-  "Should wake up soon...",
+  t("componentsOnboardingChat.cycling.waiting.waiting"),
+  t("componentsOnboardingChat.cycling.waiting.pending"),
+  t("componentsOnboardingChat.cycling.waiting.soon"),
 ];
 
 function getCyclingMessage(messages: string[], elapsed: number, agentName: string): string {
@@ -67,15 +68,15 @@ function getRunStatusMessage(status: string, agentName: string, elapsed: number)
     case "running":
       return getCyclingMessage(RUNNING_MESSAGES, elapsed, agentName);
     case "succeeded":
-      return `${agentName} finished`;
+      return t("componentsOnboardingChat.status.succeeded", { name: agentName });
     case "failed":
-      return `${agentName} encountered an error`;
+      return t("componentsOnboardingChat.status.failed", { name: agentName });
     case "cancelled":
-      return `${agentName}'s run was cancelled`;
+      return t("componentsOnboardingChat.status.cancelled", { name: agentName });
     case "timed_out":
-      return `${agentName}'s run timed out`;
+      return t("componentsOnboardingChat.status.timedOut", { name: agentName });
     default:
-      return `${agentName} is thinking...`;
+      return t("componentsOnboardingChat.status.thinking", { name: agentName });
   }
 }
 
@@ -249,7 +250,7 @@ export function OnboardingChat({
     return (
       <div className="flex items-center justify-center py-8 text-muted-foreground text-sm">
         <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-        Loading conversation...
+        {t("componentsOnboardingChat.loading")}
       </div>
     );
   }
@@ -268,10 +269,10 @@ export function OnboardingChat({
           companyGoal={companyGoal}
           hasComments={Boolean(comments?.length)}
           onDiscuss={() => {
-            setInput("I want to discuss the plan before you get started.");
+            setInput(t("componentsOnboardingChat.discussMessage"));
             inputRef.current?.focus();
           }}
-          onStart={() => sendMessage("Yes, get started on the hiring plan!")}
+          onStart={() => sendMessage(t("componentsOnboardingChat.startMessage"))}
         />
         {comments?.map((comment) => {
           const isAgent = Boolean(comment.authorAgentId);
@@ -296,12 +297,12 @@ export function OnboardingChat({
                       : "text-foreground/70",
                   )}
                 >
-                  {isAgent ? agentName : "You"}
+                  {isAgent ? agentName : t("componentsOnboardingChat.you")}
                 </span>
                 {isPlan && (
                   <span className="inline-flex items-center gap-0.5 text-(length:--text-nano) text-green-600 dark:text-green-400 font-medium">
                     <CheckCircle2 className="h-3 w-3" />
-                    Hiring plan detected
+                    {t("componentsOnboardingChat.planDetected")}
                   </span>
                 )}
               </div>
@@ -350,15 +351,15 @@ export function OnboardingChat({
               <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
               <div>
                 <p className="text-sm font-medium">
-                  {agentName} has prepared a hiring plan
+                  {t("componentsOnboardingChat.planReady.title", { name: agentName })}
                 </p>
                 <p className="text-(length:--text-micro) text-muted-foreground">
-                  Review it, make edits, then approve.
+                  {t("componentsOnboardingChat.planReady.description")}
                 </p>
               </div>
             </div>
             <Button size="sm" onClick={onReviewPlan}>
-              Review plan
+              {t("componentsOnboardingChat.planReady.reviewButton")}
               <ArrowRight className="h-3.5 w-3.5 ml-1" />
             </Button>
           </div>
@@ -371,7 +372,7 @@ export function OnboardingChat({
           ref={inputRef}
           type="text"
           className="flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-          placeholder={detectedPlanCommentId ? `Ask ${agentName} to revise the plan...` : `Message ${agentName}...`}
+          placeholder={detectedPlanCommentId ? t("componentsOnboardingChat.placeholder.revise", { name: agentName }) : t("componentsOnboardingChat.placeholder.message", { name: agentName })}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -432,13 +433,13 @@ function WelcomeMessage({
             </span>
           </div>
           <p>
-            Hi! Thanks for bringing me on to lead <strong>{companyName}</strong>.
+            {t("componentsOnboardingChat.welcome.greeting")} <strong>{companyName}</strong>.
           </p>
           <p className="mt-1">
-            Our mission is: <em>{companyGoal}</em>
+            {t("componentsOnboardingChat.welcome.mission")} <em>{companyGoal}</em>
           </p>
           <p className="mt-1">
-            I'm ready to put together a plan for who we should bring on. Want me to get started?
+            {t("componentsOnboardingChat.welcome.ready")}
           </p>
         </div>
       )}
@@ -450,13 +451,13 @@ function WelcomeMessage({
             className="rounded-full border border-border px-3 py-1 text-xs hover:bg-accent/50 transition-colors text-muted-foreground hover:text-foreground"
             onClick={onDiscuss}
           >
-            Let's discuss first
+            {t("componentsOnboardingChat.welcome.discussChip")}
           </button>
           <button
             className="rounded-full border border-foreground bg-foreground text-background px-3 py-1 text-xs hover:opacity-90 transition-opacity"
             onClick={onStart}
           >
-            Yes, get started!
+            {t("componentsOnboardingChat.welcome.startChip")}
           </button>
         </div>
       )}
@@ -472,8 +473,8 @@ function WelcomeMessage({
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500" />
           </span>
           {phase === "waking"
-            ? `${agentName} is waking up...`
-            : `${agentName} is composing a message...`}
+            ? t("componentsOnboardingChat.welcome.wakingUp", { name: agentName })
+            : t("componentsOnboardingChat.welcome.composing", { name: agentName })}
         </div>
       )}
     </>

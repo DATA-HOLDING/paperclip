@@ -1,0 +1,25 @@
+{
+  "severity": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "controls": "Decisions controls",
+  "searchLabel": "Search decisions",
+  "searchPlaceholder": "Search decisions…",
+  "filter": "Filter",
+  "group": "Group",
+  "sort": "Sort",
+  "count_one": "{{count}} decision",
+  "count_other": "{{count}} decisions",
+  "clear": "Clear",
+  "section": {
+    "type": "Type",
+    "severity": "Severity",
+    "project": "Project",
+    "workspace": "Workspace"
+  },
+  "noProject": "No project",
+  "noWorkspace": "No workspace"
+}

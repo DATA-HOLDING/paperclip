@@ -1,0 +1,43 @@
+{
+  "ago": {
+    "justNow": "just now",
+    "minutes_one": "{{count}}m ago",
+    "minutes_other": "{{count}}m ago",
+    "hours_one": "{{count}}h ago",
+    "hours_other": "{{count}}h ago",
+    "days_one": "{{count}}d ago",
+    "days_other": "{{count}}d ago",
+    "weeks_one": "{{count}}w ago",
+    "weeks_other": "{{count}}w ago",
+    "months_one": "{{count}}mo ago",
+    "months_other": "{{count}}mo ago"
+  },
+  "routine": {
+    "paused": "Paused",
+    "notRunYet": "Not run yet",
+    "lastSuccessfulRun": "Last successful run {{when}}",
+    "failed": "Failed {{when}}",
+    "running": "Running, started {{when}}"
+  },
+  "due": {
+    "today": "Due today",
+    "tomorrow": "Due tomorrow",
+    "inDays_one": "Due in {{count}} days",
+    "inDays_other": "Due in {{count}} days",
+    "oneDayLate": "1 day late",
+    "daysLate_one": "{{count}} days late",
+    "daysLate_other": "{{count}} days late"
+  },
+  "progress_one": "{{done}} of {{total}} task done",
+  "progress_other": "{{done}} of {{total}} tasks done",
+  "runEnded": {
+    "succeeded": "Succeeded",
+    "failed": "Failed",
+    "cancelled": "Cancelled",
+    "timedOut": "Timed out"
+  },
+  "run": {
+    "queued": "Queued {{when}}",
+    "ended": "{{word}} {{when}}"
+  }
+}

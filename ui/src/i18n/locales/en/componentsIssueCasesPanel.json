@@ -1,0 +1,9 @@
+{
+  "roles": {
+    "origin": "origin",
+    "work": "work",
+    "reference": "reference"
+  },
+  "title": "Cases",
+  "workflow": "workflow"
+}

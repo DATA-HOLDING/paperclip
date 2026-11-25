@@ -1,0 +1,7 @@
+{
+  "title_one": "Cancel {{count}} active subtask?",
+  "title_other": "Cancel {{count}} active subtasks?",
+  "listAria": "Active subtasks",
+  "taskOnly": "Cancel task only",
+  "taskAndSubtasks": "Cancel task and subtasks"
+}

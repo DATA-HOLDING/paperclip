@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { ADAPTER_AUTH_MISSING_CHECK_CODE, type AdapterEnvironmentTestResult } from "@paperclipai/shared";
 
 export const ONBOARDING_CONNECTION_TEST_TIMEOUT_MS = 120_000;
@@ -20,7 +21,7 @@ export async function runOnboardingConnectionTest<T>(
   let timeout: ReturnType<typeof setTimeout> | undefined;
   const deadline = new Promise<never>((_, reject) => {
     timeout = setTimeout(() => {
-      const error = new Error("The connection test took too long. Try connecting again.");
+      const error = new Error(t("libOnboardingConnectionTest.timeout"));
       reject(error);
       controller.abort(error);
     }, ONBOARDING_CONNECTION_TEST_TIMEOUT_MS);

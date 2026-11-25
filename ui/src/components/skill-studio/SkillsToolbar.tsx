@@ -6,15 +6,16 @@ import { cn } from "@/lib/utils";
 import { GithubIcon } from "@/components/icons/github-icon";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { t } from "@/i18n";
 
 export type DiscoverySort = "agents" | "stars" | "forks" | "recent" | "alphabetical";
 
 const DISCOVERY_SORT_LABELS: Record<DiscoverySort, string> = {
-  agents: "Most agents",
-  stars: "Most stars",
-  forks: "Most forks",
-  recent: "Recently updated",
-  alphabetical: "Alphabetical",
+  agents: t("componentsSkillStudio.toolbar.sort.agents"),
+  stars: t("componentsSkillStudio.toolbar.sort.stars"),
+  forks: t("componentsSkillStudio.toolbar.sort.forks"),
+  recent: t("componentsSkillStudio.toolbar.sort.recent"),
+  alphabetical: t("componentsSkillStudio.toolbar.sort.alphabetical"),
 };
 
 const DISCOVERY_SORTS: DiscoverySort[] = ["agents", "stars", "forks", "recent", "alphabetical"];
@@ -46,7 +47,7 @@ export interface SkillsToolbarProps {
 /** Shared shipped Skills controls. Canonical proposal: Components / Toolbars / Skills. */
 export function SkillsToolbar({ viewTitle, viewDescription, searchLabel, search, onSearchChange, sort, onSortChange, availableSources, sourceBadgeFilter, setSourceBadgeFilter, onScan, scanPending, onCreate, onBrowseDiscover, onImport, onImportFromProject, folderControl, onCreateFolder, selectMode, onToggleSelectMode, navigation }: SkillsToolbarProps) {
   return (
-    <div data-canonical-toolbar="skills" role="toolbar" aria-label="Skills controls" className="flex flex-wrap items-center gap-2 border-b border-border px-4 py-3">
+    <div data-canonical-toolbar="skills" role="toolbar" aria-label={t("componentsSkillStudio.toolbar.aria")} className="flex flex-wrap items-center gap-2 border-b border-border px-4 py-3">
       <div className="w-full">
         <h1 className="text-lg font-semibold text-foreground">{viewTitle}</h1>
         <p className="text-xs text-muted-foreground">{viewDescription}</p>
@@ -55,7 +56,7 @@ export function SkillsToolbar({ viewTitle, viewDescription, searchLabel, search,
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm">
-            <span className="text-muted-foreground">Sort</span>
+            <span className="text-muted-foreground">{t("componentsSkillStudio.toolbar.sortLabel")}</span>
             <span>{DISCOVERY_SORT_LABELS[sort]}</span>
             <ChevronDown className="ml-1 h-3.5 w-3.5" />
           </Button>
@@ -74,18 +75,18 @@ export function SkillsToolbar({ viewTitle, viewDescription, searchLabel, search,
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm">
-              <span className="text-muted-foreground">Source</span>
+              <span className="text-muted-foreground">{t("componentsSkillStudio.toolbar.sourceLabel")}</span>
               <span>
                 {sourceBadgeFilter === "all"
-                  ? "All"
-                  : availableSources.find((source) => source.value === sourceBadgeFilter)?.label ?? "All"}
+                  ? t("componentsSkillStudio.toolbar.all")
+                  : availableSources.find((source) => source.value === sourceBadgeFilter)?.label ?? t("componentsSkillStudio.toolbar.all")}
               </span>
               <ChevronDown className="ml-1 h-3.5 w-3.5" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuRadioGroup value={sourceBadgeFilter} onValueChange={setSourceBadgeFilter}>
-              <DropdownMenuRadioItem value="all">All sources</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="all">{t("componentsSkillStudio.toolbar.allSources")}</DropdownMenuRadioItem>
               {availableSources.map((source) => (
                 <DropdownMenuRadioItem key={source.value} value={source.value}>
                   {source.label}
@@ -100,8 +101,8 @@ export function SkillsToolbar({ viewTitle, viewDescription, searchLabel, search,
         size="icon-sm"
         onClick={() => onScan()}
         disabled={scanPending}
-        aria-label="Scan project workspaces for skills"
-        title="Scan project workspaces for skills"
+        aria-label={t("componentsSkillStudio.toolbar.scan")}
+        title={t("componentsSkillStudio.toolbar.scan")}
       >
         <RefreshCw className={cn("h-4 w-4", scanPending && "animate-spin")} />
       </Button>
@@ -109,40 +110,40 @@ export function SkillsToolbar({ viewTitle, viewDescription, searchLabel, search,
       {onCreateFolder ? (
         <Button variant="outline" size="sm" onClick={onCreateFolder}>
           <Plus className="mr-1 h-3.5 w-3.5" />
-          New folder
+          {t("componentsSkillStudio.toolbar.newFolder")}
         </Button>
       ) : null}
       {onToggleSelectMode ? (
         <Button variant="outline" size="sm" aria-pressed={selectMode} onClick={onToggleSelectMode}>
-          {selectMode ? "Done" : "Select"}
+          {selectMode ? t("componentsSkillStudio.toolbar.done") : t("componentsSkillStudio.toolbar.select")}
         </Button>
       ) : null}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size="sm" variant="default" data-toolbar-primary>
             <Plus className="mr-1 h-3.5 w-3.5" />
-            New
+            {t("componentsSkillStudio.toolbar.new")}
             <ChevronDown className="ml-1 h-3.5 w-3.5" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onSelect={onCreate}>
             <Pencil className="mr-2 h-4 w-4" />
-            Create new skill
+            {t("componentsSkillStudio.toolbar.createSkill")}
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={onBrowseDiscover}>
             <Compass className="mr-2 h-4 w-4" />
-            Discover skills
+            {t("componentsSkillStudio.toolbar.discover")}
           </DropdownMenuItem>
-          <DropdownMenuItem asChild><Link to="/skills/sources/new"><GithubIcon className="mr-2 h-4 w-4" />Import from GitHub</Link></DropdownMenuItem>
-          <DropdownMenuItem asChild><Link to="/skills/sources">Manage sources</Link></DropdownMenuItem>
+          <DropdownMenuItem asChild><Link to="/skills/sources/new"><GithubIcon className="mr-2 h-4 w-4" />{t("componentsSkillStudio.toolbar.importGithub")}</Link></DropdownMenuItem>
+          <DropdownMenuItem asChild><Link to="/skills/sources">{t("componentsSkillStudio.toolbar.manageSources")}</Link></DropdownMenuItem>
           <DropdownMenuItem onSelect={onImport}>
             <Globe className="mr-2 h-4 w-4" />
-            Import from path or URL
+            {t("componentsSkillStudio.toolbar.importPath")}
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={onImportFromProject}>
             <FolderSearch className="mr-2 h-4 w-4" />
-            Import skills from project
+            {t("componentsSkillStudio.toolbar.importProject")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

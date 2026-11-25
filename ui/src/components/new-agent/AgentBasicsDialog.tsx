@@ -17,6 +17,7 @@ import { isNewAgentAdapterAllowed } from "@/lib/new-agent-adapters";
 import { queryKeys } from "@/lib/queryKeys";
 import { getAdapterDisplay } from "@/adapters/adapter-display-registry";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import {
@@ -118,7 +119,7 @@ export function AgentBasicsDialog({
     setSaving(true);
     setSaveError(null);
     try {
-      if (!companyId) throw new Error("Select an organization to create an agent.");
+      if (!companyId) throw new Error(t("componentsNewAgent.basics.errors.selectOrganization"));
       let agent = saved.current;
       if (!agent && setupAgentId) agent = await agentsApi.get(setupId.current, companyId);
       const creatingRecord = !agent;
@@ -127,7 +128,7 @@ export function AgentBasicsDialog({
         const leader = existing.find(item => item.role === "ceo" && item.status !== "terminated");
         const provisionalAdapter = adapters?.some(item => item.type === "process" && item.disabled)
           ? choices[0]?.type : "process";
-        if (!provisionalAdapter) throw new Error("No agent adapters are available on this instance.");
+        if (!provisionalAdapter) throw new Error(t("componentsNewAgent.basics.errors.noAdapters"));
         // This adapter is provisional; the setup hold prevents execution.
         agent = await agentsApi.create(companyId, {
           setupId: setupId.current, name: name.trim(), appearance: appearanceDraft.appearance,
@@ -172,7 +173,7 @@ export function AgentBasicsDialog({
       else onContinue({ name: agent.name, adapterType: nextAdapter, runnerProvider: nextProvider,
         runner: nextRunner, setupAgentId: agent.id });
     } catch (cause) {
-      if (active.current) setSaveError(cause instanceof Error ? cause.message : "Could not save agent setup.");
+      if (active.current) setSaveError(cause instanceof Error ? cause.message : t("componentsNewAgent.basics.errors.saveFailed"));
     } finally {
       busy.current = false;
       if (active.current) setSaving(false);
@@ -193,18 +194,18 @@ export function AgentBasicsDialog({
       >
         <div
           className="flex items-center gap-2 px-6 py-5 text-xs text-muted-foreground"
-          aria-label="New agent progress"
+          aria-label={t("componentsNewAgent.basics.progressLabel")}
         >
           <span
             className={cn(step === "name" && "font-medium text-foreground")}
           >
-            1. Name
+            {t("componentsNewAgent.basics.steps.name")}
           </span>
           <ChevronRight className="size-3" />
           <span
             className={cn(step === "adapter" && "font-medium text-foreground")}
           >
-            2. Adapter
+            {t("componentsNewAgent.basics.steps.adapter")}
           </span>
         </div>
         <form
@@ -220,27 +221,27 @@ export function AgentBasicsDialog({
               <div className="space-y-2">
                 <DialogTitle className="text-3xl font-semibold tracking-tight">
                   {step === "name"
-                    ? "Meet your next agent"
-                    : "Choose an adapter"}
+                    ? t("componentsNewAgent.basics.title.name")
+                    : t("componentsNewAgent.basics.title.adapter")}
                 </DialogTitle>
                 <DialogDescription className="text-base">
                   {step === "name"
-                    ? "Start with a name. Make them your own."
-                    : `How should ${name.trim()} work?`}
+                    ? t("componentsNewAgent.basics.description.name")
+                    : t("componentsNewAgent.basics.description.adapter", { name: name.trim() })}
                 </DialogDescription>
               </div>
             </div>
             {step === "name" ? (
               <div className="space-y-2">
                 <label htmlFor={id} className="text-sm font-medium">
-                  Agent name
+                  {t("componentsNewAgent.basics.fields.name")}
                 </label>
                 <Input
                   id={id}
                   autoFocus
                   disabled={saving}
                   maxLength={100}
-                  placeholder="e.g. Darnold"
+                  placeholder={t("componentsNewAgent.basics.fields.namePlaceholder")}
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   className="h-12 text-base"
@@ -252,23 +253,23 @@ export function AgentBasicsDialog({
                     className="px-0 text-muted-foreground"
                     onClick={onInvite}
                   >
-                    Invite an external agent
+                    {t("componentsNewAgent.basics.inviteExternal")}
                   </Button>
                 )}
               </div>
             ) : (
               <fieldset className="space-y-4">
-                <legend className="sr-only">Adapter</legend>
+                <legend className="sr-only">{t("componentsNewAgent.basics.adapterLegend")}</legend>
                 {adaptersView.kind === "loading" || adaptersView.kind === "reconnecting" ? (
                   <p role="status" className="text-sm text-muted-foreground">
-                    Loading adapters…
+                    {t("componentsNewAgent.basics.loadingAdapters")}
                   </p>
                 ) : null}
                 {adaptersView.kind === "error" ? (
                   <QueryErrorState
                     size="inline"
                     error={adaptersView.error}
-                    action="load the adapter list"
+                    action={t("componentsNewAgent.basics.loadAdaptersAction")}
                     onRetry={adaptersView.retry}
                     retrying={adaptersView.isFetching}
                   />
@@ -303,7 +304,7 @@ export function AgentBasicsDialog({
                             {display.label}
                           </span>
                           {adapter.type === "antigravity_runtime" && !antigravityQualified && (
-                            <span className="text-xs text-muted-foreground">{antigravityCandidate ? "Candidate" : "Not available yet"}</span>
+                            <span className="text-xs text-muted-foreground">{antigravityCandidate ? t("componentsNewAgent.basics.candidate") : t("componentsNewAgent.basics.notAvailableYet")}</span>
                           )}
                           {adapterType === adapter.type && (
                             <Check className="absolute right-2 top-2 size-3.5" />
@@ -325,11 +326,11 @@ export function AgentBasicsDialog({
               onClick={() => (step === "name" ? onClose() : setStep("name"))}
             >
               {step === "name" ? (
-                "Cancel"
+                t("componentsNewAgent.basics.footer.cancel")
               ) : (
                 <>
                   <ArrowLeft className="size-4" />
-                  Back
+                  {t("componentsNewAgent.basics.footer.back")}
                 </>
               )}
             </Button>
@@ -337,7 +338,7 @@ export function AgentBasicsDialog({
               type="submit"
               disabled={saving || !name.trim() || (step === "adapter" && !validAdapter)}
             >
-              {saving ? "Saving…" : step === "name" ? "Choose adapter" : "Configure agent"}
+              {saving ? t("componentsNewAgent.basics.footer.saving") : step === "name" ? t("componentsNewAgent.basics.footer.chooseAdapter") : t("componentsNewAgent.basics.footer.configure")}
               <ArrowRight className="size-4" />
             </Button>
           </div>

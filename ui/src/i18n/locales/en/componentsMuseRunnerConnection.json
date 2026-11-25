@@ -1,0 +1,94 @@
+{
+  "notObserved": "Not observed",
+  "intro": "Muse uses its own tools and permissions. Paperclip coordinates company tasks and questions. Provider usage and cost are unavailable.",
+  "disabled": "Muse is disabled in experimental settings. Connection cleanup and stop evidence remain available.",
+  "publicOriginRequired": "An authenticated instance with a public HTTPS URL is required to connect Muse.",
+  "disconnected": "Disconnected. Paperclip credentials and execution authority were revoked.",
+  "detectorRemovalRequested": "Detector removal requested; completion is not confirmed.",
+  "afterDisconnect": "After disconnect, the receiver disables itself when it next reaches Paperclip. Cleanup cannot be confirmed through the revoked connection.",
+  "recordDetectorObservation": "Record detector removal observation",
+  "separateSteps": "Detector removal, worker stopping, and sandbox cleanup are separate. Paperclip cannot verify every private Muse tool or stop all personal Muse conversations.",
+  "nativeEffectsUnknown": "Native effect outcomes remain unknown and block replacement work. Worker attestation does not resolve or replay those effects.",
+  "stopRevisionUnavailable": "Stop binding revision is unavailable. Refresh to inspect this assignment before attesting.",
+  "attestWorkerStopped": "Attest this worker stopped",
+  "recordExactDetector": "Record an observation of this exact detector",
+  "digestHint": "Use the digest of the secret-free runtime observation. Do not paste the listing, a URL, credentials, or private tool output.",
+  "observedAtHint": "Enter the actual runtime listing time, not the time you submit this form. Paperclip checks it against revocation and the qualification deadline.",
+  "detectorConfirm": "I observed this exact hook absent in the supported runtime listing after revocation. This attests detector removal only, not worker stopping or private effects.",
+  "confirmDetector": "Confirm detector observation",
+  "confirmWorkerTitle": "Confirm the worker for this exact assignment stopped",
+  "workerConfirm": "I have stopped this Muse worker for the named assignment and run. This does not certify independent private tools or unknown native effects.",
+  "confirmWorkerStopped": "Confirm worker stopped",
+  "pauseAgent": "Pause agent",
+  "disconnect": "Disconnect",
+  "openMuse": "Open Muse",
+  "saveFirst": "Save the agent, then connect your personal Muse here.",
+  "accountUnconfirmed": "Unable to confirm your account. Refresh to inspect this Muse connection.",
+  "cancel": "Cancel",
+  "refresh": "Refresh",
+  "rows": {
+    "lastReceiverContact": "Last persisted public receiver contact",
+    "workerActivity": "Authenticated worker activity",
+    "lastVerifiedReply": "Last verified reply",
+    "credentialStatus": "Credential status",
+    "refreshExpires": "Refresh credential expires",
+    "clientVersion": "Client version",
+    "liveAssignments": "Live assignments",
+    "uncertainOperations": "Uncertain native operations",
+    "pendingAnswers": "Pending answers",
+    "usageAndCost": "Usage and cost"
+  },
+  "notReported": "Not reported",
+  "unavailable": "Unavailable",
+  "contactLag": "Receiver contact is persisted in batches and may lag by up to {{seconds}} seconds. Public receiver checks are unverified. Only an authenticated reply confirms Muse can work.",
+  "cleanupStatus": "Detector removal: {{detector}}. Worker quiescence: {{worker}}.",
+  "detector": {
+    "operatorAttested": "operator-attested",
+    "acknowledged": "acknowledged"
+  },
+  "notConfirmed": "not confirmed",
+  "workerReported": "reported",
+  "cleanupExpires": "Cleanup capability expires {{date}}.",
+  "recorded": "Recorded {{time}}: {{source}}. This is not independent provider confirmation.",
+  "evidence": {
+    "operator": "operator attestation from a supported runtime hook listing",
+    "worker": "authenticated worker report"
+  },
+  "stop": {
+    "operatorAttested": "You attested that this assignment’s Muse worker stopped.",
+    "workerReported": "Muse reported that this assignment’s worker is quiescent. Independent private effects remain unconfirmed.",
+    "fenced": "Paperclip fenced this assignment’s authority. Its external stop cannot be confirmed."
+  },
+  "recordDetectorAria": "Record exact Muse detector removal",
+  "hooksHint": {
+    "before": "Use Muse’s supported ",
+    "after": " after revocation to verify this exact registered script is absent. Disabled checks, silence, or a removal request are insufficient. The retained hook ID and observation are your report. Paperclip does not verify installation, query Muse, or remove the hook."
+  },
+  "fields": {
+    "hookId": {
+      "label": "Registered hook ID",
+      "aria": "Registered Muse hook ID"
+    },
+    "observationSha": {
+      "label": "Observation SHA-256",
+      "aria": "Detector removal observation SHA-256"
+    },
+    "observedAt": {
+      "label": "Observed at (UTC)",
+      "aria": "Detector removal observed at (UTC)"
+    }
+  },
+  "attestAria": "Attest this Muse worker stopped",
+  "none": "None",
+  "copySetupPrompt": "Copy setup prompt",
+  "connectYourMuse": "Connect your Muse",
+  "setupDescription": "Paste into your current Muse conversation. Complete Connect Paperclip if Muse asks, then approve the Paperclip hostname.",
+  "setupExpires": "One-use setup expires {{date}}. Muse keeps the connection credential in its secure vault. Hostname permission applies to future requests to this Paperclip hostname.",
+  "testingReply": "Testing background reply…",
+  "testReply": "Test background reply",
+  "reconnect": "Reconnect Muse",
+  "repair": "Repair connection",
+  "connect": "Connect Muse",
+  "loadFailed": "Unable to load the Muse connection.",
+  "loading": "Loading Muse connection…"
+}

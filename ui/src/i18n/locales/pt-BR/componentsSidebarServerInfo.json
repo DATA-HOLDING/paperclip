@@ -1,0 +1,17 @@
+{
+  "unavailable": "Indisponível",
+  "commitUnavailable": "Commit indisponível",
+  "changeStatusUnavailable": "Status das alterações indisponível",
+  "cleanCheckout": "Checkout limpo",
+  "staged": "{{n}} preparados",
+  "unstaged": "{{n}} não preparados",
+  "untracked": "{{n}} não rastreados",
+  "localChangesList": "Há alterações locais ({{list}})",
+  "localChanges": "Há alterações locais",
+  "healthUnavailable": "Saúde indisponível",
+  "loading": "Carregando...",
+  "server": "Servidor",
+  "lastRestarted": "Último reinício",
+  "runningCommit": "Commit em execução",
+  "checkoutState": "Estado do checkout"
+}

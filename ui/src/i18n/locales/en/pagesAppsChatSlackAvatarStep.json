@@ -1,0 +1,29 @@
+{
+  "avatarAlt": "{{name}}’s Cliptoon avatar",
+  "downloadHeading": "Download your agent’s avatar",
+  "downloadHeadingNumbered": "1. Download your agent’s avatar",
+  "imageSpecs": "PNG · 512 × 512 · Ready for Slack",
+  "downloadButton": "Download avatar",
+  "downloadError": "Couldn’t download the avatar. Try downloading it again.",
+  "howToUpload": "How to upload in Slack",
+  "uploadHeading": "Upload it in Slack",
+  "uploadHeadingNumbered": "2. Upload it in Slack",
+  "uploadDescription": "You’ll upload the downloaded image directly in Slack’s app settings.",
+  "steps": {
+    "openSettings": "Open Slack app Settings",
+    "andChoose": "and choose",
+    "choose": "Choose",
+    "basicInformation": "Basic Information",
+    "thenScrollTo": ", then scroll to",
+    "displayInformation": "Display Information",
+    "under": "Under",
+    "appIconPreview": "App icon & Preview",
+    "clickAndUpload": ", click the app icon and upload",
+    "confirmCrop": "Confirm the crop, then click",
+    "saveChanges": "Save Changes",
+    "inSlack": "in Slack."
+  },
+  "settingsAriaLabel": "Slack avatar",
+  "settingsTitle": "Agent avatar",
+  "settingsDescription": "Use {{name}}’s avatar so your team recognizes the agent"
+}

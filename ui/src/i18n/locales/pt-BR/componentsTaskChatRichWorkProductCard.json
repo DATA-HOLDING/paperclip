@@ -1,0 +1,46 @@
+{
+  "chip": {
+    "changesRequested": "Alterações solicitadas",
+    "review": "Revisão",
+    "failed": "Falhou",
+    "opening": "Abrindo",
+    "pending": "Pendente",
+    "open": "Aberto",
+    "draft": "Rascunho",
+    "merged": "Mesclado",
+    "closed": "Fechado",
+    "running": "Rodando",
+    "stopped": "Parado",
+    "down": "Fora do ar",
+    "unhealthy": "Com problema"
+  },
+  "action": {
+    "openOnGithub": "Abrir no GitHub",
+    "openPreview": "Abrir prévia",
+    "openGallery": "Abrir galeria",
+    "download": "Baixar",
+    "openDocument": "Abrir documento",
+    "openService": "Abrir serviço"
+  },
+  "meta": {
+    "branch": "Branch",
+    "branchNoRemote": "Branch · sem link remoto",
+    "image": "Imagem",
+    "video": "Vídeo",
+    "file": "Arquivo",
+    "document": "Documento",
+    "rev": "rev. {{revision}}",
+    "port": "porta {{port}}"
+  },
+  "fileCount_one": "{{count}} arquivo",
+  "fileCount_other": "{{count}} arquivos",
+  "noLink": "Nenhum link foi informado para este produto de trabalho.",
+  "updated": "Atualizado em {{date}}",
+  "savedDescription": "Descrição salva",
+  "openInTabLabel": "Abrir em aba: {{title}}",
+  "openInTab": "Abrir em aba",
+  "hideDetailsLabel": "Ocultar detalhes: {{title}}",
+  "showDetailsLabel": "Mostrar detalhes: {{title}}",
+  "hideDetails": "Ocultar detalhes",
+  "showDetails": "Mostrar detalhes"
+}

@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "onlyStoreDeflate": "Arquivo zip não suportado: só entradas STORE e DEFLATE são suportadas.",
+    "browserCannotDecompress": "Arquivo zip não suportado: este navegador não consegue ler entradas zip compactadas.",
+    "unsupportedLocalHeader": "Arquivo zip inválido: cabeçalho de arquivo local não suportado.",
+    "truncatedLocalHeader": "Arquivo zip inválido: cabeçalho de arquivo local truncado.",
+    "dataDescriptors": "Arquivo zip não suportado: descritores de dados não são suportados.",
+    "truncatedContents": "Arquivo zip inválido: conteúdo de arquivo truncado."
+  }
+}

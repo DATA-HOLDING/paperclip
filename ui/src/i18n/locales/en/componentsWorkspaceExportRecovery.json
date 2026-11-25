@@ -1,0 +1,104 @@
+{
+  "resources": {
+    "sandboxLease": {
+      "what": "A sandbox lease from this task’s earlier run",
+      "releasing": "Releasing the sandbox lease…"
+    },
+    "controllerLease": {
+      "what": "This task’s earlier run",
+      "releasing": "Recovering the run…"
+    },
+    "teardown": {
+      "what": "A sandbox cleanup from this task’s earlier run",
+      "releasing": "Resuming the sandbox cleanup…"
+    },
+    "sandboxCreation": {
+      "what": "A sandbox this task’s earlier run was creating",
+      "releasing": "Reconciling the sandbox…"
+    },
+    "runtimeControl": {
+      "what": "A workspace service change from this task’s earlier run",
+      "releasing": "Releasing the workspace…"
+    },
+    "finalize": {
+      "what": "A workspace save from this task’s earlier run",
+      "releasing": "Releasing the workspace save…"
+    },
+    "finalizer": {
+      "what": "The result handling of this task’s earlier run",
+      "releasing": "Resuming the result handling…"
+    },
+    "cleanup": {
+      "what": "The cleanup of this task’s earlier run",
+      "releasing": "Resuming the cleanup…"
+    },
+    "default": {
+      "what": "A resource from this task’s earlier run",
+      "releasing": "Releasing the resource…"
+    }
+  },
+  "controller": {
+    "waiting": "This run’s previous server was recorded before Paperclip stored which host it ran on, so Paperclip can’t verify that it stopped. The run’s saved state is kept.",
+    "resuming": "Controller stop recorded. Checking recovery…"
+  },
+  "confirmQuestion": "How did you confirm that the previous server stopped?",
+  "confirmPlaceholder": "For example: the old server container was replaced and is no longer running.",
+  "ownerGone": {
+    "waiting": "{{what}} was recorded before Paperclip stored which server held it, so Paperclip can’t verify that the server stopped. It stays reserved until then."
+  },
+  "restoringSavedWork": "Restoring saved work…",
+  "notRecoveredYet": "Saved work is not recovered yet. The agent’s result is saved.",
+  "stop": {
+    "waiting": "The previous server stopped while it was saving this task’s files, and Paperclip can’t verify that it stopped. The agent’s result is saved.",
+    "checkingAccess": "Checking access…",
+    "waitingConfirm": "Paperclip is waiting to confirm that the previous server stopped.",
+    "confirmButton": "Confirm the previous server stopped",
+    "question": "How did you confirm that the previous server and its file copy stopped?",
+    "placeholder": "For example: the old server process exited and was not restarted.",
+    "confirming": "Confirming…",
+    "confirmAndResume": "Confirm and resume",
+    "notAccepted": "The confirmation was not accepted. Refresh the task and try again."
+  },
+  "cancel": "Cancel",
+  "source": {
+    "notInspected": "Paperclip can’t check the saved files’ source here because the run recorded too many sources.",
+    "ambiguous": "Paperclip can’t confirm that this run alone used the sandbox that holds the saved files.",
+    "unverified": "Paperclip can’t verify the saved files’ recorded source ({{code}})."
+  },
+  "errors": {
+    "changed": "File recovery changed. Inspect its current status before requesting recovery.",
+    "sourceNotVerified": "The saved files’ source could not be verified.",
+    "accountChanged": "Your account changed. Refresh before requesting file recovery.",
+    "previousNotConfirmed": "The previous failed recovery is not confirmed. Check its status before trying again.",
+    "couldNotSave": "The recovery request could not be saved in this browser. No request was sent.",
+    "ackNotConfirmed": "The recovery acknowledgement could not be confirmed.",
+    "requestNotConfirmed": "Recovery request was not confirmed: {{reason}}",
+    "inspectStatus": "Inspect its status.",
+    "requestCouldNotConfirm": "The recovery request could not be confirmed. Check its status before trying again; the saved request will be reused.",
+    "unableToInspect": "Unable to inspect file recovery.",
+    "replaced": "This file recovery was replaced. Showing the task’s current recovery.",
+    "noneConfirmed": "No recovery request is confirmed yet. Trying again will reuse the saved request."
+  },
+  "retained": {
+    "saved": "Saved files recovered. Task recovery is still being checked.",
+    "diskFull": "The sandbox disk was full when Paperclip saved the files. Free space, then use Retry to save them and finish the task.",
+    "gitInProgress": "A Git operation was still in progress when Paperclip saved the files. Finish or abort it, then use Retry to save them and finish the task.",
+    "failedReceipt": "File recovery has not finished. The saved source remains protected.",
+    "restoring": "Recovering saved files. Work remains paused until recovery is verified.",
+    "waiting": "File recovery is queued. Waiting for verified saved files.",
+    "needsRecovery": "The saved files need recovery before work can continue.",
+    "requesting": "Requesting file recovery…",
+    "tryAgain": "Try file recovery again",
+    "recover": "Recover saved files",
+    "checking": "Checking file recovery…",
+    "checkStatus": "Check file recovery status",
+    "inspecting": "Inspecting the recorded file source…",
+    "couldNotInspect": "File recovery could not be inspected. Check its status again.",
+    "notFinished": "File recovery has not finished. The saved files remain protected and are not applied.",
+    "doesNotApply": "Paperclip does not apply files it can’t verify.",
+    "replaced": "This file recovery was replaced. Check its status to show the task’s current recovery.",
+    "accessError": "Task access could not be checked. Refresh before requesting file recovery.",
+    "checkingAccess": "Checking file recovery access…",
+    "boardMemberCan": "A board member with task access can request file recovery."
+  }
+}

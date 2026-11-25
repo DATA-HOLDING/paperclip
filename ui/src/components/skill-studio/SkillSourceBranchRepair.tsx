@@ -5,6 +5,7 @@ import { skillSourcesApi } from '@/api/skillSources';
 import { ApiError } from '@/api/client';
 import { queryKeys } from '@/lib/queryKeys';
 import { SkillSourceBranchRepairDialog } from './SkillSourceBranchRepairDialog';
+import { t } from "@/i18n";
 
 export function SkillSourceBranchRepair({ companyId, source, connectionId, onSaved, onClose, onReturnFocus }: {
   companyId: string; source: SkillSource; connectionId?: string; onSaved: () => Promise<void>;
@@ -22,10 +23,10 @@ export function SkillSourceBranchRepair({ companyId, source, connectionId, onSav
     } catch (error) {
       if (error instanceof ApiError && error.status === 409 && (error.body as { code?: string } | null)?.code === 'skill_source_settings_changed') {
         await client.invalidateQueries({ queryKey: queryKeys.skillSources.all(companyId) });
-        throw new Error('This source is refreshing or changed. Your branch is still selected. Try saving again.');
+        throw new Error(t("componentsSkillStudio.branchRepair.sourceChanged"));
       }
       if (error instanceof ApiError && (error.body as { code?: string } | null)?.code === 'skill_source_ref_unavailable') {
-        throw new Error('GitHub could not find that branch or revision. Check the name or choose another branch.');
+        throw new Error(t("componentsSkillStudio.branchRepair.refUnavailable"));
       }
       throw error;
     }

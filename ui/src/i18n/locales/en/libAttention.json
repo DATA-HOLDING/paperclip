@@ -1,0 +1,72 @@
+{
+  "source": {
+    "approval": "Approval",
+    "decision": "Decision",
+    "issueThreadInteraction": "Decision requested",
+    "joinRequest": "Join request",
+    "recoveryAction": "Recovery",
+    "productivityReview": "Task",
+    "blockerAttention": "Blocked dependency",
+    "review": "Review",
+    "failedRun": "Failed run",
+    "budgetAlert": "Budget",
+    "agentErrorAlert": "Agent error"
+  },
+  "severity": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "nouns": {
+    "option_one": "{{count}} option",
+    "option_other": "{{count}} options",
+    "question_one": "{{count}} question",
+    "question_other": "{{count}} questions",
+    "suggestedTask_one": "{{count}} suggested task",
+    "suggestedTask_other": "{{count}} suggested tasks",
+    "item_one": "{{count}} item",
+    "item_other": "{{count}} items"
+  },
+  "detail": {
+    "toVerdict": "{{items}} to verdict",
+    "blockedBy": "Blocked by {{blocker}}",
+    "budget": "{{percent}}% of budget used ({{observed}} / {{limit}})"
+  },
+  "shelves": {
+    "decideNow": "Decide now",
+    "newToday": "New today",
+    "earlier": "Earlier"
+  },
+  "decideBy": {
+    "today": "Today",
+    "thisWeek": "This week",
+    "whenever": "Whenever",
+    "notSet": "Not set"
+  },
+  "dateRange": {
+    "all": "All",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "last7Days": "Last 7 days",
+    "thisMonth": "This month"
+  },
+  "groupBy": {
+    "none": "None",
+    "date": "Date",
+    "type": "Type",
+    "project": "Project",
+    "severity": "Severity"
+  },
+  "sort": {
+    "newest": "Newest first",
+    "oldest": "Oldest first"
+  },
+  "dateBucket": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "thisWeek": "This week",
+    "earlier": "Earlier"
+  },
+  "noProject": "No project"
+}

@@ -1,0 +1,28 @@
+{
+  "justNow": "just now",
+  "minutesAgo": "{{n}}m ago",
+  "hoursAgo": "{{n}}h ago",
+  "daysAgo": "{{n}}d ago",
+  "reason": {
+    "both": "backend files changed and migrations are pending",
+    "migrations": "pending migrations need a fresh boot",
+    "files": "backend files changed since this server booted"
+  },
+  "liveRuns_one": "{{count}} live run",
+  "liveRuns_other": "{{count}} live runs",
+  "confirmInterrupt": "Restart Paperclip now? This may interrupt {{runs}}.",
+  "confirm": "Restart Paperclip now?",
+  "requestFailed": "Failed to request restart",
+  "restartRequired": "Restart Required",
+  "autoRestartOn": "Auto-Restart On",
+  "updated": " · updated {{time}}",
+  "changed": "Changed: {{paths}}",
+  "more": " +{{n}} more",
+  "pendingMigrations": "Pending migrations: {{names}}",
+  "waitingFor": "Waiting for {{runs}} to finish",
+  "autoRestartIdle": "Auto-restart will trigger when the instance is idle",
+  "manualBefore": "Restart ",
+  "manualAfter": " after the active work is safe to interrupt",
+  "restartRequested": "Restart requested",
+  "restartNow": "Restart now"
+}

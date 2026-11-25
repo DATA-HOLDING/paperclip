@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import {
   forwardRef,
   useImperativeHandle,
@@ -113,7 +114,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(fu
     value,
     onChange,
     onSubmit,
-    placeholder = "Message…",
+    placeholder = t("componentsChatComposer.placeholder"),
     disabled = false,
     submitting = false,
     submitKey = "mod-enter",
@@ -121,7 +122,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(fu
     tone = "standard",
     surface = "card",
     autoFocus = false,
-    sendLabel = "Send message",
+    sendLabel = t("componentsChatComposer.sendMessage"),
     onAttachFiles,
     attachments = [],
     attaching = false,
@@ -288,12 +289,12 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(fu
             const sizeLabel = formatAttachmentSize(attachment.size);
             const statusLabel =
               attachment.status === "uploading"
-                ? "Uploading…"
+                ? t("componentsChatComposer.uploading")
                 : attachment.status === "error"
-                  ? attachment.error ?? "Upload failed"
+                  ? attachment.error ?? t("componentsChatComposer.uploadFailed")
                   : attachment.inline
-                    ? "Inserted inline"
-                    : "Attached";
+                    ? t("componentsChatComposer.insertedInline")
+                    : t("componentsChatComposer.attached");
             return (
               <div
                 key={attachment.id}
@@ -342,8 +343,8 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(fu
               type="button"
               onClick={triggerFilePicker}
               disabled={disabled || attaching}
-              aria-label="Attach files"
-              title="Attach files"
+              aria-label={t("componentsChatComposer.attachFiles")}
+              title={t("componentsChatComposer.attachFiles")}
               className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted-foreground transition-colors duration-150 hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
             >
               {attaching ? <Loader2 className="h-4 w-4 animate-spin" /> : <Paperclip className="h-4 w-4" />}

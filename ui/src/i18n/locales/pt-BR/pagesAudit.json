@@ -1,0 +1,194 @@
+{
+  "agentCommentary": {
+    "suggestion": "Sugestão",
+    "complaint": "Reclamação",
+    "commentary": "Comentários",
+    "readSuggestion": "Ler sugestão de {{agent}}",
+    "readComplaint": "Ler reclamação de {{agent}}",
+    "task": "Tarefa",
+    "submittedAt": "Enviado em {{time}}",
+    "detailDescription": "Detalhes da mensagem e contexto de origem.",
+    "loadingMessage": "Carregando mensagem…",
+    "tryAgain": "Tentar novamente",
+    "sourceTask": "Tarefa de origem",
+    "viewRun": "Ver execução",
+    "subtitle": "Sugestões e reclamações dos seus agentes.",
+    "filters": "Filtros dos comentários",
+    "searchLabel": "Buscar comentários",
+    "searchPlaceholder": "Buscar mensagens…",
+    "filterByAgent": "Filtrar por agente",
+    "allAgents": "Todos os agentes",
+    "filterByType": "Filtrar por tipo de mensagem",
+    "allTypes": "Todos os tipos",
+    "suggestions": "Sugestões",
+    "complaints": "Reclamações",
+    "clearFilters": "Limpar filtros",
+    "agentFiltersError": "Não foi possível carregar os filtros de agentes.",
+    "loading": "Carregando comentários…",
+    "empty": {
+      "page": "Nenhuma mensagem nesta página.",
+      "filtered": "Nenhuma mensagem corresponde a estes filtros.",
+      "none": "Nenhum comentário de agentes ainda.",
+      "pageDescription": "Volte para as mensagens mais recentes.",
+      "filteredDescription": "Tente outro agente, tipo de mensagem ou busca.",
+      "noneDescription": "Sugestões e reclamações aparecerão aqui quando os agentes as enviarem.",
+      "backToLatest": "Voltar às mais recentes"
+    },
+    "columns": {
+      "agent": "Agente",
+      "type": "Tipo",
+      "message": "Mensagem",
+      "submitted": "Enviado"
+    },
+    "messagesLabel": "Mensagens de comentários",
+    "pageRange": "{{from}}–{{to}} de {{total}} mensagens",
+    "previousPage": "Página anterior",
+    "previous": "Anterior",
+    "nextPage": "Próxima página",
+    "next": "Próxima"
+  },
+  "auditHub": {
+    "title": "Auditoria",
+    "selectOrganization": "Selecione uma organização para ver a Auditoria."
+  },
+  "companyActivity": {
+    "title": "Atividade",
+    "selectOrganization": "Selecione uma organização para ver a atividade."
+  },
+  "routineAuditActivity": {
+    "loading": "Carregando atividade da rotina…",
+    "loadAction": "carregar a atividade da rotina",
+    "empty": "Nenhuma atividade da rotina ainda.",
+    "label": "Atividade da rotina"
+  },
+  "auditRuns": {
+    "routineRun": "Execução de rotina",
+    "loadingRoutineRuns": "Carregando execuções da rotina…",
+    "loadRoutineRunsAction": "carregar as execuções da rotina",
+    "noRoutineRuns": "Nenhuma execução da rotina ainda.",
+    "routineRuns": "Execuções da rotina",
+    "routineRunsDescription": "Execuções criadas por esta rotina, das mais recentes para as mais antigas.",
+    "showingRoutineRuns": "Mostrando as {{limit}} execuções de rotina mais recentes.",
+    "runs": "Execuções",
+    "runsDescription": "Execuções recentes dos agentes em toda a organização. Abra uma execução para inspecionar a transcrição, a saída e o contexto da tarefa.",
+    "filters": "Filtros da auditoria",
+    "agent": "Agente",
+    "allAgents": "Todos os agentes",
+    "status": "Status",
+    "allStatuses": "Todos os status",
+    "clearFilters": "Limpar filtros",
+    "loadingRuns": "Carregando execuções…",
+    "loadRunsAction": "carregar as execuções",
+    "noMatchingRuns": "Nenhuma execução corresponde a estes filtros.",
+    "noRuns": "Nenhuma execução ainda.",
+    "recentRuns": "Execuções recentes",
+    "unknownAgent": "Agente desconhecido",
+    "sourceRun": "Execução {{source}}",
+    "showingRuns": "Mostrando as {{limit}} execuções mais recentes."
+  },
+  "auditFeed": {
+    "title": "Atividade",
+    "descriptionAll": "Tudo o que acontece na sua organização, do mais recente ao mais antigo — pessoas, agentes e o sistema. Cada linha é uma ação registrada.",
+    "descriptionAgents": "Cada ação registrada dos agentes, da mais recente à mais antiga — com a pessoa responsável e a execução por trás de cada uma.",
+    "actions": {
+      "all": "Todas as ações",
+      "tasks": "Tarefas",
+      "cases": "Casos",
+      "agents": "Agentes",
+      "runs": "Execuções",
+      "approvals": "Aprovações",
+      "projects": "Projetos",
+      "goals": "Objetivos",
+      "appsAndTools": "Apps e ferramentas",
+      "costs": "Custos",
+      "organization": "Organização"
+    },
+    "entities": {
+      "all": "Todas as entidades",
+      "task": "Tarefa",
+      "case": "Caso",
+      "agent": "Agente",
+      "run": "Execução",
+      "routine": "Rotina",
+      "project": "Projeto",
+      "goal": "Objetivo",
+      "organization": "Organização",
+      "connection": "Conexão"
+    },
+    "actor": {
+      "user": "Usuário",
+      "plugin": "Plugin",
+      "agent": "Agente",
+      "system": "Sistema"
+    },
+    "theCase": "o caso",
+    "theTask": "a tarefa",
+    "aUser": "um usuário",
+    "caseInstructions": "Instruções do caso",
+    "document": "Documento",
+    "onBehalfOf": "em nome de {{name}}",
+    "viewRun": "Ver execução",
+    "upsell": {
+      "title": "A auditoria de agentes é uma visualização do Paperclip Enterprise",
+      "body": "O registro de auditoria de agentes oferece um histórico pesquisável e exportável de tudo o que seus agentes fizeram — cada comentário, alteração de tarefa, aprovação e execução — com a pessoa responsável por cada ação. Peça a um administrador para conceder a você a",
+      "permission": "permissão para visualizá-lo."
+    },
+    "export": {
+      "successTitle": "Auditoria exportada",
+      "successBody": "O download do seu CSV começou.",
+      "failedTitle": "Falha na exportação",
+      "action": "exportar o registro de auditoria",
+      "exporting": "Exportando…",
+      "button": "Exportar CSV"
+    },
+    "scope": {
+      "label": "Escopo da atividade",
+      "requiresAccess": "Ações de agentes exige acesso de auditoria",
+      "agentActions": "Ações de agentes"
+    },
+    "scoped": {
+      "run": "Restrito à execução {{id}}",
+      "agent": "Restrito a um agente",
+      "case": "Caso",
+      "entity": "Restrito a {{name}}",
+      "entityFallback": "entidade"
+    },
+    "filters": {
+      "label": "Filtros da auditoria",
+      "agent": "Agente",
+      "allAgents": "Todos os agentes",
+      "responsibleUser": "Usuário responsável",
+      "allResponsibleUsers": "Todos os usuários responsáveis",
+      "action": "Ação",
+      "entity": "Entidade",
+      "case": "Caso",
+      "caseId": "ID ou identificador do caso",
+      "from": "De",
+      "fromDate": "Data inicial",
+      "to": "Até",
+      "toDate": "Data final"
+    },
+    "clearFilters": "Limpar filtros",
+    "refreshingAccess": "Atualizando o acesso à auditoria…",
+    "loading": "Carregando…",
+    "loadAction": "carregar o registro de auditoria",
+    "empty": {
+      "filtered": "Nenhuma ação corresponde a estes filtros",
+      "none": "Nada aqui ainda",
+      "filteredDescription": "Tente um período maior ou outros filtros.",
+      "agentsDescription": "Assim que seus agentes começarem a agir, as ações deles aparecerão aqui.",
+      "allDescription": "Assim que alguém na sua organização fizer algo, isso aparecerá aqui."
+    },
+    "listLabel": "Atividade da auditoria",
+    "loadMore": "Carregar mais",
+    "footer": "Registrado pelo Paperclip — as entradas não podem ser editadas. Valores sensíveis nunca são armazenados.",
+    "production": {
+      "tools": "Ferramentas",
+      "company": "Organização",
+      "descriptionAll": "Tudo o que acontece na sua organização, do mais recente ao mais antigo — pessoas, agentes e o sistema. Cada linha é uma ação registrada.",
+      "allActivity": "Toda a atividade",
+      "agentActions": "Ações de agentes",
+      "emptyAllDescription": "Assim que alguém na sua organização fizer algo, isso aparecerá aqui."
+    }
+  }
+}

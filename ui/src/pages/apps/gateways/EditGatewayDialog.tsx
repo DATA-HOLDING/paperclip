@@ -18,6 +18,7 @@ import { gatewaysQueryKey } from "./NewGatewayDialog";
 import { describeError } from "@/api/errors";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function EditGatewayDialog({
   companyId,
@@ -54,13 +55,13 @@ export function EditGatewayDialog({
         profileId,
       }),
     onSuccess: async (updated) => {
-      pushToast({ title: "Gateway updated", body: updated.name, tone: "success" });
+      pushToast({ title: t("pagesAppsGateways.editGateway.updated"), body: updated.name, tone: "success" });
       await queryClient.invalidateQueries({ queryKey: gatewaysQueryKey(companyId) });
       onOpenChange(false);
     },
     onError: (error) => {
       pushToast({
-        title: "Gateway was not updated",
+        title: t("pagesAppsGateways.editGateway.notUpdated"),
         body: describeError(error).body,
         tone: "error",
       });
@@ -77,18 +78,18 @@ export function EditGatewayDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className={cn("sm:max-w-lg", ANALYTICS_MASK_CLASS)}>
         <DialogHeader>
-          <DialogTitle>Edit gateway</DialogTitle>
+          <DialogTitle>{t("pagesAppsGateways.editGateway.title")}</DialogTitle>
           <DialogDescription>
-            Change the label or the access profile that controls which tools this endpoint exposes.
+            {t("pagesAppsGateways.editGateway.description")}
           </DialogDescription>
         </DialogHeader>
         <form className="space-y-4" onSubmit={submit}>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">Name</span>
+            <span className="text-xs font-medium text-muted-foreground">{t("pagesAppsGateways.form.name")}</span>
             <Input value={name} onChange={(event) => setName(event.target.value)} required autoFocus />
           </label>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">Access profile</span>
+            <span className="text-xs font-medium text-muted-foreground">{t("pagesAppsGateways.form.accessProfile")}</span>
             <select
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               value={profileId}
@@ -103,20 +104,20 @@ export function EditGatewayDialog({
             </select>
           </label>
           <label className="block space-y-1.5">
-            <span className="text-xs font-medium text-muted-foreground">Description (optional)</span>
+            <span className="text-xs font-medium text-muted-foreground">{t("pagesAppsGateways.form.descriptionOptional")}</span>
             <textarea
               className="min-h-16 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              placeholder="Who this endpoint is for."
+              placeholder={t("pagesAppsGateways.editGateway.descriptionPlaceholder")}
             />
           </label>
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("pagesAppsGateways.form.cancel")}
             </Button>
             <Button type="submit" disabled={updateMutation.isPending || !name.trim() || !profileId}>
-              {updateMutation.isPending ? "Saving…" : "Save changes"}
+              {updateMutation.isPending ? t("pagesAppsGateways.editGateway.saving") : t("pagesAppsGateways.editGateway.save")}
             </Button>
           </DialogFooter>
         </form>

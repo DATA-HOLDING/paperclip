@@ -1,0 +1,47 @@
+{
+  "selectOrganization": "Select an organization to view routines.",
+  "toasts": {
+    "on": "Routine is on",
+    "paused": "Routine paused",
+    "archived": "Routine archived",
+    "changeFailed": "Couldn’t change the routine",
+    "runStarted": "Routine run started",
+    "runFailed": "Routine run failed",
+    "triggerFailed": "Couldn’t change this trigger",
+    "saved": "Routine saved",
+    "editorFailed": "Couldn’t open the editor",
+    "scheduleSaved": "Schedule saved",
+    "scheduleRemoved": "Schedule removed",
+    "triggerPaused": "Paused",
+    "triggerResumed": "Resumed",
+    "removed": "Removed",
+    "restored": "Restored"
+  },
+  "actions": {
+    "changeRoutine": "change the routine",
+    "startRun": "start the routine run",
+    "changeTrigger": "change this trigger",
+    "save": "save the routine",
+    "loadResponsibility": "load this routine’s responsibility",
+    "reload": "reload the routine",
+    "restoreWebhook": "restore the webhook",
+    "removeWebhook": "remove the webhook",
+    "load": "load this routine",
+    "refresh": "refresh this routine",
+    "loadResponsibilities": "load this routine’s responsibilities",
+    "loadTasks": "load this routine’s tasks"
+  },
+  "stillLoading": "This routine is still loading. Try again in a moment.",
+  "breadcrumbs": {
+    "routines": "Routines"
+  },
+  "versionHistory": "Version history",
+  "auditLog": "Audit log",
+  "loadFailed": "We couldn't load this routine.",
+  "person": {
+    "loadFailed": "Couldn’t load this person",
+    "loading": "Loading…",
+    "former": "Former member"
+  },
+  "choicesLoadFailed": "Some choices couldn’t be loaded. Close this and use Retry on the page."
+}

@@ -1,0 +1,32 @@
+{
+  "risk": "{{level}} risk",
+  "subject": {
+    "toolCall": "a tool call",
+    "prompt": "the prompt",
+    "action": "the action"
+  },
+  "hook": {
+    "named": "{{event}} hook",
+    "generic": "Hook",
+    "stoppedNoResult": "{{subject}} stopped without a result",
+    "runningNamed": "Running {{event}} hook",
+    "running": "Running a hook",
+    "blocked": "{{subject}} blocked {{target}}",
+    "stoppedTurn": "{{subject}} stopped the turn",
+    "failed": "{{subject}} failed",
+    "feedback": "{{subject}} sent feedback",
+    "context": "{{subject}} added context",
+    "ran": "{{subject}} ran"
+  },
+  "review": {
+    "stoppedNoDecision": "Auto-review stopped without a decision",
+    "running": "Auto-reviewing",
+    "approved": "Auto-review approved",
+    "denied": "Auto-review denied",
+    "timedOut": "Auto-review timed out",
+    "didNotRun": "The action did not run.",
+    "stopped": "Auto-review stopped",
+    "askedApproval": "Auto-review asked for approval",
+    "finished": "Auto-review finished"
+  }
+}

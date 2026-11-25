@@ -1,0 +1,25 @@
+{
+  "copyFailed": "Couldn’t copy message",
+  "copyMessage": "Copy message",
+  "moreActions": "More actions",
+  "messageCopied": "Message copied",
+  "helpful": "Helpful",
+  "needsWork": "Needs work",
+  "whatCouldBeBetter": "What could have been better?",
+  "addShortNote": "Add a short note",
+  "dismiss": "Dismiss",
+  "saving": "Saving...",
+  "saveNote": "Save note",
+  "sharingDialog": {
+    "title": "Save your feedback sharing preference",
+    "description": "Choose whether voted AI outputs can be shared with Paperclip Labs. This answer becomes the default for future thumbs up and thumbs down votes.",
+    "savedLocally": "This vote is always saved locally.",
+    "chooseAlwaysAllowPrefix": "Choose",
+    "alwaysAllow": "Always allow",
+    "chooseAlwaysAllowSuffix": "to share this vote and future voted AI outputs. Choose",
+    "dontAllow": "Don't allow",
+    "chooseDontAllowSuffix": "to keep this vote and future votes local.",
+    "changeLater": "You can change this later in Settings > General.",
+    "readTerms": "Read our terms of service"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "instructionsFileLabel": "Arquivo de instruções do agente",
+  "instructionsFileHint": "Caminho absoluto para um arquivo markdown (ex.: AGENTS.md) que define o comportamento deste agente. Adicionado no início do prompt do Kimi durante a execução."
+}

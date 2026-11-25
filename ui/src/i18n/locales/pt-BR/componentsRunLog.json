@@ -1,0 +1,62 @@
+{
+  "logViewer": {
+    "loadEventsFailed": "Não foi possível carregar os eventos. Tente novamente.",
+    "loadingRunLogs": "Carregando logs da execução...",
+    "noLogEvents": "Nenhum evento de log.",
+    "transcriptCount": "Transcrição ({{count}})",
+    "modeNice": "formatada",
+    "modeRaw": "bruta",
+    "jumpToLive": "Ir para o ao vivo",
+    "live": "Ao vivo",
+    "waitingForTranscript": "Aguardando a transcrição...",
+    "noPersistedTranscript": "Nenhuma transcrição salva para esta execução.",
+    "loading": "Carregando...",
+    "loadMoreLog": "Carregar mais log",
+    "showingFirstKb": "Mostrando os primeiros {{size}} KB",
+    "ofKb": " de {{size}} KB",
+    "failureDetails": "Detalhes da falha",
+    "errorLabel": "Erro: ",
+    "stderrExcerpt": "trecho do stderr",
+    "adapterResultJson": "JSON do resultado do adaptador",
+    "stdoutExcerpt": "trecho do stdout",
+    "eventsCount": "Eventos ({{count}})",
+    "retryEvents": "Tentar eventos novamente",
+    "loadMoreEvents": "Carregar mais eventos"
+  },
+  "runDetails": {
+    "invocation": "Invocação",
+    "adapter": "Adaptador: ",
+    "workingDir": "Diretório de trabalho: ",
+    "details": "Detalhes",
+    "command": "Comando: ",
+    "commandNotes": "Notas do comando",
+    "prompt": "Prompt",
+    "context": "Contexto",
+    "environment": "Ambiente",
+    "phase": {
+      "worktreePrepare": "Preparação da worktree",
+      "configFreshness": "Atualização da configuração",
+      "provision": "Provisionamento",
+      "teardown": "Desmontagem",
+      "worktreeCleanup": "Limpeza da worktree"
+    },
+    "hideFullLog": "Ocultar log completo",
+    "showFullLog": "Mostrar log completo",
+    "loadingLog": "Carregando log...",
+    "noPersistedLogLines": "Nenhuma linha de log salva.",
+    "workspaceCount": "Espaço de trabalho ({{count}})",
+    "toTime": " até {{time}}",
+    "branch": "Branch: ",
+    "baseRef": "Ref base: ",
+    "worktree": "Worktree: ",
+    "repoRoot": "Raiz do repositório: ",
+    "cleanup": "Limpeza: ",
+    "createdByRun": "Criado por esta execução",
+    "reusedWorkspace": "Espaço de trabalho existente reutilizado",
+    "stderrExcerpt": "trecho do stderr",
+    "stdoutExcerpt": "trecho do stdout"
+  },
+  "errorActions": {
+    "loadRunLog": "carregar o log da execução"
+  }
+}

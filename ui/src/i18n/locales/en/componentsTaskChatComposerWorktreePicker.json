@@ -1,0 +1,38 @@
+{
+  "modes": {
+    "isolated": {
+      "label": "New worktree",
+      "description": "Start in an isolated checkout."
+    },
+    "shared": {
+      "label": "Project workspace",
+      "description": "Use the project's shared checkout."
+    },
+    "operatorBranch": {
+      "label": "New branch",
+      "description": "Create a branch in the project workspace."
+    },
+    "agentDefault": {
+      "label": "Agent default",
+      "description": "Let the agent choose its workspace."
+    },
+    "inherit": {
+      "label": "Project default",
+      "description": "Use the project's worktree settings."
+    }
+  },
+  "groups": {
+    "reuse": "Reuse a worktree",
+    "other": "Other options"
+  },
+  "existingWorkspace": "Existing workspace",
+  "worktrees": "Worktrees",
+  "searchPlaceholder": "Search worktrees...",
+  "noMatches": "No matching worktrees.",
+  "valuePrefix": "Worktrees · ",
+  "selectWorktree": "Select worktree",
+  "loading": "Loading existing worktrees…",
+  "loadFailed": "Couldn't load worktrees.",
+  "retry": "Retry",
+  "empty": "No existing worktrees yet. Choose New worktree to start one."
+}

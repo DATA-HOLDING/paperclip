@@ -1,0 +1,20 @@
+{
+  "received": "Email received",
+  "sent": "Email sent",
+  "external": "External",
+  "to": "To: {{list}}",
+  "cc": "Cc: {{list}}",
+  "noTextBody": "(No text body)",
+  "openAttachment": "Open attachment",
+  "details": "Email details",
+  "bcc": "Bcc: {{list}}",
+  "messageId": "Message ID: {{id}}",
+  "outcome": {
+    "delivered": "Delivered",
+    "failed": "Delivery failed",
+    "uncertain": "Delivery uncertain",
+    "queued": "Queued",
+    "sent": "Sent"
+  },
+  "attachmentsError": "Attachments could not be loaded."
+}

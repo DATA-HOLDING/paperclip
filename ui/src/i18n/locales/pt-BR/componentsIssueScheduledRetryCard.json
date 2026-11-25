@@ -1,0 +1,36 @@
+{
+  "badge": {
+    "continuation": "Continuação agendada",
+    "retry": "Nova tentativa agendada"
+  },
+  "titleAction": {
+    "continuation": "Continuação automática",
+    "retry": "Nova tentativa automática"
+  },
+  "titleSuffix": {
+    "dueNow": "para agora",
+    "pending": "aguardando agendamento"
+  },
+  "title": "{{action}} {{suffix}}",
+  "helper": {
+    "continuation": "Antecipa a continuação imediatamente",
+    "retry": "Antecipa a nova tentativa imediatamente"
+  },
+  "attempt": "Tentativa {{attempt}}",
+  "replacesRun": "Substitui a execução",
+  "lastAttemptFailed": "A última tentativa falhou: ",
+  "willRetry": " O Paperclip tentará novamente de forma automática.",
+  "retrying": "Tentando novamente…",
+  "alreadyPromoted": "Já antecipada",
+  "promoted": "Antecipada",
+  "retryNow": "Tentar agora",
+  "status": {
+    "promoting": "Antecipando a nova tentativa agendada",
+    "alreadyPromoted": "Já antecipada — execução iniciando",
+    "promoted": "Antecipada — execução iniciando"
+  },
+  "error": {
+    "title": "Não foi possível tentar agora",
+    "tryAgain": "Tentar novamente"
+  }
+}

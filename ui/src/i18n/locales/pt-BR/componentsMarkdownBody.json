@@ -1,0 +1,23 @@
+{
+  "issueLabelWithTitle": "Tarefa {{identifier}}: {{title}}",
+  "issueLabel": "Tarefa {{identifier}}",
+  "caseLabel": "Caso {{identifier}}",
+  "code": {
+    "copyFailed": "Falha ao copiar",
+    "copied": "Copiado!",
+    "copy": "Copiar",
+    "unwrapLines": "Desfazer quebra de linhas",
+    "wrapLines": "Quebrar linhas",
+    "copyCode": "Copiar código"
+  },
+  "mermaid": {
+    "failed": "Falha ao renderizar o diagrama Mermaid.",
+    "unable": "Não foi possível renderizar o diagrama Mermaid: {{error}}",
+    "rendering": "Renderizando diagrama Mermaid..."
+  },
+  "image": {
+    "reference": "Imagem: {{alt}}",
+    "untitled": "Imagem sem título",
+    "open": "Abrir imagem: {{alt}}"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "O que está andando",
+  "nothingYet": "Nada a relatar ainda. Quando projetos, tarefas ou rotinas forem incluídos aqui, o que eles precisam aparece aqui.",
+  "needsAttention": "Precisa de atenção",
+  "nothingNeedsAttention": "Nada no trabalho precisa de atenção.",
+  "everythingElse": "Todo o resto",
+  "theWork": "O trabalho",
+  "noOpenWork": "Nenhum projeto, tarefa ou rotina aberto está incluído aqui.",
+  "finishedNotListed_one": "{{count}} item concluído não está listado.",
+  "finishedNotListed_other": "{{count}} itens concluídos não estão listados.",
+  "onlyFirstTasks": "Só as primeiras {{limit}} tarefas estão listadas."
+}

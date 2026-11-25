@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Inbox, LoaderCircle, Save } from "lucide-react";
@@ -15,18 +16,18 @@ import { RadioCardGroup, type RadioCardOption } from "@/components/ui/radio-card
 const MODE_OPTIONS: RadioCardOption[] = [
   {
     value: "open",
-    title: "Any of my agents",
-    description: "Let any agent you manage archive tasks out of your inbox.",
+    title: t("componentsInboxAgentPolicyControl.modes.open.title"),
+    description: t("componentsInboxAgentPolicyControl.modes.open.description"),
   },
   {
     value: "allowlist",
-    title: "Only chosen agents",
-    description: "Restrict inbox tidying to the agents you pick below.",
+    title: t("componentsInboxAgentPolicyControl.modes.allowlist.title"),
+    description: t("componentsInboxAgentPolicyControl.modes.allowlist.description"),
   },
   {
     value: "disabled",
-    title: "Off",
-    description: "Agents can never archive tasks from your inbox.",
+    title: t("componentsInboxAgentPolicyControl.modes.disabled.title"),
+    description: t("componentsInboxAgentPolicyControl.modes.disabled.description"),
   },
 ];
 
@@ -118,7 +119,7 @@ export function InboxAgentPolicyControl({ companyId }: { companyId: string | nul
     return (
       <QueryErrorState
         error={policyView.error}
-        action="load the inbox agent policy"
+        action={t("componentsInboxAgentPolicyControl.loadAction")}
         onRetry={policyView.retry}
         retrying={policyView.isFetching}
       />
@@ -126,24 +127,23 @@ export function InboxAgentPolicyControl({ companyId }: { companyId: string | nul
   }
 
   if (policyQuery.isLoading || policyView.kind === "reconnecting" || !draft) {
-    return <div className="text-sm text-muted-foreground">Loading inbox agent policy…</div>;
+    return <div className="text-sm text-muted-foreground">{t("componentsInboxAgentPolicyControl.loading")}</div>;
   }
 
   return (
-    <section className="space-y-4" aria-label="Let agents tidy my inbox">
+    <section className="space-y-4" aria-label={t("componentsInboxAgentPolicyControl.title")}>
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           <Inbox className="h-5 w-5 text-muted-foreground" />
-          <h2 className="text-base font-semibold">Let agents tidy my inbox</h2>
+          <h2 className="text-base font-semibold">{t("componentsInboxAgentPolicyControl.title")}</h2>
         </div>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Choose whether the agents you manage may archive tasks out of your inbox on your behalf. You can
-          undo any archive, and every agent archive is attributed in the task&apos;s properties.
+          {t("componentsInboxAgentPolicyControl.description")}
         </p>
       </div>
 
       <RadioCardGroup
-        ariaLabel="Inbox agent archiving policy"
+        ariaLabel={t("componentsInboxAgentPolicyControl.policyLabel")}
         value={draft.mode}
         onValueChange={(value) => setDraft((current) => (current ? { ...current, mode: value as InboxAgentPolicyMode } : current))}
         options={MODE_OPTIONS}
@@ -152,7 +152,7 @@ export function InboxAgentPolicyControl({ companyId }: { companyId: string | nul
 
       {draft.mode === "allowlist" ? (
         <div className="max-w-2xl space-y-2">
-          <div className="text-sm font-medium">Agents allowed to tidy my inbox</div>
+          <div className="text-sm font-medium">{t("componentsInboxAgentPolicyControl.allowedAgents")}</div>
           <AgentMultiSelect
             agents={agentOptions}
             selectedAgentIds={selectedAgentIds}
@@ -163,25 +163,25 @@ export function InboxAgentPolicyControl({ companyId }: { companyId: string | nul
             }
             triggerLabel={
               selectedAgentIds.size === 0
-                ? "Select agents"
-                : `${selectedAgentIds.size} ${selectedAgentIds.size === 1 ? "agent" : "agents"} selected`
+                ? t("componentsInboxAgentPolicyControl.selectAgents")
+                : t("componentsInboxAgentPolicyControl.agentsSelected", { count: selectedAgentIds.size })
             }
             triggerFullWidth={false}
             showSelectionPreview={false}
-            emptyMessage="You don’t manage any agents yet."
+            emptyMessage={t("componentsInboxAgentPolicyControl.noAgents")}
           />
         </div>
       ) : null}
 
       {updateMutation.error ? (
         <div role="alert" className="max-w-2xl rounded-md border border-destructive/40 bg-destructive/5 px-3 py-2 text-sm text-destructive">
-          {describeError(updateMutation.error, { action: "save the inbox agent policy" }).body}
+          {describeError(updateMutation.error, { action: t("componentsInboxAgentPolicyControl.saveAction") }).body}
         </div>
       ) : null}
 
       <div className="flex max-w-2xl items-center justify-end gap-3">
         {updateMutation.isSuccess && !isDirty ? (
-          <span className="text-xs text-muted-foreground" role="status">Saved</span>
+          <span className="text-xs text-muted-foreground" role="status">{t("componentsInboxAgentPolicyControl.saved")}</span>
         ) : null}
         <Button
           type="button"
@@ -189,7 +189,7 @@ export function InboxAgentPolicyControl({ companyId }: { companyId: string | nul
           onClick={() => draft && updateMutation.mutate(draft)}
         >
           {updateMutation.isPending ? <LoaderCircle className="size-4 animate-spin" /> : <Save className="size-4" />}
-          {updateMutation.isPending ? "Saving…" : "Save"}
+          {updateMutation.isPending ? t("componentsInboxAgentPolicyControl.saving") : t("componentsInboxAgentPolicyControl.save")}
         </Button>
       </div>
     </section>

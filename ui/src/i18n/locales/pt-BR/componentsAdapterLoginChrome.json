@@ -1,0 +1,46 @@
+{
+  "preparingSignIn": "Preparando o login",
+  "copied": "Copiado!",
+  "copyCode": "Copiar o código",
+  "field": {
+    "label": "Código de autorização",
+    "placeholder": "Cole o código de autorização aqui"
+  },
+  "subscription": {
+    "expired": "Este login expirou",
+    "failed": "O login não foi concluído",
+    "signInTo": "Entre em {{provider}}",
+    "thenPasteRedirect": " e depois cole a URL de redirecionamento abaixo",
+    "thenReturn": " e depois volte aqui",
+    "thenEnterCode": " e depois volte e informe o código de autorização",
+    "byProvidingCode": " informando o código de autorização abaixo",
+    "retryHint": "Tente entrar novamente para receber um novo código. Sua configuração está salva.",
+    "retry": "Tentar entrar novamente"
+  },
+  "apiKey": {
+    "instruction": "Informe sua chave de API do {{provider}} para conectar",
+    "label": "Chave de API"
+  },
+  "local": {
+    "preparing": "Preparando login…",
+    "differentAccount": "Usar outra conta",
+    "isolatedHint": "Entre no {{provider}} para esta conexão na máquina que executa o Paperclip. Seu login atual no terminal continua separado.",
+    "sharedHint": "A conexão usa sua conta local do {{provider}} na máquina que executa o Paperclip.",
+    "preparingBrowser": "Preparando login no navegador…",
+    "finishing": "Concluindo login…",
+    "submitCode": "Enviar código",
+    "optionalRedirectBefore": "Conclua o login na janela do navegador do Google e depois volte aqui. Se seu navegador estiver em outra máquina e a página de redirecionamento ",
+    "optionalRedirectAfter": " não carregar, copie a URL completa da barra de endereços e cole abaixo.",
+    "redirectBefore": "Depois de entrar com o Google, seu navegador será redirecionado para uma página ",
+    "redirectAfter": " que não vai carregar. Copie a URL completa da barra de endereços do navegador e cole abaixo.",
+    "redirectLabel": "URL de redirecionamento do Google",
+    "redirectPlaceholder": "Cole aqui a URL http://127.0.0.1:...",
+    "submitRedirect": "Enviar URL de redirecionamento",
+    "finishGoogle": "Conclua o login na janela do navegador do Google e depois volte aqui.",
+    "runCommand": "Execute isto em um terminal nessa máquina e conclua o login no navegador. Vamos verificar automaticamente quando você voltar.",
+    "copyCommand": "Copiar comando de login",
+    "startAgain": "Iniciar login novamente",
+    "checkAgain": "Verificar novamente",
+    "signedIn": "{{account}} está conectado. Clique em Conectar para usar esta conta."
+  }
+}

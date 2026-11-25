@@ -1,0 +1,28 @@
+{
+  "actionCard": {
+    "previousCatalogHash": "Previous catalog hash",
+    "currentCatalogHash": "Current catalog hash",
+    "rows": {
+      "application": "Application",
+      "connection": "Connection",
+      "catalog": "Catalog",
+      "payload": "Payload"
+    },
+    "manifestVersion": "manifest v{{version}}",
+    "signed": "signed",
+    "staleApproveTitle": "Re-issue the request before approving — the catalog hash changed.",
+    "approve": "Approve",
+    "deny": "Deny",
+    "editResign": "Edit & re-sign",
+    "requestedApproval": "requested approval to call",
+    "stale": {
+      "title": "Catalog changed since this request was signed.",
+      "body": "The application's tool catalog hash no longer matches the one this approval was issued against. Approval is disabled — the agent must edit & re-sign to request again."
+    },
+    "input": "Input",
+    "whyAsking": "Why I'm asking",
+    "policy": "Policy #{{number}}",
+    "requiresApproval": "requires approval here.",
+    "noExpiry": "no expiry set"
+  }
+}

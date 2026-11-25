@@ -26,6 +26,7 @@ import {
   type IssueThreadInteractionResolverPolicyProvenance,
 } from "@paperclipai/shared";
 import type { IssueThreadInteraction } from "./issue-thread-interactions";
+import { t } from "@/i18n";
 
 /**
  * The open default. Creation surfaces present this first and requesters omit
@@ -35,9 +36,9 @@ export const DEFAULT_RESOLVER_POLICY: IssueThreadInteractionCanonicalResolverPol
 
 /** Short label for a resolver audience — badges, select options, table cells. */
 const RESOLVER_POLICY_LABELS: Record<IssueThreadInteractionCanonicalResolverPolicy, string> = {
-  anyone: "Anyone",
-  not_creator: "Anyone except creator",
-  human_only: "Human only",
+  anyone: t("libInteractionAudience.labels.anyone"),
+  not_creator: t("libInteractionAudience.labels.notCreator"),
+  human_only: t("libInteractionAudience.labels.humanOnly"),
 };
 
 /**
@@ -47,11 +48,9 @@ const RESOLVER_POLICY_LABELS: Record<IssueThreadInteractionCanonicalResolverPoli
  * {@link describeInteractionAudience}.
  */
 const RESOLVER_POLICY_EFFECTS: Record<IssueThreadInteractionCanonicalResolverPolicy, string> = {
-  anyone:
-    "Anyone in the organization can respond — the board or any agent, including the one that asked.",
-  not_creator:
-    "Anyone in the organization except the agent that created the card, and its run. Use this when the answer has to come from someone else.",
-  human_only: "Only a person on the board can respond. Agents are turned away.",
+  anyone: t("libInteractionAudience.effects.anyone"),
+  not_creator: t("libInteractionAudience.effects.notCreator"),
+  human_only: t("libInteractionAudience.effects.humanOnly"),
 };
 
 /** Accepts canonical values and the deprecated `board_*` compatibility aliases. */
@@ -138,12 +137,18 @@ export function describeInteractionAudience({
   interaction,
   creatorLabel,
   addresseeLabel,
+  currentUserId,
 }: {
   interaction: IssueThreadInteraction;
   /** Display label of the creating actor, when known. */
   creatorLabel?: string | null;
   /** Display label of the named addressee, when the card has one. */
   addresseeLabel?: string | null;
+  /**
+   * The signed-in reader. When they are the creator or the addressee, the
+   * sentence names them as "you" whatever their display label is.
+   */
+  currentUserId?: string | null;
 }): InteractionAudienceDescription {
   return describeResolverAudience({
     facts: {
@@ -156,6 +161,8 @@ export function describeInteractionAudience({
     },
     creatorLabel,
     addresseeLabel,
+    creatorIsCurrentUser: Boolean(currentUserId && interaction.createdByUserId === currentUserId),
+    addresseeIsCurrentUser: Boolean(currentUserId && interaction.addresseeUserId === currentUserId),
   });
 }
 
@@ -168,47 +175,58 @@ export function describeResolverAudience({
   facts,
   creatorLabel,
   addresseeLabel,
+  creatorIsCurrentUser = false,
+  addresseeIsCurrentUser = false,
 }: {
   facts: InteractionAudienceFacts;
   creatorLabel?: string | null;
   addresseeLabel?: string | null;
+  /** The signed-in reader created the card. */
+  creatorIsCurrentUser?: boolean;
+  /** The signed-in reader is the named addressee. */
+  addresseeIsCurrentUser?: boolean;
 }): InteractionAudienceDescription {
   const policy = facts.effectiveResolverPolicy;
   const requestedPolicy = facts.requestedResolverPolicy;
   const hasAddressee = facts.hasAddressee;
   const isUserAddressee = facts.isUserAddressee === true;
-  // `formatAssigneeUserLabel` returns the display-cased "You" for the signed-in
-  // reader, which is right for a badge and wrong mid-sentence ("Only You can
-  // respond."). Every use below is inside a sentence.
-  const midSentence = (label: string) => (label === "You" ? "you" : label);
-  const addressee = midSentence(
-    addresseeLabel?.trim() || (isUserAddressee ? "the addressed user" : "the addressed agent"),
-  );
-  const creator = midSentence(creatorLabel?.trim() || "the agent that created it");
+  // The signed-in reader's badge label is the display-cased "You", which is
+  // wrong mid-sentence ("Only You can respond."). Every use below is inside a
+  // sentence, so the reader is named by the flag, never by comparing the label
+  // text (which is translated).
+  const you = t("libInteractionAudience.youMidSentence");
+  const addressee = addresseeIsCurrentUser
+    ? you
+    : addresseeLabel?.trim() || (isUserAddressee ? t("libInteractionAudience.addressedUser") : t("libInteractionAudience.addressedAgent"));
+  const creator = creatorIsCurrentUser
+    ? you
+    : creatorLabel?.trim() || t("libInteractionAudience.creatorFallback");
 
   const summary = isUserAddressee
-    ? `Only ${addressee} can respond.`
+    ? t("libInteractionAudience.summary.onlyAddressee", { addressee })
     : policy === "human_only"
-    ? `${hasAddressee ? `Assigned to ${addressee}. ` : ""}Only a person on the board can respond — agents cannot resolve this card.`
+    ? hasAddressee
+      ? t("libInteractionAudience.summary.humanOnlyAssigned", { addressee })
+      : t("libInteractionAudience.summary.humanOnly")
     : hasAddressee
-      ? `Only ${addressee} or a person on the board can respond.`
+      ? t("libInteractionAudience.summary.addresseeOrBoard", { addressee })
       : policy === "not_creator"
-        ? `Anyone in the organization except ${creator} can respond.`
-        : "Anyone in the organization can respond — the board or any agent, including the one that asked.";
+        ? t("libInteractionAudience.summary.notCreator", { creator })
+        : t("libInteractionAudience.summary.anyone");
 
   // Same fact, fewer words: a collapsed row has to answer "is this mine to
   // decide?" in one glance, next to the buttons that act on the answer.
   const shortSummary = isUserAddressee
-    ? `Only ${addressee} can respond`
+    ? t("libInteractionAudience.shortSummary.onlyAddressee", { addressee })
     : policy === "human_only"
     ? hasAddressee
-      ? `Assigned to ${addressee} · board only`
-      : "Only the board can respond"
+      ? t("libInteractionAudience.shortSummary.humanOnlyAssigned", { addressee })
+      : t("libInteractionAudience.shortSummary.humanOnly")
     : hasAddressee
-      ? `Only ${addressee} or the board can respond`
+      ? t("libInteractionAudience.shortSummary.addresseeOrBoard", { addressee })
       : policy === "not_creator"
-        ? `Anyone except ${creator} can respond`
-        : "Anyone can respond";
+        ? t("libInteractionAudience.shortSummary.notCreator", { creator })
+        : t("libInteractionAudience.shortSummary.anyone");
 
   const source = facts.effectiveResolverPolicySource;
   const provenance = facts.resolverPolicyProvenance;
@@ -218,11 +236,11 @@ export function describeResolverAudience({
   // open resolution existed. An explicitly requested restriction is already
   // fully described by `summary`.
   const narrowedNote = source === "governed_action"
-    ? "This card runs a governed action, so it stays human-only whatever audience was requested."
+    ? t("libInteractionAudience.narrowed.governedAction")
     : source === "company_cap"
-      ? `Organization interaction governance narrowed this from ${RESOLVER_POLICY_LABELS[requestedPolicy]} to ${RESOLVER_POLICY_LABELS[policy]}.`
+      ? t("libInteractionAudience.narrowed.companyCap", { from: RESOLVER_POLICY_LABELS[requestedPolicy], to: RESOLVER_POLICY_LABELS[policy] })
       : provenance === "legacy_inherited_restriction"
-        ? "Created before Anyone became the default, so it stays restricted. A new card would be open."
+        ? t("libInteractionAudience.narrowed.legacy")
         : null;
 
   const narrowedBy: InteractionAudienceNarrowing | null = source === "governed_action"
@@ -244,7 +262,7 @@ export function describeResolverAudience({
     // while the sentence next to it names one actor. `human_only` wins for an
     // agent addressee, while a user addressee is the narrower human audience.
     label: (policy !== "human_only" || isUserAddressee) && hasAddressee
-      ? "Addressed"
+      ? t("libInteractionAudience.labels.addressed")
       : RESOLVER_POLICY_LABELS[policy],
     summary,
     shortSummary,

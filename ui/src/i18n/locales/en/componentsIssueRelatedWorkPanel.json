@@ -1,0 +1,20 @@
+{
+  "externalObjects": {
+    "title": "External objects",
+    "description": "Remote work referenced from this issue — pull requests, deployments, tickets in other systems, and more.",
+    "loadFailed": "Couldn't load external objects.",
+    "retry": "Retry",
+    "loading": "Loading external objects…",
+    "empty": "This issue does not reference any external objects yet."
+  },
+  "references": {
+    "title": "References",
+    "description": "Other tasks this task currently points at in its title, description, comments, or documents.",
+    "empty": "This task does not reference any other tasks yet."
+  },
+  "referencedBy": {
+    "title": "Referenced by",
+    "description": "Other tasks that currently point at this task.",
+    "empty": "No other tasks reference this task yet."
+  }
+}

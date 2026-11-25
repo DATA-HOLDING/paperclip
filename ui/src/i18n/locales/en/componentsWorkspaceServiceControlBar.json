@@ -1,0 +1,36 @@
+{
+  "status": {
+    "provisioning": "Provisioning…",
+    "starting": "Starting…",
+    "stopping": "Stopping…",
+    "restarting": "Restarting…",
+    "failed": "Failed",
+    "unhealthy": "Unhealthy",
+    "running": "Running",
+    "stopped": "Stopped"
+  },
+  "copy": {
+    "copied": "URL copied",
+    "failed": "Copy failed",
+    "copy": "Copy URL"
+  },
+  "noUrl": "no url",
+  "openInNewTab": "Open in new tab",
+  "actions": {
+    "start": "Start",
+    "restart": "Restart",
+    "stop": "Stop"
+  },
+  "viewLogs": "View logs",
+  "startingOnPort": "starting on :{{port}}…",
+  "allServices": "All services",
+  "multi": {
+    "ariaLabel": "{{running}} of {{total}} services running — show services",
+    "runningCount": "{{running}}/{{total}} running",
+    "servicesHeading": "Services · {{total}}",
+    "startAll": "Start all",
+    "stopAll": "Stop all",
+    "restartAll": "Restart all",
+    "manage": "Manage in Services tab →"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "taskListControls": "Task list controls",
+  "taskView": "Task view: {{label}}",
+  "taskViews": "Task views",
+  "views": "Views",
+  "searchTasks": "Search tasks",
+  "searchTasksPlaceholder": "Search tasks…",
+  "taskLayout": "Task layout",
+  "listView": "List view",
+  "boardView": "Board view",
+  "collapseAll": "Collapse all tasks",
+  "expandAll": "Expand all tasks",
+  "newTask": "New Task"
+}

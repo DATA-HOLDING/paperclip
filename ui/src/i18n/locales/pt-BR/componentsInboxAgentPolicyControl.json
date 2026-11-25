@@ -1,0 +1,30 @@
+{
+  "modes": {
+    "open": {
+      "title": "Qualquer um dos meus agentes",
+      "description": "Permita que qualquer agente que você gerencia arquive tarefas da sua caixa de entrada."
+    },
+    "allowlist": {
+      "title": "Só os agentes escolhidos",
+      "description": "Limite a organização da caixa de entrada aos agentes que você escolher abaixo."
+    },
+    "disabled": {
+      "title": "Desligado",
+      "description": "Os agentes nunca podem arquivar tarefas da sua caixa de entrada."
+    }
+  },
+  "loadAction": "carregar a política de agentes da caixa de entrada",
+  "loading": "Carregando a política de agentes da caixa de entrada…",
+  "title": "Deixar os agentes organizarem minha caixa de entrada",
+  "description": "Escolha se os agentes que você gerencia podem arquivar tarefas da sua caixa de entrada em seu nome. Você pode desfazer qualquer arquivamento, e todo arquivamento feito por um agente fica registrado nas propriedades da tarefa.",
+  "policyLabel": "Política de arquivamento por agentes na caixa de entrada",
+  "allowedAgents": "Agentes que podem organizar minha caixa de entrada",
+  "selectAgents": "Selecionar agentes",
+  "agentsSelected_one": "{{count}} agente selecionado",
+  "agentsSelected_other": "{{count}} agentes selecionados",
+  "noAgents": "Você ainda não gerencia nenhum agente.",
+  "saveAction": "salvar a política de agentes da caixa de entrada",
+  "saved": "Salvo",
+  "saving": "Salvando…",
+  "save": "Salvar"
+}

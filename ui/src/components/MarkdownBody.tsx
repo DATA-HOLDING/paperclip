@@ -58,6 +58,7 @@ import type {
   ExternalObjectLivenessState,
   ExternalObjectStatusCategory,
 } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 function MarkdownAgentMention({ agentId, children, style }: {
   agentId: string;
@@ -202,7 +203,7 @@ function MarkdownIssueLink({
   // Same presentation inputs as every task view, so a covered blocked task is
   // the blue in-queue glyph here too, not the red blocked one (BUG-07).
   const statusIconProps = data && status ? taskStatusIconProps({ ...data, status }) : null;
-  const issueLabel = title !== identifier ? `Issue ${identifier}: ${title}` : `Issue ${identifier}`;
+  const issueLabel = title !== identifier ? t("componentsMarkdownBody.issueLabelWithTitle", { identifier, title }) : t("componentsMarkdownBody.issueLabel", { identifier });
 
   // Until the fetch settles we don't yet know whether this viewer can read the
   // issue. Keep the mention a plain link (clickable, styled as today) but hold
@@ -254,7 +255,7 @@ function MarkdownCaseLink({
       to={caseHref(identifier)}
       data-mention-kind="case"
       className={cn("paperclip-markdown-case-ref", "font-normal underline")}
-      aria-label={`Case ${identifier}`}
+      aria-label={t("componentsMarkdownBody.caseLabel", { identifier })}
     >
       {children}
     </Link>
@@ -645,8 +646,8 @@ function CodeBlock({
     }, 1500);
   }, [children, patchText]);
 
-  const copyLabel = failed ? "Copy failed" : copied ? "Copied!" : "Copy";
-  const wrapLabel = wrapLines ? "Unwrap lines" : "Wrap lines";
+  const copyLabel = failed ? t("componentsMarkdownBody.code.copyFailed") : copied ? t("componentsMarkdownBody.code.copied") : t("componentsMarkdownBody.code.copy");
+  const wrapLabel = wrapLines ? t("componentsMarkdownBody.code.unwrapLines") : t("componentsMarkdownBody.code.wrapLines");
 
   return (
     <div className="paperclip-markdown-codeblock" data-wrap-lines={wrapLines || undefined}>
@@ -693,7 +694,7 @@ function CodeBlock({
         <button
           type="button"
           onClick={handleCopy}
-          aria-label="Copy code"
+          aria-label={t("componentsMarkdownBody.code.copyCode")}
           title={copyLabel}
           className="paperclip-markdown-codeblock-action paperclip-markdown-codeblock-copy"
           style={codeBlockActionStyle}
@@ -740,7 +741,7 @@ function MermaidDiagramBlock({ source, darkMode }: { source: string; darkMode: b
         const message =
           err instanceof Error && err.message
             ? err.message
-            : "Failed to render Mermaid diagram.";
+            : t("componentsMarkdownBody.mermaid.failed");
         setError(message);
       });
 
@@ -756,7 +757,7 @@ function MermaidDiagramBlock({ source, darkMode }: { source: string; darkMode: b
       ) : (
         <>
           <p className={cn("paperclip-mermaid-status", error && "paperclip-mermaid-status-error")}>
-            {error ? `Unable to render Mermaid diagram: ${error}` : "Rendering Mermaid diagram..."}
+            {error ? t("componentsMarkdownBody.mermaid.unable", { error }) : t("componentsMarkdownBody.mermaid.rendering")}
           </p>
           <pre className="paperclip-mermaid-source">
             <code className="language-mermaid">{source}</code>
@@ -1001,7 +1002,7 @@ function MarkdownBodyImpl({
     } else if (mediaMode === "reference") {
       map.img = ({ src, alt, title }) => (
         <span data-markdown-image-reference title={title}>
-          Image: {alt || "Untitled image"}{src ? ` (${src})` : ""}
+          {t("componentsMarkdownBody.image.reference", { alt: alt || t("componentsMarkdownBody.image.untitled") })}{src ? ` (${src})` : ""}
         </span>
       );
     } else if (resolveImageSrc || onImageClick) {
@@ -1016,7 +1017,7 @@ function MarkdownBodyImpl({
             alt={alt ?? ""}
             role={clickSrc ? "button" : undefined}
             tabIndex={clickSrc ? 0 : undefined}
-            aria-label={clickSrc ? `Open image: ${alt || "Untitled image"}` : undefined}
+            aria-label={clickSrc ? t("componentsMarkdownBody.image.open", { alt: alt || t("componentsMarkdownBody.image.untitled") }) : undefined}
             onClick={onImageClick && clickSrc ? (e) => {
               e.preventDefault();
               e.stopPropagation();

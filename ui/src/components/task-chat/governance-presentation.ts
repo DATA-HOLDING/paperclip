@@ -1,6 +1,7 @@
 import { Shield, ShieldAlert, ShieldCheck, ShieldX, Webhook } from "lucide-react";
 import type { TaskChatProviderActivityItem } from "./task-chat-model";
 import type { ToolIcon } from "./tool-taxonomy";
+import { t } from "@/i18n";
 
 /**
  * Governance rows: automatic approval reviews and harness hooks. They render
@@ -43,19 +44,19 @@ function durationLabel(value: string | undefined): string | undefined {
 }
 
 function riskLabel(value: string | undefined): string | undefined {
-  return value ? `${value} risk` : undefined;
+  return value ? t("componentsTaskChatGovernancePresentation.risk", { level: value }) : undefined;
 }
 
 function blockedSubject(eventName: string | undefined): string {
   const event = eventName?.toLowerCase();
-  if (event === "pretooluse" || event === "permissionrequest") return "a tool call";
-  if (event === "userpromptsubmit") return "the prompt";
-  return "the action";
+  if (event === "pretooluse" || event === "permissionrequest") return t("componentsTaskChatGovernancePresentation.subject.toolCall");
+  if (event === "userpromptsubmit") return t("componentsTaskChatGovernancePresentation.subject.prompt");
+  return t("componentsTaskChatGovernancePresentation.subject.action");
 }
 
 function hookPresentation(item: TaskChatProviderActivityItem): GovernancePresentation {
   const eventName = hookEventLabel(detail(item, "Event"));
-  const subject = eventName ? `${eventName} hook` : "Hook";
+  const subject = eventName ? t("componentsTaskChatGovernancePresentation.hook.named", { event: eventName }) : t("componentsTaskChatGovernancePresentation.hook.generic");
   const tool = detail(item, "Tool Name");
   const outcome = detail(item, "Outcome") ?? detail(item, "Status");
   const message = item.summary?.trim() || detail(item, "Message");
@@ -63,33 +64,33 @@ function hookPresentation(item: TaskChatProviderActivityItem): GovernancePresent
   const duration = durationLabel(detail(item, "Duration Ms"));
   // The run ended before the hook reported a result.
   if (item.status === "interrupted") {
-    return { icon: ShieldAlert, label: `${subject} stopped without a result`, detail: joined(tool, source), tone: "neutral" };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.hook.stoppedNoResult", { subject }), detail: joined(tool, source), tone: "neutral" };
   }
   if (item.status === "running" || outcome === "running") {
-    return { icon: Webhook, label: eventName ? `Running ${eventName} hook` : "Running a hook", detail: joined(tool, source), tone: "neutral" };
+    return { icon: Webhook, label: eventName ? t("componentsTaskChatGovernancePresentation.hook.runningNamed", { event: eventName }) : t("componentsTaskChatGovernancePresentation.hook.running"), detail: joined(tool, source), tone: "neutral" };
   }
   if (outcome === "blocked") {
     return {
       icon: ShieldX,
-      label: `${subject} blocked ${tool ?? blockedSubject(eventName)}`,
+      label: t("componentsTaskChatGovernancePresentation.hook.blocked", { subject, target: tool ?? blockedSubject(eventName) }),
       detail: joined(source, duration),
       tone: "blocked",
       note: message,
     };
   }
   if (outcome === "stopped") {
-    return { icon: ShieldX, label: `${subject} stopped the turn`, detail: joined(source, duration), tone: "blocked", note: message };
+    return { icon: ShieldX, label: t("componentsTaskChatGovernancePresentation.hook.stoppedTurn", { subject }), detail: joined(source, duration), tone: "blocked", note: message };
   }
   if (outcome === "failed" || item.status === "failed") {
-    return { icon: ShieldAlert, label: `${subject} failed`, detail: joined(source, duration), tone: "failed", note: message };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.hook.failed", { subject }), detail: joined(source, duration), tone: "failed", note: message };
   }
   if (outcome === "feedback") {
-    return { icon: Webhook, label: `${subject} sent feedback`, detail: joined(message, source), tone: "neutral" };
+    return { icon: Webhook, label: t("componentsTaskChatGovernancePresentation.hook.feedback", { subject }), detail: joined(message, source), tone: "neutral" };
   }
   if (outcome === "context") {
-    return { icon: Webhook, label: `${subject} added context`, detail: joined(message, source), tone: "neutral" };
+    return { icon: Webhook, label: t("componentsTaskChatGovernancePresentation.hook.context", { subject }), detail: joined(message, source), tone: "neutral" };
   }
-  return { icon: Webhook, label: `${subject} ran`, detail: joined(tool, source, duration), tone: "neutral" };
+  return { icon: Webhook, label: t("componentsTaskChatGovernancePresentation.hook.ran", { subject }), detail: joined(tool, source, duration), tone: "neutral" };
 }
 
 function safetyPresentation(item: TaskChatProviderActivityItem): GovernancePresentation {
@@ -99,27 +100,27 @@ function safetyPresentation(item: TaskChatProviderActivityItem): GovernancePrese
   const rationale = item.summary?.trim() || detail(item, "Rationale");
   // The run ended before the reviewer reported a decision.
   if (item.status === "interrupted") {
-    return { icon: ShieldAlert, label: "Auto-review stopped without a decision", detail: action, tone: "neutral" };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.review.stoppedNoDecision"), detail: action, tone: "neutral" };
   }
   if (item.status === "running" || decision === "pending") {
-    return { icon: Shield, label: "Auto-reviewing", detail: action, tone: "neutral" };
+    return { icon: Shield, label: t("componentsTaskChatGovernancePresentation.review.running"), detail: action, tone: "neutral" };
   }
   if (decision === "allowed") {
-    return { icon: ShieldCheck, label: "Auto-review approved", detail: joined(action, risk), tone: "neutral" };
+    return { icon: ShieldCheck, label: t("componentsTaskChatGovernancePresentation.review.approved"), detail: joined(action, risk), tone: "neutral" };
   }
   if (decision === "denied") {
-    return { icon: ShieldX, label: "Auto-review denied", detail: joined(action, risk), tone: "blocked", note: rationale };
+    return { icon: ShieldX, label: t("componentsTaskChatGovernancePresentation.review.denied"), detail: joined(action, risk), tone: "blocked", note: rationale };
   }
   if (decision === "timed_out") {
-    return { icon: ShieldAlert, label: "Auto-review timed out", detail: action, tone: "blocked", note: rationale ?? "The action did not run." };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.review.timedOut"), detail: action, tone: "blocked", note: rationale ?? t("componentsTaskChatGovernancePresentation.review.didNotRun") };
   }
   if (decision === "aborted") {
-    return { icon: ShieldAlert, label: "Auto-review stopped", detail: action, tone: "neutral" };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.review.stopped"), detail: action, tone: "neutral" };
   }
   if (decision === "user_required") {
-    return { icon: ShieldAlert, label: "Auto-review asked for approval", detail: joined(action, risk), tone: "neutral", note: rationale };
+    return { icon: ShieldAlert, label: t("componentsTaskChatGovernancePresentation.review.askedApproval"), detail: joined(action, risk), tone: "neutral", note: rationale };
   }
-  return { icon: ShieldCheck, label: "Auto-review finished", detail: action, tone: "neutral" };
+  return { icon: ShieldCheck, label: t("componentsTaskChatGovernancePresentation.review.finished"), detail: action, tone: "neutral" };
 }
 
 export function governancePresentation(item: TaskChatProviderActivityItem): GovernancePresentation | null {

@@ -1,11 +1,12 @@
 import { announcementSchema, type Announcement } from "@paperclipai/shared";
 import { ApiError } from "./client";
+import { t } from "@/i18n";
 
 async function request(path: string, init: RequestInit) {
   const response = await fetch(`/api/announcements/${path}`, {
     credentials: "same-origin", cache: "no-store", ...init,
   });
-  if (!response.ok) throw new ApiError("Announcement request failed", response.status, null);
+  if (!response.ok) throw new ApiError(t("apiAnnouncements.requestFailed"), response.status, null);
   return response;
 }
 

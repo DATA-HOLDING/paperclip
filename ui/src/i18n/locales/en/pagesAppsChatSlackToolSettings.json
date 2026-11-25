@@ -1,0 +1,28 @@
+{
+  "capabilities": {
+    "description": "Read, search, and act in Slack. Some actions require approval.",
+    "checking": "Checking Slack permissions…",
+    "addPermissionsTitle": "Add permissions to unlock more tools",
+    "missingScopesPrefix": "Your existing connection still works. In",
+    "slackAppSettings": "Slack app settings",
+    "missingScopesSuffix": ", choose your app, open OAuth & Permissions, add these Bot Token Scopes, then reinstall the app to your workspace."
+  },
+  "search": {
+    "title": "Your Slack search access",
+    "description": "Optional personal authorization enables private search on supported runtimes. It cannot read channels the bot hasn’t joined or let the bot write as you. Basic channel reading works without it.",
+    "connected": "Slack search connected",
+    "disconnect": "Disconnect search",
+    "connect": "Connect Slack search",
+    "notConfigured": "A connection manager needs to configure your Slack app’s OAuth credentials first.",
+    "oauthConfigTitle": "OAuth app configuration for connection managers",
+    "redirectInstructionsPrefix": "In Slack app settings, add this redirect URL under OAuth & Permissions. Add user scopes",
+    "and": "and",
+    "redirectInstructionsSuffix": ". Find Client ID and Client Secret under Basic Information.",
+    "configurePublicUrl": "Configure a public HTTPS URL first.",
+    "clientId": "Client ID",
+    "clientSecret": "Client Secret",
+    "saveOAuth": "Save OAuth configuration",
+    "loadAction": "load Slack search access",
+    "loading": "Loading search access…"
+  }
+}

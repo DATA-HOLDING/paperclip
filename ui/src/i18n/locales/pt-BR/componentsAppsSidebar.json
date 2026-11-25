@@ -1,0 +1,12 @@
+{
+  "browse": "Explorar",
+  "review": "Revisão",
+  "waitingForOk": "aguardando seu OK",
+  "connectors": "Conectores",
+  "developer": "Desenvolvedor",
+  "developerDescription": "Configuração avançada para desenvolvedores.",
+  "waitingCount": "{{count}} aguardando seu OK",
+  "developerDescriptionLong": "Configuração avançada para desenvolvedores. A maioria das equipes nunca abre isto.",
+  "company": "Organização",
+  "connections": "Conexões"
+}

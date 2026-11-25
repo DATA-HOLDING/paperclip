@@ -10,6 +10,7 @@ import { isFatalProviderError, isStatusNotice, isStatusNoticePayload, statusNoti
 import type { TranscriptEntry } from "@/adapters";
 import { formatContextTokens } from "@/lib/context-tokens";
 import { turnChangesFromEditRows } from "./turn-file-changes";
+import { t } from "@/i18n";
 import type {
   TaskChatDiff,
   TaskChatActivityPhaseItem,
@@ -146,15 +147,15 @@ export function contextCompactedMarker(
   const pre = count(entry.payload.preTokens);
   const post = count(entry.payload.postTokens);
   const detail = pre !== null && post !== null
-    ? `${formatContextTokens(pre)} → ${formatContextTokens(post)} tokens`
+    ? t("componentsTaskChatTranscriptAdapter.contextCompacted.fromTo", { from: formatContextTokens(pre), to: formatContextTokens(post) })
     : pre !== null
-      ? `from ${formatContextTokens(pre)} tokens`
+      ? t("componentsTaskChatTranscriptAdapter.contextCompacted.from", { from: formatContextTokens(pre) })
       : undefined;
   return {
     id,
     kind: "marker",
     variant: "context_compacted",
-    label: "Context compacted",
+    label: t("componentsTaskChatTranscriptAdapter.contextCompacted.label"),
     ...(detail ? { detail } : {}),
     createdAtIso: entry.ts,
   };
@@ -272,7 +273,7 @@ export function summarizeToolInput(input: unknown): string | undefined {
  */
 export function toolDisplayName(name: string | undefined | null): string {
   const raw = (name ?? "").trim();
-  return isGenericToolName(raw) ? "Unnamed tool" : humanizeToolName(raw);
+  return isGenericToolName(raw) ? t("componentsTaskChatTranscriptAdapter.unnamedTool") : humanizeToolName(raw);
 }
 
 /** "Thought for Ns" once a coalesced thinking group spans ≥1s. */
@@ -287,8 +288,8 @@ function thoughtDurationLabel(
   const secs = Math.round((end - start) / 1000);
   if (secs < 1) return undefined;
   return secs < 60
-    ? `Thought for ${secs}s`
-    : `Thought for ${Math.floor(secs / 60)}m ${secs % 60}s`;
+    ? t("componentsTaskChatTranscriptAdapter.thoughtForSeconds", { seconds: secs })
+    : t("componentsTaskChatTranscriptAdapter.thoughtForMinutes", { minutes: Math.floor(secs / 60), seconds: secs % 60 });
 }
 
 /** Append token deltas onto the open logical line while preserving real newlines. */
@@ -491,7 +492,7 @@ function providerActivityItem(
                 : "pending";
             return {
               id: stringValue(step.stepId) ?? `${runId}:plan-step:${stepIndex}`,
-              label: stringValue(step.body) ?? "Plan step",
+              label: stringValue(step.body) ?? t("componentsTaskChatTranscriptAdapter.planStep"),
               status,
             };
           })
@@ -524,7 +525,7 @@ function providerActivityItem(
           .map((child, childIndex) => ({
             id:
               stringValue(child.childId) ?? `${runId}:delegation:${childIndex}`,
-            title: stringValue(child.role) ?? "Subagent",
+            title: stringValue(child.role) ?? t("componentsTaskChatTranscriptAdapter.subagent"),
             status: stringValue(child.status) ?? "unknown",
             metadata:
               [stringValue(child.model), stringValue(child.activitySummary)]
@@ -1231,10 +1232,10 @@ export function transcriptToTaskChatItems(
           kind: "usage",
           ...(entry.subtype === "paperclip_runner_session_usage"
             ? {
-                label: "Provider session total",
+                label: t("componentsTaskChatTranscriptAdapter.usage.providerSessionTotal"),
                 detail:
                   entry.text ||
-                  "This cumulative usage can include earlier runs in the resumed provider session.",
+                  t("componentsTaskChatTranscriptAdapter.usage.providerSessionDetail"),
               }
             : {}),
           usage: {
@@ -1273,8 +1274,8 @@ export function transcriptToTaskChatItems(
       ) {
         item.status = "interrupted";
         item.detail = item.detail
-          ? `${item.detail}\nInterrupted before the provider reported completion.`
-          : "Interrupted before the provider reported completion.";
+          ? `${item.detail}\n${t("componentsTaskChatTranscriptAdapter.interrupted.tool")}`
+          : t("componentsTaskChatTranscriptAdapter.interrupted.tool");
       } else if (
         item.kind === "protocol" &&
         item.surface === "provider_activity" &&
@@ -1282,8 +1283,8 @@ export function transcriptToTaskChatItems(
       ) {
         item.status = "interrupted";
         item.summary = item.summary
-          ? `${item.summary} · Interrupted before completion.`
-          : "Interrupted before completion.";
+          ? `${item.summary} · ${t("componentsTaskChatTranscriptAdapter.interrupted.protocol")}`
+          : t("componentsTaskChatTranscriptAdapter.interrupted.protocol");
       } else if (
         item.kind === "protocol" &&
         item.surface === "runtime_request" &&
@@ -1866,13 +1867,13 @@ function phaseSummary(
     if (count)
       phrases.push({ text: count === 1 ? singular : plural(count), count });
   };
-  add("read", "Read a file", (count) => `Read ${count} files`);
-  add("edit", "Edited a file", (count) => `Edited ${count} files`);
-  add("terminal", "Ran a command", (count) => `Ran ${count} commands`);
+  add("read", t("componentsTaskChatTranscriptAdapter.phrases.readFiles", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.readFiles", { count }));
+  add("edit", t("componentsTaskChatTranscriptAdapter.phrases.editedFiles", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.editedFiles", { count }));
+  add("terminal", t("componentsTaskChatTranscriptAdapter.phrases.ranCommands", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.ranCommands", { count }));
   const searched = (counts.get("grep") ?? 0) + (counts.get("search") ?? 0);
   if (searched)
     phrases.push({
-      text: searched === 1 ? "Searched once" : `Searched ${searched} times`,
+      text: t("componentsTaskChatTranscriptAdapter.phrases.searched", { count: searched }),
       count: searched,
     });
   const known = new Set(["read", "edit", "terminal", "grep", "search"]);
@@ -1883,7 +1884,7 @@ function phaseSummary(
     ) + generic;
   if (other)
     phrases.push({
-      text: other === 1 ? "Used a tool" : `Used ${other} tools`,
+      text: t("componentsTaskChatTranscriptAdapter.phrases.usedTools", { count: other }),
       count: other,
     });
   const providerCount = (family: TaskChatProviderActivityItem["family"]) =>
@@ -1897,58 +1898,58 @@ function phaseSummary(
     if (count)
       phrases.push({ text: count === 1 ? singular : plural(count), count });
   };
-  addProvider("plan", "Updated the plan", (count) => `Updated ${count} plans`);
+  addProvider("plan", t("componentsTaskChatTranscriptAdapter.phrases.updatedPlans", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.updatedPlans", { count }));
   addProvider(
     "research",
-    "Searched once",
-    (count) => `Searched ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.searched", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.searched", { count }),
   );
   addProvider(
     "delegation",
-    "Used a subagent",
-    (count) => `Used ${count} subagents`,
+    t("componentsTaskChatTranscriptAdapter.phrases.usedSubagents", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.usedSubagents", { count }),
   );
   addProvider(
     "model_identity",
-    "Updated the model",
-    (count) => `Updated the model ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.updatedModel", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.updatedModel", { count }),
   );
   addProvider(
     "context",
-    "Compacted context",
-    (count) => `Compacted context ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.compactedContext", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.compactedContext", { count }),
   );
   addProvider(
     "artifact",
-    "Handled an artifact",
-    (count) => `Handled ${count} artifacts`,
+    t("componentsTaskChatTranscriptAdapter.phrases.handledArtifacts", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.handledArtifacts", { count }),
   );
   addProvider(
     "review",
-    "Changed review mode",
-    (count) => `Changed review mode ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.changedReviewMode", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.changedReviewMode", { count }),
   );
-  addProvider("hook", "Ran a hook", (count) => `Ran ${count} hooks`);
+  addProvider("hook", t("componentsTaskChatTranscriptAdapter.phrases.ranHooks", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.ranHooks", { count }));
   addProvider(
     "memory",
-    "Referenced memory",
-    (count) => `Referenced memory ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.referencedMemory", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.referencedMemory", { count }),
   );
   addProvider(
     "safety",
-    "Ran a safety review",
-    (count) => `Ran ${count} safety reviews`,
+    t("componentsTaskChatTranscriptAdapter.phrases.ranSafetyReviews", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.ranSafetyReviews", { count }),
   );
   addProvider(
     "terminal",
-    "Sent terminal input",
-    (count) => `Sent terminal input ${count} times`,
+    t("componentsTaskChatTranscriptAdapter.phrases.sentTerminalInput", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.sentTerminalInput", { count }),
   );
-  addProvider("wait", "Waited", (count) => `Waited ${count} times`);
+  addProvider("wait", t("componentsTaskChatTranscriptAdapter.phrases.waited", { count: 1 }), (count) => t("componentsTaskChatTranscriptAdapter.phrases.waited", { count }));
   addProvider(
     "provider_notice",
-    "Received a provider notice",
-    (count) => `Received ${count} provider notices`,
+    t("componentsTaskChatTranscriptAdapter.phrases.receivedProviderNotices", { count: 1 }),
+    (count) => t("componentsTaskChatTranscriptAdapter.phrases.receivedProviderNotices", { count }),
   );
   // A canonical tool-execution row can be the only tool representation for a
   // provider. Avoid double-counting when the adapter also produced native
@@ -1962,41 +1963,37 @@ function phaseSummary(
       let text: string;
       switch (key) {
         case "command":
-          text = count === 1 ? "Ran a command" : `Ran ${count} commands`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.ranCommands", { count });
           break;
         case "read":
-          text = count === 1 ? "Read a file" : `Read ${count} files`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.readFiles", { count });
           break;
         case "search":
-          text = count === 1 ? "Searched once" : `Searched ${count} times`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.searched", { count });
           break;
         case "file_change":
-          text = count === 1 ? "Edited a file" : `Edited ${count} files`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.editedFiles", { count });
           break;
         case "delegation":
-          text = count === 1 ? "Used a subagent" : `Used ${count} subagents`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.usedSubagents", { count });
           break;
         case "wait":
-          text = count === 1 ? "Waited" : `Waited ${count} times`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.waited", { count });
           break;
         case "tool_search":
           text =
-            count === 1
-              ? "Searched available tools"
-              : `Searched available tools ${count} times`;
+            t("componentsTaskChatTranscriptAdapter.phrases.searchedAvailableTools", { count });
           break;
         case "paperclip_read":
           text =
-            count === 1
-              ? "Read from Paperclip"
-              : `Read from Paperclip ${count} times`;
+            t("componentsTaskChatTranscriptAdapter.phrases.readFromPaperclip", { count });
           break;
         case "task_operation":
           text =
-            count === 1 ? "Used Paperclip" : `Used Paperclip ${count} times`;
+            t("componentsTaskChatTranscriptAdapter.phrases.usedPaperclip", { count });
           break;
         default:
-          text = count === 1 ? "Used a tool" : `Used ${count} tools`;
+          text = t("componentsTaskChatTranscriptAdapter.phrases.usedTools", { count });
       }
       phrases.push({
         text,
@@ -2007,9 +2004,7 @@ function phaseSummary(
   if (workspaceFiles > 0)
     phrases.push({
       text:
-        workspaceFiles === 1
-          ? "Changed a file"
-          : `Changed ${workspaceFiles} files`,
+        t("componentsTaskChatTranscriptAdapter.phrases.changedFiles", { count: workspaceFiles }),
       count: workspaceFiles,
     });
   if (phrases.length > 0) {
@@ -2024,20 +2019,20 @@ function phaseSummary(
           : phrase.text.charAt(0).toLowerCase() + phrase.text.slice(1),
       )
       .join(", ");
-    return `${summary}${hidden > 0 ? `, +${hidden} more` : ""}`;
+    return `${summary}${hidden > 0 ? t("componentsTaskChatTranscriptAdapter.summary.more", { hidden }) : ""}`;
   }
   const protocolCount = items.filter((item) => item.kind === "protocol").length;
   if (protocolCount > 0)
     return protocolCount === 1
-      ? "Runner activity"
-      : `${protocolCount} runner updates`;
-  if (items.some((item) => item.kind === "thinking")) return "Reasoning";
+      ? t("componentsTaskChatTranscriptAdapter.summary.runnerActivity")
+      : t("componentsTaskChatTranscriptAdapter.summary.runnerUpdates", { n: protocolCount });
+  if (items.some((item) => item.kind === "thinking")) return t("componentsTaskChatTranscriptAdapter.summary.reasoning");
   const interrupted = items.find(
     (item) => item.kind === "marker" && item.variant === "interrupted",
   );
   return interrupted?.kind === "marker"
     ? interrupted.label
-    : "No tool activity";
+    : t("componentsTaskChatTranscriptAdapter.summary.noToolActivity");
 }
 
 /**
@@ -2080,8 +2075,8 @@ function subagentsFromDelegation(
     const status = subagentStatus(child.status, running);
     return {
       id: `${item.id}:${child.id}`,
-      agentType: child.role ?? child.title ?? "Subagent",
-      description: child.summary ?? child.role ?? "Subagent",
+      agentType: child.role ?? child.title ?? t("componentsTaskChatTranscriptAdapter.subagent"),
+      description: child.summary ?? child.role ?? t("componentsTaskChatTranscriptAdapter.subagent"),
       prompt: child.prompt,
       model: child.model,
       status,

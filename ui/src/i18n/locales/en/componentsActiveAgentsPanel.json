@@ -1,0 +1,25 @@
+{
+  "runStatus": {
+    "running": "Running",
+    "queued": "Queued",
+    "succeeded": "Succeeded",
+    "failed": "Failed",
+    "timedOut": "Timed out",
+    "cancelled": "Cancelled",
+    "interrupted": "Interrupted"
+  },
+  "title": "Agents",
+  "empty": "No recent agent runs.",
+  "moreRuns_one": "{{count}} more active/recent run",
+  "moreRuns_other": "{{count}} more active/recent runs",
+  "viewAllRuns": "View all runs",
+  "finished": "Finished {{time}}",
+  "started": "Started {{time}}",
+  "queuedAt": "Queued {{time}}",
+  "taskUnavailable": "Task unavailable",
+  "loadingTask": "Loading task…",
+  "viewRunAria": "{{agent}} — {{status}}. View run",
+  "taskStatus": "Task {{status}}",
+  "scheduledHeartbeat": "Scheduled heartbeat",
+  "noLinkedTask": "No linked task"
+}

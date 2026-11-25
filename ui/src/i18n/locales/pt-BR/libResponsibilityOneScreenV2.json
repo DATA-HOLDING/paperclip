@@ -1,0 +1,43 @@
+{
+  "ago": {
+    "justNow": "agora mesmo",
+    "minutes_one": "há {{count}} min",
+    "minutes_other": "há {{count}} min",
+    "hours_one": "há {{count}} h",
+    "hours_other": "há {{count}} h",
+    "days_one": "há {{count}} d",
+    "days_other": "há {{count}} d",
+    "weeks_one": "há {{count}} sem",
+    "weeks_other": "há {{count}} sem",
+    "months_one": "há {{count}} mês",
+    "months_other": "há {{count}} meses"
+  },
+  "routine": {
+    "paused": "Pausada",
+    "notRunYet": "Ainda não executada",
+    "lastSuccessfulRun": "Última execução bem-sucedida {{when}}",
+    "failed": "Falhou {{when}}",
+    "running": "Em execução, iniciada {{when}}"
+  },
+  "due": {
+    "today": "Vence hoje",
+    "tomorrow": "Vence amanhã",
+    "inDays_one": "Vence em {{count}} dia",
+    "inDays_other": "Vence em {{count}} dias",
+    "oneDayLate": "1 dia de atraso",
+    "daysLate_one": "{{count}} dia de atraso",
+    "daysLate_other": "{{count}} dias de atraso"
+  },
+  "progress_one": "{{done}} de {{total}} tarefa concluída",
+  "progress_other": "{{done}} de {{total}} tarefas concluídas",
+  "runEnded": {
+    "succeeded": "Concluída",
+    "failed": "Falhou",
+    "cancelled": "Cancelada",
+    "timedOut": "Tempo esgotado"
+  },
+  "run": {
+    "queued": "Na fila {{when}}",
+    "ended": "{{word}} {{when}}"
+  }
+}

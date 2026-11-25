@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { McpIcon } from "./McpIcon";
+import { t } from "@/i18n";
 
 /** Lucide icons and hand-rolled SVGs (the MCP logo) share this shape. */
 export type ToolIcon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -102,7 +103,10 @@ export function sentenceRowLabel(label: string): string {
 
 /** "Read · failed" → "Read · retried", for a failure a later call of the same tool recovered. */
 export function retriedLabel(failedLabel: string): string {
-  return failedLabel.replace(/ · failed$/, " · retried");
+  const failedSuffix = ` · ${t("componentsTaskChatToolTaxonomy.markers.failed")}`;
+  return failedLabel.endsWith(failedSuffix)
+    ? `${failedLabel.slice(0, -failedSuffix.length)} · ${t("componentsTaskChatToolTaxonomy.markers.retried")}`
+    : failedLabel;
 }
 
 /** ACPX's placeholder title must never displace real lifecycle identity. */
@@ -150,7 +154,7 @@ function sentenceCase(words: readonly string[]): string {
 
 export function humanizeToolName(name: string | undefined | null): string {
   const raw = (name ?? "").trim();
-  if (isGenericToolName(raw)) return "Unnamed tool";
+  if (isGenericToolName(raw)) return t("componentsTaskChatToolTaxonomy.unnamedTool");
   const mcp = mcpToolIdentity(raw);
   return sentenceCase(identifierWords(mcp?.name ?? raw));
 }
@@ -185,76 +189,76 @@ const EXACT_ACTIONS: Record<string, ExactAction> = {
   run: { action: "run" },
   execute: { action: "run" },
   exec_command: { action: "run" },
-  apply_patch: { action: "update", running: "Applying a patch", completed: "Applied a patch" },
-  read: { action: "read", running: "Reading a file", completed: "Read a file" },
-  write: { action: "update", running: "Writing a file", completed: "Wrote a file" },
-  edit: { action: "update", running: "Editing a file", completed: "Edited a file" },
-  notebook_read: { action: "read", running: "Reading a notebook", completed: "Read a notebook" },
-  notebook_edit: { action: "update", running: "Editing a notebook", completed: "Edited a notebook" },
-  glob: { action: "search", running: "Searching files", completed: "Searched files" },
-  grep: { action: "search", running: "Searching file contents", completed: "Searched file contents", family: "grep" },
-  tool_search: { action: "search", running: "Searching available tools", completed: "Searched available tools", group: group("tool_search", "tool search", "tool searches") },
-  web_search: { action: "search", running: "Searching the web", completed: "Searched the web", family: "web" },
-  web_fetch: { action: "fetch", running: "Fetching a web page", completed: "Fetched a web page", family: "web" },
-  todo_write: { action: "update", running: "Updating the task list", completed: "Updated the task list", family: "plan", group: group("task_operation", "task operation", "task operations") },
-  task_create: { action: "create", running: "Creating a task", completed: "Created a task", family: "plan", group: group("task_operation", "task operation", "task operations") },
-  task_update: { action: "update", running: "Updating a task", completed: "Updated a task", family: "plan", group: group("task_operation", "task operation", "task operations") },
-  task_list: { action: "list", running: "Listing tasks", completed: "Listed tasks", family: "plan", group: group("task_operation", "task operation", "task operations") },
-  task_get: { action: "read", running: "Reading a task", completed: "Read a task", family: "plan", group: group("task_operation", "task operation", "task operations") },
-  enter_plan_mode: { action: "switch", running: "Entering plan mode", completed: "Entered plan mode", family: "plan" },
-  exit_plan_mode: { action: "switch", running: "Leaving plan mode", completed: "Left plan mode", family: "plan" },
-  skill: { action: "read", running: "Loading a skill", completed: "Loaded a skill" },
-  ask_user_question: { action: "request", running: "Requesting input", completed: "Requested input", family: "question" },
-  request_human_input: { action: "request", running: "Requesting input", completed: "Requested input", family: "question", group: group("task_operation", "task operation", "task operations") },
-  agent: { action: "start", running: "Starting a subagent", completed: "Started a subagent", family: "agent" },
-  task: { action: "start", running: "Starting a subagent", completed: "Started a subagent", family: "agent" },
-  task_output: { action: "read", running: "Checking subagent progress", completed: "Checked subagent progress", family: "agent" },
-  task_stop: { action: "stop", running: "Stopping a subagent", completed: "Stopped a subagent", family: "agent" },
-  send_message: { action: "post", running: "Messaging a subagent", completed: "Messaged a subagent", family: "agent" },
-  spawn_agent: { action: "start", running: "Starting a subagent", completed: "Started a subagent", family: "agent" },
-  wait_agent: { action: "wait", running: "Checking subagent progress", completed: "Checked subagent progress", family: "agent" },
-  wait_threads: { action: "wait", running: "Checking task progress", completed: "Checked task progress", family: "agent" },
-  interrupt_agent: { action: "stop", running: "Interrupting a subagent", completed: "Interrupted a subagent", family: "agent" },
-  report_findings: { action: "post", running: "Reporting findings", completed: "Reported findings", family: "safety" },
-  guardian_review: { action: "think", running: "Reviewing safety", completed: "Reviewed safety", family: "safety" },
-  lsp: { action: "read", running: "Inspecting code intelligence", completed: "Inspected code intelligence" },
-  compact_conversation: { action: "think", running: "Compacting context", completed: "Compacted context" },
-  image_generation: { action: "create", running: "Generating an image", completed: "Generated an image", family: "image" },
-  view_image: { action: "read", running: "Viewing an image", completed: "Viewed an image", family: "image" },
-  multi_tool_use_parallel: { action: "run", running: "Running tools in parallel", completed: "Ran tools in parallel" },
-  get_task_context: { action: "read", running: "Reading task context", completed: "Read task context" },
-  get_task_history: { action: "read", running: "Reading task history", completed: "Read task history" },
-  list_documents: { action: "list", running: "Listing documents", completed: "Listed documents" },
-  read_document: { action: "read", running: "Reading a document", completed: "Read a document" },
-  list_document_revisions: { action: "list", running: "Listing document revisions", completed: "Listed document revisions" },
-  report_progress: { action: "post", running: "Reporting progress", completed: "Reported progress" },
-  answer_status_question: { action: "post", running: "Answering a status question", completed: "Answered a status question" },
-  write_document: { action: "update", running: "Writing a document", completed: "Wrote a document" },
+  apply_patch: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.applyPatch.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.applyPatch.completed") },
+  read: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.read.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.read.completed") },
+  write: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.write.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.write.completed") },
+  edit: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.edit.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.edit.completed") },
+  notebook_read: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.notebookRead.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.notebookRead.completed") },
+  notebook_edit: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.notebookEdit.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.notebookEdit.completed") },
+  glob: { action: "search", running: t("componentsTaskChatToolTaxonomy.exactActions.glob.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.glob.completed") },
+  grep: { action: "search", running: t("componentsTaskChatToolTaxonomy.exactActions.grep.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.grep.completed"), family: "grep" },
+  tool_search: { action: "search", running: t("componentsTaskChatToolTaxonomy.exactActions.toolSearch.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.toolSearch.completed"), group: group("tool_search", t("componentsTaskChatToolTaxonomy.groups.toolSearch.singular"), t("componentsTaskChatToolTaxonomy.groups.toolSearch.plural")) },
+  web_search: { action: "search", running: t("componentsTaskChatToolTaxonomy.exactActions.webSearch.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.webSearch.completed"), family: "web" },
+  web_fetch: { action: "fetch", running: t("componentsTaskChatToolTaxonomy.exactActions.webFetch.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.webFetch.completed"), family: "web" },
+  todo_write: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.todoWrite.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.todoWrite.completed"), family: "plan", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  task_create: { action: "create", running: t("componentsTaskChatToolTaxonomy.exactActions.taskCreate.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskCreate.completed"), family: "plan", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  task_update: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.taskUpdate.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskUpdate.completed"), family: "plan", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  task_list: { action: "list", running: t("componentsTaskChatToolTaxonomy.exactActions.taskList.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskList.completed"), family: "plan", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  task_get: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.taskGet.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskGet.completed"), family: "plan", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  enter_plan_mode: { action: "switch", running: t("componentsTaskChatToolTaxonomy.exactActions.enterPlanMode.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.enterPlanMode.completed"), family: "plan" },
+  exit_plan_mode: { action: "switch", running: t("componentsTaskChatToolTaxonomy.exactActions.exitPlanMode.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.exitPlanMode.completed"), family: "plan" },
+  skill: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.skill.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.skill.completed") },
+  ask_user_question: { action: "request", running: t("componentsTaskChatToolTaxonomy.exactActions.askUserQuestion.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.askUserQuestion.completed"), family: "question" },
+  request_human_input: { action: "request", running: t("componentsTaskChatToolTaxonomy.exactActions.requestHumanInput.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.requestHumanInput.completed"), family: "question", group: group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural")) },
+  agent: { action: "start", running: t("componentsTaskChatToolTaxonomy.exactActions.agent.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.agent.completed"), family: "agent" },
+  task: { action: "start", running: t("componentsTaskChatToolTaxonomy.exactActions.task.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.task.completed"), family: "agent" },
+  task_output: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.taskOutput.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskOutput.completed"), family: "agent" },
+  task_stop: { action: "stop", running: t("componentsTaskChatToolTaxonomy.exactActions.taskStop.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.taskStop.completed"), family: "agent" },
+  send_message: { action: "post", running: t("componentsTaskChatToolTaxonomy.exactActions.sendMessage.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.sendMessage.completed"), family: "agent" },
+  spawn_agent: { action: "start", running: t("componentsTaskChatToolTaxonomy.exactActions.spawnAgent.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.spawnAgent.completed"), family: "agent" },
+  wait_agent: { action: "wait", running: t("componentsTaskChatToolTaxonomy.exactActions.waitAgent.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.waitAgent.completed"), family: "agent" },
+  wait_threads: { action: "wait", running: t("componentsTaskChatToolTaxonomy.exactActions.waitThreads.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.waitThreads.completed"), family: "agent" },
+  interrupt_agent: { action: "stop", running: t("componentsTaskChatToolTaxonomy.exactActions.interruptAgent.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.interruptAgent.completed"), family: "agent" },
+  report_findings: { action: "post", running: t("componentsTaskChatToolTaxonomy.exactActions.reportFindings.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.reportFindings.completed"), family: "safety" },
+  guardian_review: { action: "think", running: t("componentsTaskChatToolTaxonomy.exactActions.guardianReview.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.guardianReview.completed"), family: "safety" },
+  lsp: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.lsp.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.lsp.completed") },
+  compact_conversation: { action: "think", running: t("componentsTaskChatToolTaxonomy.exactActions.compactConversation.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.compactConversation.completed") },
+  image_generation: { action: "create", running: t("componentsTaskChatToolTaxonomy.exactActions.imageGeneration.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.imageGeneration.completed"), family: "image" },
+  view_image: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.viewImage.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.viewImage.completed"), family: "image" },
+  multi_tool_use_parallel: { action: "run", running: t("componentsTaskChatToolTaxonomy.exactActions.multiToolUseParallel.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.multiToolUseParallel.completed") },
+  get_task_context: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getTaskContext.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getTaskContext.completed") },
+  get_task_history: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getTaskHistory.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getTaskHistory.completed") },
+  list_documents: { action: "list", running: t("componentsTaskChatToolTaxonomy.exactActions.listDocuments.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.listDocuments.completed") },
+  read_document: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.readDocument.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.readDocument.completed") },
+  list_document_revisions: { action: "list", running: t("componentsTaskChatToolTaxonomy.exactActions.listDocumentRevisions.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.listDocumentRevisions.completed") },
+  report_progress: { action: "post", running: t("componentsTaskChatToolTaxonomy.exactActions.reportProgress.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.reportProgress.completed") },
+  answer_status_question: { action: "post", running: t("componentsTaskChatToolTaxonomy.exactActions.answerStatusQuestion.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.answerStatusQuestion.completed") },
+  write_document: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.writeDocument.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.writeDocument.completed") },
   // With the file as its subject the row reads "Attached u1.txt".
-  register_deliverable: { action: "create", running: "Attaching a file", completed: "Attached a file" },
+  register_deliverable: { action: "create", running: t("componentsTaskChatToolTaxonomy.exactActions.registerDeliverable.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.registerDeliverable.completed") },
   // Antigravity's swarm progress lines; the subject is the whole plain sentence.
-  swarm_update: { action: "other", running: "Swarm", completed: "Swarm", family: "agent", sentence: true, group: group("swarm_update", "swarm update", "swarm updates") },
-  finish_task: { action: "finish", running: "Reporting completion", completed: "Reported completion" },
-  paperclip_finish: { action: "finish", running: "Reporting completion", completed: "Reported completion" },
-  block_task: { action: "block", running: "Reporting a blocker", completed: "Reported a blocker" },
-  paperclip_block: { action: "block", running: "Reporting a blocker", completed: "Reported a blocker" },
-  request_review: { action: "request", running: "Requesting review", completed: "Requested review" },
-  list_agents: { action: "list", running: "Listing agents", completed: "Listed agents" },
-  get_agent: { action: "read", running: "Reading agent details", completed: "Read agent details" },
-  search_tasks: { action: "search", running: "Searching tasks", completed: "Searched tasks" },
-  list_approvals: { action: "list", running: "Listing approvals", completed: "Listed approvals" },
-  get_approval: { action: "read", running: "Reading an approval", completed: "Read an approval" },
-  get_approval_context: { action: "read", running: "Reading approval context", completed: "Read approval context" },
-  get_workspace_runtime: { action: "read", running: "Reading workspace status", completed: "Read workspace status" },
-  control_workspace_service: { action: "run", running: "Controlling a workspace service", completed: "Controlled a workspace service" },
-  set_dependencies: { action: "update", running: "Updating task dependencies", completed: "Updated task dependencies" },
-  set_task_title: { action: "update", running: "Naming the task", completed: "Named the task" },
-  create_task: { action: "create", running: "Creating a task", completed: "Created a task" },
-  request_approval: { action: "request", running: "Requesting approval", completed: "Requested approval" },
-  decide_approval: { action: "update", running: "Deciding an approval", completed: "Decided an approval" },
-  comment_on_approval: { action: "post", running: "Commenting on an approval", completed: "Commented on an approval" },
-  schedule_wake: { action: "create", running: "Scheduling a wake-up", completed: "Scheduled a wake-up", family: "wait" },
-  generic_api_request: { action: "request", running: "Calling the Paperclip API", completed: "Called the Paperclip API" },
+  swarm_update: { action: "other", running: t("componentsTaskChatToolTaxonomy.exactActions.swarmUpdate.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.swarmUpdate.completed"), family: "agent", sentence: true, group: group("swarm_update", t("componentsTaskChatToolTaxonomy.groups.swarmUpdate.singular"), t("componentsTaskChatToolTaxonomy.groups.swarmUpdate.plural")) },
+  finish_task: { action: "finish", running: t("componentsTaskChatToolTaxonomy.exactActions.finishTask.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.finishTask.completed") },
+  paperclip_finish: { action: "finish", running: t("componentsTaskChatToolTaxonomy.exactActions.paperclipFinish.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.paperclipFinish.completed") },
+  block_task: { action: "block", running: t("componentsTaskChatToolTaxonomy.exactActions.blockTask.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.blockTask.completed") },
+  paperclip_block: { action: "block", running: t("componentsTaskChatToolTaxonomy.exactActions.paperclipBlock.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.paperclipBlock.completed") },
+  request_review: { action: "request", running: t("componentsTaskChatToolTaxonomy.exactActions.requestReview.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.requestReview.completed") },
+  list_agents: { action: "list", running: t("componentsTaskChatToolTaxonomy.exactActions.listAgents.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.listAgents.completed") },
+  get_agent: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getAgent.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getAgent.completed") },
+  search_tasks: { action: "search", running: t("componentsTaskChatToolTaxonomy.exactActions.searchTasks.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.searchTasks.completed") },
+  list_approvals: { action: "list", running: t("componentsTaskChatToolTaxonomy.exactActions.listApprovals.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.listApprovals.completed") },
+  get_approval: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getApproval.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getApproval.completed") },
+  get_approval_context: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getApprovalContext.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getApprovalContext.completed") },
+  get_workspace_runtime: { action: "read", running: t("componentsTaskChatToolTaxonomy.exactActions.getWorkspaceRuntime.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.getWorkspaceRuntime.completed") },
+  control_workspace_service: { action: "run", running: t("componentsTaskChatToolTaxonomy.exactActions.controlWorkspaceService.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.controlWorkspaceService.completed") },
+  set_dependencies: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.setDependencies.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.setDependencies.completed") },
+  set_task_title: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.setTaskTitle.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.setTaskTitle.completed") },
+  create_task: { action: "create", running: t("componentsTaskChatToolTaxonomy.exactActions.createTask.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.createTask.completed") },
+  request_approval: { action: "request", running: t("componentsTaskChatToolTaxonomy.exactActions.requestApproval.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.requestApproval.completed") },
+  decide_approval: { action: "update", running: t("componentsTaskChatToolTaxonomy.exactActions.decideApproval.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.decideApproval.completed") },
+  comment_on_approval: { action: "post", running: t("componentsTaskChatToolTaxonomy.exactActions.commentOnApproval.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.commentOnApproval.completed") },
+  schedule_wake: { action: "create", running: t("componentsTaskChatToolTaxonomy.exactActions.scheduleWake.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.scheduleWake.completed"), family: "wait" },
+  generic_api_request: { action: "request", running: t("componentsTaskChatToolTaxonomy.exactActions.genericApiRequest.running"), completed: t("componentsTaskChatToolTaxonomy.exactActions.genericApiRequest.completed") },
 };
 
 const ACTION_PREFIXES: Record<Action, readonly string[]> = {
@@ -336,51 +340,38 @@ const FAMILY_ICONS: Record<ToolFamily, ToolIcon> = {
 };
 
 function actionCopy(action: Action, object: string | undefined): { running: string; completed: string } {
-  const suffix = object ? ` ${object}` : "";
-  switch (action) {
-    case "read": return { running: `Reading${suffix || " data"}`, completed: `Read${suffix || " data"}` };
-    case "list": return { running: `Listing${suffix || " items"}`, completed: `Listed${suffix || " items"}` };
-    case "search": return { running: `Searching${suffix || ""}`, completed: `Searched${suffix || ""}` };
-    case "fetch": return { running: `Fetching${suffix || " data"}`, completed: `Fetched${suffix || " data"}` };
-    case "open": return { running: `Opening${suffix || " an item"}`, completed: `Opened${suffix || " an item"}` };
-    case "update": return { running: `Updating${suffix || " data"}`, completed: `Updated${suffix || " data"}` };
-    case "create": return { running: `Creating${suffix || " an item"}`, completed: `Created${suffix || " an item"}` };
-    case "delete": return { running: `Deleting${suffix || " an item"}`, completed: `Deleted${suffix || " an item"}` };
-    case "move": return { running: `Moving${suffix || " an item"}`, completed: `Moved${suffix || " an item"}` };
-    case "run": return { running: "Running a command", completed: "Ran a command" };
-    case "request": return { running: `Requesting${suffix || " input"}`, completed: `Requested${suffix || " input"}` };
-    case "post": return { running: `Posting${suffix || " an update"}`, completed: `Posted${suffix || " an update"}` };
-    case "start": return { running: `Starting${suffix || " an operation"}`, completed: `Started${suffix || " an operation"}` };
-    case "stop": return { running: `Stopping${suffix || " an operation"}`, completed: `Stopped${suffix || " an operation"}` };
-    case "wait": return { running: "Waiting", completed: "Finished waiting" };
-    case "finish": return { running: "Reporting completion", completed: "Reported completion" };
-    case "block": return { running: "Reporting a blocker", completed: "Reported a blocker" };
-    case "think": return { running: "Thinking", completed: "Finished thinking" };
-    case "switch": return { running: `Switching${suffix || " mode"}`, completed: `Switched${suffix || " mode"}` };
-    case "other": return { running: "Running", completed: "Ran" };
+  if (object && OBJECT_ACTIONS.has(action)) {
+    return {
+      running: t(`componentsTaskChatToolTaxonomy.actions.${action}.runningObject`, { object }),
+      completed: t(`componentsTaskChatToolTaxonomy.actions.${action}.completedObject`, { object }),
+    };
   }
+  return { running: t(`componentsTaskChatToolTaxonomy.actions.${action}.running`), completed: t(`componentsTaskChatToolTaxonomy.actions.${action}.completed`) };
 }
+
+/** Actions whose copy names the object the tool acts on ("Reading issue comments"). */
+const OBJECT_ACTIONS: ReadonlySet<Action> = new Set<Action>(["read", "list", "search", "fetch", "open", "update", "create", "delete", "move", "request", "post", "start", "stop", "switch"]);
 
 function defaultSummaryGroup(action: Action): ToolSummaryGroup {
   switch (action) {
-    case "run": return group("command", "command", "commands");
+    case "run": return group("command", t("componentsTaskChatToolTaxonomy.groups.command.singular"), t("componentsTaskChatToolTaxonomy.groups.command.plural"));
     case "read":
-    case "list": return group("read", "read", "reads");
-    case "search": return group("search", "search", "searches");
+    case "list": return group("read", t("componentsTaskChatToolTaxonomy.groups.read.singular"), t("componentsTaskChatToolTaxonomy.groups.read.plural"));
+    case "search": return group("search", t("componentsTaskChatToolTaxonomy.groups.search.singular"), t("componentsTaskChatToolTaxonomy.groups.search.plural"));
     case "update":
     case "create":
     case "delete":
-    case "move": return group("file_change", "file change", "file changes");
+    case "move": return group("file_change", t("componentsTaskChatToolTaxonomy.groups.fileChange.singular"), t("componentsTaskChatToolTaxonomy.groups.fileChange.plural"));
     case "start":
-    case "stop": return group("delegation", "delegation", "delegations");
-    case "wait": return group("wait", "wait", "waits");
-    default: return group("tool_action", "tool action", "tool actions");
+    case "stop": return group("delegation", t("componentsTaskChatToolTaxonomy.groups.delegation.singular"), t("componentsTaskChatToolTaxonomy.groups.delegation.plural"));
+    case "wait": return group("wait", t("componentsTaskChatToolTaxonomy.groups.wait.singular"), t("componentsTaskChatToolTaxonomy.groups.wait.plural"));
+    default: return group("tool_action", t("componentsTaskChatToolTaxonomy.groups.toolAction.singular"), t("componentsTaskChatToolTaxonomy.groups.toolAction.plural"));
   }
 }
 
 function paperclipSummaryGroup(action: Action): ToolSummaryGroup {
-  if (action === "read" || action === "list") return group("paperclip_read", "Paperclip read", "Paperclip reads");
-  return group("task_operation", "task operation", "task operations");
+  if (action === "read" || action === "list") return group("paperclip_read", t("componentsTaskChatToolTaxonomy.groups.paperclipRead.singular"), t("componentsTaskChatToolTaxonomy.groups.paperclipRead.plural"));
+  return group("task_operation", t("componentsTaskChatToolTaxonomy.groups.taskOperation.singular"), t("componentsTaskChatToolTaxonomy.groups.taskOperation.plural"));
 }
 
 /**
@@ -411,7 +402,7 @@ export function toolActivityPresentation(input: ToolActivityPresentationInput): 
         : isGenericToolName(semanticName)
           ? "unnamed"
           : "fallback";
-  const displayName = isGenericToolName(semanticName) ? "Unnamed tool" : humanizeToolName(semanticName);
+  const displayName = isGenericToolName(semanticName) ? t("componentsTaskChatToolTaxonomy.unnamedTool") : humanizeToolName(semanticName);
   const identifierLikeName = /^[A-Za-z][A-Za-z0-9_.:-]*$/.test(semanticName);
   const objectWords = inferred && identifierLikeName && words.length > 1 ? words.slice(1) : [];
   const object = objectWords.length ? sentenceCase(objectWords).replace(/^./, (letter) => letter.toLowerCase()) : undefined;
@@ -419,8 +410,8 @@ export function toolActivityPresentation(input: ToolActivityPresentationInput): 
     ? { running: exact.running, completed: exact.completed }
     : action === "other"
       ? isGenericToolName(semanticName)
-        ? { running: "Running an unnamed tool", completed: "Ran an unnamed tool" }
-        : { running: `Running ${displayName}`, completed: `Ran ${displayName}` }
+        ? { running: t("componentsTaskChatToolTaxonomy.runningUnnamed"), completed: t("componentsTaskChatToolTaxonomy.ranUnnamed") }
+        : { running: t("componentsTaskChatToolTaxonomy.runningNamed", { name: displayName }), completed: t("componentsTaskChatToolTaxonomy.ranNamed", { name: displayName }) }
       : actionCopy(action, exact ? undefined : object);
   const semanticFamily = exact?.family ?? actionFamily(action);
   const family = transport === "mcp" ? "mcp" : semanticFamily;
@@ -438,8 +429,8 @@ export function toolActivityPresentation(input: ToolActivityPresentationInput): 
     family,
     runningLabel: copy.running,
     completedLabel: copy.completed,
-    failedLabel: `${copy.completed} · failed`,
-    interruptedLabel: `${copy.running} · stopped`,
+    failedLabel: `${copy.completed} · ${t("componentsTaskChatToolTaxonomy.markers.failed")}`,
+    interruptedLabel: `${copy.running} · ${t("componentsTaskChatToolTaxonomy.markers.stopped")}`,
     displayName,
     sourceLabel,
     technicalName: rawName || undefined,

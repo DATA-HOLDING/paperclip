@@ -1,0 +1,18 @@
+{
+  "breadcrumb": "Chat",
+  "loadingChat": "Loading chat…",
+  "disabled": {
+    "before": "Agent Chat is off for this instance. An administrator can enable it in",
+    "link": "Experimental settings",
+    "after": ". Your workspace preference does not change Chat availability."
+  },
+  "selectCompany": "Select a company to start a conversation.",
+  "openingChat": "Opening chat…",
+  "title": "Who would you like to talk to?",
+  "subtitle": "Ask a question, think through an idea, or plan the next step with your team.",
+  "loadAction": "load your chats",
+  "loadingAgents": "Loading agents…",
+  "openFailed": "Couldn’t open chat. Try again.",
+  "noAgents": "Add an agent to start a conversation.",
+  "browseAll": "Browse all agents"
+}

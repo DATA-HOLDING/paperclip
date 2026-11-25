@@ -18,6 +18,7 @@ import {
 } from "@/lib/metric-charts";
 import { RESPONSIBILITY_HEALTH_TEXT_VAR } from "@/lib/responsibilities";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 /**
  * Small charts for a responsibility's metrics, drawn as inline SVG with
@@ -52,8 +53,8 @@ function ReadingsTable({ metric }: { metric: ChartMetric & Pick<ResponsibilityMe
       <caption>{metric.title}</caption>
       <thead>
         <tr>
-          <th scope="col">{metric.period === "week" ? "Week of" : "Read on"}</th>
-          <th scope="col">Value</th>
+          <th scope="col">{metric.period === "week" ? t("componentsResponsibilitiesMetricCharts.weekOf") : t("componentsResponsibilitiesMetricCharts.readOn")}</th>
+          <th scope="col">{t("componentsResponsibilitiesMetricCharts.value")}</th>
         </tr>
       </thead>
       <tbody>
@@ -150,7 +151,7 @@ export function MetricLineChart({ metric, className }: { metric: ChartMetric; cl
     <div className={cn("flex flex-col gap-1", className)}>
       <ChartFrame
         metric={metric}
-        empty={points.length === 0 ? "No readings yet" : null}
+        empty={points.length === 0 ? t("componentsResponsibilitiesMetricCharts.noReadings") : null}
         overlay={
           <>
             <ReferenceLines lines={references} domain={domain} />
@@ -215,7 +216,7 @@ export function MetricBarChart({ metric, className }: { metric: ChartMetric; cla
     <div className={cn("flex flex-col gap-1", className)}>
       <ChartFrame
         metric={metric}
-        empty={bars.length === 0 ? "No readings yet" : null}
+        empty={bars.length === 0 ? t("componentsResponsibilitiesMetricCharts.noReadings") : null}
         overlay={<ReferenceLines lines={references} domain={domain} />}
       >
         <line x1={0} x2={CHART_WIDTH} y1={CHART_HEIGHT} y2={CHART_HEIGHT} className="stroke-border" strokeWidth={1} vectorEffect="non-scaling-stroke" />
@@ -231,7 +232,7 @@ export function MetricBarChart({ metric, className }: { metric: ChartMetric; cla
             data-bar=""
             data-zero={bar.zero ? "" : undefined}
           >
-            <title>{`Week of ${formatChartDate(bar.recordedAt)}: ${formatMetricViewValue(metric, bar.value)}`}</title>
+            <title>{t("componentsResponsibilitiesMetricCharts.weekTooltip", { date: formatChartDate(bar.recordedAt), value: formatMetricViewValue(metric, bar.value) })}</title>
           </rect>
         ))}
         {references.map((line) => (

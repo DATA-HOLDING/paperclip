@@ -1,0 +1,12 @@
+{
+  "unknownAgent": "Unknown agent",
+  "user": "User",
+  "unassigned": "Unassigned",
+  "collapse": "Collapse {{title}}",
+  "expand": "Expand {{title}}",
+  "noProject": "No project",
+  "listLabel": "{{density}} task list",
+  "groupLabel": "{{title}} task group",
+  "rendering": "Rendering {{shown}} of {{total}} tasks",
+  "showMore": "Show more tasks"
+}

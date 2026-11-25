@@ -1,0 +1,12 @@
+{
+  "title": "What's moving",
+  "nothingYet": "Nothing to report yet. Once projects, tasks or routines are filed here, what they need shows up here.",
+  "needsAttention": "Needs attention",
+  "nothingNeedsAttention": "Nothing in the work needs attention.",
+  "everythingElse": "Everything else",
+  "theWork": "The work",
+  "noOpenWork": "No open projects, tasks or routines are filed here.",
+  "finishedNotListed_one": "{{count}} finished item is not listed.",
+  "finishedNotListed_other": "{{count}} finished items are not listed.",
+  "onlyFirstTasks": "Only the first {{limit}} tasks are listed."
+}

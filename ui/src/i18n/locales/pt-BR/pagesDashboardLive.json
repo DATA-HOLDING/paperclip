@@ -1,0 +1,12 @@
+{
+  "breadcrumbDashboard": "Painel",
+  "breadcrumbLiveRuns": "Execuções ao vivo",
+  "createOrganization": "Crie uma organização para ver as execuções ao vivo.",
+  "selectOrganization": "Selecione uma organização para ver as execuções ao vivo.",
+  "backToDashboard": "Painel",
+  "title": "Execuções de agentes ao vivo",
+  "description": "Execuções ativas primeiro, seguidas das concluídas mais recentes.",
+  "showingUpTo": "Mostrando até {{count}}",
+  "panelTitle": "Ativas / recentes",
+  "emptyMessage": "Nenhuma execução de agente ativa ou recente."
+}

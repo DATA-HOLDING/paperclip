@@ -1,0 +1,44 @@
+{
+  "controls": "Controles de rotinas",
+  "newRoutine": "Nova rotina",
+  "searchLabel": "Buscar rotinas",
+  "searchPlaceholder": "Buscar rotinas…",
+  "sort": {
+    "title": "Ordenar",
+    "ariaLabel": "Ordenar rotinas",
+    "updated": "Atualização",
+    "created": "Criação",
+    "lastRun": "Última execução",
+    "titleField": "Título",
+    "asc": "Cresc.",
+    "desc": "Decresc."
+  },
+  "filter": {
+    "title": "Filtrar",
+    "ariaLabel": "Filtrar rotinas",
+    "ariaLabelCount": "Filtrar rotinas ({{count}})",
+    "header": "Filtros",
+    "clear": "Limpar",
+    "project": "Projeto",
+    "agent": "Agente",
+    "enabled": "Ativada",
+    "responsibleUser": "Usuário responsável",
+    "source": "Origem",
+    "noOptions": "Nenhuma opção"
+  },
+  "group": {
+    "title": "Agrupar",
+    "ariaLabel": "Agrupar rotinas",
+    "folder": "Pasta",
+    "project": "Projeto",
+    "agent": "Agente",
+    "none": "Nenhum",
+    "newFolder": "Nova pasta"
+  },
+  "columns": {
+    "title": "Colunas",
+    "ariaLabel": "Colunas das rotinas",
+    "reset": "Redefinir colunas"
+  },
+  "viewAllTasks": "Ver todas as tarefas"
+}

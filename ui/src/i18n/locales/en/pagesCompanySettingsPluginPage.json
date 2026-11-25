@@ -1,0 +1,10 @@
+{
+  "breadcrumb": "Settings",
+  "selectOrganization": "Select an organization to view this page.",
+  "loading": "Loading...",
+  "loadAction": "load plugin extensions",
+  "duplicateRoute": {
+    "before": "Multiple plugins declare the company settings route",
+    "after": ". Disable one plugin or change its route."
+  }
+}

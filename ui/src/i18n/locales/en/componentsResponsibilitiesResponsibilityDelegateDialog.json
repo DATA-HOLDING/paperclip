@@ -1,0 +1,38 @@
+{
+  "groups": {
+    "primary": "Your primary agent",
+    "others": "Other agents"
+  },
+  "created": {
+    "title": "Task created",
+    "hasIt": "{{name}} has it.",
+    "agentHasIt": "The agent has it.",
+    "filedUnder": " It is filed under {{title}}.",
+    "giveAnother": "Give another task",
+    "done": "Done"
+  },
+  "form": {
+    "title": "New task for an agent",
+    "description": "Creates a task under {{title}} and gives it to the agent.",
+    "who": "Who",
+    "loadingAgents": "Loading agents…",
+    "chooseAgent": "Choose an agent",
+    "searchAgents": "Search agents…",
+    "noAgents": "No agents can take this. Add an agent first.",
+    "agent": "Agent",
+    "how": "How",
+    "howLabel": "How the agent works",
+    "whatToDo": "What to do",
+    "whatPlaceholder": "e.g. Draft the investor update",
+    "anythingElse": "Anything else ",
+    "optional": "(optional)",
+    "anythingPlaceholder": "Context, constraints, or what done looks like",
+    "createFailed": "Couldn’t create the task. ",
+    "cancel": "Cancel",
+    "creating": "Creating task…",
+    "create": "Create task"
+  },
+  "errorActions": {
+    "loadAgents": "load agents"
+  }
+}

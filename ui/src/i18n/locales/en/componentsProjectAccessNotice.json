@@ -1,0 +1,20 @@
+{
+  "thisAgent": "This agent",
+  "ariaLabel": "Project access",
+  "readyTitle": "Project access is ready",
+  "blockedTitle": "{{agentName}} can’t access this project",
+  "readyBody": "The agent can now access the required project. Retry to continue with your saved message.",
+  "blockedBody": "This task needs {{projectName}} outside the agent’s allowed projects. The agent hasn’t started. Your message is saved.",
+  "aProject": "a project",
+  "needsManager": "A person with agent-management permission can add this project in the agent’s Permissions / Trust settings.",
+  "retryTask": "Retry task",
+  "manageAccess": "Manage project access",
+  "viewAccess": "View agent access",
+  "runDetails": "Run details",
+  "stoppedDuring": "Stopped during",
+  "workspaceSetup": "Workspace setup",
+  "reason": "Reason",
+  "outsideScope": "Project outside allowed scope",
+  "providerStarted": "Provider started",
+  "no": "No"
+}

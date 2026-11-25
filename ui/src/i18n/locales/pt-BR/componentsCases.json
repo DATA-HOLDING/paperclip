@@ -1,0 +1,82 @@
+{
+  "documentPreview": {
+    "task": "Tarefa",
+    "taskDocument": "Documento da tarefa",
+    "loading": "Carregando documento…",
+    "loadError": "Não foi possível carregar este documento.",
+    "empty": "Este documento está vazio.",
+    "revisionHistory": "Histórico de revisões",
+    "savedOnCase": "{{caseIdentifier}} · Salvo no caso",
+    "revision": " · Revisão {{number}}"
+  },
+  "handoffs": {
+    "agentFallback": "Agente",
+    "ariaLabel": "Passagens do caso",
+    "title": "Passagens",
+    "loading": "Carregando passagens…",
+    "loadError": "Não foi possível carregar as passagens.",
+    "empty": "Nenhuma passagem ainda.",
+    "loadOlder": "Carregar passagens anteriores",
+    "state": {
+      "appliedDeliveryCancelled": "Aplicada · entrega cancelada",
+      "cancelledBeforeTransfer": "Cancelada antes da transferência",
+      "waitingForCompletion": "Aguardando a conclusão da tarefa",
+      "appliedWaitingDelivery": "Aplicada · aguardando entrega",
+      "pendingTransfer": "Transferência pendente"
+    },
+    "done": "Concluído",
+    "user": "Usuário",
+    "system": "Sistema",
+    "caseInstructions": "Instruções do caso"
+  },
+  "listControls": {
+    "columns": "Colunas",
+    "visibleFields": "Campos visíveis",
+    "resetDefaults": "Restaurar padrões",
+    "filterCases": "Filtrar casos",
+    "filter": "Filtrar",
+    "caseFilters": "Filtros de casos",
+    "filters": "Filtros",
+    "sort": "Ordenar",
+    "sortCases": "Ordenar casos",
+    "ascending": "Crescente",
+    "descending": "Decrescente",
+    "group": "Agrupar",
+    "groupCases": "Agrupar casos",
+    "filterCasesActive": "Filtrar casos ({{count}} ativos)"
+  },
+  "listRow": {
+    "agent": "Agente",
+    "unassigned": "Sem responsável",
+    "taskUnavailable": "Tarefa indisponível",
+    "noTaskLinked": "Nenhuma tarefa vinculada"
+  },
+  "status": {
+    "draft": "Rascunho",
+    "inProgress": "Em andamento",
+    "inReview": "Em revisão",
+    "approved": "Aprovado",
+    "done": "Concluído",
+    "cancelled": "Cancelado"
+  },
+  "work": {
+    "agent": "Agente",
+    "previousAgent": "o agente anterior",
+    "receivingAgent": "o agente que recebe",
+    "willClose": "O caso será fechado quando a tarefa for concluída.",
+    "ariaLabel": "Trabalho do caso",
+    "title": "Trabalho",
+    "task": "Tarefa",
+    "workflow": "Fluxo de trabalho",
+    "caseInstructions": "Instruções do caso",
+    "phase": "Fase",
+    "unassigned": "Sem responsável",
+    "taskStatus": "Status da tarefa",
+    "primaryUnavailable": "A tarefa principal está indisponível.",
+    "noTaskLinked": "Nenhuma tarefa vinculada",
+    "waitingToFinish": "Aguardando {{name}} terminar.",
+    "paused": "{{name}} está pausado.",
+    "waitingToStart": "Aguardando {{name}} começar.",
+    "next": "Próximo: {{name}} · {{phase}}"
+  }
+}

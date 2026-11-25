@@ -1,0 +1,53 @@
+{
+  "presets": {
+    "everyMinute": "Every minute",
+    "everyHour": "Every hour",
+    "everyDay": "Every day",
+    "weekdays": "Weekdays",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "custom": "Custom (cron)"
+  },
+  "days": {
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+    "sun": "Sun"
+  },
+  "describe": {
+    "everyMinute": "Every minute",
+    "everyHour": "Every hour at :{{minute}}",
+    "everyDay": "Every day at {{time}}",
+    "weekdays": "Weekdays at {{time}}",
+    "weekly": "Every {{day}} at {{time}}",
+    "monthly": "Monthly on the {{day}}{{suffix}} at {{time}}",
+    "none": "No schedule set"
+  },
+  "ordinal": {
+    "th": "th",
+    "st": "st",
+    "nd": "nd",
+    "rd": "rd"
+  },
+  "validation": {
+    "empty": "Enter a 5-field cron expression.",
+    "fieldCount": "Use exactly 5 fields; this has {{count}}.",
+    "invalidFields": "Cron fields must use valid numbers, ranges, lists, wildcards, or steps.",
+    "valid": "Valid cron.",
+    "validNoFires": "Valid cron, but no upcoming fires were found.",
+    "next": " Next: {{fires}}."
+  },
+  "frequencyAria": "Schedule frequency",
+  "frequencyPlaceholder": "Choose frequency...",
+  "cronAria": "Cron expression",
+  "cronHelp": "Five fields: minute hour day-of-month month day-of-week",
+  "labels": {
+    "at": "at",
+    "atMinute": "at minute",
+    "on": "on",
+    "onDay": "on day"
+  }
+}

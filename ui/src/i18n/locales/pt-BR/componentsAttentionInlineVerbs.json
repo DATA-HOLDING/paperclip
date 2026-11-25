@@ -1,0 +1,41 @@
+{
+  "failedRun": {
+    "defaultError": "A execução falhou",
+    "retryNotStarted": "A nova tentativa não começou",
+    "retryRequested": "Nova tentativa solicitada",
+    "retryFailed": "Não foi possível tentar esta execução de novo",
+    "retryNote": "A nova tentativa inicia uma nova execução.",
+    "viewRun": "Ver execução",
+    "retryRun": "Tentar a execução de novo",
+    "openRun": "Abrir execução",
+    "retry": "Tentar novamente"
+  },
+  "budget": {
+    "warningDismissed": "Aviso dispensado",
+    "keptPaused": "Mantido em pausa",
+    "limitRaised": "Limite aumentado",
+    "updateFailed": "Não foi possível atualizar o orçamento",
+    "newLimit": "Novo limite (USD)",
+    "spentOf": "{{spent}} gastos de {{limit}}",
+    "percentUsed": "{{percent}}% usado",
+    "used": "Orçamento usado",
+    "scopeLimit": {
+      "company": "Limite da organização",
+      "agent": "Limite do agente",
+      "project": "Limite do projeto"
+    },
+    "limit": "Limite",
+    "workContinues": "O trabalho continua até o limite ser atingido",
+    "runsPaused": "Novas execuções estão pausadas",
+    "tooLow": "O novo limite precisa ser maior que o gasto atual.",
+    "dismissWarning": "Dispensar aviso",
+    "keepPaused": "Manter em pausa",
+    "cancel": "Cancelar",
+    "raiseLimit": "Aumentar limite",
+    "raiseAndResume": "Aumentar limite e retomar",
+    "increaseLimit": "Aumentar limite…",
+    "spendIs": "O gasto é de {{spent}} de um limite de {{limit}}.",
+    "warningNoPause": "Este aviso não pausa o trabalho.",
+    "scopePaused": "O trabalho neste escopo está pausado."
+  }
+}

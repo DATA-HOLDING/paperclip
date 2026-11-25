@@ -1,0 +1,55 @@
+{
+  "frequency": {
+    "daily": "Every day",
+    "weekdays": "Every weekday",
+    "weekly": "Every week",
+    "monthly": "Every month"
+  },
+  "weekday": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "joinTitles": "{{list}} and {{last}}",
+  "hint": {
+    "offer": "The agent suggested this.",
+    "title": "Suggested from the title."
+  },
+  "title": {
+    "new": "New routine",
+    "fromTask": "Make it a routine"
+  },
+  "description": {
+    "new": "An agent does this on a schedule.",
+    "fromTask": "An agent repeats this on a schedule, so it no longer needs you to start it."
+  },
+  "whatRepeats": "What repeats",
+  "titlePlaceholder": "e.g. Review the investor pipeline",
+  "howOften": "How often",
+  "on": "on",
+  "dayOfWeek": "Day of the week",
+  "onDay": "on day",
+  "dayOfMonth": "Day of the month",
+  "at": "at",
+  "time": "Time",
+  "cadencePreview": "{{cadence}}, your time ({{zone}}).",
+  "whoRuns": "Who runs it",
+  "noAgents": "No agents yet",
+  "addAgentFirst": "Add an agent first: a routine needs one to run it.",
+  "filing": {
+    "new": "Filed under {{title}}.",
+    "taskStays": "The task itself stays as it is.",
+    "under": "The routine is filed under {{titles}}, like the task.",
+    "wherever": "The routine is filed wherever the task is."
+  },
+  "error": "Couldn’t make the routine.",
+  "cancel": "Cancel",
+  "submit": {
+    "pending": "Making the routine…",
+    "new": "Make the routine"
+  }
+}

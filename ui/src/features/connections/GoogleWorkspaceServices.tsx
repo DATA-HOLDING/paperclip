@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useQueryView } from "@/components/QueryView";
 import { useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -24,10 +25,10 @@ export function GoogleWorkspaceServiceFields({ value, onChange }: {
         <label htmlFor={`workspace-service-${group.id}`} className="text-sm font-medium">{group.name}</label>
         {"description" in group && <p className="text-xs text-muted-foreground">{group.description}</p>}
       </div>
-      <NativeSelect aria-label={`${group.name} access`} disabled={!value[group.id]} value={value[group.id] ?? "write"}
+      <NativeSelect aria-label={t("featuresConnections.googleWorkspaceServices.accessAriaLabel", { name: group.name })} disabled={!value[group.id]} value={value[group.id] ?? "write"}
         className="w-auto shrink-0 disabled:opacity-50"
         onChange={event => onChange({ ...value, [group.id]: event.target.value as "read" | "write" })}>
-        <option value="read">Read only</option><option value="write">Read &amp; write</option>
+        <option value="read">{t("featuresConnections.googleWorkspaceServices.readOnly")}</option><option value="write">{t("featuresConnections.googleWorkspaceServices.readWrite")}</option>
       </NativeSelect>
       <ToggleSwitch id={`workspace-service-${group.id}`} aria-label={group.name} checked={Boolean(value[group.id])}
         onCheckedChange={checked => {
@@ -74,8 +75,8 @@ export function GoogleWorkspaceServicesDialog(props: DialogProps) {
   const grants = useQuery({ queryKey: ["workspace-service-consent", existing?.id], queryFn: () => toolsApi.listConnectionGrants(existing!.id), enabled: Boolean(existing) });
   const grantsView = useQueryView(grants);
   if (existing && !grants.data) return <Dialog open onOpenChange={open => { if (!open) props.onCancel(); }}><DialogContent className={ANALYTICS_MASK_CLASS}>
-    <DialogTitle>Connect Google Workspace</DialogTitle><DialogDescription>{(grantsView.kind === "error") ? "Could not load your saved service access. Your connection has not changed." : "Loading your saved service access…"}</DialogDescription>
-    <footer className="flex items-center justify-between gap-3"><Button variant="ghost" onClick={() => props.onCancel()}>Cancel</Button>{(grantsView.kind === "error") && <Button onClick={() => void grants.refetch()}>Try again</Button>}</footer>
+    <DialogTitle>{t("featuresConnections.googleWorkspaceServices.title")}</DialogTitle><DialogDescription>{(grantsView.kind === "error") ? t("featuresConnections.googleWorkspaceServices.loadError") : t("featuresConnections.googleWorkspaceServices.loading")}</DialogDescription>
+    <footer className="flex items-center justify-between gap-3"><Button variant="ghost" onClick={() => props.onCancel()}>{t("featuresConnections.googleWorkspaceServices.cancel")}</Button>{(grantsView.kind === "error") && <Button onClick={() => void grants.refetch()}>{t("featuresConnections.googleWorkspaceServices.tryAgain")}</Button>}</footer>
   </DialogContent></Dialog>;
   const grant = grants.data?.grants.find(grant => existing?.credentialPolicy === "per_user"
     ? grant.kind === "user" && grant.subjectUserId === grants.data?.currentUserId
@@ -107,19 +108,19 @@ function ServicePicker({ onContinue, onCancel, initial = GOOGLE_WORKSPACE_DEFAUL
   return <Dialog open onOpenChange={open => { if (!open) onCancel(selection); }}>
     <DialogContent className={cn("max-h-(--sz-85vh) overflow-y-auto sm:max-w-3xl", ANALYTICS_MASK_CLASS)}>
       <DialogHeader className="text-left">
-        <div className="flex items-center gap-3"><AppLogo name="Google Workspace" brandKey="google" size={40} /><DialogTitle>Connect Google Workspace</DialogTitle></div>
-        <DialogDescription className="sr-only">Choose the Google services to connect.</DialogDescription>
+        <div className="flex items-center gap-3"><AppLogo name="Google Workspace" brandKey="google" size={40} /><DialogTitle>{t("featuresConnections.googleWorkspaceServices.title")}</DialogTitle></div>
+        <DialogDescription className="sr-only">{t("featuresConnections.googleWorkspaceServices.description")}</DialogDescription>
       </DialogHeader>
       <GoogleWorkspaceServiceFields value={selection} onChange={setSelection} />
       <p className="text-sm text-muted-foreground">
         <a href={GOOGLE_WORKSPACE_PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer" className="underline">
-          Read our privacy policy, including how we meet Google's Limited Use requirements<span className="sr-only"> (opens in a new tab)</span>
+          {t("featuresConnections.googleWorkspaceServices.privacyPolicy")}<span className="sr-only">{t("featuresConnections.googleWorkspaceServices.opensInNewTab")}</span>
         </a>
       </p>
-      {empty && <p role="status" className="text-xs text-muted-foreground">Select at least one service to continue.</p>}
+      {empty && <p role="status" className="text-xs text-muted-foreground">{t("featuresConnections.googleWorkspaceServices.selectAtLeastOne")}</p>}
       <footer className="flex items-center justify-between gap-3 pt-4">
-        <Button variant="ghost" onClick={() => onCancel(selection)}>Cancel</Button>
-        <Button disabled={empty} onClick={() => onContinue(selection)}>Continue</Button>
+        <Button variant="ghost" onClick={() => onCancel(selection)}>{t("featuresConnections.googleWorkspaceServices.cancel")}</Button>
+        <Button disabled={empty} onClick={() => onContinue(selection)}>{t("featuresConnections.googleWorkspaceServices.continue")}</Button>
       </footer>
     </DialogContent>
   </Dialog>;

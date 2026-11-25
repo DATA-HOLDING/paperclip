@@ -5,6 +5,8 @@ import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   deriveMonitorState,
+  describeMonitorEta,
+  describeMonitorOffset,
   formatMonitorAbsolute,
   formatMonitorAbsoluteFull,
   formatMonitorEta,
@@ -46,6 +48,18 @@ describe("monitor time formatting", () => {
     expect(formatMonitorOffset(new Date(now.getTime() + 15 * 60_000))).toBe("in 15m");
     expect(formatMonitorOffset(new Date(now.getTime() + 10_000))).toBe("now");
     expect(formatMonitorOffset(now)).toBe("now");
+    dateNowSpy.mockRestore();
+  });
+
+  it("reports the ETA and offset kind so callers never compare display text", () => {
+    expect(describeMonitorEta(new Date(now.getTime() + 60_000), now).kind).toBe("upcoming");
+    expect(describeMonitorEta(new Date(now.getTime() - 59_999), now)).toEqual({ kind: "due", label: "due now" });
+    expect(describeMonitorEta(new Date(now.getTime() - 60_000), now)).toEqual({ kind: "overdue", label: "overdue by 1m" });
+
+    const dateNowSpy = vi.spyOn(Date, "now").mockReturnValue(now.getTime());
+    expect(describeMonitorOffset(new Date(now.getTime() + 15 * 60_000))).toEqual({ kind: "future", label: "in 15m" });
+    expect(describeMonitorOffset(new Date(now.getTime() - 45_000))).toEqual({ kind: "now", label: "now" });
+    expect(describeMonitorOffset(new Date(now.getTime() - 3 * 60_000))).toEqual({ kind: "past", label: "3m ago" });
     dateNowSpy.mockRestore();
   });
 

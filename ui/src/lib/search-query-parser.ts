@@ -8,6 +8,7 @@ import {
   type IssueDisplayStatus,
 } from "@paperclipai/shared";
 import type { CompanySearchParams } from "@/api/search";
+import { t } from "@/i18n";
 
 const SEARCH_FILTER_PARAM_KEYS = [
   "status",
@@ -40,13 +41,13 @@ export interface SearchOperatorSuggestion {
 export const SEARCH_OPERATOR_QUICK_FILTERS = ["assignee:me", "is:open", "updated:>7d"] as const;
 
 export const SEARCH_OPERATOR_SUGGESTIONS: SearchOperatorSuggestion[] = [
-  { token: "status:todo", label: "Open todo tasks", description: "Filter by task status" },
-  { token: "status:blocked", label: "Blocked tasks", description: "Find blocked work" },
-  { token: "assignee:me", label: "Assigned to me", description: "Use your current board user" },
-  { token: "project:\"Paperclip App\"", label: "Project name", description: "Quote multi-word project names" },
-  { token: "label:bug", label: "Label", description: "Filter by issue label" },
-  { token: "priority:high", label: "High priority", description: "Filter by priority" },
-  { token: "updated:>7d", label: "Recently updated", description: "Updated in the last 7 days" },
+  { token: "status:todo", label: t("libSearchQueryParser.suggestions.openTodo.label"), description: t("libSearchQueryParser.suggestions.openTodo.description") },
+  { token: "status:blocked", label: t("libSearchQueryParser.suggestions.blocked.label"), description: t("libSearchQueryParser.suggestions.blocked.description") },
+  { token: "assignee:me", label: t("libSearchQueryParser.suggestions.assignedToMe.label"), description: t("libSearchQueryParser.suggestions.assignedToMe.description") },
+  { token: "project:\"Paperclip App\"", label: t("libSearchQueryParser.suggestions.projectName.label"), description: t("libSearchQueryParser.suggestions.projectName.description") },
+  { token: "label:bug", label: t("libSearchQueryParser.suggestions.label.label"), description: t("libSearchQueryParser.suggestions.label.description") },
+  { token: "priority:high", label: t("libSearchQueryParser.suggestions.highPriority.label"), description: t("libSearchQueryParser.suggestions.highPriority.description") },
+  { token: "updated:>7d", label: t("libSearchQueryParser.suggestions.recentlyUpdated.label"), description: t("libSearchQueryParser.suggestions.recentlyUpdated.description") },
 ];
 
 export interface SearchQueryParserContext {

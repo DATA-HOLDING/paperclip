@@ -1,0 +1,41 @@
+{
+  "title": "Prevenção de injeção de prompt",
+  "description": "Verifique os resultados das ferramentas em busca de instruções que possam desviar seus agentes. O provedor selecionado recebe o conteúdo das ferramentas e cobra pelo uso da API. A detecção embutida é usada quando o modelo não está disponível.",
+  "choice": {
+    "connected": "Conectado",
+    "needsAttention": "Precisa de atenção"
+  },
+  "noChoices": "Adicione uma conexão de API compartilhada do OpenRouter para usar as verificações por modelo.",
+  "addConnection": "Adicionar conexão do OpenRouter",
+  "manageConnections": "Gerenciar conexões",
+  "connectionUnavailable": "A conexão salva não está disponível. Escolha outra, desative as verificações por modelo ou limpe a seleção. A detecção embutida continua ativa.",
+  "model": "Modelo",
+  "useModel": "Usar modelo nas verificações de injeção de prompt",
+  "clearSelection": "Limpar seleção",
+  "result": {
+    "passed": "As duas verificações por modelo passaram.",
+    "failed": "As verificações por modelo não passaram. Confira a conexão e o modelo e tente novamente.",
+    "samplePassed": "Passou",
+    "modelUnavailable": "Modelo indisponível ({{reason}}); a detecção embutida é a alternativa.",
+    "incorrectVerdict": "Veredito incorreto",
+    "seconds": "{{value}} segundos"
+  },
+  "test": {
+    "testing": "Testando…",
+    "button": "Testar verificações por modelo",
+    "saveFirst": "Salve as alterações antes de testar.",
+    "hint": "Testa duas amostras fixas, com cobrança de API."
+  },
+  "save": {
+    "saving": "Salvando…",
+    "button": "Salvar configurações de injeção de prompt"
+  },
+  "loading": "Carregando as configurações de injeção de prompt…",
+  "loadFailed": "Não foi possível carregar as configurações de injeção de prompt.",
+  "tryAgain": "Tentar novamente",
+  "modelsLoadFailed": "Não foi possível carregar as sugestões de modelo. Você ainda pode digitar e salvar um ID de modelo.",
+  "addDialog": {
+    "title": "Adicionar uma conexão do OpenRouter",
+    "description": "Use uma conexão de API compartilhada para as verificações de injeção de prompt."
+  }
+}

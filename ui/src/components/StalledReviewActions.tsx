@@ -11,6 +11,7 @@ import { DecisionCardFooter } from "./DecisionCardFooter";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
+import { t } from "@/i18n";
 
 interface StalledReviewActionsProps {
   issueId: string;
@@ -36,9 +37,9 @@ interface StalledReviewActionsProps {
 }
 
 const ACTION_PAST_TENSE: Record<StalledReviewDecisionAction, string> = {
-  approve: "Review approved — issue marked done.",
-  request_changes: "Changes requested — issue returned to the assignee.",
-  send_back: "Sent back to work — issue returned to the assignee.",
+  approve: t("componentsStalledReviewActions.done.approve"),
+  request_changes: t("componentsStalledReviewActions.done.requestChanges"),
+  send_back: t("componentsStalledReviewActions.done.sendBack"),
 };
 
 /**
@@ -57,7 +58,7 @@ export function StalledReviewActions({
   footerSlot,
   onResolved,
   reviewPolicy,
-  approveLabel = "Approve",
+  approveLabel = t("componentsStalledReviewActions.approve"),
   presentation = "panel",
   className,
 }: StalledReviewActionsProps) {
@@ -81,8 +82,8 @@ export function StalledReviewActions({
     },
     onError: (error) => {
       pushToast({
-        title: "Could not record the review decision",
-        body: error instanceof Error ? error.message : "Please try again.",
+        title: t("componentsStalledReviewActions.error.title"),
+        body: error instanceof Error ? error.message : t("componentsStalledReviewActions.error.body"),
         tone: "error",
       });
     },
@@ -109,7 +110,7 @@ export function StalledReviewActions({
       ) : card ? null : (
         <Undo2 className="h-3.5 w-3.5" aria-hidden />
       )}
-      Send back to work
+      {t("componentsStalledReviewActions.sendBack")}
     </Button>
   );
   const requestChanges = (
@@ -119,7 +120,7 @@ export function StalledReviewActions({
       size="sm"
       className={card ? undefined : "w-full border-amber-400/70 text-amber-900 hover:bg-amber-100 dark:border-amber-500/50 dark:text-amber-100 dark:hover:bg-amber-500/15 sm:w-auto sm:flex-1 @xl:flex-none"}
       disabled={pending || noteEmpty}
-      title={noteEmpty ? "Add a note to request changes" : undefined}
+      title={noteEmpty ? t("componentsStalledReviewActions.noteRequired") : undefined}
       onClick={() => decide.mutate("request_changes")}
       data-testid="stalled-review-request-changes"
     >
@@ -128,7 +129,7 @@ export function StalledReviewActions({
       ) : card ? null : (
         <RotateCcw className="h-3.5 w-3.5" aria-hidden />
       )}
-      Request changes
+      {t("componentsStalledReviewActions.requestChanges")}
     </Button>
   );
   const approve = (
@@ -169,7 +170,7 @@ export function StalledReviewActions({
       <Textarea
         value={note}
         onChange={(event) => setNote(event.target.value)}
-        placeholder="Add a note — required to request changes, optional otherwise…"
+        placeholder={t("componentsStalledReviewActions.notePlaceholder")}
         className="min-h-16 text-sm"
         data-testid="stalled-review-note"
         disabled={pending}

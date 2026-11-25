@@ -1,0 +1,14 @@
+{
+  "disabled": {
+    "historical": "Novos comentários ficam desativados enquanto você visualiza uma revisão antiga.",
+    "conflict": "Resolva o conflito do documento antes de adicionar novos comentários.",
+    "dirty": "Salve o rascunho para ancorar novos comentários.",
+    "noRevision": "O documento ainda não tem nenhuma revisão salva."
+  },
+  "chip": {
+    "openComments": "Abrir comentários de {{docKey}}",
+    "openUnresolved": "Abrir {{openCount}} comentários não resolvidos de {{docKey}}",
+    "commentLabel_one": "comentário",
+    "commentLabel_other": "comentários"
+  }
+}

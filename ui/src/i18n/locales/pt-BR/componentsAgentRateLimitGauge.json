@@ -1,0 +1,14 @@
+{
+  "resets": "Reinicia {{time}}",
+  "usingCredits": "Limite atingido; o trabalho continua com os créditos da conta.",
+  "unlimitedCredits": "Créditos ilimitados",
+  "noCredits": "Sem créditos restantes",
+  "credits": "{{balance}} créditos",
+  "limited": "Limitado",
+  "resetsSuffix": " · reinicia {{time}}",
+  "usingCreditsShort": "{{label}} {{percent}}% · usando créditos",
+  "ariaLabel": "Limite de uso do provedor: {{label}}",
+  "usageLimits": "Limites de uso do {{provider}}",
+  "reported": "Informado em {{time}}",
+  "viewAgent": "Ver agente"
+}

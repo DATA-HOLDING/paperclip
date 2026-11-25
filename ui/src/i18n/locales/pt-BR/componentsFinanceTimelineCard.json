@@ -1,0 +1,10 @@
+{
+  "empty": "Nenhum evento financeiro registrado neste período. Os eventos aparecem quando informados pela API, pela CLI ou por uma integração compatível.",
+  "title": "Eventos financeiros recentes",
+  "description": "Cobranças de provedores, assinaturas, taxas e créditos. Informados separadamente das estimativas de custo das execuções.",
+  "providerCostReport": "Relatório de custo do provedor",
+  "invoice": "fatura {{id}}",
+  "region": "região {{region}}",
+  "tier": "faixa {{tier}}",
+  "estimated": "estimado"
+}

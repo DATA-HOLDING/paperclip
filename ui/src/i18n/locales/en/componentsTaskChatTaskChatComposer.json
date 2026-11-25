@@ -1,0 +1,87 @@
+{
+  "contextAria": "Task project and worktrees",
+  "dismiss": "Dismiss",
+  "assignee": {
+    "placeholder": "Assignee",
+    "none": "No assignee",
+    "search": "Search assignees…",
+    "empty": "No matches.",
+    "mobileTitle": "Select assignee"
+  },
+  "placeholder": {
+    "mobile": {
+      "planning": "Plan with {{agent}}…",
+      "ask": "Ask {{agent}}…"
+    },
+    "work": "Work with {{agent}}",
+    "planning": "Plan with {{agent}} — shapes the plan doc, no code changes…",
+    "ask": "Ask {{agent}} a question — read-only, nothing runs…",
+    "editQueued": "Edit queued message…",
+    "disabled": "Composer disabled"
+  },
+  "unassigned": "Unassigned",
+  "theAgent": "the agent",
+  "commands": {
+    "plan": {
+      "name": "Plan",
+      "description": "Plan before acting. Nothing changes until you accept the plan."
+    },
+    "goal": {
+      "name": "Goal",
+      "verifyLater": "Support will be verified when the session starts.",
+      "description": "Pursue work across turns."
+    },
+    "new": {
+      "name": "New session",
+      "description": "Start fresh context here, preserving conversation history."
+    }
+  },
+  "goalUnsupported": "Session goals are unsupported by this agent.",
+  "errors": {
+    "noFileUrl": "Upload did not return a file URL",
+    "fileTypeNotAllowed": "This file type cannot be attached here",
+    "swarmOnCreate": "Create the task first, then send /swarm in a comment on it.",
+    "swarmEmpty": "Write what the swarm should do after /swarm.",
+    "swarmTooLong": "This swarm request is too long. Keep what follows /swarm under {{max}} characters.",
+    "swarmReassign": "Send /swarm without changing the assignee.",
+    "goalInConversation": "Create a separate task for work that needs an ongoing execution goal.",
+    "goalWithAttachments": "Remove attachments before using /goal.",
+    "goalNeedsAgent": "Select an agent before starting a session goal.",
+    "goalFailed": "The goal action could not be applied.",
+    "skipFailed": "This request could not be skipped."
+  },
+  "actions": {
+    "uploadFile": "upload the file",
+    "createTask": "create the task",
+    "saveQueued": "save this queued message",
+    "sendMessage": "send this message"
+  },
+  "takeover": {
+    "skip": "Skip",
+    "pending_one": "{{count}} pending",
+    "pending_other": "{{count}} pending",
+    "dismissAria": "Dismiss {{label}}",
+    "pendingInput": "Pending input"
+  },
+  "pausedNewHint": "Send /new to start a fresh session and resume this conversation.",
+  "attachments": {
+    "uploading": "Uploading…",
+    "uploadFailed": "Upload failed",
+    "retryAria": "Retry {{name}}",
+    "removeAria": "Remove {{name}}"
+  },
+  "queued": {
+    "changed": "Queued message changed",
+    "editing": "Editing queued message"
+  },
+  "send": {
+    "stopping": "Stopping…",
+    "stopResponse": "Stop response",
+    "stop": "Stop",
+    "queueAsNew": "Queue as new message",
+    "saveQueued": "Save queued message",
+    "waitingUpload": "Waiting for upload to finish",
+    "removeFailed": "Remove the failed attachment to send",
+    "send": "Send"
+  }
+}

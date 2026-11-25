@@ -1,0 +1,428 @@
+{
+  "basics": {
+    "errors": {
+      "selectOrganization": "Selecione uma organização para criar um agente.",
+      "noAdapters": "Nenhum adaptador de agente está disponível nesta instância.",
+      "saveFailed": "Não foi possível salvar a configuração do agente."
+    },
+    "progressLabel": "Progresso do novo agente",
+    "steps": {
+      "name": "1. Nome",
+      "adapter": "2. Adaptador"
+    },
+    "title": {
+      "name": "Conheça seu próximo agente",
+      "adapter": "Escolha um adaptador"
+    },
+    "description": {
+      "name": "Comece com um nome. Deixe do seu jeito.",
+      "adapter": "Como {{name}} deve trabalhar?"
+    },
+    "fields": {
+      "name": "Nome do agente",
+      "namePlaceholder": "ex.: Darnold"
+    },
+    "inviteExternal": "Convidar um agente externo",
+    "adapterLegend": "Adaptador",
+    "loadingAdapters": "Carregando adaptadores…",
+    "loadAdaptersAction": "carregar a lista de adaptadores",
+    "candidate": "Candidato",
+    "notAvailableYet": "Ainda não disponível",
+    "footer": {
+      "cancel": "Cancelar",
+      "back": "Voltar",
+      "saving": "Salvando…",
+      "chooseAdapter": "Escolher adaptador",
+      "configure": "Configurar agente"
+    }
+  },
+  "externalInvite": {
+    "presets": {
+      "dotDescription": "Seu Dot no ChatGPT",
+      "grokBotDescription": "Um Bot existente no Grok",
+      "museDescription": "Seu Muse pessoal em muse.ai",
+      "hermesDescription": "Um agente Hermes existente",
+      "otherDescription": "Qualquer agente que possa se conectar ao Paperclip",
+      "museName": "Muse — Agente pessoal",
+      "otherName": "Outro"
+    },
+    "dotChecks": {
+      "connected": {
+        "title": "Conectado ao Paperclip",
+        "description": "Seu Dot se conectou a este agente."
+      },
+      "updates": {
+        "title": "Atualizações de tarefas ativadas",
+        "description": "Seu Dot está inscrito para receber novas atribuições e mensagens."
+      },
+      "test": {
+        "title": "Evento de teste confirmado",
+        "description": "Seu Dot recebeu nosso teste e respondeu ao Paperclip."
+      }
+    },
+    "dotMessages": {
+      "agentUnavailable": "As verificações de conexão passaram, mas este agente não pode receber tarefas. Resolva o bloqueio na configuração do agente no Paperclip.",
+      "offline": "Atualizações da conexão pausadas. Reconecte para ver o status mais recente.",
+      "promptUnavailable": "Este prompt de configuração foi substituído em outra janela. Crie um prompt novo para continuar.",
+      "eventTimeout": "Seu Dot se conectou, mas não confirmou o evento de teste. Peça para ele verificar o Paperclip e tente novamente.",
+      "finishing": "Seu Dot confirmou o evento de teste. O Paperclip está concluindo a configuração do agente.",
+      "ready": "Seu Dot está pronto para tarefas. As mensagens podem ir nos dois sentidos.",
+      "waiting": "Aguardando seu Dot. As atualizações aparecerão aqui automaticamente.",
+      "connected": "Seu Dot se conectou. Aguardando ele ativar as atualizações de tarefas.",
+      "testing": "Aguardando seu Dot confirmar um evento de teste. Nenhuma tarefa será criada."
+    },
+    "dotChecksLabel": "Verificações da conexão com o Dot",
+    "checkState": {
+      "complete": ": concluído",
+      "needsAttention": ": requer atenção",
+      "inProgress": ": em andamento",
+      "waiting": ": aguardando"
+    },
+    "museChecks": {
+      "paired": {
+        "title": "Pareado com o Paperclip",
+        "description": "O Paperclip autorizou a conexão restrita do agente Muse."
+      },
+      "receiver": {
+        "title": "Receptor detectado",
+        "description": "O Paperclip observou uma verificação pública do receptor. Só uma resposta autenticada confirma que o Muse pode trabalhar."
+      },
+      "background": {
+        "title": "Resposta em segundo plano verificada",
+        "description": "O Muse respondeu a um teste independente em segundo plano."
+      }
+    },
+    "museMessages": {
+      "offline": "Atualizações da conexão pausadas. Atualize para ver as evidências mais recentes.",
+      "disconnected": "Desconectado. Estas são as últimas verificações de conexão observadas. A limpeza do detector e a evidência de parada do worker continuam separadas.",
+      "expired": "Esta conexão com o Muse expirou. Reconecte o Muse com um prompt de configuração novo. As verificações anteriores não restauram o acesso.",
+      "disabled": "O Muse está desativado. Estas são as últimas verificações de conexão observadas; nenhum trabalho novo pode começar.",
+      "promptUnavailable": "Este prompt de configuração foi substituído ou expirou. Crie um prompt novo para continuar.",
+      "agentUnavailable": "As verificações de conexão passaram. Resolva o bloqueio de configuração ou de aprovação deste agente antes de atribuir tarefas.",
+      "noRecentResponse": "Nenhuma resposta recente. Abra o Muse para verificar a conversa atual e a permissão do hostname e teste de novo. O silêncio não indica um problema de permissão.",
+      "testing": "Aguardando o Muse responder ao teste atual em segundo plano.",
+      "ready": "O Muse está pronto para tarefas. Todas as verificações de conexão e a configuração do agente passaram.",
+      "finishing": "Todas as verificações de conexão passaram. O Paperclip está concluindo a configuração do agente.",
+      "waitingPair": "Aguardando o pareamento do Muse. Copie o prompt de configuração para a sua conversa atual no Muse.",
+      "paired": "O Muse está pareado. Aguardando o primeiro contato registrado do receptor.",
+      "receiverDetected": "Receptor detectado. Aguardando o Muse responder ao teste em segundo plano."
+    },
+    "museChecksLabel": "Verificações da conexão com o Muse",
+    "progress": {
+      "agentUnavailable": "Agente indisponível",
+      "updatesPaused": "Atualizações pausadas",
+      "needsAttention": "Requer atenção",
+      "finishing": "Concluindo a configuração…",
+      "connecting": "Conectando…",
+      "confirming": "Confirmando a conexão…"
+    },
+    "back": "Voltar",
+    "title": {
+      "invite": "Convidar um agente externo",
+      "museConnected": "O Muse está conectado",
+      "inviteMuse": "Convide seu Muse",
+      "connectMuse": "Conecte seu Muse",
+      "dotConnected": "Seu Dot está conectado",
+      "connectDot": "Conecte seu Dot",
+      "inviteHermes": "Convide seu agente Hermes",
+      "inviteAgent": "Convide seu agente"
+    },
+    "description": {
+      "bring": "Traga para {{companyName}} um agente que você já usa.",
+      "museDetails": "Dê ao seu Muse pessoal um nome e uma função em {{companyName}}.",
+      "museRequires": "O Muse exige uma instância autenticada do Paperclip com uma URL HTTPS pública e uma conta de operador da organização.",
+      "museReady": "O Muse pode receber atribuições e trabalhar com {{companyName}}.",
+      "museChecking": "Estamos verificando se esta instância pode preparar a configuração do Muse.",
+      "musePaste": "Cole o prompt de configuração na sua conversa atual no Muse. Conclua o Connect Paperclip se o Muse pedir e depois aprove este hostname do Paperclip. O Muse guarda a credencial da conexão no cofre seguro dele. A permissão do hostname vale para as próximas requisições.",
+      "dotReady": "Seu Dot agora pode receber atribuições e trabalhar com {{companyName}}.",
+      "dotAgentUnavailable": "Seu Dot está conectado. Este agente precisa estar disponível no Paperclip antes de receber atribuições.",
+      "dotFinishing": "Seu Dot se conectou e confirmou as atualizações de tarefas. O Paperclip está preparando ele para receber atribuições.",
+      "dotConnecting": "Seu Dot se conectou. Estamos verificando se as atualizações de tarefas vão nos dois sentidos.",
+      "dotCopy": "Copie o prompt de configuração e envie ao seu Dot no ChatGPT. Seu Dot vai se conectar sozinho; vamos acompanhar aqui.",
+      "hermesCopy": "Copie o prompt de convite e envie ao seu agente Hermes. Aprove o pedido de entrada dele no Paperclip quando estiver pronto.",
+      "agentCopy": "Copie o prompt de convite e envie ao seu agente. Aprove o pedido de entrada dele no Paperclip quando estiver pronto."
+    },
+    "tryAgain": "Tentar novamente",
+    "needsApproval": "Um administrador da organização precisa aprovar este agente antes que {{agent}} possa se conectar. Esta página será atualizada depois da aprovação.",
+    "loadingMuseInvitation": "Carregando o convite do Muse…",
+    "loadingMuseSetup": "Carregando a configuração do Muse…",
+    "museForm": {
+      "name": "Nome do agente",
+      "role": "Função",
+      "toolsNote": "O Muse usa as próprias ferramentas aprovadas. O uso e o custo do provedor não ficam disponíveis para o Paperclip."
+    },
+    "museActions": {
+      "testReply": "Testar resposta em segundo plano",
+      "refresh": "Atualizar conexão",
+      "open": "Abrir o Muse",
+      "note": "O contato do receptor é registrado em lotes e pode atrasar. A configuração nunca cria uma tarefa. O uso e o custo do provedor não ficam disponíveis."
+    },
+    "preparingInvitation": "Preparando seu convite…",
+    "dotNote": "O Dot usa sua conta da OpenAI. O uso e o custo do provedor não são informados ao Paperclip.",
+    "dotActions": {
+      "retryTest": "Repetir evento de teste",
+      "reconnect": "Reconectar atualizações"
+    },
+    "otherNote": "O convite inclui tudo o que seu agente precisa para entrar em {{companyName}}. Você pode revisar o pedido dele antes de liberar o acesso.",
+    "footer": {
+      "close": "Fechar",
+      "saveExit": "Salvar e sair",
+      "cancel": "Cancelar",
+      "reviewApproval": "Revisar aprovação",
+      "preparing": "Preparando…",
+      "continue": "Continuar",
+      "done": "Concluir",
+      "loadingSetup": "Carregando a configuração…",
+      "refreshSetup": "Atualizar configuração",
+      "reconnectMuse": "Reconectar o Muse",
+      "newPrompt": "Criar um prompt novo",
+      "waitingDot": "Aguardando o Dot…"
+    },
+    "prompt": {
+      "copySetup": "Copiar prompt de configuração",
+      "museDescription": "Envie este prompt inteiro para a sua conversa atual no Muse.",
+      "copyInvitation": "Copiar prompt de convite",
+      "dotDescription": "Envie este prompt inteiro ao seu Dot no ChatGPT.",
+      "agentDescription": "Envie este prompt inteiro ao seu agente."
+    }
+  },
+  "externalInviteDialog": {
+    "loadingAgents": "Carregando os agentes disponíveis…",
+    "experimentalErrorRefresh": "Não foi possível carregar as configurações experimentais. Atualize a página e tente novamente.",
+    "experimentalError": "Não foi possível carregar as configurações experimentais.",
+    "enableDot": "Ative o OpenAI Dot nas configurações experimentais.",
+    "enableGrok": "Ative o Grok Bot e o Paperclip Runner nas configurações experimentais.",
+    "enableMuse": "Ative o Muse e o Paperclip Runner nas configurações experimentais para conectar seu Muse pessoal.",
+    "agentTerminated": "Este agente foi desligado. Convide outro agente para conectar o Dot.",
+    "resumeAgent": "Retome este agente antes de conectar o Dot.",
+    "missingPublicOrigin": "Esta instância não tem uma URL HTTPS pública para o Muse. Peça ao administrador da instância para configurar um endereço HTTPS público estável e depois atualize a configuração. O Muse não consegue se conectar por um endereço só local.",
+    "operatorRequired": "Use uma instância autenticada do Paperclip com uma URL HTTPS pública e uma conta de operador da organização. O acesso local confiável sozinho não consegue conectar o Muse.",
+    "identityFailed": "Não foi possível confirmar sua conta. Atualize para retomar a configuração do Muse.",
+    "yourOrganization": "sua organização"
+  },
+  "grokBot": {
+    "steps": {
+      "identify": "Identificar o Bot",
+      "connect": "Conectar acesso",
+      "enable": "Ativar atribuições",
+      "verify": "Verificar"
+    },
+    "title": {
+      "connected": "Seu Grok Bot está conectado",
+      "connect": "Conecte seu Grok Bot"
+    },
+    "description": {
+      "connected": "{{botName}} pode receber atribuições e trabalhar com {{companyName}}.",
+      "connect": "Traga um Bot existente para {{companyName}}. Ele continua rodando no Grok Bot."
+    },
+    "setupLabel": "Configuração do Grok Bot",
+    "tryAgain": "Tentar novamente",
+    "restoring": "Restaurando a configuração salva…",
+    "needsApproval": "Um administrador da organização precisa aprovar este agente. A configuração foi salva e continuará depois da aprovação.",
+    "fields": {
+      "paperclipName": "Nome no Paperclip",
+      "botName": "Nome do Bot no Grok",
+      "botNameHint": "Use o nome mostrado no app de desktop do Grok Bot. Links web do Bot podem não funcionar mais.",
+      "role": "Função",
+      "manager": "Gestor",
+      "noManager": "Sem gestor"
+    },
+    "access": {
+      "intro": "Copie as instruções de conexão para o chat do seu Bot. Adicione o plugin MCP personalizado e conclua a autorização dele no navegador.",
+      "copyInstructions": "Copiar instruções de conexão",
+      "promptTitle": "Conectar o acesso ao Paperclip",
+      "promptDescription": "Envie estas instruções ao seu Bot. O código de pareamento fica no seu navegador.",
+      "pairingCode": "Código de pareamento de uso único",
+      "copyPairingCode": "Copiar código de pareamento",
+      "copyCode": "Copiar código",
+      "pairingHint": "Copie este código na página de autorização do Paperclip. Não cole no chat do Bot. Expira às {{time}}.",
+      "connected": "Acesso do agente conectado.",
+      "watching": "Aguardando a autorização. Esta conexão funciona como o agente indicado.",
+      "accountWide": "Os plugins do Grok valem para a conta inteira. Vincular um Bot não isola as credenciais dele dos outros Bots da sua conta."
+    },
+    "routine": {
+      "intro": "Peça ao seu Bot para criar uma rotina só de webhook e depois abra o painel Webhook dela no app de desktop.",
+      "copyInstructions": "Copiar instruções da rotina",
+      "promptTitle": "Ativar atribuições",
+      "promptDescription": "Envie isto ao Bot conectado. A rotina o ativa quando o trabalho no Paperclip muda.",
+      "clickHint": "Se clicar na rotina não fizer nada, use o link de navegação “Webhook URL” que o Bot fornece.",
+      "stored": "As credenciais da rotina estão salvas. Continue para verificar os dois sentidos.",
+      "replace": "Substituir credenciais da rotina",
+      "webhookUrl": "URL do webhook",
+      "webhookKey": "Chave do webhook",
+      "copyFields": "Copie estes campos direto do Grok para o Paperclip. As credenciais são guardadas com segurança e nunca entram nas instruções."
+    },
+    "verify": {
+      "checksLabel": "Verificações da conexão com o Grok",
+      "delivered": "Atribuição entregue",
+      "replied": "Resposta recebida",
+      "complete": "Concluído",
+      "waiting": "Aguardando",
+      "recovery": "Recuperação necessária. Verifique a atividade do Grok na configuração deste agente antes de outra entrega.",
+      "ready": "Os dois sentidos foram verificados. Seu Bot está pronto para tarefas.",
+      "finishing": "Os dois sentidos foram verificados. O Paperclip está concluindo a configuração do agente.",
+      "rejected": "A rotina recusou a entrega. Confira a URL e a chave e tente novamente.",
+      "accepted": "A rotina aceitou a entrega. Aguardando uma resposta autenticada ao Paperclip.",
+      "sendChallenge": "Envie um desafio inofensivo. Isto não cria nenhuma tarefa.",
+      "external": "O Grok roda externamente. Uso e gastos não são informados. O contato com o Paperclip não prova que o Bot está disponível o tempo todo."
+    },
+    "footer": {
+      "back": "Voltar",
+      "saveExit": "Salvar e sair",
+      "reviewApproval": "Revisar aprovação",
+      "saving": "Salvando…",
+      "done": "Concluir",
+      "waitingReply": "Aguardando resposta…",
+      "finishing": "Concluindo a configuração…",
+      "verify": "Verificar conexão",
+      "continue": "Continuar"
+    }
+  },
+  "providerConnection": {
+    "errors": {
+      "noResponse": "O provedor não respondeu. Confira a conexão e tente novamente.",
+      "connectFailed": "Não foi possível conectar ao provedor.",
+      "noSavedConnection": "O login não retornou uma conexão salva. Tente novamente.",
+      "retrieveFailed": "Não foi possível recuperar a conexão salva. Volte e tente novamente.",
+      "checkSubscription": "Não foi possível verificar sua assinatura do Claude salva. Tente novamente.",
+      "prepareSignIn": "Não foi possível preparar o login. Recarregue a página para tentar novamente."
+    },
+    "tiles": {
+      "connectionType": "Tipo de conexão",
+      "connectProvider": "Conecte seu provedor de modelos",
+      "advanced": "Avançado"
+    },
+    "useConnection": "Usar conexão",
+    "api": {
+      "chooseOrEnter": "Escolha uma chave de API salva ou digite uma nova",
+      "provide": "Informe sua chave de API do {{provider}} para conectar",
+      "label": "Chave de API",
+      "keyEntered": "Chave informada. Tente a conexão novamente.",
+      "placeholder": "Digite a chave de API aqui"
+    },
+    "subscription": {
+      "savedClaude": "Use sua assinatura do Claude salva para este agente.",
+      "existing": "Use a conexão de provedor existente neste ambiente.",
+      "noBrowserSignIn": "Este ambiente não permite entrar pelo navegador. Escolha um ambiente com login ou conecte com uma chave de API."
+    },
+    "footer": {
+      "waitingAuth": "Aguardando autenticação…",
+      "waitingCode": "Aguardando o código",
+      "connecting": "Conectando",
+      "continueTo": "Continuar no {{provider}}",
+      "signInTo": "Entrar no {{provider}}",
+      "useSavedSubscription": "Usar assinatura salva",
+      "useSavedKey": "Usar chave de API salva",
+      "connect": "Conectar"
+    },
+    "savedKeysAvailable_one": "{{count}} chave de API salva disponível.",
+    "savedKeysAvailable_other": "{{count}} chaves de API salvas disponíveis."
+  },
+  "setup": {
+    "selectOrganization": "Selecione uma organização para criar um agente.",
+    "errors": {
+      "cursorModel": "Digite o ID exato do modelo do Cursor Cloud.",
+      "kimiModel": "Digite o ID exato do modelo do Kimi.",
+      "kimiKey": "Digite KIMI_API_KEY ou selecione um segredo da organização.",
+      "antigravityModel": "Escolha ou digite o ID exato de um modelo do Google Antigravity.",
+      "copilotModel": "Atualize os modelos do Copilot e selecione um modelo disponível antes de criar este agente.",
+      "dotBilling": "Confirme a cobrança do provedor externo antes de criar seu agente Dot.",
+      "providerModel": "Escolha ou digite um modelo no formato provedor/modelo.",
+      "githubUrl": "Digite a URL de um repositório do GitHub.",
+      "cursorKey": "Digite uma chave de API do Cursor.",
+      "hermesUrl": "Digite a URL base da API do Hermes.",
+      "kimiApiModel": "Digite o nome do modelo da API do Kimi.",
+      "envKey": "Digite {{envKey}} ou selecione um segredo da organização.",
+      "createFailed": "Não foi possível criar o agente.",
+      "removeCredential": "{{message}} Não foi possível remover uma credencial de configuração não usada. Remova-a em Segredos antes de tentar novamente.",
+      "saveFailed": "Não foi possível salvar a configuração do agente.",
+      "saveEnvironment": "Não foi possível salvar o ambiente.",
+      "retryPreparation": "Não foi possível repetir a preparação do computador."
+    },
+    "loadCreatedFailed": "Não foi possível carregar o agente criado. Volte para Agentes para vê-lo.",
+    "loadingAgent": "Carregando seu agente…",
+    "loadingSetup": "Carregando a configuração do seu agente…",
+    "adapterUnavailable": "Este adaptador está indisponível. Escolha um adaptador ativado.",
+    "changeAdapter": "Trocar adaptador",
+    "creating": "Criando seu agente…",
+    "retry": "Tentar novamente",
+    "steps": {
+      "connect": "Conectar",
+      "runtime": "Configurar",
+      "saved": "Confirmação"
+    },
+    "defaultModel": "Padrão",
+    "localMachine": "Máquina local",
+    "nativeRunner": "Runner nativo do app server",
+    "preparingComputer": "Preparando o computador do seu agente…",
+    "retryPreparation": "Repetir preparação",
+    "loadSetupAction": "carregar os dados de configuração do agente",
+    "antigravityPending": "O Google Antigravity ainda não está disponível. Você pode conectar sua conta Google e revisar as configurações. Este agente ainda não pode concluir a configuração nem executar tarefas. As configurações de modelo e de conexão ainda não são salvas neste agente.",
+    "antigravityCandidate": "O candidato do Google Antigravity está ativado para testes nesta instância.",
+    "noManagedEnvironment": "Nenhum ambiente gerenciado está disponível. Configure um ambiente antes de continuar.",
+    "stepsLabel": "Etapas de configuração do agente",
+    "connectModelTitle": "Conecte um modelo",
+    "loadingConnection": "Carregando as configurações de conexão…",
+    "saved": {
+      "title": {
+        "pending": "Agente enviado para aprovação",
+        "dot": "Seu agente Dot foi criado",
+        "finishing": "Concluindo a configuração do agente",
+        "ready": "Seu agente está pronto",
+        "paused": "Seu agente está pausado"
+      },
+      "adapter": "Adaptador",
+      "model": "Modelo",
+      "environment": "Ambiente",
+      "message": {
+        "pending": "Um administrador da organização precisa aprovar este agente antes que ele possa trabalhar.",
+        "dot": "Pareie seu Dot e teste a entrega de eventos na configuração antes de atribuir trabalho.",
+        "finishing": "O Paperclip está preparando e verificando seu agente. Você poderá atribuir uma tarefa quando ele estiver pronto.",
+        "ready": "Atribua uma tarefa quando quiser que este agente comece a trabalhar.",
+        "paused": "Revise o status do agente na configuração antes de atribuir trabalho."
+      },
+      "backToAgents": "Voltar para Agentes",
+      "editConfiguration": "Editar configuração",
+      "pairDot": "Parear o Dot",
+      "assignTask": "Atribuir uma tarefa a {{name}}"
+    },
+    "form": {
+      "title": "Configure seu agente",
+      "dotIntro": "Crie este agente e depois copie o prompt de pareamento dele para o seu Dot.",
+      "allowExternalBilling": "Permitir provedor com cobrança externa",
+      "allowExternalBillingHint": "O Dot não informa o uso de tokens nem o custo. O Paperclip não consegue impor um teto de gasto no provedor; os limites de orçamento conhecidos da organização e do agente continuam valendo.",
+      "modelsError": "Não foi possível carregar os modelos. Tente novamente ou digite o ID de um modelo manualmente.",
+      "thinkingEffort": "Esforço de raciocínio",
+      "auto": "Automático",
+      "apiKeyProvider": "Provedor da chave de API",
+      "usingSavedKey": "Usando a chave salva",
+      "required": "Obrigatório",
+      "optional": "Opcional se já estiver configurado",
+      "getApiKey": "obter chave de API",
+      "orgSecret": "Ou use um segredo da organização",
+      "newKeysNote": "As chaves novas são salvas como segredos da organização quando você conclui a configuração.",
+      "kimiKeyNote": "Use uma chave de API do Kimi Code para este runner.",
+      "providerModelNote": "Use um ID no formato {{provider}}/modelo.",
+      "hermesUrl": "URL base da API do Hermes",
+      "kimiModel": "Nome do modelo da API do Kimi",
+      "kimiProtocol": "Protocolo da API do Kimi",
+      "kimiBaseUrl": "URL base da API do Kimi",
+      "kimiBaseUrlHint": "Substituição opcional do endpoint do seu provedor.",
+      "providerDefault": "Padrão do provedor",
+      "cursorCloudNote": "Experimental. O Cursor hospeda o ambiente de execução deste agente. Não é preciso um computador do Paperclip. O Cursor gerencia as permissões de comandos na nuvem; o modelo efetivo não é confirmado.",
+      "githubRepository": "Repositório do GitHub",
+      "branch": "Branch",
+      "repositoryDefault": "Padrão do repositório",
+      "defaultEnvironment": "Padrão: {{environment}}"
+    },
+    "retrySavingEnvironment": "Tentar salvar o ambiente novamente",
+    "footer": {
+      "backToAgents": "Voltar para agentes",
+      "saveExit": "Salvar e sair",
+      "connection": "Conexão",
+      "connectModel": "Conectar modelo",
+      "saving": "Salvando…",
+      "finish": "Concluir configuração"
+    }
+  }
+}

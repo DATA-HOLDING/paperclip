@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "../../lib/utils";
 import { describeError } from "@/api/errors";
+import { t } from "@/i18n";
 
 type Step = "select" | "review" | "result";
 
@@ -93,13 +94,13 @@ function formatRelativeShort(value: string | null | undefined): string {
   const diff = Date.now() - date.getTime();
   if (diff < 0) return date.toLocaleDateString();
   const seconds = Math.floor(diff / 1000);
-  if (seconds < 60) return `${seconds}s ago`;
+  if (seconds < 60) return t("pagesSecretsImportFromVaultDialog.relative.seconds", { value: seconds });
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
+  if (minutes < 60) return t("pagesSecretsImportFromVaultDialog.relative.minutes", { value: minutes });
   const hours = Math.floor(minutes / 60);
-  if (hours < 48) return `${hours}h ago`;
+  if (hours < 48) return t("pagesSecretsImportFromVaultDialog.relative.hours", { value: hours });
   const days = Math.floor(hours / 24);
-  if (days < 30) return `${days}d ago`;
+  if (days < 30) return t("pagesSecretsImportFromVaultDialog.relative.days", { value: days });
   return date.toLocaleDateString();
 }
 
@@ -174,24 +175,24 @@ function validateDraftRow(
   existing: CompanySecret[],
   otherDrafts: DraftSelection[],
 ): DraftError | null {
-  if (!draft.name.trim()) return { field: "name", message: "Give it a name." };
+  if (!draft.name.trim()) return { field: "name", message: t("pagesSecretsImportFromVaultDialog.validation.nameRequired") };
   if (draft.name.length > 160) {
-    return { field: "name", message: "Use 160 characters or fewer for the name." };
+    return { field: "name", message: t("pagesSecretsImportFromVaultDialog.validation.nameTooLong") };
   }
-  if (!draft.key.trim()) return { field: "key", message: "Give it a key." };
+  if (!draft.key.trim()) return { field: "key", message: t("pagesSecretsImportFromVaultDialog.validation.keyRequired") };
   if (!KEY_PATTERN.test(draft.key)) {
     return {
       field: "key",
-      message: "Keys use lowercase letters, numbers, dots, underscores and hyphens.",
+      message: t("pagesSecretsImportFromVaultDialog.validation.keyPattern"),
     };
   }
   if (draft.key.length > 120) {
-    return { field: "key", message: "Use 120 characters or fewer for the key." };
+    return { field: "key", message: t("pagesSecretsImportFromVaultDialog.validation.keyTooLong") };
   }
   if (draft.description.length > 500) {
     return {
       field: "description",
-      message: "Use 500 characters or fewer for the description.",
+      message: t("pagesSecretsImportFromVaultDialog.validation.descriptionTooLong"),
     };
   }
 
@@ -200,31 +201,27 @@ function validateDraftRow(
 
   for (const existingSecret of existing) {
     if (existingSecret.name.trim().toLowerCase() === lowerName) {
-      return { field: "name", message: "A Paperclip secret already uses this name." };
+      return { field: "name", message: t("pagesSecretsImportFromVaultDialog.validation.nameExists") };
     }
     if (existingSecret.key.trim().toLowerCase() === lowerKey) {
-      return { field: "key", message: "A Paperclip secret already uses this key." };
+      return { field: "key", message: t("pagesSecretsImportFromVaultDialog.validation.keyExists") };
     }
   }
 
   for (const other of otherDrafts) {
     if (other === draft) continue;
     if (other.name.trim().toLowerCase() === lowerName) {
-      return { field: "name", message: "Another secret in this import has the same name." };
+      return { field: "name", message: t("pagesSecretsImportFromVaultDialog.validation.nameDuplicate") };
     }
     if (other.key.trim().toLowerCase() === lowerKey) {
-      return { field: "key", message: "Another secret in this import has the same key." };
+      return { field: "key", message: t("pagesSecretsImportFromVaultDialog.validation.keyDuplicate") };
     }
   }
 
   return null;
 }
 
-function secretNoun(count: number) {
-  return count === 1 ? "secret" : "secrets";
-}
-
-const DEFAULT_FAILURE_REASON = "Paperclip could not link this secret.";
+const DEFAULT_FAILURE_REASON = t("pagesSecretsImportFromVaultDialog.defaultFailureReason");
 
 function normalizeDraftKey(input: string): string {
   return input
@@ -396,7 +393,7 @@ export function ImportFromVaultDialog({
 
   const blockedReviewCount = reviewErrors.size;
   const vaultName =
-    awsVaults.find((vault) => vault.id === vaultId)?.displayName ?? "your vault";
+    awsVaults.find((vault) => vault.id === vaultId)?.displayName ?? t("pagesSecretsImportFromVaultDialog.yourVault");
 
   const importMutation = useMutation({
     mutationFn: (input: RemoteImportInput) => secretsApi.remoteImport(companyId, input),
@@ -425,21 +422,21 @@ export function ImportFromVaultDialog({
       onImportComplete?.(result);
       if (result.errorCount === draftList.length && result.errorCount > 0) {
         toast.pushToast({
-          title: "Import failed",
-          body: `No secrets were imported from ${vaultName}.`,
+          title: t("pagesSecretsImportFromVaultDialog.toast.importFailed"),
+          body: t("pagesSecretsImportFromVaultDialog.toast.noneImported", { vault: vaultName }),
           tone: "error",
         });
       } else {
         toast.pushToast({
-          title: result.errorCount > 0 ? "Some secrets were not imported" : "Import complete",
-          body: `${result.importedCount} imported · ${result.skippedCount} already in Paperclip · ${result.errorCount} failed`,
+          title: result.errorCount > 0 ? t("pagesSecretsImportFromVaultDialog.toast.someNotImported") : t("pagesSecretsImportFromVaultDialog.toast.complete"),
+          body: t("pagesSecretsImportFromVaultDialog.toast.summary", { imported: result.importedCount, skipped: result.skippedCount, failed: result.errorCount }),
           tone: result.errorCount > 0 ? "warn" : "success",
         });
       }
     },
     onError: (error) => {
       toast.pushToast({
-        title: "Import failed",
+        title: t("pagesSecretsImportFromVaultDialog.toast.importFailed"),
         body: readableErrorMessage(error),
         tone: "error",
       });
@@ -499,7 +496,7 @@ export function ImportFromVaultDialog({
       })
       .catch((error) => {
         toast.pushToast({
-          title: "Could not load more secrets",
+          title: t("pagesSecretsImportFromVaultDialog.toast.loadMoreFailed"),
           body: readableErrorMessage(error),
           tone: "error",
         });
@@ -561,7 +558,7 @@ export function ImportFromVaultDialog({
     if (importMutation.isPending) return;
     if (!force && step !== "result" && selection.size > 0 && !importResult) {
       const ok = window.confirm(
-        `Discard ${selection.size} pending import${selection.size === 1 ? "" : "s"}?`,
+        t("pagesSecretsImportFromVaultDialog.discardConfirm", { count: selection.size }),
       );
       if (!ok) return;
     }
@@ -603,28 +600,28 @@ export function ImportFromVaultDialog({
 
   const title =
     step === "select"
-      ? "Import secrets from a vault"
+      ? t("pagesSecretsImportFromVaultDialog.title.select")
       : step === "review"
-        ? `Name ${draftList.length} ${secretNoun(draftList.length)}`
+        ? t("pagesSecretsImportFromVaultDialog.title.review", { count: draftList.length })
         : importedTotal > 0
-          ? `${importedTotal} ${secretNoun(importedTotal)} imported`
-          : "Nothing new was imported";
+          ? t("pagesSecretsImportFromVaultDialog.title.imported", { count: importedTotal })
+          : t("pagesSecretsImportFromVaultDialog.title.nothingNew");
   const description =
     step === "select"
-      ? "Paperclip links to the secrets you pick. Their values stay in your vault."
+      ? t("pagesSecretsImportFromVaultDialog.description.select")
       : step === "review"
-        ? "These are the names your team and agents will see in Paperclip."
+        ? t("pagesSecretsImportFromVaultDialog.description.review")
         : importedTotal > 0
-          ? "They are linked to your vault and ready to use."
-          : "These secrets were already in Paperclip.";
+          ? t("pagesSecretsImportFromVaultDialog.description.imported")
+          : t("pagesSecretsImportFromVaultDialog.description.alreadyIn");
 
   const blockedMessage =
     !attempted || importing
       ? null
       : step === "select" && totalSelected === 0 && !noEligibleVaults
-        ? "Select at least one secret to import."
+        ? t("pagesSecretsImportFromVaultDialog.blocked.selectOne")
         : step === "review" && blockedReviewCount > 0
-          ? `Fix the ${blockedReviewCount} ${secretNoun(blockedReviewCount)} marked above, then import.`
+          ? t("pagesSecretsImportFromVaultDialog.blocked.fix", { count: blockedReviewCount })
           : null;
 
   const showContinue =
@@ -710,7 +707,7 @@ export function ImportFromVaultDialog({
         >
           {step === "select" && (
             <Button type="button" variant="ghost" onClick={() => handleClose()}>
-              Cancel
+              {t("pagesSecretsImportFromVaultDialog.buttons.cancel")}
             </Button>
           )}
           {step === "review" &&
@@ -721,7 +718,7 @@ export function ImportFromVaultDialog({
                 onClick={() => handleClose(true)}
                 disabled={importing}
               >
-                Close
+                {t("pagesSecretsImportFromVaultDialog.buttons.close")}
               </Button>
             ) : (
               <Button
@@ -733,27 +730,27 @@ export function ImportFromVaultDialog({
                 }}
                 disabled={importing}
               >
-                Back
+                {t("pagesSecretsImportFromVaultDialog.buttons.back")}
               </Button>
             ))}
           {showContinue && (
             <Button type="button" onClick={handleContinue}>
-              {totalSelected > 0 ? `Continue with ${totalSelected}` : "Continue"}
+              {totalSelected > 0 ? t("pagesSecretsImportFromVaultDialog.buttons.continueWith", { count: totalSelected }) : t("pagesSecretsImportFromVaultDialog.buttons.continue")}
             </Button>
           )}
           {step === "review" && draftList.length > 0 && (
             <Button type="button" onClick={handleSubmitImport} disabled={importing}>
               {importing && <Loader2 className="animate-spin" aria-hidden />}
               {importing
-                ? "Importing…"
+                ? t("pagesSecretsImportFromVaultDialog.buttons.importing")
                 : retrying
-                  ? "Try again"
-                  : `Import ${draftList.length} ${secretNoun(draftList.length)}`}
+                  ? t("pagesSecretsImportFromVaultDialog.buttons.tryAgain")
+                  : t("pagesSecretsImportFromVaultDialog.buttons.import", { count: draftList.length })}
             </Button>
           )}
           {step === "result" && (
             <Button type="button" onClick={() => handleClose(true)}>
-              Done
+              {t("pagesSecretsImportFromVaultDialog.buttons.done")}
             </Button>
           )}
         </footer>
@@ -827,11 +824,11 @@ function SelectStep(props: SelectStepProps) {
     return (
       <p className="text-sm text-muted-foreground" data-testid="select-empty-vaults">
         {hasOtherVaults
-          ? "None of your vaults is ready to import from yet."
-          : "No vault is connected yet."}{" "}
+          ? t("pagesSecretsImportFromVaultDialog.select.noneReady")
+          : t("pagesSecretsImportFromVaultDialog.select.noneConnected")}{" "}
         {onManageVaults && (
           <button type="button" className={linkClass} onClick={onManageVaults}>
-            {hasOtherVaults ? "Check them in Vaults" : "Connect one in Vaults"}
+            {hasOtherVaults ? t("pagesSecretsImportFromVaultDialog.select.checkInVaults") : t("pagesSecretsImportFromVaultDialog.select.connectInVaults")}
           </button>
         )}
       </p>
@@ -850,14 +847,14 @@ function SelectStep(props: SelectStepProps) {
         )}
         {eligible.length > 1 && (
           <Select value={vaultId ?? undefined} onValueChange={onVaultChange}>
-            <SelectTrigger aria-label="Vault">
-              <SelectValue placeholder="Choose a vault" />
+            <SelectTrigger aria-label={t("pagesSecretsImportFromVaultDialog.select.vault")}>
+              <SelectValue placeholder={t("pagesSecretsImportFromVaultDialog.select.chooseVault")} />
             </SelectTrigger>
             <SelectContent>
               {eligible.map((vault) => (
                 <SelectItem key={vault.id} value={vault.id}>
                   {vault.displayName}
-                  {vault.isDefault ? " · default" : ""}
+                  {vault.isDefault ? ` · ${t("pagesSecretsImportFromVaultDialog.select.default")}` : ""}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -871,9 +868,9 @@ function SelectStep(props: SelectStepProps) {
           <Input
             value={searchInput}
             onChange={(event) => onSearchInput(event.target.value)}
-            placeholder="Search by name"
+            placeholder={t("pagesSecretsImportFromVaultDialog.select.searchPlaceholder")}
             className="pl-9 pr-9"
-            aria-label="Search the vault"
+            aria-label={t("pagesSecretsImportFromVaultDialog.select.searchLabel")}
             data-testid="vault-search"
           />
           {showSearchSpinner && (
@@ -890,7 +887,7 @@ function SelectStep(props: SelectStepProps) {
           className="text-muted-foreground"
           onClick={onRefresh}
           disabled={previewLoading || !vaultId}
-          aria-label="Refresh the list"
+          aria-label={t("pagesSecretsImportFromVaultDialog.select.refresh")}
         >
           <RefreshCw className={cn(previewLoading && "animate-spin")} aria-hidden />
         </Button>
@@ -898,14 +895,13 @@ function SelectStep(props: SelectStepProps) {
 
       {selectedNotVisible > 0 && (
         <p className="text-xs text-muted-foreground">
-          {selection.size} selected. {selectedNotVisible} {selectedNotVisible === 1 ? "is" : "are"}{" "}
-          hidden by this search.{" "}
+          {t("pagesSecretsImportFromVaultDialog.select.hiddenBySearch", { selected: selection.size, count: selectedNotVisible })}{" "}
           <button
             type="button"
             className={linkClass}
             onClick={() => onShowOnlySelectedChange(!showOnlySelected)}
           >
-            {showOnlySelected ? "Show all" : "Show selected"}
+            {showOnlySelected ? t("pagesSecretsImportFromVaultDialog.select.showAll") : t("pagesSecretsImportFromVaultDialog.select.showSelected")}
           </button>
         </p>
       )}
@@ -917,8 +913,8 @@ function SelectStep(props: SelectStepProps) {
       ) : candidates.length === 0 ? (
         <p className="py-6 text-center text-sm text-muted-foreground">
           {debouncedQuery
-            ? `Nothing in ${vaultName} matches “${debouncedQuery}”.`
-            : `Paperclip can't see any secrets in ${vaultName}.`}
+            ? t("pagesSecretsImportFromVaultDialog.select.noMatches", { vault: vaultName, query: debouncedQuery })
+            : t("pagesSecretsImportFromVaultDialog.select.noSecrets", { vault: vaultName })}
         </p>
       ) : (
         <div
@@ -929,12 +925,12 @@ function SelectStep(props: SelectStepProps) {
             <Checkbox
               checked={headerCheckboxState}
               onCheckedChange={() => toggleAllLoaded()}
-              aria-label={hasNextPage ? "Select all loaded so far" : "Select all"}
+              aria-label={hasNextPage ? t("pagesSecretsImportFromVaultDialog.select.selectAllLoaded") : t("pagesSecretsImportFromVaultDialog.select.selectAll")}
               disabled={selectableInLoaded.length === 0}
               data-testid="vault-select-all"
             />
-            <span className="min-w-0 flex-1 truncate">Secret in {vaultName}</span>
-            <span className="w-24">Last changed</span>
+            <span className="min-w-0 flex-1 truncate">{t("pagesSecretsImportFromVaultDialog.select.secretIn", { vault: vaultName })}</span>
+            <span className="w-24">{t("pagesSecretsImportFromVaultDialog.select.lastChanged")}</span>
           </div>
           <ul className="divide-y divide-border" data-testid="vault-list">
             {visibleCandidates.map((candidate) => {
@@ -976,7 +972,7 @@ function SelectStep(props: SelectStepProps) {
                     )}
                   </span>
                   {!candidate.importable && (
-                    <span className="shrink-0 text-xs">Already in Paperclip</span>
+                    <span className="shrink-0 text-xs">{t("pagesSecretsImportFromVaultDialog.alreadyInPaperclip")}</span>
                   )}
                   <span className="w-24 shrink-0 text-sm tabular-nums text-muted-foreground">
                     {formatRelativeShort(lastChanged)}
@@ -988,7 +984,7 @@ function SelectStep(props: SelectStepProps) {
           {pageLoading && <SkeletonRows rows={4} />}
           {hasNextPage && (
             <div className="flex items-center justify-between gap-3 border-t border-border px-2 py-2 text-xs text-muted-foreground">
-              <span>{candidates.length} shown so far</span>
+              <span>{t("pagesSecretsImportFromVaultDialog.select.shownSoFar", { count: candidates.length })}</span>
               <Button
                 type="button"
                 variant="ghost"
@@ -998,7 +994,7 @@ function SelectStep(props: SelectStepProps) {
                 data-testid="vault-load-more"
               >
                 {pageLoading && <Loader2 className="animate-spin" aria-hidden />}
-                {pageLoading ? "Loading…" : `Load ${PAGE_SIZE} more`}
+                {pageLoading ? t("pagesSecretsImportFromVaultDialog.select.loading") : t("pagesSecretsImportFromVaultDialog.select.loadMore", { size: PAGE_SIZE })}
               </Button>
             </div>
           )}
@@ -1025,13 +1021,13 @@ function PreviewError({
         <TriangleAlert className="mt-0.5 size-4 shrink-0" aria-hidden />
         <span>
           {isPermission
-            ? "AWS denied access. Paperclip's role can't list the secrets in this vault."
+            ? t("pagesSecretsImportFromVaultDialog.error.permission")
             : isThrottling
-              ? "AWS is limiting requests right now. Wait a moment, then try again."
-              : "Paperclip couldn't load the secrets in this vault."}{" "}
+              ? t("pagesSecretsImportFromVaultDialog.error.throttling")
+              : t("pagesSecretsImportFromVaultDialog.error.generic")}{" "}
           {isPermission && onManageVaults && (
             <button type="button" className="underline underline-offset-4" onClick={onManageVaults}>
-              Fix it in Vaults
+              {t("pagesSecretsImportFromVaultDialog.error.fixInVaults")}
             </button>
           )}
         </span>
@@ -1039,15 +1035,15 @@ function PreviewError({
       <p className="text-xs text-muted-foreground">
         {isPermission ? (
           <>
-            The role needs the <code className="font-mono">secretsmanager:ListSecrets</code>{" "}
-            permission.{" "}
+            {t("pagesSecretsImportFromVaultDialog.error.roleNeedsBefore")}{" "}<code className="font-mono">secretsmanager:ListSecrets</code>{" "}
+            {t("pagesSecretsImportFromVaultDialog.error.roleNeedsAfter")}{" "}
             <a
               href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awssecretsmanager.html"
               target="_blank"
               rel="noreferrer"
               className={linkClass}
             >
-              AWS permission reference
+              {t("pagesSecretsImportFromVaultDialog.error.permissionReference")}
             </a>
           </>
         ) : (
@@ -1055,7 +1051,7 @@ function PreviewError({
         )}
       </p>
       <Button type="button" variant="outline" size="sm" className="self-start" onClick={onRetry}>
-        Try again
+        {t("pagesSecretsImportFromVaultDialog.buttons.tryAgain")}
       </Button>
     </div>
   );
@@ -1109,10 +1105,10 @@ function ReviewStep({
         >
           <TriangleAlert className="mt-0.5 size-4 shrink-0" aria-hidden />
           <span>
-            {importedCount} imported.{" "}
-            {skippedCount > 0 && `${skippedCount} already in Paperclip. `}
+            {t("pagesSecretsImportFromVaultDialog.review.imported", { count: importedCount })}{" "}
+            {skippedCount > 0 && `${t("pagesSecretsImportFromVaultDialog.review.skipped", { count: skippedCount })} `}
             {failedCount > 0 &&
-              `${failedCount} could not be linked and ${failedCount === 1 ? "is" : "are"} listed below.`}
+              t("pagesSecretsImportFromVaultDialog.review.failed", { count: failedCount })}
           </span>
         </p>
       )}
@@ -1120,8 +1116,8 @@ function ReviewStep({
       {drafts.length === 0 ? (
         <p className="text-sm text-muted-foreground">
           {retrying
-            ? "Nothing left to import."
-            : "Nothing left to import. Go back to choose secrets."}
+            ? t("pagesSecretsImportFromVaultDialog.review.nothingLeft")
+            : t("pagesSecretsImportFromVaultDialog.review.nothingLeftGoBack")}
         </p>
       ) : (
         <>
@@ -1139,7 +1135,7 @@ function ReviewStep({
               )}
               aria-hidden
             />
-            Keys and descriptions
+            {t("pagesSecretsImportFromVaultDialog.review.keysAndDescriptions")}
           </button>
           <ul
             className="flex min-h-0 flex-col divide-y divide-border overflow-y-auto border-y border-border"
@@ -1170,7 +1166,7 @@ function ReviewStep({
                         className="sm:w-64"
                         spellCheck={false}
                         autoComplete="off"
-                        aria-label={`Name for ${remoteName}`}
+                        aria-label={t("pagesSecretsImportFromVaultDialog.review.nameFor", { name: remoteName })}
                         aria-invalid={rowProblem?.field === "name"}
                         disabled={importing}
                         data-testid={`review-name-${ref}`}
@@ -1182,7 +1178,7 @@ function ReviewStep({
                       size="icon-sm"
                       className="shrink-0 text-muted-foreground"
                       onClick={() => removeDraft(ref)}
-                      aria-label={`Leave out ${remoteName}`}
+                      aria-label={t("pagesSecretsImportFromVaultDialog.review.leaveOut", { name: remoteName })}
                       disabled={importing}
                     >
                       <X aria-hidden />
@@ -1191,7 +1187,7 @@ function ReviewStep({
                   {showDetails && (
                     <div className="grid gap-2 sm:grid-cols-2">
                       <label className="flex flex-col gap-1 text-xs text-muted-foreground">
-                        Key
+                        {t("pagesSecretsImportFromVaultDialog.review.key")}
                         <Input
                           value={draft.key}
                           onChange={(e) => updateDraft(ref, { key: e.target.value })}
@@ -1207,7 +1203,7 @@ function ReviewStep({
                         />
                       </label>
                       <label className="flex flex-col gap-1 text-xs text-muted-foreground">
-                        Description (optional)
+                        {t("pagesSecretsImportFromVaultDialog.review.description")}
                         <Input
                           value={draft.description}
                           onChange={(e) => updateDraft(ref, { description: e.target.value })}
@@ -1257,7 +1253,7 @@ function ReviewStep({
               )}
               aria-hidden
             />
-            {completedRows.length === 1 ? "The 1 that is done" : `The ${completedRows.length} that are done`}
+            {t("pagesSecretsImportFromVaultDialog.review.done", { count: completedRows.length })}
           </button>
           {doneOpen && <ResultList rows={completedRows} />}
         </>
@@ -1285,7 +1281,7 @@ function ResultList({ rows }: { rows: RemoteSecretImportRowResult[] }) {
             {row.key}
           </span>
           <span className="text-xs text-muted-foreground">
-            {row.status === "imported" ? "Imported" : (row.reason ?? "Already in Paperclip")}
+            {row.status === "imported" ? t("pagesSecretsImportFromVaultDialog.result.imported") : (row.reason ?? t("pagesSecretsImportFromVaultDialog.alreadyInPaperclip"))}
           </span>
         </li>
       ))}

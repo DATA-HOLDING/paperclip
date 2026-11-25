@@ -1,0 +1,103 @@
+{
+  "tabs": {
+    "configuration": "Configuração"
+  },
+  "sourceTypes": {
+    "localPath": {
+      "label": "Checkout git local",
+      "description": "Um caminho local que o Paperclip pode usar diretamente."
+    },
+    "nonGitPath": {
+      "label": "Caminho local sem git",
+      "description": "Uma pasta local sem semântica de git."
+    },
+    "gitRepo": {
+      "label": "Repositório git remoto",
+      "description": "Uma URL de repositório com refs opcionais e checkout local."
+    },
+    "remoteManaged": {
+      "label": "Espaço de trabalho gerenciado remotamente",
+      "description": "Um espaço de trabalho hospedado, acompanhado por referência externa."
+    }
+  },
+  "visibility": {
+    "default": "Padrão",
+    "advanced": "Avançado"
+  },
+  "validation": {
+    "jsonObject": "O JSON de comandos do espaço de trabalho deve ser um objeto JSON.",
+    "invalidJson": "JSON inválido.",
+    "remoteRequires": "Espaços de trabalho gerenciados remotamente exigem uma ref de espaço remoto ou uma URL de repositório.",
+    "requiresPathOrRepo": "O espaço de trabalho exige pelo menos um caminho local ou uma URL de repositório.",
+    "absolutePath": "O caminho local do espaço de trabalho deve ser absoluto.",
+    "repoUrl": "A URL do repositório deve ser uma URL válida."
+  },
+  "breadcrumbs": {
+    "projects": "Projetos",
+    "workspaces": "Espaços de trabalho"
+  },
+  "errors": {
+    "save": "Falha ao salvar o espaço de trabalho.",
+    "update": "Falha ao atualizar o espaço de trabalho.",
+    "control": "Falha ao controlar os comandos do espaço de trabalho."
+  },
+  "runtime": {
+    "jobCompleted": "Job do espaço de trabalho concluído.",
+    "serviceStopped": "Serviço do espaço de trabalho parado. A execução das tarefas não foi pausada.",
+    "serviceRestarted": "Serviço do espaço de trabalho reiniciado. A execução das tarefas não foi pausada.",
+    "serviceStarted": "Serviço do espaço de trabalho iniciado."
+  },
+  "loading": "Carregando espaço de trabalho…",
+  "loadAction": "carregar este espaço de trabalho",
+  "notFound": "Espaço de trabalho não encontrado neste projeto.",
+  "backToWorkspaces": "Voltar aos espaços de trabalho",
+  "eyebrow": "Espaço de trabalho do projeto",
+  "makePrimary": "Tornar principal",
+  "isPrimary": "Este é o espaço de trabalho principal do código do projeto.",
+  "intro": "Configure o espaço de trabalho concreto que o Paperclip vincula a este projeto. Estes valores definem o checkout de cada espaço de trabalho, os serviços de runtime padrão dos espaços de execução filhos e permitem substituir os comandos de preparação ou limpeza quando um espaço precisa de tratamento especial.",
+  "fields": {
+    "name": "Nome do espaço de trabalho",
+    "visibility": "Visibilidade",
+    "sourceType": "Tipo de origem",
+    "localPath": "Caminho local",
+    "repoUrl": "URL do repositório",
+    "repoRef": "Ref do repositório",
+    "defaultRef": "Ref padrão",
+    "sharedKey": "Chave do espaço de trabalho compartilhado",
+    "remoteProvider": "Provedor remoto",
+    "remoteRef": "Ref do espaço de trabalho remoto",
+    "setupCommand": "Comando de preparação",
+    "setupCommandHint": "Executado quando este espaço de trabalho precisa de uma inicialização personalizada",
+    "cleanupCommand": "Comando de limpeza",
+    "cleanupCommandHint": "Executado antes de desmontar o espaço de execução do projeto"
+  },
+  "advanced": {
+    "summary": "JSON avançado de runtime",
+    "description": "O Paperclip deriva os Serviços e os Jobs deste JSON. Prefira editar primeiro os comandos nomeados; use o JSON bruto para ajustes avançados de ciclo de vida, porta, prontidão ou ambiente.",
+    "label": "JSON de comandos do espaço de trabalho",
+    "hint": "Os espaços de execução herdam esta configuração, a menos que a substituam. Arrays `services` legados ainda funcionam, mas `commands` aceita serviços e jobs."
+  },
+  "saveChanges": "Salvar alterações",
+  "reset": "Redefinir",
+  "noUnsavedChanges": "Nenhuma alteração não salva.",
+  "facts": {
+    "eyebrow": "Dados do espaço de trabalho",
+    "title": "Estado atual",
+    "project": "Projeto",
+    "workspaceId": "ID do espaço de trabalho",
+    "none": "Nenhum",
+    "repo": "Repositório",
+    "updated": "Atualizado"
+  },
+  "commands": {
+    "eyebrow": "Comandos do espaço de trabalho",
+    "title": "Serviços e jobs",
+    "description": "Serviços de longa duração ficam supervisionados aqui, enquanto jobs pontuais rodam sob demanda neste espaço de trabalho. Os espaços de execução herdam esta configuração, a menos que a substituam.",
+    "noServices": "Nenhum serviço foi iniciado neste espaço de trabalho ainda.",
+    "noConfig": "Nenhuma configuração de comandos foi definida para este espaço de trabalho ainda.",
+    "noJobs": "Nenhum job pontual configurado para este espaço de trabalho ainda.",
+    "disabledHint": "Espaços de trabalho de projeto precisam de um diretório de trabalho para que comandos locais rodem, e os serviços também precisam de configuração de runtime."
+  },
+  "loadingPlugin": "Carregando plugin do espaço de trabalho...",
+  "backToConfiguration": "Voltar à configuração"
+}

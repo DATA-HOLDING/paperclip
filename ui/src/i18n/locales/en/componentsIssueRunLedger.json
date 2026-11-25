@@ -1,0 +1,145 @@
+{
+  "liveness": {
+    "completed": {
+      "label": "Completed",
+      "description": "Task reached a terminal state."
+    },
+    "advanced": {
+      "label": "Advanced",
+      "description": "Run produced concrete evidence of progress."
+    },
+    "planOnly": {
+      "label": "Plan only",
+      "description": "Run described future work without concrete action evidence."
+    },
+    "emptyResponse": {
+      "label": "Empty response",
+      "description": "Run finished without useful output."
+    },
+    "blocked": {
+      "label": "Blocked",
+      "description": "Run or task declared a blocker."
+    },
+    "failed": {
+      "label": "Failed",
+      "description": "Run ended unsuccessfully."
+    },
+    "needsFollowup": {
+      "label": "Needs follow-up",
+      "description": "Run produced useful output but did not prove concrete progress."
+    },
+    "pending": {
+      "label": "Checks after finish",
+      "description": "Liveness is evaluated after the run finishes."
+    },
+    "retryPending": {
+      "label": "Retry pending",
+      "description": "Paperclip queued an automatic retry that has not started yet."
+    },
+    "missing": {
+      "label": "No liveness data",
+      "description": "This run has no persisted liveness classification."
+    }
+  },
+  "silence": {
+    "suspicious": "Output silence",
+    "critical": "Critical silence",
+    "snoozed": "Silence snoozed"
+  },
+  "summary": {
+    "running": "Running now by {{agent}}",
+    "queued": "Queued for {{agent}}",
+    "retryScheduled": "Automatic retry scheduled for {{agent}}",
+    "statusBy": "{{status}} by {{agent}}"
+  },
+  "stop": {
+    "timeoutSeconds": "{{seconds}}s timeout",
+    "timeoutWith": "timeout ({{detail}})",
+    "timeout": "timeout",
+    "maxTurns": "max turns exhausted",
+    "budgetPaused": "budget paused",
+    "cancelled": "cancelled",
+    "pausedByBoard": "paused by board",
+    "processLost": "process lost",
+    "unmanagedStopped": "unmanaged background task stopped",
+    "adapterFailedWith": "adapter failed ({{cause}})",
+    "adapterFailed": "adapter failed",
+    "completedWith": "completed ({{detail}})",
+    "completed": "completed"
+  },
+  "stopStatus": {
+    "retryPending": "Retry pending",
+    "waitingToStart": "Waiting to start",
+    "stillRunning": "Still running",
+    "noStopReason": "No stop reason"
+  },
+  "unavailable": "Unavailable",
+  "lastAction": {
+    "waitingNextAttempt": "Waiting for next attempt",
+    "noneYet": "No action recorded yet",
+    "noConcrete": "No concrete action",
+    "noUsefulOutput": "No useful output",
+    "noneRecorded": "None recorded"
+  },
+  "continuationAttempt": "Continuation attempt {{n}}",
+  "age": {
+    "underMinute": "under 1 minute",
+    "minutes_one": "{{count}} minute",
+    "minutes_other": "{{count}} minutes",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours"
+  },
+  "watchdog": {
+    "forbidden": "Only the board or the assigned recovery owner can record watchdog decisions",
+    "failed": "Paperclip could not record the watchdog decision.",
+    "toastTitle": "Watchdog decision not recorded",
+    "continue": "Continue monitoring",
+    "snooze": "Snooze 1h",
+    "falsePositive": "Mark false positive"
+  },
+  "trace": {
+    "toastTitle": "Trace re-run not started",
+    "failed": "Paperclip could not start the trace re-run."
+  },
+  "ariaLabel": "Task run ledger",
+  "title": "Run ledger",
+  "waitingFirstRun": "Waiting for the first run record.",
+  "noRuns": "No runs linked yet.",
+  "latestRun": "Latest run",
+  "children": {
+    "title": "Child work",
+    "active": "{{active}} active, {{done}} done, {{cancelled}} cancelled",
+    "allTerminal": "all {{total}} terminal ({{done}} done, {{cancelled}} cancelled)",
+    "more": "+{{n}} more"
+  },
+  "silenceBanner": {
+    "critical": "Critical output silence",
+    "warning": "Output silence watchdog warning",
+    "silentFor": "Latest active run has been silent for",
+    "extendedPeriod": "an extended period",
+    "review": "Review",
+    "forRecoveryContext": "for recovery context.",
+    "infoDelegated": "This signal is informational. Paperclip did not create new delegated recovery work.",
+    "infoNoTask": "This signal is informational. Paperclip did not create or assign a recovery task."
+  },
+  "empty": {
+    "withActivity": "Runs and activity will appear here once this task has history.",
+    "runsOnly": "Historical runs without liveness metadata will appear here once linked to this task."
+  },
+  "run": {
+    "label": "Run",
+    "by": "by {{agent}}",
+    "actingOnBehalf": "Acting on behalf of {{user}}",
+    "onBehalfOf": "on behalf of",
+    "live": "live",
+    "exhausted": "Exhausted",
+    "inspect": "Inspect run",
+    "elapsed": "Elapsed",
+    "unknown": "unknown",
+    "lastUsefulAction": "Last useful action",
+    "stop": "Stop",
+    "retryOf": "Retry of",
+    "nextAction": "Next action:"
+  },
+  "olderNotShown": "{{n}} older items not shown"
+}

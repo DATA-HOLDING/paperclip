@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { CompanyMcpSkill } from "@paperclipai/shared";
@@ -13,27 +14,27 @@ import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
 
 const STATUS_LABEL: Record<CompanyMcpSkill["status"], string> = {
-  pending_review: "Needs review",
-  approved: "Approved",
-  declined: "Declined",
-  unavailable: "Not available",
+  pending_review: t("componentsSkills.status.pendingReview"),
+  approved: t("componentsSkills.status.approved"),
+  declined: t("componentsSkills.status.declined"),
+  unavailable: t("componentsSkills.status.unavailable"),
 };
 
 /** Plain-language reason for a skill's state, or null when the status says enough. */
 export function connectedAppSkillNote(skill: CompanyMcpSkill): string | null {
   switch (skill.statusReason) {
     case "changed":
-      return `${skill.appName} changed this skill. Agents won't use it until you approve the new version.`;
+      return t("componentsSkills.notes.changed", { app: skill.appName });
     case "dynamic":
-      return "This skill is generated each time it's used, so Paperclip can't check its content. It isn't offered to agents.";
+      return t("componentsSkills.notes.dynamic");
     case "too_large":
-      return "This skill is bigger than apps can rely on (512 files or 16 MiB), so it isn't offered to agents.";
+      return t("componentsSkills.notes.tooLarge");
     case "invalid":
-      return "This skill's listing doesn't follow the MCP skills format, so it isn't offered to agents.";
+      return t("componentsSkills.notes.invalid");
     case "verification_failed":
-      return `${skill.appName} sent files that didn't match what it listed, so Paperclip stopped using this skill. Refresh the app to see its current version.`;
+      return t("componentsSkills.notes.verificationFailed", { app: skill.appName });
     case "removed":
-      return `${skill.appName} no longer offers this skill.`;
+      return t("componentsSkills.notes.removed", { app: skill.appName });
     default:
       return null;
   }
@@ -57,9 +58,9 @@ export function ConnectedAppSkillsList({ skills, pendingSkillId, preview, onPrev
   return (
     <section aria-labelledby="connected-app-skills-heading" className="mx-4 mt-4 rounded-lg border border-border">
       <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border px-4 py-3">
-        <h2 id="connected-app-skills-heading" className="text-sm font-semibold">Skills from connected apps</h2>
+        <h2 id="connected-app-skills-heading" className="text-sm font-semibold">{t("componentsSkills.heading")}</h2>
         <p className="text-xs text-muted-foreground">
-          {waiting ? `${waiting} waiting for review. ` : ""}Agents that use an app get its skills only after you approve them.
+          {waiting ? t("componentsSkills.waiting", { count: waiting }) : ""}{t("componentsSkills.approvalNote")}
         </p>
       </div>
       <ul className="divide-y divide-border">
@@ -75,19 +76,19 @@ export function ConnectedAppSkillsList({ skills, pendingSkillId, preview, onPrev
             <li key={skill.id} className="flex flex-col gap-2 px-4 py-3">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-medium">{skill.name}</span>
-                <span className="text-xs text-muted-foreground">from {skill.appName}</span>
+                <span className="text-xs text-muted-foreground">{t("componentsSkills.fromApp", { app: skill.appName })}</span>
                 <Badge variant={skill.status === "pending_review" ? "default" : "outline"}>{STATUS_LABEL[skill.status]}</Badge>
               </div>
               <p className="line-clamp-2 text-sm text-muted-foreground">{skill.description}</p>
               {skill.fileCount !== null && skill.totalBytes !== null ? (
                 <p className="text-xs text-muted-foreground">
-                  {skill.fileCount === 1 ? "1 file" : `${skill.fileCount} files`} · {formatBytes(skill.totalBytes)}
+                  {t("componentsSkills.files", { count: skill.fileCount })} · {formatBytes(skill.totalBytes)}
                 </p>
               ) : null}
               {note ? <p className="text-sm">{note}</p> : null}
               {skill.nameCollision ? (
                 <p className="text-xs text-muted-foreground">
-                  Another skill uses this name. Agents get this one under {skill.appName}'s name, so neither replaces the other.
+                  {t("componentsSkills.nameCollision", { app: skill.appName })}
                 </p>
               ) : null}
               {skill.requestedTools.length ? (
@@ -97,11 +98,11 @@ export function ConnectedAppSkillsList({ skills, pendingSkillId, preview, onPrev
                       checked={allowTools[skill.id] === true}
                       onCheckedChange={(checked) => setAllowTools((current) => ({ ...current, [skill.id]: checked === true }))}
                     />
-                    Also let it use: {skill.requestedTools.join(", ")}
+                    {t("componentsSkills.alsoLetItUse", { tools: skill.requestedTools.join(", ") })}
                   </label>
                 ) : (
                   <p className="text-xs text-muted-foreground">
-                    {skill.allowedToolsApproved ? "Can use" : "Asked to use, not allowed"}: {skill.requestedTools.join(", ")}
+                    {skill.allowedToolsApproved ? t("componentsSkills.canUse") : t("componentsSkills.askedNotAllowed")}: {skill.requestedTools.join(", ")}
                   </p>
                 )
               ) : null}
@@ -109,27 +110,27 @@ export function ConnectedAppSkillsList({ skills, pendingSkillId, preview, onPrev
                 <div className="flex flex-wrap items-center gap-2">
                   {onPreview ? (
                     <Button size="xs" variant="ghost" onClick={() => onPreview(skill)} aria-expanded={showing}>
-                      {showing ? "Hide instructions" : "Read instructions"}
+                      {showing ? t("componentsSkills.hideInstructions") : t("componentsSkills.readInstructions")}
                     </Button>
                   ) : null}
                   {reviewable && onApprove ? (
-                    <Button size="xs" disabled={busy || !previewCurrent} onClick={() => onApprove(skill, allowTools[skill.id] === true)}>Approve</Button>
+                    <Button size="xs" disabled={busy || !previewCurrent} onClick={() => onApprove(skill, allowTools[skill.id] === true)}>{t("componentsSkills.approve")}</Button>
                   ) : null}
                   {skill.status !== "declined" && onDecline ? (
                     <Button size="xs" variant="outline" disabled={busy} onClick={() => onDecline(skill)}>
-                      {skill.status === "approved" ? "Turn off" : "Decline"}
+                      {skill.status === "approved" ? t("componentsSkills.turnOff") : t("componentsSkills.decline")}
                     </Button>
                   ) : null}
                 </div>
               ) : null}
               {reviewable ? (
                 <p className="text-xs text-muted-foreground">
-                  Approving lets agents that use {skill.appName} follow these instructions, including commands they describe.
+                  {t("componentsSkills.approvingNote", { app: skill.appName })}
                 </p>
               ) : null}
               {showing ? (
                 preview?.error ? <p className="text-sm text-destructive">{preview.error}</p>
-                  : preview?.loading || !previewCurrent ? <p className="text-sm text-muted-foreground">Loading instructions…</p>
+                  : preview?.loading || !previewCurrent ? <p className="text-sm text-muted-foreground">{t("componentsSkills.loadingInstructions")}</p>
                     // Shown as text: the content comes from the app and is never rendered as a page.
                     : <pre className={cn("max-h-96 overflow-auto whitespace-pre-wrap rounded-md bg-muted p-3 font-mono text-xs", ANALYTICS_MASK_CLASS)}>{preview?.markdown}</pre>
               ) : null}
@@ -166,17 +167,17 @@ export function ConnectedAppSkills({ companyId }: { companyId: string | null | u
     mutationFn: ({ skill, allowTools }: { skill: CompanyMcpSkill; allowTools: boolean }) =>
       mcpSkillsApi.approve(companyId!, skill.id, { manifestDigest: skill.manifestDigest!, allowTools }),
     onSuccess: refresh,
-    onError: reportError("Couldn't approve the skill"),
+    onError: reportError(t("componentsSkills.approveFailed")),
   });
   const decline = useMutation({
     mutationFn: (skill: CompanyMcpSkill) => mcpSkillsApi.decline(companyId!, skill.id),
     onSuccess: refresh,
-    onError: reportError("Couldn't update the skill"),
+    onError: reportError(t("componentsSkills.updateFailed")),
   });
   if (listQuery.error) {
     return (
       <p role="alert" className="mx-4 mt-4 text-sm text-destructive">
-        Couldn't load skills from connected apps. {describeError(listQuery.error).body}
+        {t("componentsSkills.loadFailed")} {describeError(listQuery.error).body}
       </p>
     );
   }

@@ -1,0 +1,35 @@
+{
+  "undo": "Desfazer",
+  "dismiss": "Dispensar",
+  "versions": {
+    "empty": "Nenhuma versão ainda.",
+    "now": "Agora",
+    "restore": "Restaurar",
+    "title": "Versões anteriores",
+    "description": "Versões salvas do seu painel, das mais recentes para as mais antigas.",
+    "loadAction": "carregar as versões"
+  },
+  "loading": "Carregando",
+  "errors": {
+    "restore": "Não foi possível restaurar.",
+    "start": "Não foi possível iniciar.",
+    "undo": "Não foi possível desfazer."
+  },
+  "anAgent": "um agente",
+  "openConversation": "Abrir a conversa",
+  "create": {
+    "title": "Crie seu painel personalizado",
+    "description": "Peça a um agente para pesquisar e entrevistar você e gerar um painel personalizado com as áreas e responsabilidades que importam para você.",
+    "talking": "Conversando sobre isso com {{agent}}.",
+    "noAgent": "Nenhum agente está livre para fazer isso. Adicione suas áreas você mesmo.",
+    "startWith": "Começar com {{agent}}",
+    "addArea": "Adicionar uma área você mesmo"
+  },
+  "edit": {
+    "editingWith": "Editando com {{agent}}.",
+    "noAgent": "Nenhum agente está livre para editar seu painel.",
+    "button": "Editar seu painel",
+    "versions": "Versões",
+    "loadAction": "carregar as alterações do seu painel"
+  }
+}

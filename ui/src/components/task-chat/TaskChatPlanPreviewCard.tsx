@@ -6,8 +6,10 @@ import { buildDocumentAnnotationHash } from "@/lib/document-annotation-hash";
 import { useCoordinatorPresentation } from "@/components/coordinator/CoordinatorPresentation";
 import { useTaskChatShimmer } from "./TaskChatShimmer";
 import type { TaskChatProviderActivityItem } from "./task-chat-model";
+import { t } from "@/i18n";
 
 const PLAN_PREVIEW_LINE_COUNT = 3;
+const PLAN_TITLE = t("componentsTaskChatTaskChatPlanPreviewCard.plan");
 
 export function planPreviewContent(markdown: string) {
   const lines = markdown
@@ -17,7 +19,7 @@ export function planPreviewContent(markdown: string) {
   const headingIndex = lines.findIndex((line) => /^#\s+/.test(line));
   const title = headingIndex >= 0
     ? lines[headingIndex]!.replace(/^#\s+/, "").trim()
-    : "Plan";
+    : PLAN_TITLE;
   const preview = lines
     // Section headings ("## Steps") are structure, not plan content.
     .filter((line, index) => index !== headingIndex && !/^#{1,6}\s+/.test(line) && !/^(```|~~~|---+$|\*\*\*+$|___+$)/.test(line))
@@ -60,11 +62,11 @@ function livePlanContent(activity: TaskChatProviderActivityItem) {
   // A proposed-plan document streams as markdown; a checklist streams as steps.
   if (activity.output?.trim()) {
     const fromMarkdown = planPreviewContent(activity.output);
-    if (fromMarkdown.title !== "Plan" || fromMarkdown.preview.length > 0) return fromMarkdown;
+    if (fromMarkdown.title !== PLAN_TITLE || fromMarkdown.preview.length > 0) return fromMarkdown;
   }
   const title = activity.title.trim() && activity.title.trim().toLowerCase() !== "plan"
     ? activity.title.trim()
-    : "Plan";
+    : PLAN_TITLE;
   const preview = activity.steps
     .map((step) => step.label.trim())
     .filter(Boolean)
@@ -98,7 +100,7 @@ export function TaskChatPlanPreviewCard({
   const content = source.kind === "saved" && source.document
     ? planPreviewContent(source.document.body)
     : source.kind === "saved"
-      ? { title: source.fallbackTitle?.trim() || "Plan", preview: [] as string[] }
+      ? { title: source.fallbackTitle?.trim() || PLAN_TITLE, preview: [] as string[] }
       : livePlanContent(source.activity);
   const live = source.kind === "live";
   if (coordinator) {
@@ -109,19 +111,19 @@ export function TaskChatPlanPreviewCard({
       : href;
     const compactClassName = cn("inline-flex max-w-full items-center gap-2 rounded-lg border border-border bg-muted/25 px-3 py-2.5 text-sm text-muted-foreground",
       targetHref && "transition-colors hover:bg-muted/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring", className);
-    const compactBody = <><FileText className="size-4 shrink-0" aria-hidden /><span className="shrink-0">{live ? "Writing" : "Open"}</span>{" "}
+    const compactBody = <><FileText className="size-4 shrink-0" aria-hidden /><span className="shrink-0">{live ? t("componentsTaskChatTaskChatPlanPreviewCard.writing") : t("componentsTaskChatTaskChatPlanPreviewCard.open")}</span>{" "}
       <span className={cn("min-w-0 truncate text-foreground", targetHref && "underline underline-offset-4", live && shimmer && "shimmer-text shimmer-text-muted")}>{content.title}</span>
-      {targetHref ? <span className="hidden shrink-0 sm:inline">{" "}in the sidebar</span> : null}</>;
+      {targetHref ? <span className="hidden shrink-0 sm:inline">{" "}{t("componentsTaskChatTaskChatPlanPreviewCard.inTheSidebar")}</span> : null}</>;
     return targetHref ? <SidebarDocumentLink href={targetHref} testId={testId}
-      ariaLabel={ariaLabel ?? `Open ${content.title}${revision == null ? "" : ` revision ${revision}`} in task sidebar`} className={className}>
-      <span className="shrink-0">Open</span>{" "}<span className="min-w-0 truncate text-foreground underline underline-offset-4">{content.title}</span>
-      <span className="hidden shrink-0 sm:inline">{" "}in the sidebar</span>
+      ariaLabel={ariaLabel ?? (revision == null ? t("componentsTaskChatTaskChatPlanPreviewCard.openInTaskSidebar", { title: content.title }) : t("componentsTaskChatTaskChatPlanPreviewCard.openRevisionInTaskSidebar", { title: content.title, revision }))} className={className}>
+      <span className="shrink-0">{t("componentsTaskChatTaskChatPlanPreviewCard.open")}</span>{" "}<span className="min-w-0 truncate text-foreground underline underline-offset-4">{content.title}</span>
+      <span className="hidden shrink-0 sm:inline">{" "}{t("componentsTaskChatTaskChatPlanPreviewCard.inTheSidebar")}</span>
     </SidebarDocumentLink>
-      : <section data-testid={testId} aria-label={ariaLabel ?? "Writing plan"} className={compactClassName}>{compactBody}</section>;
+      : <section data-testid={testId} aria-label={ariaLabel ?? t("componentsTaskChatTaskChatPlanPreviewCard.writingPlan")} className={compactClassName}>{compactBody}</section>;
   }
   const headerDetail = revision == null
     ? null
-    : `rev ${revision}`;
+    : t("componentsTaskChatTaskChatPlanPreviewCard.revShort", { revision });
   const body = (
     <>
       <div className="flex items-center gap-2 border-b border-border/70 px-3 py-2.5 text-sm text-muted-foreground">
@@ -130,7 +132,7 @@ export function TaskChatPlanPreviewCard({
           className={cn("h-4 w-4 shrink-0", live && "text-(--status-agent-running)")}
         />
         <span className={cn("font-medium", live && shimmer && "shimmer-text shimmer-text-muted")} data-testid={live ? "task-chat-plan-streaming-status" : undefined}>
-          {live ? "Writing plan" : "Plan"}
+          {live ? t("componentsTaskChatTaskChatPlanPreviewCard.writingPlan") : PLAN_TITLE}
         </span>
         {headerDetail ? (
           <span
@@ -159,7 +161,7 @@ export function TaskChatPlanPreviewCard({
           </ul>
         ) : (
           <p className="mt-1 text-sm text-muted-foreground">
-            {live ? "Waiting for the first plan step…" : "Open the synchronized plan to review it."}
+            {live ? t("componentsTaskChatTaskChatPlanPreviewCard.waitingFirstStep") : t("componentsTaskChatTaskChatPlanPreviewCard.openToReview")}
           </p>
         )}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-linear-to-b from-transparent to-card/95" />
@@ -177,7 +179,7 @@ export function TaskChatPlanPreviewCard({
       <a
         href={href}
         data-testid={testId}
-        aria-label={ariaLabel ?? `Open Plan${revision == null ? "" : ` revision ${revision}`}`}
+        aria-label={ariaLabel ?? (revision == null ? t("componentsTaskChatTaskChatPlanPreviewCard.openPlan") : t("componentsTaskChatTaskChatPlanPreviewCard.openPlanRevision", { revision }))}
         className={sharedClassName}
       >
         {body}
@@ -187,7 +189,7 @@ export function TaskChatPlanPreviewCard({
 
   return (
     <section
-      aria-label={ariaLabel ?? "Streaming Plan preview"}
+      aria-label={ariaLabel ?? t("componentsTaskChatTaskChatPlanPreviewCard.streamingPreview")}
       data-testid={testId}
       className={sharedClassName}
     >

@@ -1,0 +1,42 @@
+{
+  "window": {
+    "lifetime": "Lifetime budget",
+    "monthlyUtc": "Monthly UTC budget"
+  },
+  "reservePerRun": "Reserve per run (USD)",
+  "invalidReservation": "Enter a valid amount of zero or more.",
+  "reservationHint": "An estimate held before each run starts. Zero disables the estimate. Actual provider charges may exceed it.",
+  "updateReservation": "Update reservation",
+  "advancedSettings": "Advanced settings",
+  "blockUnpriced": "Block new work when usage has no reliable price",
+  "observed": "Observed",
+  "percentOfLimit": "{{percent}}% of limit",
+  "noCap": "No cap configured",
+  "budget": "Budget",
+  "disabled": "Disabled",
+  "softAlertAt": "Soft alert at {{percent}}%",
+  "pauseReasonSuffix": " · {{reason}} pause",
+  "pendingRuns": "{{runCount}} completed runs await accounting.",
+  "unpricedEvents": "{{eventCount}} usage events are unpriced. Known spend excludes their unknown cost.",
+  "remaining": "Remaining",
+  "unlimited": "Unlimited",
+  "utilizationAriaLabel": "Budget utilization: {{percent}}% used",
+  "pausedProject": "Execution is paused for this project until the budget block is resolved.",
+  "pausedScope": "Heartbeats are paused for this scope until the budget block is resolved.",
+  "budgetUsd": "Budget (USD)",
+  "saving": "Saving...",
+  "updateBudget": "Update budget",
+  "setBudget": "Set budget",
+  "status": {
+    "paused": "Paused",
+    "warning": "Warning",
+    "hardStop": "Hard stop",
+    "healthy": "Healthy"
+  },
+  "invalidAmount": "Enter a valid non-negative dollar amount.",
+  "scopeType": {
+    "company": "company",
+    "agent": "agent",
+    "project": "project"
+  }
+}

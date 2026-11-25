@@ -1,0 +1,5 @@
+{
+  "retryStopped": "The previous retry has already stopped. Refresh the task and retry its latest failed run.",
+  "retryCouldNotStart": "This retry could not start. Open the task to review its current access and recovery state.",
+  "retrySkipped": "Retry was skipped."
+}

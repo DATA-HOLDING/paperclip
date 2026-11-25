@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useCallback, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { AttentionCloseMode, AttentionItem, AttentionFeedView, AttentionReceipt } from "@paperclipai/shared";
@@ -76,14 +77,14 @@ export function useClaimAttentionItem(companyId: string | null | undefined) {
     mutationFn: (item: AttentionItem) => attentionApi.claim(companyId!, item.sourceKind, item.subject.id),
     onSuccess: (_result, item) => {
       toasts?.pushToast({
-        title: "Claimed",
-        body: item.subject.title ? `${item.subject.title} is now in For you.` : "The card is now in For you.",
+        title: t("hooksUseAttentionViews.claimed"),
+        body: item.subject.title ? t("hooksUseAttentionViews.claimedBody", { title: item.subject.title }) : t("hooksUseAttentionViews.claimedBodyGeneric"),
         tone: "success",
       });
     },
     onError: (error) => {
       toasts?.pushToast({
-        title: "Could not claim this card",
+        title: t("hooksUseAttentionViews.claimFailed"),
         body: error instanceof Error ? error.message : undefined,
         tone: "error",
       });
@@ -105,7 +106,7 @@ export function useDismissAttentionReceipt(companyId: string | null | undefined)
     mutationFn: (receipt: AttentionReceipt) => inboxDismissalsApi.dismiss(companyId!, receipt.dismissalKey),
     onError: (error) => {
       toasts?.pushToast({
-        title: "Could not dismiss this receipt",
+        title: t("hooksUseAttentionViews.dismissFailed"),
         body: error instanceof Error ? error.message : undefined,
         tone: "error",
       });
@@ -134,9 +135,9 @@ export interface AttentionWithdrawAllResult {
 }
 
 const CLOSE_TOAST_TITLE: Record<AttentionCloseMode, string> = {
-  withdraw: "Request withdrawn",
-  archive: "Archived for you",
-  snooze: "Snoozed for you",
+  withdraw: t("hooksUseAttentionViews.closeTitle.withdraw"),
+  archive: t("hooksUseAttentionViews.closeTitle.archive"),
+  snooze: t("hooksUseAttentionViews.closeTitle.snooze"),
 };
 
 /**
@@ -189,13 +190,13 @@ export function useAttentionCloseActions(
       onRestored?.(item);
       toasts?.pushToast({
         id: `attention-restore-${item.id}`,
-        title: "Restored",
+        title: t("hooksUseAttentionViews.restored"),
         body: item.subject.title ?? undefined,
         tone: "info",
       });
     } catch (error) {
       restored = false;
-      toasts?.pushToast({ title: "Could not restore this card", body: errorBody(error), tone: "error" });
+      toasts?.pushToast({ title: t("hooksUseAttentionViews.restoreFailed"), body: errorBody(error), tone: "error" });
     }
     invalidate();
     return restored;
@@ -217,16 +218,16 @@ export function useAttentionCloseActions(
         dedupeKey: `attention-close-${item.dismissalKey}`,
         title: CLOSE_TOAST_TITLE[mode],
         body: mode === "snooze" && result.until
-          ? `Back ${new Date(result.until).toLocaleString()}.`
+          ? t("hooksUseAttentionViews.backAt", { when: new Date(result.until).toLocaleString() })
           : item.subject.title ?? undefined,
         tone: mode === "withdraw" ? "success" : "info",
-        ...(mode === "withdraw" ? {} : { ttlMs: 8000, action: { label: "Undo", onClick: () => void restore(item) } }),
+        ...(mode === "withdraw" ? {} : { ttlMs: 8000, action: { label: t("hooksUseAttentionViews.undo"), onClick: () => void restore(item) } }),
       });
     },
     onError: (error, { item, mode }) => {
       onCloseFailed?.(item, mode);
       toasts?.pushToast({
-        title: mode === "withdraw" ? "Could not withdraw this request" : "Could not hide this card",
+        title: mode === "withdraw" ? t("hooksUseAttentionViews.withdrawFailed") : t("hooksUseAttentionViews.hideFailed"),
         body: errorBody(error),
         tone: "error",
       });
@@ -239,13 +240,13 @@ export function useAttentionCloseActions(
       attentionApi.transfer(companyId!, item.sourceKind, item.subject.id, { userId, reason: reason?.trim() || undefined }),
     onSuccess: (_result, { item, userId }) => {
       toasts?.pushToast({
-        title: `Transferred to @${attentionUserLabel(userId, userLabelMap)}`,
+        title: t("hooksUseAttentionViews.transferred", { name: attentionUserLabel(userId, userLabelMap) }),
         body: item.subject.title ?? undefined,
         tone: "success",
       });
     },
     onError: (error) => {
-      toasts?.pushToast({ title: "Could not transfer this card", body: errorBody(error), tone: "error" });
+      toasts?.pushToast({ title: t("hooksUseAttentionViews.transferFailed"), body: errorBody(error), tone: "error" });
     },
     onSettled: (_result, _error, { item }) => {
       invalidate();
@@ -278,11 +279,11 @@ export function useAttentionCloseActions(
       invalidate();
     }
     const notes = [
-      result.alreadyClosed.length ? `${result.alreadyClosed.length} already answered by someone else.` : null,
-      result.failed.length ? `${result.failed.length} could not be withdrawn.` : null,
+      result.alreadyClosed.length ? t("hooksUseAttentionViews.alreadyAnswered", { count: result.alreadyClosed.length }) : null,
+      result.failed.length ? t("hooksUseAttentionViews.couldNotWithdraw", { count: result.failed.length }) : null,
     ].filter(Boolean).join(" ");
     toasts?.pushToast({
-      title: result.withdrawn.length === 1 ? "Withdrew 1 stale request" : `Withdrew ${result.withdrawn.length} stale requests`,
+      title: t("hooksUseAttentionViews.withdrewStale", { count: result.withdrawn.length }),
       body: notes || undefined,
       tone: result.failed.length ? "error" : "success",
     });

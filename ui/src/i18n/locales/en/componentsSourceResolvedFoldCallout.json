@@ -1,0 +1,14 @@
+{
+  "ariaLabel": "Source-resolved watchdog fold",
+  "eyebrow": "SOURCE-RESOLVED FOLD",
+  "systemAudit": "system audit",
+  "description": "This run was folded as a source-resolved false positive.",
+  "sourceTask": "Source task",
+  "sameRunEvidence": "Same-run evidence",
+  "at": "at {{when}}",
+  "silenceAge": "Silence age before fold",
+  "silenceStarted": " (silence started {{when}})",
+  "unknown": "unknown",
+  "processCleanup": "Process cleanup",
+  "evaluationTask": "Evaluation task"
+}

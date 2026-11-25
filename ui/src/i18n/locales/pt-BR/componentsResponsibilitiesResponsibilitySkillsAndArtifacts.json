@@ -1,0 +1,17 @@
+{
+  "anAgent": "Um agente",
+  "heldBy": "Com {{names}}",
+  "skills": {
+    "title": "Skills",
+    "question": "Do que isto precisa, e o que os agentes que trabalham nisto sabem fazer?",
+    "filedHere": "Registrada aqui",
+    "empty": "Nenhuma skill ainda. Adicione uma de que isto precise, ou elas aparecem aqui a partir dos agentes que fazem o trabalho: os responsáveis pelas tarefas e rotinas e os líderes dos projetos."
+  },
+  "artifacts": {
+    "orMore": "{{limit}} ou mais",
+    "truncated": "Mostrando os {{shown}} mais recentes de {{of}}.",
+    "title": "Artefatos",
+    "question": "O que o trabalho produziu? Os mais recentes primeiro; cada um abre na tarefa que o gerou.",
+    "empty": "Nada produzido ainda. Documentos, arquivos e outros resultados das tarefas desta responsabilidade ficam reunidos aqui."
+  }
+}

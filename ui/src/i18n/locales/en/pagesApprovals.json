@@ -1,0 +1,13 @@
+{
+  "breadcrumb": "Approvals",
+  "approveAction": "approve this request",
+  "rejectAction": "reject this request",
+  "selectOrganization": "Select an organization first.",
+  "loadAction": "load approvals",
+  "tabs": {
+    "pending": "Pending",
+    "all": "All"
+  },
+  "emptyPending": "No pending approvals.",
+  "emptyAll": "No approvals yet."
+}

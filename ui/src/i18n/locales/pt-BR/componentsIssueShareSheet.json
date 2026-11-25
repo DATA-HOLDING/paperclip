@@ -1,0 +1,61 @@
+{
+  "source": {
+    "owner": "dono da tarefa",
+    "explicit": "compartilhado diretamente",
+    "assignment": "via atribuição",
+    "project": "via projeto"
+  },
+  "aclDescription": "Compartilhar dá acesso a esta tarefa e às suas descendentes, incluindo comentários, documentos e histórico de execuções. Tarefas mãe e irmãs precisam de acesso separado.",
+  "toast": {
+    "granted": "Acesso concedido",
+    "addFailed": "Não foi possível adicionar o acesso",
+    "revoked": "Acesso revogado",
+    "revokeFailed": "Não foi possível revogar o acesso"
+  },
+  "unknownUser": "Usuário desconhecido",
+  "groups": {
+    "people": "Pessoas",
+    "agents": "Agentes"
+  },
+  "title": "Quem pode acessar esta tarefa",
+  "empty": "Só você pode ver esta tarefa.",
+  "unknown": "Desconhecido",
+  "granter": {
+    "shared": "Compartilhado",
+    "granted": "Concedido"
+  },
+  "subtitle": {
+    "implicit": "{{role}} — o acesso continua enquanto esta função valer",
+    "inherited": "Acesso herdado — gerenciado na origem",
+    "granted": "{{granter}} {{time}}"
+  },
+  "removeSavedGrant": "Remover concessão salva",
+  "revokeButton": "Revogar",
+  "projectManaged": "gerenciado pelo projeto",
+  "addSomeone": "Adicionar alguém",
+  "choose": "Escolha uma pessoa ou agente…",
+  "search": "Buscar pessoas e agentes…",
+  "loadingDirectory": "Carregando diretório…",
+  "noOneLeft": "Não há mais ninguém para adicionar.",
+  "caution": {
+    "ariaLabel": "Aviso sobre agente compartilhado",
+    "title": "Agente compartilhado.",
+    "body": "A memória e o espaço de trabalho de {{name}} podem levar contexto privado residual desta tarefa para execuções futuras de outras pessoas. Conceda só se isso for aceitável."
+  },
+  "back": "Voltar",
+  "adding": "Adicionando…",
+  "add": "Adicionar",
+  "revoke": {
+    "title": "Remover a concessão salva de {{name}}?",
+    "thisSubject": "este sujeito",
+    "bodyBefore": "Isto remove a concessão e o acesso que ela dá às descendentes desta tarefa. Ser dono, a atribuição atual, a participação no projeto, o acesso herdado ou outra concessão ainda podem dar acesso. Revogar o acesso",
+    "bodyNot": "não",
+    "bodyAfter": "apaga o conteúdo já visto ou retido na memória de um agente."
+  },
+  "cancel": "Cancelar",
+  "removing": "Removendo…",
+  "removeGrant": "Remover concessão",
+  "errorActions": {
+    "loadAccess": "carregar o acesso"
+  }
+}

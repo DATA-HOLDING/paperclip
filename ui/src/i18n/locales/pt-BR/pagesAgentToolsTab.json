@@ -1,0 +1,86 @@
+{
+  "retry": "Tentar novamente",
+  "saving": "Salvando...",
+  "resolving": "Resolvendo o acesso efetivo…",
+  "github": {
+    "title": "Identidade no GitHub",
+    "checking": "Verificando a identidade no GitHub…",
+    "loadFailed": "Não foi possível carregar a identidade no GitHub",
+    "loadFailedDetail": "O Paperclip não conseguiu verificar a conexão atual deste agente. Sua configuração existente não foi alterada.",
+    "dedicatedAccount": "Conta do GitHub dedicada",
+    "dedicatedDetail": "Usada só por {{agentName}}. Esta conexão dedicada tem precedência sobre o GitHub da pessoa responsável.",
+    "useResponsible": "Usar o GitHub da pessoa responsável",
+    "useResponsibleDetail": "No início da execução, o Paperclip usa a conexão pessoal do GitHub da pessoa responsável pela tarefa.",
+    "connected": "Sua conta está conectada.",
+    "connectedAs": "Sua conta está conectada como @{{login}}.",
+    "manageIdentity": "Gerenciar identidade no GitHub",
+    "manageMine": "Gerenciar meu GitHub",
+    "connectMine": "Conectar meu GitHub",
+    "useDedicated": "Usar uma conta dedicada"
+  },
+  "apps": {
+    "title": "Apps instalados",
+    "description": "Os apps instalados carregam ferramentas no contexto de {{agentName}} em toda execução. Apps apenas permitidos não aumentam o custo de contexto.",
+    "banner": "Ter acesso significa que o app é permitido. Instalado significa que as ferramentas dele são adicionadas ao contexto de execução deste agente.",
+    "empty": "Nenhum app permitido ainda. Vincule um perfil de acesso para disponibilizar apps aqui.",
+    "installAria": "Instalar {{name}} em {{agentName}}",
+    "installedForAllHint": "Instalado pela página do app para todos os agentes. Remova a instalação para todos os agentes lá.",
+    "loadedHint": "Carregado no contexto de execução deste agente.",
+    "openPermissions": "Abrir permissões",
+    "permittedNotInstalled": "Permitido mas não instalado — as ferramentas não aparecerão nas execuções."
+  },
+  "badge": {
+    "installedForAll": "Instalado para todos",
+    "installed": "Instalado",
+    "permittedOnly": "Apenas permitido",
+    "notPermitted": "Não permitido"
+  },
+  "status": {
+    "couldNotSave": "Não foi possível salvar",
+    "unsaved": "Alterações não salvas",
+    "saved": "Salvo"
+  },
+  "policyEffect": {
+    "allow": "permitir",
+    "block": "bloquear",
+    "deny": "negar",
+    "requireApproval": "exigir aprovação",
+    "redact": "ocultar",
+    "rateLimit": "limitar taxa"
+  },
+  "effective": {
+    "title": "Acesso efetivo",
+    "before": "Este é exatamente o conjunto de ferramentas que o Paperclip aceitará para",
+    "middle": ". Edições de perfis e políticas são refletidas em cerca de 5 segundos. O prompt do agente pode restringir esta lista, mas",
+    "cannotExpand": "não pode ampliá-la",
+    "after": " — todo o resto é bloqueado por padrão."
+  },
+  "allowed": {
+    "title": "Ferramentas permitidas",
+    "count_one": "{{count}} ferramenta",
+    "count_other": "{{count}} ferramentas",
+    "empty": "Nenhuma ferramenta é permitida para este agente. Vincule um perfil de ferramentas para conceder acesso.",
+    "columns": {
+      "tool": "Ferramenta",
+      "capability": "Capacidade",
+      "risk": "Risco",
+      "source": "Origem"
+    }
+  },
+  "why": {
+    "title": "Por que estas ferramentas?",
+    "profiles": "Perfis de acesso",
+    "checkAccess": "Verificar acesso",
+    "noProfiles": "Nenhum perfil ativo se aplica a este agente, então ele não tem ferramentas permitidas.",
+    "orgDefault": "Padrão da organização",
+    "policies": "Políticas ativas",
+    "loadingPolicies": "Carregando políticas…",
+    "noPolicies": "Nenhuma política ativa altera hoje a lista de permissões deste agente.",
+    "policyTitle": "Política #{{order}}: {{name}}",
+    "unavailable": "Ferramentas indisponíveis",
+    "checkingTools": "Verificando ferramentas…",
+    "allAllowed": "Toda ferramenta conhecida que este agente poderia citar está permitida.",
+    "wouldBlock": "Ferramentas que o agente poderia citar, mas que o Paperclip bloquearia:",
+    "more": "+{{count}} a mais"
+  }
+}

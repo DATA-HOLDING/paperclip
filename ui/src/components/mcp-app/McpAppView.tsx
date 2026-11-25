@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
 import { McpAppFrame } from "./McpAppFrame";
 import { useMcpAppSendMessage } from "./McpAppIssueContext";
 import { mcpAppNavigationGuardSupported, type McpAppDisplayMode } from "./mcp-app-host";
+import { t } from "@/i18n";
 
-const UNSUPPORTED_BROWSER_MESSAGE = "This browser can't show this app's widget safely. The tool result is still in the activity.";
+const UNSUPPORTED_BROWSER_MESSAGE = t("componentsMcpApp.unsupportedBrowser");
 
 /** A message a view proposed for the chat, waiting for the viewer. */
 export interface McpAppMessageProposal {
@@ -34,20 +35,20 @@ export function McpAppMessageProposalCard({ applicationName, proposal, onSend, o
   return (
     <div
       role="group"
-      aria-label={`${applicationName} wants to send a message`}
+      aria-label={t("componentsMcpApp.wantsToSendAria", { applicationName })}
       data-testid="mcp-app-message-proposal"
       className="flex min-w-0 flex-col gap-2 rounded-lg border border-border bg-muted/30 p-3"
     >
-      <p className="text-xs text-muted-foreground">{applicationName} wants to send:</p>
+      <p className="text-xs text-muted-foreground">{t("componentsMcpApp.wantsToSend", { applicationName })}</p>
       <blockquote className="max-h-48 overflow-y-auto whitespace-pre-wrap break-words border-l-2 border-border pl-2.5 text-sm text-foreground">
         {proposal.text}
       </blockquote>
       {proposal.status === "error" ? (
-        <p role="alert" className="text-xs text-destructive">{proposal.errorMessage ?? "The message could not be sent."}</p>
+        <p role="alert" className="text-xs text-destructive">{proposal.errorMessage ?? t("componentsMcpApp.sendFailed")}</p>
       ) : null}
       <div className="flex items-center justify-end gap-2">
-        <Button type="button" variant="ghost" size="sm" onClick={onDismiss} disabled={sending}>Dismiss</Button>
-        <Button type="button" size="sm" onClick={onSend} disabled={sending}>{sending ? "Sending…" : "Send"}</Button>
+        <Button type="button" variant="ghost" size="sm" onClick={onDismiss} disabled={sending}>{t("componentsMcpApp.dismiss")}</Button>
+        <Button type="button" size="sm" onClick={onSend} disabled={sending}>{sending ? t("componentsMcpApp.sending") : t("componentsMcpApp.send")}</Button>
       </div>
     </div>
   );
@@ -79,11 +80,11 @@ export function McpAppViewContent({
   if (status === "error" || unsupported) {
     return (
       <div role="status" data-testid="mcp-app-view-error" className="ml-1.5 mt-0.5 border-l-2 border-border py-1 pl-2.5 text-(length:--text-micro) text-muted-foreground">
-        {unsupported ? UNSUPPORTED_BROWSER_MESSAGE : errorMessage ?? "This app's view could not be shown."}
+        {unsupported ? UNSUPPORTED_BROWSER_MESSAGE : errorMessage ?? t("componentsMcpApp.viewCouldNotBeShown")}
       </div>
     );
   }
-  const applicationName = detail?.applicationName ?? "App";
+  const applicationName = detail?.applicationName ?? t("componentsMcpApp.app");
   const fullscreen = displayMode === "fullscreen" && Boolean(detail) && Boolean(onDisplayModeChange);
   // One frame at a time: the fullscreen dialog hosts its own frame while the
   // inline slot waits, so the view never runs twice.
@@ -116,11 +117,11 @@ export function McpAppViewContent({
         )}
       >
         {status === "loading" || !detail ? (
-          <div role="status" aria-label={`Loading ${detail?.applicationName ?? "app"} view`} className="h-24 animate-pulse bg-muted/40" />
+          <div role="status" aria-label={t("componentsMcpApp.loadingView", { applicationName: detail?.applicationName ?? t("componentsMcpApp.appLower") })} className="h-24 animate-pulse bg-muted/40" />
         ) : fullscreen ? (
           <div role="status" data-testid="mcp-app-view-fullscreen-placeholder" className="flex items-center justify-between gap-2 py-2 text-xs text-muted-foreground">
-            <span>Showing full screen</span>
-            <Button type="button" variant="ghost" size="sm" onClick={() => onDisplayModeChange?.("inline")}>Back to chat</Button>
+            <span>{t("componentsMcpApp.showingFullScreen")}</span>
+            <Button type="button" variant="ghost" size="sm" onClick={() => onDisplayModeChange?.("inline")}>{t("componentsMcpApp.backToChat")}</Button>
           </div>
         ) : frame}
       </div>
@@ -135,9 +136,9 @@ export function McpAppViewContent({
             <div className="flex min-w-0 items-center justify-between gap-2 border-b border-border px-4 py-2">
               <div className="min-w-0">
                 <DialogTitle className="truncate text-sm font-medium">{displayName}</DialogTitle>
-                <DialogDescription className="text-xs">Widget from {applicationName}</DialogDescription>
+                <DialogDescription className="text-xs">{t("componentsMcpApp.widgetFrom", { applicationName })}</DialogDescription>
               </div>
-              <Button type="button" variant="ghost" size="sm" onClick={() => onDisplayModeChange?.("inline")}>Exit full screen</Button>
+              <Button type="button" variant="ghost" size="sm" onClick={() => onDisplayModeChange?.("inline")}>{t("componentsMcpApp.exitFullScreen")}</Button>
             </div>
             <div className="flex min-h-0 flex-1 flex-col gap-2 p-3">
               {frame}
@@ -151,12 +152,12 @@ export function McpAppViewContent({
 }
 
 function viewErrorMessage(error: unknown, applicationName: string): string {
-  if (error instanceof ApiError && error.status === 404) return `This ${applicationName} view is no longer available.`;
-  return `${applicationName} could not show this view. The tool result is still in the row above.`;
+  if (error instanceof ApiError && error.status === 404) return t("componentsMcpApp.viewNoLongerAvailable", { applicationName });
+  return t("componentsMcpApp.couldNotShowView", { applicationName });
 }
 
 function sendErrorMessage(error: unknown): string {
-  return error instanceof Error && error.message ? error.message : "The message could not be sent.";
+  return error instanceof Error && error.message ? error.message : t("componentsMcpApp.sendFailed");
 }
 
 /**

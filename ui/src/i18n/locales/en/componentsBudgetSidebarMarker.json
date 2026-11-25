@@ -1,0 +1,5 @@
+{
+  "healthy": "Budget healthy",
+  "warning": "Budget warning",
+  "critical": "Paused by budget"
+}

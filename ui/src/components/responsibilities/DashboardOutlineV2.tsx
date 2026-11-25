@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { DashboardEditModule } from "./DashboardEditModule";
 import { ProposalsNotice } from "./ResponsibilityViewParts";
 import type { DashboardViewProps } from "./view-props";
+import { t } from "@/i18n";
 
 /** Which areas are folded, remembered in the browser; works without storage. */
 function useCollapsedAreas(scope: string): [ReadonlySet<string>, (key: string) => void] {
@@ -64,7 +65,7 @@ function OutlineV2Area({
   onToggle: () => void;
   onAdd: () => void;
 }) {
-  const name = group.area?.title ?? "No area";
+  const name = group.area?.title ?? t("componentsResponsibilitiesDashboardOutlineV2.noArea");
   const listId = `outline-v2-area-${group.key}`;
   const canAdd = group.area?.status !== "archived";
   return (
@@ -92,7 +93,7 @@ function OutlineV2Area({
             size="icon-xs"
             variant="ghost"
             className="relative z-10 text-muted-foreground"
-            aria-label={`Add a responsibility to ${name}`}
+            aria-label={t("componentsResponsibilitiesDashboardOutlineV2.addTo", { name })}
             onClick={onAdd}
           >
             <Plus aria-hidden="true" />
@@ -112,7 +113,7 @@ function OutlineV2Area({
             onClick={onAdd}
             className="block w-full border-t border-border py-3 pl-11 pr-5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
           >
-            Add a responsibility
+            {t("componentsResponsibilitiesDashboardOutlineV2.addResponsibility")}
           </button>
         ) : null}
       </div>
@@ -182,10 +183,10 @@ export function DashboardOutlineV2({
         shown.map(renderArea)
       ) : query ? (
         <p className="text-sm text-muted-foreground" role="status" data-outline-v2-no-match="">
-          Nothing matches “{query}”.
+          {t("componentsResponsibilitiesDashboardOutlineV2.noMatch", { query })}
         </p>
       ) : (
-        <p className="text-sm text-muted-foreground">No areas yet.</p>
+        <p className="text-sm text-muted-foreground">{t("componentsResponsibilitiesDashboardOutlineV2.noAreas")}</p>
       )}
       <DashboardEditModule
         companyId={companyId}

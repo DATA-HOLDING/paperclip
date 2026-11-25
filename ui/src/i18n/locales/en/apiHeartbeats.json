@@ -1,0 +1,4 @@
+{
+  "traceDownloadFailed": "Trace download failed: {{status}}",
+  "stopNotAccepted": "Stop was not accepted because the run changed."
+}

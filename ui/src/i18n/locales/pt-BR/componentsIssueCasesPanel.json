@@ -1,0 +1,9 @@
+{
+  "roles": {
+    "origin": "origem",
+    "work": "trabalho",
+    "reference": "referência"
+  },
+  "title": "Casos",
+  "workflow": "fluxo"
+}

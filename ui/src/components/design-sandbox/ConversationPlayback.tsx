@@ -9,6 +9,7 @@ import type { TaskChatMessageItem } from "../task-chat/task-chat-model";
 import { CONVERSATION_PLAYBACK_STAGES, conversationPlaybackSnapshot, previewHistory, SYNTHETIC_FINAL, PLAYBACK_FOLLOW_UP_STAGE, PLAYBACK_FOLLOW_UP, PLAYBACK_VERIFICATION_FINAL } from "./task-thread-fixtures";
 import { ConversationPlaybackTurn } from "./ConversationPlaybackTurn";
 import { settledPreviewReply } from "./settled-preview-reply";
+import { t } from "@/i18n";
 
 /** A local clock feeds cumulative synthetic transcript snapshots into the real
  * conversation renderer. One thread persists throughout; no fixture carousel. */
@@ -59,11 +60,11 @@ export function ConversationPlayback({ header, agentName, agent, onShowSavedThre
     <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-border bg-background py-2 text-xs">
       <Button size="sm" variant="outline" disabled={!stepMs} onClick={() => !started || ended ? restart() : setPlaying(value => !value)}>
         {ended ? <RotateCcw /> : playing ? <Pause /> : <Play />}
-        {ended ? "Replay conversation" : playing ? "Pause" : started ? "Resume conversation" : "Play conversation"}
+        {ended ? t("componentsDesignSandbox.playback.replayConversation") : playing ? t("componentsDesignSandbox.playback.pause") : started ? t("componentsDesignSandbox.playback.resumeConversation") : t("componentsDesignSandbox.playback.playConversation")}
       </Button>
-      {started && !ended ? <Button size="sm" variant="ghost" onClick={restart}><RotateCcw />Replay</Button> : null}
-      {onShowSavedThread ? <Button size="sm" variant="ghost" onClick={onShowSavedThread}>Show saved thread</Button> : null}
-      <span className="text-muted-foreground" role="status">{started ? ended ? "Conversation complete" : `${playing ? "" : "Paused · "}${CONVERSATION_PLAYBACK_STAGES[stage]?.label}` : "Watch a typical conversation · synthetic preview"}</span>
+      {started && !ended ? <Button size="sm" variant="ghost" onClick={restart}><RotateCcw />{t("componentsDesignSandbox.playback.replay")}</Button> : null}
+      {onShowSavedThread ? <Button size="sm" variant="ghost" onClick={onShowSavedThread}>{t("componentsDesignSandbox.showSavedThread")}</Button> : null}
+      <span className="text-muted-foreground" role="status">{started ? ended ? t("componentsDesignSandbox.playback.complete") : `${playing ? "" : t("componentsDesignSandbox.playback.pausedPrefix")}${CONVERSATION_PLAYBACK_STAGES[stage]?.label}` : t("componentsDesignSandbox.playback.watchIntro")}</span>
     </div>
     <TaskChatThreadView key={generation} header={header} items={started ? [human] : []} contentKey={`${elapsed}:${generation}`} tail={started ? <div className="flex flex-col gap-8">
       <ConversationPlaybackTurn settled={followUp} snapshot={firstSnapshot} items={firstItems} response={firstResponse} settledItems={firstSettled} />

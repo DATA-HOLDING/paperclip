@@ -1,0 +1,18 @@
+{
+  "period": "Período de custo",
+  "from": "De",
+  "to": "até",
+  "toAria": "Até",
+  "selectDates": "Selecione uma data de início e de fim para carregar os dados.",
+  "loadFailed": "Não foi possível carregar os custos de {{agentName}}. Tente novamente em instantes.",
+  "empty": "Nenhum evento de custo de {{agentName}} neste período.",
+  "spend": "Gasto",
+  "ledgerEvents": "{{count}} eventos no registro",
+  "tokens": "Tokens",
+  "tokensDescription": "entrada {{input}} ({{cached}} em cache) · saída {{output}}",
+  "runs": "Execuções",
+  "runsDescription": "{{api}} via API · {{subscription}} via assinatura",
+  "byModel": "Por modelo",
+  "noModelBreakdown": "Nenhum detalhamento por modelo neste período.",
+  "tok": "{{value}} tok"
+}

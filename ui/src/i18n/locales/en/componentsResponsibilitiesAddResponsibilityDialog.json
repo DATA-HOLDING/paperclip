@@ -1,0 +1,18 @@
+{
+  "formIncomplete": "The form is incomplete",
+  "title": "Add a responsibility",
+  "description": "Something you own, with a bar for success and a number that shows whether you are meeting it.",
+  "titleLabel": "What do you own?",
+  "titlePlaceholder": "e.g. Investor pipeline",
+  "titleMissing": "Name what you own",
+  "area": "Area",
+  "noArea": "No area",
+  "newArea": "New area…",
+  "newAreaName": "New area name",
+  "newAreaPlaceholder": "e.g. Fundraising",
+  "newAreaMissing": "Name the new area",
+  "error": "Couldn’t add the responsibility. {{message}}",
+  "cancel": "Cancel",
+  "adding": "Adding…",
+  "submit": "Add responsibility"
+}

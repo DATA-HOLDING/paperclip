@@ -1,0 +1,21 @@
+{
+  "browseGallery": "Navegar na galeria",
+  "browseInGallery": "Ver {{filename}} na galeria",
+  "openInNewTab": "Abrir em nova aba",
+  "open": "Abrir {{filename}}",
+  "download": "Baixar",
+  "downloadFile": "Baixar {{filename}}",
+  "deleteAttachment": "Excluir anexo",
+  "meta": "Anexo · {{contentType}} · {{size}}",
+  "loadingPreview": "Carregando pré-visualização...",
+  "previewError": "Não foi possível carregar a pré-visualização em markdown.",
+  "title": "Anexos",
+  "altFallback": "anexo",
+  "confirmShort": "Excluir?",
+  "yes": "Sim",
+  "no": "Não",
+  "confirmLong": "Excluir este anexo? Isso não pode ser desfeito.",
+  "cancel": "Cancelar",
+  "deleting": "Excluindo...",
+  "delete": "Excluir"
+}

@@ -1,0 +1,8 @@
+{
+  "question": "Pergunta",
+  "answerQuestionAria": "Responder à pergunta: {{prompt}}",
+  "unansweredQuestion": "Pergunta sem resposta",
+  "reviewRequest": "Revisar pedido",
+  "suggestedTasks": "Tarefas sugeridas",
+  "openRequestAria": "Abrir pedido: {{label}}"
+}

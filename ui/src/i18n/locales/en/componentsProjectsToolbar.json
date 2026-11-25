@@ -1,0 +1,16 @@
+{
+  "sort": {
+    "name": "Name",
+    "updated": "Updated",
+    "created": "Created",
+    "targetDate": "Target date"
+  },
+  "toolbarAriaLabel": "Projects controls",
+  "searchLabel": "Search projects",
+  "searchPlaceholder": "Search projects…",
+  "sortTitle": "Sort",
+  "sortLabel": "Sort: {{label}}",
+  "asc": "Asc",
+  "desc": "Desc",
+  "createProject": "Create project"
+}

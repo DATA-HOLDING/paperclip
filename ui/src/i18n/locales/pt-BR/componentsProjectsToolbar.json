@@ -1,0 +1,16 @@
+{
+  "sort": {
+    "name": "Nome",
+    "updated": "Atualizado",
+    "created": "Criado",
+    "targetDate": "Data-alvo"
+  },
+  "toolbarAriaLabel": "Controles de projetos",
+  "searchLabel": "Buscar projetos",
+  "searchPlaceholder": "Buscar projetos…",
+  "sortTitle": "Ordenar",
+  "sortLabel": "Ordenar: {{label}}",
+  "asc": "Cresc.",
+  "desc": "Decresc.",
+  "createProject": "Criar projeto"
+}

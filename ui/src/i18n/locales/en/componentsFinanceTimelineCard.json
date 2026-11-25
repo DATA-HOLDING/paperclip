@@ -1,0 +1,10 @@
+{
+  "empty": "No financial events recorded in this period. Events appear when reported through the API, CLI, or a supported integration.",
+  "title": "Recent financial events",
+  "description": "Provider charges, subscriptions, fees, and credits. Reported separately from run-cost estimates.",
+  "providerCostReport": "Provider cost report",
+  "invoice": "invoice {{id}}",
+  "region": "region {{region}}",
+  "tier": "tier {{tier}}",
+  "estimated": "estimated"
+}

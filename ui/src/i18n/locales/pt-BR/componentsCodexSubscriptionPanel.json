@@ -1,0 +1,8 @@
+{
+  "resets": "Renova {{time}}",
+  "title": "Assinatura do Codex",
+  "description": "Cota da assinatura do Codex conectada a este servidor.",
+  "accountWindows": "Janelas da conta",
+  "modelWindows": "Janelas do modelo",
+  "usedPercent": "{{percent}}% usado"
+}

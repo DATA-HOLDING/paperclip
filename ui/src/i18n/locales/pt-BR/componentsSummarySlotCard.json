@@ -1,0 +1,47 @@
+{
+  "revision": "Rev. {{number}}",
+  "latestRevisionOption": "Mais recente (Rev. {{number}}) - {{timestamp}}",
+  "workingWith": "Trabalhando com {{tool}}",
+  "generationNotStarted": "Não foi possível iniciar a geração do resumo.",
+  "latest": "Mais recente",
+  "badges": {
+    "generating": "Gerando",
+    "historical": "Revisão anterior",
+    "latest": "Revisão mais recente"
+  },
+  "refresh": "Atualizar",
+  "setup": {
+    "pendingTitle": "A configuração do Summarizer aguarda aprovação",
+    "title": "Configurar o Summarizer",
+    "message": "Os resumos são gerados pelo Summarizer, agente integrado do Paperclip. Configure o adaptador e o modelo dele antes de pedir este resumo.",
+    "action": "Configurar Summarizer"
+  },
+  "paused": {
+    "title": "O Summarizer está pausado",
+    "resuming": "Retomando...",
+    "resumeAgent": "Retomar agente",
+    "message": "Os resumos existentes continuam legíveis, mas novos resumos não serão gerados até o agente ser retomado."
+  },
+  "requestFailed": "Falha ao pedir o resumo",
+  "loadAction": "carregar o resumo",
+  "failed": {
+    "title": "Falha na geração do resumo",
+    "retrying": "Tentando novamente...",
+    "retry": "Tentar novamente",
+    "defaultReason": "A tarefa de geração terminou antes de escrever um resumo."
+  },
+  "generating": {
+    "title": "Gerando resumo",
+    "workingIn": "O Summarizer está trabalhando em"
+  },
+  "empty": {
+    "title": "Nenhum resumo ainda",
+    "message": "Gere um retrato conciso do status desta área.",
+    "generating": "Gerando...",
+    "generate": "Gerar resumo"
+  },
+  "updated": "Atualizado {{time}}",
+  "selectRevision": "Selecionar revisão do resumo",
+  "revisionCount_one": "{{count}} revisão",
+  "revisionCount_other": "{{count}} revisões"
+}

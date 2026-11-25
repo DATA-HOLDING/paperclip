@@ -19,6 +19,7 @@ import type {
   WorkspaceServiceControlEntry,
 } from "@/components/WorkspaceServiceControlBar";
 import { safeExternalHttpUrl } from "../lib/safe-url";
+import { t } from "@/i18n";
 
 export type WorkspaceRuntimeAction = "start" | "stop" | "restart" | "run";
 
@@ -117,7 +118,7 @@ function buildJobItem(
     workspaceCommandId: command.id,
     runtimeServiceId: null,
     serviceIndex: null,
-    disabledReason: command.disabledReason ?? (!command.command ? "This job is missing a command." : null),
+    disabledReason: command.disabledReason ?? (!command.command ? t("componentsWorkspaceRuntimeControls.jobMissingCommand") : null),
   };
 }
 
@@ -167,7 +168,7 @@ export function buildWorkspaceRuntimeControlSections(input: {
       workspaceCommandId: null,
       runtimeServiceId: runtimeService.id,
       serviceIndex: runtimeService.configIndex ?? null,
-      disabledReason: "This runtime service no longer matches a configured workspace command.",
+      disabledReason: t("componentsWorkspaceRuntimeControls.serviceNoLongerMatches"),
     }));
 
   return {
@@ -193,14 +194,14 @@ function isActiveStatusLabel(statusLabel: string) {
 function exposureFailureCopy(exposure: RuntimeExposureStatus | null) {
   if (exposure?.state === "failed") {
     return {
-      label: "HTTPS unavailable",
-      remediation: "Check the Tailscale broker and node HTTPS configuration.",
+      label: t("componentsWorkspaceRuntimeControls.exposure.unavailable"),
+      remediation: t("componentsWorkspaceRuntimeControls.exposure.unavailableRemediation"),
     };
   }
   if (exposure?.state === "cleanup_pending") {
     return {
-      label: "HTTPS cleanup pending",
-      remediation: "Restart the host broker before reusing this port.",
+      label: t("componentsWorkspaceRuntimeControls.exposure.cleanupPending"),
+      remediation: t("componentsWorkspaceRuntimeControls.exposure.cleanupPendingRemediation"),
     };
   }
   return null;
@@ -268,14 +269,14 @@ export function buildWorkspaceServiceControlEntries(input: {
 
     const runtimeService = item.runtimeServiceId ? runtimeServicesById.get(item.runtimeServiceId) ?? null : null;
     const failureDetail = state === "failed"
-      ? `Service failed${runtimeService?.stoppedAt ? ` · ${timeAgo(runtimeService.stoppedAt)}` : ""}`
+      ? `${t("componentsWorkspaceRuntimeControls.serviceFailed")}${runtimeService?.stoppedAt ? ` · ${timeAgo(runtimeService.stoppedAt)}` : ""}`
       : null;
     const exposure = runtimeService?.exposure ?? item.exposure;
     const exposureFailure = exposureFailureCopy(exposure);
     const exposureDetail = exposure?.state === "pending"
-      ? "Provisioning HTTPS…"
+      ? t("componentsWorkspaceRuntimeControls.exposure.provisioning")
       : exposure?.state === "ready"
-        ? "HTTPS ready"
+        ? t("componentsWorkspaceRuntimeControls.exposure.ready")
         : exposureFailure
           ? `${exposureFailure.label} · ${exposureFailure.remediation}`
           : null;
@@ -374,12 +375,12 @@ function CommandActionButtons({
         const request = buildRequest(item, action);
         const Icon = action === "stop" ? Square : action === "restart" ? RotateCcw : Play;
         const label = action === "run"
-          ? "Run"
+          ? t("componentsWorkspaceRuntimeControls.action.run")
           : action === "start"
-            ? "Start"
+            ? t("componentsWorkspaceRuntimeControls.action.start")
             : action === "stop"
-              ? "Stop"
-              : "Restart";
+              ? t("componentsWorkspaceRuntimeControls.action.stop")
+              : t("componentsWorkspaceRuntimeControls.action.restart");
         const showSpinner = isPending && requestMatchesPending(pendingRequest, request);
         const disabled =
           isPending
@@ -477,7 +478,7 @@ function CommandSection({
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   ) : null}
-                  {item.port ? <div>Port {item.port}</div> : null}
+                  {item.port ? <div>{t("componentsWorkspaceRuntimeControls.port", { port: item.port })}</div> : null}
                   {item.command ? <div className="break-all font-mono">{item.command}</div> : null}
                   {item.cwd && !hideHostPaths ? <div className="break-all font-mono">{item.cwd}</div> : null}
                   {item.disabledReason ? <div>{item.disabledReason}</div> : null}
@@ -510,8 +511,8 @@ export function WorkspaceRuntimeControls({
   sections,
   isPending = false,
   pendingRequest = null,
-  serviceEmptyMessage = "No services are configured for this workspace.",
-  jobEmptyMessage = "No one-shot jobs are configured for this workspace.",
+  serviceEmptyMessage = t("componentsWorkspaceRuntimeControls.noServicesConfigured"),
+  jobEmptyMessage = t("componentsWorkspaceRuntimeControls.noJobsConfigured"),
   disabledHint = null,
   onAction,
   className,
@@ -526,7 +527,7 @@ export function WorkspaceRuntimeControls({
     <div className={cn("space-y-4", className)}>
       <div className={cn("border border-border/70 bg-background p-3", square ? "rounded-none" : "rounded-xl")}>
         <div className="space-y-1">
-          <div className="text-xs font-medium uppercase tracking-(--tracking-eyebrow) text-muted-foreground">Workspace commands</div>
+          <div className="text-xs font-medium uppercase tracking-(--tracking-eyebrow) text-muted-foreground">{t("componentsWorkspaceRuntimeControls.workspaceCommands")}</div>
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="outline"
               className={cn(
@@ -537,12 +538,12 @@ export function WorkspaceRuntimeControls({
               )}
             >
               <Activity className="h-3.5 w-3.5" />
-              {runningCount > 0 ? `${runningCount} services running` : "No services running"}
+              {runningCount > 0 ? t("componentsWorkspaceRuntimeControls.servicesRunning", { count: runningCount }) : t("componentsWorkspaceRuntimeControls.noServicesRunning")}
             </Badge>
             <span className="text-xs text-muted-foreground">
               {sections.jobs.length > 0
-                ? `${sections.jobs.length} job${sections.jobs.length === 1 ? "" : "s"} available to run on demand.`
-                : "Each command can be controlled independently."}
+                ? t("componentsWorkspaceRuntimeControls.jobsAvailable", { count: sections.jobs.length })
+                : t("componentsWorkspaceRuntimeControls.eachCommandIndependent")}
             </span>
           </div>
           {visibleDisabledHint ? <p className="text-xs text-muted-foreground">{visibleDisabledHint}</p> : null}
@@ -550,8 +551,8 @@ export function WorkspaceRuntimeControls({
       </div>
 
       <CommandSection
-        title="Services"
-        description="Long-running commands that Paperclip can supervise for this workspace."
+        title={t("componentsWorkspaceRuntimeControls.services.title")}
+        description={t("componentsWorkspaceRuntimeControls.services.description")}
         items={sections.services}
         emptyMessage={serviceEmptyMessage}
         disabledHint={visibleDisabledHint}
@@ -562,8 +563,8 @@ export function WorkspaceRuntimeControls({
       />
 
       <CommandSection
-        title="Jobs"
-        description="One-shot commands that run now and exit when they finish."
+        title={t("componentsWorkspaceRuntimeControls.jobs.title")}
+        description={t("componentsWorkspaceRuntimeControls.jobs.description")}
         items={sections.jobs}
         emptyMessage={jobEmptyMessage}
         isPending={isPending}
@@ -574,8 +575,8 @@ export function WorkspaceRuntimeControls({
 
       {sections.otherServices.length > 0 ? (
         <CommandSection
-          title="Untracked services"
-          description="Running services that no longer match the current workspace command config."
+          title={t("componentsWorkspaceRuntimeControls.untracked.title")}
+          description={t("componentsWorkspaceRuntimeControls.untracked.description")}
           items={sections.otherServices}
           emptyMessage=""
           isPending={isPending}

@@ -1,0 +1,10 @@
+{
+  "breadcrumbs": {
+    "agents": "Agents",
+    "pluginView": "Plugin view"
+  },
+  "agentUnavailable": "Agent unavailable",
+  "loading": "Loading agent view…",
+  "viewUnavailable": "Agent view unavailable",
+  "pluginViewUnavailable": "This plugin view is unavailable"
+}

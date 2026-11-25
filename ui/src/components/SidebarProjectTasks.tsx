@@ -9,6 +9,7 @@ import { taskStatusIconProps } from "@/lib/task-status-presentation";
 import { RecentTaskNavItem } from "./RecentTaskNavItem";
 import { TruncatedText } from "./TruncatedText";
 import { StatusIcon } from "./StatusIcon";
+import { t } from "@/i18n";
 
 export function SidebarProjectTasks({ project, userId, renderRow, className, renderTask }: {
   project: Pick<Project, "id" | "companyId" | "name">;
@@ -41,11 +42,11 @@ export function SidebarProjectTasks({ project, userId, renderRow, className, ren
       </button>
     )}
     {expanded && <div id={contentId} className="design-sidebar-primary ms-2">
-      {isPending ? <p className="px-3 py-2 text-xs text-muted-foreground" role="status">Loading tasks…</p>
-        : error ? <p className="px-3 py-2 text-xs text-muted-foreground" role="alert">Couldn’t load tasks.</p>
+      {isPending ? <p className="px-3 py-2 text-xs text-muted-foreground" role="status">{t("componentsSidebarProjectTasks.loading")}</p>
+        : error ? <p className="px-3 py-2 text-xs text-muted-foreground" role="alert">{t("componentsSidebarProjectTasks.loadError")}</p>
           : tasks?.length ? tasks.map(task => <div key={task.id}>{renderTask ? renderTask(task)
             : <RecentTaskNavItem className="design-sidebar-item" task={task} label={task.title} iconNode={<StatusIcon {...taskStatusIconProps(task)} />} />}</div>)
-            : <p className="px-3 py-2 text-xs text-muted-foreground">No tasks yet.</p>}
+            : <p className="px-3 py-2 text-xs text-muted-foreground">{t("componentsSidebarProjectTasks.empty")}</p>}
     </div>}
   </div>;
 }

@@ -1,0 +1,48 @@
+{
+  "status": {
+    "active": "ativo",
+    "paused": "pausado",
+    "blocked": "bloqueado",
+    "limited": "limitado",
+    "usage_limited": "limitado por uso",
+    "budget_limited": "limitado por orçamento",
+    "complete": "concluído"
+  },
+  "pending": {
+    "starting": "Iniciando",
+    "editing": "Salvando",
+    "replacing": "Substituindo",
+    "pausing": "Pausando após o turno atual",
+    "resuming": "Retomando",
+    "clearing": "Limpando",
+    "continuing": "Continuando em uma nova execução"
+  },
+  "errors": {
+    "selectAgent": "Selecione um agente para usar /goal.",
+    "unsupported": "Este agente não suporta objetivos de sessão.",
+    "actionFailed": "Não foi possível aplicar a ação do objetivo.",
+    "noGoal": "Não há um objetivo de sessão atual para editar.",
+    "addObjective": "Adicione um objetivo depois de /goal para iniciar um objetivo."
+  },
+  "ariaLabel": "Objetivo de sessão do agente",
+  "title": "Objetivo da sessão",
+  "workingNow": "Trabalhando agora",
+  "hint": "Digite /goal seguido de um objetivo para levar o trabalho adiante ao longo dos turnos.",
+  "tokens": "{{tokens}} tokens",
+  "iterations": "{{count}} iterações",
+  "edit": "Editar objetivo",
+  "pause": "Pausar objetivo",
+  "resume": "Retomar objetivo",
+  "clear": "Limpar objetivo",
+  "dialog": {
+    "replaceTitle": "Substituir o objetivo da sessão?",
+    "editTitle": "Editar objetivo da sessão",
+    "replaceBody": "Isto limpa o objetivo não concluído e inicia um novo objetivo com o texto abaixo.",
+    "editBody": "Atualize o objetivo sem perder o progresso dele.",
+    "objective": "Descrição do objetivo",
+    "cancel": "Cancelar",
+    "saving": "Salvando…",
+    "replace": "Substituir objetivo",
+    "save": "Salvar objetivo"
+  }
+}

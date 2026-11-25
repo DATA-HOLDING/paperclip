@@ -1,0 +1,32 @@
+{
+  "defaultNotRight": "That automation isn't right yet.",
+  "noResponsibility": "No responsibility: the task is not filed under one.",
+  "and": " and ",
+  "start": {
+    "schedule": "On a schedule: {{label}}",
+    "webhook": "From a webhook, when another system calls it",
+    "standingCheck": "A standing check: {{label}}"
+  },
+  "calledBy": "Called by: {{caller}}",
+  "looksFor": "Looks for: {{value}}",
+  "whenFound": "When it finds it: {{value}}",
+  "automationSetUp": "Automation set up:",
+  "settingUp": "Setting up the automation…",
+  "replaced": "Proposed automation, replaced by a newer one: ",
+  "notThis": "Not this automation: ",
+  "proposedFor": "Proposed automation for {{title}}",
+  "proposedBy": "{{name}} proposed an automation for ",
+  "rows": {
+    "eachTime": "Each time",
+    "howItStarts": "How it starts",
+    "whoRunsIt": "Who runs it",
+    "filedUnder": "Filed under"
+  },
+  "webhookHint": "Once it is set up, you get the address to call and its secret to give that system.",
+  "whatShouldChange": "What should change? (optional)",
+  "reasonPlaceholder": "e.g. Run it on Mondays instead, and only for paying customers",
+  "back": "Back",
+  "send": "Send",
+  "notRight": "Not right",
+  "setItUp": "Set it up"
+}

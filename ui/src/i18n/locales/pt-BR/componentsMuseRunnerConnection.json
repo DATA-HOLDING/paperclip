@@ -1,0 +1,94 @@
+{
+  "notObserved": "Não observado",
+  "intro": "O Muse usa as próprias ferramentas e permissões. O Paperclip coordena as tarefas e perguntas da organização. O uso e o custo do provedor não estão disponíveis.",
+  "disabled": "O Muse está desativado nas configurações experimentais. A limpeza da conexão e as evidências de parada continuam disponíveis.",
+  "publicOriginRequired": "É preciso uma instância autenticada com uma URL HTTPS pública para conectar o Muse.",
+  "disconnected": "Desconectado. As credenciais do Paperclip e a autoridade de execução foram revogadas.",
+  "detectorRemovalRequested": "Remoção do detector solicitada; a conclusão não foi confirmada.",
+  "afterDisconnect": "Depois de desconectar, o receptor se desativa na próxima vez que alcançar o Paperclip. A limpeza não pode ser confirmada pela conexão revogada.",
+  "recordDetectorObservation": "Registrar observação da remoção do detector",
+  "separateSteps": "A remoção do detector, a parada do worker e a limpeza da sandbox são separadas. O Paperclip não consegue verificar toda ferramenta privada do Muse nem parar todas as conversas pessoais do Muse.",
+  "nativeEffectsUnknown": "Os resultados dos efeitos nativos continuam desconhecidos e bloqueiam o trabalho de substituição. O atestado do worker não resolve nem repete esses efeitos.",
+  "stopRevisionUnavailable": "A revisão do vínculo de parada não está disponível. Atualize para inspecionar esta atribuição antes de atestar.",
+  "attestWorkerStopped": "Atestar que este worker parou",
+  "recordExactDetector": "Registre uma observação deste detector exato",
+  "digestHint": "Use o digest da observação de runtime sem segredos. Não cole a listagem, uma URL, credenciais nem a saída de ferramentas privadas.",
+  "observedAtHint": "Informe o horário real da listagem do runtime, não o horário em que você envia este formulário. O Paperclip o confere com a revogação e o prazo da qualificação.",
+  "detectorConfirm": "Observei que este hook exato estava ausente na listagem do runtime compatível após a revogação. Isto atesta apenas a remoção do detector, não a parada do worker nem efeitos privados.",
+  "confirmDetector": "Confirmar observação do detector",
+  "confirmWorkerTitle": "Confirme que o worker desta atribuição exata parou",
+  "workerConfirm": "Parei este worker do Muse para a atribuição e a execução indicadas. Isto não certifica ferramentas privadas independentes nem efeitos nativos desconhecidos.",
+  "confirmWorkerStopped": "Confirmar que o worker parou",
+  "pauseAgent": "Pausar agente",
+  "disconnect": "Desconectar",
+  "openMuse": "Abrir o Muse",
+  "saveFirst": "Salve o agente e depois conecte aqui o seu Muse pessoal.",
+  "accountUnconfirmed": "Não foi possível confirmar sua conta. Atualize para inspecionar esta conexão do Muse.",
+  "cancel": "Cancelar",
+  "refresh": "Atualizar",
+  "rows": {
+    "lastReceiverContact": "Último contato persistido do receptor público",
+    "workerActivity": "Atividade autenticada do worker",
+    "lastVerifiedReply": "Última resposta verificada",
+    "credentialStatus": "Status da credencial",
+    "refreshExpires": "Credencial de renovação expira",
+    "clientVersion": "Versão do cliente",
+    "liveAssignments": "Atribuições ativas",
+    "uncertainOperations": "Operações nativas incertas",
+    "pendingAnswers": "Respostas pendentes",
+    "usageAndCost": "Uso e custo"
+  },
+  "notReported": "Não informado",
+  "unavailable": "Indisponível",
+  "contactLag": "O contato do receptor é persistido em lotes e pode atrasar até {{seconds}} segundos. As verificações do receptor público não são verificadas. Só uma resposta autenticada confirma que o Muse consegue trabalhar.",
+  "cleanupStatus": "Remoção do detector: {{detector}}. Quiescência do worker: {{worker}}.",
+  "detector": {
+    "operatorAttested": "atestada pelo operador",
+    "acknowledged": "reconhecida"
+  },
+  "notConfirmed": "não confirmada",
+  "workerReported": "informada",
+  "cleanupExpires": "A capacidade de limpeza expira em {{date}}.",
+  "recorded": "Registrado {{time}}: {{source}}. Isto não é uma confirmação independente do provedor.",
+  "evidence": {
+    "operator": "atestado do operador a partir de uma listagem de hooks de runtime compatível",
+    "worker": "relatório autenticado do worker"
+  },
+  "stop": {
+    "operatorAttested": "Você atestou que o worker do Muse desta atribuição parou.",
+    "workerReported": "O Muse informou que o worker desta atribuição está quiescente. Efeitos privados independentes continuam sem confirmação.",
+    "fenced": "O Paperclip isolou a autoridade desta atribuição. A parada externa não pode ser confirmada."
+  },
+  "recordDetectorAria": "Registrar a remoção exata do detector do Muse",
+  "hooksHint": {
+    "before": "Use o comando compatível do Muse ",
+    "after": " após a revogação para verificar que este script registrado exato está ausente. Verificações desativadas, silêncio ou um pedido de remoção não bastam. O ID do hook e a observação guardados são o seu relatório. O Paperclip não verifica a instalação, não consulta o Muse nem remove o hook."
+  },
+  "fields": {
+    "hookId": {
+      "label": "ID do hook registrado",
+      "aria": "ID do hook registrado no Muse"
+    },
+    "observationSha": {
+      "label": "SHA-256 da observação",
+      "aria": "SHA-256 da observação da remoção do detector"
+    },
+    "observedAt": {
+      "label": "Observado em (UTC)",
+      "aria": "Remoção do detector observada em (UTC)"
+    }
+  },
+  "attestAria": "Atestar que este worker do Muse parou",
+  "none": "Nenhum",
+  "copySetupPrompt": "Copiar prompt de configuração",
+  "connectYourMuse": "Conecte o seu Muse",
+  "setupDescription": "Cole na sua conversa atual do Muse. Conclua o Connect Paperclip se o Muse pedir e depois aprove o hostname do Paperclip.",
+  "setupExpires": "A configuração de uso único expira em {{date}}. O Muse guarda a credencial da conexão no cofre seguro dele. A permissão de hostname vale para pedidos futuros a este hostname do Paperclip.",
+  "testingReply": "Testando resposta em segundo plano…",
+  "testReply": "Testar resposta em segundo plano",
+  "reconnect": "Reconectar o Muse",
+  "repair": "Reparar conexão",
+  "connect": "Conectar o Muse",
+  "loadFailed": "Não foi possível carregar a conexão do Muse.",
+  "loading": "Carregando conexão do Muse…"
+}

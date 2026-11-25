@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dialog";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 // Renderers contain UI labels only. All artifact-specific content is passed in.
 // Example values live exclusively in the individual stories' args.
@@ -154,7 +155,7 @@ function Diff({ additions, deletions, filesChanged }: DiffProps) {
       )}
       {filesChanged != null && (
         <span className="text-muted-foreground">
-          {filesChanged} {filesChanged === 1 ? "file" : "files"}
+          {t("componentsArtifacts.rich.filesChanged", { count: filesChanged })}
         </span>
       )}
     </div>
@@ -174,17 +175,17 @@ export interface PullRequestCardProps extends ArtifactIdentity, DiffProps {
 }
 
 const checksLabel = {
-  passed: "Checks passed",
-  pending: "Checks pending",
-  failed: "Checks failed",
-  unknown: "Checks not available",
+  passed: t("componentsArtifacts.rich.checks.passed"),
+  pending: t("componentsArtifacts.rich.checks.pending"),
+  failed: t("componentsArtifacts.rich.checks.failed"),
+  unknown: t("componentsArtifacts.rich.checks.unknown"),
 };
 const stateLabel = {
-  open: "Open",
-  draft: "Draft",
-  merged: "Merged",
-  closed: "Closed",
-  unknown: "State unknown",
+  open: t("componentsArtifacts.rich.state.open"),
+  draft: t("componentsArtifacts.rich.state.draft"),
+  merged: t("componentsArtifacts.rich.state.merged"),
+  closed: t("componentsArtifacts.rich.state.closed"),
+  unknown: t("componentsArtifacts.rich.state.unknown"),
 };
 
 export function PullRequestCard(props: PullRequestCardProps) {
@@ -216,7 +217,7 @@ export function PullRequestCard(props: PullRequestCardProps) {
       <div className="flex flex-col gap-4 p-5">
         <div className="flex items-center justify-between gap-2">
           <span className="flex items-center gap-2 text-xs text-muted-foreground">
-            <GitPullRequest className="size-4" /> Pull request{" "}
+            <GitPullRequest className="size-4" /> {t("componentsArtifacts.rich.pullRequest")}{" "}
             {number != null && <span className="font-mono">#{number}</span>}
           </span>
           <Badge
@@ -261,13 +262,13 @@ export function PullRequestCard(props: PullRequestCardProps) {
         )}
         {evidenceSource && (
           <p className="text-xs text-muted-foreground">
-            Source: {evidenceSource}
+            {t("componentsArtifacts.rich.source", { source: evidenceSource })}
           </p>
         )}
       </div>
       <Footer
         {...props}
-        action={<SourceLink url={url}>Open pull request</SourceLink>}
+        action={<SourceLink url={url}>{t("componentsArtifacts.rich.openPullRequest")}</SourceLink>}
       />
     </Card>
   );
@@ -284,7 +285,7 @@ export function CommitCard(props: CommitCardProps) {
     <Card>
       <div className="flex flex-col gap-4 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <GitCommitHorizontal className="size-4" /> Commit{" "}
+          <GitCommitHorizontal className="size-4" /> {t("componentsArtifacts.rich.commit")}{" "}
           <code title={props.sha}>{props.sha.slice(0, 8)}</code>
         </span>
         <Identity {...props} />
@@ -301,7 +302,7 @@ export function CommitCard(props: CommitCardProps) {
       </div>
       <Footer
         {...props}
-        action={<SourceLink url={props.url}>View commit</SourceLink>}
+        action={<SourceLink url={props.url}>{t("componentsArtifacts.rich.viewCommit")}</SourceLink>}
       />
     </Card>
   );
@@ -353,7 +354,7 @@ function Markdown({ body, preview = false }: { body: string; preview?: boolean }
                 rel="noreferrer"
                 className="underline underline-offset-4"
               >
-                {alt || "Open image"}
+                {alt || t("componentsArtifacts.rich.openImage")}
               </a>
             ) : (
               <span>{alt}</span>
@@ -405,8 +406,8 @@ export function DocumentCard(props: DocumentCardProps) {
       )}
       <div className="flex flex-col gap-3 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <FileText className="size-4" /> {patch ? "Patch" : "Markdown"}
-          {props.revision != null && ` · revision ${props.revision}`}
+          <FileText className="size-4" /> {patch ? t("componentsArtifacts.rich.patch") : "Markdown"}
+          {props.revision != null && t("componentsArtifacts.rich.revision", { revision: props.revision })}
         </span>
         <Identity {...props} />
         <span className="break-all font-mono text-xs text-muted-foreground">
@@ -425,13 +426,13 @@ export function DocumentCard(props: DocumentCardProps) {
                 aria-expanded={props.expanded}
                 onClick={props.onOpen}
               >
-                {props.expanded ? "Close document" : "Read document"}
+                {props.expanded ? t("componentsArtifacts.rich.closeDocument") : t("componentsArtifacts.rich.readDocument")}
               </Button>
             ) : (
               <Viewer
                 title={props.title}
                 description={props.filename}
-                action="Read document"
+                action={t("componentsArtifacts.rich.readDocument")}
               >
                 {content(props.body)}
               </Viewer>
@@ -480,7 +481,7 @@ function DataTable({ columns, rows }: Pick<DataCardProps, "columns" | "rows">) {
         </tbody>
       </table>
       {rows.length === 0 && (
-        <p className="p-4 text-xs text-muted-foreground">No rows</p>
+        <p className="p-4 text-xs text-muted-foreground">{t("componentsArtifacts.rich.noRows")}</p>
       )}
     </div>
   );
@@ -498,10 +499,9 @@ export function DataCard(props: DataCardProps) {
       </div>
       <div className="flex flex-col gap-3 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Table2 className="size-4" /> CSV · {props.truncated ? "First " : ""}
-          {props.rows.length} {props.rows.length === 1 ? "row" : "rows"} ·{" "}
-          {props.columns.length}{" "}
-          {props.columns.length === 1 ? "column" : "columns"}
+          <Table2 className="size-4" /> CSV · {props.truncated ? t("componentsArtifacts.rich.first") : ""}
+          {t("componentsArtifacts.rich.rowCount", { count: props.rows.length })} ·{" "}
+          {t("componentsArtifacts.rich.columnCount", { count: props.columns.length })}
         </span>
         <Identity {...props} />
         <span className="break-all font-mono text-xs text-muted-foreground">
@@ -516,7 +516,7 @@ export function DataCard(props: DataCardProps) {
             <Viewer
               title={props.title}
               description={props.filename}
-              action="View data"
+              action={t("componentsArtifacts.rich.viewData")}
             >
               <DataTable {...props} />
               <Button asChild variant="outline" size="sm" className="w-fit">
@@ -527,7 +527,7 @@ export function DataCard(props: DataCardProps) {
                     `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`
                   }
                 >
-                  Download CSV
+                  {t("componentsArtifacts.rich.downloadCsv")}
                 </a>
               </Button>
             </Viewer>
@@ -551,7 +551,7 @@ function ImageContent({ src, alt }: { src: string; alt: string }) {
   ) : (
     <div className="flex aspect-video flex-col items-center justify-center gap-3 text-muted-foreground">
       <ImageIcon className="size-8" />
-      <span className="text-xs">No preview available</span>
+      <span className="text-xs">{t("componentsArtifacts.rich.noPreview")}</span>
     </div>
   );
 }
@@ -572,7 +572,7 @@ export function ImageCard(props: ImageCardProps) {
       </div>
       <div className="flex flex-col gap-3 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <ImageIcon className="size-4" /> Image
+          <ImageIcon className="size-4" /> {t("componentsArtifacts.rich.image")}
           {props.width && props.height
             ? ` · ${props.width} × ${props.height}`
             : ""}
@@ -589,16 +589,16 @@ export function ImageCard(props: ImageCardProps) {
             <Button
               size="sm"
               variant="outline"
-              aria-label={`View image: ${props.title}`}
+              aria-label={t("componentsArtifacts.rich.viewImageLabel", { title: props.title })}
               onClick={props.onOpen}
             >
-              View image
+              {t("componentsArtifacts.rich.viewImage")}
             </Button>
           ) : (
             <Viewer
               title={props.title}
               description={props.filename}
-              action="View image"
+              action={t("componentsArtifacts.rich.viewImage")}
             >
               <ImageContent src={props.imageUrl} alt={props.alt} />
             </Viewer>
@@ -630,7 +630,7 @@ export function VideoCard(props: VideoCardProps) {
       />
       <div className="flex flex-col gap-3 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Film className="size-4" /> Video
+          <Film className="size-4" /> {t("componentsArtifacts.rich.video")}
           {props.duration && ` · ${props.duration}`}
         </span>
         <Identity {...props} />
@@ -645,13 +645,13 @@ export function VideoCard(props: VideoCardProps) {
             <Button
               size="sm"
               variant="outline"
-              aria-label={`Open video: ${props.title}`}
+              aria-label={t("componentsArtifacts.rich.openVideoLabel", { title: props.title })}
               onClick={props.onOpen}
             >
-              Open video
+              {t("componentsArtifacts.rich.openVideo")}
             </Button>
           ) : (
-            <SourceLink url={props.videoUrl}>Open video</SourceLink>
+            <SourceLink url={props.videoUrl}>{t("componentsArtifacts.rich.openVideo")}</SourceLink>
           )
         }
       />
@@ -674,7 +674,7 @@ export function LinkPreviewCard(props: LinkPreviewCardProps) {
       )}
       <div className="flex flex-col gap-4 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Globe className="size-4" /> Link preview
+          <Globe className="size-4" /> {t("componentsArtifacts.rich.linkPreview")}
         </span>
         <Identity {...props} />
         <span className="break-all font-mono text-xs text-muted-foreground">
@@ -683,7 +683,7 @@ export function LinkPreviewCard(props: LinkPreviewCardProps) {
       </div>
       <Footer
         {...props}
-        action={<SourceLink url={props.url}>Open link</SourceLink>}
+        action={<SourceLink url={props.url}>{t("componentsArtifacts.rich.openLink")}</SourceLink>}
       />
     </Card>
   );
@@ -703,7 +703,7 @@ export function FileCard(props: FileCardProps) {
     <Card>
       <div className="flex flex-col gap-4 p-5">
         <span className="flex items-center gap-2 text-xs text-muted-foreground">
-          <File className="size-4" /> File
+          <File className="size-4" /> {t("componentsArtifacts.rich.file")}
           {props.fileSize && ` · ${props.fileSize}`}
         </span>
         <Identity {...props} />
@@ -733,17 +733,17 @@ export function FileCard(props: FileCardProps) {
           <div className="flex flex-wrap items-center gap-2">
             {props.actions}
             {props.openUrl && (
-              <SourceLink url={props.openUrl}>Open file</SourceLink>
+              <SourceLink url={props.openUrl}>{t("componentsArtifacts.rich.openFile")}</SourceLink>
             )}
             {artifactUrl(props.downloadUrl) ? (
               <Button asChild size="sm" variant="outline">
                 <a href={artifactUrl(props.downloadUrl)} download={props.filename}>
-                  Download file
+                  {t("componentsArtifacts.rich.downloadFile")}
                 </a>
               </Button>
             ) : (
               <Button size="sm" variant="outline" disabled>
-                Download unavailable
+                {t("componentsArtifacts.rich.downloadUnavailable")}
               </Button>
             )}
           </div>

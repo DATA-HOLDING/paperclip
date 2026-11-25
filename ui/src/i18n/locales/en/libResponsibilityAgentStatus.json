@@ -1,0 +1,75 @@
+{
+  "tiles": {
+    "onTrack": "On track",
+    "atRisk": "At risk",
+    "behind": "Behind",
+    "unclear": "Unclear"
+  },
+  "listAnd": "{{rest}} and {{last}}",
+  "author": {
+    "you": "You",
+    "aPerson": "A person",
+    "anAgent": "An agent",
+    "anAgentLower": "an agent"
+  },
+  "dateLocale": "en-US",
+  "writtenAgo": {
+    "today": "today",
+    "yesterday": "yesterday",
+    "daysAgo_one": "{{count}} days ago",
+    "daysAgo_other": "{{count}} days ago",
+    "onDate": "on {{date}}"
+  },
+  "tileLines": {
+    "ofResponsibilities_one": "Of {{count}} responsibility",
+    "ofResponsibilities_other": "Of {{count}} responsibilities",
+    "everyOneHasStatus": "Every one has a status",
+    "cantTell_one": "{{count}} can't tell yet",
+    "cantTell_other": "{{count}} can't tell yet",
+    "notMeasured_one": "{{count}} not measured",
+    "notMeasured_other": "{{count}} not measured",
+    "noneRightNow": "None right now",
+    "inAreas_one": "In {{count}} area",
+    "inAreas_other": "In {{count}} areas"
+  },
+  "provenance": {
+    "byAgent_one": "{{count}} written by an agent",
+    "byAgent_other": "{{count}} written by agents",
+    "outOfDate_one": "{{count}} out of date",
+    "outOfDate_other": "{{count}} out of date",
+    "byPerson_one": "{{count}} written by a person",
+    "byPerson_other": "{{count}} written by a person",
+    "fromNumber_one": "{{count}} from the number",
+    "fromNumber_other": "{{count}} from the numbers"
+  },
+  "summary": {
+    "noResponsibilities": "You do not own any responsibilities yet.",
+    "noneWritten": "No agent has written a status yet. Every status below comes from the numbers.",
+    "oneWritten": "Your one status is written.",
+    "allWritten": "All {{total}} of your statuses are written.",
+    "someWritten": "{{written}} of your {{total}} statuses are written; the rest come from the numbers.",
+    "noneBehind": "None of the written ones is behind or at risk.",
+    "theyPut": "They put {{list}}.",
+    "behindCount": "{{count}} behind",
+    "atRiskCount": "{{count}} at risk",
+    "and": " and ",
+    "stale_one": "{{count}} is older than {{days}} days.",
+    "stale_other": "{{count}} are older than {{days}} days.",
+    "waiting_one": "{{names}}, for {{count}} update",
+    "waiting_other": "{{names}}, for {{count}} updates"
+  },
+  "area": {
+    "onTrack_one": "{{onTrack}} of {{count}} responsibility on track",
+    "onTrack_other": "{{onTrack}} of {{count}} responsibilities on track"
+  },
+  "metric": {
+    "noAnswer": "No answer yet",
+    "shouldBeYes": "should be yes",
+    "noReading": "No reading yet",
+    "range": "range {{target}}",
+    "noRange": "no range set",
+    "targetAtMost": "target at most {{target}}",
+    "target": "target {{target}}",
+    "noTarget": "no target set"
+  }
+}

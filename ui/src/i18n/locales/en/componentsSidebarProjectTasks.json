@@ -1,0 +1,5 @@
+{
+  "loading": "Loading tasks…",
+  "loadError": "Couldn’t load tasks.",
+  "empty": "No tasks yet."
+}

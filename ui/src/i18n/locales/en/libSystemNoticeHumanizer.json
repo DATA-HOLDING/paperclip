@@ -1,0 +1,8 @@
+{
+  "fallbackTitle": "System update",
+  "claudeNeedsReauth": "Task paused — Claude needs re-authentication",
+  "bindingMissing": "Task paused — a secret/config binding is missing",
+  "workspaceProblem": "Task paused — workspace problem",
+  "waitingOn": "Task paused — waiting on {{owner}}",
+  "couldNotContinue": "Task could not continue"
+}

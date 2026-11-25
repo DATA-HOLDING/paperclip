@@ -1,0 +1,6 @@
+{
+  "risk": "risco {{level}}",
+  "autoReviewApproved": "Aprovado pela revisão automática",
+  "autoApproved": "aprovado automaticamente",
+  "userAuthorization": "autorização do usuário: {{consent}}"
+}

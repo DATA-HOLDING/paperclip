@@ -7,6 +7,7 @@ import type {
 import { resourceMembershipsApi } from "../api/resourceMemberships";
 import { useToastActions } from "../context/ToastContext";
 import { queryKeys } from "../lib/queryKeys";
+import { t } from "@/i18n";
 
 type MutationVariables = {
   resourceType: JoinableResourceType;
@@ -151,7 +152,7 @@ export function useResourceMembershipMutation(companyId: string | null | undefin
 
   return useMutation({
     mutationFn: (variables: MutationVariables) => {
-      if (!companyId) throw new Error("Select an organization first.");
+      if (!companyId) throw new Error(t("hooksUseResourceMemberships.selectOrganization"));
       const body = { state: variables.state, starred: variables.starred };
       return variables.resourceType === "project"
         ? resourceMembershipsApi.updateProject(companyId, variables.resourceId, body)
@@ -176,9 +177,15 @@ export function useResourceMembershipMutation(companyId: string | null | undefin
       const verb = variables.starred !== undefined
         ? variables.starred ? "star" : "unstar"
         : variables.state === "left" ? "leave" : "join";
+      const errorTitles = {
+        star: "hooksUseResourceMemberships.error.star",
+        unstar: "hooksUseResourceMemberships.error.unstar",
+        leave: "hooksUseResourceMemberships.error.leave",
+        join: "hooksUseResourceMemberships.error.join",
+      } as const;
       pushToast({
-        title: `Couldn't ${verb} ${variables.resourceName}.`,
-        body: error instanceof Error ? error.message : "Try again.",
+        title: t(errorTitles[verb], { name: variables.resourceName }),
+        body: error instanceof Error ? error.message : t("hooksUseResourceMemberships.tryAgain"),
         tone: "error",
       });
     },

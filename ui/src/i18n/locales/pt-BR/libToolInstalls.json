@@ -1,0 +1,6 @@
+{
+  "installInfo": "Instalar adiciona as ferramentas de {{appName}} ao contexto do agente em toda execução — instale só onde elas forem realmente usadas.",
+  "installAllWarning": "Adiciona custo de contexto a toda execução de todos os agentes — uma escolha deliberada. Novos agentes que você adicionar depois serão instalados automaticamente.",
+  "autoExtend": "Instalar em {{agentName}} também concede acesso. Uma ferramenta não pode ser instalada num agente que não tem permissão para usá-la, então vamos adicionar {{agentName}} a quem pode usá-la. Isso fica registrado.",
+  "installedHint": "Tem acesso — marque para carregar as ferramentas no contexto deste agente."
+}

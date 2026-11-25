@@ -1,0 +1,21 @@
+{
+  "compacting": "Compactando…",
+  "compactNow": "Compactar agora",
+  "pendingHint": "O agente está resumindo a conversa. Isso costuma levar menos de um minuto.",
+  "availableHint": "Resume a conversa até aqui para que o agente tenha espaço para continuar trabalhando.",
+  "contextWindow": "Janela de contexto",
+  "usedOfWindow": "{{used}} de {{window}} tokens",
+  "updated": " · atualizado {{time}}",
+  "compactsNear": "Compacta automaticamente perto de {{tokens}}.",
+  "closeToFull": "Quase cheia. O agente vai compactar o contexto em breve.",
+  "input": "Entrada",
+  "inputCached": "{{input}} · {{cached}} em cache",
+  "output": "Saída",
+  "reasoning": "Raciocínio",
+  "lastRequest": "Última solicitação",
+  "lastRequestValue": "{{input}} entrada · {{output}} saída",
+  "cost": "Custo",
+  "compactions": "Compactações",
+  "meterAriaLabel": "Janela de contexto: {{percent}}% de {{window}} tokens usados",
+  "ofWindow": " de {{window}}"
+}

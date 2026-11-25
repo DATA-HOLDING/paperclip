@@ -1,0 +1,21 @@
+{
+  "languages": {
+    "text": "Text"
+  },
+  "uploadFailed": "Image upload failed",
+  "fallback": {
+    "message": "Rich editor unavailable for this markdown. Showing raw source instead.",
+    "retry": "Retry rich editor"
+  },
+  "mentionKind": {
+    "task": "Task",
+    "project": "Project",
+    "user": "User",
+    "skill": "Skill",
+    "routine": "Routine"
+  },
+  "drop": {
+    "file": "Drop file to upload",
+    "image": "Drop image to upload"
+  }
+}

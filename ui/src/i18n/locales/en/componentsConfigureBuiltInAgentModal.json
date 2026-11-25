@@ -1,0 +1,20 @@
+{
+  "modelUnavailable": "Model “{{model}}” is not available for {{adapterType}}. Choose a known model.",
+  "configureAndEnable": "Configure & enable {{name}}",
+  "provision": "Provision {{name}}",
+  "configureFailed": "Failed to configure the built-in agent.",
+  "title": "Set up the {{name}}",
+  "intro": {
+    "creates": "Creates",
+    "inRoster": "in your roster, badged",
+    "builtIn": "Built-in",
+    "queued": ". Organizations that require hire approval will queue this for the board."
+  },
+  "harness": "Harness",
+  "needsFields": "This adapter needs command or endpoint fields before it can run. Provision the built-in row now, then finish those fields from the full agent configuration.",
+  "monthlyBudget": "Monthly budget (optional)",
+  "budgetHint": "Leave blank for no cap.",
+  "perMonth": "/ month",
+  "notNow": "Not now",
+  "configuring": "Configuring…"
+}

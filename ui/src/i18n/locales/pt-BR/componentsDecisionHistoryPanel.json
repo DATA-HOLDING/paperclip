@@ -1,0 +1,50 @@
+{
+  "group": {
+    "noTask": "Sem tarefa",
+    "otherAgents": "Outros agentes",
+    "noProject": "Sem projeto"
+  },
+  "controls": "Controles do histórico de decisões",
+  "searchLabel": "Buscar no histórico de decisões",
+  "searchPlaceholder": "Buscar decisões ou IDs de tarefa…",
+  "scope": {
+    "label": "De quem é o histórico de decisões",
+    "heading": "Decisões de quem"
+  },
+  "outcome": {
+    "label": "Filtrar resultados das decisões",
+    "heading": "Resultado",
+    "all": "Todos os resultados",
+    "handledForMe": "Tratadas por mim"
+  },
+  "sort": {
+    "label": "Ordenar histórico de decisões",
+    "heading": "Ordenar por",
+    "newest": "Mais recentes primeiro",
+    "oldest": "Mais antigas primeiro"
+  },
+  "agent": {
+    "label": "Filtrar histórico de decisões por agente",
+    "heading": "Agentes",
+    "all": "Todos os agentes"
+  },
+  "project": {
+    "label": "Filtrar histórico de decisões por projeto",
+    "heading": "Projetos",
+    "all": "Todos os projetos"
+  },
+  "groupBy": {
+    "label": "Agrupar histórico de decisões",
+    "heading": "Agrupar por",
+    "none": "Sem agrupamento",
+    "task": "Por tarefa",
+    "agent": "Por agente",
+    "project": "Por projeto"
+  },
+  "loading": "Carregando decisões…",
+  "emptyMine": "Nenhuma decisão tratada por você ou para você ainda.",
+  "emptyFiltered": "Nenhuma decisão corresponde a estes filtros.",
+  "showEveryone": "Mostrar as decisões de todos",
+  "loadingMore": "Carregando…",
+  "loadMore": "Carregar mais decisões"
+}

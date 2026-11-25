@@ -5,6 +5,7 @@ import { GitHubSettingsDisclosure } from "./GitHubSettingsDisclosure";
 import { CopyText } from "@/components/CopyText";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
+import { t } from "@/i18n";
 
 export function gitHubBotMention(endpoint: Pick<ChatEndpoint, "botUsername">) {
   const slug = endpoint.botUsername?.replace(/^@/, "").replace(/\[bot\]$/, "");
@@ -28,8 +29,8 @@ export function GitHubBotMention({ endpoint }: { endpoint: ChatEndpoint }) {
   return mention ? (
     <CopyText
       text={mention}
-      ariaLabel="Copy GitHub mention"
-      title="Copy GitHub mention"
+      ariaLabel={t("pagesAppsChatGitHubAppIdentity.copyMention")}
+      title={t("pagesAppsChatGitHubAppIdentity.copyMention")}
       className="break-all font-mono text-xs"
     >
       {mention}
@@ -46,18 +47,17 @@ export function GitHubAppBranding({
   avatarUrl?: string;
 }) {
   return (
-    <GitHubSettingsDisclosure title="GitHub App name and logo">
+    <GitHubSettingsDisclosure title={t("pagesAppsChatGitHubAppIdentity.branding.title")}>
       <div className="mt-4 space-y-4">
         <p className="text-sm text-muted-foreground">
-          Change the name or upload a logo in the App’s Display information
-          settings on GitHub.
+          {t("pagesAppsChatGitHubAppIdentity.branding.description")}
         </p>
         <div className="flex flex-wrap items-center gap-3">
           {avatarUrl && (
             <>
               <img
                 src={avatarUrl}
-                alt={`${endpoint.assignedAgentName}’s avatar for download`}
+                alt={t("pagesAppsChatGitHubAppIdentity.branding.avatarAlt", { name: endpoint.assignedAgentName })}
                 className="size-12 shrink-0 object-contain"
               />
               <AgentAvatarDownload
@@ -71,21 +71,21 @@ export function GitHubAppBranding({
               href={gitHubAppSettingsUrl(endpoint)}
               target="_blank"
               rel="noreferrer"
-              aria-label="Edit App name and logo on GitHub"
+              aria-label={t("pagesAppsChatGitHubAppIdentity.editAria")}
             >
-              Edit on GitHub <ExternalLink className="size-4" />
+              {t("pagesAppsChatGitHubAppIdentity.branding.editOnGitHub")}{" "}<ExternalLink className="size-4" />
             </a>
           </Button>
         </div>
         <p className="text-xs text-muted-foreground">
-          Renaming also changes its @mention.{" "}
+          {t("pagesAppsChatGitHubAppIdentity.branding.renameNote")}{" "}
           <Link
             className="underline underline-offset-4"
             to={`/apps/chat/connect?provider=github&resume=${endpoint.id}&reconnect=1`}
           >
-            Reconnect afterward
+            {t("pagesAppsChatGitHubAppIdentity.branding.reconnectAfterward")}
           </Link>{" "}
-          to update it here.
+          {t("pagesAppsChatGitHubAppIdentity.branding.toUpdateHere")}
         </p>
       </div>
     </GitHubSettingsDisclosure>
@@ -114,17 +114,17 @@ export function GitHubAppIdentityActions({
           href={gitHubAppSettingsUrl(endpoint)}
           target="_blank"
           rel="noreferrer"
-          aria-label="Edit App name and logo on GitHub"
-          title="Change the App name or upload its logo on GitHub"
+          aria-label={t("pagesAppsChatGitHubAppIdentity.editAria")}
+          title={t("pagesAppsChatGitHubAppIdentity.actions.editTitle")}
         >
-          Edit App <ExternalLink className="size-3.5" />
+          {t("pagesAppsChatGitHubAppIdentity.actions.editApp")}{" "}<ExternalLink className="size-3.5" />
         </a>
       </Button>
       <Button variant="ghost" size="icon" asChild>
         <Link
           to={`/apps/chat/connect?provider=github&resume=${endpoint.id}&reconnect=1`}
-          aria-label="Refresh GitHub App identity"
-          title="Reconnect after renaming the App to refresh its @mention"
+          aria-label={t("pagesAppsChatGitHubAppIdentity.actions.refreshAria")}
+          title={t("pagesAppsChatGitHubAppIdentity.actions.refreshTitle")}
         >
           <RefreshCw className="size-3.5" />
         </Link>

@@ -7,6 +7,7 @@ import { DecisionCardFooter } from "@/components/DecisionCardFooter";
 import { StalledReviewActions } from "@/components/StalledReviewActions";
 import { Button } from "@/components/ui/button";
 import { NeedsYouPanel, NeedsYouPanelNote, NeedsYouPanelRow } from "./NeedsYouCardKit";
+import { t } from "@/i18n";
 
 /**
  * Bodies of the Needs You cards whose real action lives on the task (PAP-775,
@@ -36,7 +37,7 @@ const metadataString = (item: AttentionItem, key: string) => {
 
 /** "NEE-19 · Review pilot consent copy". */
 const taskLine = (task: { identifier?: string | null; title?: string | null }) =>
-  [task.identifier, task.title].filter(Boolean).join(" · ") || "Task";
+  [task.identifier, task.title].filter(Boolean).join(" · ") || t("componentsCoordinator.cardBodies.task");
 
 /** The assignee's name, from the same agent and people lists the page reads. */
 function assigneeName(item: AttentionItem, agentMap?: ReadonlyMap<string, Agent>, userLabelMap?: ReadonlyMap<string, string>): string | null {
@@ -63,11 +64,11 @@ export function ReviewTaskCardBody({ item, companyId, agentMap, userLabelMap, le
   // The feed carries no acceptance checklist yet, so the panel is the state line.
   return <>
     <NeedsYouPanel>
-      <NeedsYouPanelNote>{["In review", assignee ? `Assigned to ${assignee}` : null].filter(Boolean).join(" · ")}</NeedsYouPanelNote>
+      <NeedsYouPanelNote>{[t("componentsCoordinator.cardBodies.inReview"), assignee ? t("componentsCoordinator.cardBodies.assignedTo", { name: assignee }) : null].filter(Boolean).join(" · ")}</NeedsYouPanelNote>
     </NeedsYouPanel>
     {footerContext}
     <DecisionCardFooter leading={leading}>
-      {href ? <OpenButton href={href} onOpen={onOpen}>Open task</OpenButton> : null}
+      {href ? <OpenButton href={href} onOpen={onOpen}>{t("componentsCoordinator.common.openTask")}</OpenButton> : null}
     </DecisionCardFooter>
   </>;
 }
@@ -90,43 +91,43 @@ export function BlockedTaskCardBody({ item, companyId, agentMap, userLabelMap, l
   const blocked = blocking ? item.subject : item.relatedIssue?.id !== item.subject.id ? item.relatedIssue : null;
   const blockedCount = item.detail?.kind === "blocker" ? item.detail.blockedTaskCount ?? 0 : 0;
   const status = item.subject.status ? `${item.subject.status[0]!.toUpperCase()}${item.subject.status.slice(1).replaceAll("_", " ")}` : null;
-  const meta = stalledReview ? ["Review stalled", assignee].filter(Boolean).join(" · ")
+  const meta = stalledReview ? [t("componentsCoordinator.cardBodies.reviewStalled"), assignee].filter(Boolean).join(" · ")
     : blocking ? item.whyNow
       : [status, assignee].filter(Boolean).join(" · ") || undefined;
-  const note = stalledReview ? "No reviewer, approval or run is moving this review."
-    : blocked ? `Blocks ${taskLine(blocked)}${blockedCount > 1 ? ` and ${blockedCount - 1} more` : ""}`
-      : blockedCount > 0 ? `Blocks ${blockedCount} ${blockedCount === 1 ? "task" : "tasks"}`
+  const note = stalledReview ? t("componentsCoordinator.cardBodies.noReviewerMoving")
+    : blocked ? t("componentsCoordinator.cardBodies.blocksTask", { task: taskLine(blocked) }) + (blockedCount > 1 ? t("componentsCoordinator.cardBodies.andMore", { count: blockedCount - 1 }) : "")
+      : blockedCount > 0 ? t("componentsCoordinator.cardBodies.blocksCount", { count: blockedCount })
         : null;
   const panel = <NeedsYouPanel>
     {/* Without a separate blocker the task is the footer's, so the row only says its state (IA4). */}
     {blocking ? <NeedsYouPanelRow icon={<FileText />} title={taskLine(blocking)} meta={meta}
-      onOpen={href && onOpen ? () => onOpen(href) : undefined} /> : <NeedsYouPanelRow icon={<FileText />} title={meta ?? "Blocked"} />}
+      onOpen={href && onOpen ? () => onOpen(href) : undefined} /> : <NeedsYouPanelRow icon={<FileText />} title={meta ?? t("componentsCoordinator.cardBodies.blocked")} />}
     {note ? <NeedsYouPanelNote>{note}</NeedsYouPanelNote> : null}
   </NeedsYouPanel>;
   if (stalledReview) {
     return <>
       {panel}
       <StalledReviewActions presentation="card" footerSlot={leading} issueId={item.subject.id} companyId={companyId}
-        reviewPolicy={readIssueReviewPolicyMetadata(item.subject.metadata)} approveLabel="Mark task done" onResolved={() => onResolved?.()} />
+        reviewPolicy={readIssueReviewPolicyMetadata(item.subject.metadata)} approveLabel={t("componentsCoordinator.cardBodies.markTaskDone")} onResolved={() => onResolved?.()} />
     </>;
   }
   return <>
     {panel}
     {footerContext}
     <DecisionCardFooter leading={leading}>
-      {href ? <OpenButton href={href} onOpen={onOpen}>{blockingHref ? "Open blocking task" : "Open task"}</OpenButton> : null}
+      {href ? <OpenButton href={href} onOpen={onOpen}>{blockingHref ? t("componentsCoordinator.cardBodies.openBlockingTask") : t("componentsCoordinator.common.openTask")}</OpenButton> : null}
     </DecisionCardFooter>
   </>;
 }
 
 const RECOVERY_KIND_LABELS: Record<string, string> = {
-  missing_disposition: "No next step chosen",
-  deliberate_wait_without_target: "Waiting on nothing",
-  stranded_assigned_issue: "Task stranded",
-  workspace_validation: "Workspace unavailable",
-  configuration_validation: "Configuration missing",
-  active_run_watchdog: "Run gone quiet",
-  issue_graph_liveness: "Task needs a next step",
+  missing_disposition: t("componentsCoordinator.recoveryKinds.missingDisposition"),
+  deliberate_wait_without_target: t("componentsCoordinator.recoveryKinds.deliberateWait"),
+  stranded_assigned_issue: t("componentsCoordinator.recoveryKinds.stranded"),
+  workspace_validation: t("componentsCoordinator.recoveryKinds.workspaceValidation"),
+  configuration_validation: t("componentsCoordinator.recoveryKinds.configurationValidation"),
+  active_run_watchdog: t("componentsCoordinator.recoveryKinds.runWatchdog"),
+  issue_graph_liveness: t("componentsCoordinator.recoveryKinds.graphLiveness"),
 };
 
 /**
@@ -137,19 +138,19 @@ const RECOVERY_KIND_LABELS: Record<string, string> = {
 export function RecoveryCardBody({ item, leading, footerContext, onOpen }: NeedsYouCardBodyProps) {
   const kind = metadataString(item, "kind");
   const title = [
-    kind ? RECOVERY_KIND_LABELS[kind] ?? `${kind[0]!.toUpperCase()}${kind.slice(1).replaceAll("_", " ")}` : "Recovery",
-    item.subject.status === "escalated" ? "Recovery escalated" : "Recovery paused",
+    kind ? RECOVERY_KIND_LABELS[kind] ?? `${kind[0]!.toUpperCase()}${kind.slice(1).replaceAll("_", " ")}` : t("componentsCoordinator.cardBodies.recovery"),
+    item.subject.status === "escalated" ? t("componentsCoordinator.cardBodies.recoveryEscalated") : t("componentsCoordinator.cardBodies.recoveryPaused"),
   ].join(" · ");
   const href = item.subject.href;
   return <>
     <NeedsYouPanel>
       <NeedsYouPanelRow icon={<TriangleAlert className="text-amber-600 dark:text-amber-300" />} title={title} />
       {/* The ask above is the recovery's next action; this says where it is done. */}
-      <NeedsYouPanelNote>Resolve, reassign or cancel it in the recovery control on the task.</NeedsYouPanelNote>
+      <NeedsYouPanelNote>{t("componentsCoordinator.cardBodies.resolveInControl")}</NeedsYouPanelNote>
     </NeedsYouPanel>
     {footerContext}
     <DecisionCardFooter leading={leading}>
-      {href ? <OpenButton href={href} onOpen={onOpen}>Open recovery</OpenButton> : null}
+      {href ? <OpenButton href={href} onOpen={onOpen}>{t("componentsCoordinator.cardBodies.openRecovery")}</OpenButton> : null}
     </DecisionCardFooter>
   </>;
 }

@@ -1,0 +1,85 @@
+{
+  "health": {
+    "behind": "Atrasada",
+    "atRisk": "Em risco",
+    "onTrack": "No rumo",
+    "notMeasured": "Não medida"
+  },
+  "reading": {
+    "yes": "Sim",
+    "no": "Não",
+    "yesTarget": "sim",
+    "asTheBarAsks": "como o padrão pede",
+    "theBarIsYes": "o padrão é sim",
+    "summaryYesNo": "{{name}}: {{value}}",
+    "noAnswerYet": "ainda sem resposta",
+    "noRangeSet": "nenhuma faixa definida",
+    "noReadingYet": "ainda sem leitura",
+    "summaryNoRange": "{{name}}: {{current}}, nenhuma faixa definida",
+    "range": "faixa {{range}}",
+    "summaryRange": "{{name}}: {{current}}, faixa {{range}}",
+    "targetAtMost": "meta de no máximo {{target}}",
+    "target": "meta {{target}}",
+    "noTargetSet": "nenhuma meta definida",
+    "summaryNoReading": "{{name}}: ainda sem leitura, {{targetLabel}}",
+    "summaryNoTarget": "{{name}}: {{current}}, nenhuma meta definida",
+    "vsAtMost": "vs. no máximo {{target}}",
+    "summaryAtMost": "{{name}}: {{current}}, meta de no máximo {{target}}",
+    "of": "de {{target}}",
+    "summaryOf": "{{current}} de {{target}} {{name}}"
+  },
+  "age": {
+    "today": "hoje",
+    "yesterday": "ontem",
+    "daysAgo_one": "há {{count}} dia",
+    "daysAgo_other": "há {{count}} dias",
+    "onDate": "em {{date}}"
+  },
+  "stale_one": "Não atualizado há {{count}} dia",
+  "stale_other": "Não atualizado há {{count}} dias",
+  "direction": {
+    "atLeast": "No mínimo (quanto maior, melhor)",
+    "atMost": "No máximo (quanto menor, melhor)"
+  },
+  "agentWork": {
+    "tasks_one": "{{count}} tarefa",
+    "tasks_other": "{{count}} tarefas",
+    "routines_one": "{{count}} rotina",
+    "routines_other": "{{count}} rotinas",
+    "projects_one": "lidera {{count}} projeto",
+    "projects_other": "lidera {{count}} projetos"
+  },
+  "fields": {
+    "standard": "o padrão",
+    "metricName": "o que você mede",
+    "metricTarget": "uma meta",
+    "metricCurrent": "a leitura atual",
+    "metricUnit": "a unidade",
+    "metricLow": "um limite inferior",
+    "metricHigh": "um limite superior"
+  },
+  "problems": {
+    "share": "Uma porcentagem de 0 a 100",
+    "aboveLow": "Acima do limite inferior"
+  },
+  "joinFields": "{{list}} e {{last}}",
+  "delegation": {
+    "planWithMe": {
+      "title": "Planeje comigo",
+      "description": "O agente propõe um plano e aguarda sua aprovação antes de fazer o trabalho."
+    },
+    "prepareIDecide": {
+      "title": "Prepare e eu decido",
+      "description": "O agente faz o trabalho de base e traz a decisão de volta para você."
+    },
+    "handleAndTellMe": {
+      "title": "Resolva e me avise",
+      "description": "O agente faz tudo de ponta a ponta e conta o que fez."
+    },
+    "backOnSchedule": "Colocar “{{name}}” de volta no cronograma"
+  },
+  "share": {
+    "noOpenTasks": "Nenhuma tarefa aberta",
+    "of": "{{count}} de {{total}}"
+  }
+}

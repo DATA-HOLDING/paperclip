@@ -1,0 +1,7 @@
+{
+  "added": "Added:",
+  "removed": "Removed:",
+  "showMore_one": "Show {{count}} more line",
+  "showMore_other": "Show {{count}} more lines",
+  "shortened": "Diff shortened for display."
+}

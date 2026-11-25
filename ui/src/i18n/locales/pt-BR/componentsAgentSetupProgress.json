@@ -1,0 +1,26 @@
+{
+  "accountUnconfirmed": "O Paperclip não conseguiu confirmar quem está conectado.",
+  "itemStatus": {
+    "inProgress": "Em andamento",
+    "done": "Concluído",
+    "failed": "Falhou"
+  },
+  "heading": {
+    "done": "Seu agente configurou {{subject}}",
+    "failed": "Seu agente não conseguiu concluir a configuração de {{subject}}",
+    "working": "Seu agente está configurando {{subject}}"
+  },
+  "expiredHeading": "Este prompt de configuração expirou",
+  "description": {
+    "expired": "O link de progresso parou de funcionar antes que seu agente terminasse. Comece de novo para gerar um novo prompt e entregue-o ao seu agente.",
+    "waiting": "Cole o prompt no seu agente. As etapas aparecem aqui conforme ele trabalha.",
+    "done": "Todas as etapas foram concluídas.",
+    "working": "Mantenha seu agente em execução; as etapas são atualizadas aqui."
+  },
+  "notStarted": "Não iniciada",
+  "lastUpdate": "Última atualização {{timeAgo}}",
+  "refreshError": "Não foi possível atualizar o progresso do seu agente: {{error}}",
+  "retry": "Tentar novamente",
+  "fixAndRestart": "Corrija o que o interrompeu e comece de novo para gerar um novo prompt.",
+  "startAgain": "Começar de novo"
+}

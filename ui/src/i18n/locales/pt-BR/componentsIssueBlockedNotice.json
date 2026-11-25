@@ -1,0 +1,59 @@
+{
+  "recoveryAria": "{{label}} — {{detail}}",
+  "recoveryTitleWithDetail": "{{label}} — {{detail}}. Abra a tarefa de origem para agir.",
+  "recoveryTitle": "{{label}} — abra a tarefa de origem para agir.",
+  "schedule": {
+    "dueNow": "agora",
+    "scheduledAt": "agendado {{relative}}",
+    "scheduled": "em breve"
+  },
+  "retryNowHint": "O Paperclip vai pedir ao responsável que escolha o próximo passo ({{schedule}}). Tentar agora inicia esse acompanhamento imediatamente.",
+  "retrying": "Tentando novamente...",
+  "alreadyPromoted": "Já promovido",
+  "promoted": "Promovido",
+  "retryNow": "Tentar agora",
+  "statusTitle": "Status {{status}}",
+  "runningChip": "em execução",
+  "inFlight": "Uma execução de correção está em andamento — o agente está trabalhando. Este alerta volta se a execução parar sem escolher um próximo passo.",
+  "runLabel": "execução {{id}}",
+  "live": {
+    "title": "Aguardando trabalho em andamento",
+    "queued_one": "Na fila atrás de {{count}} tarefa sendo trabalhada em ordem. Esta tarefa é retomada automaticamente quando a cadeia terminar. Os comentários continuam notificando o responsável.",
+    "queued_other": "Na fila atrás de {{count}} tarefas sendo trabalhadas em ordem. Esta tarefa é retomada automaticamente quando a cadeia terminar. Os comentários continuam notificando o responsável.",
+    "doneOf": "{{done}} de {{total}} concluídas",
+    "running": " · {{count}} em execução",
+    "progressAria": "Progresso da cadeia de bloqueios",
+    "thisTask": "Esta tarefa — retomada automaticamente quando a cadeia terminar",
+    "nowRunning": "Em execução agora"
+  },
+  "blockedByParked": "Bloqueada por trabalho estacionado",
+  "linkedTasks_one": "a tarefa vinculada",
+  "linkedTasks_other": "as tarefas vinculadas",
+  "theAssignee": "o responsável",
+  "unavailable": "indisponível",
+  "private": "Privada — você não tem acesso",
+  "handoff": {
+    "title": "Esta tarefa ainda precisa de um próximo passo.",
+    "body": "Uma execução terminou com sucesso, mas a tarefa continua aberta. O Paperclip precisa que alguém escolha o que acontece a seguir.",
+    "option1": "Marque-a como concluída ou cancelada.",
+    "option2": "Envie-a para revisão ou peça informações.",
+    "option3": "Registre o que a está bloqueando e quem é responsável por esse bloqueio.",
+    "option4": "Delegue o trabalho de acompanhamento ou coloque uma continuação na fila.",
+    "asked": "Pedimos a {{name}} que escolha o próximo passo",
+    "detectedProgress": "Progresso detectado: {{summary}}"
+  },
+  "blocked": {
+    "stalledMany": "O trabalho nesta tarefa está bloqueado por {{blockers}}, mas a cadeia está parada em revisão sem um próximo passo claro. Resolva as revisões paradas abaixo ou remova-as como bloqueios.",
+    "stalledOne": "O trabalho nesta tarefa está bloqueado por {{blockers}}, mas a cadeia está parada em revisão sem um próximo passo claro. Resolva a revisão parada abaixo ou remova-a como bloqueio.",
+    "reopenSuppressed_one": "Uma mensagem ainda não vai reiniciar esta tarefa — ela continua bloqueada pela tarefa vinculada até que ela seja concluída e então é reaberta automaticamente. Enquanto isso, os comentários continuam notificando {{name}} para dúvidas ou triagem.",
+    "reopenSuppressed_other": "Uma mensagem ainda não vai reiniciar esta tarefa — ela continua bloqueada pelas tarefas vinculadas até que sejam concluídas e então é reaberta automaticamente. Enquanto isso, os comentários continuam notificando {{name}} para dúvidas ou triagem.",
+    "byLinked_one": "O trabalho nesta tarefa está bloqueado pela tarefa vinculada até que ela seja concluída. Os comentários continuam notificando o responsável para dúvidas ou triagem.",
+    "byLinked_other": "O trabalho nesta tarefa está bloqueado pelas tarefas vinculadas até que sejam concluídas. Os comentários continuam notificando o responsável para dúvidas ou triagem.",
+    "untilMovedBack": "O trabalho nesta tarefa está bloqueado até que alguém a mova de volta para A fazer. Os comentários continuam notificando o responsável para dúvidas ou triagem."
+  },
+  "stillBlockedBy": "Ainda bloqueada por",
+  "andOthers_one": " e mais {{count}} tarefa",
+  "andOthers_other": " e mais {{count}} tarefas",
+  "stalledInReview": "Parada em revisão",
+  "ultimatelyWaitingOn": "Em última instância, aguardando"
+}

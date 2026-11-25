@@ -1,0 +1,12 @@
+{
+  "stillBlockedBy": "Still blocked by",
+  "blockedBy": "Blocked by",
+  "rootBlockerRemains": "Root blocker remains",
+  "rootBlocker": "Root blocker",
+  "ultimatelyBlockedBy": "Ultimately blocked by",
+  "blockersAria": "Task blockers",
+  "stillWaitingOnLiveWork": "Still waiting on live work",
+  "waitingOnLiveWork": "Waiting on live work",
+  "liveWorkAria": "Tasks waiting on live work",
+  "nowRunning": "Now running"
+}

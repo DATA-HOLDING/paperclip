@@ -1,0 +1,5 @@
+{
+  "retryStopped": "A nova tentativa anterior já parou. Atualize a tarefa e tente de novo a última execução que falhou.",
+  "retryCouldNotStart": "Esta nova tentativa não pôde começar. Abra a tarefa para revisar o acesso atual e o estado de recuperação.",
+  "retrySkipped": "A nova tentativa foi ignorada."
+}

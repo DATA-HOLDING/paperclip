@@ -1,0 +1,10 @@
+{
+  "title": "Plan",
+  "revision": "· rev {{revision}}",
+  "progress": "{{done}}/{{total}} done",
+  "priority": {
+    "high": "high",
+    "medium": "medium",
+    "low": "low"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "browse": "Browse",
+  "review": "Review",
+  "waitingForOk": "waiting for your OK",
+  "connectors": "Connectors",
+  "developer": "Developer",
+  "developerDescription": "Advanced setup for developers.",
+  "waitingCount": "{{count}} waiting for your OK",
+  "developerDescriptionLong": "Advanced setup for developers. Most teams never open this.",
+  "company": "Company",
+  "connections": "Connections"
+}

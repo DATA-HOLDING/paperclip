@@ -1,0 +1,6 @@
+{
+  "tooltip": "{{agent}} posted this on behalf of {{user}}. {{agent}} is not assigned to this task — its authority to write here comes from {{user}}, and never exceeds it.",
+  "thisAgent": "This agent",
+  "ariaLabel": "Posted on behalf of {{user}}",
+  "chip": "for {{user}}"
+}

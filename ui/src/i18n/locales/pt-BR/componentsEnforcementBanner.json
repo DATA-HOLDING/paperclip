@@ -1,0 +1,5 @@
+{
+  "denied_one": " chamada de ferramenta governada foi negada ou falhou na última hora. O acesso é imposto no servidor pelo gateway de ferramentas — abra o conector afetado para revisar o que foi bloqueado e por quê.",
+  "denied_other": " chamadas de ferramenta governadas foram negadas ou falharam na última hora. O acesso é imposto no servidor pelo gateway de ferramentas — abra o conector afetado para revisar o que foi bloqueado e por quê.",
+  "default": "O acesso a ferramentas é imposto no servidor pelo gateway de ferramentas. Estas telas configuram e observam essa imposição — não a substituem. Os agentes veem e chamam só as ferramentas que seus perfis e políticas permitem; todo o resto é negado por padrão."
+}

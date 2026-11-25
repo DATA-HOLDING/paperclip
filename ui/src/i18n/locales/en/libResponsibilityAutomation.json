@@ -1,0 +1,66 @@
+{
+  "shareLabel": "{{percent}}% automated",
+  "automationCount_one": "{{count}} automation",
+  "automationCount_other": "{{count}} automations",
+  "manualTaskCount_one": "{{count}} manual task",
+  "manualTaskCount_other": "{{count}} manual tasks",
+  "nothingFiled": "Nothing is filed under this yet.",
+  "noAutomationsNoTasks": "No automations and no recent manual tasks.",
+  "sentence": {
+    "noResponsibilities": "You do not own any responsibilities yet.",
+    "tail_one": "{{count}} manual task could be automated.",
+    "tail_other": "{{count}} manual tasks could be automated.",
+    "allHaveSomething": "Every responsibility you own has something automated; {{tail}}",
+    "allAutomated": "Everything you own is automated.",
+    "singleNothing": "Your responsibility has nothing automated yet",
+    "noneOf": "None of your {{total}} responsibilities has anything automated yet",
+    "someOf_one": "{{count}} of your {{total}} responsibilities has nothing automated yet",
+    "someOf_other": "{{count}} of your {{total}} responsibilities have nothing automated yet"
+  },
+  "anAgent": "an agent",
+  "itsAgent": "its agent",
+  "yourAgent": "your agent",
+  "yourAgentCapitalized": "Your agent",
+  "age": {
+    "justNow": "just now",
+    "minutesAgo_one": "{{count}} minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo_one": "{{count}} hour ago",
+    "hoursAgo_other": "{{count}} hours ago"
+  },
+  "start": {
+    "webhookDetail": "when another system calls it",
+    "lastCalled": "Last called {{age}}",
+    "notCalled": "Not called yet",
+    "standingDetail": "on each wake-up",
+    "lastChecked": "Last checked {{age}}: {{result}}",
+    "acted": "acted",
+    "actedWithNote": "acted ({{note}})",
+    "nothingNeeded": "nothing needed",
+    "notChecked": "Not checked yet",
+    "onRequest": "On request",
+    "onRequestDetail": "when someone runs it"
+  },
+  "stalled": {
+    "paused": "Paused",
+    "noAgent": "No agent to run it",
+    "noWakeups": "Not running: {{agent}} doesn’t wake up on its own (heartbeat off)"
+  },
+  "candidate": {
+    "agentOffered": "An agent offered to repeat it",
+    "offered": "{{agent}} offered: {{cadence}}",
+    "doneByAgent": "Done by {{agent}} {{age}}",
+    "doneByHand": "Done by hand {{age}}",
+    "withAgent": "With {{agent}} now"
+  },
+  "button": {
+    "review": "Review {{who}}’s proposal",
+    "continue": "Continue with {{who}}",
+    "automate": "Automate with {{who}}"
+  },
+  "noCandidates": {
+    "nothingElse": "Nothing else here looks worth automating.",
+    "covered": "The automations are covering the work.",
+    "noRecent": "No recent manual tasks to automate."
+  }
+}

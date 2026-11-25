@@ -1,0 +1,13 @@
+{
+  "reconnecting": "Reconectando ao Paperclip",
+  "unableToLoad": "Não foi possível carregar o Paperclip",
+  "reconnectingDescription": "O servidor pode estar reiniciando ou sua conexão foi interrompida. Vamos tentar de novo a cada poucos segundos e reconectar automaticamente.",
+  "unableDescription": "Não foi possível verificar seu acesso a esta instância. Tente novamente ou fale com o administrador da instância se isso continuar.",
+  "connecting": "Conectando…",
+  "tryAgain": "Tentar novamente",
+  "noAccess": {
+    "title": "Sem acesso à organização",
+    "description": "Esta conta está conectada, mas não é membro ativo de nenhuma organização nem tem acesso de administrador nesta instância do Paperclip.",
+    "hint": "Use um convite da organização ou entre com uma conta que já pertença a ela."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "project_one": "{{count}} project",
+    "project_other": "{{count}} projects",
+    "issue_one": "{{count}} issue",
+    "issue_other": "{{count}} issues",
+    "agent_one": "{{count}} agent",
+    "agent_other": "{{count}} agents",
+    "binding_one": "{{count}} binding",
+    "binding_other": "{{count}} bindings"
+  },
+  "targets": {
+    "project": "Project",
+    "rootIssue": "Root issue",
+    "issue": "Issue"
+  },
+  "containmentActive": "Containment active",
+  "containmentMissing": "Containment not configured",
+  "containmentActiveBody": "This agent can only read and mutate work inside its assigned review boundary. Raw output is quarantined from higher-trust agents until a trusted reviewer promotes it.",
+  "containmentMissingBody": "This agent is set to low-trust review, but no project, root issue, or issue scope is set in the core policy. Add a scope before this agent can run without denial.",
+  "boundaryType": "Boundary type",
+  "loading": "Loading…",
+  "noProjects": "No projects available",
+  "noIssues": "No issues available",
+  "selectBoundary": "Select boundary",
+  "ceNote": "CE saves one containment boundary at a time. Saved policies include this organization id.",
+  "clearBoundary": "Clear boundary",
+  "managedByEe": "Managed by EE/API",
+  "managedByEeBody": "This policy has {{summary}} and cannot be edited by the CE single-boundary editor.",
+  "moreBoundaries": "Want to set more than one containment boundary?",
+  "getEe": "Get Paperclip EE.",
+  "viewPolicy": "View policy",
+  "policy": {
+    "preset": "Preset",
+    "presetValue": "Low-trust review v1",
+    "rawOutput": "Raw output",
+    "rawOutputValue": "Quarantined from higher-trust agents",
+    "projects": "Projects",
+    "rootIssue": "Root issue",
+    "explicitIssues": "Explicit issues",
+    "allowedAgents": "Allowed agents",
+    "allowedTools": "Allowed tools",
+    "allowedSecrets": "Allowed secrets",
+    "promotionTarget": "Promotion target",
+    "eeFields": "EE fields",
+    "customFields": "Custom advanced policy fields preserved"
+  },
+  "trustPreset": "Trust preset",
+  "advancedNote": "Advanced permissions remain editable through the EE permissions extension when installed.",
+  "trust": "Trust",
+  "trustPresetHint": "Choose how broadly this agent can read and act on Paperclip work objects."
+}

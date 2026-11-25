@@ -1,0 +1,43 @@
+{
+  "breadcrumbs": {
+    "approvals": "Aprovações",
+    "approval": "Aprovação"
+  },
+  "errorActions": {
+    "approve": "aprovar esta solicitação",
+    "reject": "rejeitar esta solicitação",
+    "requestRevision": "solicitar uma revisão",
+    "resubmit": "reenviar esta solicitação"
+  },
+  "commentFailed": "Falha ao comentar",
+  "deleteFailed": "Falha ao excluir",
+  "notFound": "Aprovação não encontrada.",
+  "cta": {
+    "reviewLinkedTasks": "Revisar tarefas vinculadas",
+    "reviewLinkedTask": "Revisar tarefa vinculada",
+    "openHiredAgent": "Abrir agente contratado",
+    "backToApprovals": "Voltar para aprovações"
+  },
+  "confirmed": {
+    "title": "Aprovação confirmada",
+    "body": "O agente solicitante foi notificado para revisar esta aprovação e as tarefas vinculadas."
+  },
+  "requestedBy": "Solicitado por",
+  "agentFallback": "Agente",
+  "seeFullRequest": "Ver solicitação completa",
+  "decisionNote": "Nota da decisão: {{note}}",
+  "linkedTasks": "Tarefas vinculadas",
+  "linkedTasksHint": "As tarefas vinculadas continuam abertas até o agente solicitante dar seguimento e fechá-las.",
+  "approve": "Aprovar",
+  "reject": "Rejeitar",
+  "budgetStop": "Resolva esta parada de orçamento nos controles de orçamento em",
+  "requestRevision": "Solicitar revisão",
+  "markResubmitted": "Marcar como reenviada",
+  "deleteConfirm": "Excluir este agente reprovado? Esta ação não pode ser desfeita.",
+  "deleteAgent": "Excluir agente reprovado",
+  "comments": "Comentários ({{n}})",
+  "board": "Conselho",
+  "commentPlaceholder": "Adicione um comentário...",
+  "posting": "Publicando…",
+  "postComment": "Publicar comentário"
+}

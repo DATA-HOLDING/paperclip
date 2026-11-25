@@ -1,0 +1,36 @@
+{
+  "breadcrumbs": {
+    "cases": "Casos",
+    "case": "Caso"
+  },
+  "notFound": "Caso não encontrado",
+  "loadAction": "carregar este caso",
+  "backToCases": "Voltar aos casos",
+  "labels": "Etiquetas do caso",
+  "details": {
+    "label": "Detalhes do caso",
+    "title": "Detalhes"
+  },
+  "documents": {
+    "label": "Documentos do caso",
+    "title": "Documentos",
+    "more": "Mais documentos estão disponíveis nas tarefas vinculadas."
+  },
+  "attachments": {
+    "label": "Anexos do caso",
+    "title": "Anexos",
+    "download": "Baixar anexo"
+  },
+  "relatedTasks": "Tarefas relacionadas",
+  "relatedCases": "Casos relacionados",
+  "parent": "Pai",
+  "children": "Filhos",
+  "childrenError": "Não foi possível carregar os casos filhos.",
+  "noFindings": "Nenhuma descoberta registrada ainda.",
+  "meta": {
+    "project": "Projeto",
+    "created": "Criado",
+    "updated": "Atualizado"
+  },
+  "viewInAudit": "Ver na Auditoria"
+}

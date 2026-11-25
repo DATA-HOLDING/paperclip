@@ -1,0 +1,5 @@
+{
+  "unavailable": "O cancelamento de tarefas está indisponível. Atualize a página e tente novamente.",
+  "subtasksNotRefreshed": "A tarefa foi cancelada, mas não foi possível atualizar as subtarefas. Tente cancelá-las novamente.",
+  "subtasksNotCanceled": "A tarefa foi cancelada, mas estas subtarefas não puderam ser canceladas: {{tasks}}. Tente cancelá-las novamente."
+}

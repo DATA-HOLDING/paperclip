@@ -1,0 +1,13 @@
+{
+  "defaultName": "New Skill",
+  "defaultSummary": "Describe when agents should use this skill.",
+  "template": {
+    "whenToUse": "When To Use",
+    "whenToUseItem": "Use this skill when the task needs its specialized workflow.",
+    "workflow": "Workflow",
+    "step1": "Inspect the task context.",
+    "step2": "Apply the workflow carefully.",
+    "step3": "Report what changed and how it was verified."
+  },
+  "forkName": "{{name}} Fork"
+}

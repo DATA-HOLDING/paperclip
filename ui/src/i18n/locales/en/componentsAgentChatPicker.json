@@ -1,0 +1,25 @@
+{
+  "title": "Chat with an agent",
+  "oneConversation": "One conversation per agent. Pick up where you left off.",
+  "openFailed": "Couldn’t open chat. Try again.",
+  "searchAria": "Search agents by name or role",
+  "searchPlaceholder": "Search by name or role…",
+  "opening": "Opening conversation…",
+  "loadFailed": "Couldn’t load agents. Try again.",
+  "retry": "Retry",
+  "loading": "Loading agents…",
+  "noMatch": "No agents match “{{search}}”",
+  "noAgents": "No agents yet.",
+  "tryAnother": "Try another name or role.",
+  "clearSearch": "Clear search",
+  "createHint": "Create an agent from the Agents page to start chatting.",
+  "unread_one": "{{count}} unread message from {{name}}",
+  "unread_other": "{{count}} unread messages from {{name}}",
+  "openChat": "Open chat",
+  "newChat": "New chat",
+  "status": {
+    "paused": "Paused",
+    "terminated": "Terminated",
+    "pendingApproval": "Awaiting approval"
+  }
+}

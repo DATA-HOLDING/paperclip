@@ -1,0 +1,17 @@
+{
+  "badges": {
+    "notCreator": {
+      "label": "Anyone else",
+      "description": "Anyone except whoever asked for the review can approve it."
+    },
+    "humanOnly": {
+      "label": "Human only",
+      "description": "Only a person can approve this review. Agents cannot give the verdict."
+    }
+  },
+  "values": {
+    "anyone": "anyone",
+    "notCreator": "anyone else",
+    "humanOnly": "human only"
+  }
+}

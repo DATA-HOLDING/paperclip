@@ -1,0 +1,31 @@
+{
+  "title": {
+    "project": "Projects",
+    "task": "Tasks",
+    "routine": "Routines"
+  },
+  "empty": {
+    "project": "No open projects.",
+    "task": "No open tasks.",
+    "routine": "No routines."
+  },
+  "bearingPrefix": {
+    "holding": "Holding the number back: ",
+    "moving": "Moving the number: "
+  },
+  "automateAriaLabel": "{{label}}: “{{title}}”",
+  "byHandAriaLabel": "Set up “{{title}}” by hand",
+  "byHandTitle": "Set it up by hand",
+  "andMore": "and {{count}} more",
+  "key": {
+    "holding": "Holding the number back",
+    "moving": "Moving it"
+  },
+  "bar": {
+    "heading": "The bar",
+    "edit": "Edit the bar",
+    "empty": "No bar yet."
+  },
+  "affectingHeading": "What is affecting the number",
+  "openConversationFailed": "Couldn’t open the conversation."
+}

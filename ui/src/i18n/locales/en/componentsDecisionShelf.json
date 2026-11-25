@@ -1,0 +1,9 @@
+{
+  "keptOnDesk": "Kept on desk",
+  "keepError": "Could not keep this decision",
+  "tryAgain": "Please try again.",
+  "idleDays_one": "Idle {{count}} day",
+  "idleDays_other": "Idle {{count}} days",
+  "kept": "Kept",
+  "keepOnDesk": "Keep on desk"
+}

@@ -1,0 +1,73 @@
+{
+  "unfiled": "Unfiled",
+  "roots": {
+    "mySkills": "My Skills",
+    "projects": "Projects",
+    "bundled": "Bundled",
+    "organization": "Organization"
+  },
+  "newFolder": "New folder",
+  "moveTo": "Move to...",
+  "railAriaLabel": "{{items}} folders",
+  "folders": "Folders",
+  "system": "System",
+  "folderActions": "Folder actions for {{name}}",
+  "rename": "Rename",
+  "editColor": "Edit color",
+  "delete": "Delete",
+  "suggestion": {
+    "text": "Group these {{items}} into folders to keep things tidy.",
+    "createFirst": "Create your first folder",
+    "dismiss": "Dismiss folder suggestion"
+  },
+  "sheetTitle": "{{items}} folders",
+  "searchFolders": "Search folders",
+  "noFoldersMatch": "No folders match.",
+  "newFolderEllipsis": "New folder...",
+  "form": {
+    "editTitle": "Edit folder",
+    "createFolder": "Create folder",
+    "routineDescription": "Organize routines in this organization.",
+    "skillDescription": "Organize installed organization skills.",
+    "name": "Name",
+    "color": "Color",
+    "useColor": "Use folder color {{color}}",
+    "none": "None",
+    "saving": "Saving...",
+    "save": "Save"
+  },
+  "cancel": "Cancel",
+  "deleteDialog": {
+    "title": "Delete folder",
+    "description": "The {{count}} {{items}} in this folder won't be deleted. They'll move to Unfiled.",
+    "deleting": "Deleting..."
+  },
+  "bulk": {
+    "selected": "{{count}} selected",
+    "deselectAll": "Deselect all",
+    "done": "Done"
+  },
+  "tree": {
+    "allSkills": "All skills",
+    "current": "current",
+    "navAriaLabel": "Skill folders",
+    "noOrganizationFolders": "No organization folders yet.",
+    "tags": "Tags",
+    "resize": "Resize skill folders",
+    "newLabelFolder": "New {{label}} folder",
+    "collapse": "Collapse folder",
+    "expand": "Expand folder",
+    "newSubfolder": "New subfolder",
+    "moveToRoot": "Move to {{root}}",
+    "folderPath": "Folder path",
+    "readOnly": "read-only",
+    "newFolderInside": "New folder inside…",
+    "newTopLevelFolder": "New top-level folder…",
+    "movingTo": "Moving to",
+    "pickDestination": "Pick a destination folder.",
+    "moving": "Moving…",
+    "moveHere": "Move here",
+    "folderName": "Folder name",
+    "add": "Add"
+  }
+}

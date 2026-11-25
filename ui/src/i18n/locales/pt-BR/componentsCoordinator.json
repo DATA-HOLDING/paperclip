@@ -1,0 +1,317 @@
+{
+  "common": {
+    "retry": "Tentar novamente",
+    "loading": "Carregando…",
+    "openTask": "Abrir tarefa"
+  },
+  "attentionTasks": {
+    "title": "Tarefas",
+    "searchLabel": "Buscar tarefas que precisam de atenção",
+    "searchPlaceholder": "Buscar tarefas…",
+    "loading": "Carregando tarefas…",
+    "loadError": "Não foi possível carregar as tarefas que precisam de atenção.",
+    "noSearchMatch": "Nenhuma tarefa corresponde a esta busca.",
+    "empty": "Nenhuma tarefa precisa de decisão.",
+    "pending": "pendentes"
+  },
+  "chatDecisionReceipts": {
+    "loadError": "Não foi possível carregar as atualizações de decisões.",
+    "loadingEarlier": "Carregando decisões anteriores…",
+    "loadEarlier": "Carregar decisões anteriores"
+  },
+  "pendingQuestions": {
+    "needsInput": "{{agent}} precisa da sua resposta sobre {{task}}.",
+    "yourAgent": "Seu agente",
+    "thisTask": "esta tarefa",
+    "loadError": "Não foi possível carregar as perguntas da tarefa."
+  },
+  "chatReferences": {
+    "chatWith": "Chat com {{name}}"
+  },
+  "taskHandoffs": {
+    "loadError": "Não foi possível carregar as tarefas criadas.",
+    "loadingEarlier": "Carregando tarefas anteriores…",
+    "loadEarlier": "Carregar tarefas anteriores"
+  },
+  "conversationTasks": {
+    "ariaLabel": "Tarefas desta conversa",
+    "title": "Tarefas",
+    "subtitle": "Criadas a partir desta conversa.",
+    "searchLabel": "Buscar tarefas da conversa",
+    "searchPlaceholder": "Buscar tarefas ou IDs…",
+    "statusFilterLabel": "Filtrar tarefas da conversa por status",
+    "status": {
+      "all": "Todos os status",
+      "todo": "Pronta para começar",
+      "inProgress": "Em andamento",
+      "inReview": "Precisa de revisão",
+      "blocked": "Bloqueada",
+      "done": "Concluída",
+      "cancelled": "Cancelada"
+    },
+    "sortLabel": "Ordenar tarefas da conversa",
+    "sort": {
+      "newest": "Mais recentes primeiro",
+      "oldest": "Mais antigas primeiro",
+      "title": "Título"
+    },
+    "loading": "Carregando tarefas…",
+    "loadError": "Não foi possível carregar as tarefas.",
+    "noMatch": "Nenhuma tarefa carregada corresponde a estes filtros.",
+    "empty": "As tarefas criadas a partir desta conversa aparecerão aqui.",
+    "loadMore": "Carregar mais tarefas"
+  },
+  "decisionReceipt": {
+    "someoneElse": "outra pessoa",
+    "handledFor": " · por @{{name}}",
+    "reason": "Motivo: {{reason}}"
+  },
+  "interactionReceipt": {
+    "answersRecorded": "Respostas registradas",
+    "approved": "Aprovado",
+    "changesRequested": "Alterações solicitadas",
+    "viewInTask": "Ver decisão na tarefa"
+  },
+  "sidePanel": {
+    "document": "Documento",
+    "waitingOnYou": "Aguardando você",
+    "nothingElseWaiting": "Nada mais está aguardando você.",
+    "openNewTab": "Abrir uma nova aba",
+    "noLongerWaiting": "Isto não está mais aguardando você."
+  },
+  "relativeTime": {
+    "justNow": "Agora mesmo",
+    "minutesAgo": "há {{count}} min",
+    "hoursAgo": "há {{count}} h",
+    "daysAgo": "há {{count}} d"
+  },
+  "review": {
+    "approval": "Aprovação",
+    "attachments": "Anexos",
+    "attachment": "Anexo",
+    "plan": "Plano",
+    "loadingRequested": "Carregando o documento solicitado…",
+    "requestedLoadError": "Não foi possível carregar o documento solicitado.",
+    "openFile": "Abrir arquivo",
+    "openIn": "Abrir em {{target}}",
+    "approvalsTarget": "aprovações",
+    "taskTarget": "tarefa",
+    "answerOnCard": "Responda no cartão da caixa de entrada enquanto revisa este artefato.",
+    "loadingLabel": "Carregando {{label}}…",
+    "documentLoadError": "Não foi possível carregar este documento. Abra-o na tarefa.",
+    "loadingApproval": "Carregando aprovação…",
+    "approvalLoadError": "Não foi possível carregar esta aprovação. Abra-a diretamente.",
+    "cannotPreview": "Não é possível pré-visualizar este arquivo. Abra o arquivo original abaixo."
+  },
+  "taskCommitment": {
+    "taskCreated": "Tarefa criada",
+    "createdSuffix": " · Criada",
+    "noneCreated": "Nenhuma tarefa foi criada."
+  },
+  "providerLimit": {
+    "needsRetry": "Precisa de nova tentativa",
+    "retryRequested": "Nova tentativa solicitada",
+    "retryScheduled": "Nova tentativa agendada",
+    "retryScheduledFor": " para ",
+    "tasksHitLimits_one": "{{count}} tarefa atingiu limites de uso",
+    "tasksHitLimits_other": "{{count}} tarefas atingiram limites de uso",
+    "attempts_one": "{{count}} tentativa",
+    "attempts_other": "{{count}} tentativas",
+    "providerResetAt": "Limite do provedor reinicia em ",
+    "resetUnknown": "Horário de reinício desconhecido",
+    "openTaskToRetry": "Abrir tarefa para tentar novamente",
+    "agentRunLog": "Log da execução de {{agent}}",
+    "titleNeedRetry_one": "{{count}} tarefa precisa de nova tentativa após o limite de uso",
+    "titleNeedRetry_other": "{{count}} tarefas precisam de nova tentativa após o limite de uso",
+    "titlePaused_one": "{{count}} tarefa pausada pelo limite de uso do provedor",
+    "titlePaused_other": "{{count}} tarefas pausadas pelo limite de uso do provedor",
+    "taskWord_one": "tarefa",
+    "taskWord_other": "tarefas",
+    "retryScheduledForCount": "Nova tentativa agendada para {{count}} {{tasks}}",
+    "at": " às ",
+    "retryRequestedWaiting": "Nova tentativa solicitada. Aguardando o trabalho ser retomado.",
+    "openAffected": "Abra a tarefa afetada para tentar novamente quando houver capacidade.",
+    "viewTasks": "Ver {{count}} {{tasks}}",
+    "runLog": "Log da execução"
+  },
+  "runHistory": {
+    "title": "Histórico recente de execuções",
+    "loading": "Carregando execuções…",
+    "empty": "Nenhuma execução com falha em tarefas visíveis.",
+    "columnsLabel": "Colunas do histórico de execuções",
+    "columns": {
+      "task": "Tarefa",
+      "taskId": "ID da tarefa",
+      "outcome": "Resultado",
+      "runLog": "Log da execução",
+      "recorded": "Registrado"
+    },
+    "runLogFor": "Log da execução de {{agent}} para {{task}}",
+    "showOlder": "Mostrar execuções mais antigas"
+  },
+  "cardBodies": {
+    "task": "Tarefa",
+    "inReview": "Em revisão",
+    "assignedTo": "Atribuída a {{name}}",
+    "reviewStalled": "Revisão parada",
+    "noReviewerMoving": "Nenhum revisor, aprovação ou execução está fazendo esta revisão avançar.",
+    "blocksTask": "Bloqueia {{task}}",
+    "andMore": " e mais {{count}}",
+    "blocksCount_one": "Bloqueia {{count}} tarefa",
+    "blocksCount_other": "Bloqueia {{count}} tarefas",
+    "blocked": "Bloqueada",
+    "markTaskDone": "Marcar tarefa como concluída",
+    "openBlockingTask": "Abrir tarefa bloqueadora",
+    "recovery": "Recuperação",
+    "recoveryEscalated": "Recuperação escalada",
+    "recoveryPaused": "Recuperação pausada",
+    "resolveInControl": "Resolva, reatribua ou cancele no controle de recuperação da tarefa.",
+    "openRecovery": "Abrir recuperação"
+  },
+  "recoveryKinds": {
+    "missingDisposition": "Nenhum próximo passo escolhido",
+    "deliberateWait": "Aguardando nada",
+    "stranded": "Tarefa abandonada",
+    "workspaceValidation": "Espaço de trabalho indisponível",
+    "configurationValidation": "Configuração ausente",
+    "runWatchdog": "Execução silenciosa",
+    "graphLiveness": "Tarefa precisa de um próximo passo"
+  },
+  "cardTypes": {
+    "answerQuestions": "Responder perguntas",
+    "makeChoice": "Fazer uma escolha",
+    "reviewPlan": "Revisar um plano",
+    "confirm": "Confirmar ou recusar",
+    "suggestedTasks": "Aceitar tarefas sugeridas",
+    "reviewDeliverable": "Revisar uma entrega",
+    "reviewItems": "Revisar itens",
+    "boardApproval": "Aprovar uma solicitação",
+    "joinRequest": "Revisar um pedido de entrada",
+    "toolAccess": "Aprovar acesso a ferramenta ou segredo",
+    "connectService": "Conectar um serviço",
+    "reviewTask": "Revisar uma tarefa",
+    "failedRun": "Corrigir uma execução com falha",
+    "budgetStop": "Resolver uma parada por orçamento",
+    "blockedTask": "Desbloquear uma tarefa",
+    "recovery": "Recuperar uma execução",
+    "agentError": "Corrigir um erro do agente",
+    "budgetWarning": "Revisar um alerta de orçamento"
+  },
+  "approvalTypes": {
+    "hireAgent": "Aprovar a contratação de um agente",
+    "ceoStrategy": "Aprovar uma estratégia",
+    "budgetOverride": "Aprovar uma exceção de orçamento"
+  },
+  "sections": {
+    "decisions": "Decisões",
+    "problems": "Problemas",
+    "updates": "Atualizações"
+  },
+  "cardParts": {
+    "aTeammate": "Um colega",
+    "fromName": "de {{name}}",
+    "whyMe": "Por que eu? {{text}}",
+    "someone": "alguém",
+    "noOwnerYet": "Ainda sem dono",
+    "claiming": "Assumindo…",
+    "claim": "Assumir",
+    "openToAssign": "Abrir para atribuir",
+    "someoneCap": "Alguém",
+    "viewRequestUpdate": "Ver atualização de uma solicitação",
+    "yourRequest": "Sua solicitação",
+    "dismiss": "Dispensar",
+    "viewRequest": "Ver solicitação"
+  },
+  "needsYou": {
+    "folders": {
+      "needs": {
+        "label": "Precisa de você",
+        "description": "Revise as solicitações abertas e decida o que acontece em seguida."
+      },
+      "waiting": {
+        "label": "Aguardando",
+        "description": "Veja o que você adiou e quais tarefas aguardam uma nova tentativa automática."
+      },
+      "history": {
+        "label": "Histórico",
+        "description": "Reveja decisões passadas e veja o que aconteceu com as execuções que falharam."
+      }
+    },
+    "openToReview": "Abrir para revisar",
+    "emptyView": {
+      "mine": "Você está em dia.",
+      "unassigned": "Nenhum cartão precisa de dono.",
+      "company": "Nenhum alerta da organização no momento.",
+      "archived": "Nada arquivado. Os cartões que você arquivar ou adiar para si aparecem aqui.",
+      "all": "Nenhum cartão aberto para ninguém."
+    },
+    "groups": {
+      "otherDecisions": "Outras decisões",
+      "otherAgents": "Outros agentes",
+      "noProject": "Sem projeto"
+    },
+    "assignee": {
+      "me": "Atribuídos a você",
+      "all": "Todos os responsáveis",
+      "unassigned": "Ainda sem dono",
+      "company": "Alertas da organização"
+    },
+    "inbox": "Caixa de entrada",
+    "plan": "Plano",
+    "openInSidebarShowing": "Abrir na barra lateral · Exibindo",
+    "openInSidebar": "Abrir na barra lateral",
+    "closeInSidebar": "Fechar {{label}} na barra lateral",
+    "openArtifactInSidebar": "Abrir {{label}} na barra lateral",
+    "providerUsageLimit": "Limite de uso do provedor",
+    "stalled": {
+      "title": "Escolha como esta tarefa continua",
+      "body": "Esta tarefa ainda está em revisão sem revisor ativo nem continuação. Devolva-a ao trabalho, solicite alterações ou marque a tarefa como concluída."
+    },
+    "chooseCompany": "Escolha uma organização para ver as decisões dela.",
+    "inboxViews": "Visões da caixa de entrada",
+    "decisionHistory": "Histórico de decisões",
+    "backToNeedsYou": "Voltar para Precisa de você",
+    "archived": "Arquivados",
+    "toolbar": {
+      "controls": "Controles de decisões",
+      "searchLabel": "Buscar decisões",
+      "searchPlaceholder": "Buscar…",
+      "agentFilter": "Filtrar decisões por agente",
+      "agents": "Agentes",
+      "byAgents": "Por agentes",
+      "allAgents": "Todos os agentes",
+      "projectFilter": "Filtrar decisões por projeto",
+      "projects": "Projetos",
+      "byProjects": "Por projetos",
+      "allProjects": "Todos os projetos",
+      "assigneeFilter": "Filtrar decisões por responsável",
+      "assignedTo": "Atribuído a",
+      "byAssigned": "Por atribuição",
+      "someoneElse": "Outra pessoa",
+      "groupLabel": "Agrupar decisões",
+      "groupBy": "Agrupar por",
+      "byType": "Por tipo",
+      "byTask": "Por tarefa",
+      "byAgent": "Por agente",
+      "byProject": "Por projeto",
+      "noGrouping": "Sem agrupamento",
+      "view": "Visão"
+    },
+    "summary": {
+      "decisions_one": "{{count}} decisão",
+      "decisions_other": "{{count}} decisões",
+      "problems_one": "{{count}} problema",
+      "problems_other": "{{count}} problemas",
+      "updates_one": "{{count}} atualização",
+      "updates_other": "{{count}} atualizações"
+    },
+    "loading": "Carregando decisões…",
+    "staleBelow": "Nenhum cartão atual. Os cartões antigos estão abaixo.",
+    "snoozedBelow": "Nenhum cartão arquivado. Os cartões adiados estão abaixo.",
+    "noMatch": "Nenhuma decisão aberta corresponde a estes filtros.",
+    "nothingWaiting": "Nada está aguardando.",
+    "caughtUpWaiting_one": "Você está em dia. {{count}} item está aguardando.",
+    "caughtUpWaiting_other": "Você está em dia. {{count}} itens estão aguardando.",
+    "showMore": "Mostrar mais decisões"
+  }
+}

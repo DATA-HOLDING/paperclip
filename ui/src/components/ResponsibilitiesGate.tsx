@@ -2,6 +2,7 @@ import { Navigate, Outlet } from "@/lib/router";
 import { QueryErrorState } from "@/components/QueryView";
 import { useResponsibilitiesEnabled } from "@/hooks/useResponsibilitiesEnabled";
 import { DASHBOARD_HOME_PATH } from "@/lib/company-home";
+import { t } from "@/i18n";
 
 /**
  * Layout route guard for the Responsibilities surfaces.
@@ -13,7 +14,7 @@ import { DASHBOARD_HOME_PATH } from "@/lib/company-home";
  */
 export function ResponsibilitiesGate() {
   const { enabled, loaded, error, retry } = useResponsibilitiesEnabled();
-  if (error) return <QueryErrorState error={error} size="page" action="load your settings" onRetry={retry} />;
+  if (error) return <QueryErrorState error={error} size="page" action={t("componentsResponsibilitiesGate.errorActions.loadSettings")} onRetry={retry} />;
   if (!loaded) return null;
   if (!enabled) return <Navigate to={DASHBOARD_HOME_PATH} replace />;
   return <Outlet />;

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/lib/router";
 import { StatusIcon } from "./StatusIcon";
 import { taskStatusIconProps } from "@/lib/task-status-presentation";
+import { t } from "@/i18n";
 
 type IssueSiblingNavigationProps = {
   navigation: IssueSiblingNavigationState | null;
@@ -17,7 +18,7 @@ export function IssueSiblingNavigation({ navigation, linkState }: IssueSiblingNa
 
   return (
     <nav
-      aria-label="Sub-task navigation"
+      aria-label={t("componentsIssueSiblingNavigation.ariaLabel")}
       className="mt-4 flex flex-col gap-3 sm:mt-6 sm:grid sm:grid-cols-2"
     >
       {navigation.previous ? (
@@ -47,8 +48,8 @@ function SiblingLink({
   className?: string;
 }) {
   const issuePathId = issue.identifier ?? issue.id;
-  const label = direction === "previous" ? "Previous" : "Next";
-  const ariaDirection = direction === "previous" ? "Previous sub-task" : "Next sub-task";
+  const label = direction === "previous" ? t("componentsIssueSiblingNavigation.previous") : t("componentsIssueSiblingNavigation.next");
+  const ariaDirection = direction === "previous" ? t("componentsIssueSiblingNavigation.previousSubtask") : t("componentsIssueSiblingNavigation.nextSubtask");
   const identifier = issue.identifier ?? issue.id.slice(0, 8);
   const Icon = direction === "previous" ? ChevronLeft : ChevronRight;
 

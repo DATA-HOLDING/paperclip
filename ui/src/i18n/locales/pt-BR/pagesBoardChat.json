@@ -1,0 +1,50 @@
+{
+  "typing": "digitando",
+  "conferenceRoom": "Sala de reuniões",
+  "status": {
+    "connecting": "Conectando...",
+    "thinking": "Pensando..."
+  },
+  "errors": {
+    "noResponse": "O assistente do conselho não conseguiu responder. Tente novamente.",
+    "unavailable": "O assistente do conselho está indisponível agora. Tente novamente em instantes."
+  },
+  "noOrganization": {
+    "title": "Nenhuma organização selecionada",
+    "body": "Selecione uma organização para começar a conversar com o concierge do seu conselho."
+  },
+  "yourOrganization": "Sua organização",
+  "chatHistory": "histórico do chat",
+  "newChat": "novo chat",
+  "welcome": {
+    "missionLine": " — sua missão é \"{{mission}}\".",
+    "intro": "Boas-vindas à **{{company}}**! Sou {{ceo}}, líder da sua equipe. Li o que você compartilhou no assistente{{missionLine}}",
+    "offer": "Aqui estão algumas coisas que posso ajudar você a colocar no papel agora. Escolha uma abaixo e eu faço um rascunho usando tudo o que você nos contou."
+  },
+  "chips": {
+    "brief": {
+      "label": "Rascunhar um resumo da organização",
+      "prompt": "Rascunhe um resumo de uma página da organização {{company}} — inclua nossa missão, a composição da equipe e as primeiras prioridades."
+    },
+    "hiring": {
+      "label": "Criar um plano de contratação",
+      "prompt": "Crie um plano de contratação para {{company}}. Liste as próximas funções a contratar, por ordem de prioridade, com uma breve justificativa para cada uma."
+    },
+    "first30": {
+      "label": "Esboçar nossos primeiros 30 dias",
+      "prompt": "Esboce nossos primeiros 30 dias. Divida em prioridades semanais com quem é responsável pelo quê."
+    },
+    "pitch": {
+      "label": "Escrever um pitch de apresentação",
+      "prompt": "Escreva um pitch curto de apresentação da {{company}} que eu possa reutilizar com investidores, clientes ou candidatos."
+    }
+  },
+  "assistant": "Assistente",
+  "jumpToLatest": "Ir para as mensagens mais recentes",
+  "composer": {
+    "placeholder": "Pergunte qualquer coisa sobre sua organização...",
+    "send": "Enviar mensagem"
+  },
+  "resize": "Redimensionar o chat do conselho e o feed dos agentes",
+  "openFeed": "Abrir o feed dos agentes"
+}

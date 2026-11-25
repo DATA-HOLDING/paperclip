@@ -1,0 +1,97 @@
+{
+  "notice": {
+    "needsRepair": "A conexão com o GitHub precisa de reparo",
+    "disconnected": "O bot do GitHub está desconectado",
+    "body": "Reconecte este bot para restaurar as revisões e as @menções do GitHub. Comece pelo App já salvo no Paperclip.",
+    "reconnect": "Reconectar GitHub",
+    "details": "Detalhes da conexão"
+  },
+  "credential": {
+    "helpAria": "Ajuda sobre {{label}}"
+  },
+  "recovery": {
+    "existingAppFallback": "seu App existente",
+    "restoreBefore": "Restaure ",
+    "restoreAfter": " usando as credenciais salvas. O Paperclip vai verificar o App e a instalação dele e depois reparar a entrega de eventos.",
+    "staysAttached": "Seu agente, os repositórios escolhidos, as configurações de revisão e o histórico de tarefas continuam ligados a esta conexão. Você não precisa criar outro GitHub App.",
+    "useSaved": "Usar as credenciais salvas",
+    "replaceCredentials": "Substituir credenciais do App…"
+  },
+  "actions": {
+    "checkingGithub": "Verificando o GitHub…",
+    "verifyAndReconnect": "Verificar e reconectar",
+    "connectExisting": "Conectar App existente",
+    "reconnectSaved": "Reconectar App salvo",
+    "checking": "Verificando…",
+    "reconnect": "Reconectar",
+    "connect": "Conectar"
+  },
+  "errors": {
+    "reconnectFailed": "Não foi possível reconectar o GitHub. Tente novamente.",
+    "secretChangedUnseen": "O segredo do webhook mudou, mas esta página não o recebeu. Gere outro segredo e atualize o GitHub.",
+    "generateFailed": "Não foi possível gerar o segredo do webhook. Tente novamente.",
+    "rotationTitle": "Não foi possível concluir a troca do segredo",
+    "reconnectAppTitle": "Não foi possível reconectar este App",
+    "reconnectSavedTitle": "Não foi possível reconectar o App salvo",
+    "rotationHint": "Use o segredo mais recente nas configurações do GitHub App e tente reconectar depois que o GitHub verificar a entrega.",
+    "reconnectHint": "Tente novamente se o serviço estiver temporariamente indisponível. Se o GitHub recusou a chave salva, substitua abaixo as credenciais deste mesmo App."
+  },
+  "rotation": {
+    "aria": "Trocar o segredo do webhook",
+    "title": "Trocar o segredo do webhook",
+    "committed": "O novo segredo está salvo. Reconecte usando esse valor; o Paperclip vai verificar a entrega assinada do GitHub.",
+    "instructionsBefore": "Gere um novo segredo e substitua o segredo do webhook nas ",
+    "appSettingsLink": "configurações do GitHub App",
+    "instructionsAfter": ". O GitHub precisa verificar o novo segredo antes de você reconectar.",
+    "warning": "Gerar invalida imediatamente o segredo anterior. Este valor só aparece aqui; mantenha esta página aberta até copiá-lo.",
+    "generateAnother": "Gerar outro segredo",
+    "generate": "Gerar segredo do webhook",
+    "uncertain": "O segredo ativo não está confirmado. Verifique o status salvo antes de usar um valor anterior.",
+    "checkStatus": "Verificar status do segredo salvo",
+    "newSecret": "Novo segredo do webhook",
+    "copy": "Copiar segredo do webhook"
+  },
+  "credentials": {
+    "titleReplace": "Substituir as credenciais do mesmo App",
+    "titleConnect": "Conectar seu GitHub App existente",
+    "openSettings": "Abrir configurações do GitHub App",
+    "andChoose": " e escolha ",
+    "orgOwned": "Se ele pertence a uma organização, abra Settings → Developer settings → GitHub Apps → Edit dessa organização. Você vai precisar de permissão para gerenciar o App.",
+    "requested": "Informe abaixo as credenciais solicitadas. As outras credenciais salvas continuam como estão.",
+    "appId": {
+      "label": "App ID",
+      "help": "O App ID numérico na página de configurações do GitHub App. Ele é diferente do Client ID e do ID da instalação.",
+      "copyBefore": "Copie o ",
+      "copyAfter": " da página de configurações do App.",
+      "savedFilled": "O ID salvo é preenchido quando disponível.",
+      "invalid": "Use o App ID numérico, não o Client ID."
+    },
+    "privateKey": {
+      "label": "Chave privada",
+      "help": "Envie o arquivo .pem baixado deste GitHub App ou cole todo o conteúdo dele, incluindo as linhas BEGIN e END.",
+      "step1Before": "Nas configurações do mesmo App, abra ",
+      "step1Path": "Credentials → Key pairs → New key",
+      "step1Middle": ". Na página de configurações antiga, use ",
+      "step1OldPath": "Private keys → Generate a private key",
+      "step2Before": "Envie abaixo o arquivo ",
+      "step2After": " baixado ou cole todo o conteúdo dele.",
+      "reuse": "Você pode reutilizar um arquivo .pem que já salvou. O GitHub não mostra de novo uma chave privada antiga. Criar uma nova chave para o mesmo App mantém a instalação.",
+      "uploadAria": "Enviar arquivo PEM da chave privada",
+      "readFailed": "Não foi possível ler este arquivo. Tente novamente ou cole a chave abaixo.",
+      "pasteReplacement": "Cole uma chave PEM substituta",
+      "paste": "Ou cole a chave PEM completa",
+      "loaded": "Chave privada carregada. Cole ou envie outra chave para substituí-la.",
+      "invalid": "Use uma chave privada PEM, incluindo as linhas BEGIN e END. Um token ou client secret não funciona aqui.",
+      "docsLink": "Instruções do GitHub sobre chaves privadas"
+    },
+    "webhookSecret": {
+      "label": "Segredo do webhook",
+      "help": "O segredo configurado no webhook deste App. Ele precisa ser exatamente igual ao do GitHub.",
+      "body": "Use o segredo salvo quando você configurou o webhook deste App. Se não o tiver mais, troque o segredo do webhook nas configurações do GitHub App e informe o mesmo valor aqui."
+    },
+    "clientSecret": {
+      "label": "Client secret",
+      "help": "O client secret da autenticação de usuário deste GitHub App. Mantenha a chave privada salva como está."
+    }
+  }
+}

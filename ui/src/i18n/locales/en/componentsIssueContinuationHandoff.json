@@ -1,0 +1,11 @@
+{
+  "defaultTitle": "Continuation handoff",
+  "collapse": "Collapse continuation handoff",
+  "expand": "Expand continuation handoff",
+  "badge": "handoff",
+  "updated": "Updated {{time}}",
+  "revision": " - revision {{number}}",
+  "continueLabel": "Continue with an agent",
+  "promptTitle": "Task handoff",
+  "promptDescription": "Paste this into your agent to continue from this handoff."
+}

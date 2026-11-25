@@ -1,0 +1,17 @@
+{
+  "category": {
+    "rateLimit": "Rate limit reached",
+    "quotaExhausted": "Usage allowance exhausted",
+    "authentication": "Authentication failed",
+    "permission": "Access denied",
+    "modelUnavailable": "Model unavailable",
+    "invalidRequest": "Request rejected",
+    "overloaded": "Provider at capacity",
+    "timeout": "Provider timed out",
+    "unknown": "Provider error"
+  },
+  "sandboxProvider": "Sandbox provider",
+  "failedBeforeStart": "Failed before work started",
+  "failedDuring": "Failed during work",
+  "request": "Request: {{id}}"
+}

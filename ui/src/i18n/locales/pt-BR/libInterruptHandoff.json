@@ -1,0 +1,47 @@
+{
+  "runStatus": {
+    "interrupted": "interrompida",
+    "interruptedHint": "interrompida por comentário do conselho",
+    "timedOut": "tempo esgotado"
+  },
+  "preview": {
+    "interruptHandOff": "Interromper a execução atual e passar para",
+    "wake": "Acordar",
+    "handOff": "Passar para",
+    "noAgentNotifiedSuffix": "— nenhum agente será notificado",
+    "clearResponsible": "Remover responsável — nenhum agente será notificado",
+    "notify": "Notificar",
+    "mentionedAgent": "o agente mencionado",
+    "plainTextOnly": "Nenhum agente será notificado. Use @ para mencionar um agente."
+  },
+  "handoff": {
+    "responsibleAgent": "o agente responsável",
+    "queuedFor": "na fila para {{who}}",
+    "queuedForWithRun": "na fila para {{who}} (execução interrompida anexada)",
+    "userHandoff": "não criado — esta é uma passagem para um usuário do conselho",
+    "unassigned": "não criado — nenhum agente selecionado. Mencione @agente ou escolha um responsável para despachar."
+  },
+  "reassign": {
+    "anAgent": "Um agente",
+    "banner": "{{who}} está em execução — mudar o responsável vai interromper esta execução.",
+    "confirmTitle": "Interromper a execução atual?",
+    "confirmAction": "Interromper e atribuir",
+    "cancelAction": "Cancelar"
+  },
+  "pauseBucket": {
+    "label": {
+      "liveRuns": "Execuções de agentes ativas",
+      "queuedWakes": "Despertares na fila",
+      "agentOwned": "De agentes",
+      "humanOwned": "De pessoas",
+      "static": "Estáticas"
+    },
+    "detail": {
+      "liveRuns": "interrompidas agora, voltam para a fila quando você retomar",
+      "queuedWakes": "retidos — não vão começar até você retomar",
+      "agentOwned": "agente responsável; nenhuma execução ativa",
+      "humanOwned": "de um usuário do conselho; pausar não vai notificá-lo",
+      "static": "sem responsável; nada seria executado"
+    }
+  }
+}

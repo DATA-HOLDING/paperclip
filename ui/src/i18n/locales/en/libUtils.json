@@ -1,0 +1,43 @@
+{
+  "perMonth": "{{amount}}/mo",
+  "relative": {
+    "justNow": "just now",
+    "minutesAgo_one": "{{count}}m ago",
+    "minutesAgo_other": "{{count}}m ago",
+    "hoursAgo_one": "{{count}}h ago",
+    "hoursAgo_other": "{{count}}h ago",
+    "daysAgo_one": "{{count}}d ago",
+    "daysAgo_other": "{{count}}d ago"
+  },
+  "billingType": {
+    "meteredApi": "Metered API",
+    "subscriptionIncluded": "Subscription",
+    "subscriptionOverage": "Subscription overage",
+    "credits": "Credits",
+    "fixed": "Fixed",
+    "unknown": "Unknown"
+  },
+  "quotaSource": {
+    "codexRpc": "Codex app server"
+  },
+  "financeEventKind": {
+    "inferenceCharge": "Inference charge",
+    "platformFee": "Platform fee",
+    "creditPurchase": "Credit purchase",
+    "creditRefund": "Credit refund",
+    "creditExpiry": "Credit expiry",
+    "byokFee": "BYOK fee",
+    "gatewayOverhead": "Gateway overhead",
+    "logStorage": "Log storage",
+    "logpush": "Logpush",
+    "provisionedCapacity": "Provisioned capacity",
+    "training": "Training",
+    "customModelImport": "Custom model import",
+    "customModelStorage": "Custom model storage",
+    "manualAdjustment": "Manual adjustment"
+  },
+  "direction": {
+    "credit": "Credit",
+    "debit": "Debit"
+  }
+}

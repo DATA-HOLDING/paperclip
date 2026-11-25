@@ -1,0 +1,18 @@
+{
+  "selectAgent": "Selecione um agente…",
+  "noAgents": "Nenhum agente ainda.",
+  "filterAgents": "Filtrar agentes",
+  "selectNamed": "Selecionar {{name}}",
+  "noMatches": "Nenhum resultado.",
+  "selectAgents": "Selecione agentes",
+  "agentsSelected_one": "{{count}} agente selecionado",
+  "agentsSelected_other": "{{count}} agentes selecionados",
+  "allowNamed": "Permitir {{name}}",
+  "noneSelected": "Nenhum agente selecionado",
+  "selectedCount": "{{count}} selecionado(s)",
+  "cancel": "Cancelar",
+  "saving": "Salvando…",
+  "save": "Salvar",
+  "done": "Concluir",
+  "andMore": "e mais {{count}}"
+}

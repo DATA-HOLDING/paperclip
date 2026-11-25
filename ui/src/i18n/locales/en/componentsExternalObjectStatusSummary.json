@@ -1,0 +1,7 @@
+{
+  "stale_one": "{{count}} stale",
+  "stale_other": "{{count}} stale",
+  "total_one": "{{count}} total",
+  "total_other": "{{count}} total",
+  "title": "External objects: {{parts}}"
+}

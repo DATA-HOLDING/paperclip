@@ -1,0 +1,40 @@
+{
+  "jobMissingCommand": "This job is missing a command.",
+  "serviceNoLongerMatches": "This runtime service no longer matches a configured workspace command.",
+  "exposure": {
+    "unavailable": "HTTPS unavailable",
+    "unavailableRemediation": "Check the Tailscale broker and node HTTPS configuration.",
+    "cleanupPending": "HTTPS cleanup pending",
+    "cleanupPendingRemediation": "Restart the host broker before reusing this port.",
+    "provisioning": "Provisioning HTTPS…",
+    "ready": "HTTPS ready"
+  },
+  "serviceFailed": "Service failed",
+  "action": {
+    "run": "Run",
+    "start": "Start",
+    "stop": "Stop",
+    "restart": "Restart"
+  },
+  "port": "Port {{port}}",
+  "noServicesConfigured": "No services are configured for this workspace.",
+  "noJobsConfigured": "No one-shot jobs are configured for this workspace.",
+  "workspaceCommands": "Workspace commands",
+  "servicesRunning": "{{count}} services running",
+  "noServicesRunning": "No services running",
+  "jobsAvailable_one": "{{count}} job available to run on demand.",
+  "jobsAvailable_other": "{{count}} jobs available to run on demand.",
+  "eachCommandIndependent": "Each command can be controlled independently.",
+  "services": {
+    "title": "Services",
+    "description": "Long-running commands that Paperclip can supervise for this workspace."
+  },
+  "jobs": {
+    "title": "Jobs",
+    "description": "One-shot commands that run now and exit when they finish."
+  },
+  "untracked": {
+    "title": "Untracked services",
+    "description": "Running services that no longer match the current workspace command config."
+  }
+}

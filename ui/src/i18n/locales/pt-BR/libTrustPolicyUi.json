@@ -1,0 +1,23 @@
+{
+  "presets": {
+    "standard": {
+      "label": "Padrão",
+      "description": "Colaboração visível para a organização. Este é o padrão para o trabalho normal."
+    },
+    "lowTrustReview": {
+      "label": "Revisão de baixa confiança",
+      "description": "Isolado para entradas hostis ou não confiáveis. API do Paperclip restrita, saída em quarentena. Use para revisão de PRs e triagem de conteúdo externo."
+    }
+  },
+  "boundary": {
+    "project": "Projeto {{id}}",
+    "rootIssue": "Tarefa raiz {{id}}",
+    "issue": "Tarefa {{id}}",
+    "none": "Nenhum limite selecionado",
+    "many": "{{n}} limites"
+  },
+  "source": {
+    "promoted": "Promovido da baixa confiança",
+    "lowTrust": "Fonte de baixa confiança"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "greetingFailed": "Não foi possível iniciar a boas-vindas.",
+  "loading": "Carregando conversa…",
+  "disabled": {
+    "before": "O Chat com agentes está desativado nesta instância. Um administrador pode ativá-lo em",
+    "link": "Configurações experimentais",
+    "after": "Sua preferência de espaço de trabalho não muda a disponibilidade do Chat. O histórico existente continua disponível pelos links das tarefas."
+  },
+  "notFound": "Agente não encontrado.",
+  "retryWelcome": "Tentar a boas-vindas novamente",
+  "errorActions": {
+    "loadConversation": "carregar esta conversa"
+  }
+}

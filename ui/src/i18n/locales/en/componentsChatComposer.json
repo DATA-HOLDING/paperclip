@@ -1,0 +1,9 @@
+{
+  "placeholder": "Message…",
+  "sendMessage": "Send message",
+  "uploading": "Uploading…",
+  "uploadFailed": "Upload failed",
+  "insertedInline": "Inserted inline",
+  "attached": "Attached",
+  "attachFiles": "Attach files"
+}

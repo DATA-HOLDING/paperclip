@@ -1,0 +1,19 @@
+{
+  "copyLabel": "Copy {{label}}",
+  "copied": "Copied",
+  "copy": "Copy",
+  "copyFailed": "Couldn’t copy; select the text and copy it.",
+  "secured": {
+    "bearer": "Each call sends the secret as a bearer token: Authorization: Bearer <secret>.",
+    "none": "Calls are not signed: the address itself is the secret.",
+    "signed": "Calls are signed with the secret."
+  },
+  "intro": "Give the other system this address. Each call (POST) starts one run.",
+  "addressToCall": "Address to call",
+  "secret": "Secret",
+  "saveSecretNow": "Save the secret now: it is shown only this once.",
+  "secretShownOnce": "The secret was shown once, when it was set up.",
+  "makeNewOneBefore": "You can make a new one from ",
+  "automationPage": "the automation’s page",
+  "makeNewOneAfter": "."
+}

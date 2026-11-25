@@ -19,6 +19,7 @@ import { SetMyUserSecretDialog } from "./SetMyUserSecretDialog";
 import { SecretPathName } from "./SecretPathName";
 import { myValueState } from "./my-value-state";
 import { describeError } from "@/api/errors";
+import { t } from "@/i18n";
 
 /**
  * Secrets → My secrets tab. Lists every secret the organization asks each
@@ -41,11 +42,11 @@ export function MyUserSecretsTab({ companyId }: { companyId: string }) {
     mutationFn: (secret: CompanySecret) => secretsApi.removeMyUserSecret(companyId, secret.id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.secrets.myUserSecrets(companyId) });
-      pushToast({ title: "Your value was removed", tone: "info" });
+      pushToast({ title: t("pagesSecretsMyUserSecretsTab.toast.removed"), tone: "info" });
     },
     onError: (err) =>
       pushToast({
-        title: "Couldn't remove your value",
+        title: t("pagesSecretsMyUserSecretsTab.toast.removeFailed"),
         body: describeError(err).body,
         tone: "error",
       }),
@@ -60,13 +61,13 @@ export function MyUserSecretsTab({ companyId }: { companyId: string }) {
   );
 
   return (
-    <section aria-label="My secrets" className="flex flex-1 flex-col gap-4">
+    <section aria-label={t("pagesSecretsMyUserSecretsTab.ariaLabel")} className="flex flex-1 flex-col gap-4">
       <p className="max-w-xl text-sm text-muted-foreground">
-        Values only you provide. Agents use them when they work for you.
+        {t("pagesSecretsMyUserSecretsTab.intro")}
         {missingCount > 0 ? (
           <span className="text-foreground">
             {" "}
-            {missingCount} still {missingCount === 1 ? "needs" : "need"} your value.
+            {t("pagesSecretsMyUserSecretsTab.missingCount", { count: missingCount })}
           </span>
         ) : null}
       </p>
@@ -74,14 +75,14 @@ export function MyUserSecretsTab({ companyId }: { companyId: string }) {
       {mySecretsView.kind === "error" ? (
         <QueryErrorState
           error={mySecretsQuery.error}
-          action="load your secrets"
+          action={t("pagesSecretsMyUserSecretsTab.loadAction")}
           onRetry={mySecretsView.retry}
           retrying={mySecretsView.isFetching}
         />
       ) : entries.length === 0 && !mySecretsQuery.isPending && mySecretsView.kind !== "reconnecting" ? (
         <EmptyState placement="upper"
           icon={KeyRound}
-          message="Nothing is asked of you yet. An admin decides which secrets each member provides."
+          message={t("pagesSecretsMyUserSecretsTab.empty")}
         />
       ) : (
         <ul className="divide-y divide-border border-y border-border">
@@ -146,11 +147,11 @@ function MyUserSecretRow({
         ) : null}
         {disabledDefinition ? (
           <span className="text-xs text-muted-foreground">
-            Turned off by an admin. Agents won't ask for it.
+            {t("pagesSecretsMyUserSecretsTab.turnedOffByAdmin")}
           </span>
         ) : state === "inactive" ? (
           <span className="text-xs text-muted-foreground">
-            Your value is turned off. Replace it to use it again.
+            {t("pagesSecretsMyUserSecretsTab.valueTurnedOff")}
           </span>
         ) : null}
       </div>
@@ -160,12 +161,12 @@ function MyUserSecretRow({
           <span className="mr-2 flex items-center gap-1.5 text-sm text-muted-foreground">
             <Check className="size-3.5" aria-hidden />
             {replaced
-              ? `Replaced ${relativeTime(replaced)}`
-              : `Added ${relativeTime(secret.createdAt)}`}
+              ? t("pagesSecretsMyUserSecretsTab.replaced", { time: relativeTime(replaced) })
+              : t("pagesSecretsMyUserSecretsTab.added", { time: relativeTime(secret.createdAt) })}
           </span>
           {!disabledDefinition ? (
             <Button variant="ghost" size="sm" onClick={onSet}>
-              Replace
+              {t("pagesSecretsMyUserSecretsTab.replace")}
             </Button>
           ) : null}
           <DropdownMenu>
@@ -174,7 +175,7 @@ function MyUserSecretRow({
                 variant="ghost"
                 size="icon-sm"
                 className="text-muted-foreground"
-                aria-label={`More actions for ${definition.name}`}
+                aria-label={t("pagesSecretsMyUserSecretsTab.moreActions", { name: definition.name })}
                 disabled={clearing}
               >
                 <MoreHorizontal aria-hidden />
@@ -182,14 +183,14 @@ function MyUserSecretRow({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem variant="destructive" disabled={clearing} onSelect={onClear}>
-                Remove your value
+                {t("pagesSecretsMyUserSecretsTab.removeValue")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </span>
       ) : !disabledDefinition ? (
         <Button size="sm" onClick={onSet}>
-          Set value
+          {t("pagesSecretsMyUserSecretsTab.setValue")}
         </Button>
       ) : null}
     </li>

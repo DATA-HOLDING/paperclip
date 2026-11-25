@@ -1,0 +1,51 @@
+{
+  "kinds": {
+    "suggestTasks": "Suggested tasks",
+    "askUserQuestions": "Ask user questions",
+    "requestConfirmation": "Confirmations",
+    "requestCheckboxConfirmation": "Checkbox confirmations",
+    "requestItemVerdicts": "Item verdicts",
+    "connectionIntent": "Connection requests",
+    "suggestRoutine": "Routine offers",
+    "proposeResponsibilityBar": "Proposed bars",
+    "proposeAutomation": "Proposed automations",
+    "proposeDashboardChanges": "Proposed dashboard changes"
+  },
+  "unset": {
+    "defaultPolicy": "Anyone (default)",
+    "cap": "No cap"
+  },
+  "effects": {
+    "unset": {
+      "defaultPolicy": "New cards are open — the board or any agent can respond, including the one that asked.",
+      "cap": "A request keeps whatever audience it asks for."
+    },
+    "defaultPolicy": {
+      "notCreator": "New cards exclude the agent that created them, so the answer comes from someone else.",
+      "humanOnly": "New cards wait for a person on the board. Agents are turned away."
+    },
+    "cap": {
+      "notCreator": "Even a card that asks for Anyone is narrowed to exclude its creator.",
+      "humanOnly": "Every card of this kind waits for a person, whatever it asked for."
+    }
+  },
+  "heading": "Interaction governance",
+  "intro": {
+    "openByDefault": "Thread interactions are open by default:",
+    "anyone": "Anyone",
+    "anyoneRest": " in the organization — the board or any agent, including the one that asked — can respond. Narrow a kind only when you need to.",
+    "defaultPolicy": "Default policy",
+    "defaultPolicyRest": " is the audience new cards get when the requester does not ask for one;",
+    "cap": "Cap",
+    "capRest": " narrows every request of that kind and can never widen one. Tool-approval confirmations always stay",
+    "humanOnly": "Human only",
+    "end": "."
+  },
+  "columns": {
+    "kind": "Kind",
+    "defaultPolicy": "Default policy",
+    "cap": "Cap"
+  },
+  "defaultPolicyAria": "Default resolver audience for {{kind}}",
+  "capAria": "Resolver cap for {{kind}}"
+}

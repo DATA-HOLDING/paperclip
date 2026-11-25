@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useEffect, useState, type ReactNode } from "react";
 import type { IssueExternalObjectGroup } from "../../hooks/useIssueExternalObjects";
 import {
@@ -33,8 +34,8 @@ function externalObjectRowDisplayKey(group: IssueExternalObjectGroup): string {
   const displayKey = pill.displayKey?.trim();
   if (displayKey) return displayKey;
   if (pill.providerKey === "github") {
-    if (pill.objectType === "pull_request") return "Github PR";
-    if (pill.objectType === "issue") return "Github Issue";
+    if (pill.objectType === "pull_request") return t("componentsIssueProperties.externalObjects.githubPr");
+    if (pill.objectType === "issue") return t("componentsIssueProperties.externalObjects.githubIssue");
   }
   return externalObjectDisplayLabel(pill.providerKey, pill.objectType);
 }
@@ -176,9 +177,9 @@ export function ExternalObjectRows({
 
   if (externalObjectsError) {
     return (
-      <PropertyRow label="External objects">
+      <PropertyRow label={t("componentsIssueProperties.externalObjects.label")}>
         <span className="text-xs text-muted-foreground">
-          Couldn't load external objects.
+          {t("componentsIssueProperties.externalObjects.loadFailed")}
           {onRetryExternalObjects ? (
             <>
               {" "}
@@ -187,7 +188,7 @@ export function ExternalObjectRows({
                 className="text-primary underline-offset-2 hover:underline"
                 onClick={onRetryExternalObjects}
               >
-                Retry
+                {t("componentsIssueProperties.externalObjects.retry")}
               </button>
             </>
           ) : null}
@@ -198,7 +199,7 @@ export function ExternalObjectRows({
 
   if (externalObjectsLoading) {
     return (
-      <PropertyRow label="External objects">
+      <PropertyRow label={t("componentsIssueProperties.externalObjects.label")}>
         <span className="h-4 w-24 animate-pulse rounded bg-muted/40" />
       </PropertyRow>
     );
@@ -227,7 +228,7 @@ export function ExternalObjectRows({
           );
         })}
       {expanded || hiddenExternalObjectCount > 0 ? (
-        <PropertyRow label="References">
+        <PropertyRow label={t("componentsIssueProperties.externalObjects.references")}>
           <ExpandRelationListButton
             hiddenCount={hiddenExternalObjectCount}
             expanded={expanded}

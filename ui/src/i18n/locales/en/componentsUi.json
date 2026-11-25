@@ -1,0 +1,11 @@
+{
+  "close": "Close",
+  "breadcrumb": {
+    "label": "breadcrumb",
+    "more": "More"
+  },
+  "command": {
+    "title": "Command Palette",
+    "description": "Search for a command to run..."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "globalSearch": "Busca global",
+  "searchTooltip": "Buscar tarefas, agentes, projetos",
+  "mainNavigation": "Navegação principal",
+  "newTask": "Nova tarefa",
+  "dashboard": "Painel",
+  "chat": "Chat",
+  "work": "Trabalho",
+  "tasks": "Tarefas",
+  "projects": "Projetos",
+  "routines": "Rotinas",
+  "artifacts": "Artefatos",
+  "org": "Organização",
+  "agents": "Agentes",
+  "skills": "Skills",
+  "connectors": "Conectores",
+  "audit": "Auditoria",
+  "recentTasks": "Tarefas recentes",
+  "recentTasksRegion": "Tarefas recentes"
+}

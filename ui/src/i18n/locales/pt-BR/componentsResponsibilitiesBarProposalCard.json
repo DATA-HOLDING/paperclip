@@ -1,0 +1,46 @@
+{
+  "notRight": {
+    "defaultText": "Esse padrão ainda não está certo.",
+    "placeholder": "ex.: Contar só clientes pagantes, e a meta deveria ser maior",
+    "label": "O que deveria mudar? (opcional)",
+    "back": "Voltar",
+    "send": "Enviar"
+  },
+  "metrics": {
+    "label": "Métricas propostas",
+    "heading_one": "A métrica na página",
+    "heading_other": "{{count}} métricas na página",
+    "keepsSupporting": "Mantém as métricas de apoio que já tem.",
+    "onlyBar": "Só a métrica do próprio padrão; as métricas de apoio são removidas.",
+    "barMetricPrefix": "Métrica do padrão · ",
+    "startingReadings": "Leituras iniciais: {{readings}}"
+  },
+  "forPrefix": " para ",
+  "accepted": {
+    "barSet": "Padrão definido",
+    "withSupporting_one": " Com {{count}} métrica de apoio.",
+    "withSupporting_other": " Com {{count}} métricas de apoio."
+  },
+  "closed": {
+    "replaced": "Padrão proposto, substituído por um mais recente: ",
+    "rejected": "Não este padrão: "
+  },
+  "yourAgent": "Seu agente",
+  "pending": {
+    "label": "Padrão proposto para {{title}}",
+    "proposed": "{{agent}} propôs um padrão"
+  },
+  "rows": {
+    "kind": "Tipo de medida",
+    "measured": "O que é medido",
+    "bar": "O padrão",
+    "now": "Onde está agora",
+    "statusRule": "Como o status é lido",
+    "statusWith": "Status com ele"
+  },
+  "actions": {
+    "openConversation": "Abrir a conversa",
+    "notRight": "Não está certo",
+    "use": "Usar este padrão"
+  }
+}

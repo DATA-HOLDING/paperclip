@@ -1,0 +1,14 @@
+{
+  "resets": "Resets {{time}}",
+  "usingCredits": "Limit reached; work continues on account credits.",
+  "unlimitedCredits": "Unlimited credits",
+  "noCredits": "No credits remaining",
+  "credits": "{{balance}} credits",
+  "limited": "Limited",
+  "resetsSuffix": " · resets {{time}}",
+  "usingCreditsShort": "{{label}} {{percent}}% · using credits",
+  "ariaLabel": "Provider usage limit: {{label}}",
+  "usageLimits": "{{provider}} usage limits",
+  "reported": "Reported {{time}}",
+  "viewAgent": "View agent"
+}

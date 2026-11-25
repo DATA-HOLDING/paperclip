@@ -1,0 +1,105 @@
+{
+  "labels": {
+    "channel": "Canal {{id}}",
+    "channelResource": "Recurso do canal {{id}}",
+    "identity": "Identidade {{id}}",
+    "profile": "Perfil {{id}}",
+    "connection": "Conexão {{id}}",
+    "agentPolicy": "Política do agente {{id}}",
+    "secret": "Segredo {{id}}",
+    "secretProposal": "Proposta de segredo {{id}}",
+    "apiKey": "Chave de API {{id}}",
+    "revision": "Revisão {{id}}"
+  },
+  "steps": {
+    "duplicateEntries": "{{field}} contém entradas duplicadas.",
+    "itemNotSaved": "{{label}} não está na configuração salva deste agente. Recarregue antes de editá-lo.",
+    "keepExplicit": "Mantenha {{path}}.{{key}} explícito; use null, false, uma string vazia ou uma lista vazia para limpá-lo quando houver suporte."
+  },
+  "instructionFileNotText": "O arquivo de instruções {{path}} não pode ser editado como texto.",
+  "channels": {
+    "providerImmutable": "O provedor de um canal não pode ser alterado. Crie um novo canal.",
+    "editedAndRemoved": "O canal {{id}} não pode ser editado e removido no mesmo salvamento.",
+    "removedAndConfigured": "O canal {{id}} está ao mesmo tempo removido e configurado.",
+    "removedAndIdentitiesEdited": "O canal {{id}} não pode ser removido e ter as identidades editadas no mesmo salvamento.",
+    "steps": {
+      "settings": "Configurações do canal: {{id}}",
+      "resources": "Recursos do canal: {{id}}",
+      "remove": "Remover canal: {{id}}",
+      "create": "Criar canal {{provider}}",
+      "setup": "Canal {{action}}: {{id}}",
+      "revokeIdentity": "Revogar identidade do canal: {{id}}"
+    }
+  },
+  "load": {
+    "channelOwnershipChanged": "A posse do canal mudou. Recarregue a configuração."
+  },
+  "resolve": {
+    "observedReadOnly": "observed é somente leitura. Remova este bloco e edite spec para alterar a configuração."
+  },
+  "tools": {
+    "installedOrganizationWide": "{{name}} está instalado em toda a organização. A instalação herdada não pode ser substituída para um único agente.",
+    "installationChanged": "A instalação de {{name}} mudou. Recarregue antes de salvar.",
+    "profileShared": "O perfil {{name}} é compartilhado com outros destinos. Defina updateSharedDefinition: true para alterar a definição compartilhada ou crie um perfil separado com profileId: null.",
+    "policiesScoped": "tools.policies deve ter escopo apenas para este agente.",
+    "steps": {
+      "installation": "Instalação da ferramenta: {{name}}",
+      "profile": "Perfil de ferramentas: {{name}}",
+      "profileShared": "Perfil de ferramentas (definição compartilhada): {{name}}",
+      "unbindProfile": "Desvincular perfil de ferramentas: {{name}}",
+      "policy": "Política de ferramentas: {{name}}",
+      "removePolicy": "Remover política de ferramentas: {{name}}"
+    }
+  },
+  "instructions": {
+    "chooseModeBeforeFiles": "Escolha o modo de instruções gerenciado ou externo antes de adicionar arquivos.",
+    "chooseMode": "Escolha o modo de instruções gerenciado ou externo.",
+    "externalAbsolute": "Instruções externas exigem um rootPath absoluto.",
+    "entryFileRequired": "O arquivo de entrada das instruções não pode ser removido.",
+    "saveLocationFirst": "Salve primeiro o local das instruções ou o arquivo de entrada e depois edite os arquivos carregados desse local.",
+    "managedRootAssigned": "A raiz das instruções gerenciadas é definida pelo Paperclip. Escolha o modo externo para usar outra pasta.",
+    "steps": {
+      "location": "Local das instruções (carregar os arquivos de destino)",
+      "file": "Instruções: {{path}}",
+      "removeFile": "Remover arquivo de instruções: {{path}}"
+    }
+  },
+  "secrets": {
+    "envBoth": "Defina env.{{key}} em adapterConfig ou em secrets.create.bind, não nos dois no mesmo salvamento.",
+    "accessBoth": "Defina access.{{alias}} em adapterConfig ou em secrets.create.bind, não nos dois no mesmo salvamento.",
+    "envChanged": "env.{{key}} mudou antes do vínculo do segredo. Recarregue o salvo antes de salvar.",
+    "accessChanged": "access.{{alias}} mudou antes do vínculo do segredo. Recarregue o salvo antes de salvar.",
+    "receipt": "Segredo: {{name}}",
+    "rejectReason": "Uma proposta de segredo rejeitada exige um motivo.",
+    "steps": {
+      "create": "Criar segredo: {{name}}",
+      "rotate": "Rotacionar segredo: {{id}}",
+      "update": "Atualizar segredo: {{id}}",
+      "proposal": "Proposta de segredo: {{id}}"
+    }
+  },
+  "save": {
+    "requestFailed": "A requisição falhou",
+    "interruptedSaved": "Salvo: {{steps}}. ",
+    "interrupted": "Não foi possível concluir {{label}}: {{reason}}. Algumas alterações podem ter sido salvas. Recarregue o salvo antes de salvar de novo.",
+    "observedReadOnly": "observed é somente leitura. Edite spec para alterar a configuração.",
+    "useSkillsSection": "Use a seção de skills em vez de adapterConfig.{{key}}.",
+    "useInstructionsSection": "Use a seção de instruções em vez de adapterConfig.{{key}}.",
+    "canAssignTasksRequired": "Agentes CEO e agentes que podem criar agentes também têm autoridade para atribuir tarefas. Defina canAssignTasks como true.",
+    "apiKeyReceipt": "Chave de API: {{name}}",
+    "restoreAlone": "Restaure uma revisão em um salvamento próprio e depois edite a configuração restaurada.",
+    "agentChanged": "A configuração do agente mudou enquanto você editava. Recarregue o salvo antes de salvar.",
+    "sectionChanged": "{{key}} mudou enquanto você editava. Recarregue o salvo antes de salvar.",
+    "secretChanged": "O segredo {{id}} mudou. Recarregue o salvo antes de salvar.",
+    "profileChanged": "O perfil de ferramentas {{id}} mudou enquanto você editava. Recarregue o salvo antes de salvar.",
+    "refreshing": "a atualização da configuração salva",
+    "steps": {
+      "agentConfiguration": "Configuração do agente",
+      "skills": "Skills e versões fixadas",
+      "permissions": "Permissões e confiança",
+      "revokeApiKey": "Revogar chave de API: {{name}}",
+      "createApiKey": "Criar chave de API: {{name}}",
+      "restoreRevision": "Restaurar revisão da configuração"
+    }
+  }
+}

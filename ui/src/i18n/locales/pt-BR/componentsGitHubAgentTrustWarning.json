@@ -1,0 +1,7 @@
+{
+  "notConfigured": "{{name}} não está configurado para revisão de baixa confiança",
+  "risk": "Comentários e pull requests do GitHub podem conter instruções maliciosas. Recomendamos um agente de baixa confiança, com limite de trabalho restrito e um runtime de sandbox isolado.",
+  "continuing": "Continuar mantém as permissões atuais deste agente. Um perfil de convidado restrito não substitui as configurações de confiança e de runtime do agente.",
+  "change": "Mudar {{name}} para um agente de baixa confiança",
+  "learn": "Saiba mais sobre agentes de baixa confiança"
+}

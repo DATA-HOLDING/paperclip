@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useCallback, useEffect } from "react";
 import { History } from "lucide-react";
 import { useSearchParams } from "@/lib/router";
@@ -37,7 +38,7 @@ export function CompanyActivity() {
   ].includes(actionParam ?? "") ? actionParam! : "__all";
 
   useEffect(() => {
-    if (!streamlinedUiEnabled) setBreadcrumbs([{ label: "Activity" }]);
+    if (!streamlinedUiEnabled) setBreadcrumbs([{ label: t("pagesAudit.companyActivity.title") }]);
   }, [setBreadcrumbs, streamlinedUiEnabled]);
 
   const handleModeChange = useCallback(
@@ -99,7 +100,7 @@ export function CompanyActivity() {
   if (streamlinedUiEnabled) return <AuditHub section="activity" />;
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={History} message="Select an organization to view activity." />;
+    return <EmptyState icon={History} message={t("pagesAudit.companyActivity.selectOrganization")} />;
   }
 
   return (

@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { AlertCircle, AlertTriangle, ArrowRightLeft, Check, Info, Layers, Loader2, RotateCw, TerminalSquare } from "lucide-react";
 import type { TaskChatProviderActivityItem } from "./task-chat-model";
 import type { ToolIcon } from "./tool-taxonomy";
@@ -74,13 +75,13 @@ function summary(item: TaskChatProviderActivityItem): string | undefined {
 
 function retryLabel(item: TaskChatProviderActivityItem): string {
   switch (detail(item, "Reason")) {
-    case "serverOverloaded": return "Retrying after overload";
+    case "serverOverloaded": return t("componentsTaskChatStatusNoticePresentation.retry.afterOverload");
     case "responseStreamDisconnected":
     case "responseStreamConnectionFailed":
-    case "transport_lost": return "Reconnecting";
-    case "httpConnectionFailed": return "Retrying connection";
-    case "rate_limit": return "Retrying after rate limit";
-    default: return "Retrying";
+    case "transport_lost": return t("componentsTaskChatStatusNoticePresentation.retry.reconnecting");
+    case "httpConnectionFailed": return t("componentsTaskChatStatusNoticePresentation.retry.connection");
+    case "rate_limit": return t("componentsTaskChatStatusNoticePresentation.retry.afterRateLimit");
+    default: return t("componentsTaskChatStatusNoticePresentation.retry.default");
   }
 }
 
@@ -88,7 +89,7 @@ function attemptSuffix(item: TaskChatProviderActivityItem): string {
   const attempt = detail(item, "Attempt");
   const max = detail(item, "Max attempts");
   if (!attempt) return "";
-  return max ? ` (attempt ${attempt} of ${max})` : ` (attempt ${attempt})`;
+  return max ? t("componentsTaskChatStatusNoticePresentation.attemptOfMax", { attempt, max }) : t("componentsTaskChatStatusNoticePresentation.attempt", { attempt });
 }
 
 export function statusNoticePresentation(
@@ -100,8 +101,8 @@ export function statusNoticePresentation(
       category: "provider_error",
       icon: AlertCircle,
       tone: "danger",
-      label: "Provider error",
-      detail: summary(item) ?? "The provider reported an error without a message.",
+      label: t("componentsTaskChatStatusNoticePresentation.providerError"),
+      detail: summary(item) ?? t("componentsTaskChatStatusNoticePresentation.providerErrorNoMessage"),
       active: false,
       fatal: true,
     };
@@ -112,20 +113,20 @@ export function statusNoticePresentation(
   switch (category) {
     case "context_compaction":
       if (phase === "failed") {
-        return { category, icon: AlertTriangle, tone: "warning", label: "Context compaction failed", detail: summary(item), active: false, fatal: false };
+        return { category, icon: AlertTriangle, tone: "warning", label: t("componentsTaskChatStatusNoticePresentation.compactionFailed"), detail: summary(item), active: false, fatal: false };
       }
       if (phase === "running" && item.status === "interrupted") {
-        return { category, icon: Layers, tone: "neutral", label: "Compaction stopped", active: false, fatal: false };
+        return { category, icon: Layers, tone: "neutral", label: t("componentsTaskChatStatusNoticePresentation.compactionStopped"), active: false, fatal: false };
       }
       return phase === "running"
-        ? { category, icon: Loader2, tone: "progress", label: "Compacting context", active: true, fatal: false }
-        : { category, icon: Layers, tone: "neutral", label: "Context compacted", active: false, fatal: false };
+        ? { category, icon: Loader2, tone: "progress", label: t("componentsTaskChatStatusNoticePresentation.compactingContext"), active: true, fatal: false }
+        : { category, icon: Layers, tone: "neutral", label: t("componentsTaskChatStatusNoticePresentation.contextCompacted"), active: false, fatal: false };
     case "provider_retry":
       if (!options.resolved && item.status === "interrupted") {
-        return { category, icon: AlertTriangle, tone: "neutral", label: "Retry stopped", detail: summary(item), active: false, fatal: false };
+        return { category, icon: AlertTriangle, tone: "neutral", label: t("componentsTaskChatStatusNoticePresentation.retryStopped"), detail: summary(item), active: false, fatal: false };
       }
       return options.resolved
-        ? { category, icon: Check, tone: "neutral", label: "Recovered after retry", detail: summary(item), active: false, fatal: false }
+        ? { category, icon: Check, tone: "neutral", label: t("componentsTaskChatStatusNoticePresentation.recoveredAfterRetry"), detail: summary(item), active: false, fatal: false }
         : { category, icon: RotateCw, tone: "warning", label: `${retryLabel(item)}${attemptSuffix(item)}`, detail: summary(item), active: true, fatal: false };
     case "model_fallback": {
       const model = detail(item, "Fallback model");
@@ -134,7 +135,7 @@ export function statusNoticePresentation(
         category,
         icon: ArrowRightLeft,
         tone: "warning",
-        label: model ? `Fell back to ${model}` : "Fell back to another model",
+        label: model ? t("componentsTaskChatStatusNoticePresentation.fellBackTo", { model }) : t("componentsTaskChatStatusNoticePresentation.fellBackToAnother"),
         detail: reason ?? summary(item),
         active: false,
         fatal: false,
@@ -146,13 +147,13 @@ export function statusNoticePresentation(
         category,
         icon: severity === "info" ? Info : AlertTriangle,
         tone: severity === "error" ? "danger" : severity === "warning" ? "warning" : "neutral",
-        label: severity === "error" ? "Provider error" : severity === "warning" ? "Provider warning" : "Provider update",
+        label: severity === "error" ? t("componentsTaskChatStatusNoticePresentation.providerError") : severity === "warning" ? t("componentsTaskChatStatusNoticePresentation.providerWarning") : t("componentsTaskChatStatusNoticePresentation.providerUpdate"),
         detail: summary(item),
         active: false,
         fatal: false,
       };
     }
     case "local_command_output":
-      return { category, icon: TerminalSquare, tone: "neutral", label: "Command output", detail: summary(item), active: false, fatal: false };
+      return { category, icon: TerminalSquare, tone: "neutral", label: t("componentsTaskChatStatusNoticePresentation.commandOutput"), detail: summary(item), active: false, fatal: false };
   }
 }

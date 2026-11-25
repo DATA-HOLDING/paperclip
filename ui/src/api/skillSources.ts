@@ -1,6 +1,7 @@
 import type { ProjectRepositoryOptions, ProjectSkillRepository, SkillSourceSettingsRequest, SkillSourceFilePreview, SkillSourcePreviewRequest, SkillSource, SkillSourceCreateRequest, SkillSourceDiscovery, SkillSourceDiscoveryRequest, SkillSourceRefreshResult, SkillSourceSelectionRequest, SkillSourceScanUpdate, SkillSourceDiscoveryEvent, SkillSourceDisconnectRequest, SkillSourceDisconnectResult } from '@paperclipai/shared';
 import { api, ApiError, requestResponse } from './client';
 import type { SkillSourceBranches, SkillSourceBranchesQuery } from '@paperclipai/shared';
+import { t } from "@/i18n";
 const base = (companyId: string) => `/companies/${companyId}/skill-sources`;
 export const skillSourcesApi = {
   list: (companyId: string) => api.get<SkillSource[]>(base(companyId)),
@@ -14,7 +15,7 @@ export const skillSourcesApi = {
     const response = await requestResponse(`${base(companyId)}/discover`, {
       method: 'POST', body: JSON.stringify(input), headers: { Accept: 'application/x-ndjson' }, signal,
     });
-    if (!response.body || !response.headers.get('Content-Type')?.includes('application/x-ndjson')) throw new Error('Live scan unavailable. Refresh the page and try again.');
+    if (!response.body || !response.headers.get('Content-Type')?.includes('application/x-ndjson')) throw new Error(t("apiSkillSources.liveScanUnavailable"));
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
@@ -33,9 +34,9 @@ export const skillSourcesApi = {
           if (event.type === 'error') throw new ApiError(event.error, event.status, event);
           if (event.type === 'complete') return event.discovery;
           if (event.type === 'progress' || event.type === 'candidate') onProgress(event);
-          else throw new Error('Unexpected repository scan response. Try again.');
+          else throw new Error(t("apiSkillSources.unexpectedResponse"));
         }
-        if (done) throw new Error('Repository scan interrupted. Try again.');
+        if (done) throw new Error(t("apiSkillSources.scanInterrupted"));
       }
     } finally {
       await reader.cancel().catch(() => {});

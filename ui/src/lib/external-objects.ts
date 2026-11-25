@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import {
   AlertCircle,
   AlertOctagon,
@@ -77,18 +78,18 @@ export function externalObjectIconForLiveness(liveness: string): LucideIcon | nu
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  unknown: "Not yet resolved",
-  open: "Open",
-  waiting: "Waiting",
-  running: "Running",
-  succeeded: "Succeeded",
-  failed: "Failed",
-  blocked: "Blocked",
-  closed: "Closed",
-  archived: "Archived",
-  auth_required: "Authorization required",
-  rate_limited: "Rate limited",
-  unreachable: "Unreachable",
+  unknown: t("libExternalObjects.category.unknown"),
+  open: t("libExternalObjects.category.open"),
+  waiting: t("libExternalObjects.category.waiting"),
+  running: t("libExternalObjects.category.running"),
+  succeeded: t("libExternalObjects.category.succeeded"),
+  failed: t("libExternalObjects.category.failed"),
+  blocked: t("libExternalObjects.category.blocked"),
+  closed: t("libExternalObjects.category.closed"),
+  archived: t("libExternalObjects.category.archived"),
+  auth_required: t("libExternalObjects.category.authRequired"),
+  rate_limited: t("libExternalObjects.category.rateLimited"),
+  unreachable: t("libExternalObjects.category.unreachable"),
 };
 
 export function externalObjectCategoryLabel(category: string): string {
@@ -96,12 +97,12 @@ export function externalObjectCategoryLabel(category: string): string {
 }
 
 const LIVENESS_LABELS: Record<string, string> = {
-  unknown: "Not yet refreshed",
-  fresh: "Fresh",
-  stale: "Stale",
-  auth_required: "Requires auth",
-  rate_limited: "Rate limited",
-  unreachable: "Unreachable",
+  unknown: t("libExternalObjects.liveness.unknown"),
+  fresh: t("libExternalObjects.liveness.fresh"),
+  stale: t("libExternalObjects.liveness.stale"),
+  auth_required: t("libExternalObjects.liveness.authRequired"),
+  rate_limited: t("libExternalObjects.liveness.rateLimited"),
+  unreachable: t("libExternalObjects.liveness.unreachable"),
 };
 
 export function externalObjectLivenessLabel(liveness: string): string {
@@ -120,7 +121,7 @@ export function externalObjectDisplayStatusLabel(input: {
   const isGenericUrl = input.providerKey === "url" && input.objectType === "link";
   const hasKnownObjectType = Boolean(input.providerKey && input.objectType);
   if (input.statusCategory === "unknown" && hasKnownObjectType && !isGenericUrl) {
-    if (input.liveness === "fresh") return "Status unavailable";
+    if (input.liveness === "fresh") return t("libExternalObjects.statusUnavailable");
     return externalObjectLivenessLabel(input.liveness);
   }
   return externalObjectCategoryLabel(input.statusCategory);
@@ -177,7 +178,7 @@ const PROVIDER_LABELS: Record<string, string> = {
 };
 
 export function externalObjectProviderLabel(providerKey: string | null | undefined): string {
-  if (!providerKey) return "External";
+  if (!providerKey) return t("libExternalObjects.external");
   const lookup = PROVIDER_LABELS[providerKey];
   if (lookup) return lookup;
   return providerKey
@@ -187,17 +188,17 @@ export function externalObjectProviderLabel(providerKey: string | null | undefin
 }
 
 const OBJECT_TYPE_LABELS: Record<string, string> = {
-  pull_request: "pull request",
-  issue: "issue",
-  deployment: "deployment",
-  workflow_run: "workflow run",
-  ticket: "ticket",
-  lead: "lead",
-  url_link: "URL",
+  pull_request: t("libExternalObjects.objectType.pullRequest"),
+  issue: t("libExternalObjects.objectType.issue"),
+  deployment: t("libExternalObjects.objectType.deployment"),
+  workflow_run: t("libExternalObjects.objectType.workflowRun"),
+  ticket: t("libExternalObjects.objectType.ticket"),
+  lead: t("libExternalObjects.objectType.lead"),
+  url_link: t("libExternalObjects.objectType.urlLink"),
 };
 
 export function externalObjectTypeLabel(objectType: string | null | undefined): string {
-  if (!objectType) return "object";
+  if (!objectType) return t("libExternalObjects.object");
   return OBJECT_TYPE_LABELS[objectType] ?? objectType.replace(/_/g, " ");
 }
 
@@ -209,7 +210,7 @@ export function externalObjectDisplayLabel(
   const trimmedDisplayKey = displayKey?.trim();
   if (trimmedDisplayKey) return trimmedDisplayKey;
   if (providerKey === "url" && objectType === "link") return "URL";
-  return `${externalObjectProviderLabel(providerKey)} ${externalObjectTypeLabel(objectType)}`;
+  return t("libExternalObjects.displayLabel", { provider: externalObjectProviderLabel(providerKey), type: externalObjectTypeLabel(objectType) });
 }
 
 /**

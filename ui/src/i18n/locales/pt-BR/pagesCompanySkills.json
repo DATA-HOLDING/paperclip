@@ -1,0 +1,534 @@
+{
+  "source": {
+    "skillsShManaged": "Gerenciada pelo skills.sh",
+    "githubManaged": "Gerenciada pelo GitHub",
+    "urlManaged": "Gerenciada por URL",
+    "folder": "Pasta",
+    "folderManaged": "Gerenciada por pasta",
+    "paperclipManaged": "Gerenciada pelo Paperclip",
+    "catalog": "Catálogo",
+    "catalogManaged": "Gerenciada pelo catálogo"
+  },
+  "projectScan": {
+    "found": "{{count}} encontradas",
+    "imported": "{{count}} importadas",
+    "updated": "{{count}} atualizadas",
+    "conflicts": "{{count}} conflitos",
+    "skipped": "{{count}} ignoradas",
+    "summary_one": "{{parts}} em {{count}} espaço de trabalho.",
+    "summary_other": "{{parts}} em {{count}} espaços de trabalho."
+  },
+  "sourceFilter": {
+    "all": "Todas",
+    "company": "Organização",
+    "bundled": "Incluídas",
+    "optional": "Opcionais",
+    "external": "Externas",
+    "companyLegacy": "Organização"
+  },
+  "filters": {
+    "activeCount": "Filtros: {{count}}",
+    "filter": "Filtrar",
+    "source": "Origem",
+    "type": "Tipo",
+    "all": "Todas",
+    "bundled": "Incluídas",
+    "optional": "Opcionais",
+    "category": "Categoria",
+    "allCategories": "Todas as categorias"
+  },
+  "trust": {
+    "markdownOnly": {
+      "label": "Somente Markdown",
+      "tooltip": "Somente texto — sem scripts, binários ou recursos."
+    },
+    "assets": {
+      "label": "Inclui recursos",
+      "tooltip": "Inclui imagens, fontes ou outros arquivos que não são scripts."
+    },
+    "scripts": {
+      "label": "Inclui scripts",
+      "tooltip": "Inclui scripts executáveis. Revise antes de instalar."
+    }
+  },
+  "compat": {
+    "unknown": {
+      "label": "Formato desconhecido",
+      "tooltip": "O Paperclip não conseguiu validar esta skill como Markdown de Agent Skills. Instale por sua conta e risco."
+    },
+    "invalid": {
+      "label": "Inválida",
+      "tooltip": "Esta skill não pode ser instalada — o conteúdo não é Markdown válido de Agent Skills."
+    }
+  },
+  "provenance": {
+    "tooltip": "Instalada do catálogo de skills que acompanha o app. A procedência é assinada pela versão do pacote e pelo hash do conteúdo."
+  },
+  "breadcrumbs": {
+    "skills": "Skills",
+    "forkSkill": "Bifurcar skill",
+    "newSkill": "Nova skill",
+    "detail": "Detalhes"
+  },
+  "discovery": {
+    "coreVersion": "núcleo",
+    "authorYou": "você"
+  },
+  "settingsToast": {
+    "sharingPrivate": "Compartilhamento: privado",
+    "sharingOrganization": "Compartilhamento: organização",
+    "categories": "Categorias: {{categories}}",
+    "categoriesNone": "Categorias: nenhuma",
+    "sharingCompany": "Compartilhamento: organização"
+  },
+  "card": {
+    "select": "Selecionar {{name}}",
+    "byAuthor": "por {{author}}",
+    "unfiled": "Sem pasta",
+    "moreActions": "Mais ações para {{name}}",
+    "moveToFolder": "Mover para a pasta…",
+    "forked": "Bifurcada",
+    "enabledForAgents_one": "Ativada para {{count}} agente",
+    "enabledForAgents_other": "Ativada para {{count}} agentes",
+    "notEnabled": "Não ativada para nenhum agente",
+    "availableToInstall": "Disponível para instalar",
+    "installed": "Instalada",
+    "bundled": "Incluída",
+    "optional": "Opcional",
+    "fromSource": "De {{source}}",
+    "agentCount_one": "{{count}} agente",
+    "agentCount_other": "{{count}} agentes"
+  },
+  "categoryNav": {
+    "all": "Todas"
+  },
+  "grid": {
+    "titleMySkills": "Minhas skills",
+    "titleInstalled": "Skills instaladas",
+    "titleDiscover": "Descobrir skills",
+    "descriptionMySkills": "Skills que você pode abrir, editar e testar no Studio.",
+    "descriptionInstalled": "Skills disponíveis para esta organização.",
+    "descriptionDiscover": "Navegue pelas skills de todas as origens disponíveis.",
+    "searchMySkills": "Buscar nas minhas skills",
+    "searchInstalled": "Buscar skills instaladas",
+    "searchDiscover": "Buscar skills para descobrir",
+    "browseByCategory": "Navegar por categoria",
+    "filterInstalled": "Filtre as skills instaladas.",
+    "filterDiscoverable": "Filtre as skills para descobrir.",
+    "categories": "Categorias",
+    "allSkills": "Todas as skills",
+    "allWithCount": "Todas ({{count}})",
+    "refreshProjectAria": "Atualizar as skills do projeto {{name}}",
+    "refreshProjectTitle": "Atualizar skills de {{name}}",
+    "refresh": "Atualizar",
+    "itemLabelPlural": "skills",
+    "emptyAuthored": "Nenhuma skill ainda. Crie uma skill para começar a trabalhar no Studio.",
+    "emptyInstalled": "Nenhuma skill instalada ainda. Descubra uma skill ou crie uma.",
+    "emptyDiscover": "Nenhuma skill disponível para descobrir ainda.",
+    "emptyFiltered": "Nenhuma skill corresponde aos seus filtros.",
+    "emptyView": "Nenhuma skill nesta visualização ainda.",
+    "importFromGithub": "Importar do GitHub",
+    "createSkill": "Criar uma skill",
+    "clearFilters": "Limpar filtros",
+    "skillCount_one": "{{count}} skill",
+    "skillCount_other": "{{count}} skills"
+  },
+  "wizard": {
+    "steps": {
+      "basics": "Básico",
+      "design": "Design",
+      "content": "Conteúdo",
+      "review": "Revisão"
+    },
+    "forking": "Bifurcando {{name}}",
+    "namePlaceholder": "Nome da skill",
+    "taglinePlaceholder": "Promessa da skill em uma linha",
+    "newSkill": "Nova skill",
+    "noTagline": "Nenhum slogan ainda.",
+    "color": "Cor",
+    "useColor": "Usar {{color}}",
+    "review": {
+      "name": "Nome",
+      "untitled": "Sem título",
+      "slug": "Slug",
+      "scope": "Escopo",
+      "none": "nenhuma"
+    },
+    "creating": "Criando...",
+    "createFork": "Criar bifurcação",
+    "createSkill": "Criar skill"
+  },
+  "sharing": {
+    "private": "Privada",
+    "organization": "Organização",
+    "label": "Compartilhamento",
+    "organizationHint": "Visível dentro desta organização.",
+    "privateHint": "Visível somente na sua biblioteca.",
+    "publicLink": "Link público",
+    "comingLater": "Em breve.",
+    "company": "Organização",
+    "companyHint": "Visível dentro desta organização."
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "back": "Voltar",
+    "next": "Avançar",
+    "collapseName": "Recolher {{name}}",
+    "expandName": "Expandir {{name}}",
+    "saving": "Salvando...",
+    "save": "Salvar",
+    "edit": "Editar",
+    "savingEllipsis": "Salvando…",
+    "close": "Fechar"
+  },
+  "catalog": {
+    "noMatch": "Nenhuma skill do catálogo corresponde a este filtro.",
+    "bundledSection": "Incluídas · {{count}}",
+    "optionalSection": "Opcionais · {{count}}",
+    "installedSection": "Instaladas · {{count}}",
+    "selectToInspect": "Selecione uma skill do catálogo para inspecionar.",
+    "invalidTooltip": "Esta skill não pode ser instalada — o conteúdo não é Markdown válido de Agent Skills.",
+    "preparing": "Preparando...",
+    "installInOrganization": "Instalar a skill nesta organização",
+    "updateFromCatalog": "Atualizar do catálogo",
+    "installedOpenInLibrary": "Instalada · Abrir na biblioteca",
+    "updateAvailable": "Atualização disponível",
+    "hashChangedTooltip": "O hash do conteúdo do catálogo mudou desde que esta skill foi instalada.",
+    "requires": "Requer: {{list}}",
+    "roles": "Funções: {{list}}",
+    "tags": "Tags: {{list}}",
+    "key": "Chave",
+    "hash": "Hash",
+    "copiedHash": "Hash copiado",
+    "copyContentHash": "Copiar hash do conteúdo",
+    "selectFile": "Selecione um arquivo para inspecionar.",
+    "backToStore": "Voltar à loja",
+    "notFound": "Skill do catálogo não encontrada."
+  },
+  "install": {
+    "installSkill": "Instalar skill",
+    "installUpdate": "Instalar atualização",
+    "replaceExisting": "Substituir a skill existente",
+    "installing": "Instalando…",
+    "titleUpdate": "Atualizar",
+    "titleReplace": "Substituir",
+    "titleInstall": "Instalar",
+    "trust": "Confiança",
+    "safe": "Segura",
+    "reviewRequired": "Revisão necessária",
+    "nonScriptAssets": "Recursos que não são scripts",
+    "compatibility": "Compatibilidade",
+    "compatible": "Compatível",
+    "requires": "Requer",
+    "none": "nenhum",
+    "roles": "Funções",
+    "anyRole": "qualquer",
+    "provenance": "Procedência",
+    "filesCount": "Arquivos ({{count}})",
+    "conflictBefore": "Já existe uma skill instalada com a chave ",
+    "conflictAfter": " ({{source}}). A instalação vai {{action}}.",
+    "conflictOverwrite": "sobrescrever o conteúdo do catálogo",
+    "conflictReplace": "substituir a skill existente",
+    "enableForAgents": "Ativar para agentes",
+    "enableForAgentsHint": "A instalação adiciona a skill à biblioteca da organização. Os agentes só podem usá-la depois que ela for ativada para eles.",
+    "advanced": "Avançado",
+    "slugOverride": "Substituir slug",
+    "forceReplace": "Forçar a substituição da skill existente com a mesma chave",
+    "enableForAgentsHintCompany": "A instalação adiciona a skill à biblioteca da organização. Os agentes só podem usá-la depois que ela for ativada para eles."
+  },
+  "agents": {
+    "noneSupportSkills": "Nenhum agente desta organização oferece suporte a skills ainda.",
+    "requiredSuffix": " · obrigatória",
+    "notSupportedSuffix": " · sem suporte a skills",
+    "addToAgent": "Adicionar ao agente",
+    "version": "Versão",
+    "noAgents": "Nenhum agente ainda.",
+    "paused": "Pausado",
+    "attachedCount_one": "{{count}} agente vinculado",
+    "attachedCount_other": "{{count}} agentes vinculados",
+    "noneUsing": "Nenhum agente está usando esta skill ainda. Use “Adicionar ao agente” para vinculá-la.",
+    "view": "Ver",
+    "noneAttached": "Nenhum agente vinculado ainda.",
+    "andMore": "e mais {{count}}",
+    "noneSupportSkillsCompany": "Nenhum agente desta organização oferece suporte a skills ainda."
+  },
+  "versions": {
+    "latest": "Mais recente",
+    "loading": "Carregando versões...",
+    "count_one": "{{count}} versão",
+    "count_other": "{{count}} versões",
+    "compare": "Comparar",
+    "empty": "Nenhuma versão salva ainda.",
+    "filesCount": "{{count}} arquivos",
+    "viewDiff": "Ver diferenças"
+  },
+  "list": {
+    "noneInstalledForSource": "Nenhuma skill instalada com a origem {{source}}.",
+    "clearFilter": "Limpar filtro",
+    "noMatch": "Nenhuma skill corresponde a este filtro."
+  },
+  "detailTabs": {
+    "overview": "Visão geral",
+    "files": "Arquivos",
+    "versions": "Versões",
+    "agents": "Agentes"
+  },
+  "diff": {
+    "title": "Diferenças · arquivos da skill",
+    "loading": "Carregando as versões selecionadas…",
+    "old": "Antiga",
+    "new": "Nova",
+    "initial": "Inicial",
+    "selectVersion": "Selecione uma versão para comparar.",
+    "sameVersion": "Os dois lados são a mesma versão."
+  },
+  "location": {
+    "title": "Local",
+    "copied": "Copiado",
+    "copyFailed": "Falha ao copiar",
+    "copyPath": "Copiar caminho",
+    "move": "Mover"
+  },
+  "tags": {
+    "title": "Tags",
+    "remove": "Remover a tag {{tag}}",
+    "empty": "Nenhuma tag ainda.",
+    "addPlaceholder": "Adicionar uma tag…"
+  },
+  "detail": {
+    "notFound": "Skill não encontrada.",
+    "view": "Visualizar",
+    "code": "Código",
+    "forkToEdit": "Bifurque esta skill para editá-la.",
+    "makeCopy": "Fazer uma cópia",
+    "fork": "Bifurcar",
+    "about": "Sobre",
+    "noOverview": "Nenhuma visão geral ainda.",
+    "mode": "Modo",
+    "editable": "Editável",
+    "readOnly": "Somente leitura",
+    "installedFrom": "Instalada de {{source}}",
+    "byPrefix": "por ",
+    "showLess": "Mostrar menos",
+    "viewAll": "Ver tudo",
+    "openInStudio": "Abrir no Studio",
+    "installsLabel_one": "instalação",
+    "installsLabel_other": "instalações",
+    "installsTooltip": "Agentes desta organização que têm esta skill instalada no momento.",
+    "unstarSkill": "Remover estrela desta skill",
+    "starSkill": "Dar estrela a esta skill",
+    "starred": "Com estrela",
+    "star": "Estrela",
+    "forkSkill": "Bifurcar esta skill",
+    "installsTooltipCompany": "Agentes desta organização que têm esta skill instalada no momento."
+  },
+  "updates": {
+    "title": "Atualizações",
+    "pinnedRevision": "Revisão fixada da origem",
+    "untracked": "não rastreada",
+    "check": "Verificar atualizações",
+    "upToDate": "Atualizada.",
+    "upToDateShort": "Atualizada"
+  },
+  "settings": {
+    "label": "Configurações",
+    "title": "Configurações da skill",
+    "description": "Gerencie como {{name}} é agrupada e compartilhada.",
+    "categoriesHint": "Separe as categorias com vírgulas. Deixe em branco para limpar as categorias.",
+    "sharingOrganization": "Organização — visível dentro desta organização",
+    "sharingPrivate": "Privada — visível somente na sua biblioteca",
+    "publicLinkLater": "O compartilhamento por link público chegará em breve.",
+    "reset": "Redefinir",
+    "save": "Salvar configurações",
+    "dangerZone": "Zona de perigo",
+    "removeHint": "Remova esta skill da biblioteca da organização.",
+    "sharingCompany": "Organização — visível dentro desta organização",
+    "removeHintCompany": "Remova esta skill da biblioteca da organização."
+  },
+  "saveBar": {
+    "unsaved": "Alterações não salvas",
+    "discard": "Descartar",
+    "saveChanges": "Salvar alterações"
+  },
+  "remove": {
+    "detachFirst": "Desvincule esta skill de todos os agentes antes de removê-la.",
+    "removingEllipsis": "Removendo…",
+    "remove": "Remover",
+    "removing": "Removendo..."
+  },
+  "pane": {
+    "selectSkill": "Selecione uma skill para inspecionar os arquivos.",
+    "stopEditing": "Parar de editar",
+    "copiedPath": "Caminho copiado",
+    "copySourcePath": "Copiar caminho da origem",
+    "pin": "Fixação",
+    "tracking": "acompanhando {{ref}}",
+    "locallyModified": "Modificada localmente",
+    "locallyModifiedTooltip": "Você editou esta skill depois de instalá-la. As atualizações do catálogo vão sobrescrever as suas alterações.",
+    "usedBy": "Usada por",
+    "noAgentsAttached": "Nenhum agente vinculado"
+  },
+  "toasts": {
+    "skillsImported": "Skills importadas",
+    "skillsAdded_one": "{{count}} skill adicionada.",
+    "skillsAdded_other": "{{count}} skills adicionadas.",
+    "importWarnings": "Avisos da importação",
+    "importFailed": "Falha ao importar a skill",
+    "importFailedBody": "Não foi possível importar a origem da skill.",
+    "forkCreated": "Bifurcação da skill criada",
+    "skillCreated": "Skill criada",
+    "skillCreatedBody": "{{name}} agora pode ser editada no espaço de trabalho do Paperclip.",
+    "createFailed": "Falha ao criar a skill",
+    "createFailedBody": "Não foi possível criar a skill.",
+    "skillSaved": "Skill salva",
+    "saveFailed": "Falha ao salvar",
+    "selectSkillFirst": "Selecione uma skill primeiro.",
+    "starFailed": "Falha ao dar estrela",
+    "settingsUpdated": "Configurações da skill atualizadas",
+    "settingsUpdateFailed": "Falha ao atualizar as configurações da skill",
+    "skillUpdated": "Skill atualizada",
+    "pinnedTo": "Fixada em {{ref}}",
+    "updateFailed": "Falha na atualização",
+    "updateFailedBody": "Não foi possível instalar a atualização da skill.",
+    "skillInstalled": "Skill instalada",
+    "skillUpToDate": "A skill está atualizada",
+    "installedEnabled_one": "{{name}} — ativada para {{count}} agente.",
+    "installedEnabled_other": "{{name}} — ativada para {{count}} agentes.",
+    "installedNotEnabled": "{{name}} está na biblioteca, mas ainda não foi ativada para nenhum agente. Use \"Adicionar ao agente\" para ativá-la.",
+    "enableFailed": "Skill instalada, mas a ativação falhou",
+    "enableFailedBody_one": "Não foi possível ativar {{name}} para {{count}} agente. Use \"Adicionar ao agente\" na página da skill.",
+    "enableFailedBody_other": "Não foi possível ativar {{name}} para {{count}} agentes. Use \"Adicionar ao agente\" na página da skill.",
+    "installWarnings": "Avisos da instalação",
+    "agentsUpdated": "Agentes atualizados",
+    "agentsAttached": "{{count}} agente(s) vinculado(s).",
+    "skillRemoved": "Skill removida",
+    "skillRemovedBody": "{{name}} foi removida da biblioteca de skills da organização.",
+    "removeFailed": "Falha ao remover",
+    "removeFailedBody": "Não foi possível remover a skill.",
+    "skillRemovedBodyCompany": "{{name}} foi removida da biblioteca de skills da organização."
+  },
+  "actions": {
+    "importingSkills": "Importação de skills",
+    "scanningProjects": "Busca de skills nos projetos",
+    "creatingSkill": "Criação de skill",
+    "updatingSkill": "Atualização desta skill",
+    "installingSkill": "Instalação desta skill",
+    "removingSkill": "Remoção desta skill"
+  },
+  "scan": {
+    "refreshingProject": "Atualizando as skills do projeto...",
+    "scanningWorkspaces": "Procurando skills nos espaços de trabalho dos projetos...",
+    "refreshingList": "Atualizando a lista de skills...",
+    "complete": "Busca de skills nos projetos concluída",
+    "conflictsFound": "Conflitos de skills encontrados",
+    "warnings": "Avisos da busca",
+    "failed": "Falha na busca de skills nos projetos",
+    "failedBody": "Não foi possível examinar os espaços de trabalho dos projetos."
+  },
+  "folders": {
+    "createdMoveFailed": "Pasta criada, mas a movimentação falhou",
+    "created": "Pasta criada",
+    "saveFailed": "Falha ao salvar a pasta",
+    "moved": "Pasta movida",
+    "moveFailed": "Falha ao mover a pasta",
+    "deleted": "Pasta excluída",
+    "deletedBody": "Skills movidas para Sem pasta.",
+    "deleteFailed": "Falha ao excluir a pasta",
+    "skillMoveFailed": "Falha ao mover",
+    "skillsMoved": "Skills movidas",
+    "skillsFiled_one": "{{count}} skill arquivada.",
+    "skillsFiled_other": "{{count}} skills arquivadas.",
+    "moveSkillsFailed": "Falha ao mover as skills",
+    "openMySkillsFailed": "Não foi possível abrir Minhas skills",
+    "createFailed": "Falha ao criar a pasta",
+    "skillMoved": "Skill movida",
+    "filedUnder": "Arquivada em {{name}}.",
+    "folderFallback": "pasta",
+    "movedToUnfiled": "Movida para Sem pasta."
+  },
+  "page": {
+    "selectOrganization": "Selecione uma organização para gerenciar skills.",
+    "selectCompany": "Selecione uma organização para gerenciar skills."
+  },
+  "studio": {
+    "createTitle": "Criar uma nova skill",
+    "forkDescription": "Revise os metadados da bifurcação e crie uma cópia editável da organização.",
+    "createDescription": "Crie uma skill editável da organização no espaço de trabalho do Paperclip.",
+    "forkSourceNotFound": "Skill de origem da bifurcação não encontrada.",
+    "forkDescriptionCompany": "Revise os metadados da bifurcação e crie uma cópia editável da organização.",
+    "createDescriptionCompany": "Crie uma skill editável da organização no espaço de trabalho do Paperclip."
+  },
+  "removeDialog": {
+    "title": "Remover skill",
+    "description": "Remova esta skill da biblioteca da organização. Se algum agente ainda a usar, a remoção ficará bloqueada até que ela seja desvinculada.",
+    "aboutToRemoveName": "Você está prestes a remover {{name}}.",
+    "aboutToRemove": "Você está prestes a remover esta skill.",
+    "currentlyUsedBy": "Em uso no momento por {{names}}.",
+    "detachToEnable": "Desvincule esta skill de todos os agentes para permitir a remoção.",
+    "descriptionCompany": "Remova esta skill da biblioteca da organização. Se algum agente ainda a usar, a remoção ficará bloqueada até que ela seja desvinculada."
+  },
+  "sourceHelp": {
+    "title": "Adicionar uma origem de skill",
+    "description": "Cole primeiro no campo um caminho local, uma URL do GitHub ou um comando do `skills.sh`.",
+    "browseSkillsSh": "Navegar no skills.sh",
+    "browseSkillsShHint": "Encontre comandos de instalação e cole um aqui.",
+    "searchGithub": "Buscar no GitHub",
+    "searchGithubHint": "Procure repositórios com `SKILL.md` e depois cole aqui a URL do repositório."
+  },
+  "importDialog": {
+    "title": "Importar uma skill",
+    "description": "Cole um caminho local, uma URL do GitHub ou um comando do `skills.sh` para importar uma skill para esta organização.",
+    "placeholder": "Cole um caminho, uma URL do GitHub ou um comando do skills.sh",
+    "import": "Importar",
+    "searchGithubHint": "Procure repositórios com `SKILL.md` e depois cole a URL do repositório.",
+    "descriptionCompany": "Cole um caminho local, uma URL do GitHub ou um comando do `skills.sh` para importar uma skill para esta organização."
+  },
+  "move": {
+    "title": "Mover para a pasta",
+    "titleNamed": "Mover \"{{name}}\"",
+    "subtitle": "Escolha uma pasta de destino.",
+    "movedTo": "\"{{name}}\" movida para {{folder}}.",
+    "movedToUnfiled": "\"{{name}}\" movida para Sem pasta.",
+    "undo": "Desfazer"
+  },
+  "legacyTabs": {
+    "ariaLabel": "Visualização de skills",
+    "all": "Todas",
+    "installed": "Instaladas",
+    "catalog": "Catálogo",
+    "bundled": "Incluídas"
+  },
+  "sort": {
+    "agents": "Mais agentes",
+    "stars": "Mais estrelas",
+    "forks": "Mais bifurcações",
+    "recent": "Atualizadas recentemente",
+    "alphabetical": "Ordem alfabética"
+  },
+  "store": {
+    "title": "Loja de skills",
+    "subtitle": "Descubra, instale, bifurque, compartilhe",
+    "toolbarAria": "Controles do catálogo de skills",
+    "searchPlaceholder": "Buscar skills, autores, categorias…",
+    "sort": "Ordenar",
+    "allSources": "Todas as origens",
+    "scanProjects": "Procurar skills nos espaços de trabalho dos projetos",
+    "studio": "Studio",
+    "new": "Nova",
+    "createNewSkill": "Criar nova skill",
+    "browseCatalog": "Navegar no catálogo",
+    "manageSources": "Gerenciar origens",
+    "importFromPath": "Importar de caminho ou URL",
+    "importFromProject": "Importar skills de um projeto",
+    "newFolder": "Nova pasta",
+    "done": "Concluir",
+    "select": "Selecionar",
+    "sources": "Origens",
+    "emptyNoSkills": "Nenhuma skill ainda. Crie uma ou instale do catálogo.",
+    "emptyTab": "Nenhuma skill nesta aba ainda."
+  },
+  "errorActions": {
+    "loadSkills": "carregar as skills",
+    "loadFile": "carregar o arquivo"
+  }
+}

@@ -9,6 +9,7 @@ import {
   type ResponsibilityWithRollup,
 } from "@paperclipai/shared";
 import { describeMetricReading, groupByArea, RESPONSIBILITY_HEALTH_LABEL } from "./responsibilities";
+import { t } from "@/i18n";
 
 /**
  * Derivations for the Dashboard's "Agent status" view (experimental,
@@ -28,10 +29,10 @@ export type AgentStatusSource = "agent" | "person" | "number";
 export const AGENT_STATUS_TILE_ORDER: readonly AgentStatusKind[] = ["on_track", "at_risk", "behind", "unclear"];
 
 export const AGENT_STATUS_TILE_LABEL: Record<AgentStatusKind, string> = {
-  on_track: "On track",
-  at_risk: "At risk",
-  behind: "Behind",
-  unclear: "Unclear",
+  on_track: t("libResponsibilityAgentStatus.tiles.onTrack"),
+  at_risk: t("libResponsibilityAgentStatus.tiles.atRisk"),
+  behind: t("libResponsibilityAgentStatus.tiles.behind"),
+  unclear: t("libResponsibilityAgentStatus.tiles.unclear"),
 };
 
 /** The status hue each kind borrows. */
@@ -133,13 +134,9 @@ export function agentStatusRows(
 // Words
 // ---------------------------------------------------------------------------
 
-function count(n: number, one: string, many: string) {
-  return `${n} ${n === 1 ? one : many}`;
-}
-
 function joinNames(names: readonly string[]): string {
   if (names.length <= 1) return names[0] ?? "";
-  return `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+  return t("libResponsibilityAgentStatus.listAnd", { rest: names.slice(0, -1).join(", "), last: names.at(-1) });
 }
 
 /** Who wrote a row's status, in words: the agent's name, "you", "a person", or null for the number. */
@@ -149,17 +146,17 @@ export function agentStatusAuthor(
   viewerUserId: string | null,
 ): string | null {
   if (row.source === "number") return null;
-  if (row.source === "person") return row.authorUserId && row.authorUserId === viewerUserId ? "You" : "A person";
-  return (row.authorAgentId && agentName(row.authorAgentId)) || "An agent";
+  if (row.source === "person") return row.authorUserId && row.authorUserId === viewerUserId ? t("libResponsibilityAgentStatus.author.you") : t("libResponsibilityAgentStatus.author.aPerson");
+  return (row.authorAgentId && agentName(row.authorAgentId)) || t("libResponsibilityAgentStatus.author.anAgent");
 }
 
 /** "today", "yesterday", "3 days ago", "on Oct 2". */
 export function writtenAgo(writtenAt: string, now: Date): string {
   const days = Math.max(0, Math.floor((now.getTime() - new Date(writtenAt).getTime()) / 86_400_000));
-  if (days === 0) return "today";
-  if (days === 1) return "yesterday";
-  if (days < 30) return `${days} days ago`;
-  return `on ${new Date(writtenAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
+  if (days === 0) return t("libResponsibilityAgentStatus.writtenAgo.today");
+  if (days === 1) return t("libResponsibilityAgentStatus.writtenAgo.yesterday");
+  if (days < 30) return t("libResponsibilityAgentStatus.writtenAgo.daysAgo", { count: days });
+  return t("libResponsibilityAgentStatus.writtenAgo.onDate", { date: new Date(writtenAt).toLocaleDateString(t("libResponsibilityAgentStatus.dateLocale"), { month: "short", day: "numeric" }) });
 }
 
 // ---------------------------------------------------------------------------
@@ -193,14 +190,14 @@ export function agentStatusTiles(rows: readonly AgentStatusRow[]): AgentStatusTi
   const tiles = AGENT_STATUS_TILE_ORDER.map((kind): AgentStatusTile => {
     const list = of(kind);
     let line: string;
-    if (kind === "on_track") line = `Of ${count(total, "responsibility", "responsibilities")}`;
+    if (kind === "on_track") line = t("libResponsibilityAgentStatus.tileLines.ofResponsibilities", { count: total });
     else if (kind === "unclear") {
       const cantTell = list.filter((row) => row.source !== "number").length;
       const notMeasured = list.length - cantTell;
       line = list.length === 0
-        ? "Every one has a status"
-        : [cantTell > 0 ? `${cantTell} can't tell yet` : null, notMeasured > 0 ? `${notMeasured} not measured` : null].filter(Boolean).join(" · ");
-    } else line = list.length === 0 ? "None right now" : `In ${count(areasOf(list), "area", "areas")}`;
+        ? t("libResponsibilityAgentStatus.tileLines.everyOneHasStatus")
+        : [cantTell > 0 ? t("libResponsibilityAgentStatus.tileLines.cantTell", { count: cantTell }) : null, notMeasured > 0 ? t("libResponsibilityAgentStatus.tileLines.notMeasured", { count: notMeasured }) : null].filter(Boolean).join(" · ");
+    } else line = list.length === 0 ? t("libResponsibilityAgentStatus.tileLines.noneRightNow") : t("libResponsibilityAgentStatus.tileLines.inAreas", { count: areasOf(list) });
     return { kind, label: AGENT_STATUS_TILE_LABEL[kind], value: list.length, line };
   });
   const byAgent = rows.filter((row) => row.source === "agent").length;
@@ -208,10 +205,10 @@ export function agentStatusTiles(rows: readonly AgentStatusRow[]): AgentStatusTi
   const outOfDate = rows.filter((row) => row.outOfDate).length;
   const fromNumber = rows.filter((row) => row.source === "number").length;
   const provenance = [
-    `${byAgent} written by ${byAgent === 1 ? "an agent" : "agents"}`,
-    outOfDate > 0 ? `${outOfDate} out of date` : null,
-    byPerson > 0 ? `${byPerson} written by a person` : null,
-    `${fromNumber} from the ${fromNumber === 1 ? "number" : "numbers"}`,
+    t("libResponsibilityAgentStatus.provenance.byAgent", { count: byAgent }),
+    outOfDate > 0 ? t("libResponsibilityAgentStatus.provenance.outOfDate", { count: outOfDate }) : null,
+    byPerson > 0 ? t("libResponsibilityAgentStatus.provenance.byPerson", { count: byPerson }) : null,
+    t("libResponsibilityAgentStatus.provenance.fromNumber", { count: fromNumber }),
   ].filter(Boolean).join(" · ");
   return { tiles, total, byAgent, byPerson, outOfDate, fromNumber, provenance };
 }
@@ -249,19 +246,19 @@ export function composeAgentStatusSummary(
   const written = rows.filter((row) => row.source !== "number");
   const total = rows.length;
   let lead: string;
-  if (total === 0) lead = "You do not own any responsibilities yet.";
-  else if (written.length === 0) lead = "No agent has written a status yet. Every status below comes from the numbers.";
+  if (total === 0) lead = t("libResponsibilityAgentStatus.summary.noResponsibilities");
+  else if (written.length === 0) lead = t("libResponsibilityAgentStatus.summary.noneWritten");
   else {
     const behind = written.filter((row) => row.kind === "behind").length;
     const atRisk = written.filter((row) => row.kind === "at_risk").length;
     const stale = written.filter((row) => row.outOfDate).length;
     const intro = written.length === total
-      ? total === 1 ? "Your one status is written." : `All ${total} of your statuses are written.`
-      : `${written.length} of your ${total} statuses are written; the rest come from the numbers.`;
+      ? total === 1 ? t("libResponsibilityAgentStatus.summary.oneWritten") : t("libResponsibilityAgentStatus.summary.allWritten", { total })
+      : t("libResponsibilityAgentStatus.summary.someWritten", { written: written.length, total });
     const verdict = behind + atRisk === 0
-      ? "None of the written ones is behind or at risk."
-      : `They put ${[behind > 0 ? `${behind} behind` : null, atRisk > 0 ? `${atRisk} at risk` : null].filter(Boolean).join(" and ")}.`;
-    const freshness = stale > 0 ? ` ${stale} ${stale === 1 ? "is" : "are"} older than ${RESPONSIBILITY_STATUS_REPORT_FRESH_DAYS} days.` : "";
+      ? t("libResponsibilityAgentStatus.summary.noneBehind")
+      : t("libResponsibilityAgentStatus.summary.theyPut", { list: [behind > 0 ? t("libResponsibilityAgentStatus.summary.behindCount", { count: behind }) : null, atRisk > 0 ? t("libResponsibilityAgentStatus.summary.atRiskCount", { count: atRisk }) : null].filter(Boolean).join(t("libResponsibilityAgentStatus.summary.and")) });
+    const freshness = stale > 0 ? ` ${t("libResponsibilityAgentStatus.summary.stale", { count: stale, days: RESPONSIBILITY_STATUS_REPORT_FRESH_DAYS })}` : "";
     lead = `${intro} ${verdict}${freshness}`;
   }
   const concerning = sortAgentStatusRows(written.filter((row) => row.kind !== "on_track")).slice(0, limit);
@@ -269,8 +266,8 @@ export function composeAgentStatusSummary(
   const waitingRows = rows.filter((row) => row.updateRequested);
   let waiting: string | null = null;
   if (waitingRows.length > 0) {
-    const names = [...new Set(waitingRows.map((row) => (row.reporterAgentId && agentName(row.reporterAgentId)) || "an agent"))];
-    waiting = `${joinNames(names)}, for ${count(waitingRows.length, "update", "updates")}`;
+    const names = [...new Set(waitingRows.map((row) => (row.reporterAgentId && agentName(row.reporterAgentId)) || t("libResponsibilityAgentStatus.author.anAgentLower")))];
+    waiting = t("libResponsibilityAgentStatus.summary.waiting", { names: joinNames(names), count: waitingRows.length });
   }
   return { lead, lines, waiting };
 }
@@ -323,7 +320,7 @@ export function agentStatusAreaGroups(
         ? { text: top.message, by: agentStatusAuthor(top, agentName, viewerUserId), fromNumber: top.source === "number" }
         : null,
       onTrack,
-      onTrackLabel: `${onTrack} of ${count(sorted.length, "responsibility", "responsibilities")} on track`,
+      onTrackLabel: t("libResponsibilityAgentStatus.area.onTrack", { onTrack, count: sorted.length }),
       onTrackPercent: sorted.length === 0 ? 0 : Math.round((onTrack / sorted.length) * 100),
       agentIds,
     };
@@ -348,14 +345,14 @@ export function agentStatusMetricCell(metric: ResponsibilityMetricSummary | null
   if (!metric) return null;
   const reading = describeMetricReading(metric);
   if (reading.visual.kind === "yes_no") {
-    return { label: metric.name, value: reading.current ?? "No answer yet", target: "should be yes" };
+    return { label: metric.name, value: reading.current ?? t("libResponsibilityAgentStatus.metric.noAnswer"), target: t("libResponsibilityAgentStatus.metric.shouldBeYes") };
   }
   if (reading.visual.kind === "range" || metric.kind === "range") {
-    return { label: metric.name, value: reading.current ?? "No reading yet", target: reading.target ? `range ${reading.target}` : "no range set" };
+    return { label: metric.name, value: reading.current ?? t("libResponsibilityAgentStatus.metric.noReading"), target: reading.target ? t("libResponsibilityAgentStatus.metric.range", { target: reading.target }) : t("libResponsibilityAgentStatus.metric.noRange") };
   }
   return {
     label: metric.name,
-    value: reading.current ?? "No reading yet",
-    target: reading.target ? `${metric.direction === "at_most" ? "target at most" : "target"} ${reading.target}` : "no target set",
+    value: reading.current ?? t("libResponsibilityAgentStatus.metric.noReading"),
+    target: reading.target ? (metric.direction === "at_most" ? t("libResponsibilityAgentStatus.metric.targetAtMost", { target: reading.target }) : t("libResponsibilityAgentStatus.metric.target", { target: reading.target })) : t("libResponsibilityAgentStatus.metric.noTarget"),
   };
 }

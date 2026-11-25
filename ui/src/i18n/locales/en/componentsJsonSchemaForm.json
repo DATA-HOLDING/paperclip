@@ -1,0 +1,47 @@
+{
+  "validation": {
+    "required": "This field is required",
+    "invalidSecret": "Invalid secret reference",
+    "invalidJsonObject": "Enter a valid JSON object",
+    "minLength": "Must be at least {{min}} characters",
+    "maxLength": "Must be at most {{max}} characters",
+    "pattern": "Must match pattern: {{pattern}}",
+    "number": "Must be a valid number",
+    "minimum": "Must be at least {{min}}",
+    "maximum": "Must be at most {{max}}",
+    "exclusiveMinimum": "Must be greater than {{min}}",
+    "exclusiveMaximum": "Must be less than {{max}}",
+    "integer": "Must be a whole number",
+    "multipleOf": "Must be a multiple of {{value}}",
+    "minItems": "Must have at least {{min}} items",
+    "maxItems": "Must have at most {{max}} items"
+  },
+  "enum": {
+    "placeholder": "Select an option",
+    "none": "None"
+  },
+  "secret": {
+    "hiddenSummary": "Sensitive — {{count}} characters hidden. Click the eye to reveal.",
+    "hide": "Hide secret",
+    "show": "Show secret",
+    "description": "Pick an existing organization secret, or paste a raw value (Paperclip will store it as a secret on save).",
+    "placeholder": "Select an existing secret",
+    "emptyHint": "No active secrets yet. Create one or paste a raw value below.",
+    "hideRaw": "Hide raw value input",
+    "pasteRaw": "Or paste a raw value"
+  },
+  "array": {
+    "addItem": "Add item",
+    "add": "Add",
+    "item": "Item {{index}}",
+    "removeItem": "Remove item",
+    "empty": "No items added yet."
+  },
+  "jsonObject": {
+    "ariaLabel": "{{label}} JSON",
+    "hint": "Enter a JSON object using the action's argument names."
+  },
+  "advancedOptions": "Advanced options",
+  "moreOptions": "More options",
+  "noOptions": "No configuration options available."
+}

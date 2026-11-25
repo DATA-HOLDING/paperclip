@@ -1,0 +1,21 @@
+{
+  "saveFailed": "Couldn’t save the change.",
+  "removed": "Removed “{{label}}” from this responsibility. It still exists, and stays under any other responsibility it is filed under.",
+  "undo": "Undo",
+  "unlinkFailed": "Couldn’t remove it from this responsibility.",
+  "relinkFailed": "Couldn’t put it back.",
+  "deleteTitle": "Delete {{title}}?",
+  "deleteDescription": "This removes the responsibility, its bar and its number. The projects, tasks and routines filed under it stay. To stop owning it but keep its history, let it go instead.",
+  "deleteFailed": "Couldn’t delete it.",
+  "keep": "Keep it",
+  "deleting": "Deleting…",
+  "delete": "Delete responsibility",
+  "breadcrumbDashboard": "Dashboard",
+  "notAvailable": "This responsibility is not available",
+  "notAvailableHint": "It may have been deleted, or it belongs to someone else.",
+  "backToDashboard": "Back to the dashboard",
+  "otherOrganization": "This responsibility belongs to another organization",
+  "errorActions": {
+    "loadResponsibility": "load this responsibility"
+  }
+}

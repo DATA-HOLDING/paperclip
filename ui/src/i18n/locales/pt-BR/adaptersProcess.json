@@ -1,0 +1,11 @@
+{
+  "label": "Processo de shell",
+  "command": {
+    "label": "Comando",
+    "placeholder": "ex.: node, python"
+  },
+  "args": {
+    "label": "Argumentos (separados por vírgula)",
+    "placeholder": "ex.: script.js, --flag"
+  }
+}

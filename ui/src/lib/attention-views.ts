@@ -9,6 +9,7 @@ import {
   type AttentionViewCounts,
 } from "@paperclipai/shared";
 import type { CurrentBoardAccess } from "@/api/access";
+import { t } from "@/i18n";
 
 /**
  * The view switch on the classic Decisions page and Coordinator Needs You
@@ -18,11 +19,11 @@ import type { CurrentBoardAccess } from "@/api/access";
  * holds every person's cards, for board members only (PAP-768).
  */
 export const ATTENTION_VIEW_LABELS: Record<AttentionPersonalView, string> = {
-  mine: "For you",
-  unassigned: "Unassigned",
-  company: "Company",
-  archived: "Archived",
-  all: "Everyone",
+  mine: t("libAttentionViews.views.mine"),
+  unassigned: t("libAttentionViews.views.unassigned"),
+  company: t("libAttentionViews.views.company"),
+  archived: t("libAttentionViews.views.archived"),
+  all: t("libAttentionViews.views.all"),
 };
 
 export const ATTENTION_VIEW_PARAM = "view";
@@ -60,7 +61,7 @@ export function attentionEveryoneViewAllowed(
 
 /** "N cards need an owner" (recommendation e). Never part of the badge. */
 export function unassignedBannerText(count: number) {
-  return count === 1 ? "1 card needs an owner" : `${count} cards need an owner`;
+  return t("libAttentionViews.unassignedBanner", { count });
 }
 
 /**
@@ -76,8 +77,8 @@ export type AttentionAudienceDescription =
   | { kind: "pool"; text: string; claimable: boolean }
   | { kind: "company"; text: string; claimable: boolean };
 
-export const ATTENTION_POOL_AUDIENCE_TEXT = "No owner yet. Any board member can answer it.";
-export const ATTENTION_COMPANY_AUDIENCE_TEXT = "Company alert for operators";
+export const ATTENTION_POOL_AUDIENCE_TEXT = t("libAttentionViews.poolAudience");
+export const ATTENTION_COMPANY_AUDIENCE_TEXT = t("libAttentionViews.companyAudience");
 
 /**
  * Whether Claim can store an owner for this card. Only sources with an
@@ -109,7 +110,7 @@ export function attentionClaimAlternative(item: AttentionItem): AttentionClaimAl
   return task?.href ? { kind: "assign", href: task.href } : { kind: "none" };
 }
 
-export const ATTENTION_NO_CLAIM_TEXT = "It has no task to assign, so it can't be claimed.";
+export const ATTENTION_NO_CLAIM_TEXT = t("libAttentionViews.noClaim");
 
 export function describeAttentionAudience(
   item: AttentionItem,
@@ -121,7 +122,7 @@ export function describeAttentionAudience(
     if (audience.userId !== currentUserId) return { kind: "other", userId: audience.userId };
     // "Transferred by @x" replaces "Sent to you" (PAP-749 plan §6, Rule 12).
     if (audience.transferredByUserId) {
-      return { kind: "mine", text: "Transferred by", transferredByUserId: audience.transferredByUserId };
+      return { kind: "mine", text: t("libAttentionViews.transferredBy"), transferredByUserId: audience.transferredByUserId };
     }
     const text = attentionAudienceReasonText(audience.reason);
     return text ? { kind: "mine", text } : null;
@@ -148,17 +149,17 @@ export function attentionResponderText(
   const facts = item.sourceKind === "issue_thread_interaction" ? item.resolverAudience : null;
   if (!facts) return null;
   const mine = description.kind === "mine";
-  const too = mine ? " too" : "";
+  const variant = mine ? "Too" : "";
   if (facts.addresseeUserId) {
-    if (mine) return "Only you can answer it.";
-    return `Only @${userLabelMap?.get(facts.addresseeUserId) ?? "the addressed person"} can answer it.`;
+    if (mine) return t("libAttentionViews.responders.onlyYou");
+    return t("libAttentionViews.responders.onlyUser", { name: userLabelMap?.get(facts.addresseeUserId) ?? t("libAttentionViews.responders.addressedPerson") });
   }
-  if (facts.effectiveResolverPolicy === "human_only") return `Any board member can answer it${too}.`;
-  if (facts.addresseeAgentId) return `${facts.addresseeName?.trim() || "The addressed agent"} or any board member can answer it${too}.`;
+  if (facts.effectiveResolverPolicy === "human_only") return t(`libAttentionViews.responders.anyBoardMember${variant}`);
+  if (facts.addresseeAgentId) return t(`libAttentionViews.responders.agentOrBoard${variant}`, { name: facts.addresseeName?.trim() || t("libAttentionViews.responders.addressedAgent") });
   if (facts.effectiveResolverPolicy === "not_creator") {
-    return `Anyone except ${facts.createdByAgentName?.trim() || "the agent that asked"} can answer it${too}.`;
+    return t(`libAttentionViews.responders.anyoneExcept${variant}`, { name: facts.createdByAgentName?.trim() || t("libAttentionViews.responders.agentThatAsked") });
   }
-  return mine ? "Anyone else can answer it too." : "Anyone can answer it.";
+  return mine ? t("libAttentionViews.responders.anyoneElse") : t("libAttentionViews.responders.anyone");
 }
 
 /**
@@ -172,7 +173,7 @@ export function attentionUnownedAudienceText(
 ) {
   const responders = attentionResponderText(item, description, userLabelMap);
   if (!responders) return description.text;
-  return description.kind === "pool" ? `No owner yet. ${responders}` : `${description.text}. ${responders}`;
+  return description.kind === "pool" ? t("libAttentionViews.noOwnerYet", { responders }) : `${description.text}. ${responders}`;
 }
 
 /**
@@ -186,7 +187,7 @@ export function attentionAudienceLineNamesResponders(item: AttentionItem, curren
 
 /** Display name for a person on a receipt; never an ID. */
 function receiptUserLabel(userId: string | null | undefined, userLabelMap?: ReadonlyMap<string, string> | null) {
-  return (userId ? userLabelMap?.get(userId) : null) ?? "someone";
+  return (userId ? userLabelMap?.get(userId) : null) ?? t("libAttentionViews.someone");
 }
 
 /**

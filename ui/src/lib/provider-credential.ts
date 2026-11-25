@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { secretsApi } from "../api/secrets";
 
 export const PROVIDER_ENV_KEYS: Record<string, string> = {
@@ -17,10 +18,10 @@ export async function storeOrganizationApiKey(
   value: string,
 ) {
   const secret = await secretsApi.create(companyId, {
-    name: `${envKey} · agent setup`,
+    name: t("libProviderCredential.secretName", { envKey }),
     key: `${envKey}.setup.${crypto.randomUUID()}`,
     value: value.trim(),
-    description: "Adapter credential supplied during agent setup.",
+    description: t("libProviderCredential.organizationDescription"),
   });
   return {
     binding: {
@@ -42,8 +43,8 @@ export async function storeProviderApiKey(
   const key = `${envKey}.setup.${crypto.randomUUID()}`;
   const definition = await secretsApi.createUserSecretDefinition(companyId, {
     key,
-    name: `${envKey} · agent setup`,
-    description: "Model provider credential for a new agent setup.",
+    name: t("libProviderCredential.secretName", { envKey }),
+    description: t("libProviderCredential.providerDescription"),
   });
   const remove = () =>
     secretsApi.removeUserSecretDefinition(companyId, definition.id);

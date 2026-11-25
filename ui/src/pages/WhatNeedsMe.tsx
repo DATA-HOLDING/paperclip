@@ -58,6 +58,7 @@ import { DecisionQueueRail } from "../components/DecisionQueueRail";
 import { DecisionDateChips, type AttentionCustomRange } from "../components/DecisionDateChips";
 import { DecisionResolver } from "../components/DecisionResolver";
 import { IssueGroupHeader } from "../components/IssueGroupHeader";
+import { t } from "@/i18n";
 
 // Incremental rendering (PAP-13784, same pattern as IssuesList): the feed is
 // uncapped, so mounting every row up front makes the page slow to paint and
@@ -171,7 +172,7 @@ function ClassicWhatNeedsMe() {
   );
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Decisions" }]);
+    setBreadcrumbs([{ label: t("pagesWhatNeedsMe.title") }]);
   }, [setBreadcrumbs]);
 
   // Re-hydrate per-company preferences when the company changes.
@@ -575,7 +576,7 @@ function ClassicWhatNeedsMe() {
   }, [handleDismiss, keyboardItems, navigate, selectedAttentionId]);
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">Select an organization first.</p>;
+    return <p className="text-sm text-muted-foreground">{t("pagesWhatNeedsMe.selectOrganization")}</p>;
   }
 
   // Keep a loaded feed on screen through a failed refetch; only a real
@@ -588,7 +589,7 @@ function ClassicWhatNeedsMe() {
       <QueryErrorState
         size="page"
         error={feedView.error}
-        action="load your decisions"
+        action={t("pagesWhatNeedsMe.loadAction")}
         onRetry={feedView.retry}
         retrying={feedView.isFetching}
       />
@@ -605,7 +606,7 @@ function ClassicWhatNeedsMe() {
       <Sheet open={historyOpen} onOpenChange={setHistoryOpen}>
         <SheetContent side="right" className="w-full gap-0 overflow-y-auto sm:max-w-md" data-classic-decision-history>
           <SheetHeader>
-            <SheetTitle>Decision history</SheetTitle>
+            <SheetTitle>{t("pagesWhatNeedsMe.history")}</SheetTitle>
           </SheetHeader>
           <div className="p-4">
             {historyOpen && <DecisionHistoryPanel companyId={selectedCompanyId} agents={agents ?? []} userLabelMap={userLabelMap} />}
@@ -614,10 +615,10 @@ function ClassicWhatNeedsMe() {
       </Sheet>
       <div className="space-y-4">
         <div className="flex items-center justify-between gap-3">
-          <h1 className="text-xl font-bold">Decisions</h1>
+          <h1 className="text-xl font-bold">{t("pagesWhatNeedsMe.title")}</h1>
           <Button variant="ghost" size="sm" onClick={() => setHistoryOpen(true)}>
             <History className="h-4 w-4" />
-            Decision history
+            {t("pagesWhatNeedsMe.history")}
           </Button>
         </div>
         <AttentionViewSwitch value={view} counts={viewCounts} onChange={setView} everyone={everyone} />
@@ -808,13 +809,13 @@ function ClassicWhatNeedsMe() {
 
           {agingItems.length > 0 && (
             <Curtain
-              label="Aging"
+              label={t("pagesWhatNeedsMe.aging.label")}
               count={agingItems.length}
               open={agingOpen}
               onToggle={() => setAgingOpen((prev) => !prev)}
             >
               <p className="text-xs text-muted-foreground">
-                Idle past {ATTENTION_AGING_DAYS} days — kept off the desk. Keep any you still want surfaced.
+                {t("pagesWhatNeedsMe.aging.description", { days: ATTENTION_AGING_DAYS })}
               </p>
               {agingItems.map((item) => (
                 <AgingItemRow
@@ -840,13 +841,13 @@ function ClassicWhatNeedsMe() {
 
       <div className="space-y-4">
         <Curtain
-          label="Decided"
+          label={t("pagesWhatNeedsMe.decided.label")}
           count={decisionHistoryCount(decidedDecisions?.length)}
           open={decidedOpen}
           onToggle={() => setDecidedOpen((prev) => !prev)}
         >
           {decidedDecisionsLoading ? (
-            <p className="text-xs text-muted-foreground">Loading decided decisions…</p>
+            <p className="text-xs text-muted-foreground">{t("pagesWhatNeedsMe.decided.loading")}</p>
           ) : (decidedDecisions?.length ?? 0) > 0 ? (
             decidedDecisions!.slice(0, DECISION_HISTORY_VISIBLE_LIMIT).map((decision) => (
               <DecisionResolver
@@ -858,18 +859,18 @@ function ClassicWhatNeedsMe() {
               />
             ))
           ) : (
-            <p className="text-xs text-muted-foreground">No decided decisions.</p>
+            <p className="text-xs text-muted-foreground">{t("pagesWhatNeedsMe.decided.empty")}</p>
           )}
         </Curtain>
 
         <Curtain
-          label="Expired"
+          label={t("pagesWhatNeedsMe.expired.label")}
           count={decisionHistoryCount(expiredDecisions?.length)}
           open={expiredOpen}
           onToggle={() => setExpiredOpen((prev) => !prev)}
         >
           {expiredDecisionsLoading ? (
-            <p className="text-xs text-muted-foreground">Loading expired decisions…</p>
+            <p className="text-xs text-muted-foreground">{t("pagesWhatNeedsMe.expired.loading")}</p>
           ) : (expiredDecisions?.length ?? 0) > 0 ? (
             expiredDecisions!.slice(0, DECISION_HISTORY_VISIBLE_LIMIT).map((decision) => (
               <DecisionResolver
@@ -881,7 +882,7 @@ function ClassicWhatNeedsMe() {
               />
             ))
           ) : (
-            <p className="text-xs text-muted-foreground">No expired decisions.</p>
+            <p className="text-xs text-muted-foreground">{t("pagesWhatNeedsMe.expired.empty")}</p>
           )}
         </Curtain>
       </div>
@@ -905,15 +906,14 @@ export function DecisionBundleHeader({
   originIssue: AttentionSubject | null;
   count: number;
 }) {
-  const noun = count === 1 ? "decision" : "decisions";
   return (
     <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 rounded-sm border-l-2 border-violet-500/60 bg-violet-500/5 px-3 py-1.5 text-xs">
       <span className="font-semibold text-violet-800 dark:text-violet-200">
-        {agentName ?? "An agent"} proposed {count} {noun}
+        {t("pagesWhatNeedsMe.bundle.proposed", { agent: agentName ?? t("pagesWhatNeedsMe.bundle.anAgent"), count })}
       </span>
       {originIssue && (originIssue.identifier || originIssue.title) && (
         <span className="text-muted-foreground">
-          {"· from "}
+          {t("pagesWhatNeedsMe.bundle.from")}
           {originIssue.href ? (
             <a href={originIssue.href} className="hover:underline">
               {originIssue.identifier ?? originIssue.title}
@@ -924,17 +924,17 @@ export function DecisionBundleHeader({
         </span>
       )}
       {title && <span className="text-muted-foreground">· {title}</span>}
-      <span className="text-muted-foreground">· {count} pending</span>
+      <span className="text-muted-foreground">{t("pagesWhatNeedsMe.bundle.pending", { count })}</span>
     </div>
   );
 }
 
 const CAUGHT_UP_TEXT: Record<AttentionPersonalView, string> = {
-  mine: "You're all caught up.",
-  unassigned: "No cards need an owner.",
-  company: "No company alerts right now.",
-  archived: "Nothing archived.",
-  all: "No open cards for anyone.",
+  mine: t("pagesWhatNeedsMe.caughtUp.mine"),
+  unassigned: t("pagesWhatNeedsMe.caughtUp.unassigned"),
+  company: t("pagesWhatNeedsMe.caughtUp.company"),
+  archived: t("pagesWhatNeedsMe.caughtUp.archived"),
+  all: t("pagesWhatNeedsMe.caughtUp.all"),
 };
 
 function CaughtUpNote({ filtered, view, snoozedBelow = false }: { filtered: boolean; view: AttentionPersonalView; snoozedBelow?: boolean }) {
@@ -942,22 +942,22 @@ function CaughtUpNote({ filtered, view, snoozedBelow = false }: { filtered: bool
     <div className="rounded-xl border border-dashed border-border py-10 text-center">
       <p className="text-sm font-medium text-foreground">
         {filtered
-          ? "No decisions match your search or filters."
-          : snoozedBelow ? "No archived cards. Snoozed cards are below." : CAUGHT_UP_TEXT[view]}
+          ? t("pagesWhatNeedsMe.noMatch")
+          : snoozedBelow ? t("pagesWhatNeedsMe.snoozedBelow") : CAUGHT_UP_TEXT[view]}
       </p>
       {filtered && (
-        <p className="mt-1 text-xs text-muted-foreground">Adjust or clear your search and filters to see the rest.</p>
+        <p className="mt-1 text-xs text-muted-foreground">{t("pagesWhatNeedsMe.adjustFilters")}</p>
       )}
     </div>
   );
 }
 
 const ZERO_STATE_DETAIL: Record<AttentionPersonalView, string> = {
-  mine: "Nothing needs a decision from you right now.",
-  unassigned: "Every open card has an owner.",
-  company: "No failed runs, agent errors, budget stops or join requests.",
-  archived: "Cards you archive or snooze for yourself show here. Restore one to see it again.",
-  all: "Nobody has a card waiting right now.",
+  mine: t("pagesWhatNeedsMe.zeroState.mine"),
+  unassigned: t("pagesWhatNeedsMe.zeroState.unassigned"),
+  company: t("pagesWhatNeedsMe.zeroState.company"),
+  archived: t("pagesWhatNeedsMe.zeroState.archived"),
+  all: t("pagesWhatNeedsMe.zeroState.all"),
 };
 
 function ZeroState({ view }: { view: AttentionPersonalView }) {
@@ -966,7 +966,7 @@ function ZeroState({ view }: { view: AttentionPersonalView }) {
       <div className="mb-4 rounded-full bg-green-500/10 p-4">
         <CheckCircle2 className="h-10 w-10 text-green-500" />
       </div>
-      <p className="text-lg font-semibold text-foreground">{view === "mine" ? "You're all caught up" : CAUGHT_UP_TEXT[view]}</p>
+      <p className="text-lg font-semibold text-foreground">{view === "mine" ? t("pagesWhatNeedsMe.zeroState.title") : CAUGHT_UP_TEXT[view]}</p>
       <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
         <Inbox className="h-4 w-4" />
         {ZERO_STATE_DETAIL[view]}

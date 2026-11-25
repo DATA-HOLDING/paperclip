@@ -428,6 +428,7 @@ import { AgentQueueWaitChip } from "@/components/AgentQueueWait";
 import { agentQueueWaitOf, isWaitingToStart } from "@/lib/agent-queue-wait";
 import { taskStatusIconProps } from "@/lib/task-status-presentation";
 import { openSafeUrl } from "@/lib/safe-url";
+import { t } from "@/i18n";
 
 // Stable empty array for React Query `data` defaults. A literal `= []` default
 // creates a new array reference on every render while `data` is undefined
@@ -445,8 +446,8 @@ function createRunCancelledStatusUpdateError(
 ): StopAndFinalizeRunError {
   const message =
     err instanceof Error
-      ? `Run was stopped, but updating the task failed: ${describeError(err).body}`
-      : "Run was stopped, but updating the task failed. Retry the task status update.";
+      ? t("pagesIssueDetail.stopFinalize.updateFailedWithReason", { reason: describeError(err).body })
+      : t("pagesIssueDetail.stopFinalize.updateFailed");
   const error = new Error(message) as StopAndFinalizeRunError;
   error.runCancelledBeforeStatusUpdateFailed = true;
   return error;
@@ -496,9 +497,9 @@ function isPlanConfirmationInteraction(
 function buildPlanDecisionResponseText(
   interaction: RequestConfirmationInteraction,
 ) {
-  if (interaction.status === "accepted") return "Approved plan";
+  if (interaction.status === "accepted") return t("pagesIssueDetail.plan.approved");
   const reason = interaction.result?.reason?.trim();
-  return reason ? `Requested changes\n\n${reason}` : "Requested changes";
+  return reason ? `${t("pagesIssueDetail.plan.requestedChanges")}\n\n${reason}` : t("pagesIssueDetail.plan.requestedChanges");
 }
 
 const FEEDBACK_TERMS_URL =
@@ -509,13 +510,13 @@ const JUMP_TO_LATEST_MAX_COMMENT_PAGES = 10;
 function treeControlPreviewErrorCopy(error: unknown): string {
   if (error instanceof ApiError) {
     if (error.status === 403)
-      return "Only board users can preview subtree controls.";
+      return t("pagesIssueDetail.treePreview.forbidden");
     if (error.status === 409)
-      return "Preview is stale because subtree hold state changed. Retry to refresh.";
+      return t("pagesIssueDetail.treePreview.stale");
     if (error.status === 422)
-      return "This subtree action is currently invalid for the selected tasks.";
+      return t("pagesIssueDetail.treePreview.invalid");
   }
-  return error instanceof Error ? error.message : "Unable to load preview.";
+  return error instanceof Error ? error.message : t("pagesIssueDetail.treePreview.loadFailed");
 }
 
 // `canBoardManageRuntime` and `readRecoveryReconcileWorkspaceId` moved to `@/lib/recovery-reconcile`
@@ -734,18 +735,18 @@ function ActorIdentity({
     const agent = agentMap.get(id);
     return <AgentIdentity agent={agent ?? { id, name: id.slice(0, 8) }} size="sm" />;
   }
-  if (evt.actorType === "system") return <Identity name="System" size="sm" />;
+  if (evt.actorType === "system") return <Identity name={t("pagesIssueDetail.actor.system")} size="sm" />;
   if (evt.actorType === "user") {
     const profile = userProfileMap?.get(id);
     return (
       <Identity
-        name={profile?.label ?? "Board"}
+        name={profile?.label ?? t("pagesIssueDetail.actor.board")}
         avatarUrl={profile?.image}
         size="sm"
       />
     );
   }
-  return <Identity name={id || "Unknown"} size="sm" />;
+  return <Identity name={id || t("pagesIssueDetail.actor.unknown")} size="sm" />;
 }
 
 export type AttributionActor = {
@@ -772,9 +773,10 @@ function AttributionAvatar({
   actor: AttributionActor;
   via?: string | null;
 }) {
+  const displayLabel = label === "Assignee" ? t("pagesIssueDetail.attribution.assignee") : t("pagesIssueDetail.attribution.originating");
   const accessibleLabel = via
-    ? `${label}: ${actor.name} · via ${via}`
-    : `${label}: ${actor.name}`;
+    ? t("pagesIssueDetail.attribution.labelVia", { label: displayLabel, name: actor.name, via })
+    : t("pagesIssueDetail.attribution.label", { label: displayLabel, name: actor.name });
   const testIdLabel = label.toLowerCase();
 
   return (
@@ -802,14 +804,14 @@ function AttributionAvatar({
           )}
           <div className="min-w-0">
             <div className="text-(length:--text-nano) font-medium uppercase leading-none text-background/70">
-              {label}
+              {displayLabel}
             </div>
             <div className="max-w-48 truncate text-xs font-medium leading-4 text-background">
               {actor.name}
             </div>
             {via ? (
               <div className="max-w-48 truncate text-(length:--text-nano) leading-3 text-background/60">
-                via {via}
+                {t("pagesIssueDetail.attribution.via", { via })}
               </div>
             ) : null}
           </div>
@@ -849,7 +851,7 @@ function IssueAttributionByline({
           name:
             formatUserLabel(issue.assigneeUserId, userLabelMap) ??
             userProfileMap.get(issue.assigneeUserId)?.label ??
-            "User",
+            t("pagesIssueDetail.actor.user"),
           avatarUrl: userProfileMap.get(issue.assigneeUserId)?.image ?? null,
         }
       : null;
@@ -870,7 +872,7 @@ function IssueAttributionByline({
           name:
             formatUserLabel(originatingActor.id, userLabelMap) ??
             userProfileMap.get(originatingActor.id)?.label ??
-            "User",
+            t("pagesIssueDetail.actor.user"),
           avatarUrl: userProfileMap.get(originatingActor.id)?.image ?? null,
         }
     : null;
@@ -885,7 +887,7 @@ function IssueAttributionByline({
     <TooltipProvider>
       <AvatarGroup
         className="-space-x-1.5"
-        aria-label="Task people"
+        aria-label={t("pagesIssueDetail.attribution.people")}
         data-testid="issue-attribution-avatar-stack"
       >
         {assignee ? (
@@ -1012,13 +1014,13 @@ export function IssueDetailLoadingState({
   if (titleEditor) {
     return <div className="max-w-3xl space-y-6">
       <div data-testid="issue-detail-header">{titleEditor}</div>
-      <div role="status" aria-label="Loading conversation" className="flex items-center justify-center">
+      <div role="status" aria-label={t("pagesIssueDetail.loadingConversation")} className="flex items-center justify-center">
         <Skeleton aria-hidden="true" className="h-4 w-24" />
       </div>
     </div>;
   }
   if (!loaded) {
-    return <div data-testid="task-detail-presentation-loading" role="status" aria-label="Loading conversation" className="flex h-full min-h-0 w-full flex-1 items-center justify-center">
+    return <div data-testid="task-detail-presentation-loading" role="status" aria-label={t("pagesIssueDetail.loadingConversation")} className="flex h-full min-h-0 w-full flex-1 items-center justify-center">
       <Skeleton aria-hidden="true" className="h-4 w-24" />
     </div>;
   }
@@ -1053,10 +1055,10 @@ export function IssueDetailLoadingState({
                 <Badge
                   variant="outline"
                   className="border-violet-500/30 bg-violet-500/10 text-(length:--text-nano) text-violet-600 dark:text-violet-400"
-                  title={`Routine execution from routine ${headerSeed.originId}`}
+                  title={t("pagesIssueDetail.header.routineExecution", { id: headerSeed.originId })}
                 >
                   <Repeat className="h-3 w-3" />
-                  Routine
+                  {t("pagesIssueDetail.header.routine")}
                 </Badge>
               ) : null}
               {/* Seeded header — same anatomy as the resolved one below, so the
@@ -1071,7 +1073,7 @@ export function IssueDetailLoadingState({
               ) : (
                 <span className="inline-flex items-center gap-1 text-xs text-muted-foreground opacity-50 px-1 -mx-1 py-0.5">
                   <ProjectTile size="xs" />
-                  No project
+                  {t("pagesIssueDetail.header.noProject")}
                 </span>
               )}
             </>
@@ -1159,7 +1161,7 @@ function InboxMobileToolbar({
             navigate(backHref);
           }
         }}
-        aria-label="Back to inbox"
+        aria-label={t("pagesIssueDetail.mobile.backToInbox")}
       >
         <ArrowLeft className="h-5 w-5" />
       </Button>
@@ -1171,7 +1173,7 @@ function InboxMobileToolbar({
             size="icon-sm"
             onClick={onArchive}
             disabled={archivePending}
-            aria-label="Archive from inbox"
+            aria-label={t("pagesIssueDetail.archiveFromInbox")}
           >
             <Archive className="h-5 w-5" />
           </Button>
@@ -1179,7 +1181,7 @@ function InboxMobileToolbar({
 
         <Popover open={menuOpen} onOpenChange={setMenuOpen}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label="More actions">
+            <Button variant="ghost" size="icon-sm" aria-label={t("pagesIssueDetail.mobile.moreActions")}>
               <MoreVertical className="h-5 w-5" />
             </Button>
           </PopoverTrigger>
@@ -1192,7 +1194,7 @@ function InboxMobileToolbar({
               }}
             >
               <Copy className="h-3 w-3" />
-              Copy as markdown
+              {t("pagesIssueDetail.copyAsMarkdown")}
             </button>
             <button
               className="flex items-center gap-2 w-full px-2 py-1.5 text-xs rounded hover:bg-accent/50"
@@ -1202,7 +1204,7 @@ function InboxMobileToolbar({
               }}
             >
               <SlidersHorizontal className="h-3 w-3" />
-              Properties
+              {t("pagesIssueDetail.properties")}
             </button>
             {issueIdProp && (
               <button
@@ -1213,7 +1215,7 @@ function InboxMobileToolbar({
                 }}
               >
                 <EyeOff className="h-3 w-3" />
-                Hide this task
+                {t("pagesIssueDetail.hideTask")}
               </button>
             )}
           </PopoverContent>
@@ -1690,7 +1692,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
   const retryFailedRun = useMutation({
     mutationFn: async (runId: string) => {
       const failedRun = resolvedLinkedRuns.find((run) => run.runId === runId);
-      if (!failedRun) throw new Error("Failed run is no longer available.");
+      if (!failedRun) throw new Error(t("pagesIssueDetail.retry.failedRunMissing"));
       return agentsApi.retryFailedRun(
         failedRun.agentId,
         failedRun.runId,
@@ -1700,8 +1702,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
     onSuccess: (result) => {
       if (!result.runId) {
         pushToast({
-          title: "Retry queued",
-          body: "The exact request will retry when this task is ready.",
+          title: t("pagesIssueDetail.retry.queuedTitle", { defaultValue: "Retry queued" }),
+          body: t("pagesIssueDetail.retry.queuedBody"),
           tone: "success",
         });
       }
@@ -1720,8 +1722,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
     onError: (error, runId) => {
       const failedRun = resolvedLinkedRuns.find((run) => run.runId === runId);
       pushToast(modelStillUnavailableToast(error, failedRun ? agentMap.get(failedRun.agentId) : undefined) ?? {
-        title: "Run retry failed",
-        body: error instanceof Error ? error.message : "Unable to retry run",
+        title: t("pagesIssueDetail.retry.failedTitle"),
+        body: error instanceof Error ? error.message : t("pagesIssueDetail.retry.failedBody"),
         tone: "error",
       });
     },
@@ -2353,7 +2355,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
       const queueId = effectiveQueuedCommentQueue?.queueId;
       if (!queueId)
         throw new Error(
-          "The queued message is awaiting server acknowledgement.",
+          t("pagesIssueDetail.queue.awaitingAckOne"),
         );
       try {
         storeQueuedCommentQueue(
@@ -2384,7 +2386,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
       const queueId = effectiveQueuedCommentQueue?.queueId;
       if (!queueId)
         throw new Error(
-          "The queued messages are awaiting server acknowledgement.",
+          t("pagesIssueDetail.queue.awaitingAckMany"),
         );
       try {
         // The server orders its whole queue. Messages this view hides (inputs
@@ -2425,7 +2427,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
       const targetRunId = effectiveQueuedCommentQueue?.targetRunId;
       if (!queueId || !targetRunId)
         throw new Error(
-          "The queued message no longer has an active run target.",
+          t("pagesIssueDetail.queue.noRunTarget"),
         );
       const anchorAt = new Date().toISOString();
       setLocalSteeringPlacements((current) => {
@@ -2514,7 +2516,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
           setConsumedQueuedCommentIds(current => new Set([...current].filter(id => !remaining.has(id))));
           setLocalInterruptPlacements(current => new Map([...current].filter(([id]) => !remaining.has(id))));
           storeQueuedCommentQueue(updatedQueue);
-          if (classicTaskInterfaceEnabled) setClassicQueuedDeliveryError(updatedQueue.executionWait?.message ?? "Messages are still queued.");
+          if (classicTaskInterfaceEnabled) setClassicQueuedDeliveryError(updatedQueue.executionWait?.message ?? t("pagesIssueDetail.queue.stillQueued"));
         }
         return updatedQueue;
       } catch (error) {
@@ -2529,7 +2531,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
           return next;
         });
         if (classicTaskInterfaceEnabled) {
-          setClassicQueuedDeliveryError("Couldn’t interrupt. Message is still queued.");
+          setClassicQueuedDeliveryError(t("pagesIssueDetail.queue.interruptFailed"));
           return;
         }
         await refreshQueueAfterConflict(error);
@@ -2595,8 +2597,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
               : null;
         if (code === "queued_comment_already_dispatching") {
           pushToast({
-            title: "Message is already being sent",
-            body: "The continuation started before the discard was confirmed, so Paperclip could not unsend it.",
+            title: t("pagesIssueDetail.queue.alreadySendingTitle"),
+            body: t("pagesIssueDetail.queue.alreadySendingBody"),
             tone: "error",
             ttlMs: 15_000,
             dedupeKey: `queued-comment-already-dispatching:${issueId}:${commentId}`,
@@ -2641,8 +2643,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
         onClick={onLoadOlderComments}
       >
         {commentsLoadingOlder
-          ? "Loading earlier comments..."
-          : "Load earlier comments"}
+          ? t("pagesIssueDetail.comments.loadingEarlier")
+          : t("pagesIssueDetail.comments.loadEarlier")}
       </Button>
     </div>
   ) : null;
@@ -2678,7 +2680,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
               scrollingHistory,
               historyControl: conversationMode ? null : !historyExpanded && (hasEarlierMessages || hasEarlierRuns) ? (
                 <Button type="button" variant="ghost" size="sm" onClick={onExpandHistory}>
-                  More messages
+                  {t("pagesIssueDetail.comments.moreMessages")}
                 </Button>
               ) : null,
             } : {})}
@@ -2831,8 +2833,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
                   }
                 : undefined
             }
-            stopRunLabel={grokWork ? "Stop Paperclip work" : "Pause work"}
-            stoppingRunLabel={grokWork ? "Stopping Paperclip work…" : "Pausing..."}
+            stopRunLabel={grokWork ? t("pagesIssueDetail.grok.stop") : t("pagesIssueDetail.grok.pause")}
+            stoppingRunLabel={grokWork ? t("pagesIssueDetail.grok.stopping") : t("pagesIssueDetail.grok.pausing")}
             stopRunVariant={grokWork ? "stop" : "pause"}
             runFinalizationActions={runFinalizationActions}
             onAcceptInteraction={onAcceptInteraction}
@@ -2864,7 +2866,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
               tryAgainNoLiveExecutionPathPending
             }
             footer={grokWork || stopGrokWork.error || classicQueuedDeliveryError ? <>
-              {grokWork && <p className="text-xs text-muted-foreground">Runs in Grok Bot · Usage not reported. Stop Paperclip work revokes this session’s authority; remote execution may continue. Open the Grok Bot desktop app to inspect it.</p>}
+              {grokWork && <p className="text-xs text-muted-foreground">{t("pagesIssueDetail.grok.notice")}</p>}
               {stopGrokWork.error && <p role="alert" className="text-sm text-destructive">{describeError(stopGrokWork.error).body}</p>}
               {classicQueuedDeliveryError && <p role="status" className="text-sm text-destructive">{classicQueuedDeliveryError}</p>}
               {footer}
@@ -2884,7 +2886,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
         previewMode="playback"
         key={issueId}
         header={threadHeader}
-        agentName={agentMap.get(issueAssigneeAgentId ?? "")?.name ?? "Preview agent"}
+        agentName={agentMap.get(issueAssigneeAgentId ?? "")?.name ?? t("pagesIssueDetail.previewAgent")}
         agent={agentMap.get(issueAssigneeAgentId ?? "")}
         defaultConversation={issueQueryRef === "DES-1" || issueQueryRef === "DES-7"}
       >
@@ -3064,18 +3066,18 @@ function IssueDetailActivityTab({
       {shouldShowCostSummary && (
         <div className="mb-3 px-3 py-2 rounded-lg border border-border">
           <div className="text-sm font-medium text-muted-foreground mb-1">
-            Cost Summary
+            {t("pagesIssueDetail.cost.title")}
           </div>
           {!issueCostSummary.hasCost &&
           !issueCostSummary.hasTokens &&
           !hasIssueTreeCost ? (
             <div className="text-xs text-muted-foreground">
-              No cost data yet.
+              {t("pagesIssueDetail.cost.none")}
             </div>
           ) : (
             <div className="space-y-1 text-xs text-muted-foreground tabular-nums">
               <div className="flex flex-wrap gap-3">
-                <span className="font-medium text-foreground">This task</span>
+                <span className="font-medium text-foreground">{t("pagesIssueDetail.cost.thisTask")}</span>
                 {issueCostSummary.hasCost ? (
                   <span className="font-medium text-foreground">
                     ${issueCostSummary.cost.toFixed(4)}
@@ -3083,28 +3085,28 @@ function IssueDetailActivityTab({
                 ) : null}
                 {issueCostSummary.hasTokens ? (
                   <span>
-                    Tokens {formatTokens(issueCostSummary.totalTokens)}
+                    {t("pagesIssueDetail.cost.tokens", { tokens: formatTokens(issueCostSummary.totalTokens) })}
                     {issueCostSummary.cached > 0
-                      ? ` (in ${formatTokens(issueCostSummary.input)}, out ${formatTokens(issueCostSummary.output)}, cached ${formatTokens(issueCostSummary.cached)})`
-                      : ` (in ${formatTokens(issueCostSummary.input)}, out ${formatTokens(issueCostSummary.output)})`}
+                      ? t("pagesIssueDetail.cost.breakdownCached", { input: formatTokens(issueCostSummary.input), output: formatTokens(issueCostSummary.output), cached: formatTokens(issueCostSummary.cached) })
+                      : t("pagesIssueDetail.cost.breakdown", { input: formatTokens(issueCostSummary.input), output: formatTokens(issueCostSummary.output) })}
                   </span>
                 ) : null}
                 {issueCostSummary.hasRuntime ? (
                   <span>
-                    Runtime {formatDurationMs(issueCostSummary.runtimeMs)}
-                    {` (${issueCostSummary.runCount} run${issueCostSummary.runCount === 1 ? "" : "s"})`}
+                    {t("pagesIssueDetail.cost.runtime", { duration: formatDurationMs(issueCostSummary.runtimeMs) })}
+                    {t("pagesIssueDetail.cost.runs", { count: issueCostSummary.runCount })}
                   </span>
                 ) : null}
                 {!issueCostSummary.hasCost &&
                 !issueCostSummary.hasTokens &&
                 !issueCostSummary.hasRuntime ? (
-                  <span>No direct cost data.</span>
+                  <span>{t("pagesIssueDetail.cost.noDirect")}</span>
                 ) : null}
               </div>
               {hasIssueTreeCost && issueTreeCostSummary ? (
                 <div className="flex flex-wrap gap-3">
                   <span className="font-medium text-foreground">
-                    Including sub-tasks{" "}
+                    {t("pagesIssueDetail.cost.includingSubtasks")}{" "}
                     {(issueTreeCostSummary.costCents / 100).toLocaleString(
                       undefined,
                       {
@@ -3116,20 +3118,19 @@ function IssueDetailActivityTab({
                     )}
                   </span>
                   <span>
-                    Tokens {formatTokens(issueTreeCostTokens)}
+                    {t("pagesIssueDetail.cost.tokens", { tokens: formatTokens(issueTreeCostTokens) })}
                     {issueTreeCostSummary.cachedInputTokens > 0
-                      ? ` (in ${formatTokens(issueTreeCostSummary.inputTokens)}, out ${formatTokens(issueTreeCostSummary.outputTokens)}, cached ${formatTokens(issueTreeCostSummary.cachedInputTokens)})`
-                      : ` (in ${formatTokens(issueTreeCostSummary.inputTokens)}, out ${formatTokens(issueTreeCostSummary.outputTokens)})`}
+                      ? t("pagesIssueDetail.cost.breakdownCached", { input: formatTokens(issueTreeCostSummary.inputTokens), output: formatTokens(issueTreeCostSummary.outputTokens), cached: formatTokens(issueTreeCostSummary.cachedInputTokens) })
+                      : t("pagesIssueDetail.cost.breakdown", { input: formatTokens(issueTreeCostSummary.inputTokens), output: formatTokens(issueTreeCostSummary.outputTokens) })}
                   </span>
                   {issueTreeCostSummary.runCount > 0 ? (
                     <span>
-                      Runtime {formatDurationMs(issueTreeCostSummary.runtimeMs)}
-                      {` (${issueTreeCostSummary.runCount} run${issueTreeCostSummary.runCount === 1 ? "" : "s"})`}
+                      {t("pagesIssueDetail.cost.runtime", { duration: formatDurationMs(issueTreeCostSummary.runtimeMs) })}
+                      {t("pagesIssueDetail.cost.runs", { count: issueTreeCostSummary.runCount })}
                     </span>
                   ) : null}
                   <span>
-                    {issueTreeCostSummary.issueCount} task
-                    {issueTreeCostSummary.issueCount === 1 ? "" : "s"}
+                    {t("pagesIssueDetail.cost.tasks", { count: issueTreeCostSummary.issueCount })}
                   </span>
                 </div>
               ) : null}
@@ -3727,7 +3728,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   const sourceBreadcrumb = useMemo(
     () =>
       readIssueDetailBreadcrumb(issueId, location.state, location.search) ?? {
-        label: "Tasks",
+        label: t("pagesIssueDetail.breadcrumb.tasks"),
         href: "/issues",
       },
     [issueId, location.state, location.search],
@@ -4022,9 +4023,9 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         roleLabel,
       });
     };
-    pushUser(issue.responsibleUserId, "Owner");
-    pushAgent(issue.assigneeAgentId, "Assignee");
-    pushUser(issue.assigneeUserId, "Assignee");
+    pushUser(issue.responsibleUserId, t("pagesIssueDetail.roles.owner"));
+    pushAgent(issue.assigneeAgentId, t("pagesIssueDetail.attribution.assignee"));
+    pushUser(issue.assigneeUserId, t("pagesIssueDetail.attribution.assignee"));
     return list;
   }, [issue, userProfileMap, agentMap]);
   const mentionOptions = useMemo<MentionOption[]>(() => {
@@ -4177,7 +4178,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     const attachment = attachments?.find(item => item.id === attachmentId);
     if (!attachment) return;
     decisionAttachmentOpened.current = key;
-    handleOpenTextAttachment(attachment.id, attachment.originalFilename ?? "Attachment");
+    handleOpenTextAttachment(attachment.id, attachment.originalFilename ?? t("pagesIssueDetail.attachment"));
   }, [coordinatorWorkspaceEnabled, issue?.id, location.hash, location.search, location.key, attachments, handleOpenTextAttachment]);
 
   // History links restore the exact point of decision while its artifact opens
@@ -4306,7 +4307,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       options.push({ id: `agent:${agent.id}`, label: agent.name });
     }
     if (currentUserId) {
-      options.push({ id: `user:${currentUserId}`, label: "Me" });
+      options.push({ id: `user:${currentUserId}`, label: t("pagesIssueDetail.me") });
     }
     return options;
   }, [agents, companyMembers?.users, currentUserId]);
@@ -4562,7 +4563,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
 
       try {
         await issuesApi.unarchiveFromInbox(id);
-        pushToast({ title: "Task restored to inbox", tone: "success" });
+        pushToast({ title: t("pagesIssueDetail.inbox.restored"), tone: "success" });
       } catch (error) {
         if (companyId) {
           beginLocalInboxArchive(companyId, id);
@@ -4570,11 +4571,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           boundLocalInboxArchive(companyId, id);
         }
         pushToast({
-          title: "Undo failed",
+          title: t("pagesIssueDetail.inbox.undoFailed"),
           body:
             error instanceof Error
               ? error.message
-              : "Unable to restore this task to the inbox",
+              : t("pagesIssueDetail.inbox.restoreFailed"),
           tone: "error",
         });
       } finally {
@@ -4712,11 +4713,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     },
     onError: (err) => {
       pushToast({
-        title: "Recovery resolution failed",
+        title: t("pagesIssueDetail.recovery.failedTitle"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to resolve recovery action",
+            : t("pagesIssueDetail.recovery.failedBody"),
         tone: "error",
       });
     },
@@ -4743,7 +4744,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         result.issue.status !== "todo" ||
         result.issue.assigneeAgentId !== result.recoveryAction.returnOwnerAgentId
       ) {
-        throw new Error("The task’s state has changed. Refresh to see its current state.");
+        throw new Error(t("pagesIssueDetail.recovery.stateChanged"));
       }
       return result;
     },
@@ -4782,7 +4783,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         const pauseHoldId = treeControlState?.activePauseHold?.holdId;
         if (!pauseHoldId) {
           throw new Error(
-            "No active subtree pause hold is available to resume.",
+            t("pagesIssueDetail.tree.noPauseHold"),
           );
         }
         const releasedHold = await issuesApi.releaseTreeHold(
@@ -4831,7 +4832,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     onSuccess: (result) => {
       if (result.kind === "release" && result.hold.wakeFailures?.length) {
         setTreeControlWakeWarning(
-          `Pause released, but ${result.hold.wakeFailures.length} ${result.hold.wakeFailures.length === 1 ? "task" : "tasks"} could not start. ${result.hold.wakeFailures[0].message} Check the affected agents and try starting them again.`,
+          t("pagesIssueDetail.tree.wakeFailures", { count: result.hold.wakeFailures.length, message: result.hold.wakeFailures[0].message }),
         );
       }
       setTreeControlOpen(false);
@@ -4939,8 +4940,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       pushToast({
         title:
           status === "done"
-            ? "Run stopped and task done"
-            : "Run stopped and task cancelled",
+            ? t("pagesIssueDetail.stop.doneOk")
+            : t("pagesIssueDetail.stop.cancelledOk"),
         tone: "success",
       });
     },
@@ -4948,20 +4949,20 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       if (err instanceof TaskCancellationDismissedError) return;
       if (err instanceof SubtaskCancellationError) {
         invalidateIssueRunState();
-        pushToast({ title: "Some subtasks could not be canceled", body: err.message, tone: "error" });
+        pushToast({ title: t("pagesIssueDetail.stop.subtasksNotCanceled"), body: err.message, tone: "error" });
         return;
       }
       const runWasStopped = didRunCancelBeforeStatusUpdateFail(err);
       pushToast({
         title: runWasStopped
-          ? "Run stopped; task update failed"
+          ? t("pagesIssueDetail.stop.updateFailed")
           : status === "done"
-            ? "Stop and done failed"
-            : "Stop and cancel failed",
+            ? t("pagesIssueDetail.stop.doneFailed")
+            : t("pagesIssueDetail.stop.cancelFailed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to stop the run and update the task",
+            : t("pagesIssueDetail.stop.failedBody"),
         tone: "error",
       });
     },
@@ -5025,7 +5026,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
             issue,
             currentUserId,
           )}
-          createIssueLabel="Sub-task"
+          createIssueLabel={t("pagesIssueDetail.subtasks.createLabel")}
           showChecklist
           showProgressSummary
           parentIssueIdForCostSummary={issue.id}
@@ -5079,17 +5080,17 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueRunState();
       invalidateIssueCollections();
       pushToast({
-        title: "Monitor check queued",
+        title: t("pagesIssueDetail.monitor.queued"),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Monitor check failed",
+        title: t("pagesIssueDetail.monitor.failed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to trigger the monitor right now",
+            : t("pagesIssueDetail.monitor.failedBody"),
         tone: "error",
       });
     },
@@ -5128,8 +5129,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       pushToast({
         title:
           variables.action === "approve"
-            ? "Approval approved"
-            : "Approval rejected",
+            ? t("pagesIssueDetail.approval.approved")
+            : t("pagesIssueDetail.approval.rejected"),
         tone: "success",
       });
     },
@@ -5137,9 +5138,9 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       pushToast({
         title:
           variables.action === "approve"
-            ? "Approval failed"
-            : "Rejection failed",
-        body: err instanceof Error ? err.message : "Unable to update approval",
+            ? t("pagesIssueDetail.approval.approveFailed")
+            : t("pagesIssueDetail.approval.rejectFailed"),
+        body: err instanceof Error ? err.message : t("pagesIssueDetail.approval.updateFailed"),
         tone: "error",
       });
     },
@@ -5246,11 +5247,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           return;
         } catch (err) {
           pushToast({
-            title: "Cancel failed",
+            title: t("pagesIssueDetail.cancelFailed"),
             body:
               err instanceof Error
                 ? err.message
-                : "Unable to cancel the queued comment",
+                : t("pagesIssueDetail.queuedComment.cancelFailedBody"),
             tone: "error",
           });
         }
@@ -5324,7 +5325,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       // A comment that is not known to be saved stays in the composer and
       // resends with the same request ID; its notice replaces this toast.
       if (classifySendFailure(err) === "pending") return;
-      const { title, body } = describeError(err, { action: "post the comment" });
+      const { title, body } = describeError(err, { action: t("pagesIssueDetail.errorActions.postComment") });
       pushToast({ title, body, tone: "error" });
     },
     onFinished: (_variables, context) => {
@@ -5397,19 +5398,19 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       pushToast({
         title:
           interaction.kind === "request_confirmation"
-            ? "Request confirmed"
+            ? t("pagesIssueDetail.interaction.requestConfirmed")
             : interaction.kind === "request_checkbox_confirmation"
-              ? "Selection confirmed"
+              ? t("pagesIssueDetail.interaction.selectionConfirmed")
               : skippedCount > 0
-                ? `Accepted ${createdCount} draft${createdCount === 1 ? "" : "s"} and skipped ${skippedCount}`
-                : "Suggested tasks accepted",
+                ? t("pagesIssueDetail.interaction.acceptedSkipped", { count: createdCount, skipped: skippedCount })
+                : t("pagesIssueDetail.interaction.suggestedAccepted"),
         tone: "success",
       });
     },
     onError: (err) => {
       if (describeInteractionResolutionFailure(err).kind === "settled") invalidateIssueDetail();
       pushToast({
-        title: "Accept failed",
+        title: t("pagesIssueDetail.interaction.acceptFailed"),
         body: interactionResolutionErrorMessage(err),
         tone: "error",
       });
@@ -5432,14 +5433,14 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         title:
           interaction.kind === "request_confirmation"
             ? buildIssueThreadInteractionSummary(interaction)
-            : "Suggestion rejected",
+            : t("pagesIssueDetail.interaction.suggestionRejected"),
         tone: "success",
       });
     },
     onError: (err) => {
       if (describeInteractionResolutionFailure(err).kind === "settled") invalidateIssueDetail();
       pushToast({
-        title: "Reject failed",
+        title: t("pagesIssueDetail.interaction.rejectFailed"),
         body: interactionResolutionErrorMessage(err),
         tone: "error",
       });
@@ -5459,13 +5460,13 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueDetail();
       invalidateIssueCollections();
       pushToast({
-        title: "Answers submitted",
+        title: t("pagesIssueDetail.interaction.answersSubmitted"),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Submit failed",
+        title: t("pagesIssueDetail.interaction.submitFailed"),
         body: interactionResolutionErrorMessage(err),
         tone: "error",
       });
@@ -5496,16 +5497,16 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           : false;
       pushToast({
         title: complete
-          ? "All verdicts applied"
-          : `Applied ${applied} decision${applied === 1 ? "" : "s"}`,
+          ? t("pagesIssueDetail.interaction.allVerdicts")
+          : t("pagesIssueDetail.interaction.appliedDecisions", { count: applied }),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Apply failed",
+        title: t("pagesIssueDetail.interaction.applyFailed"),
         body:
-          err instanceof Error ? err.message : "Unable to apply the verdicts",
+          err instanceof Error ? err.message : t("pagesIssueDetail.interaction.applyFailedBody"),
         tone: "error",
       });
     },
@@ -5522,15 +5523,15 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueDetail();
       invalidateIssueCollections();
       pushToast({
-        title: "Question cancelled",
+        title: t("pagesIssueDetail.interaction.questionCancelled"),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Cancel failed",
+        title: t("pagesIssueDetail.cancelFailed"),
         body:
-          err instanceof Error ? err.message : "Unable to cancel the question",
+          err instanceof Error ? err.message : t("pagesIssueDetail.interaction.cancelQuestionFailed"),
         tone: "error",
       });
     },
@@ -5555,9 +5556,9 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     },
     onError: (err) => {
       pushToast({
-        title: "Skip failed",
+        title: t("pagesIssueDetail.interaction.skipFailed"),
         body:
-          err instanceof Error ? err.message : "Unable to skip this request",
+          err instanceof Error ? err.message : t("pagesIssueDetail.interaction.skipFailedBody"),
         tone: "error",
       });
     },
@@ -5684,11 +5685,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           return;
         } catch (err) {
           pushToast({
-            title: "Cancel failed",
+            title: t("pagesIssueDetail.cancelFailed"),
             body:
               err instanceof Error
                 ? err.message
-                : "Unable to cancel the queued comment",
+                : t("pagesIssueDetail.queuedComment.cancelFailedBody"),
             tone: "error",
           });
         }
@@ -5755,7 +5756,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       // A comment that is not known to be saved stays in the composer and
       // resends with the same request ID; its notice replaces this toast.
       if (classifySendFailure(err) === "pending") return;
-      const { title, body } = describeError(err, { action: "post the comment" });
+      const { title, body } = describeError(err, { action: t("pagesIssueDetail.errorActions.postComment") });
       pushToast({ title, body, tone: "error" });
     },
     onSettled: (_result, _error, variables) => {
@@ -5803,18 +5804,18 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueThreadLazily();
       invalidateIssueCollections();
       pushToast({
-        title: "Queued comment canceled",
-        body: "The queued message was restored to the composer.",
+        title: t("pagesIssueDetail.queuedComment.canceled"),
+        body: t("pagesIssueDetail.queuedComment.restored"),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Cancel failed",
+        title: t("pagesIssueDetail.cancelFailed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to cancel the queued comment",
+            : t("pagesIssueDetail.queuedComment.cancelFailedBody"),
         tone: "error",
       });
     },
@@ -5831,16 +5832,16 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueCollections();
       invalidateIssueDocumentAnnotationState();
       pushToast({
-        title: "Comment deleted",
-        body: "The thread now shows a deleted-comment marker.",
+        title: t("pagesIssueDetail.comment.deleted"),
+        body: t("pagesIssueDetail.comment.deletedBody"),
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Delete failed",
+        title: t("pagesIssueDetail.deleteFailed"),
         body:
-          err instanceof Error ? err.message : "Unable to delete the comment",
+          err instanceof Error ? err.message : t("pagesIssueDetail.comment.deleteFailedBody"),
         tone: "error",
       });
     },
@@ -5859,8 +5860,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         if (cancelledCommentBody) {
           restoreQueuedCommentDraft(cancelledCommentBody);
           pushToast({
-            title: "Queued comment canceled",
-            body: "The queued message was restored to the composer.",
+            title: t("pagesIssueDetail.queuedComment.canceled"),
+            body: t("pagesIssueDetail.queuedComment.restored"),
             tone: "success",
           });
         }
@@ -5923,11 +5924,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         title:
           variables.sharingPreferenceAtSubmit === "prompt"
             ? variables.allowSharing
-              ? "Feedback saved. Future votes will share"
-              : "Feedback saved. Future votes will stay local"
+              ? t("pagesIssueDetail.feedback.savedShare")
+              : t("pagesIssueDetail.feedback.savedLocal")
             : variables.allowSharing
-              ? "Feedback saved and sharing enabled"
-              : "Feedback saved",
+              ? t("pagesIssueDetail.feedback.savedSharing")
+              : t("pagesIssueDetail.feedback.saved"),
         tone: "success",
       });
     },
@@ -5939,8 +5940,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         );
       }
       pushToast({
-        title: "Failed to save feedback",
-        body: err instanceof Error ? err.message : "Unknown error",
+        title: t("pagesIssueDetail.feedback.failed"),
+        body: err instanceof Error ? err.message : t("pagesIssueDetail.unknownError"),
         tone: "error",
       });
     },
@@ -5952,7 +5953,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         return issuesApi.uploadAttachment(conversation.agent.companyId, await resolveWritableIssueId(), file);
       }
       if (!loadedIssue)
-        throw new Error("Task details are still loading. Please try again.");
+        throw new Error(t("pagesIssueDetail.detailsLoading"));
       return issuesApi.uploadAttachment(
         loadedIssue.companyId,
         loadedIssue.id,
@@ -5968,7 +5969,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       if (!issueId) void queryClient.invalidateQueries({ queryKey: queryKeys.issues.detail(result.issueId) });
     },
     onError: (err) => {
-      setAttachmentError(err instanceof Error ? err.message : "Upload failed");
+      setAttachmentError(err instanceof Error ? err.message : t("pagesIssueDetail.upload.failed"));
     },
   });
 
@@ -5998,7 +5999,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     },
     onError: (err) => {
       setAttachmentError(
-        err instanceof Error ? err.message : "Document import failed",
+        err instanceof Error ? err.message : t("pagesIssueDetail.upload.importFailed"),
       );
     },
   });
@@ -6014,7 +6015,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       invalidateIssueDetail();
     },
     onError: (err) => {
-      setAttachmentError(err instanceof Error ? err.message : "Delete failed");
+      setAttachmentError(err instanceof Error ? err.message : t("pagesIssueDetail.deleteFailed"));
     },
   });
 
@@ -6054,10 +6055,10 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         { replace: true },
       );
       pushToast({
-        title: "Task archived from inbox",
+        title: t("pagesIssueDetail.inbox.archived"),
         tone: "success",
         action: {
-          label: "Undo",
+          label: t("pagesIssueDetail.inbox.undo"),
           onClick: () => {
             void undoInboxArchive(
               id,
@@ -6074,11 +6075,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         restoreIssueToInboxCaches(queryClient, context.previousData, id);
       }
       pushToast({
-        title: "Archive failed",
+        title: t("pagesIssueDetail.inbox.archiveFailed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to archive this task from the inbox",
+            : t("pagesIssueDetail.inbox.archiveFailedBody"),
         tone: "error",
       });
     },
@@ -6120,13 +6121,13 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   }, [breadcrumbParentRef, resolvedIssueDetailState, location.state, location.search]);
   useEffect(() => {
     if (isAgentChatRoute) {
-      setBreadcrumbs([{ label: "Chat" }]);
+      setBreadcrumbs([{ label: t("pagesIssueDetail.tabs.chat") }]);
       return;
     }
     setBreadcrumbs([
       sourceBreadcrumb,
       ...(breadcrumbParent ? [{
-        label: isLockedIssueStub(breadcrumbParent) ? "Private task" : breadcrumbParent.title,
+        label: isLockedIssueStub(breadcrumbParent) ? t("pagesIssueDetail.privateTask") : breadcrumbParent.title,
         href: isLockedIssueStub(breadcrumbParent)
           ? undefined
           : createIssueDetailPath(breadcrumbParent.identifier ?? breadcrumbParent.id),
@@ -6882,15 +6883,15 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     try {
       await copyTextToClipboard(md);
       setCopied(true);
-      pushToast({ title: "Copied to clipboard", tone: "success" });
+      pushToast({ title: t("pagesIssueDetail.copy.copied"), tone: "success" });
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
       pushToast({
-        title: "Copy failed",
+        title: t("pagesIssueDetail.copy.failed"),
         body:
           error instanceof Error
             ? error.message
-            : "Unable to copy task markdown",
+            : t("pagesIssueDetail.copy.failedBody"),
         tone: "error",
       });
     }
@@ -7095,8 +7096,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     () => [
       {
         id: "cancel",
-        label: "Stop and cancel",
-        pendingLabel: "Stopping and cancelling...",
+        label: t("pagesIssueDetail.finalize.cancel"),
+        pendingLabel: t("pagesIssueDetail.finalize.cancelPending"),
         isPending:
           stopAndFinalizeRun.isPending &&
           stopAndFinalizeRun.variables?.status === "cancelled",
@@ -7109,8 +7110,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       },
       {
         id: "done",
-        label: "Stop and done",
-        pendingLabel: "Stopping and marking done...",
+        label: t("pagesIssueDetail.finalize.done"),
+        pendingLabel: t("pagesIssueDetail.finalize.donePending"),
         isPending:
           stopAndFinalizeRun.isPending &&
           stopAndFinalizeRun.variables?.status === "done",
@@ -7199,7 +7200,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   const issueIdForResume = issue?.id ?? null;
   const resumeAssigneeAgent = useMutation({
     mutationFn: async () => {
-      if (!issueAssigneeAgentIdForResume) throw new Error("No assignee agent");
+      if (!issueAssigneeAgentIdForResume) throw new Error(t("pagesIssueDetail.resume.noAssignee"));
       await agentsApi.resume(
         issueAssigneeAgentIdForResume,
         issueCompanyIdForResume ?? undefined,
@@ -7300,7 +7301,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     mutationFn: async (
       request: import("../components/IssueRecoveryActionCard").RecoveryReissueRequest,
     ) => {
-      if (!issue) throw new Error("Task is not loaded yet.");
+      if (!issue) throw new Error(t("pagesIssueDetail.reissue.notLoaded"));
       const sourceLabel = issue.identifier ?? "the stalled task";
       const descriptionLines = [
         `Re-issued from ${sourceLabel} on an isolated git worktree after a workspace branch divergence.`,
@@ -7335,10 +7336,10 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     onSuccess: (created) => {
       invalidateIssueCollections();
       pushToast({
-        title: "Isolated re-issue created",
+        title: t("pagesIssueDetail.reissue.created"),
         body: created.identifier
-          ? `${created.identifier} will run on a fresh isolated workspace.`
-          : "A fresh isolated re-issue was created.",
+          ? t("pagesIssueDetail.reissue.createdBody", { identifier: created.identifier })
+          : t("pagesIssueDetail.reissue.createdFallback"),
         tone: "success",
       });
       if (created.identifier) {
@@ -7347,11 +7348,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     },
     onError: (err) => {
       pushToast({
-        title: "Re-issue failed",
+        title: t("pagesIssueDetail.reissue.failed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to create an isolated re-issue.",
+            : t("pagesIssueDetail.reissue.failedBody"),
         tone: "error",
       });
     },
@@ -7391,24 +7392,24 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       pushToast(
         variables.mode === "quarantine_restore"
           ? {
-              title: "Workspace repaired",
-              body: "Dirty changes were quarantined onto a rescue branch and the recorded branch restored; the task will resume.",
+              title: t("pagesIssueDetail.reconcile.repaired"),
+              body: t("pagesIssueDetail.reconcile.repairedBody"),
               tone: "success",
             }
           : {
-              title: "Workspace branch reconciled",
-              body: "The recorded branch now matches the live branch; the task will resume.",
+              title: t("pagesIssueDetail.reconcile.reconciled"),
+              body: t("pagesIssueDetail.reconcile.reconciledBody"),
               tone: "success",
             },
       );
     },
     onError: (err) => {
       pushToast({
-        title: "Reconcile failed",
+        title: t("pagesIssueDetail.reconcile.failed"),
         body:
           err instanceof Error
             ? err.message
-            : "Unable to reconcile the workspace branch.",
+            : t("pagesIssueDetail.reconcile.failedBody"),
         tone: "error",
       });
     },
@@ -7426,8 +7427,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   const handleReconcileForwardRecoveryAction = useCallback(() => {
     if (!reconcileExecutionWorkspaceId) {
       pushToast({
-        title: "Reconcile failed",
-        body: "This task has no execution workspace to reconcile.",
+        title: t("pagesIssueDetail.reconcile.failed"),
+        body: t("pagesIssueDetail.reconcile.noWorkspace"),
         tone: "error",
       });
       return;
@@ -7445,8 +7446,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     (reason: string) => {
       if (!reconcileExecutionWorkspaceId) {
         pushToast({
-          title: "Reconcile failed",
-          body: "This task has no execution workspace to reconcile.",
+          title: t("pagesIssueDetail.reconcile.failed"),
+          body: t("pagesIssueDetail.reconcile.noWorkspace"),
           tone: "error",
         });
         return;
@@ -7468,8 +7469,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   const handleQuarantineRestoreRecoveryAction = useCallback(() => {
     if (!reconcileExecutionWorkspaceId) {
       pushToast({
-        title: "Repair failed",
-        body: "This task has no execution workspace to repair.",
+        title: t("pagesIssueDetail.repair.failed"),
+        body: t("pagesIssueDetail.repair.noWorkspace"),
         tone: "error",
       });
       return;
@@ -7517,7 +7518,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
     const badges = new Map<string, string>();
     for (const child of childIssues) {
       if (!heldIssueIds.has(child.id)) continue;
-      badges.set(child.id, "Paused");
+      badges.set(child.id, t("pagesIssueDetail.paused"));
     }
     return badges;
   }, [childIssues, heldIssueIds]);
@@ -7546,7 +7547,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         <QueryErrorState
           size="page"
           error={pageError}
-          action="load this task"
+          action={t("pagesIssueDetail.errorActions.loadTask")}
           onRetry={coreIssueQuery.error ? coreIssueView.retry : issueView.retry}
           retrying={issueView.isFetching || coreIssueView.isFetching}
         />
@@ -7660,7 +7661,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
   const previewAffectedAgentCount =
     treeControlPreview?.totals.affectedAgents ?? 0;
   const reopenComposerHint = closedIsolatedWorkspaceReopenPending
-    ? "This issue's isolated workspace was archived. Your next comment or resume reopens it and rebuilds the worktree."
+    ? t("pagesIssueDetail.composer.reopenHint")
     : null;
   const composerHint = activePauseHold ? null : reopenComposerHint;
   const queuedCommentReason: "hold" | "active_run" | "other" = activePauseHold
@@ -7693,11 +7694,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
       >
         <Paperclip className="h-3.5 w-3.5 mr-1.5" />
         {uploadAttachment.isPending || importMarkdownDocument.isPending ? (
-          "Uploading..."
+          t("pagesIssueDetail.upload.uploading")
         ) : (
           <>
-            <span className="hidden sm:inline">Upload attachment</span>
-            <span className="sm:hidden">Upload</span>
+            <span className="hidden sm:inline">{t("pagesIssueDetail.upload.attachment")}</span>
+            <span className="sm:hidden">{t("pagesIssueDetail.upload.short")}</span>
           </>
         )}
       </Button>
@@ -7853,7 +7854,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
             </span>
-            Live
+            {t("pagesIssueDetail.header.live")}
           </Badge>
         )}
 
@@ -7861,10 +7862,10 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           <Link
             to={`/routines/${issue.originId}`}
             className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 border border-violet-500/30 px-2 py-0.5 text-(length:--text-nano) font-medium text-violet-600 dark:text-violet-400 shrink-0 hover:bg-violet-500/20 transition-colors"
-            title={`Routine execution from routine ${issue.originId}`}
+            title={t("pagesIssueDetail.header.routineExecution", { id: issue.originId })}
           >
             <Repeat className="h-3 w-3" />
-            Routine
+            {t("pagesIssueDetail.header.routine")}
           </Link>
         )}
 
@@ -7872,10 +7873,10 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           <Badge
             variant="outline"
             className="border-sky-500/40 bg-sky-500/10 text-(length:--text-nano) text-sky-700 dark:text-sky-300"
-            title="This task is a generated watchdog task. It verifies whether stopped work in the watched task tree is legitimate."
+            title={t("pagesIssueDetail.header.watchdogTitle")}
           >
             <ScanEye className="h-3 w-3" />
-            Watchdog
+            {t("pagesIssueDetail.header.watchdog")}
           </Badge>
         ) : null}
 
@@ -7895,7 +7896,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                     "text-(length:--text-nano)",
                     workModeMeta.classes.badge,
                   )}
-                  title={`This task is in ${workModeMeta.label.toLowerCase()}.`}
+                  title={t("pagesIssueDetail.header.workMode", { mode: workModeMeta.label.toLowerCase() })}
                 >
                   <WorkModeIcon className="h-3 w-3" aria-hidden />
                   {workModeMeta.label}
@@ -7909,10 +7910,10 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
             variant="outline"
             data-testid="issue-detail-parked-blocker"
             className="border-amber-500/60 bg-amber-500/15 text-(length:--text-nano) text-amber-700 dark:text-amber-300"
-            title="Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee."
+            title={t("pagesIssueDetail.header.parkedBlockerTitle")}
           >
             <Flag className="h-3 w-3" />
-            Blocked by parked work
+            {t("pagesIssueDetail.header.parkedBlocker")}
           </Badge>
         ) : null}
 
@@ -7941,7 +7942,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         ) : (
           <span className="inline-flex items-center gap-1 text-xs text-muted-foreground opacity-50 px-1 -mx-1 py-0.5">
             <ProjectTile size="xs" />
-            No project
+            {t("pagesIssueDetail.header.noProject")}
           </span>
         )}
 
@@ -7982,7 +7983,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               variant="ghost"
               size="icon-xs"
               onClick={copyIssueToClipboard}
-              title="Copy task as markdown"
+              title={t("pagesIssueDetail.actions.copyMarkdown")}
             >
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -7994,7 +7995,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               variant="ghost"
               size="icon-xs"
               onClick={() => setMobilePropsOpen(true)}
-              title="Properties"
+              title={t("pagesIssueDetail.properties")}
             >
               <SlidersHorizontal className="h-4 w-4" />
             </Button>
@@ -8011,8 +8012,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   archiveFromInbox.mutate(issue.id);
               }}
               disabled={archivePending}
-              title="Archive from inbox"
-              aria-label="Archive from inbox"
+              title={t("pagesIssueDetail.archiveFromInbox")}
+              aria-label={t("pagesIssueDetail.archiveFromInbox")}
             >
               <Archive className="h-4 w-4" />
             </Button>
@@ -8022,8 +8023,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               variant="ghost"
               size="icon-xs"
               onClick={() => setFileViewerPromptOpen(true)}
-              title="Open file... (g f)"
-              aria-label="Open file in this issue"
+              title={t("pagesIssueDetail.actions.openFile")}
+              aria-label={t("pagesIssueDetail.actions.openFileLabel")}
             >
               <FileCode2 className="h-4 w-4" />
             </Button>
@@ -8033,7 +8034,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               variant="ghost"
               size="icon-xs"
               onClick={copyIssueToClipboard}
-              title="Copy task as markdown"
+              title={t("pagesIssueDetail.actions.copyMarkdown")}
             >
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -8075,8 +8076,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   variant="ghost"
                   size="icon-xs"
                   className="shrink-0"
-                  aria-label="More task actions"
-                  title="More task actions"
+                  aria-label={t("pagesIssueDetail.actions.moreTaskActions")}
+                  title={t("pagesIssueDetail.actions.moreTaskActions")}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
@@ -8097,7 +8098,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                     }}
                   >
                     <ActivityIcon className="h-3 w-3" />
-                    Show task activity
+                    {t("pagesIssueDetail.actions.showActivity")}
                   </button>
                 ) : null}
                 {streamlinedTaskDetailEnabled ? (
@@ -8110,7 +8111,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                       }}
                     >
                       <Plus className="h-3 w-3" />
-                      Add subtask
+                      {t("pagesIssueDetail.actions.addSubtask")}
                     </button>
                     <button
                       className="flex w-full items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-accent/50"
@@ -8124,7 +8125,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                       ) : (
                         <Copy className="h-3 w-3" />
                       )}
-                      Copy as markdown
+                      {t("pagesIssueDetail.copyAsMarkdown")}
                     </button>
                     {canArchiveFromInbox ? (
                       <button
@@ -8137,7 +8138,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                         }}
                       >
                         <Archive className="h-3 w-3" />
-                        Archive from inbox
+                        {t("pagesIssueDetail.archiveFromInbox")}
                       </button>
                     ) : null}
                   </>
@@ -8196,7 +8197,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   }}
                 >
                   <EyeOff className="h-3 w-3" />
-                  Hide this task
+                  {t("pagesIssueDetail.hideTask")}
                 </button>
               </PopoverContent>
             </Popover>
@@ -8231,7 +8232,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         onCancelMonitor={() => cancelIssueMonitor.mutateAsync()}
         issue={issue}
         workProducts={workProducts}
-        checkError={checkIssueMonitorNow.error ? describeError(checkIssueMonitorNow.error, { action: "check the monitor" }).body : null}
+        checkError={checkIssueMonitorNow.error ? describeError(checkIssueMonitorNow.error, { action: t("pagesIssueDetail.errorActions.checkMonitor") }).body : null}
         onCheckNow={() => checkIssueMonitorNow.mutate()}
         checkingNow={checkIssueMonitorNow.isPending}
       />
@@ -8244,7 +8245,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           readCurrentValue={async () => (await issuesApi.getCore(issue.id, { cache: "no-store", fresh: true })).description ?? ""}
           as="p"
           className="text-sm leading-7 text-foreground"
-          placeholder="Add a description..."
+          placeholder={t("pagesIssueDetail.description.placeholder")}
           multiline
           foldable
           mentions={mentionOptions}
@@ -8340,8 +8341,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
         >
           {error && coreIssueQuery.data && !isTransientError(error) ? (
             <div role="status" className="flex items-center gap-2 text-sm text-muted-foreground">
-              Some task details could not be loaded.
-              <Button type="button" variant="ghost" size="sm" onClick={() => void refetchIssueDetail()}>Retry</Button>
+              {t("pagesIssueDetail.detailsError")}
+              <Button type="button" variant="ghost" size="sm" onClick={() => void refetchIssueDetail()}>{t("pagesIssueDetail.retryButton")}</Button>
             </div>
           ) : null}
           {/* Parent chain breadcrumb (redesign: rendered inside the thread viewport) */}
@@ -8375,7 +8376,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           )}
 
           {issue.status === "in_review" && issue.externalConversationState === "waiting" && (
-            <p role="status" className="text-sm text-muted-foreground">Reply sent. Send a message to continue.</p>
+            <p role="status" className="text-sm text-muted-foreground">{t("pagesIssueDetail.replySent")}</p>
           )}
 
           {issue.hiddenAt && (
@@ -8387,7 +8388,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               )}
             >
               <EyeOff className="h-4 w-4 shrink-0" />
-              This task is hidden
+              {t("pagesIssueDetail.hidden")}
             </div>
           )}
           {treeControlWakeWarning ? (
@@ -8418,7 +8419,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
             <div className="space-y-3">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-sm font-medium text-muted-foreground">
-                  Sub-tasks
+                  {t("pagesIssueDetail.subtasks.title")}
                 </h3>
               </div>
               <IssuesList
@@ -8441,7 +8442,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   issue,
                   currentUserId,
                 )}
-                createIssueLabel="Sub-task"
+                createIssueLabel={t("pagesIssueDetail.subtasks.createLabel")}
                 showChecklist
                 showProgressSummary
                 parentIssueIdForCostSummary={issue.id}
@@ -8457,7 +8458,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                 className="shrink-0 shadow-none"
               >
                 <Plus className="mr-1.5 h-3.5 w-3.5" />
-                New Sub-task
+                {t("pagesIssueDetail.subtasks.new")}
               </Button>
             </div>
           )}
@@ -8579,7 +8580,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-sm font-medium text-muted-foreground">
-                      Artifacts
+                      {t("pagesIssueDetail.artifacts")}
                     </h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -8617,15 +8618,15 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               >
                 <TabsTrigger value="chat" className="gap-1.5">
                   <MessageSquare className="h-3.5 w-3.5" />
-                  Chat
+                  {t("pagesIssueDetail.tabs.chat")}
                 </TabsTrigger>
                 <TabsTrigger value="activity" className="gap-1.5">
                   <ActivityIcon className="h-3.5 w-3.5" />
-                  Activity
+                  {t("pagesIssueDetail.tabs.activity")}
                 </TabsTrigger>
                 <TabsTrigger value="related-work" className="gap-1.5">
                   <ListTree className="h-3.5 w-3.5" />
-                  Related work
+                  {t("pagesIssueDetail.tabs.relatedWork")}
                 </TabsTrigger>
                 {issuePluginTabItems.map((item) => (
                   <TabsTrigger key={item.value} value={item.value}>
@@ -8654,24 +8655,24 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
             >
               {resolvedDetailTab === "chat" ? (
                 <WorkspaceBaseRefRecoveryProvider issue={issue} agentMap={agentMap} onRepaired={() => { invalidateIssueDetail(); invalidateIssueCollections(); }}
-                  baseRefUnavailableReason={!canManageBoardRuntime ? "You don’t have permission to repair this task’s workspace." : null}
-                  unavailableReason={!canResolveBoardRecoveryAction ? "You don’t have permission to retry this task."
-                    : treeControlStateError ? "Couldn’t check whether this task is paused. Refresh to try again."
-                    : activePauseHold ? "Resume the task before retrying."
-                    : issue.project?.pausedAt ? "Resume the project before retrying."
-                    : hasPendingInteraction ? "Respond to the pending question or confirmation before retrying." : null}>
+                  baseRefUnavailableReason={!canManageBoardRuntime ? t("pagesIssueDetail.unavailable.repairPermission") : null}
+                  unavailableReason={!canResolveBoardRecoveryAction ? t("pagesIssueDetail.unavailable.retryPermission")
+                    : treeControlStateError ? t("pagesIssueDetail.unavailable.pauseCheck")
+                    : activePauseHold ? t("pagesIssueDetail.unavailable.resumeTask")
+                    : issue.project?.pausedAt ? t("pagesIssueDetail.unavailable.resumeProject")
+                    : hasPendingInteraction ? t("pagesIssueDetail.unavailable.pendingInteraction") : null}>
                 <DispositionRecoveryProvider value={{
                   issue,
                   agentMap,
                   hasPendingInteraction,
                   unavailableReason: boardAccess && !canResolveBoardRecoveryAction
-                    ? "You don’t have permission to retry this recovery action."
+                    ? t("pagesIssueDetail.unavailable.recoveryPermission")
                     : treeControlStateError
-                    ? "Couldn’t check whether this task is paused. Refresh to try again."
+                    ? t("pagesIssueDetail.unavailable.pauseCheck")
                     : activePauseHold
-                      ? "The task is paused. Resume it before retrying."
+                      ? t("pagesIssueDetail.unavailable.taskPaused")
                       : issue.project?.pausedAt
-                        ? "The project is paused. Resume it before retrying."
+                        ? t("pagesIssueDetail.unavailable.projectPaused")
                         : null,
                   onRetry: (actionId) => retryDispositionRecovery.mutateAsync(actionId).then(() => undefined),
                 }}>
@@ -8693,11 +8694,11 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   threadHeader={<>{taskChatThreadHeader}<EmailTaskActivity key={issue.id} companyId={issue.companyId} issueId={issue.id} />
                     {(childIssuesError || createdTasksQuery.isError) && (
                       <div role="alert" className="flex items-center gap-2 px-4 text-sm text-destructive">
-                        <span>Could not load created tasks.</span>
+                        <span>{t("pagesIssueDetail.createdTasksError")}</span>
                         <Button variant="ghost" size="sm" onClick={() => {
                           void refetchChildIssues();
                           void createdTasksQuery.refetch();
-                        }}>Retry</Button>
+                        }}>{t("pagesIssueDetail.retryButton")}</Button>
                       </div>
                     )}
                   </>}
@@ -8712,7 +8713,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                           author: issue.createdByAgentId ? "agent" : "human",
                           authorName: issue.createdByAgentId
                             ? (agentMap.get(issue.createdByAgentId)?.name ??
-                              "Agent")
+                              t("pagesIssueDetail.agent"))
                             : undefined,
                           agent: issue.createdByAgentId ? agentMap.get(issue.createdByAgentId) ?? { id: issue.createdByAgentId } : undefined,
                         agentIcon: issue.createdByAgentId
@@ -8820,7 +8821,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                         issue={issue}
                         hasActiveRun={hasLiveRuns}
                         workProducts={workProducts}
-                        checkError={checkIssueMonitorNow.error ? describeError(checkIssueMonitorNow.error, { action: "check the monitor" }).body : null}
+                        checkError={checkIssueMonitorNow.error ? describeError(checkIssueMonitorNow.error, { action: t("pagesIssueDetail.errorActions.checkMonitor") }).body : null}
                         onCheckNow={() => checkIssueMonitorNow.mutate()}
                         checkingNow={checkIssueMonitorNow.isPending}
                       />
@@ -8858,7 +8859,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                     } : undefined,
                     resumeHref: !activePauseHold.isRoot ? createIssueDetailPath(activePauseHoldRoot?.identifier ?? activePauseHold.rootIssueId) : undefined,
                   } : null}
-                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? "Agent Chat is disabled in Experimental settings." : treeControlStateError ? "Couldn’t check whether this task is paused. Refresh to try again." : null}
+                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? t("pagesIssueDetail.composer.agentChatDisabled") : treeControlStateError ? t("pagesIssueDetail.unavailable.pauseCheck") : null}
                   composerHint={composerHint}
                   queuedCommentReason={queuedCommentReason}
                   onVote={handleCommentVote}
@@ -9098,7 +9099,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
               {taskChatShellEnabled ? (
                 <>
                   <SheetHeader className="sr-only">
-                    <SheetTitle>Task side panel</SheetTitle>
+                    <SheetTitle>{t("pagesIssueDetail.sidePanel")}</SheetTitle>
                   </SheetHeader>
                   <TaskSidePanel
                     documentEditor={taskDocumentEditor}
@@ -9170,8 +9171,8 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
                   <SheetHeader>
                     <SheetTitle className="text-sm">
                       {documentDeepLink?.documentKey === "plan"
-                        ? "Plan"
-                        : "Properties"}
+                        ? t("pagesIssueDetail.plan.title")
+                        : t("pagesIssueDetail.properties")}
                     </SheetTitle>
                   </SheetHeader>
                   <ScrollArea className="flex-1 overflow-y-auto">

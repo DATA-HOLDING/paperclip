@@ -1,0 +1,13 @@
+{
+  "disabledEmpty": "Reports to: N/A (CEO)",
+  "choose": "Reports to...",
+  "unknownManager": "Unknown manager (stale ID)",
+  "reportsTo": "Reports to {{name}}",
+  "reportsToTerminated": "Reports to {{name}} (terminated)",
+  "chooseManager": "Choose manager",
+  "header": "Reports to",
+  "noManager": "No manager",
+  "currentTerminated": "Current: {{name}} (terminated)",
+  "missingManager": "Saved manager is missing from this organization. Choose a new manager or clear.",
+  "loop": "Would create a reporting loop"
+}

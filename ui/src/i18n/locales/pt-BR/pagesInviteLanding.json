@@ -1,0 +1,103 @@
+{
+  "thisCompany": "esta organização do Paperclip",
+  "thisAccount": "esta conta",
+  "auth": {
+    "thatEmail": "esse e-mail",
+    "accountExists": "Já existe uma conta para {{email}}. Entre abaixo para continuar com este convite.",
+    "invalidCredentials": "Esse e-mail e essa senha não correspondem a uma conta existente do Paperclip. Confira os dois campos ou crie uma conta primeiro se você é novo aqui.",
+    "accountMayExist": "Talvez já exista uma conta para {{email}}. Tente entrar.",
+    "failed": "Falha na autenticação"
+  },
+  "pending": {
+    "anAdmin": "Um administrador da organização",
+    "title": "Pedido para entrar em {{company}}",
+    "awaiting": "Seu pedido ainda aguarda aprovação. {{approver}} precisa aprovar seu pedido de entrada.",
+    "approvalPage": "Página de aprovação",
+    "settingsMembers": "Configurações → Membros",
+    "askVisitBefore": "Peça que acessem ",
+    "askVisitAfter": " para aprovar seu pedido.",
+    "refresh": "Atualize esta página depois de ser aprovado — você será redirecionado automaticamente.",
+    "claimSecret": "Segredo de reivindicação",
+    "onboarding": "Integração: "
+  },
+  "errors": {
+    "inviteNotFound": "Convite não encontrado",
+    "checkingAccess": "Verificando seu acesso à organização. Tente novamente em instantes.",
+    "alreadyMember": "Esta conta já pertence à organização.",
+    "noAdapters": "Nenhum adaptador está disponível para este convite."
+  },
+  "join": {
+    "continue": "Continuar",
+    "openOrganization": "Abrir organização",
+    "acceptInvite": "Aceitar convite",
+    "submitRequest": "Enviar pedido"
+  },
+  "invalidToken": "Token de convite inválido.",
+  "loadingInvite": "Carregando convite...",
+  "checkingAccess": "Verificando seu acesso...",
+  "openingOrganization": "Abrindo organização...",
+  "unavailable": {
+    "title": "Convite indisponível",
+    "expired": "Este convite pode ter expirado, sido revogado ou já ter sido usado.",
+    "rejected": "Este pedido de entrada não foi aprovado.",
+    "used": "Este convite já foi usado."
+  },
+  "bootstrapComplete": "Configuração inicial concluída",
+  "openBoard": "Abrir conselho",
+  "joined": "Você entrou na organização",
+  "working": "Processando...",
+  "landing": {
+    "invited": "Você foi convidado para o Paperclip",
+    "setUp": "Configurar o Paperclip",
+    "join": "Entrar em {{company}}",
+    "introAgent": "Revise os detalhes do convite e envie as informações do agente abaixo para iniciar o pedido de entrada.",
+    "introNeedsAccount": "Crie sua conta do Paperclip primeiro. Se você já tem uma, mude para entrar e continue o convite com o mesmo e-mail.",
+    "introReady": "Sua conta está pronta. Revise os detalhes do convite e aceite-o para continuar.",
+    "organization": "Organização",
+    "invitedBy": "Convidado por",
+    "paperclipBoard": "Conselho do Paperclip",
+    "requestedAccess": "Acesso solicitado",
+    "agentJoinRequest": "Pedido de entrada de agente",
+    "organizationAccess": "Acesso à organização",
+    "inviteExpires": "Convite expira em",
+    "messageFromInviter": "Mensagem de quem convidou",
+    "signedInAs": "Conectado como "
+  },
+  "agent": {
+    "title": "Enviar detalhes do agente",
+    "description": "Este convite criará um pedido de aprovação para um novo agente em {{company}}.",
+    "name": "Nome do agente",
+    "adapterType": "Tipo de adaptador",
+    "noAdapter": "Nenhum adaptador disponível",
+    "comingSoon": " (Em breve)",
+    "capabilities": "Capacidades"
+  },
+  "account": {
+    "createTitle": "Crie sua conta",
+    "signInTitle": "Entre para continuar",
+    "createIntro": "Comece com uma conta do Paperclip. Depois disso, você voltará aqui para aceitar o convite para {{company}}.",
+    "signInIntro": "Use a conta do Paperclip que já corresponde a este convite. Se ainda não tiver uma, volte para criar conta.",
+    "createAccount": "Criar conta",
+    "haveAccount": "Já tenho uma conta",
+    "fillRequired": "Preencha todos os campos obrigatórios.",
+    "name": "Nome",
+    "email": "E-mail",
+    "password": "Senha",
+    "signInContinue": "Entrar e continuar",
+    "createContinue": "Criar conta e continuar",
+    "alreadySignedUpHint": "Já se cadastrou antes? Use a opção de conta existente para que o convite chegue ao usuário certo do Paperclip.",
+    "noAccountHint": "Ainda não tem conta? Volte para criar conta e aceite o convite com um novo login."
+  },
+  "accept": {
+    "alreadyMember": "Você já está nesta organização",
+    "completing": "Concluindo o acesso à organização",
+    "bootstrapTitle": "Aceitar convite de configuração inicial",
+    "orgTitle": "Aceitar convite da organização",
+    "granting": "Concedendo seu acesso a {{company}}.",
+    "belongs": "Esta conta já pertence a {{company}}.",
+    "willFinishSetup": "Isto concluirá a configuração do Paperclip.",
+    "willGrant": "Isto concederá ou concluirá seu acesso a {{company}}.",
+    "submitting": "Enviando pedido...",
+    "finishingSignIn": "Concluindo a entrada..."
+  }
+}

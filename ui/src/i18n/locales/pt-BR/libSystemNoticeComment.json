@@ -1,0 +1,15 @@
+{
+  "tone": {
+    "notice": "Aviso do sistema",
+    "warning": "Advertência do sistema",
+    "alert": "Alerta do sistema"
+  },
+  "row": {
+    "detail": "Detalhe",
+    "code": "Código",
+    "task": "Tarefa",
+    "unknown": "desconhecida",
+    "agent": "Agente",
+    "run": "Execução"
+  }
+}

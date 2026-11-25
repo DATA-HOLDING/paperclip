@@ -180,6 +180,7 @@ import {
   type SavedInputDraftState,
 } from "@/lib/skill-studio";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 const PANE_STORAGE_KEY = "skillStudio.paneSizes";
 const RUN_TEMPLATE_STORAGE_KEY_PREFIX = "skillStudio.runTemplate";
@@ -207,7 +208,7 @@ function useMutationErrorToast() {
         return;
       }
       const body =
-        error instanceof Error && error.message ? error.message : "Please try again.";
+        error instanceof Error && error.message ? error.message : t("pagesSkillStudio.errors.pleaseTryAgain");
       toast?.pushToast({ tone: "error", title, body });
     },
     [toast],
@@ -313,19 +314,19 @@ export function SkillStudio() {
     setBreadcrumbs(
       isCreateMode
         ? [
-            { label: "Skills", href: "/skills" },
-            { label: "Studio", href: "/skills/studio" },
-            { label: "New skill" },
+            { label: t("pagesSkillStudio.breadcrumbs.skills"), href: "/skills" },
+            { label: t("pagesSkillStudio.breadcrumbs.studio"), href: "/skills/studio" },
+            { label: t("pagesSkillStudio.breadcrumbs.newSkill") },
           ]
         : skill
         ? [
-            { label: "Skills", href: "/skills" },
-            { label: "Studio", href: "/skills/studio" },
+            { label: t("pagesSkillStudio.breadcrumbs.skills"), href: "/skills" },
+            { label: t("pagesSkillStudio.breadcrumbs.studio"), href: "/skills/studio" },
             { label: skill.name },
           ]
         : [
-            { label: "Skills", href: "/skills" },
-            { label: "Studio" },
+            { label: t("pagesSkillStudio.breadcrumbs.skills"), href: "/skills" },
+            { label: t("pagesSkillStudio.breadcrumbs.studio") },
           ],
     );
   }, [isCreateMode, setBreadcrumbs, skill]);
@@ -337,7 +338,7 @@ export function SkillStudio() {
   }, [skill?.id]);
 
   if (!companyId) {
-    return <StudioMessage message="Select an organization to open Skill Studio." />;
+    return <StudioMessage message={t("pagesSkillStudio.page.selectOrganization")} />;
   }
   if (isCreateMode) {
     return (
@@ -366,7 +367,7 @@ export function SkillStudio() {
     );
   }
   if (detailQuery.isLoading || detailView.kind === "reconnecting") {
-    return <StudioMessage message="Loading skill…" />;
+    return <StudioMessage message={t("pagesSkillStudio.page.loadingSkill")} />;
   }
   // "Not found" only for a real 404; an outage never looks like a missing skill.
   if (detailView.kind === "error" && detailView.errorKind !== "not_found") {
@@ -374,14 +375,14 @@ export function SkillStudio() {
       <QueryErrorState
         size="page"
         error={detailQuery.error}
-        action="load this skill"
+        action={t("pagesSkillStudio.errorActions.loadSkill")}
         onRetry={detailView.retry}
         retrying={detailView.isFetching}
       />
     );
   }
   if (detailView.kind === "error" || !detailQuery.data) {
-    return <StudioMessage message="Skill not found." />;
+    return <StudioMessage message={t("pagesSkillStudio.page.skillNotFound")} />;
   }
 
   return (
@@ -424,7 +425,7 @@ function StudioCreateMode({
             skills={skills}
             loading={skillsLoading}
             onSelectSkill={onSelectSkill}
-            emptyLabel="New skill"
+            emptyLabel={t("pagesSkillStudio.breadcrumbs.newSkill")}
           />
         </header>
         <SkillsPageNavigation activeView="authored" />
@@ -493,29 +494,29 @@ function StudioNewSkillPanel({
       await queryClient.invalidateQueries({ queryKey: queryKeys.companySkills.list(companyId) });
       toast?.pushToast({
         tone: "success",
-        title: skill.forkedFromSkillId ? "Skill fork created" : "Skill created",
-        body: `${skill.name} is now editable in the Paperclip workspace.`,
+        title: skill.forkedFromSkillId ? t("pagesSkillStudio.create.forkCreated") : t("pagesSkillStudio.create.created"),
+        body: t("pagesSkillStudio.create.nowEditable", { name: skill.name }),
       });
       navigate(skillStudioRoute(skill.id));
     },
     onError: (error) => {
       toast?.pushToast({
         tone: "error",
-        title: "Skill creation failed",
-        body: error instanceof Error ? error.message : "Failed to create skill.",
+        title: t("pagesSkillStudio.create.failedTitle"),
+        body: error instanceof Error ? error.message : t("pagesSkillStudio.create.failedBody"),
       });
     },
   });
 
   if (forkFromSkillId && forkLoading) {
-    return <StudioMessage message="Loading fork source..." />;
+    return <StudioMessage message={t("pagesSkillStudio.create.loadingForkSource")} />;
   }
 
   const previewCard: DiscoveryCard = {
     key: effectiveSlug || draft.name || "new-skill",
     skillId: null,
     catalogRef: null,
-    name: draft.name || "New Skill",
+    name: draft.name || t("pagesSkillStudio.create.defaultName"),
     slug: effectiveSlug || "skill",
     author: "you",
     version: null,
@@ -537,33 +538,33 @@ function StudioNewSkillPanel({
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-6">
       <div className="space-y-1">
         <h1 className="text-lg font-semibold text-foreground">
-          {draft.forkedFromSkillId ? "Fork skill" : "Create a new skill"}
+          {draft.forkedFromSkillId ? t("pagesSkillStudio.create.forkTitle") : t("pagesSkillStudio.create.createTitle")}
         </h1>
         <p className="text-sm text-muted-foreground">
-          Create an editable organization skill and open it directly in Studio.
+          {t("pagesSkillStudio.create.intro")}
         </p>
       </div>
 
       {draft.forkedFromName ? (
         <div className="flex items-center gap-2 rounded-md border border-border bg-muted/30 px-3 py-2 text-sm text-muted-foreground">
           <GitFork className="h-4 w-4" />
-          Forking {draft.forkedFromName}
+          {t("pagesSkillStudio.create.forking", { name: draft.forkedFromName })}
         </div>
       ) : forkError ? (
         <div className="flex items-center gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           <AlertTriangle className="h-4 w-4" />
-          Fork source not found. You can still create a blank skill.
+          {t("pagesSkillStudio.create.forkSourceNotFound")}
         </div>
       ) : null}
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Basics</h2>
-          <p className="text-xs text-muted-foreground">Name the skill and set the route-safe slug.</p>
+          <h2 className="text-sm font-medium text-foreground">{t("pagesSkillStudio.create.basics")}</h2>
+          <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.create.basicsHint")}</p>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="skill-name">Name</Label>
+            <Label htmlFor="skill-name">{t("pagesSkillStudio.create.name")}</Label>
             <Input
               id="skill-name"
               value={draft.name}
@@ -577,11 +578,11 @@ function StudioNewSkillPanel({
                     : draft.markdown,
                 });
               }}
-              placeholder="Code review"
+              placeholder={t("pagesSkillStudio.create.namePlaceholder")}
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="skill-slug">Slug</Label>
+            <Label htmlFor="skill-slug">{t("pagesSkillStudio.create.slug")}</Label>
             <Input
               id="skill-slug"
               value={draft.slug}
@@ -596,7 +597,7 @@ function StudioNewSkillPanel({
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="skill-tagline">Tagline</Label>
+          <Label htmlFor="skill-tagline">{t("pagesSkillStudio.create.tagline")}</Label>
           <Textarea
             id="skill-tagline"
             value={draft.tagline}
@@ -610,7 +611,7 @@ function StudioNewSkillPanel({
                   : draft.markdown,
               });
             }}
-            placeholder="Review repository changes for correctness, tests, and maintainability."
+            placeholder={t("pagesSkillStudio.create.taglinePlaceholder")}
             className="min-h-20"
           />
         </div>
@@ -618,18 +619,18 @@ function StudioNewSkillPanel({
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Appearance</h2>
-          <p className="text-xs text-muted-foreground">Tune how the skill appears in the store and Studio switcher.</p>
+          <h2 className="text-sm font-medium text-foreground">{t("pagesSkillStudio.create.appearance")}</h2>
+          <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.create.appearanceHint")}</p>
         </div>
         <div className="flex items-center gap-3">
           <SkillCardIcon card={previewCard} size={48} />
           <div className="min-w-0">
             <div className="truncate text-sm font-medium">{previewCard.name}</div>
-            <div className="truncate text-xs text-muted-foreground">{draft.tagline || "No tagline yet."}</div>
+            <div className="truncate text-xs text-muted-foreground">{draft.tagline || t("pagesSkillStudio.create.noTagline")}</div>
           </div>
         </div>
         <div className="space-y-2">
-          <Label>Color</Label>
+          <Label>{t("pagesSkillStudio.create.color")}</Label>
           <div className="flex flex-wrap items-center gap-2">
             {SKILL_CREATE_ACCENTS.map((color) => (
               <button
@@ -641,11 +642,11 @@ function StudioNewSkillPanel({
                   draft.color === color ? "border-foreground" : "border-border",
                 )}
                 style={{ backgroundColor: color }}
-                aria-label={`Use ${color}`}
+                aria-label={t("pagesSkillStudio.create.useColor", { color })}
               />
             ))}
             <Input
-              aria-label="Hex color"
+              aria-label={t("pagesSkillStudio.create.hexColor")}
               value={draft.color}
               onChange={(event) => patchDraft({ color: event.target.value })}
               className="h-7 w-28 font-mono text-xs"
@@ -653,20 +654,20 @@ function StudioNewSkillPanel({
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="skill-categories">Categories</Label>
+          <Label htmlFor="skill-categories">{t("pagesSkillStudio.create.categories")}</Label>
           <Input
             id="skill-categories"
             value={categoryDraft}
             onChange={(event) => setCategoryDraft(event.target.value)}
-            placeholder="engineering, review, memory"
+            placeholder={t("pagesSkillStudio.create.categoriesPlaceholder")}
           />
         </div>
       </section>
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">Sharing</h2>
-          <p className="text-xs text-muted-foreground">Choose who can discover this skill inside Paperclip.</p>
+          <h2 className="text-sm font-medium text-foreground">{t("pagesSkillStudio.create.sharing")}</h2>
+          <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.create.sharingHint")}</p>
         </div>
         <div className="grid gap-2 sm:grid-cols-3">
           {(["company", "private"] as const).map((scope) => (
@@ -679,9 +680,9 @@ function StudioNewSkillPanel({
                 draft.sharingScope === scope ? "border-foreground bg-accent/50" : "border-border",
               )}
             >
-              <span className="block font-medium">{scope === "company" ? "Organization" : "Private"}</span>
+              <span className="block font-medium">{scope === "company" ? t("pagesSkillStudio.create.scopeOrganization") : t("pagesSkillStudio.create.scopePrivate")}</span>
               <span className="mt-1 block text-xs text-muted-foreground">
-                {scope === "company" ? "Visible inside this organization." : "Only visible in your library."}
+                {scope === "company" ? t("pagesSkillStudio.create.scopeOrganizationHint") : t("pagesSkillStudio.create.scopePrivateHint")}
               </span>
             </button>
           ))}
@@ -690,14 +691,14 @@ function StudioNewSkillPanel({
             disabled
             className="rounded-md border border-dashed border-border px-3 py-2 text-left text-sm text-muted-foreground"
           >
-            <span className="block font-medium">Public</span>
-            <span className="mt-1 block text-xs">Coming later.</span>
+            <span className="block font-medium">{t("pagesSkillStudio.create.scopePublic")}</span>
+            <span className="mt-1 block text-xs">{t("pagesSkillStudio.create.comingLater")}</span>
           </button>
         </div>
       </section>
 
       <details className="rounded-md border border-border px-3 py-2">
-        <summary className="cursor-pointer text-sm font-medium text-foreground">Starter content</summary>
+        <summary className="cursor-pointer text-sm font-medium text-foreground">{t("pagesSkillStudio.create.starterContent")}</summary>
         <Textarea
           value={draft.markdown}
           onChange={(event) => patchDraft({ markdown: event.target.value })}
@@ -707,11 +708,11 @@ function StudioNewSkillPanel({
 
       <div className="flex items-center justify-end gap-2 border-t border-border pt-4">
         <Button variant="ghost" onClick={() => navigate("/skills/studio")} disabled={createSkill.isPending}>
-          Cancel
+          {t("pagesSkillStudio.create.cancel")}
         </Button>
         <Button onClick={() => createSkill.mutate()} disabled={createSkill.isPending || !nameValid}>
           <FilePlus className="h-4 w-4" />
-          {createSkill.isPending ? "Creating..." : draft.forkedFromSkillId ? "Create fork" : "Create skill"}
+          {createSkill.isPending ? t("pagesSkillStudio.create.creating") : draft.forkedFromSkillId ? t("pagesSkillStudio.create.createFork") : t("pagesSkillStudio.create.createSkill")}
         </Button>
       </div>
     </div>
@@ -746,15 +747,15 @@ function StudioEmptyState({
             skills={skills}
             loading={skillsLoading}
             onSelectSkill={onSelectSkill}
-            emptyLabel="Select skill"
+            emptyLabel={t("pagesSkillStudio.landing.selectSkill")}
           />
         </header>
         <SkillsPageNavigation activeView="authored" />
         <div className="flex flex-1 items-center justify-center">
           <EmptyState
             icon={FileCode}
-            message={skillsLoading ? "Loading skills..." : "Select a skill to open Studio."}
-            action="Create a new skill"
+            message={skillsLoading ? t("pagesSkillStudio.landing.loadingSkills") : t("pagesSkillStudio.landing.selectToOpen")}
+            action={t("pagesSkillStudio.landing.createNew")}
             onAction={onCreateNew}
           />
         </div>
@@ -820,11 +821,11 @@ function StudioLanding({
             skills={skills}
             loading={skillsLoading}
             onSelectSkill={onSelectSkill}
-            emptyLabel="Select skill"
+            emptyLabel={t("pagesSkillStudio.landing.selectSkill")}
           />
           <Button variant="ghost" size="sm" className="ml-auto" onClick={onCreateNew}>
             <Plus className="mr-1.5 h-3.5 w-3.5" />
-            New skill
+            {t("pagesSkillStudio.landing.newSkill")}
           </Button>
         </header>
         <SkillsPageNavigation activeView="authored" />
@@ -832,13 +833,13 @@ function StudioLanding({
           <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-8">
             {visited.length > 0 ? (
               <StudioLandingSection
-                title="Recently visited"
+                title={t("pagesSkillStudio.landing.recentlyVisited")}
                 skills={visited}
                 onSelectSkill={onSelectSkill}
               />
             ) : null}
             <StudioLandingSection
-              title="Recently updated"
+              title={t("pagesSkillStudio.landing.recentlyUpdated")}
               skills={updated}
               onSelectSkill={onSelectSkill}
             />
@@ -899,7 +900,7 @@ function StudioLandingRow({
         ) : null}
       </span>
       <span className="shrink-0 text-xs text-muted-foreground">
-        updated {relativeTime(skill.updatedAt)}
+        {t("pagesSkillStudio.landing.updatedAgo", { time: relativeTime(skill.updatedAt) })}
       </span>
       {editor ? (
         <Tooltip>
@@ -1159,11 +1160,11 @@ function StudioHeader({
   const copyShareLink = useCallback(() => {
     const href = typeof window !== "undefined" ? window.location.href : "";
     void copyTextToClipboard(href)
-      .then(() => toast?.pushToast({ tone: "success", title: "Link copied", body: "Skill Studio link copied to clipboard." }))
+      .then(() => toast?.pushToast({ tone: "success", title: t("pagesSkillStudio.header.linkCopied"), body: t("pagesSkillStudio.header.linkCopiedBody") }))
       .catch((error) => toast?.pushToast({
         tone: "error",
-        title: "Copy failed",
-        body: error instanceof Error ? error.message : "Could not copy the link.",
+        title: t("pagesSkillStudio.header.copyFailed"),
+        body: error instanceof Error ? error.message : t("pagesSkillStudio.header.copyFailedBody"),
       }));
   }, [toast]);
 
@@ -1179,10 +1180,10 @@ function StudioHeader({
         <span className="font-mono text-xs text-muted-foreground">v{version}</span>
       )}
       {skillDirty ? (
-        <Badge variant="secondary">Unsaved edits</Badge>
+        <Badge variant="secondary">{t("pagesSkillStudio.header.unsavedEdits")}</Badge>
       ) : null}
       {!skill.editable ? (
-        <Badge variant="secondary">Read-only</Badge>
+        <Badge variant="secondary">{t("pagesSkillStudio.common.readOnly")}</Badge>
       ) : null}
       {skill.forkedFromSkillId ? (
         <SkillLineageChip
@@ -1194,17 +1195,17 @@ function StudioHeader({
       <div className="ml-auto flex items-center gap-1">
         <Button variant="ghost" size="sm" onClick={onOpenVersions}>
           <History className="mr-1.5 h-3.5 w-3.5" />
-          Version history
+          {t("pagesSkillStudio.header.versionHistory")}
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label="Studio menu">
+            <Button variant="ghost" size="icon-sm" aria-label={t("pagesSkillStudio.header.studioMenu")}>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
             <DropdownMenuItem onClick={copyShareLink}>
-              <Share2 className="mr-2 h-4 w-4" /> Share link
+              <Share2 className="mr-2 h-4 w-4" /> {t("pagesSkillStudio.header.shareLink")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -1222,7 +1223,7 @@ function SkillSwitcher({
   skills,
   loading,
   onSelectSkill,
-  emptyLabel = "Select skill",
+  emptyLabel = t("pagesSkillStudio.switcher.selectSkill"),
 }: {
   skill: CompanySkillDetail | null;
   skills: CompanySkillListItem[];
@@ -1247,10 +1248,10 @@ function SkillSwitcher({
       value={skill?.id ?? ""}
       groups={groups}
       loading={loading}
-      loadingMessage="Loading skills..."
+      loadingMessage={t("pagesSkillStudio.switcher.loadingSkills")}
       placeholder={emptyLabel}
-      searchPlaceholder="Search skills..."
-      emptyMessage="No matching skills."
+      searchPlaceholder={t("pagesSkillStudio.switcher.searchSkills")}
+      emptyMessage={t("pagesSkillStudio.switcher.noMatching")}
       onValueChange={(value) => {
         if (value !== skill?.id) onSelectSkill(value);
       }}
@@ -1357,7 +1358,7 @@ function SkillPane({
     if (
       dirty
       && typeof window !== "undefined"
-      && !window.confirm("Discard unsaved edits and switch files?")
+      && !window.confirm(t("pagesSkillStudio.files.discardAndSwitch"))
     ) {
       return;
     }
@@ -1386,14 +1387,14 @@ function SkillPane({
     },
     onError: (error) => {
       if (error instanceof ApiError && error.status === 409) setVersionConflict(true);
-      onError("Couldn't save file")(error);
+      onError(t("pagesSkillStudio.errorToasts.saveFile"))(error);
     },
   });
 
   async function loadLatestSavedFile() {
-    if (dirty && !window.confirm("Discard unsaved edits and load the latest saved file?")) return;
+    if (dirty && !window.confirm(t("pagesSkillStudio.files.discardAndLoadLatest"))) return;
     const result = await fileQuery.refetch();
-    if (result.error) { onError("Couldn't load latest file")(result.error); return; }
+    if (result.error) { onError(t("pagesSkillStudio.errorToasts.loadLatestFile"))(result.error); return; }
     if (!result.data) return;
     // Discard confirmation covers only the draft that started this request.
     const current = currentDraftRef.current;
@@ -1425,7 +1426,7 @@ function SkillPane({
         queryKey: queryKeys.companySkills.versions(companyId, skillId),
       });
     },
-    onError: onError("Couldn't create file"),
+    onError: onError(t("pagesSkillStudio.errorToasts.createFile")),
   });
 
   const deleteMutation = useMutation({
@@ -1448,7 +1449,7 @@ function SkillPane({
         queryKey: queryKeys.companySkills.versions(companyId, skillId),
       });
     },
-    onError: onError("Couldn't delete file"),
+    onError: onError(t("pagesSkillStudio.errorToasts.deleteFile")),
   });
 
   // Read-only skills (bundled Paperclip, remote GitHub, URL, skills.sh) reject
@@ -1474,7 +1475,7 @@ function SkillPane({
           />
         }
       >
-        <EmptyState icon={FileCode} message="This skill has no files yet." />
+        <EmptyState icon={FileCode} message={t("pagesSkillStudio.files.noFiles")} />
         <SkillPathDialog
           mode={createDialog}
           open={createDialog !== null}
@@ -1513,16 +1514,16 @@ function SkillPane({
       <div className="flex min-h-0 flex-1 flex-col">
         {versionConflict ? (
           <div role="alert" className="flex items-center gap-2 border-b border-border bg-muted px-3 py-2 text-xs">
-            <span>This skill changed since you opened it. Your unsaved edits are still here. Copy them before loading the latest file to reconcile the changes.</span>
+            <span>{t("pagesSkillStudio.files.versionConflict")}</span>
             <Button size="sm" variant="outline" disabled={fileQuery.isFetching} onClick={() => void loadLatestSavedFile()}>
-              Load latest saved file
+              {t("pagesSkillStudio.files.loadLatest")}
             </Button>
           </div>
         ) : null}
         {dirty && !readOnly ? (
           <div className="flex items-start gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
             <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" />
-            <span>Unsaved edits live only in this Studio session. Save to create the next version before running tests or switching files.</span>
+            <span>{t("pagesSkillStudio.files.unsavedNotice")}</span>
           </div>
         ) : null}
         <div className="max-h-(--sz-11_75rem) overflow-auto border-b border-border p-1">
@@ -1540,7 +1541,7 @@ function SkillPane({
             }
             onSelectFile={selectFile}
             showCheckboxes={false}
-            ariaLabel="Skill files"
+            ariaLabel={t("pagesSkillStudio.files.skillFilesAriaLabel")}
           />
         </div>
         <SkillSourceProvenance skill={skill} />
@@ -1549,8 +1550,8 @@ function SkillPane({
             <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" />
             <div className="min-w-0 flex-1">
               <p>
-                {skill.metadata?.skillSourceId ? "This skill is synced from GitHub and is read-only." : skill.editableReason ?? "This skill is read-only because it comes from an external source."}
-                {" "}Make an editable copy to change it — the original stays untouched.
+                {skill.metadata?.skillSourceId ? t("pagesSkillStudio.files.syncedFromGitHub") : skill.editableReason ?? t("pagesSkillStudio.files.externalSourceReadOnly")}
+                {" "}{t("pagesSkillStudio.files.makeCopyHint")}
               </p>
               <Button
                 type="button"
@@ -1559,7 +1560,7 @@ function SkillPane({
                 onClick={onEditACopy}
               >
                 <GitFork className="mr-1.5 h-3.5 w-3.5" />
-                Make a copy
+                {t("pagesSkillStudio.files.makeCopy")}
               </Button>
             </div>
           </div>
@@ -1571,16 +1572,16 @@ function SkillPane({
           </span>
           <div className="flex items-center gap-2">
             {readOnly ? (
-              <Badge variant="secondary">Read-only</Badge>
+              <Badge variant="secondary">{t("pagesSkillStudio.common.readOnly")}</Badge>
             ) : (
               <>
-                {dirty && <Badge variant="secondary">Unsaved</Badge>}
+                {dirty && <Badge variant="secondary">{t("pagesSkillStudio.common.unsaved")}</Badge>}
                 <Button
                   size="sm"
                   disabled={!dirty || saveMutation.isPending}
                   onClick={() => saveMutation.mutate({ path: selectedFile, content: draft, versionId: baseVersionId })}
                 >
-                  {saveMutation.isPending ? "Saving…" : "Save"}
+                  {saveMutation.isPending ? t("pagesSkillStudio.files.saving") : t("pagesSkillStudio.files.save")}
                 </Button>
               </>
             )}
@@ -1726,22 +1727,22 @@ function SkillFileActions({
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label="Add file">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFile} aria-label={t("pagesSkillStudio.files.addFile")}>
               <FilePlus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Add file</TooltipContent>
+        <TooltipContent>{t("pagesSkillStudio.files.addFile")}</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label="Add folder">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onAddFolder} aria-label={t("pagesSkillStudio.files.addFolder")}>
               <FolderPlus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Add folder</TooltipContent>
+        <TooltipContent>{t("pagesSkillStudio.files.addFolder")}</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -1751,27 +1752,27 @@ function SkillFileActions({
               size="icon-sm"
               disabled={deleteDisabled}
               onClick={() => {
-                if (typeof window === "undefined" || window.confirm(`Delete ${selectedFile}?`)) {
+                if (typeof window === "undefined" || window.confirm(t("pagesSkillStudio.files.confirmDeleteFile", { path: selectedFile }))) {
                   onDeleteFile();
                 }
               }}
-              aria-label="Delete file"
+              aria-label={t("pagesSkillStudio.files.deleteFile")}
             >
               <Trash2 className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>{canDeleteFile ? "Delete file" : "SKILL.md cannot be deleted"}</TooltipContent>
+        <TooltipContent>{canDeleteFile ? t("pagesSkillStudio.files.deleteFile") : t("pagesSkillStudio.files.skillMdCannotBeDeleted")}</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
           <span>
-            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label="Delete folder">
+            <Button variant="ghost" size="icon-sm" disabled={disabled} onClick={onDeleteFolder} aria-label={t("pagesSkillStudio.files.deleteFolder")}>
               <FolderMinus className="h-4 w-4" />
             </Button>
           </span>
         </TooltipTrigger>
-        <TooltipContent>Delete folder</TooltipContent>
+        <TooltipContent>{t("pagesSkillStudio.files.deleteFolder")}</TooltipContent>
       </Tooltip>
     </div>
   );
@@ -1805,19 +1806,19 @@ function SkillPathDialog({
     setError(null);
   }, [currentFolder, mode, open]);
 
-  const title = mode === "folder" ? "Add folder" : "Add file";
-  const label = mode === "folder" ? "Folder path" : "File path";
+  const title = mode === "folder" ? t("pagesSkillStudio.files.addFolder") : t("pagesSkillStudio.files.addFile");
+  const label = mode === "folder" ? t("pagesSkillStudio.files.folderPath") : t("pagesSkillStudio.files.filePath");
 
   function submit() {
     if (!mode) return;
     const normalized = normalizeStudioPath(pathValue);
     if (!normalized) {
-      setError(`${label} is required.`);
+      setError(t("pagesSkillStudio.files.pathRequired", { label }));
       return;
     }
     if (mode === "file") {
       if (existingPaths.has(normalized)) {
-        setError("A file already exists at that path.");
+        setError(t("pagesSkillStudio.files.fileExists"));
         return;
       }
       onSubmit(normalized, "");
@@ -1826,7 +1827,7 @@ function SkillPathDialog({
 
     const folderPath = normalized.replace(/\/+$/, "");
     if ([...existingPaths].some((path) => path.startsWith(`${folderPath}/`))) {
-      setError("A folder already exists at that path.");
+      setError(t("pagesSkillStudio.files.folderExists"));
       return;
     }
     onSubmit(folderSeedFile(folderPath), folderSeedContent(folderPath));
@@ -1853,16 +1854,16 @@ function SkillPathDialog({
             placeholder={mode === "folder" ? "references/examples" : "references/examples.md"}
           />
           {mode === "folder" ? (
-            <p className="text-xs text-muted-foreground">A README.md seed file is created so the folder appears in the file tree.</p>
+            <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.files.folderSeedHint")}</p>
           ) : null}
           {error ? <p className="text-xs text-destructive">{error}</p> : null}
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("pagesSkillStudio.common.cancel")}
           </Button>
           <Button disabled={pending} onClick={submit}>
-            Create
+            {t("pagesSkillStudio.files.create")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -1897,16 +1898,16 @@ function DeleteFolderDialog({
   function submit() {
     const normalized = normalizeStudioPath(pathValue).replace(/\/+$/, "");
     if (!normalized) {
-      setError("Folder path is required.");
+      setError(t("pagesSkillStudio.files.folderPathRequired"));
       return;
     }
     const matchingFiles = [...existingPaths].filter((path) => path.startsWith(`${normalized}/`));
     if (matchingFiles.length === 0) {
-      setError("No files exist under that folder.");
+      setError(t("pagesSkillStudio.files.noFilesInFolder"));
       return;
     }
     if (matchingFiles.includes("SKILL.md")) {
-      setError("SKILL.md cannot be deleted.");
+      setError(t("pagesSkillStudio.files.skillMdCannotBeDeletedSentence"));
       return;
     }
     onSubmit(normalized);
@@ -1916,13 +1917,13 @@ function DeleteFolderDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete folder</DialogTitle>
+          <DialogTitle>{t("pagesSkillStudio.files.deleteFolder")}</DialogTitle>
           <DialogDescription>
-            This removes every skill file under the folder and saves the result as the next version.
+            {t("pagesSkillStudio.files.deleteFolderDescription")}
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-2">
-          <Label htmlFor="skill-folder-delete">Folder path</Label>
+          <Label htmlFor="skill-folder-delete">{t("pagesSkillStudio.files.folderPath")}</Label>
           <Input
             id="skill-folder-delete"
             value={pathValue}
@@ -1936,10 +1937,10 @@ function DeleteFolderDialog({
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("pagesSkillStudio.common.cancel")}
           </Button>
           <Button variant="destructive" disabled={pending} onClick={submit}>
-            Delete
+            {t("pagesSkillStudio.files.delete")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -2028,7 +2029,7 @@ function InputPane({
     if (!dirty) return true;
     return (
       typeof window === "undefined"
-      || window.confirm("Discard unsaved changes to this input?")
+      || window.confirm(t("pagesSkillStudio.inputs.discardChanges"))
     );
   }, [dirty]);
 
@@ -2060,7 +2061,7 @@ function InputPane({
         queryKey: queryKeys.companySkills.testInputs(companyId, skillId),
       });
     },
-    onError: onError("Couldn't save input"),
+    onError: onError(t("pagesSkillStudio.errorToasts.saveInput")),
   });
   const deleteMutation = useMutation({
     mutationFn: (inputId: string) => companySkillsApi.deleteTestInput(companyId, skillId, inputId),
@@ -2072,7 +2073,7 @@ function InputPane({
         queryKey: queryKeys.companySkills.testInputs(companyId, skillId),
       });
     },
-    onError: onError("Couldn't delete input"),
+    onError: onError(t("pagesSkillStudio.errorToasts.deleteInput")),
   });
 
   return (
@@ -2085,7 +2086,7 @@ function InputPane({
                 type="button"
                 variant="ghost"
                 size="icon-xs"
-                aria-label={collapsed ? "Expand input" : "Collapse input"}
+                aria-label={collapsed ? t("pagesSkillStudio.inputs.expand") : t("pagesSkillStudio.inputs.collapse")}
                 onClick={() => setCollapsed((current) => !current)}
               >
                 {collapsed ? (
@@ -2095,20 +2096,20 @@ function InputPane({
                 )}
               </Button>
             </TooltipTrigger>
-            <TooltipContent>{collapsed ? "Expand input" : "Collapse input"}</TooltipContent>
+            <TooltipContent>{collapsed ? t("pagesSkillStudio.inputs.expand") : t("pagesSkillStudio.inputs.collapse")}</TooltipContent>
           </Tooltip>
-          <span>Input</span>
+          <span>{t("pagesSkillStudio.inputs.input")}</span>
         </span>
       }
       action={
         <div className="flex items-center gap-1">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label="New input">
+              <Button variant="ghost" size="icon-sm" onClick={selectAdHocInput} aria-label={t("pagesSkillStudio.inputs.newInput")}>
                 <Plus className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>New input</TooltipContent>
+            <TooltipContent>{t("pagesSkillStudio.inputs.newInput")}</TooltipContent>
           </Tooltip>
         </div>
       }
@@ -2120,14 +2121,14 @@ function InputPane({
           onClick={() => setCollapsed(false)}
         >
           <ChevronRight className="h-3.5 w-3.5" />
-          <span>Input folded</span>
+          <span>{t("pagesSkillStudio.inputs.folded")}</span>
         </button>
       ) : (
         <div className="flex min-h-0 flex-1 flex-col">
           {loading || inputs.length > 0 ? (
             <div className="max-h-(--sz-11_75rem) overflow-auto border-b border-border p-1">
               {loading ? (
-                <div className="p-3 text-xs text-muted-foreground">Loading inputs…</div>
+                <div className="p-3 text-xs text-muted-foreground">{t("pagesSkillStudio.inputs.loading")}</div>
               ) : (
                 <>
                   {adHocMode && (
@@ -2160,7 +2161,7 @@ function InputPane({
                           <DropdownMenuTrigger asChild>
                             <button
                               className="rounded p-0.5 text-muted-foreground hover:bg-accent hover:text-foreground"
-                              aria-label={`Input actions for ${node.name}`}
+                              aria-label={t("pagesSkillStudio.inputs.actionsFor", { name: node.name })}
                               onClick={(e) => e.stopPropagation()}
                             >
                               <MoreHorizontal className="h-3.5 w-3.5" />
@@ -2170,23 +2171,23 @@ function InputPane({
                             <DropdownMenuItem
                               onClick={() => {
                                 const input = inputs.find((i) => i.id === id);
-                                if (input) void copyWithToast(input.content, "Input content copied");
+                                if (input) void copyWithToast(input.content, t("pagesSkillStudio.inputs.contentCopied"));
                               }}
                             >
-                              <Copy className="mr-2 h-4 w-4" /> Copy content
+                              <Copy className="mr-2 h-4 w-4" /> {t("pagesSkillStudio.inputs.copyContent")}
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem
                               variant="destructive"
                               onClick={() => deleteMutation.mutate(id)}
                             >
-                              <Trash2 className="mr-2 h-4 w-4" /> Delete
+                              <Trash2 className="mr-2 h-4 w-4" /> {t("pagesSkillStudio.inputs.delete")}
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       );
                     }}
-                    ariaLabel="Test inputs"
+                    ariaLabel={t("pagesSkillStudio.inputs.testInputsAriaLabel")}
                   />
                 </>
               )}
@@ -2196,17 +2197,17 @@ function InputPane({
             <textarea
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
-              placeholder="Paste text - treated as a new issue description."
-              aria-label="Skill test input"
+              placeholder={t("pagesSkillStudio.inputs.placeholder")}
+              aria-label={t("pagesSkillStudio.inputs.textareaAriaLabel")}
               className="min-h-0 flex-1 resize-none border-0 bg-transparent px-3 py-3 text-sm leading-6 outline-none placeholder:text-muted-foreground focus-visible:ring-0"
             />
           </div>
           <div className="flex items-center gap-2 border-t border-border px-3 py-2">
             <div className="mr-auto flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
               <span className="truncate">
-                {selectedInput ? selectedInput.name : adHocMode ? "New input" : "No input selected"}
+                {selectedInput ? selectedInput.name : adHocMode ? t("pagesSkillStudio.inputs.newInput") : t("pagesSkillStudio.inputs.noInputSelected")}
               </span>
-              {dirty ? <Badge variant="secondary">Unsaved</Badge> : null}
+              {dirty ? <Badge variant="secondary">{t("pagesSkillStudio.common.unsaved")}</Badge> : null}
             </div>
             {selectedInput && dirty ? (
               <>
@@ -2220,7 +2221,7 @@ function InputPane({
                     baselineContent: selectedInput.content,
                   })}
                 >
-                  Revert
+                  {t("pagesSkillStudio.inputs.revert")}
                 </Button>
                 <Button
                   variant="outline"
@@ -2228,7 +2229,7 @@ function InputPane({
                   disabled={!canSaveSelectedInput || updateMutation.isPending}
                   onClick={() => updateMutation.mutate({ content: draft })}
                 >
-                  {updateMutation.isPending ? "Saving..." : "Save changes"}
+                  {updateMutation.isPending ? t("pagesSkillStudio.inputs.saving") : t("pagesSkillStudio.inputs.saveChanges")}
                 </Button>
               </>
             ) : null}
@@ -2237,7 +2238,7 @@ function InputPane({
               disabled={!draft.trim()}
               onClick={() => setSaveDialogOpen(true)}
             >
-              Save as input
+              {t("pagesSkillStudio.inputs.saveAsInput")}
             </Button>
           </div>
         </div>
@@ -2306,24 +2307,24 @@ function SaveInputDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Save test input</DialogTitle>
+          <DialogTitle>{t("pagesSkillStudio.inputs.saveDialogTitle")}</DialogTitle>
           <DialogDescription>
-            Runs snapshot input at run time — editing later won't change past runs.
+            {t("pagesSkillStudio.inputs.saveDialogDescription")}
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label htmlFor="input-name">Name</Label>
+            <Label htmlFor="input-name">{t("pagesSkillStudio.inputs.name")}</Label>
             <Input
               id="input-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="onboarding/happy-path"
             />
-            <p className="text-xs text-muted-foreground">Use “/” for folders, e.g. onboarding/happy-path</p>
+            <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.inputs.folderHint")}</p>
           </div>
           <div className="space-y-1">
-            <Label htmlFor="input-content">Content</Label>
+            <Label htmlFor="input-content">{t("pagesSkillStudio.inputs.content")}</Label>
             <Textarea
               id="input-content"
               value={content}
@@ -2334,13 +2335,13 @@ function SaveInputDialog({
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("pagesSkillStudio.common.cancel")}
           </Button>
           <Button
             disabled={!name.trim() || !content.trim() || createMutation.isPending}
             onClick={() => createMutation.mutate()}
           >
-            Save
+            {t("pagesSkillStudio.inputs.save")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -2428,8 +2429,8 @@ function RunsPane({
     updateTemplateSelection(resolution.selection);
     toast?.pushToast({
       tone: "warn",
-      title: "Run template reset",
-      body: "The saved run template is no longer available. Default test template is selected.",
+      title: t("pagesSkillStudio.runs.templateResetTitle"),
+      body: t("pagesSkillStudio.runs.templateResetBody"),
       dedupeKey: `skill-studio-template-reset:${companyId}`,
     });
   }, [
@@ -2462,9 +2463,9 @@ function RunsPane({
     hasUnsavedSkillEdits: skillDirty,
   });
   const templateGateReason = templatesQuery.isLoading
-    ? "Loading run templates"
+    ? t("pagesSkillStudio.runs.loadingTemplatesReason")
     : (templatesQueryView.kind === "error")
-      ? "Run templates couldn't load"
+      ? t("pagesSkillStudio.runs.templatesLoadFailedReason")
       : null;
 
   const createTemplateMutation = useMutation({
@@ -2478,11 +2479,11 @@ function RunsPane({
       });
       toast?.pushToast({
         tone: "success",
-        title: "Template saved",
-        body: `${template.name} is ready for Skills Studio runs.`,
+        title: t("pagesSkillStudio.runs.templateSaved"),
+        body: t("pagesSkillStudio.runs.templateReady", { name: template.name }),
       });
     },
-    onError: onError("Couldn't save template"),
+    onError: onError(t("pagesSkillStudio.errorToasts.saveTemplate")),
   });
 
   const updateTemplateMutation = useMutation({
@@ -2498,11 +2499,11 @@ function RunsPane({
       });
       toast?.pushToast({
         tone: "success",
-        title: "Template updated",
-        body: `${template.name} is ready for Skills Studio runs.`,
+        title: t("pagesSkillStudio.runs.templateUpdated"),
+        body: t("pagesSkillStudio.runs.templateReady", { name: template.name }),
       });
     },
-    onError: onError("Couldn't update template"),
+    onError: onError(t("pagesSkillStudio.errorToasts.updateTemplate")),
   });
 
   const deleteTemplateMutation = useMutation({
@@ -2517,30 +2518,30 @@ function RunsPane({
       });
       toast?.pushToast({
         tone: "success",
-        title: "Template deleted",
-        body: `${template.name} was removed from Skills Studio runs.`,
+        title: t("pagesSkillStudio.runs.templateDeleted"),
+        body: t("pagesSkillStudio.runs.templateRemoved", { name: template.name }),
       });
     },
-    onError: onError("Couldn't delete template"),
+    onError: onError(t("pagesSkillStudio.errorToasts.deleteTemplate")),
   });
 
   const selectedTemplate = selectedTemplateId === null
     ? null
     : templates.find((template) => template.id === selectedTemplateId) ?? null;
   const selectedTemplateName = selectedTemplateId === null
-    ? "No template"
-    : selectedTemplate?.name ?? "Default test template";
+    ? t("pagesSkillStudio.runs.noTemplate")
+    : selectedTemplate?.name ?? t("pagesSkillStudio.runs.defaultTestTemplate");
   const runDisabledReason = gate.reason ?? templateGateReason;
 
   const createRunMutation = useMutation({
     mutationFn: () => {
       if (!templatesQuery.isSuccess) {
-        throw new Error(templateGateReason ?? "Run templates are not ready.");
+        throw new Error(templateGateReason ?? t("pagesSkillStudio.runs.templatesNotReady"));
       }
       const resolution = resolveRunTemplateSelection(selectedTemplateId, templates);
       if (resolution.recovered) {
         updateTemplateSelection(resolution.selection);
-        throw new Error("Selected run template is no longer available. The selection was reset.");
+        throw new Error(t("pagesSkillStudio.runs.templateSelectionReset"));
       }
       return companySkillsApi.createTestRun(companyId, skillId, buildCreateRunRequest({
         agentId: selectedAgentId!,
@@ -2555,7 +2556,7 @@ function RunsPane({
       });
       onSelectRun(run.id);
     },
-    onError: onError("Couldn't start run"),
+    onError: onError(t("pagesSkillStudio.errorToasts.startRun")),
   });
 
   if (selectedRunId) {
@@ -2573,7 +2574,7 @@ function RunsPane({
 
   return (
     <PaneScaffold
-      title="Test runs"
+      title={t("pagesSkillStudio.runs.testRuns")}
       action={
         <div className="flex items-center gap-2">
           <AgentPicker
@@ -2590,7 +2591,7 @@ function RunsPane({
                   disabled={gate.disabled || Boolean(templateGateReason) || createRunMutation.isPending}
                   onClick={() => createRunMutation.mutate()}
                 >
-                  <Play className="mr-1.5 h-3.5 w-3.5" /> Run
+                  <Play className="mr-1.5 h-3.5 w-3.5" /> {t("pagesSkillStudio.runs.run")}
                 </Button>
               </span>
             </TooltipTrigger>
@@ -2616,7 +2617,7 @@ function RunsPane({
           onDeleteTemplate={(template) => {
             if (
               typeof window !== "undefined"
-              && !window.confirm(`Delete run template "${template.name}"?`)
+              && !window.confirm(t("pagesSkillStudio.runs.confirmDeleteTemplate", { name: template.name }))
             ) {
               return;
             }
@@ -2632,7 +2633,7 @@ function RunsPane({
         {filterInput && (
           <div className="px-3 pt-2">
             <FilterBar
-              filters={[{ key: "input", label: "Input", value: filterInput.name }]}
+              filters={[{ key: "input", label: t("pagesSkillStudio.runs.inputFilter"), value: filterInput.name }]}
               onRemove={onClearFilter}
               onClear={onClearFilter}
             />
@@ -2640,9 +2641,9 @@ function RunsPane({
         )}
         <div className="min-h-0 flex-1 overflow-auto p-3">
           {runsQuery.isLoading ? (
-            <div className="text-xs text-muted-foreground">Loading runs…</div>
+            <div className="text-xs text-muted-foreground">{t("pagesSkillStudio.runs.loadingRuns")}</div>
           ) : runs.length === 0 ? (
-            <EmptyState icon={FlaskConical} message="No test runs yet. Pick an agent and Run." />
+            <EmptyState icon={FlaskConical} message={t("pagesSkillStudio.runs.noRuns")} />
           ) : (
             <div className="space-y-1 rounded-md border border-border p-1">
               {runs.map((run) => (
@@ -2725,9 +2726,9 @@ function RunTemplateAdvancedPanel({
     const noTemplateOption: RunTemplateOption = {
       key: "no-template",
       value: NO_TEST_RUN_TEMPLATE_STORAGE_VALUE,
-      label: "No template",
-      title: "No template",
-      description: "Run only the input text.",
+      label: t("pagesSkillStudio.runs.noTemplate"),
+      title: t("pagesSkillStudio.runs.noTemplate"),
+      description: t("pagesSkillStudio.templates.runOnlyInput"),
       builtIn: true,
       searchText: "no template plain input",
     };
@@ -2743,8 +2744,8 @@ function RunTemplateAdvancedPanel({
     const builtIn = templates.filter((template) => template.builtIn).map(toOption);
     const custom = templates.filter((template) => !template.builtIn).map(toOption);
     return [
-      { id: "built-in", label: "Built in", options: [noTemplateOption, ...builtIn] },
-      ...(custom.length > 0 ? [{ id: "custom", label: "Custom", options: custom }] : []),
+      { id: "built-in", label: t("pagesSkillStudio.templates.builtIn"), options: [noTemplateOption, ...builtIn] },
+      ...(custom.length > 0 ? [{ id: "custom", label: t("pagesSkillStudio.templates.custom"), options: custom }] : []),
     ];
   }, [templates]);
 
@@ -2766,23 +2767,23 @@ function RunTemplateAdvancedPanel({
         ) : (
           <ChevronRight className="h-3.5 w-3.5" />
         )}
-        <span className="font-semibold uppercase tracking-wide">Advanced</span>
+        <span className="font-semibold uppercase tracking-wide">{t("pagesSkillStudio.templates.advanced")}</span>
         <span className="ml-auto truncate">{selectedTemplateName}</span>
       </button>
       {open ? (
         <div className="space-y-3 px-3 pb-3 pt-1">
           <div className="flex items-end gap-2">
             <div className="min-w-0 flex-1 space-y-1">
-              <Label>Run template</Label>
+              <Label>{t("pagesSkillStudio.templates.runTemplate")}</Label>
               <SearchableSelect<string, RunTemplateOption>
                 value={selectedValue}
                 groups={templateGroups}
                 loading={templatesLoading}
                 disabled={templatesLoading || templatesError}
-                loadingMessage="Loading templates..."
-                placeholder="Select template"
-                searchPlaceholder="Search templates..."
-                emptyMessage="No templates."
+                loadingMessage={t("pagesSkillStudio.templates.loading")}
+                placeholder={t("pagesSkillStudio.templates.select")}
+                searchPlaceholder={t("pagesSkillStudio.templates.search")}
+                emptyMessage={t("pagesSkillStudio.templates.empty")}
                 contentClassName="w-(--sz-320px)"
                 onValueChange={(value) => onSelectTemplate(runTemplateSelectionFromOption(value))}
                 renderValue={(option) => option?.label ?? selectedTemplateName}
@@ -2790,7 +2791,7 @@ function RunTemplateAdvancedPanel({
                   <span className="flex min-w-0 flex-col">
                     <span className={cn("truncate", selected && "font-medium")}>{option.label}</span>
                     <span className="truncate text-(length:--text-micro) text-muted-foreground">
-                      {option.description ?? (option.builtIn ? "Built in" : "Custom")}
+                      {option.description ?? (option.builtIn ? t("pagesSkillStudio.templates.builtIn") : t("pagesSkillStudio.templates.custom"))}
                     </span>
                   </span>
                 )}
@@ -2802,14 +2803,14 @@ function RunTemplateAdvancedPanel({
                   type="button"
                   variant="outline"
                   size="icon-sm"
-                  aria-label="Create run template"
+                  aria-label={t("pagesSkillStudio.templates.create")}
                   disabled={actionPending}
                   onClick={onCreateTemplate}
                 >
                   <Plus />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Create run template</TooltipContent>
+              <TooltipContent>{t("pagesSkillStudio.templates.create")}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -2818,7 +2819,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Edit run template"
+                    aria-label={t("pagesSkillStudio.templates.editAriaLabel")}
                     disabled={!canEdit || actionPending}
                     onClick={() => selectedTemplate && onEditTemplate(selectedTemplate)}
                   >
@@ -2826,7 +2827,7 @@ function RunTemplateAdvancedPanel({
                   </Button>
                 </span>
               </TooltipTrigger>
-              <TooltipContent>Edit custom template</TooltipContent>
+              <TooltipContent>{t("pagesSkillStudio.templates.editCustom")}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -2835,7 +2836,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Duplicate run template"
+                    aria-label={t("pagesSkillStudio.templates.duplicateAriaLabel")}
                     disabled={!canDuplicate || actionPending}
                     onClick={() => selectedTemplate && onDuplicateTemplate(selectedTemplate)}
                   >
@@ -2844,7 +2845,7 @@ function RunTemplateAdvancedPanel({
                 </span>
               </TooltipTrigger>
               <TooltipContent>
-                {selectedTemplate?.builtIn ? "Duplicate built-in template" : "Duplicate template"}
+                {selectedTemplate?.builtIn ? t("pagesSkillStudio.templates.duplicateBuiltIn") : t("pagesSkillStudio.templates.duplicate")}
               </TooltipContent>
             </Tooltip>
             <Tooltip>
@@ -2854,7 +2855,7 @@ function RunTemplateAdvancedPanel({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label="Delete run template"
+                    aria-label={t("pagesSkillStudio.templates.deleteAriaLabel")}
                     className="text-destructive hover:text-destructive"
                     disabled={!canDelete || actionPending || deletingTemplateId === selectedTemplate?.id}
                     onClick={() => selectedTemplate && onDeleteTemplate(selectedTemplate)}
@@ -2863,16 +2864,16 @@ function RunTemplateAdvancedPanel({
                   </Button>
                 </span>
               </TooltipTrigger>
-              <TooltipContent>Delete custom template</TooltipContent>
+              <TooltipContent>{t("pagesSkillStudio.templates.deleteCustom")}</TooltipContent>
             </Tooltip>
           </div>
 
           {templatesError ? (
-            <p className="text-xs text-destructive">Run templates could not load.</p>
+            <p className="text-xs text-destructive">{t("pagesSkillStudio.templates.couldNotLoad")}</p>
           ) : selectedTemplateId === null ? (
-            <p className="text-xs text-muted-foreground">Runs will use only the input text.</p>
+            <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.templates.inputOnly")}</p>
           ) : selectedMissing ? (
-            <p className="text-xs text-destructive">Selected template is no longer available.</p>
+            <p className="text-xs text-destructive">{t("pagesSkillStudio.templates.noLongerAvailable")}</p>
           ) : selectedTemplate ? (
             <div className="space-y-2">
               {selectedTemplate.description ? (
@@ -2883,7 +2884,7 @@ function RunTemplateAdvancedPanel({
               </pre>
             </div>
           ) : (
-            <p className="text-xs text-muted-foreground">Loading template...</p>
+            <p className="text-xs text-muted-foreground">{t("pagesSkillStudio.templates.loadingTemplate")}</p>
           )}
         </div>
       ) : null}
@@ -2909,19 +2910,19 @@ function RunTemplateDialog({
 
   useEffect(() => {
     if (!state) return;
-    setName(state.mode === "edit" ? source?.name ?? "" : source ? `${source.name} copy` : "");
+    setName(state.mode === "edit" ? source?.name ?? "" : source ? t("pagesSkillStudio.templates.copyName", { name: source.name }) : "");
     setDescription(source?.description ?? "");
     setBody(source?.body ?? "");
   }, [source, state]);
 
   const title = state?.mode === "edit"
-    ? "Edit run template"
+    ? t("pagesSkillStudio.templates.editTitle")
     : source?.builtIn
-      ? "Duplicate built-in template"
-      : "Create run template";
+      ? t("pagesSkillStudio.templates.duplicateBuiltIn")
+      : t("pagesSkillStudio.templates.create");
   const descriptionText = state?.mode === "edit"
-    ? "Update the custom run instructions used by Skills Studio."
-    : "Save reusable run instructions for Skills Studio.";
+    ? t("pagesSkillStudio.templates.editDescription")
+    : t("pagesSkillStudio.templates.createDescription");
 
   return (
     <Dialog open={Boolean(state)} onOpenChange={onOpenChange}>
@@ -2932,25 +2933,25 @@ function RunTemplateDialog({
         </DialogHeader>
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label htmlFor="run-template-name">Name</Label>
+            <Label htmlFor="run-template-name">{t("pagesSkillStudio.templates.name")}</Label>
             <Input
               id="run-template-name"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              placeholder="Focused smoke"
+              placeholder={t("pagesSkillStudio.templates.namePlaceholder")}
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="run-template-description">Description</Label>
+            <Label htmlFor="run-template-description">{t("pagesSkillStudio.templates.description")}</Label>
             <Input
               id="run-template-description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              placeholder="Short instructions for common skill checks"
+              placeholder={t("pagesSkillStudio.templates.descriptionPlaceholder")}
             />
           </div>
           <div className="space-y-1">
-            <Label htmlFor="run-template-body">Body</Label>
+            <Label htmlFor="run-template-body">{t("pagesSkillStudio.templates.body")}</Label>
             <Textarea
               id="run-template-body"
               value={body}
@@ -2958,13 +2959,13 @@ function RunTemplateDialog({
               className="min-h-(--sz-240px) font-mono text-xs leading-5"
             />
             <p className="text-xs text-muted-foreground">
-              Placeholders: {"{{skillName}}"}, {"{{skillKey}}"}, {"{{skillInvocation}}"}, {"{{skillVersion}}"}, {"{{runId}}"}, {"{{issueId}}"}, {"{{outputDocumentKey}}"}.
+              {t("pagesSkillStudio.templates.placeholders")}{" "}{"{{skillName}}"}, {"{{skillKey}}"}, {"{{skillInvocation}}"}, {"{{skillVersion}}"}, {"{{runId}}"}, {"{{issueId}}"}, {"{{outputDocumentKey}}"}.
             </p>
           </div>
         </div>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("pagesSkillStudio.common.cancel")}
           </Button>
           <Button
             disabled={!name.trim() || !body.trim() || pending}
@@ -2976,7 +2977,7 @@ function RunTemplateDialog({
               })
             }
           >
-            {pending ? "Saving..." : "Save template"}
+            {pending ? t("pagesSkillStudio.templates.saving") : t("pagesSkillStudio.templates.save")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -2996,13 +2997,13 @@ function RunHistoryRow({
   const agent = agents.find((a) => a.id === run.agentId) ?? null;
   const removed = !agent;
   const snapshotName =
-    (run.agentConfigSnapshot?.name as string | undefined) ?? "Agent";
+    (run.agentConfigSnapshot?.name as string | undefined) ?? t("pagesSkillStudio.runDetail.agent");
   const name = agent?.name ?? snapshotName;
   return (
     <EntityRow
       leading={<StatusBadge status={runBadgeStatus(run.status)} />}
       identifier={runShortId(run)}
-      title={removed ? `${name} (removed)` : name}
+      title={removed ? t("pagesSkillStudio.runDetail.removedName", { name }) : name}
       subtitle={relativeTime(run.createdAt)}
       trailing={
         <span className="font-mono text-xs text-muted-foreground">
@@ -3031,15 +3032,15 @@ function AgentPicker({
           {selectedAgent ? (
             <AgentIdentity agent={selectedAgent} size="xs" />
           ) : (
-            <span className="text-muted-foreground">Pick an agent</span>
+            <span className="text-muted-foreground">{t("pagesSkillStudio.runDetail.pickAgent")}</span>
           )}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-64 p-0">
         <Command>
-          <CommandInput placeholder="Search agents…" />
+          <CommandInput placeholder={t("pagesSkillStudio.runDetail.searchAgents")} />
           <CommandList>
-            <CommandEmpty>No agents.</CommandEmpty>
+            <CommandEmpty>{t("pagesSkillStudio.runDetail.noAgents")}</CommandEmpty>
             <CommandGroup>
               {agents.map((agent) => {
                 const selectable = isAgentSelectable(agent);
@@ -3065,7 +3066,7 @@ function AgentPicker({
                     <AgentIdentity agent={agent} size="xs" />
                     {!selectable && (
                       <Badge variant="secondary" className="ml-auto">
-                        Paused
+                        {t("pagesSkillStudio.runDetail.paused")}
                       </Badge>
                     )}
                   </CommandItem>
@@ -3117,7 +3118,7 @@ function RunDetailView({
       queryClient.invalidateQueries({
         queryKey: queryKeys.companySkills.testRunDetail(companyId, skillId, runId),
       }),
-    onError: onError("Couldn't cancel run"),
+    onError: onError(t("pagesSkillStudio.errorToasts.cancelRun")),
   });
 
   // Re-run reproduces the VIEWED run's snapshots — pinned skill version, saved
@@ -3127,7 +3128,7 @@ function RunDetailView({
   const reRunMutation = useMutation({
     mutationFn: () => {
       const d = detailQuery.data;
-      if (!d) throw new Error("Run details are still loading.");
+      if (!d) throw new Error(t("pagesSkillStudio.runDetail.detailsLoading"));
       return companySkillsApi.createTestRun(companyId, skillId, buildReRunRequest(d));
     },
     onSuccess: (run) => {
@@ -3136,7 +3137,7 @@ function RunDetailView({
       });
       onSelectRun(run.id);
     },
-    onError: onError("Couldn't re-run"),
+    onError: onError(t("pagesSkillStudio.errorToasts.rerun")),
   });
 
   const deleteMutation = useMutation({
@@ -3147,7 +3148,7 @@ function RunDetailView({
       });
       onSelectRun(null);
     },
-    onError: onError("Couldn't delete run"),
+    onError: onError(t("pagesSkillStudio.errorToasts.deleteRun")),
   });
 
   const detail = detailQuery.data ?? null;
@@ -3163,34 +3164,34 @@ function RunDetailView({
 
   if (detailQuery.isLoading) {
     return (
-      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
-        <div className="p-3 text-xs text-muted-foreground">Loading run…</div>
+      <PaneScaffold title={t("pagesSkillStudio.runDetail.run")} action={<BackButton onBack={onBack} />}>
+        <div className="p-3 text-xs text-muted-foreground">{t("pagesSkillStudio.runDetail.loadingRun")}</div>
       </PaneScaffold>
     );
   }
   if (!detail) {
     return (
-      <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
-        <div className="p-3 text-xs text-muted-foreground">Run not found.</div>
+      <PaneScaffold title={t("pagesSkillStudio.runDetail.run")} action={<BackButton onBack={onBack} />}>
+        <div className="p-3 text-xs text-muted-foreground">{t("pagesSkillStudio.runDetail.runNotFound")}</div>
       </PaneScaffold>
     );
   }
 
   const agent = agents.find((a) => a.id === detail.agentId) ?? null;
   const agentName =
-    agent?.name ?? (detail.agentConfigSnapshot?.name as string | undefined) ?? "Agent";
+    agent?.name ?? (detail.agentConfigSnapshot?.name as string | undefined) ?? t("pagesSkillStudio.runDetail.agent");
   const removed = !agent;
   const outputMode = runOutputMode(detail);
   const nonTerminal = !isTerminalRunStatus(detail.status);
   const taskLink = testTaskLinkState(detail);
 
   return (
-    <PaneScaffold title="Run" action={<BackButton onBack={onBack} />}>
+    <PaneScaffold title={t("pagesSkillStudio.runDetail.run")} action={<BackButton onBack={onBack} />}>
       <div className="min-h-0 flex-1 space-y-3 overflow-auto p-3">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status={runBadgeStatus(detail.status)} />
           <AgentIdentity agent={agent ?? { id: detail.agentId, name: agentName }} size="xs" />
-          {removed && <Badge variant="secondary">removed</Badge>}
+          {removed && <Badge variant="secondary">{t("pagesSkillStudio.runDetail.removed")}</Badge>}
           <span className="font-mono text-xs text-muted-foreground">
             v{detail.skillVersion.revisionNumber}
           </span>
@@ -3201,20 +3202,20 @@ function RunDetailView({
 
         {/* snapshot property block */}
         <div className="rounded-md border border-border text-xs">
-          <PropRow label="Input" value={detail.inputId ? "saved input" : "ad-hoc paste"} />
-          <PropRow label="Template" value={detail.templateName ?? "No template"} />
-          <PropRow label="Skill version" value={`v${detail.skillVersion.revisionNumber}`} />
-          <PropRow label="Created" value={relativeTime(detail.createdAt)} />
+          <PropRow label={t("pagesSkillStudio.runDetail.input")} value={detail.inputId ? t("pagesSkillStudio.runDetail.savedInput") : t("pagesSkillStudio.runDetail.adHocPaste")} />
+          <PropRow label={t("pagesSkillStudio.runDetail.template")} value={detail.templateName ?? t("pagesSkillStudio.runDetail.noTemplate")} />
+          <PropRow label={t("pagesSkillStudio.runDetail.skillVersion")} value={`v${detail.skillVersion.revisionNumber}`} />
+          <PropRow label={t("pagesSkillStudio.runDetail.created")} value={relativeTime(detail.createdAt)} />
         </div>
 
         {showRunErrorCard(detail.status) && (
           <Card className="border-destructive/50">
             <CardHeader className="flex-row items-center gap-2 space-y-0 pb-2">
               <AlertTriangle className="h-3.5 w-3.5 text-destructive" />
-              <span className="text-sm font-medium">Run failed</span>
+              <span className="text-sm font-medium">{t("pagesSkillStudio.runDetail.runFailed")}</span>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground">
-              {detail.error ?? "The test task ended with an error."}
+              {detail.error ?? t("pagesSkillStudio.runDetail.endedWithError")}
             </CardContent>
           </Card>
         )}
@@ -3223,15 +3224,15 @@ function RunDetailView({
         {outputMode === "output" || outputMode === "draft" ? (
           <section className="space-y-2">
             <h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {outputMode === "draft" ? "Draft at failure" : "Output snapshot"}
+              {outputMode === "draft" ? t("pagesSkillStudio.runDetail.draftAtFailure") : t("pagesSkillStudio.runDetail.outputSnapshot")}
             </h3>
             <div className="rounded-md border border-border p-3">
-              <MarkdownBody>{detail.outputBody || "_No output_"}</MarkdownBody>
+              <MarkdownBody>{detail.outputBody || t("pagesSkillStudio.runDetail.noOutput")}</MarkdownBody>
             </div>
           </section>
         ) : outputMode === "pending" ? (
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Clock className="h-3.5 w-3.5" /> Working… output will appear here.
+            <Clock className="h-3.5 w-3.5" /> {t("pagesSkillStudio.runDetail.working")}
           </div>
         ) : null}
 
@@ -3291,7 +3292,7 @@ function RunDetailView({
             disabled={reRunMutation.isPending}
             onClick={() => reRunMutation.mutate()}
           >
-            <RotateCcw className="mr-1.5 h-3.5 w-3.5" /> Re-run
+            <RotateCcw className="mr-1.5 h-3.5 w-3.5" /> {t("pagesSkillStudio.runDetail.rerun")}
           </Button>
           {nonTerminal ? (
             <Button
@@ -3300,7 +3301,7 @@ function RunDetailView({
               disabled={cancelMutation.isPending}
               onClick={() => cancelMutation.mutate()}
             >
-              Cancel
+              {t("pagesSkillStudio.common.cancel")}
             </Button>
           ) : (
             <Button
@@ -3310,18 +3311,18 @@ function RunDetailView({
               disabled={deleteMutation.isPending}
               onClick={() => deleteMutation.mutate()}
             >
-              <Trash2 className="mr-1.5 h-3.5 w-3.5" /> Delete
+              <Trash2 className="mr-1.5 h-3.5 w-3.5" /> {t("pagesSkillStudio.runDetail.delete")}
             </Button>
           )}
           {taskLink.enabled && detail.harnessIssue ? (
             <Button variant="link" size="sm" asChild>
-              <Link to={`/issues/${detail.harnessIssue.id}`}>Open test task ↗</Link>
+              <Link to={`/issues/${detail.harnessIssue.id}`}>{t("pagesSkillStudio.runDetail.openTestTask")}</Link>
             </Button>
           ) : (
             <Tooltip>
               <TooltipTrigger asChild>
                 <span className="cursor-not-allowed text-xs text-muted-foreground">
-                  Open test task ↗
+                  {t("pagesSkillStudio.runDetail.openTestTask")}
                 </span>
               </TooltipTrigger>
               <TooltipContent>{taskLink.reason}</TooltipContent>
@@ -3361,7 +3362,7 @@ function RunDocumentsSection({ documents }: { documents: IssueDocument[] }) {
     <section className="space-y-2">
       <div className="flex items-center gap-2">
         <FileText className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
-        <h3 className="text-sm font-medium text-muted-foreground">Documents</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">{t("pagesSkillStudio.runDetail.documents")}</h3>
         <span className="text-xs text-muted-foreground">{documents.length}</span>
       </div>
       <div className="space-y-2">
@@ -3434,7 +3435,7 @@ function InteractionSection({
   return (
     <section>
       <h3 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-        Interactions
+        {t("pagesSkillStudio.runDetail.interactions")}
       </h3>
       <div className="space-y-2">
         {detail.interactions.map((summary) => {
@@ -3467,7 +3468,7 @@ function InteractionSection({
               trailing={
                 harnessIssueId ? (
                   <Button variant="link" size="xs" asChild>
-                    <Link to={`/issues/${harnessIssueId}`}>Open test task ↗</Link>
+                    <Link to={`/issues/${harnessIssueId}`}>{t("pagesSkillStudio.runDetail.openTestTask")}</Link>
                   </Button>
                 ) : null
               }
@@ -3556,20 +3557,20 @@ function VersionHistorySheet({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="w-full sm:max-w-(--sz-560px)">
         <SheetHeader>
-          <SheetTitle>Version history</SheetTitle>
+          <SheetTitle>{t("pagesSkillStudio.versions.title")}</SheetTitle>
         </SheetHeader>
         <div className="mt-3 space-y-2 overflow-auto">
           {versionsQuery.isLoading ? (
-            <div className="text-xs text-muted-foreground">Loading versions…</div>
+            <div className="text-xs text-muted-foreground">{t("pagesSkillStudio.versions.loading")}</div>
           ) : versions.length === 0 ? (
-            <EmptyState icon={History} message="No versions yet. Save changes to create the first." />
+            <EmptyState icon={History} message={t("pagesSkillStudio.versions.empty")} />
           ) : (
             <div className="space-y-1 rounded-md border border-border p-1">
               {versions.map((v) => (
                 <EntityRow
                   key={v.id}
                   identifier={`v${v.revisionNumber}`}
-                  title={v.label ?? `Version ${v.revisionNumber}`}
+                  title={v.label ?? t("pagesSkillStudio.versions.versionN", { number: v.revisionNumber })}
                   subtitle={relativeTime(v.createdAt)}
                   selected={v.id === leftId || v.id === rightId}
                   onClick={() => {
@@ -3591,7 +3592,7 @@ function VersionHistorySheet({
                         restore.mutate(v);
                       }}
                     >
-                      Restore as v{(skill.currentVersion?.revisionNumber ?? v.revisionNumber) + 1}
+                      {t("pagesSkillStudio.versions.restoreAs", { number: (skill.currentVersion?.revisionNumber ?? v.revisionNumber) + 1 })}
                     </Button>
                   }
                 />
@@ -3604,7 +3605,7 @@ function VersionHistorySheet({
             </p>
           )}
           {leftId && rightId && (leftQuery.isLoading || rightQuery.isLoading) && (
-            <p className="text-sm text-muted-foreground">Loading selected versions…</p>
+            <p className="text-sm text-muted-foreground">{t("pagesSkillStudio.versions.loadingSelected")}</p>
           )}
           {diff && (
             <div className="rounded-md border border-border">
@@ -3672,7 +3673,7 @@ function PropRow({ label, value }: { label: string; value: string }) {
 function BackButton({ onBack }: { onBack: () => void }) {
   return (
     <Button variant="ghost" size="sm" onClick={onBack}>
-      <ArrowLeft className="mr-1.5 h-3.5 w-3.5" /> Back
+      <ArrowLeft className="mr-1.5 h-3.5 w-3.5" /> {t("pagesSkillStudio.nav.back")}
     </Button>
   );
 }
@@ -3689,9 +3690,9 @@ function MobileTabs({
   return (
     <Tabs defaultValue="skill" className="flex flex-1 flex-col">
       <TabsList variant="line" className="px-3">
-        <TabsTrigger value="skill">Skill</TabsTrigger>
-        <TabsTrigger value="input">Input</TabsTrigger>
-        <TabsTrigger value="runs">Runs</TabsTrigger>
+        <TabsTrigger value="skill">{t("pagesSkillStudio.nav.tabSkill")}</TabsTrigger>
+        <TabsTrigger value="input">{t("pagesSkillStudio.nav.tabInput")}</TabsTrigger>
+        <TabsTrigger value="runs">{t("pagesSkillStudio.nav.tabRuns")}</TabsTrigger>
       </TabsList>
       <TabsContent value="skill" className="min-h-0 flex-1">
         {skill}

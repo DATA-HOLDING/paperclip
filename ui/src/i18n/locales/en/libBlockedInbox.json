@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "needsDecision": "Needs decision",
+    "stalled": "Blocked chain stalled",
+    "needsAttention": "Needs attention",
+    "recoveryRequired": "Recovery required",
+    "externalWait": "External wait",
+    "ownerPaused": "Owner paused"
+  },
+  "reasons": {
+    "pendingBoardDecision": "Pending board decision",
+    "pendingUserDecision": "Pending user decision",
+    "missingSuccessfulRunDisposition": "Pick disposition",
+    "blockedChainStalled": "Blocked chain stalled",
+    "blockedByUnassignedIssue": "Unassigned blocker",
+    "blockedByAssignedBacklogIssue": "Parked blocker",
+    "blockedByCancelledIssue": "Cancelled blocker",
+    "inReviewWithoutActionPath": "Review without action path",
+    "invalidReviewParticipant": "Invalid review participant",
+    "openRecoveryIssue": "Recovery in progress",
+    "externalOwnerAction": "External owner action",
+    "blockedByUninvokableAssignee": "Owner paused",
+    "fallback": "Stopped"
+  },
+  "groupOptions": {
+    "blockerType": "Blocker type",
+    "none": "None"
+  },
+  "sortOptions": {
+    "urgency": "Most urgent",
+    "mostRecent": "Most recent",
+    "longestStopped": "Longest stopped"
+  },
+  "stoppedAge": {
+    "stopped": "stopped",
+    "justNow": "stopped just now",
+    "minutes": "stopped {{value}}m",
+    "hours": "stopped {{value}}h",
+    "days": "stopped {{value}}d",
+    "weeks": "stopped {{value}}w",
+    "months_one": "stopped {{count}}mo",
+    "months_other": "stopped {{count}}mo"
+  }
+}
