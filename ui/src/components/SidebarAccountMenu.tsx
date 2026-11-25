@@ -15,6 +15,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { useCloudInstance } from "@/hooks/useCloudInstance";
 import { useCloudSidebarLinks } from "@/hooks/useCloudSidebarLinks";
 import { SidebarSlackFeedback } from "./SidebarSlackFeedback";
+import { LanguageMenuAction } from "./LanguageMenuAction";
 import { useCanInviteCompanyMembers } from "@/hooks/useCompanyInviteAccess";
 import { useHiddenSettings } from "@/hooks/useHiddenSettings";
 import { useSignOut } from "@/hooks/useSignOut";
@@ -237,6 +238,7 @@ export function SidebarAccountMenu({
                 href="/company/settings"
                 onClick={closeNavigationChrome}
               />
+              <LanguageMenuAction />
               {showInvite && inviteHref ? (
                 <MenuAction
                   label="Invite"

@@ -14,6 +14,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { useCloudInstance } from "@/hooks/useCloudInstance";
 import { useCloudSidebarLinks } from "@/hooks/useCloudSidebarLinks";
 import { SidebarSlackFeedback } from "./SidebarSlackFeedback";
+import { LanguageMenuAction } from "./LanguageMenuAction";
 import { useCanInviteCompanyMembers } from "@/hooks/useCompanyInviteAccess";
 import { useHiddenSettings } from "@/hooks/useHiddenSettings";
 import { useSignOut } from "@/hooks/useSignOut";
@@ -247,6 +248,7 @@ export function SidebarAccountMenu({
                 external
                 onClick={() => setOpen(false)}
               />
+              <LanguageMenuAction />
               <ThemeToggle variant="menu-action" onAfterToggle={() => setOpen(false)} />
               {deploymentMode === "authenticated" ? (
                 <button
