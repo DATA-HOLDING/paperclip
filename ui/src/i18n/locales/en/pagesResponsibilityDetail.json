@@ -17,5 +17,6 @@
   "otherOrganization": "This responsibility belongs to another organization",
   "errorActions": {
     "loadResponsibility": "load this responsibility"
-  }
+  },
+  "back": "Back"
 }

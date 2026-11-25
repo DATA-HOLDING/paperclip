@@ -157,9 +157,7 @@ export function EnforcementBanner(props: EnforcementBannerProps) {
           </p>
         ) : (
           <p>
-            Tool access is enforced server-side by the tool gateway. These screens configure and observe that
-            enforcement — they do not replace it. Agents see and call only the tools their profiles and policies
-            allow; everything else is denied by default.
+            {t("componentsEnforcementBanner.default")}
           </p>
         )}
       </div>

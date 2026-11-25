@@ -7,5 +7,6 @@
     "for": "por {{elapsed}}"
   },
   "continuedAfterSteering": "Continuou após o redirecionamento",
-  "thinking": "Pensando"
+  "thinking": "Pensando",
+  "activityUnavailable": "A atividade do runner ao vivo está indisponível no momento. Tentando de novo…"
 }

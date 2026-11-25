@@ -480,7 +480,7 @@ export function ConnectionIntentInteractionBody({
         fixedMethod={false}
         connectionId={repair.connection.id}
         name={repair.connection.name}
-        nameForMethod={(method) => defaultAiConnectionName(addresseeName ?? addresseeLabel, repair.connection.provider, method)}
+        nameForMethod={(method) => defaultAiConnectionName(addresseeName, repair.connection.provider, method)}
         hideName
         ownership={repair.connection.ownership}
         agentIds={[interaction.payload.requestingAgentId]}
@@ -498,9 +498,9 @@ export function ConnectionIntentInteractionBody({
       : aiConnection ? <AiConnectionCredentialStep
           companyId={interaction.companyId}
           provider={aiConnection.provider}
-          name={defaultAiConnectionName(addresseeName ?? addresseeLabel, aiConnection.provider, "subscription")}
+          name={defaultAiConnectionName(addresseeName, aiConnection.provider, "subscription")}
           hideName
-          nameForMethod={(method) => defaultAiConnectionName(addresseeName ?? addresseeLabel, aiConnection.provider, method)}
+          nameForMethod={(method) => defaultAiConnectionName(addresseeName, aiConnection.provider, method)}
           ownership="personal"
           agentIds={[interaction.payload.requestingAgentId]}
           allAgents={false}

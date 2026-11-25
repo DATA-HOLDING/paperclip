@@ -14,5 +14,7 @@
   "noArea": "No area",
   "confirm": "Confirm",
   "adjust": "Adjust",
-  "dismiss": "Dismiss"
+  "dismiss": "Dismiss",
+  "needsBeforeConfirm": "Needs {{fields}} before you can confirm it.",
+  "why": "Why: "
 }

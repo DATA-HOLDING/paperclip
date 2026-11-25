@@ -62,8 +62,7 @@ function NoBoardAccessPage() {
       <Card className="block p-6">
         <h1 className="text-xl font-semibold">{t("componentsCloudAccessGate.noAccess.title")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          This account is signed in, but it does not have an active organization membership or instance-admin access on
-          this Paperclip instance.
+          {t("componentsCloudAccessGate.noAccess.description")}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           {t("componentsCloudAccessGate.noAccess.hint")}

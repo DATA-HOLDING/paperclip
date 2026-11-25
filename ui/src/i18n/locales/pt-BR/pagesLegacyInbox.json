@@ -98,5 +98,8 @@
     "agentErrors_other": "agentes com erros",
     "budgetAt": "Orçamento com",
     "utilizationThisMonth": "de uso este mês"
-  }
+  },
+  "subTaskCount_one": "({{count}} subtarefa)",
+  "subTaskCount_other": "({{count}} subtarefas)",
+  "earlierDivider": "Antes"
 }

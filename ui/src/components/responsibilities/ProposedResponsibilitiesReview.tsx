@@ -217,11 +217,11 @@ function ProposalSummary({ proposal }: { proposal: ResponsibilityWithRollup }) {
         <p className="text-sm tabular-nums text-muted-foreground">{describeMetricReading(metric).summary}</p>
       ) : null}
       {missing.length > 0 ? (
-        <p className="text-xs text-muted-foreground">Needs {joinFieldLabels(missing)} before you can confirm it.</p>
+        <p className="text-xs text-muted-foreground">{t("componentsResponsibilitiesProposedResponsibilitiesReview.needsBeforeConfirm", { fields: joinFieldLabels(missing) })}</p>
       ) : null}
       {proposal.evidence ? (
         <p className="text-xs text-muted-foreground">
-          <span className="font-medium">Why: </span>
+          <span className="font-medium">{t("componentsResponsibilitiesProposedResponsibilitiesReview.why")}</span>
           {proposal.evidence}
         </p>
       ) : null}

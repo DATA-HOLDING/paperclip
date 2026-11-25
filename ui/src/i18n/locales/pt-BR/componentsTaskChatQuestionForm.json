@@ -37,5 +37,6 @@
   "cancel": "Cancelar",
   "skip": "Pular",
   "submitAnswers": "Enviar respostas",
-  "next": "Avançar"
+  "next": "Avançar",
+  "noAnswerableQuestions": "Nenhuma pergunta para responder foi enviada."
 }

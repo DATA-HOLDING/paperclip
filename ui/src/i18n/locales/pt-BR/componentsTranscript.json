@@ -79,5 +79,13 @@
     "collapseStdout": "Recolher stdout",
     "expandStdout": "Expandir stdout",
     "noTranscript": "Nenhuma transcrição ainda."
+  },
+  "leftover": {
+    "providerReported": "Informado pelo provedor",
+    "requestedModel": "Solicitado",
+    "effectiveModel": "Efetivo",
+    "childAgent": "Agente filho",
+    "unknownStatus": "desconhecido",
+    "unavailableSource": "Fonte indisponível"
   }
 }

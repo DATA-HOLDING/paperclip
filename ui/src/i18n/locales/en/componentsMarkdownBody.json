@@ -19,5 +19,6 @@
     "reference": "Image: {{alt}}",
     "untitled": "Untitled image",
     "open": "Open image: {{alt}}"
-  }
+  },
+  "scrollableTable": "Scrollable table"
 }

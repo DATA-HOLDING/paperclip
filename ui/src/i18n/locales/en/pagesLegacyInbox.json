@@ -98,5 +98,8 @@
     "agentErrors_other": "agents have errors",
     "budgetAt": "Budget at",
     "utilizationThisMonth": "utilization this month"
-  }
+  },
+  "subTaskCount_one": "({{count}} sub-task)",
+  "subTaskCount_other": "({{count}} sub-tasks)",
+  "earlierDivider": "Earlier"
 }

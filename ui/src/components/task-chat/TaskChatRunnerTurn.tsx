@@ -284,7 +284,7 @@ export function TaskChatRunnerTurn({
           role="status"
           data-testid="task-chat-activity-unavailable"
         >
-          Live runner activity is temporarily unavailable. Retrying…
+          {t("componentsTaskChatTaskChatRunnerTurn.activityUnavailable")}
         </div>
       ) : null}
       {timelineRows.length > 0 ? (

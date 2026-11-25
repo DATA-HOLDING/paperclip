@@ -19,5 +19,6 @@
     "reference": "Imagem: {{alt}}",
     "untitled": "Imagem sem título",
     "open": "Abrir imagem: {{alt}}"
-  }
+  },
+  "scrollableTable": "Tabela com rolagem"
 }

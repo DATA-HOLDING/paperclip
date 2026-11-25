@@ -263,5 +263,10 @@
   },
   "errorActions": {
     "loadSkill": "load this skill"
+  },
+  "leftover": {
+    "savedChangesNote": "Saved changes create a new version immediately. External sources are not updated until you publish or install an update.",
+    "newInputNotSaved": "New input (not saved)",
+    "diffRange": "Diff v{{left}} → v{{right}}"
   }
 }

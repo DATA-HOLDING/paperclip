@@ -1839,7 +1839,7 @@ function SkillPathDialog({
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
-            Saved changes create a new version immediately. External sources are not updated until you publish or install an update.
+            {t("pagesSkillStudio.leftover.savedChangesNote")}
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-2">
@@ -2133,7 +2133,7 @@ function InputPane({
                 <>
                   {adHocMode && (
                     <div className="flex items-center gap-2 rounded px-2 py-1.5 text-sm italic text-muted-foreground">
-                      <FilePlus className="h-3.5 w-3.5" /> New input (not saved)
+                      <FilePlus className="h-3.5 w-3.5" /> {t("pagesSkillStudio.leftover.newInputNotSaved")}
                     </div>
                   )}
                   <FileTree
@@ -3610,7 +3610,7 @@ function VersionHistorySheet({
           {diff && (
             <div className="rounded-md border border-border">
               <div className="border-b border-border px-3 py-1.5 text-xs text-muted-foreground">
-                Diff v{left?.revisionNumber} → v{right?.revisionNumber}
+                {t("pagesSkillStudio.leftover.diffRange", { left: left?.revisionNumber ?? "", right: right?.revisionNumber ?? "" })}
               </div>
               <pre className={cn("max-h-64 overflow-auto p-2 text-xs", ANALYTICS_MASK_CLASS)}>
                 {diff.map((row, i) => (

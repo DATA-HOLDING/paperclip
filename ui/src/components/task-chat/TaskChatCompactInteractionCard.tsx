@@ -1743,7 +1743,7 @@ function ItemVerdictsCard({
   if (!item)
     return (
       <p className="text-sm text-muted-foreground">
-        No review items were provided.
+        {t("componentsTaskChatTaskChatCompactInteractionCard.noReviewItems")}
       </p>
     );
   const resolved = resolvedById.get(item.id);

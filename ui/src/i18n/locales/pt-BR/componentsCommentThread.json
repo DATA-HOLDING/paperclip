@@ -55,5 +55,6 @@
   "searchResponsible": "Buscar responsável...",
   "noResponsibleFound": "Nenhum responsável encontrado.",
   "posting": "Publicando...",
-  "comment": "Comentar"
+  "comment": "Comentar",
+  "noTimelineEntries": "Ainda não há registros na linha do tempo."
 }

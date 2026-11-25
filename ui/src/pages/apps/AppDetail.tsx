@@ -91,7 +91,7 @@ export function AppDetail(props: { renderActions?: (connection: ToolConnection) 
   const { connectionId = "" } = useParams<{ connectionId: string }>();
   const connection = useQuery({ queryKey: queryKeys.tools.connection(connectionId), queryFn: ({ signal }) => toolsApi.getConnection(connectionId, { signal, fresh: true }), enabled: !!connectionId });
   const view = useQueryView(connection);
-  if (connection.isPending || view.kind === "reconnecting") return <p role="status">Loading connection…</p>;
+  if (connection.isPending || view.kind === "reconnecting") return <p role="status">{t("pagesApps.connect.loadingConnection")}</p>;
   if (view.kind === "error" && view.errorKind === "not_found") return <AppNotFound />;
   if (view.kind === "error") {
     return <QueryErrorState size="page" error={connection.error} action={t("pagesApps.errorActions.loadConnection")} onRetry={view.retry} retrying={view.isFetching} />;

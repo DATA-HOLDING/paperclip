@@ -305,7 +305,7 @@ export function TaskChatTurnPlan({ plan, workspace = null, defaultCollapsed = fa
         data-testid="task-chat-turn-plan-progress"
       >
         <span aria-hidden>{completed}/{total}</span>
-        <span className="sr-only">{completed} of {total} steps done</span>
+        <span className="sr-only">{t("componentsTaskChatTaskChatTurnStatusIsland.stepsDoneSr", { completed, total })}</span>
       </span>
     </>
   );

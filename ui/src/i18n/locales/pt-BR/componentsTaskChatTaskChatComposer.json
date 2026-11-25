@@ -83,5 +83,9 @@
     "waitingUpload": "Aguardando o envio terminar",
     "removeFailed": "Remova o anexo com falha para enviar",
     "send": "Enviar"
+  },
+  "leftover": {
+    "swarmHint": "Envia como swarm: os ajudantes trabalham nisto juntos na pasta da tarefa.",
+    "cancelQueuedEdit": "Cancelar"
   }
 }

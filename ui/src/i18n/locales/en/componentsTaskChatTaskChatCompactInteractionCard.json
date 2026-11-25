@@ -130,5 +130,6 @@
   "applyCount": "Apply {{count}}",
   "applyDecisions": "Apply decisions",
   "you": "You",
-  "suggestedTask": "Suggested Task"
+  "suggestedTask": "Suggested Task",
+  "noReviewItems": "No review items were provided."
 }

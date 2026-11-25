@@ -37,5 +37,6 @@
   "cancel": "Cancel",
   "skip": "Skip",
   "submitAnswers": "Submit answers",
-  "next": "Next"
+  "next": "Next",
+  "noAnswerableQuestions": "No answerable questions were provided."
 }

@@ -337,7 +337,7 @@ function QuestionFormForRequest({
   if (!question)
     return (
       <p className="text-sm text-muted-foreground">
-        No answerable questions were provided.
+        {t("componentsTaskChatQuestionForm.noAnswerableQuestions")}
       </p>
     );
   const answer = answers[question.id] ?? {};

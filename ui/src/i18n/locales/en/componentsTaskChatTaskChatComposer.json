@@ -83,5 +83,9 @@
     "waitingUpload": "Waiting for upload to finish",
     "removeFailed": "Remove the failed attachment to send",
     "send": "Send"
+  },
+  "leftover": {
+    "swarmHint": "Sends as a swarm: helpers work on this together in the task folder.",
+    "cancelQueuedEdit": "Cancel"
   }
 }

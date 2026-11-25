@@ -24,5 +24,6 @@
   "agentPlanAriaLabel": "Agent plan",
   "planProgressAriaLabel": "Plan progress",
   "checklistAriaLabel": "Within-turn checklist",
-  "showFewer": "Show fewer"
+  "showFewer": "Show fewer",
+  "stepsDoneSr": "{{completed}} of {{total}} steps done"
 }

@@ -2818,6 +2818,7 @@ function RequestConnectionAuthorizationCard({
   requestingAgentLabel,
   resolvedByLabel,
   resolvedByAgent,
+  connectedByCurrentUser,
   onRejectInteraction,
 }: {
   footerSlot?: ReactNode;
@@ -2831,6 +2832,8 @@ function RequestConnectionAuthorizationCard({
   requestingAgentLabel: string | null;
   resolvedByLabel: string | null;
   resolvedByAgent: boolean;
+  /** The person who connected (the resolver, else the addressee) is the signed-in reader. */
+  connectedByCurrentUser: boolean;
   onRejectInteraction?: (
     interaction: RequestConfirmationInteraction,
     reason?: string,
@@ -2982,8 +2985,8 @@ function RequestConnectionAuthorizationCard({
             <>
               {t("componentsIssueThreadInteractionCard.connection.connectedBy")}{" "}
               <span className="font-medium text-foreground">
-                {/* "You" is display-cased for a badge; this is mid-sentence. */}
-                {(resolvedByLabel ?? addresseeLabel) === "You" ? t("componentsIssueThreadInteractionCard.connection.you") : resolvedByLabel ?? addresseeLabel}
+                {/* The badge label "You" is display-cased; this is mid-sentence. */}
+                {connectedByCurrentUser ? t("componentsIssueThreadInteractionCard.connection.you") : resolvedByLabel ?? addresseeLabel}
               </span>
               {resolvedByAgent ? <ResolvedByAgentChip /> : null}
               {interaction.resolvedAt ? t("componentsIssueThreadInteractionCard.connection.on", { date: formatDateTime(interaction.resolvedAt) }) : ""}
@@ -4420,6 +4423,13 @@ export function IssueThreadInteractionCard({
       : null;
   // P4: audit-visible distinction between agent and human resolution.
   const resolvedByAgent = Boolean(interaction.resolvedByAgentId);
+  // Who the connection card names as having connected: the resolver, else the
+  // addressee. Recognized by id, never by the (translated) "You" label.
+  const connectedByCurrentUser = Boolean(currentUserId) && (
+    resolvedByLabel !== null
+      ? !interaction.resolvedByAgentId && interaction.resolvedByUserId === currentUserId
+      : addresseeLabel !== null && !interaction.addresseeAgentId && interaction.addresseeUserId === currentUserId
+  );
   // PAP-17280: the effective audience, shown *before* anyone responds so a
   // reader never has to guess whether an open card is waiting on them. Derived
   // from the same server snapshot the resolver routes enforce, so the copy
@@ -4665,6 +4675,7 @@ export function IssueThreadInteractionCard({
               requestingAgentLabel={connectionAuthorization.requestingAgentName ?? null}
               resolvedByLabel={resolvedByLabel}
               resolvedByAgent={resolvedByAgent}
+              connectedByCurrentUser={connectedByCurrentUser}
               onRejectInteraction={onRejectInteraction}
             />
           ) : isToolAction && interaction.kind === "request_confirmation" && toolActionState ? (

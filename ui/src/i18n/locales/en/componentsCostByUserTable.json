@@ -11,5 +11,8 @@
   "empty": "No user-attributed costs yet.",
   "unknownUser": "Unknown user",
   "unattributed": "Unattributed",
-  "unattributedNote": "Unattributed costs have no recorded user in this organization."
+  "unattributedNote": "Unattributed costs have no recorded user in this organization.",
+  "cachedTokens": "{{tokens}} cached",
+  "unpricedCharges_one": "{{count}} unpriced charge",
+  "unpricedCharges_other": "{{count}} unpriced charges"
 }

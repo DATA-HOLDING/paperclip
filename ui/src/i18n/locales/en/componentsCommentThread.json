@@ -55,5 +55,6 @@
   "searchResponsible": "Search responsible...",
   "noResponsibleFound": "No responsible found.",
   "posting": "Posting...",
-  "comment": "Comment"
+  "comment": "Comment",
+  "noTimelineEntries": "No timeline entries yet."
 }

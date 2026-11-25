@@ -7,5 +7,6 @@
     "for": "for {{elapsed}}"
   },
   "continuedAfterSteering": "Continued after steering",
-  "thinking": "Thinking"
+  "thinking": "Thinking",
+  "activityUnavailable": "Live runner activity is temporarily unavailable. Retrying…"
 }

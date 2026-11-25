@@ -130,5 +130,6 @@
   "applyCount": "Aplicar {{count}}",
   "applyDecisions": "Aplicar decisões",
   "you": "Você",
-  "suggestedTask": "Tarefa sugerida"
+  "suggestedTask": "Tarefa sugerida",
+  "noReviewItems": "Nenhum item para revisar foi enviado."
 }

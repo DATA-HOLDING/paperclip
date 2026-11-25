@@ -1501,7 +1501,7 @@ export function TaskChatComposer({
             </div>
           ) : showSwarmHint ? (
             <p className="px-1 text-xs text-muted-foreground" data-testid="task-chat-swarm-hint">
-              Sends as a swarm: helpers work on this together in the task folder.
+              {t("componentsTaskChatTaskChatComposer.leftover.swarmHint")}
             </p>
           ) : null}
 
@@ -1692,7 +1692,7 @@ export function TaskChatComposer({
                 disabled={submitting}
                 className="h-8 shrink-0 rounded-md px-2.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:opacity-50"
               >
-                Cancel
+                {t("componentsTaskChatTaskChatComposer.leftover.cancelQueuedEdit")}
               </button>
             ) : null}
             <button

@@ -24,5 +24,6 @@
   "agentPlanAriaLabel": "Plano do agente",
   "planProgressAriaLabel": "Progresso do plano",
   "checklistAriaLabel": "Checklist do turno",
-  "showFewer": "Mostrar menos"
+  "showFewer": "Mostrar menos",
+  "stepsDoneSr": "{{completed}} de {{total}} etapas concluídas"
 }

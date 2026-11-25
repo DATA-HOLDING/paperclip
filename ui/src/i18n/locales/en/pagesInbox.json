@@ -120,5 +120,7 @@
   "action": {
     "approveRequest": "approve this request",
     "rejectRequest": "reject this request"
-  }
+  },
+  "subTaskCount_one": "({{count}} sub-task)",
+  "subTaskCount_other": "({{count}} sub-tasks)"
 }

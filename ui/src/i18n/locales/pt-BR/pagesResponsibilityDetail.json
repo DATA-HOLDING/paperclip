@@ -17,5 +17,6 @@
   "otherOrganization": "Esta responsabilidade pertence a outra organização",
   "errorActions": {
     "loadResponsibility": "carregar esta responsabilidade"
-  }
+  },
+  "back": "Voltar"
 }

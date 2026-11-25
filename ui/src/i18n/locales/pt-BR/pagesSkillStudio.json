@@ -263,5 +263,10 @@
   },
   "errorActions": {
     "loadSkill": "carregar esta skill"
+  },
+  "leftover": {
+    "savedChangesNote": "As alterações salvas criam uma nova versão na hora. As fontes externas só são atualizadas quando você publica ou instala uma atualização.",
+    "newInputNotSaved": "Nova entrada (não salva)",
+    "diffRange": "Diferenças v{{left}} → v{{right}}"
   }
 }

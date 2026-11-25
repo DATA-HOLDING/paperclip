@@ -188,7 +188,7 @@ function ResponsibilityView({ responsibility, companyId }: { responsibility: Res
         {visiting ? (
           <div className="mx-auto flex w-full max-w-5xl justify-end">
             <Button variant="ghost" onClick={leave} data-responsibility-back="">
-              Back
+              {t("pagesResponsibilityDetail.back")}
             </Button>
           </div>
         ) : null}

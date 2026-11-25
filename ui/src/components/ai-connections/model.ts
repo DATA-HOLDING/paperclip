@@ -52,12 +52,16 @@ export const AI_CONNECTION_STATUS: Record<AiConnectionStatus, string> = {
   revoked: t("componentsAiConnections.model.status.revoked"),
 };
 
+/**
+ * `ownerName` is the owner's real name; leave it empty when the account is the
+ * signed-in person's own (never pass a display label such as "You").
+ */
 export function defaultAiConnectionName(ownerName: string | undefined, provider: AiProvider, method: AiAuthMethod) {
   const owner = ownerName?.trim();
   const providerName = method === "subscription"
     ? AI_PROVIDERS[provider].subscriptionName ?? AI_PROVIDERS[provider].name
     : t("componentsAiConnections.model.apiName", { provider: AI_PROVIDERS[provider].name });
-  return owner && owner !== "You"
+  return owner
     ? t("componentsAiConnections.model.nameOther", { owner, provider: providerName })
     : t("componentsAiConnections.model.nameOwn", { provider: providerName });
 }

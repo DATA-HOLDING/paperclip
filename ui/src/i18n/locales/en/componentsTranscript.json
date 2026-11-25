@@ -79,5 +79,13 @@
     "collapseStdout": "Collapse stdout",
     "expandStdout": "Expand stdout",
     "noTranscript": "No transcript yet."
+  },
+  "leftover": {
+    "providerReported": "Provider-reported",
+    "requestedModel": "Requested",
+    "effectiveModel": "Effective",
+    "childAgent": "Child agent",
+    "unknownStatus": "unknown",
+    "unavailableSource": "Unavailable source"
   }
 }
