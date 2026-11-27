@@ -109,6 +109,48 @@ describe("parseSetupTokenPrompt", () => {
     expect(result?.prompt).toBe(SETUP_TOKEN_PROMPT);
   });
 
+  // `claude` 2.1.331 stopped inlining the full OAuth query and emits a short
+  // authorize URL that carries a single opaque session token and nothing else.
+  const SHORT_TOKEN = "IpfE6tpCz-l5HibYZY2AURXcOTP8AM8df5jjSnbCdolc";
+  const SHORT_AI_URL = `https://claude.ai/oauth/authorize?${SHORT_TOKEN}`;
+
+  it("returns the 2.1.331 short session URL from a complete output", () => {
+    const result = parseSetupTokenPrompt(completeOutput(SHORT_AI_URL));
+    expect(result).not.toBeNull();
+    expect(result?.url).toBe(SHORT_AI_URL);
+    expect(result?.prompt).toBe(SETUP_TOKEN_PROMPT);
+  });
+
+  it("returns the 2.1.331 short session URL from the OSC 8 hyperlink form", () => {
+    const text = [
+      "Welcome to Claude Code v2.1.331",
+      PREAMBLE_LINE,
+      osc8Hyperlink(SHORT_AI_URL, SHORT_AI_URL),
+      PROMPT_LINE,
+    ].join("\n");
+    expect(parseSetupTokenPrompt(text)?.url).toBe(SHORT_AI_URL);
+  });
+
+  it("rejects a short authorization URL whose single query entry carries a value", () => {
+    const url = `https://claude.ai/oauth/authorize?session=${SHORT_TOKEN}`;
+    expect(parseSetupTokenPrompt(completeOutput(url))).toBeNull();
+  });
+
+  it("rejects a short authorization URL with more than one query entry", () => {
+    const url = `https://claude.ai/oauth/authorize?${SHORT_TOKEN}&extra`;
+    expect(parseSetupTokenPrompt(completeOutput(url))).toBeNull();
+  });
+
+  it("rejects a short authorization URL whose token holds an API-key prefix", () => {
+    const url = "https://claude.ai/oauth/authorize?sk-ant-oat01-deadbeefcafef00d";
+    expect(parseSetupTokenPrompt(completeOutput(url))).toBeNull();
+  });
+
+  it("rejects a short authorization URL whose token is too short", () => {
+    const url = "https://claude.ai/oauth/authorize?short";
+    expect(parseSetupTokenPrompt(completeOutput(url))).toBeNull();
+  });
+
   it("reassembles the claude.ai URL from the 2.1.19 hard-wrapped plain-text form", () => {
     // `claude` 2.1.19 emits the URL as plain text with a hard line wrap and no
     // OSC 8 hyperlink. The parser joins the URL-character-only physical lines and

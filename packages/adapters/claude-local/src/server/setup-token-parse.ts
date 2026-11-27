@@ -328,6 +328,32 @@ function hasValidQuery(parsed: URL): boolean {
   return true;
 }
 
+// The opaque session token of the short authorization URL. `claude` 2.1.331
+// stopped inlining the full OAuth query and instead emits a short authorize URL
+// that carries a single opaque session token and nothing else, for example
+// `https://claude.ai/oauth/authorize?<token>`. The server holds the PKCE
+// parameters under that token. The token is a base64url string. The character
+// class and the 16-to-128 length bound the value, so a look-alike cannot pass.
+const SHORT_SESSION_TOKEN_RE = /^[A-Za-z0-9_-]{16,128}$/;
+
+/**
+ * Returns true when the query of `parsed` is the short authorization form: a
+ * single opaque session token and nothing else. The token rides as the one query
+ * entry with an empty value (no `=`), so the parser requires exactly one entry,
+ * an empty value, and a token name that matches {@link SHORT_SESSION_TOKEN_RE}.
+ * It rejects an API-key prefix in the token. The caller already pinned the origin
+ * and path and rejected a userinfo, a port, and a fragment, so this query form
+ * cannot encode a redirect or a secret.
+ */
+function hasValidShortSessionQuery(parsed: URL): boolean {
+  const entries = [...parsed.searchParams];
+  if (entries.length !== 1) return false;
+  const [name, value] = entries[0];
+  if (value !== "") return false;
+  if (API_KEY_RE.test(name)) return false;
+  return SHORT_SESSION_TOKEN_RE.test(name);
+}
+
 /**
  * Returns `candidate` when it is a valid authorization URL, or null. The final
  * validator applies to every candidate, from an OSC 8 URI or from a plain-text
@@ -351,7 +377,9 @@ function validateAuthUrl(candidate: string): string | null {
   if (parsed.port !== "" || parsed.hash !== "") return null;
   const pair = `${parsed.origin}${parsed.pathname}`;
   if (!SETUP_TOKEN_AUTH_URLS.includes(pair as (typeof SETUP_TOKEN_AUTH_URLS)[number])) return null;
-  if (!hasValidQuery(parsed)) return null;
+  // Accept the full OAuth query (older CLIs) or the short session token form
+  // (`claude` 2.1.331 and later). Both pin the origin and path above.
+  if (!hasValidQuery(parsed) && !hasValidShortSessionQuery(parsed)) return null;
   return candidate;
 }
 
