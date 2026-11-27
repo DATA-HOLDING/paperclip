@@ -1,4 +1,5 @@
 import { AGENT_ROLE_LABELS, type AgentRole } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * The name the wizard offers before the customer picks a role. It is a job
@@ -16,7 +17,7 @@ import { AGENT_ROLE_LABELS, type AgentRole } from "@paperclipai/shared";
  */
 export const DEFAULT_AGENT_ROLE = "general" as const;
 
-export const DEFAULT_AGENT_NAME = "Chief of staff";
+export const DEFAULT_AGENT_NAME = t("libOnboardingAgentRole.defaultAgentName");
 
 /**
  * Names the wizard put there itself, and may therefore replace. Anything the

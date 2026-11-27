@@ -1,0 +1,14 @@
+{
+  "connectGithub": "Connect GitHub",
+  "title": "Create project",
+  "close": "Close new project",
+  "projectName": "Project name",
+  "sourceRepositories": "Source repositories",
+  "availableIn": "Available in",
+  "selectEnvironments": "Select environments",
+  "environmentsHint": "These environments can share this project's working files. The storage choice stays with the project.",
+  "loadingEnvironments": "Loading environments…",
+  "loadEnvironmentsAction": "load project environments",
+  "cancel": "Cancel",
+  "creating": "Creating…"
+}

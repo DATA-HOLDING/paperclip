@@ -1,0 +1,3 @@
+{
+  "managedSandboxUnavailable": "Esta instância executa agentes apenas no seu ambiente de sandbox gerenciado, mas nenhum ambiente de sandbox gerenciado está disponível para o teste. Verifique se o provedor do sandbox gerenciado está ativo e tente o teste novamente."
+}

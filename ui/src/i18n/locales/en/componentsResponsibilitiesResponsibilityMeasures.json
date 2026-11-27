@@ -1,0 +1,15 @@
+{
+  "standing": {
+    "heading": "Where things stand",
+    "total_one": "{{count}} responsibility",
+    "total_other": "{{count}} responsibilities",
+    "filterByStatus": "Filter by status"
+  },
+  "agentPowered": {
+    "heading": "Agent-powered",
+    "meterLabel": "Open tasks run by an agent",
+    "meterValue": "{{label}} open tasks",
+    "runByAgent": "Run by an agent",
+    "onYouAlone": "On you alone"
+  }
+}

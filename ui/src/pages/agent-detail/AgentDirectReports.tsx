@@ -4,6 +4,7 @@ import { AgentIdentityChipContent, agentIdentityChipClass } from "@/components/a
 import { Link } from "@/lib/router";
 import { agentRouteRef } from "@/lib/utils";
 import { agentDetailHref } from "../agent-detail-navigation";
+import { t } from "@/i18n";
 
 const MAX_LINES = 2;
 const toggleClass = "text-muted-foreground transition-colors hover:text-foreground";
@@ -72,12 +73,12 @@ export function AgentDirectReports({ reports }: { reports: Agent[] }) {
         ))}
         {hidden > 0 ? (
           <button type="button" className={toggleClass} onClick={() => setExpanded(true)}>
-            +{hidden} more
+            {t("pagesAgentDetail.directReports.more", { count: hidden })}
           </button>
         ) : null}
         {expanded && shown < reports.length ? (
           <button type="button" className={toggleClass} onClick={() => setExpanded(false)}>
-            Show less
+            {t("pagesAgentDetail.directReports.showLess")}
           </button>
         ) : null}
       </div>
@@ -88,7 +89,7 @@ export function AgentDirectReports({ reports }: { reports: Agent[] }) {
               <AgentIdentityChipContent agent={report} />
             </span>
           ))}
-          <span>+{reports.length} more</span>
+          <span>{t("pagesAgentDetail.directReports.more", { count: reports.length })}</span>
         </div>
       </div>
     </div>

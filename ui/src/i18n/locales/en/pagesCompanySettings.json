@@ -1,0 +1,63 @@
+{
+  "organizationFallback": "Organization",
+  "breadcrumbs": {
+    "company": "Company",
+    "settings": "Settings"
+  },
+  "noSelection": "No organization selected. Select an organization from the switcher above.",
+  "archive": {
+    "toastTitle": "{{name}} is archived",
+    "switchedTo": "Switched to {{name}}.",
+    "unarchiveFromList": "You can unarchive it from this list."
+  },
+  "general": {
+    "title": "General",
+    "nameLabel": "Organization name",
+    "nameHint": "The display name for your organization.",
+    "renameWarning": "Renaming can change this company's task ID prefix. Existing task IDs are renumbered and old task links stop resolving.",
+    "descriptionLabel": "Description",
+    "descriptionHint": "Optional description shown in the organization profile.",
+    "descriptionPlaceholder": "Optional organization description"
+  },
+  "appearance": {
+    "title": "Appearance",
+    "logoLabel": "Logo",
+    "logoHint": "Upload a PNG, JPEG, WEBP, GIF, or SVG logo image.",
+    "removing": "Removing...",
+    "removeLogo": "Remove logo",
+    "uploading": "Uploading logo..."
+  },
+  "saving": "Saving...",
+  "saveChanges": "Save changes",
+  "saved": "Saved",
+  "ownerSaving": "Saving…",
+  "hiring": {
+    "title": "Hiring",
+    "requireApproval": "Require board approval for new hires",
+    "requireApprovalHint": "New agent hires stay pending until approved by board."
+  },
+  "decisions": {
+    "title": "Decisions",
+    "intro": "Each owner saves as soon as you choose it.",
+    "defaultOwner": {
+      "label": "Default decision owner",
+      "hint": "When a card needs a person but has no explicit owner, it goes to this user's For you list. Leave as Unassigned to keep ownerless cards in the claimable pool.",
+      "unset": "Unassigned (no default owner)",
+      "saveFailed": "Couldn't save the default decision owner."
+    },
+    "budgetOwner": {
+      "label": "Budget owner",
+      "hint": "A budget hard stop also goes to this user's For you list, with Raise limit and Keep paused. The Company view still shows it to every operator.",
+      "unset": "No budget owner (Company view only)",
+      "saveFailed": "Couldn't save the budget owner."
+    }
+  },
+  "danger": {
+    "title": "Danger Zone",
+    "description": "Archive this organization to hide it from the sidebar. This persists in the database.",
+    "confirm": "Archive organization \"{{name}}\"? It will be hidden from the sidebar.",
+    "archiving": "Archiving...",
+    "alreadyArchived": "Already archived",
+    "archive": "Archive organization"
+  }
+}

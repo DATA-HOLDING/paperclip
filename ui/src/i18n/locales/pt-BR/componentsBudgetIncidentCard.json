@@ -1,0 +1,34 @@
+{
+  "state": {
+    "resolved": "Resolvido",
+    "dismissed": "Dispensado",
+    "escalated": "Escalado",
+    "pendingApproval": "Aguardando aprovação",
+    "open": "Aberto"
+  },
+  "scope": {
+    "company": "organização",
+    "agent": "agente",
+    "project": "projeto"
+  },
+  "kind": {
+    "warning": "aviso de orçamento · {{scope}}",
+    "hardStop": "parada obrigatória · {{scope}}"
+  },
+  "description": {
+    "incomplete": "A contabilização está incompleta. O gasto conhecido é {{spend}}; revise o uso pendente ou sem preço na política de orçamento.",
+    "reached": "O gasto chegou a {{spend}} contra um limite de {{limit}}."
+  },
+  "warningNotice": "O gasto ultrapassou o limite de aviso. Este aviso não pausa o trabalho.",
+  "paused": {
+    "project": "A execução do projeto está pausada. Novos trabalhos neste projeto não começarão até você resolver o incidente de orçamento.",
+    "scope": "Este escopo está pausado. Novos heartbeats não começarão até você resolver o incidente de orçamento."
+  },
+  "newBudget": "Novo orçamento (USD)",
+  "applying": "Aplicando...",
+  "raise": "Aumentar orçamento",
+  "raiseAndResume": "Aumentar orçamento e retomar",
+  "mustExceed": "O novo orçamento deve ser maior que o gasto observado atual.",
+  "dismissWarning": "Dispensar aviso",
+  "keepPaused": "Manter pausado"
+}

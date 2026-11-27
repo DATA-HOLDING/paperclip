@@ -1,0 +1,31 @@
+{
+  "ask": {
+    "blocker": "Destrave “{{title}}”",
+    "agentError": "{{agent}} encontrou um erro e precisa de ajuda",
+    "review": "Revisar “{{title}}”",
+    "approval": "Aprovar “{{title}}”?",
+    "joinRequest": "Permitir que {{title}} entre na organização?"
+  },
+  "detail": {
+    "blockerHolding_one": "Está segurando {{count}} tarefa e ninguém está trabalhando nela. Desbloqueie, reatribua ou cutuque o responsável.",
+    "blockerHolding_other": "Está segurando {{count}} tarefas e ninguém está trabalhando nela. Desbloqueie, reatribua ou cutuque o responsável.",
+    "blockerIdle": "Ninguém está trabalhando nela. Desbloqueie, reatribua ou cutuque o responsável."
+  },
+  "outcome": {
+    "accepted": "Aprovado",
+    "answered": "Respondido",
+    "rejected": "Alterações solicitadas",
+    "decided": "Decidido",
+    "withdrawn": "Retirado",
+    "expired": "Expirado",
+    "issueClosed": "Fechado com a tarefa",
+    "cancelled": "Cancelado"
+  },
+  "scope": {
+    "mine": "Tratados por mim ou para mim",
+    "all": "Todos"
+  },
+  "someone": "alguém",
+  "withdrawnBy": "Retirado por @{{actorLabel}}",
+  "approvalContext": "Aprovação · {{title}}"
+}

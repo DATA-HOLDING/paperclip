@@ -1,0 +1,17 @@
+{
+  "adminRequired": "An instance administrator must configure this Tailscale machine.",
+  "manageConnector": "Manage Tailscale connector",
+  "tailnetConnection": "Tailnet connection",
+  "chooseConnection": "Choose a connection",
+  "unavailableConnection": "Unavailable connection",
+  "machine": "Machine",
+  "loadingMachines": "Loading machines…",
+  "chooseMachine": "Choose a machine",
+  "offline": "Offline",
+  "preparePairing": "Prepare machine pairing",
+  "pairingInstructions": "Run this on the selected computer as the user who will run tasks. Enter the printed username, workspace, and known hosts below. Paperclip keeps the private key in its vault.",
+  "pairingCommand": "Machine pairing command",
+  "errorActions": {
+    "connectTailscale": "connect Tailscale"
+  }
+}

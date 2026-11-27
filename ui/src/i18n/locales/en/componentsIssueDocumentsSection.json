@@ -1,0 +1,87 @@
+{
+  "keyError": {
+    "plan": "Create and revise Plans in the task conversation.",
+    "artifactReview": "Review this document through its work product.",
+    "reserved": "This document key is reserved for task state.",
+    "pattern": "Use lowercase letters, numbers, -, or _, and start with a letter or number."
+  },
+  "actor": {
+    "board": "Board",
+    "system": "System"
+  },
+  "errors": {
+    "deleteFailed": "Failed to delete document",
+    "restoreFailed": "Failed to restore document revision",
+    "lockFailed": "Failed to update document lock",
+    "keyAndBodyRequired": "Document key and body are required",
+    "bodyEmpty": "Document body cannot be empty",
+    "keyInvalid": "Document key must start with a letter or number and use only lowercase letters, numbers, -, or _.",
+    "locked": "Document is locked. Unlock it before editing.",
+    "remoteChangedLoadFailed": "Document changed remotely and the latest version could not be loaded",
+    "saveAction": "save the document",
+    "copyFailed": "Could not copy document",
+    "saveBeforeHistory": "Save or cancel your local changes before viewing an older revision.",
+    "saveBeforeLock": "Save or cancel local changes before changing the document lock.",
+    "reviewedRevisionLoadFailed": "Could not load the reviewed revision. Try opening the link again.",
+    "reviewedRevisionUnavailable": "The reviewed revision is unavailable."
+  },
+  "newDocument": "New document",
+  "newShort": "New",
+  "title": "Documents",
+  "placeholders": {
+    "key": "Document key",
+    "title": "Optional title",
+    "body": "Markdown body"
+  },
+  "cancel": "Cancel",
+  "saving": "Saving...",
+  "createDocument": "Create document",
+  "planBadge": "PLAN",
+  "lock": {
+    "unlock": "Unlock document",
+    "lock": "Lock document",
+    "unlockAria": "Unlock {{key}} document",
+    "lockAria": "Lock {{key}} document",
+    "locked": "Locked document"
+  },
+  "copied": "Copied",
+  "copyDocument": "Copy document",
+  "actions": {
+    "label": "Document actions",
+    "edit": "Edit document",
+    "download": "Download document",
+    "viewDiff": "View diff",
+    "delete": "Delete document"
+  },
+  "loadingReviewedRevision": "Loading reviewed revision…",
+  "history": {
+    "viewingRevision": "Viewing revision {{number}}",
+    "body": "This is a historical preview. Restoring it creates a new latest revision and keeps history append-only.",
+    "returnToLatest": "Return to latest",
+    "restoring": "Restoring...",
+    "restore": "Restore this revision"
+  },
+  "conflict": {
+    "outOfDate": "Out of date",
+    "body": "This document changed while you were editing. Your local draft is preserved and autosave is paused.",
+    "hideRemote": "Hide remote",
+    "reviewRemote": "Review remote",
+    "keepDraft": "Keep my draft",
+    "reloadRemote": "Reload remote",
+    "overwriteRemote": "Overwrite remote",
+    "remoteRevision": "Remote revision {{number}}",
+    "updated": "updated {{time}}"
+  },
+  "status": {
+    "historical": "Viewing historical revision"
+  },
+  "retrySaving": "Retry saving",
+  "deleteConfirm": {
+    "body": "Delete this document? This cannot be undone.",
+    "deleting": "Deleting...",
+    "delete": "Delete"
+  },
+  "errorActions": {
+    "saveDocument": "save the document"
+  }
+}

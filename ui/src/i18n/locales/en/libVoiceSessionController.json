@@ -1,0 +1,17 @@
+{
+  "errors": {
+    "closeFailed": "The call could not be fully closed. Retry ending it before starting another call.",
+    "creditsRequired": "Speko needs credits before starting a call. Add credits in Speko, then try again.",
+    "previousClosed": "The previous call was closed. Start voice again to reconnect; your task is preserved.",
+    "connectFailed": "Voice could not connect. Check microphone permissions and your connection, then try again.",
+    "microphone": "Microphone state could not be changed. Try again or end the call.",
+    "updateNotDelivered": "A task update could not be delivered to voice. Open the task to read it.",
+    "repeatFailed": "The answer could not be repeated. Open the task to read it.",
+    "playbackBlocked": "Audio playback is blocked. Check this browser’s sound settings."
+  },
+  "announcement": {
+    "user": "You: {{text}}",
+    "agent": "Agent: {{text}}"
+  },
+  "taskUpdateAvailable": "A task update is available."
+}

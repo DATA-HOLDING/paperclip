@@ -1,0 +1,65 @@
+{
+  "title": "Search",
+  "scopes": {
+    "all": "All",
+    "issues": "Tasks",
+    "comments": "Comments",
+    "documents": "Documents",
+    "artifacts": "Artifacts",
+    "agents": "Agents",
+    "projects": "Projects"
+  },
+  "allScopes": "All scopes",
+  "unknownError": "Unknown error",
+  "runSearchAction": "run that search",
+  "input": {
+    "placeholder": "Search tasks, comments, documents, artifacts, agents, projects…",
+    "label": "Search query",
+    "clear": "Clear search"
+  },
+  "insertOperator": "Insert operator {{token}}",
+  "operatorHint": {
+    "try": "Try",
+    "or": "or"
+  },
+  "initial": {
+    "title": "Type to search organization memory.",
+    "description": "Tasks, comments, plan documents, artifacts, agents, projects — same surface, ranked by relevance.",
+    "recentSearches": "Recent searches"
+  },
+  "tips": {
+    "identifierLabel": "Identifier lookup:",
+    "identifierBefore": "type",
+    "identifierAfter": "to jump straight to a task.",
+    "quotedLabel": "Quoted phrases:",
+    "quotedText": "wrap a phrase in quotes to match the exact sequence.",
+    "commandPaletteText": "reopens the command palette pre-seeded with your current query."
+  },
+  "error": {
+    "title": "Couldn’t run that search",
+    "serverReturned": "The server returned {{status}}.",
+    "requestFailed": "The request failed.",
+    "stillHere": "Your input and filters are still here, so you can retry or fall back to the Tasks filter.",
+    "retry": "Retry"
+  },
+  "openTasksFilterView": "Open Tasks filter view",
+  "searchingFor": "Searching for “{{query}}”…",
+  "empty": {
+    "title": "No results for “{{query}}”",
+    "description": "We couldn’t find a match in {{scope}}. Try widening the scope or rephrasing your query.",
+    "searchAllScopes": "Search all scopes",
+    "createTask": "Create task from this query",
+    "tipFewerTokens": "Try fewer tokens or a single distinctive term.",
+    "tipIdentifier": "Use an identifier shortcut like",
+    "tipQuotes": "Wrap multi-word phrases in quotes."
+  },
+  "results": {
+    "partial": "{{shown}} of {{total}} results",
+    "count_one": "{{count}} result",
+    "count_other": "{{count}} results",
+    "sortedBy": " · sorted by {{sort}}",
+    "filtersActive_one": " · {{count}} filter active",
+    "filtersActive_other": " · {{count}} filters active",
+    "updating": "Updating…"
+  }
+}

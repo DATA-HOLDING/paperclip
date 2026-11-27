@@ -4,6 +4,7 @@ import { Link } from "@/lib/router";
 import { attentionEvidenceLabel, attentionEvidenceText } from "@/lib/attention-obligations";
 import { cn } from "@/lib/utils";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 /**
  * The rest of one obligation, folded into its lead card (PAP-749 plan §2,
@@ -22,7 +23,7 @@ export function AttentionObligationEvidence({
   if (!evidence?.length) return null;
   return (
     <ul
-      aria-label="Part of this request"
+      aria-label={t("componentsAttentionObligationEvidence.partOfRequest")}
       data-attention-obligation={item.obligationKey ?? undefined}
       className={cn("space-y-1 border-l-2 border-border pl-3 text-xs leading-5 text-muted-foreground", className)}
     >

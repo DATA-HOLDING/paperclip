@@ -1,0 +1,11 @@
+{
+  "nothingMeasured": "Nada medido",
+  "noBar": "Nenhum padrão ainda.",
+  "noReading": "Sem leitura",
+  "noNumber": "Sem número",
+  "notUpdated": "Não atualizado recentemente",
+  "notUpdatedSr": ", não atualizado recentemente",
+  "andMore_one": "e mais {{count}}",
+  "andMore_other": "e mais {{count}}",
+  "notInArea": "Fora de uma área"
+}

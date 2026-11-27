@@ -1,0 +1,5 @@
+{
+  "empty": "That file is empty. Choose the private key downloaded from your GitHub App.",
+  "tooLarge": "That file is too large. Choose a GitHub App private key smaller than 64 KB.",
+  "readFailed": "Paperclip couldn't read that file. Choose the .pem file again or paste the private key."
+}

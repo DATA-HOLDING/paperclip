@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { NativeSelect } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 const NO_AREA = "";
 
@@ -79,25 +80,25 @@ export function QuickAddResponsibilityDialog({
       <DialogContent className="sm:max-w-lg" aria-describedby={undefined}>
         <form className="flex flex-col gap-5" onSubmit={submit}>
           <DialogHeader>
-            <DialogTitle>New responsibility</DialogTitle>
+            <DialogTitle>{t("componentsResponsibilitiesQuickAddResponsibilityDialog.title")}</DialogTitle>
           </DialogHeader>
           <label className="flex flex-col gap-1.5 text-sm">
-            <span className="font-medium text-foreground">What must be true?</span>
+            <span className="font-medium text-foreground">{t("componentsResponsibilitiesQuickAddResponsibilityDialog.sentenceLabel")}</span>
             <Textarea
               autoFocus
               rows={2}
               value={text}
               maxLength={200}
-              placeholder="e.g. Every customer question gets an answer within a day."
+              placeholder={t("componentsResponsibilitiesQuickAddResponsibilityDialog.sentencePlaceholder")}
               onChange={(event) => setText(event.target.value)}
               onKeyDown={onKeyDown}
             />
           </label>
           {areas.length > 0 ? (
             <label className="flex flex-col gap-1.5 text-sm">
-              <span className="font-medium text-foreground">Area</span>
+              <span className="font-medium text-foreground">{t("componentsResponsibilitiesQuickAddResponsibilityDialog.area")}</span>
               <NativeSelect value={areaId} onChange={(event) => setAreaChoice(event.target.value)}>
-                <option value={NO_AREA}>No area</option>
+                <option value={NO_AREA}>{t("componentsResponsibilitiesQuickAddResponsibilityDialog.noArea")}</option>
                 {areas.map((area) => (
                   <option key={area.id} value={area.id}>{area.title}</option>
                 ))}
@@ -106,15 +107,15 @@ export function QuickAddResponsibilityDialog({
           ) : null}
           {create.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t add the responsibility. {describeError(create.error).body}
+              {t("componentsResponsibilitiesQuickAddResponsibilityDialog.error", { message: describeError(create.error).body })}
             </p>
           ) : null}
           <DialogFooter className="items-center sm:justify-between">
             <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t("componentsResponsibilitiesQuickAddResponsibilityDialog.cancel")}
             </Button>
             <Button type="submit" disabled={!sentence || create.isPending}>
-              {create.isPending ? "Adding…" : "Add responsibility"}
+              {create.isPending ? t("componentsResponsibilitiesQuickAddResponsibilityDialog.adding") : t("componentsResponsibilitiesQuickAddResponsibilityDialog.submit")}
             </Button>
           </DialogFooter>
         </form>

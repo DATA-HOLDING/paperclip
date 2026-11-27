@@ -5,6 +5,7 @@ import { heartbeatsApi } from "../api/heartbeats";
 import { issuesApi } from "../api/issues";
 import type { WorkspaceBaseRefRecoveryNoticeProps } from "./WorkspaceBaseRefRecoveryNotice";
 import { retryTransientOnly } from "../lib/query-client";
+import { t } from "@/i18n";
 
 function record(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -59,17 +60,17 @@ export function WorkspaceBaseRefRecoveryProvider({ issue, agentMap, unavailableR
     const stale = action.status !== "active" || issue.status !== "blocked" || action.ownerType !== "board"
       || !issue.assigneeAgentId || issue.assigneeAgentId !== action.returnOwnerAgentId || run.agentId !== issue.assigneeAgentId;
     retry = { actionId: action.id, runId,
-      unavailableReason: stale ? "Refresh the task to retry."
+      unavailableReason: stale ? t("componentsWorkspaceBaseRefRecovery.refreshToRetry")
         : unavailableReason
-        ?? (issue.executionRunId || issue.checkoutRunId ? "Wait for the current run to finish." : null)
-        ?? (agent?.status === "paused" || agent?.status === "terminated" ? "The assigned agent is unavailable." : null)
-        ?? (issue.executionState?.status === "pending" ? "Complete the pending review or approval before retrying." : null)
-        ?? (issue.blockedBy?.some(b => b.status !== "done" && b.status !== "cancelled") ? "Resolve the task’s blockers before retrying." : null),
+        ?? (issue.executionRunId || issue.checkoutRunId ? t("componentsWorkspaceBaseRefRecovery.waitForCurrentRun") : null)
+        ?? (agent?.status === "paused" || agent?.status === "terminated" ? t("componentsWorkspaceBaseRefRecovery.agentUnavailable") : null)
+        ?? (issue.executionState?.status === "pending" ? t("componentsWorkspaceBaseRefRecovery.completePendingReview") : null)
+        ?? (issue.blockedBy?.some(b => b.status !== "done" && b.status !== "cancelled") ? t("componentsWorkspaceBaseRefRecovery.resolveBlockers") : null),
       onRetry: async () => {
         try {
           const receipt = await issuesApi.resolveRecoveryAction(issue.id, { actionId: action.id, outcome: "restored", sourceIssueStatus: "todo" });
           if (receipt.issue.status !== "todo" || receipt.issue.assigneeAgentId !== issue.assigneeAgentId) {
-            throw new Error("The task changed. Refresh and try again.");
+            throw new Error(t("componentsWorkspaceBaseRefRecovery.taskChanged"));
           }
         } finally { onRepaired(); }
       },
@@ -82,7 +83,7 @@ export function WorkspaceBaseRefRecoveryProvider({ issue, agentMap, unavailableR
     const requestedRef = failure.requestedRef;
     const workspace = issue.project?.workspaces?.find(w => w.id === issue.projectWorkspaceId)
       ?? issue.project?.primaryWorkspace;
-    let repository = "The task’s repository";
+    let repository = t("componentsWorkspaceBaseRefRecovery.defaultRepository");
     if (workspace?.repoUrl) {
       try { const url = new URL(workspace.repoUrl); if (url.protocol === "https:" || url.protocol === "http:") repository = `${url.hostname}${url.pathname.replace(/\.git$/, "")}`; } catch { /* Keep local paths and credentials out of the card. */ }
     }
@@ -90,15 +91,15 @@ export function WorkspaceBaseRefRecoveryProvider({ issue, agentMap, unavailableR
     const currentRef = record(settings.workspaceStrategy).baseRef;
     const stale = action.status !== "active" || issue.status !== "blocked" || issue.assigneeAgentId !== action.returnOwnerAgentId
       || run.agentId !== issue.assigneeAgentId || (typeof currentRef === "string" && Boolean(currentRef.trim()) && currentRef !== requestedRef);
-    const reason = stale ? "This repair no longer matches the task. Refresh to review its current state."
+    const reason = stale ? t("componentsWorkspaceBaseRefRecovery.repairStale")
       : baseRefUnavailableReason ?? unavailableReason
-      ?? (issue.executionRunId || issue.checkoutRunId ? "Wait for the current run to finish." : null)
-      ?? (agent?.status === "paused" || agent?.status === "terminated" ? "The assigned agent is unavailable." : null)
-      ?? (issue.executionState?.status === "pending" ? "Complete the pending review or approval before retrying." : null)
-      ?? (issue.blockedBy?.some(b => b.status !== "done" && b.status !== "cancelled") ? "Resolve the task’s blockers before retrying." : null);
+      ?? (issue.executionRunId || issue.checkoutRunId ? t("componentsWorkspaceBaseRefRecovery.waitForCurrentRun") : null)
+      ?? (agent?.status === "paused" || agent?.status === "terminated" ? t("componentsWorkspaceBaseRefRecovery.agentUnavailable") : null)
+      ?? (issue.executionState?.status === "pending" ? t("componentsWorkspaceBaseRefRecovery.completePendingReview") : null)
+      ?? (issue.blockedBy?.some(b => b.status !== "done" && b.status !== "cancelled") ? t("componentsWorkspaceBaseRefRecovery.resolveBlockers") : null);
     value = { actionId: action.id, runId, props: {
       requestedRef, repository, taskOverride: currentRef === requestedRef, defaultBranch: typeof failure.defaultBranch === "string" ? failure.defaultBranch : null,
-      agentName: agent?.name ?? "The assigned agent", unavailableReason: reason,
+      agentName: agent?.name ?? t("componentsWorkspaceBaseRefRecovery.defaultAgentName"), unavailableReason: reason,
       failureKind: typeof failure.fetchError === "string" && failure.fetchError.includes(`couldn't find remote ref refs/heads/${requestedRef}`) ? "missing_branch" : "unresolved_ref",
       onRepair: async branch => {
         try {
@@ -107,7 +108,7 @@ export function WorkspaceBaseRefRecoveryProvider({ issue, agentMap, unavailableR
           });
           if (receipt.issue.status !== "todo" || receipt.issue.assigneeAgentId !== issue.assigneeAgentId
             || record(record(receipt.issue.executionWorkspaceSettings).workspaceStrategy).baseRef !== branch) {
-            throw new Error("The task changed while saving. Refresh to check its current state.");
+            throw new Error(t("componentsWorkspaceBaseRefRecovery.taskChangedWhileSaving"));
           }
         } finally { onRepaired(); }
       },

@@ -1,0 +1,16 @@
+{
+  "actor": {
+    "board": "board",
+    "agent": "agent",
+    "system": "system"
+  },
+  "revisionLabel": "rev {{number}} — {{time}} • {{actor}}",
+  "diffTitle": "Diff —",
+  "old": "Old",
+  "new": "New",
+  "selectRevision": "Select revision",
+  "loadingRevisions": "Loading revisions...",
+  "selectTwo": "Select two revisions to compare.",
+  "sameRevision": "Both sides are the same revision.",
+  "content": "Content"
+}

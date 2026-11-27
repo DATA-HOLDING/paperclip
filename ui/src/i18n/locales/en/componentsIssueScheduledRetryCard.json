@@ -1,0 +1,36 @@
+{
+  "badge": {
+    "continuation": "Continuation scheduled",
+    "retry": "Retry scheduled"
+  },
+  "titleAction": {
+    "continuation": "Automatic continuation",
+    "retry": "Automatic retry"
+  },
+  "titleSuffix": {
+    "dueNow": "due now",
+    "pending": "pending schedule"
+  },
+  "title": "{{action}} {{suffix}}",
+  "helper": {
+    "continuation": "Pulls continuation forward immediately",
+    "retry": "Pulls retry forward immediately"
+  },
+  "attempt": "Attempt {{attempt}}",
+  "replacesRun": "Replaces run",
+  "lastAttemptFailed": "Last attempt failed: ",
+  "willRetry": " Paperclip will retry automatically.",
+  "retrying": "Retrying…",
+  "alreadyPromoted": "Already promoted",
+  "promoted": "Promoted",
+  "retryNow": "Retry now",
+  "status": {
+    "promoting": "Promoting scheduled retry",
+    "alreadyPromoted": "Already promoted — run starting",
+    "promoted": "Promoted — run starting"
+  },
+  "error": {
+    "title": "Couldn't retry now",
+    "tryAgain": "Try again"
+  }
+}

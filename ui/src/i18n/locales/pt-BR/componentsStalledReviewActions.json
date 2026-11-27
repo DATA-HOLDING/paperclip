@@ -1,0 +1,16 @@
+{
+  "done": {
+    "approve": "Revisão aprovada — tarefa marcada como concluída.",
+    "requestChanges": "Alterações solicitadas — tarefa devolvida ao responsável.",
+    "sendBack": "Devolvida para o trabalho — tarefa devolvida ao responsável."
+  },
+  "approve": "Aprovar",
+  "error": {
+    "title": "Não foi possível registrar a decisão da revisão",
+    "body": "Tente novamente."
+  },
+  "sendBack": "Devolver para o trabalho",
+  "noteRequired": "Adicione uma nota para solicitar alterações",
+  "requestChanges": "Solicitar alterações",
+  "notePlaceholder": "Adicione uma nota — obrigatória para solicitar alterações, opcional nos outros casos…"
+}

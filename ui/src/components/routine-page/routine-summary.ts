@@ -1,5 +1,6 @@
 import type { RoutineDetail, RoutineTrigger } from "@paperclipai/shared";
 import { describeSchedule } from "@/components/ScheduleEditor";
+import { t } from "@/i18n";
 
 export type RoutineAutomationState = "active" | "paused" | "draft" | "archived";
 
@@ -11,10 +12,10 @@ export function routineAutomationState(routine: Pick<RoutineDetail, "status" | "
 }
 
 export const ROUTINE_STATE_LABELS: Record<RoutineAutomationState, string> = {
-  active: "Active",
-  paused: "Paused",
-  draft: "Draft",
-  archived: "Archived",
+  active: t("componentsRoutinePage.state.active"),
+  paused: t("componentsRoutinePage.state.paused"),
+  draft: t("componentsRoutinePage.state.draft"),
+  archived: t("componentsRoutinePage.state.archived"),
 };
 
 /** What a paused or draft routine skips; null when it would not run on its own anyway. */
@@ -28,9 +29,9 @@ export function routinePausedNotice({
   hasSchedule: boolean;
 }): string | null {
   if (state !== "paused" && state !== "draft") return null;
-  if (hasWebhooks && hasSchedule) return "Scheduled runs are skipped and webhook events are ignored until this routine is on.";
-  if (hasWebhooks) return "Webhook events are ignored until this routine is on. The sending app gets an error.";
-  if (hasSchedule) return "Scheduled runs are skipped until this routine is on.";
+  if (hasWebhooks && hasSchedule) return t("componentsRoutinePage.pausedNotice.both");
+  if (hasWebhooks) return t("componentsRoutinePage.pausedNotice.webhooks");
+  if (hasSchedule) return t("componentsRoutinePage.pausedNotice.schedule");
   return null;
 }
 
@@ -49,12 +50,12 @@ export function routineStatusDetail({
   now?: Date;
 }): string | null {
   if (state === "draft") return null;
-  if (state === "archived") return "No longer runs";
-  if (state === "paused") return "Run now still works";
-  if (nextRun) return `Next run ${formatNextRun(nextRun, now)}`;
-  if (hasEnabledWebhook) return "Runs when a webhook arrives";
-  if (hasStandingCheck) return "Checked each time the agent wakes up";
-  return "Only runs when you start it";
+  if (state === "archived") return t("componentsRoutinePage.statusDetail.archived");
+  if (state === "paused") return t("componentsRoutinePage.statusDetail.paused");
+  if (nextRun) return t("componentsRoutinePage.statusDetail.nextRun", { when: formatNextRun(nextRun, now) });
+  if (hasEnabledWebhook) return t("componentsRoutinePage.statusDetail.webhook");
+  if (hasStandingCheck) return t("componentsRoutinePage.statusDetail.standingCheck");
+  return t("componentsRoutinePage.statusDetail.manual");
 }
 
 export function nextScheduledRun(triggers: readonly RoutineTrigger[]): Date | null {
@@ -70,18 +71,18 @@ export function formatNextRun(date: Date, now: Date = new Date()): string {
   const time = date.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
   const startOfDay = (value: Date) => new Date(value.getFullYear(), value.getMonth(), value.getDate()).getTime();
   const days = Math.round((startOfDay(date) - startOfDay(now)) / 86_400_000);
-  if (days === 0) return `today at ${time}`;
-  if (days === 1) return `tomorrow at ${time}`;
+  if (days === 0) return t("componentsRoutinePage.nextRun.today", { time });
+  if (days === 1) return t("componentsRoutinePage.nextRun.tomorrow", { time });
   const day = date.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-  return `${day} at ${time}`;
+  return t("componentsRoutinePage.nextRun.onDay", { day, time });
 }
 
 export function describeScheduleTrigger(trigger: Pick<RoutineTrigger, "cronExpression">): string {
-  return trigger.cronExpression ? describeSchedule(trigger.cronExpression) : "Schedule";
+  return trigger.cronExpression ? describeSchedule(trigger.cronExpression) : t("componentsRoutinePage.scheduleFallback");
 }
 
 export function webhookTitle(trigger: Pick<RoutineTrigger, "signingMode" | "label">): string {
-  const kind = trigger.signingMode === "github_hmac" ? "GitHub webhook" : "Webhook";
+  const kind = trigger.signingMode === "github_hmac" ? t("componentsRoutinePage.webhook.github") : t("componentsRoutinePage.webhook.generic");
   return trigger.label ? `${kind} · ${trigger.label}` : kind;
 }
 
@@ -103,12 +104,12 @@ export function webhookHealth(trigger: RoutineTrigger): WebhookHealth {
 }
 
 export const WEBHOOK_HEALTH_LABELS: Record<WebhookHealth, string> = {
-  setup: "Setup unfinished",
-  testing: "Testing · events don’t run",
-  paused: "Paused",
-  rejected: "Key rejected",
-  receiving: "Receiving events",
-  waiting: "Waiting for the first event",
+  setup: t("componentsRoutinePage.webhookHealth.setup"),
+  testing: t("componentsRoutinePage.webhookHealth.testing"),
+  paused: t("componentsRoutinePage.webhookHealth.paused"),
+  rejected: t("componentsRoutinePage.webhookHealth.rejected"),
+  receiving: t("componentsRoutinePage.webhookHealth.receiving"),
+  waiting: t("componentsRoutinePage.webhookHealth.waiting"),
 };
 
 /** Which status the webhook dialog shows; each key has one entry in WEBHOOK_STATUS_COPY. */
@@ -134,31 +135,31 @@ export function webhookStatusKey(
 }
 
 export const WEBHOOK_STATUS_COPY: Record<WebhookStatusKey, { title: string; detail: string }> = {
-  setup: { title: "Waiting for a test event", detail: "Send one from your app. Test events never start the routine." },
+  setup: { title: t("componentsRoutinePage.webhookStatus.setup.title"), detail: t("componentsRoutinePage.webhookStatus.setup.detail") },
   setup_testing: {
-    title: "Waiting for a test event",
-    detail: "Send one from your app. It won’t start the routine. Real events are ignored until you finish testing.",
+    title: t("componentsRoutinePage.webhookStatus.setupTesting.title"),
+    detail: t("componentsRoutinePage.webhookStatus.setupTesting.detail"),
   },
   testing: {
-    title: "Testing",
-    detail: "Send an event from your app. It won’t start the routine. Real events are ignored until you finish testing.",
+    title: t("componentsRoutinePage.webhookStatus.testing.title"),
+    detail: t("componentsRoutinePage.webhookStatus.testing.detail"),
   },
-  waiting: { title: "Ready", detail: "The next event starts this routine." },
-  receiving: { title: "Receiving events", detail: "Each event starts this routine." },
+  waiting: { title: t("componentsRoutinePage.webhookStatus.waiting.title"), detail: t("componentsRoutinePage.webhookStatus.waiting.detail") },
+  receiving: { title: t("componentsRoutinePage.webhookStatus.receiving.title"), detail: t("componentsRoutinePage.webhookStatus.receiving.detail") },
   rejected: {
-    title: "The last event was rejected",
-    detail: "The key didn’t match. Replace the key, then paste the new one into your app.",
+    title: t("componentsRoutinePage.webhookStatus.rejected.title"),
+    detail: t("componentsRoutinePage.webhookStatus.rejected.detail"),
   },
   test_rejected: {
-    title: "The last event was rejected",
-    detail: "The key didn’t match. Replace the key, then paste the new one into your app.",
+    title: t("componentsRoutinePage.webhookStatus.rejected.title"),
+    detail: t("componentsRoutinePage.webhookStatus.rejected.detail"),
   },
-  test_received: { title: "Test event received", detail: "The connection works. No task was created." },
+  test_received: { title: t("componentsRoutinePage.webhookStatus.testReceived.title"), detail: t("componentsRoutinePage.webhookStatus.testReceived.detail") },
   ignored_while_paused: {
-    title: "Ignoring events while the routine is paused",
-    detail: "Turn the routine on to start it from this webhook. Until then the sending app gets an error.",
+    title: t("componentsRoutinePage.webhookStatus.ignoredWhilePaused.title"),
+    detail: t("componentsRoutinePage.webhookStatus.ignoredWhilePaused.detail"),
   },
-  paused: { title: "Paused", detail: "Events are ignored until you resume this webhook." },
+  paused: { title: t("componentsRoutinePage.webhookStatus.paused.title"), detail: t("componentsRoutinePage.webhookStatus.paused.detail") },
 };
 
 /** Plain-language lines for saved run rules that differ from the defaults. Empty for most routines. */
@@ -166,14 +167,14 @@ export function customRunRules(
   routine: Pick<RoutineDetail, "concurrencyPolicy" | "catchUpPolicy" | "activityGatePolicy" | "activityGateScope">,
 ): string[] {
   const rules: string[] = [];
-  if (routine.concurrencyPolicy === "always_enqueue") rules.push("Queues every run, even while one is still working");
-  if (routine.concurrencyPolicy === "skip_if_active") rules.push("Skips a run while one is still working");
-  if (routine.catchUpPolicy === "enqueue_missed_with_cap") rules.push("Catches up on runs missed while paused");
+  if (routine.concurrencyPolicy === "always_enqueue") rules.push(t("componentsRoutinePage.runRules.alwaysEnqueue"));
+  if (routine.concurrencyPolicy === "skip_if_active") rules.push(t("componentsRoutinePage.runRules.skipIfActive"));
+  if (routine.catchUpPolicy === "enqueue_missed_with_cap") rules.push(t("componentsRoutinePage.runRules.catchUp"));
   if (routine.activityGatePolicy === "require_external_activity") {
     rules.push(
       routine.activityGateScope === "project"
-        ? "Skips scheduled runs when nothing changed in its project"
-        : "Skips scheduled runs when nothing changed",
+        ? t("componentsRoutinePage.runRules.activityGateProject")
+        : t("componentsRoutinePage.runRules.activityGate"),
     );
   }
   return rules;

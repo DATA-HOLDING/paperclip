@@ -1,0 +1,669 @@
+{
+  "tabs": {
+    "pasteConfig": "Colar uma configuração",
+    "gateways": "Gateways",
+    "profiles": "Perfis",
+    "smokeLab": "Smoke Lab"
+  },
+  "common": {
+    "loading": "Carregando…",
+    "loadToolsAction": "carregar Ferramentas e acesso"
+  },
+  "advancedRoute": {
+    "checkAccessAction": "verificar seu acesso",
+    "deniedTitle": "A configuração avançada exige acesso de edição",
+    "deniedBody": "Esta área permite que editores da organização conectem ferramentas que não estão na galeria. Peça a um editor da organização se você precisar conectar um app novo, ou volte para",
+    "yourApps": "seus apps"
+  },
+  "mcpConfigHelp": {
+    "triggerAriaLabel": "Obter ajuda para criar uma configuração MCP",
+    "title": "Peça a um agente uma configuração MCP",
+    "description": "Não sabe a URL ou os cabeçalhos de que uma ferramenta precisa? Entregue este pedido a um agente e cole de volta o que ele devolver.",
+    "promptLabel": "Prompt a enviar",
+    "agentPromptLabel": "Obter uma configuração com um agente",
+    "agentPromptTitle": "Configuração MCP",
+    "agentPromptDescription": "Cole isto no seu agente para criar uma configuração MCP e depois cole a resposta JSON dele de volta no Paperclip."
+  },
+  "risk": {
+    "unknown": "desconhecido",
+    "low": "baixo",
+    "medium": "médio",
+    "high": "alto",
+    "critical": "crítico"
+  },
+  "capability": {
+    "readOnly": "somente leitura",
+    "write": "escrita",
+    "destructive": "destrutiva"
+  },
+  "decision": {
+    "allowed": "permitido",
+    "denied": "negado",
+    "block": "bloquear",
+    "requireApproval": "exigir aprovação",
+    "redacted": "ocultado",
+    "rateLimited": "limitado por taxa",
+    "deferred": "adiado",
+    "hidden": "oculto"
+  },
+  "relativeTime": {
+    "never": "nunca",
+    "justNow": "agora mesmo",
+    "inFuture": "em {{value}}",
+    "ago": "há {{value}}"
+  },
+  "pendingBackend": {
+    "trackedIn": "Acompanhado em {{identifier}} →"
+  },
+  "breadcrumbs": {
+    "company": "Organização",
+    "apps": "Apps",
+    "advancedSetup": "Configuração avançada",
+    "developerTools": "Ferramentas de desenvolvedor"
+  },
+  "toolsAccess": {
+    "selectOrganization": "Selecione uma organização para abrir a configuração avançada.",
+    "title": "Configuração avançada",
+    "advancedBadge": "Avançado",
+    "subtitle": "Para ferramentas que não estão na galeria. Você vai precisar de detalhes da documentação da ferramenta. A maioria das pessoas nunca precisa disto — se o app que você quer está na galeria,",
+    "connectThereInstead": "conecte-o por lá",
+    "developerSurfacePrompt": "Procurando a área de desenvolvedor?",
+    "openDeveloperTools": "Abrir ferramentas de desenvolvedor"
+  },
+  "smokeLab": {
+    "paths": {
+      "P1": {
+        "title": "HTTP remoto · OAuth",
+        "detail": "Fixture MCP HTTP atrás do provedor OAuth falso"
+      },
+      "P2": {
+        "title": "HTTP remoto · chave de API",
+        "detail": "Fixture MCP HTTP com uma chave bearer estática"
+      },
+      "P3": {
+        "title": "stdio local (modelo)",
+        "detail": "Fixture stdio pelo supervisor de runtime"
+      },
+      "P4": {
+        "title": "Integração de plugin",
+        "detail": "entrada de catálogo fornecida por plugin + fluxo de instalação"
+      },
+      "P5": {
+        "title": "Importação por configuração colada",
+        "detail": "importação avançada pela Configuração avançada"
+      },
+      "P6": {
+        "title": "Broker de token / gateway",
+        "detail": "token de conexão por execução, verificações de TTL + escopo"
+      },
+      "P7": {
+        "title": "Superfícies de governança",
+        "detail": "perfis, regras de perguntar antes, quarentena"
+      }
+    },
+    "stages": {
+      "connect": "Conectar",
+      "discover": "Descobrir catálogo",
+      "read": "Leitura permitida",
+      "write": "Escrita com pergunta antes",
+      "deny": "Chamada negada",
+      "quarantine": "Quarentena por mudança de esquema",
+      "revoke": "Revogar",
+      "audit": "Evidência de auditoria"
+    },
+    "status": {
+      "pass": "passou",
+      "fail": "falhou",
+      "skipped": "pulado",
+      "notRun": "não executado"
+    },
+    "toast": {
+      "started": "Serviços de smoke iniciados",
+      "startFailed": "Não foi possível iniciar os serviços",
+      "stopped": "Serviços de smoke parados",
+      "stopFailed": "Não foi possível parar os serviços",
+      "installed": "Apps de fixture instalados",
+      "alreadyPresent": "Os apps de fixture já existem",
+      "installFailed": "Não foi possível instalar as fixtures",
+      "reset": "Smoke Lab reiniciado",
+      "resetFailed": "Não foi possível reiniciar",
+      "runStarted": "Execução de smoke iniciada",
+      "runStartedBody": "O runner do navegador registra cada passo assim que ele termina.",
+      "runFailed": "Não foi possível iniciar uma execução"
+    },
+    "off": {
+      "title": "O Smoke Lab está desligado",
+      "bodyBefore": "O Smoke Lab é uma área experimental de desenvolvedor para exercitar os caminhos de integração contra fixtures locais determinísticas. Ligue",
+      "bodyAfter": "em Configurações → Experimental para ativá-lo."
+    },
+    "loading": "Carregando o Smoke Lab…",
+    "experimental": "Experimental",
+    "tutorialLink": "Tutorial prático",
+    "intro": "Exercite todo caminho de integração (P1–P7) de ponta a ponta contra fixtures locais determinísticas — um provedor OAuth falso e servidores MCP de loopback. Nada aqui toca um fornecedor real ou uma credencial real. Inicie os serviços, instale os apps de fixture e conduza o ciclo de vida governado numa execução de smoke no navegador. É novo aqui? Siga o",
+    "tutorialInline": "tutorial prático",
+    "services": {
+      "title": "Serviços de fixture",
+      "start": "Iniciar serviços",
+      "stop": "Parar",
+      "install": "Instalar apps de fixture",
+      "reset": "Reiniciar",
+      "notRunning": "parado",
+      "none": "Nenhum serviço informado. Inicie os serviços de fixture acima."
+    },
+    "demo": {
+      "title": "Credenciais de demonstração do OAuth falso",
+      "body": "Digite estas credenciais na página de consentimento real do provedor falso durante um smoke P1 (OAuth). Valores fixos de fixture — podem ser mostrados.",
+      "email": "e-mail: {{value}}",
+      "password": "senha: {{value}}"
+    },
+    "matrix": {
+      "title": "Matriz de integração",
+      "path": "Caminho",
+      "empty": "Nenhum passo registrado para a execução selecionada ainda. Rode um smoke no navegador para preencher a matriz."
+    },
+    "health": {
+      "green": "verde",
+      "amber": "amarelo",
+      "red": "vermelho"
+    },
+    "runs": {
+      "title": "Execuções",
+      "noRunsYet": "nenhuma execução ainda",
+      "failing": " · falhando: {{paths}}",
+      "runNow": "Rodar smoke no navegador agora",
+      "none": "Nenhuma execução registrada ainda.",
+      "selectRun": "Selecione uma execução para ver os passos.",
+      "startedFinished": "Iniciada {{started}} · concluída {{finished}}",
+      "noSteps": "Nenhum passo registrado para esta execução.",
+      "viewScreenshot": "Ver captura de tela"
+    }
+  },
+  "audit": {
+    "outcome": {
+      "allowed": "Permitido",
+      "blocked": "Bloqueado",
+      "askedFirst": "Perguntou antes",
+      "waiting": "Aguardando",
+      "failed": "Falhou",
+      "unknown": "Registrado"
+    },
+    "outcomeFilter": {
+      "all": "Todos os resultados"
+    },
+    "window": {
+      "allTime": "Todo o período",
+      "last1h": "Última 1 hora",
+      "last24h": "Últimas 24 horas",
+      "last7d": "Últimos 7 dias",
+      "last30d": "Últimos 30 dias"
+    },
+    "lifecycle": {
+      "someone": "Alguém",
+      "thisApp": "este app",
+      "connected": "{{who}} conectou {{app}}",
+      "paused": "{{who}} pausou {{app}}",
+      "resumed": "{{who}} retomou {{app}}",
+      "reconnected": "{{who}} reconectou {{app}}",
+      "disconnected": "{{who}} desconectou {{app}}",
+      "addedAllowed_one": "{{who}} adicionou {{count}} item permitido em {{app}}",
+      "addedAllowed_other": "{{who}} adicionou {{count}} itens permitidos em {{app}}",
+      "removedAllowed_one": "{{who}} removeu {{count}} item permitido em {{app}}",
+      "removedAllowed_other": "{{who}} removeu {{count}} itens permitidos em {{app}}",
+      "updatedAllowlist": "{{who}} atualizou a lista de permissões de {{app}}",
+      "actionsQuarantined_one": "{{count}} ação nova precisa de revisão em {{app}}",
+      "actionsQuarantined_other": "{{count}} ações novas precisam de revisão em {{app}}",
+      "updated": "{{who}} atualizou {{app}}"
+    },
+    "reason": {
+      "lifecycle": "Esta mudança de conexão foi registrada no histórico de atividade do app.",
+      "notInstalled": "As conexões permitidas não foram instaladas, então as ferramentas delas não entraram nesta execução.",
+      "allowed": "Permitido pelas suas regras.",
+      "rateLimited": "Bloqueado porque rodou vezes demais em pouco tempo.",
+      "secret": "Bloqueado para impedir que um valor sensível saísse.",
+      "blockedByRule": "Bloqueado por uma regra.",
+      "askedFirst": "Retido até alguém aprovar antes de rodar.",
+      "waiting": "Aguardando — o app de que precisa ainda não estava pronto.",
+      "failed": "O app pôde rodar, mas devolveu um erro.",
+      "recorded": "Registrado pelo Paperclip."
+    },
+    "row": {
+      "anAgent": "Um agente",
+      "anAction": "uma ação",
+      "runReceivedNoServers_one": "A execução de <0>{{who}}</0> recebeu 0 servidores MCP — <0>{{count}}</0> conexão permitida não instalada",
+      "runReceivedNoServers_other": "A execução de <0>{{who}}</0> recebeu 0 servidores MCP — <0>{{count}}</0> conexões permitidas não instaladas",
+      "usedAction": "<0>{{who}}</0> usou <0>{{action}}</0>",
+      "usedActionInApp": "<0>{{who}}</0> usou <0>{{action}}</0> em <0>{{app}}</0>",
+      "viewTask": "Ver tarefa",
+      "viewRun": "Ver execução",
+      "details": "Detalhes"
+    },
+    "detail": {
+      "actionName": "Nome da ação",
+      "reasonCode": "Código do motivo",
+      "actorType": "Tipo de ator",
+      "runId": "ID da execução",
+      "type": "Tipo",
+      "httpRequest": "Requisição HTTP",
+      "mcpMethod": "Método MCP",
+      "requestId": "ID da requisição",
+      "dispatched": "Enviada",
+      "httpStatus": "Status HTTP",
+      "contentType": "Tipo de conteúdo",
+      "responseSize": "Tamanho da resposta",
+      "upstreamId": "ID no upstream",
+      "deliveredServers": "Servidores MCP entregues",
+      "yes": "Sim",
+      "no": "Não",
+      "bytes_one": "{{count}} byte",
+      "bytes_other": "{{count}} bytes",
+      "unnamedConnection": "Conexão sem nome",
+      "notInstalled": "Não instalada",
+      "parametersRedacted": "Parâmetros (ocultados)"
+    },
+    "header": {
+      "title": "Atividade",
+      "description": "O que seus agentes de fato fizeram com seus apps, do mais recente ao mais antigo. Cada linha é uma decisão — permitido, bloqueado, perguntou antes, aguardando ou falhou."
+    },
+    "filters": {
+      "ariaLabel": "Filtros da auditoria de ferramentas",
+      "appPlaceholder": "App",
+      "allApps": "Todos os apps",
+      "allAgents": "Todos os agentes",
+      "searchPlaceholder": "Buscar atividade…",
+      "clear": "Limpar filtros"
+    },
+    "loadActivityAction": "carregar a atividade",
+    "empty": {
+      "filteredTitle": "Nenhuma atividade corresponde a estes filtros",
+      "filteredBody": "Tente um período maior ou outros filtros.",
+      "title": "Nada aqui ainda",
+      "body": "Assim que seus agentes começarem a usar apps conectados, o que eles fizerem aparece aqui."
+    },
+    "loadMore": "Carregar mais"
+  },
+  "gateways": {
+    "owner": {
+      "agent": "Agente {{id}}",
+      "boardUser": "Usuário do conselho {{id}}",
+      "board": "Conselho"
+    },
+    "scope": {
+      "project": "Projeto {{name}}",
+      "agent": "Agente {{name}}",
+      "issue": "Tarefa {{id}}",
+      "company": "Organização"
+    },
+    "allowedTools": {
+      "profileUnavailable": "Perfil indisponível",
+      "none": "Nenhuma ferramenta permitida",
+      "count_one": "{{count}} ferramenta permitida",
+      "count_other": "{{count}} ferramentas permitidas"
+    },
+    "toast": {
+      "created": "Gateway criado",
+      "notCreated": "O gateway não foi criado",
+      "tokenIssued": "Token emitido",
+      "tokenIssuedBody": "{{name}} foi criado. Copie agora; ele não será mostrado de novo.",
+      "tokenNotIssued": "O token não foi emitido",
+      "tokenRevoked": "Token revogado",
+      "tokenNotRevoked": "O token não foi revogado",
+      "copied": "Copiado para a área de transferência",
+      "copyFailed": "Falha ao copiar",
+      "pickProfile": "Escolha um perfil",
+      "pickProfileBody": "Um gateway precisa de um perfil de acesso antes de ser criado.",
+      "pickActions": "Escolha as ações do token",
+      "pickActionsBody": "Tokens de gateway precisam de pelo menos uma ação MCP permitida."
+    },
+    "loading": "Carregando gateways...",
+    "loadAction": "carregar os gateways",
+    "header": {
+      "title": "Gateways MCP nomeados",
+      "description": "Endpoints estáveis para clientes externos, com os mesmos perfis, regras e trilha de auditoria do acesso dos agentes às ferramentas."
+    },
+    "createGateway": "Criar gateway",
+    "cancel": "Cancelar",
+    "issueToken": "Emitir token",
+    "form": {
+      "name": "Nome do gateway",
+      "namePlaceholder": "Notebooks da engenharia",
+      "profile": "Perfil de acesso",
+      "loadingProfiles": "Carregando perfis...",
+      "chooseProfile": "Escolha um perfil",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Para quem é este endpoint e quando ele deve ser trocado.",
+      "noProfiles": "Crie um perfil de acesso antes de adicionar um gateway.",
+      "creating": "Criando..."
+    },
+    "empty": "Nenhum gateway nomeado ainda. Crie um aqui e depois emita um token para o cliente que vai se conectar a ele.",
+    "copy": {
+      "endpointLabel": "Endpoint do gateway",
+      "endpoint": "Copiar endpoint",
+      "tokenLabel": "Token bearer do gateway",
+      "token": "Copiar token"
+    },
+    "fields": {
+      "owner": "Dono",
+      "scope": "Escopo",
+      "allowedTools": "Ferramentas permitidas",
+      "allowedToolsVia": "{{allowed}} via {{profile}}",
+      "profileId": "Perfil {{id}}",
+      "lastActivity": "Última atividade",
+      "neverUsed": "Nunca usado"
+    },
+    "tokenForm": {
+      "name": "Nome do token",
+      "namePlaceholder": "MacBook da Dotta",
+      "clientLabel": "Rótulo do cliente",
+      "clientLabelPlaceholder": "Cursor no notebook do trabalho",
+      "ownerNote": "Nota do dono",
+      "ownerNotePlaceholder": "Quem é dono deste token e por que ele existe",
+      "expires": "Expira em",
+      "issuing": "Emitindo..."
+    },
+    "newTokenFor": "Novo token para {{name}}",
+    "tokens": {
+      "title": "Tokens",
+      "none": "Nenhum token emitido.",
+      "revoked": "revogado",
+      "expires": "expira",
+      "noExpiry": "sem validade",
+      "revokeAria": "Revogar {{name}}",
+      "revoke": "Revogar",
+      "confirmRevoke": "Revogar este token agora?",
+      "confirm": "Confirmar"
+    },
+    "snippets": {
+      "title": "Trechos para clientes",
+      "none": "Nenhum trecho disponível.",
+      "copyLabel": "Trecho de {{label}}",
+      "copy": "Copiar"
+    }
+  },
+  "pasteConfig": {
+    "keyFallback": "Chave",
+    "summary": {
+      "runsLocally": "Roda no seu espaço de trabalho",
+      "connectsOverWeb": "Conecta pela web",
+      "noKeys": "{{where}}  ·  não precisa de chaves",
+      "needsKeys_one": "{{where}}  ·  precisa de {{count}} chave",
+      "needsKeys_other": "{{where}}  ·  precisa de {{count}} chaves"
+    },
+    "oauth": {
+      "windowClosed": "A janela de login foi fechada. Tente novamente para concluir a conexão.",
+      "cancelled": "O login foi cancelado. Tente novamente quando estiver pronto.",
+      "failed": "O login falhou. Tente novamente para concluir a conexão.",
+      "manualClientRequired": "Este servidor exige os dados do cliente OAuth das configurações do provedor. Continue na configuração para adicioná-los."
+    },
+    "errors": {
+      "onlyRemote": "Só rascunhos HTTP remotos podem ser verificados e ativados a partir de uma configuração colada.",
+      "invalidJson": "Isso ainda não parece um JSON válido — cole o trecho inteiro, incluindo as chaves externas."
+    },
+    "importedApp": "App importado",
+    "intro": "Cole o trecho de configuração MCP do README da ferramenta e nós o transformamos numa configuração amigável.",
+    "justUrl": "Só tem uma URL?",
+    "browsePlanned": "Veja as conexões de apps planejadas",
+    "instead": "em vez disso.",
+    "textareaHint": "Cole uma configuração MCP — o trecho que um README manda copiar.",
+    "checking": "Verificando…",
+    "checkConfig": "Verificar configuração",
+    "checkHint": "Vamos lê-la e mostrar o que encontramos antes de salvar qualquer coisa.",
+    "actions": {
+      "checkConfig": "verificar a configuração",
+      "checkApp": "verificar o app",
+      "finishSetup": "concluir a configuração"
+    },
+    "noApps": "Não encontramos nenhum app nessa configuração. Confira se você colou o trecho inteiro.",
+    "foundApps_one": "Encontramos {{count}} app nessa configuração",
+    "foundApps_other": "Encontramos {{count}} apps nessa configuração",
+    "remoteHint": "Verificar um app remoto cria uma conexão em rascunho, guarda as substituições de cabeçalho como segredos do Paperclip e roda a descoberta de saúde e catálogo antes da ativação.",
+    "localHint": "Deixamos os nomes dos campos da configuração mais legíveis. Estas ferramentas que rodam no seu espaço de trabalho ficam como rascunho até um administrador associá-las a um modelo aprovado.",
+    "draft": {
+      "checkActions": "Verificar ações",
+      "connectionName": "Nome da conexão",
+      "replacementPlaceholder": "Cole o valor de substituição",
+      "keysDraftOnly": "As chaves desta configuração ficam só em rascunho até um administrador associá-las a um modelo aprovado.",
+      "noKeys": "Este não precisa de chaves."
+    },
+    "review": {
+      "title": "Revise as ações de {{name}}",
+      "passed": "As verificações de saúde e catálogo passaram. Toda ação descoberta começa permitida; você pode restringir o acesso depois da ativação.",
+      "activate": "Ativar {{enabled}} de {{total}}",
+      "readOnly": "Somente leitura",
+      "canMakeChanges": "Pode fazer alterações",
+      "activeForAll": "{{name}} está ativo para todos os agentes."
+    },
+    "group": {
+      "turnAllOn": "Ligar todas",
+      "turnAllOff": "Desligar todas",
+      "askFirstWhenEnabled": "Perguntar antes quando ativada"
+    }
+  },
+  "connections": {
+    "catalog": {
+      "titlePrefix": "Catálogo de ferramentas —",
+      "loadAction": "carregar o catálogo de ferramentas",
+      "empty": "Nenhuma ferramenta descoberta ainda. Use “Atualizar catálogo” para descobrir as ferramentas desta conexão."
+    },
+    "toast": {
+      "createFailed": "Não foi possível criar a conexão",
+      "probeFailed": "A sondagem falhou",
+      "activated": "Conexão ativada",
+      "activationFailed": "A ativação falhou"
+    },
+    "add": {
+      "title": "Adicionar aplicação",
+      "description": "Escolha uma aplicação existente ou crie uma no mesmo fluxo da conexão. As credenciais ficam como referências do cofre e a conexão é sondada antes da ativação.",
+      "stepApplication": "1 Aplicação",
+      "stepConnection": "2 Conexão",
+      "application": "Aplicação",
+      "useExisting": "Usar aplicação existente",
+      "createNew": "Criar aplicação nova",
+      "existingApplication": "Aplicação existente",
+      "selectApplication": "Selecione uma aplicação",
+      "newApplicationName": "Nome da aplicação nova",
+      "newApplicationPlaceholder": "ex.: Triagem do GitHub",
+      "typeInferred": "O tipo da aplicação é deduzido do transporte que você escolher em seguida.",
+      "willBeCreatedAs": "<0>{{name}}</0> será criada como {{type}}.",
+      "connectionName": "Nome da conexão",
+      "connectionNamePlaceholder": "ex.: GitHub de produção",
+      "transport": "Transporte",
+      "transportRemote": "HTTP remoto (sem processo local)",
+      "transportLocal": "stdio local (modelo aprovado)",
+      "endpointUrl": "URL do endpoint",
+      "commandTemplate": "Modelo de comando",
+      "selectTemplate": "Selecione um modelo aprovado",
+      "templatesOnly": "Só rodam modelos de comando aprovados pelo conselho. Comandos arbitrários nunca são aceitos.",
+      "credentialRefs": "Referências de credenciais",
+      "removeCredentialAria": "Remover a referência de credencial de {{name}}",
+      "selectSecret": "Selecione um segredo do cofre",
+      "headerPlaceholder": "Cabeçalho",
+      "headerAria": "Nome do cabeçalho",
+      "addButton": "Adicionar",
+      "vaultHintBefore": "Segredos em texto livre não são aceitos — escolha uma entrada do cofre; o Paperclip guarda só a referência",
+      "vaultHintAfter": "e a resolve quando o gateway a usa."
+    },
+    "probe": {
+      "probing": "Sondando a conexão…",
+      "action": "sondar a conexão",
+      "result": "Resultado da sondagem",
+      "toolsDiscovered": "ferramentas descobertas",
+      "latency": "latência da sondagem",
+      "quarantined": "em quarentena",
+      "latencyNote": "A latência da sondagem é uma única amostra de ida e volta. A latência p95 agregada do tráfego é acompanhada na aba Runtime quando a conexão estiver no ar."
+    },
+    "footer": {
+      "cancel": "Cancelar",
+      "continue": "Continuar",
+      "back": "Voltar",
+      "creatingDraft": "Criando rascunho…",
+      "createAndProbe": "Criar e sondar",
+      "probing": "Sondando…",
+      "reprobe": "Sondar de novo",
+      "activating": "Ativando…",
+      "activate": "Ativar"
+    }
+  },
+  "profiles": {
+    "selectorTypes": {
+      "toolName": "Nome da ferramenta",
+      "riskLevel": "Nível de risco",
+      "application": "Aplicação",
+      "connection": "Conexão",
+      "catalogEntry": "ID da entrada do catálogo"
+    },
+    "targetTypes": {
+      "company": "Organização",
+      "agent": "Agente",
+      "project": "Projeto",
+      "routine": "Rotina",
+      "issue": "ID da tarefa"
+    },
+    "entryFallback": {
+      "application": "aplicação",
+      "connection": "conexão",
+      "catalogEntry": "entrada do catálogo",
+      "riskLevel": "nível de risco",
+      "tool": "ferramenta"
+    },
+    "bindings": {
+      "unbound": "sem vínculo",
+      "boundToAgents_one": "vinculado a {{count}} agente",
+      "boundToAgents_other": "vinculado a {{count}} agentes",
+      "count_one": "{{count}} vínculo",
+      "count_other": "{{count}} vínculos"
+    },
+    "entry": {
+      "selector": "Seletor",
+      "effect": "Efeito",
+      "include": "Incluir",
+      "exclude": "Excluir",
+      "selectApplication": "Selecione uma aplicação",
+      "selectConnection": "Selecione uma conexão",
+      "toolNamePlaceholder": "ex.: send_email ou slack.list_*"
+    },
+    "effective": {
+      "pickAgent": "Escolha um agente para ver o que ele pode usar agora.",
+      "checking": "Verificando o acesso...",
+      "checkAction": "verificar o acesso deste agente",
+      "canUse": "Pode usar",
+      "toolCount_one": "{{count}} ferramenta",
+      "toolCount_other": "{{count}} ferramentas",
+      "noTools": "Este agente não pode usar nenhuma ferramenta de app agora.",
+      "accessProfiles": "Perfis de acesso",
+      "noProfiles": "Nenhum perfil ativo se aplica a este agente."
+    },
+    "organizationDefault": "Padrão da organização",
+    "source": {
+      "explicit": "explícito",
+      "defaultAllow": "permitido por padrão",
+      "pattern": "padrão {{label}}"
+    },
+    "allowList": {
+      "title": "Lista de permissões",
+      "toolCount_one": "{{count}} ferramenta",
+      "toolCount_other": "{{count}} ferramentas",
+      "explicitSuffix": " · {{count}} explícitas",
+      "patternSuffix": " · {{count}} por padrão de nome",
+      "defaultSuffix": " · {{count}} pelo padrão do perfil",
+      "resolving": "Resolvendo as ferramentas permitidas…",
+      "empty": "Nenhuma ferramenta resolvida para este perfil. Adicione um seletor de inclusão ou atualize o catálogo de ferramentas.",
+      "columns": {
+        "tool": "Ferramenta",
+        "application": "Aplicação",
+        "capabilities": "Capacidades",
+        "risk": "Risco",
+        "source": "Origem"
+      },
+      "patternNote": "As ferramentas marcadas com <0>padrão</0> entraram por um curinga, aplicação, conexão ou seletor de risco, e não pelo nome — revise-as quando o catálogo mudar."
+    },
+    "toast": {
+      "created": "Perfil criado",
+      "updated": "Perfil atualizado",
+      "entryAdded": "Entrada adicionada",
+      "entryRemoved": "Entrada removida",
+      "bound": "Perfil vinculado",
+      "bindingRemoved": "Vínculo removido",
+      "entryTargetRequired": "O alvo da entrada é obrigatório",
+      "bindingTargetRequired": "O alvo do vínculo é obrigatório",
+      "createFailed": "Não foi possível criar o perfil",
+      "updateFailed": "Não foi possível atualizar o perfil",
+      "addEntryFailed": "Não foi possível adicionar a entrada",
+      "removeEntryFailed": "Não foi possível remover a entrada",
+      "bindFailed": "Não foi possível vincular o perfil",
+      "unbindFailed": "Não foi possível remover o vínculo"
+    },
+    "loadAction": "carregar os perfis",
+    "header": {
+      "title": "Perfis de acesso",
+      "description": "Conjuntos reutilizáveis de aplicações, conexões e ferramentas permitidas, atribuíveis a agentes, projetos, rotinas ou tarefas."
+    },
+    "newProfile": "Novo perfil",
+    "empty": {
+      "message": "Nenhum perfil de acesso ainda",
+      "description": "Crie um perfil para agrupar seletores de ferramentas e depois vincule-o à organização ou a um agente específico."
+    },
+    "status": {
+      "active": "ativo",
+      "disabled": "desativado",
+      "archived": "arquivado",
+      "draft": "rascunho"
+    },
+    "defaultAction": {
+      "allow": "permitir",
+      "deny": "negar"
+    },
+    "effect": {
+      "include": "incluir",
+      "exclude": "excluir"
+    },
+    "rail": {
+      "summary_one": "{{count}} ferramenta · {{bindings}}",
+      "summary_other": "{{count}} ferramentas · {{bindings}}"
+    },
+    "dialog": {
+      "editTitle": "Editar perfil",
+      "description": "As regras do perfil são aplicadas pelo serviço de políticas do gateway de ferramentas.",
+      "name": "Nome",
+      "namePlaceholder": "Ferramentas de escrita da engenharia",
+      "key": "Chave",
+      "description_label": "Descrição",
+      "descriptionPlaceholder": "Contexto opcional para quem revisa.",
+      "defaultAction": "Ação padrão",
+      "denyUnlessIncluded": "Negar, salvo se incluído",
+      "allowUnlessExcluded": "Permitir, salvo se excluído",
+      "status": "Status",
+      "statusActive": "Ativo",
+      "statusDisabled": "Desativado",
+      "statusArchived": "Arquivado",
+      "save": "Salvar",
+      "creating": "Criando...",
+      "create": "Criar"
+    },
+    "cancel": "Cancelar",
+    "addEntry": "Adicionar entrada",
+    "bind": "Vincular",
+    "bindDialog": {
+      "title": "Vincular perfil",
+      "targetType": "Tipo de alvo",
+      "selectProject": "Selecione um projeto",
+      "selectRoutine": "Selecione uma rotina",
+      "priority": "Prioridade"
+    },
+    "detail": {
+      "defaultBadge": "padrão: {{action}}",
+      "updated": "atualizado",
+      "edit": "Editar",
+      "entry": "Entrada",
+      "targets": "Alvos",
+      "noTargets": "Nenhum alvo vinculado.",
+      "removeBindingAria": "Remover vínculo de {{type}}",
+      "effectiveScope": "Escopo efetivo",
+      "scopeDefault": "Padrão <0>{{action}}</0>",
+      "scopeToolsAllowed": "<0>{{tools}}</0> ferramentas permitidas",
+      "scopeIncludeExclude": "<0>{{include}}</0> inclusão / <0>{{exclude}}</0> exclusão",
+      "selectors": "Seletores",
+      "noSelectors": "Nenhum seletor.",
+      "deleteEntryAria": "Excluir entrada de {{type}}"
+    }
+  }
+}

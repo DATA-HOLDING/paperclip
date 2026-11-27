@@ -28,6 +28,7 @@ import {
 } from "./TaskChatComposerTakeoverContext";
 import { TaskChatRichInput } from "./TaskChatRichInput";
 import { matchSafeQuestionValidationPattern } from "./question-validation-pattern";
+import { t } from "@/i18n";
 
 type Question = PaperclipQuestionSet["questions"][number];
 type Answer = PaperclipQuestionResponse["answers"][string];
@@ -78,27 +79,27 @@ function answerError(
   answer: Answer | undefined,
 ): string | null {
   if (question.required && !answerHasValue(answer))
-    return "This question is required.";
+    return t("componentsTaskChatQuestionForm.validation.required");
   if (
     question.answerMode !== "text" &&
     answer?.customText !== undefined &&
     !answer.customText.trim()
   ) {
-    return "Enter a custom answer.";
+    return t("componentsTaskChatQuestionForm.validation.customAnswer");
   }
   const value =
     question.answerMode === "text" ? answer?.text : answer?.customText;
   if (value == null || value.length === 0) return null;
   const validation = question.textValidation;
   if (validation?.minLength != null && value.length < validation.minLength)
-    return `Enter at least ${validation.minLength} characters.`;
+    return t("componentsTaskChatQuestionForm.validation.minLength", { count: validation.minLength });
   if (validation?.maxLength != null && value.length > validation.maxLength)
-    return `Enter no more than ${validation.maxLength} characters.`;
+    return t("componentsTaskChatQuestionForm.validation.maxLength", { count: validation.maxLength });
   if (validation?.pattern) {
     const result = matchSafeQuestionValidationPattern(validation.pattern, value);
     if (result === "unsupported")
-      return "This question has an unsupported validation pattern.";
-    if (result === "no_match") return "Use the requested format.";
+      return t("componentsTaskChatQuestionForm.validation.unsupportedPattern");
+    if (result === "no_match") return t("componentsTaskChatQuestionForm.validation.noMatch");
   }
   if (
     validation?.inputType === "number" ||
@@ -109,12 +110,12 @@ function answerError(
       !Number.isFinite(numeric) ||
       (validation.inputType === "integer" && !Number.isInteger(numeric))
     ) {
-      return `Enter a valid ${validation.inputType}.`;
+      return validation.inputType === "integer" ? t("componentsTaskChatQuestionForm.validation.validInteger") : t("componentsTaskChatQuestionForm.validation.validNumber");
     }
     if (validation.minimum != null && numeric < validation.minimum)
-      return `Enter a value of at least ${validation.minimum}.`;
+      return t("componentsTaskChatQuestionForm.validation.minimum", { value: validation.minimum });
     if (validation.maximum != null && numeric > validation.maximum)
-      return `Enter a value no greater than ${validation.maximum}.`;
+      return t("componentsTaskChatQuestionForm.validation.maximum", { value: validation.maximum });
   }
   return null;
 }
@@ -180,7 +181,7 @@ function SelectOption({
           <span>{label}</span>
           {recommended ? (
             <span className="rounded-sm bg-background/70 px-1.5 py-0.5 text-(length:--text-micro) font-medium text-muted-foreground">
-              Recommended
+              {t("componentsTaskChatQuestionForm.recommended")}
             </span>
           ) : null}
         </span>
@@ -228,7 +229,7 @@ export function QuestionResponseSummary({
               </span>
             </dt>
             <dd className="mt-0.5 text-foreground">
-              {values.length > 0 ? values.join(", ") : "No answer"}
+              {values.length > 0 ? values.join(", ") : t("componentsTaskChatQuestionForm.noAnswer")}
             </dd>
           </div>
         );
@@ -336,7 +337,7 @@ function QuestionFormForRequest({
   if (!question)
     return (
       <p className="text-sm text-muted-foreground">
-        No answerable questions were provided.
+        {t("componentsTaskChatQuestionForm.noAnswerableQuestions")}
       </p>
     );
   const answer = answers[question.id] ?? {};
@@ -413,7 +414,7 @@ function QuestionFormForRequest({
       // question and say so rather than dropping the send.
       setPage(invalidIndex);
       setError({
-        message: `Question ${invalidIndex + 1} needs an answer before you can send.`,
+        message: t("componentsTaskChatQuestionForm.missingAnswer", { number: invalidIndex + 1 }),
         fromMissingAnswer: true,
       });
       return;
@@ -432,7 +433,7 @@ function QuestionFormForRequest({
         message:
           cause instanceof Error
             ? cause.message
-            : "The answers could not be submitted.",
+            : t("componentsTaskChatQuestionForm.submitFailed"),
       });
     } finally {
       setWorking(null);
@@ -451,7 +452,7 @@ function QuestionFormForRequest({
         message:
           cause instanceof Error
             ? cause.message
-            : "The questions could not be cancelled.",
+            : t("componentsTaskChatQuestionForm.cancelFailed"),
       });
     } finally {
       setWorking(null);
@@ -481,26 +482,26 @@ function QuestionFormForRequest({
     questionSet.questions.length > 1 ? (
       <nav
         className="flex shrink-0 items-center gap-1"
-        aria-label="Question pagination"
+        aria-label={t("componentsTaskChatQuestionForm.pagination.label")}
       >
         <Button
           type="button"
           size="icon-xs"
           variant="ghost"
-          aria-label="Previous question"
+          aria-label={t("componentsTaskChatQuestionForm.pagination.previous")}
           disabled={disabled || working != null || page === 0}
           onClick={() => setPage((current) => current - 1)}
         >
           <ChevronLeft aria-hidden />
         </Button>
         <span className="min-w-10 text-center tabular-nums">
-          {page + 1} of {questionSet.questions.length}
+          {t("componentsTaskChatQuestionForm.pagination.position", { page: page + 1, total: questionSet.questions.length })}
         </span>
         <Button
           type="button"
           size="icon-xs"
           variant="ghost"
-          aria-label="Next question"
+          aria-label={t("componentsTaskChatQuestionForm.pagination.next")}
           // The arrows browse; they do not validate. A send that finds an
           // earlier answer missing returns to that question (see submit).
           disabled={disabled || working != null || isLastPage}
@@ -532,7 +533,7 @@ function QuestionFormForRequest({
       {questionSet.description ? (
         <div
           role="region"
-          aria-label="Question context"
+          aria-label={t("componentsTaskChatQuestionForm.context")}
           tabIndex={0}
           className={cn("max-h-96 overflow-auto text-muted-foreground", decision ? "text-xs" : "mb-3 text-sm")}
         >
@@ -541,7 +542,7 @@ function QuestionFormForRequest({
       ) : null}
       {question.answerMode === "text" && !decision ? (
         <div className="mb-2 flex items-center gap-3 text-xs text-muted-foreground">
-          {question.answerMode === "text" ? <span>Write an answer</span> : null}
+          {question.answerMode === "text" ? <span>{t("componentsTaskChatQuestionForm.writeAnAnswer")}</span> : null}
         </div>
       ) : null}
       {pagination ? (
@@ -566,7 +567,7 @@ function QuestionFormForRequest({
             {decision && questionSet.questions.length > 1 ? <span>{page + 1}.</span> : null}
             <MarkdownBody mediaMode="reference" linkIssueReferences={false} className={cn("min-w-0", decision && "text-(length:--text-compact)")}>{question.prompt}</MarkdownBody>
           </div>
-          {decision ? <span aria-hidden className="text-muted-foreground"> · {question.required ? "Required" : "Optional"}</span> : null}
+          {decision ? <span aria-hidden className="text-muted-foreground"> · {question.required ? t("componentsTaskChatQuestionForm.required") : t("componentsTaskChatQuestionForm.optional")}</span> : null}
         </div>
         {question.helpText ? (
           <p className="mt-1 text-xs leading-4 text-muted-foreground">
@@ -583,7 +584,7 @@ function QuestionFormForRequest({
             value={answer.text ?? ""}
             disabled={disabled || working != null}
             onChange={(value) => updateAnswer({ text: value })}
-            placeholder={decision ? "Add context for the agent…" : "Write your answer"}
+            placeholder={decision ? t("componentsTaskChatQuestionForm.addContextPlaceholder") : t("componentsTaskChatQuestionForm.writeYourAnswerPlaceholder")}
             imageUploadHandler={imageUploadHandler}
             mentions={mentions}
             autoFocus={!decision}
@@ -591,7 +592,7 @@ function QuestionFormForRequest({
             onSubmit={() => {
               progressOrSubmit();
             }}
-            attachAriaLabel={`Attach image to answer for ${question.prompt}`}
+            attachAriaLabel={t("componentsTaskChatQuestionForm.attachImage", { prompt: question.prompt })}
           />
         </div>
       ) : (
@@ -614,8 +615,8 @@ function QuestionFormForRequest({
                     [question.id]: event.target.value,
                   }))
                 }
-                placeholder="Filter choices"
-                aria-label={`Filter choices for ${question.prompt}`}
+                placeholder={t("componentsTaskChatQuestionForm.filterChoices")}
+                aria-label={t("componentsTaskChatQuestionForm.filterChoicesFor", { prompt: question.prompt })}
                 className="pl-8"
               />
             </label>
@@ -637,7 +638,7 @@ function QuestionFormForRequest({
             <div className="space-y-1.5">
               <SelectOption
                 id={`${id}-${question.id}-custom`}
-                label={question.customAnswer?.label ?? "Other"}
+                label={question.customAnswer?.label ?? t("componentsTaskChatQuestionForm.other")}
                 selected={isCustomActive}
                 multiple={multiple}
                 disabled={disabled || working != null}
@@ -650,7 +651,7 @@ function QuestionFormForRequest({
                   testId="question-other-answer-composer"
                   value={answer.customText ?? ""}
                   placeholder={
-                    question.customAnswer?.placeholder ?? "Type your answer"
+                    question.customAnswer?.placeholder ?? t("componentsTaskChatQuestionForm.typeYourAnswer")
                   }
                   disabled={disabled || working != null}
                   onChange={(value) =>
@@ -663,7 +664,7 @@ function QuestionFormForRequest({
                   onSubmit={() => {
                     progressOrSubmit();
                   }}
-                  attachAriaLabel={`Attach image to other answer for ${question.prompt}`}
+                  attachAriaLabel={t("componentsTaskChatQuestionForm.attachImageOther", { prompt: question.prompt })}
                 />
               ) : null}
             </div>
@@ -719,7 +720,7 @@ function QuestionFormForRequest({
               {working === "cancel" ? (
                 <Loader2 aria-hidden className="h-4 w-4 animate-spin" />
               ) : null}{" "}
-              Cancel
+              {t("componentsTaskChatQuestionForm.cancel")}
             </Button>
           ) : null}
           {!question.required ? (
@@ -730,7 +731,7 @@ function QuestionFormForRequest({
               disabled={busy}
               onClick={skipQuestion}
             >
-              Skip
+              {t("componentsTaskChatQuestionForm.skip")}
             </Button>
           ) : null}
           <Button
@@ -742,7 +743,7 @@ function QuestionFormForRequest({
             {working === "submit" ? (
               <Loader2 aria-hidden className="h-4 w-4 animate-spin" />
             ) : null}
-            {isLastPage ? (questionSet.submitLabel ?? "Submit answers") : "Next"}
+            {isLastPage ? (questionSet.submitLabel ?? t("componentsTaskChatQuestionForm.submitAnswers")) : t("componentsTaskChatQuestionForm.next")}
           </Button>
         </div>
       </DecisionCardFooter>

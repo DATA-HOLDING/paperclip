@@ -1,0 +1,123 @@
+{
+  "errors": {
+    "incompleteState": "O estado do onboarding está incompleto. Reinicie o onboarding e tente novamente.",
+    "resolveEnvironment": "Não foi possível resolver o ambiente de execução.",
+    "loadEnvironmentSettings": "Não foi possível carregar as configurações do ambiente de execução. Tente a configuração novamente.",
+    "loadRunnerAvailability": "Não foi possível carregar a disponibilidade do runner. Tente a configuração novamente.",
+    "runnerAvailabilityMissing": "A disponibilidade do runner está ausente para este harness. Tente a configuração novamente.",
+    "configurationChanged": "A configuração mudou durante o setup. Conecte novamente para testar as configurações atuais.",
+    "noAdapters": "Nenhum adaptador de agente está disponível nesta instância.",
+    "createSetup": "Não foi possível criar a configuração do agente.",
+    "switchedOrganization": "Organização criada, mas o onboarding mudou para outra organização.",
+    "openChat": "Não foi possível abrir seu chat. Tente novamente.",
+    "storeApiKeyDetail": "Não foi possível guardar a chave de API: {{details}}",
+    "storeApiKey": "Não foi possível guardar a chave de API.",
+    "chooseSubscription": "Escolha uma conta de assinatura em Conexões e tente a configuração novamente.",
+    "saveSetup": "Não foi possível salvar a configuração do agente.",
+    "selectOrganizationFirst": "Crie ou selecione uma organização antes de testar o ambiente do adaptador.",
+    "loadEnvironmentForTest": "Não foi possível carregar as configurações de ambiente para definir em qual ambiente testar. Tente o teste novamente.",
+    "confirmCodexRunner": "Não foi possível confirmar a disponibilidade do runner do Codex neste ambiente. Tente a configuração novamente.",
+    "platformQualification": "Não foi possível confirmar a qualificação de plataforma do ambiente. Tente a sondagem de conexão novamente.",
+    "defaultRunner": "Não foi possível confirmar o runner padrão do ambiente. Tente a configuração novamente.",
+    "environmentTestFailed": "Falha no teste do ambiente do adaptador",
+    "createOrganization": "Não foi possível criar a organização",
+    "chooseGatewayModel": "Escolha um modelo para esta conexão de gateway antes de conectar seu agente.",
+    "opencodeExplicitModel": "O OpenCode exige um modelo explícito no formato provedor/modelo.",
+    "opencodeLoadModels": "Não foi possível carregar os modelos do OpenCode.",
+    "opencodeLoading": "Os modelos do OpenCode ainda estão carregando. Aguarde e tente novamente.",
+    "opencodeNoModels": "Nenhum modelo do OpenCode encontrado. Execute `opencode models` e autentique os provedores.",
+    "opencodeModelUnavailable": "O modelo do OpenCode configurado está indisponível: {{model}}",
+    "chooseApiAccount": "Escolha uma conta de API conectada antes de continuar.",
+    "chooseApiAccountOrKey": "Escolha uma conta de API conectada ou informe uma nova chave de API para substituir a conta conectada deste agente.",
+    "cloudConnectFailed": "O Paperclip não conseguiu terminar de conectar este agente. Tente conectar novamente.",
+    "environmentTestFailedFix": "O teste do ambiente falhou. Corrija as verificações apontadas antes de contratar este agente.",
+    "noAuthentication": "Nenhuma autenticação válida foi encontrada. Corrija as verificações apontadas antes de contratar este agente.",
+    "createAgent": "Não foi possível criar o agente",
+    "unsetRetryStillFailing": "Tentamos de novo sem ANTHROPIC_API_KEY na configuração do adaptador, mas o teste do ambiente continua falhando.",
+    "unsetFailed": "Não foi possível remover ANTHROPIC_API_KEY e tentar novamente."
+  },
+  "progress": {
+    "creatingAgent": "Criando seu agente…",
+    "testingConnection": "Testando a conexão…",
+    "connecting": "Conectando…"
+  },
+  "cta": {
+    "retry": "Tentar novamente",
+    "retrySignIn": "Tentar entrar novamente",
+    "testing": "Testando…",
+    "submitCode": "Enviar código",
+    "waitingForAuth": "Aguardando autenticação…",
+    "waitingForCode": "Aguardando código…",
+    "connecting": "Conectando",
+    "signInTo": "Entrar em {{source}}",
+    "connect": "Conectar",
+    "next": "Avançar"
+  },
+  "heading": {
+    "organizationName": "Qual é o nome da sua organização?",
+    "createAgent": "Crie seu primeiro agente",
+    "connectModel": "Conecte um modelo",
+    "getStarted": "Vamos começar..."
+  },
+  "lede": {
+    "connect": "O Paperclip funciona com a sua assinatura ou com chaves de API.",
+    "yourFirstAgent": "Seu primeiro agente",
+    "ready": "{{name}} está pronto para trabalhar!"
+  },
+  "company": {
+    "nameLabel": "Nome",
+    "namePlaceholder": "ex.: Northwind Labs"
+  },
+  "agent": {
+    "nameLabel": "Nome do agente",
+    "namePlaceholder": "ex.: Chefe de gabinete"
+  },
+  "connect": {
+    "modelSource": "Origem do modelo",
+    "noRecommended": "Claude e Codex estão indisponíveis nesta instância. Peça a um administrador para ativar um deles ou saia da configuração e escolha Novo agente na página Agentes para usar outro provedor.",
+    "savedKeys_one": "{{count}} chave de API salva disponível.",
+    "existingConnection": "Uma conexão de provedor existente está disponível.",
+    "chooseModelForConnection": "Escolha um modelo para a sua conexão salva",
+    "chooseSavedKey": "Escolha uma chave de API salva ou informe uma nova",
+    "provideKey": "Informe sua chave de API do {{source}} para conectar",
+    "apiKey": "Chave de API",
+    "apiKeyPlaceholder": "Informe a chave de API aqui",
+    "defaultAccount": "Esta será sua conta padrão do {{source}}.",
+    "gatewayLoadFailed": "Não foi possível carregar sua conexão de gateway salva. Tente novamente para escolher um modelo e conectar seu agente.",
+    "retryLoading": "Tentar carregar a conexão novamente",
+    "loadingGateway": "Carregando sua conexão de gateway salva…",
+    "gatewaySaved": "Conexão de gateway salva. Escolha um modelo e depois Conectar para testá-la e terminar de configurar seu agente.",
+    "useDifferentKey": "Usar outra chave de API",
+    "savedKeys_other": "{{count}} chaves de API salvas disponíveis.",
+    "noBrowserSignIn": "Este ambiente não permite entrar pelo navegador. Volte para usar uma chave de API ou escolha outro modelo.",
+    "advanced": "Avançado",
+    "gatewayUrl": "URL do gateway",
+    "webhookUrl": "URL do webhook"
+  },
+  "env": {
+    "retrySetup": "Tentar a configuração novamente",
+    "passed": "Aprovado",
+    "unsetHint": {
+      "before": "O Claude falhou enquanto",
+      "after": "está definida. Você pode removê-la nesta configuração do adaptador e tentar a sondagem novamente."
+    },
+    "retrying": "Tentando novamente...",
+    "unsetKey": "Remover ANTHROPIC_API_KEY",
+    "manualDebug": "Depuração manual",
+    "authFailsSubscription": "Se a autenticação falhar, conecte sua assinatura no navegador acima ou use uma chave de API.",
+    "authFails": {
+      "set": "Se a autenticação falhar, defina",
+      "orRun": "no ambiente ou execute"
+    },
+    "loginRequired": "Se for preciso entrar, conecte o provedor acima e tente novamente.",
+    "warnings": "Avisos",
+    "failed": "Falhou",
+    "hint": "Dica: {{hint}}"
+  },
+  "footer": {
+    "continue": "Continuar",
+    "getStarted": "Começar",
+    "creating": "Criando...",
+    "launching": "Iniciando..."
+  }
+}

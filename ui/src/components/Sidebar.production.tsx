@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { isWaitingToStart } from "../lib/agent-queue-wait";
 import {
   Inbox,
@@ -105,9 +106,9 @@ export function Sidebar() {
   // Tasks and Inbox directly beneath it (this shell has no Chat row), and
   // Dashboard moves down into Work.
   const { enabled: responsibilitiesHome } = useResponsibilitiesEnabled();
-  const tasksItem = <SidebarNavItem to="/issues" label="Tasks" icon={CircleDot} />;
+  const tasksItem = <SidebarNavItem to="/issues" label={t("componentsSidebar.nav.tasks")} icon={CircleDot} />;
   // The classic dashboard. With Responsibilities as home that page takes the "Dashboard" name and this row is not shown.
-  const dashboardItem = <SidebarNavItem to="/dashboard" label="Dashboard" icon={LayoutDashboard} liveCount={liveRunCount} />;
+  const dashboardItem = <SidebarNavItem to="/dashboard" label={t("componentsSidebar.nav.dashboard")} icon={LayoutDashboard} liveCount={liveRunCount} />;
 
   const pluginContext = {
     companyId: selectedCompanyId,
@@ -134,49 +135,49 @@ export function Sidebar() {
             className="flex items-center gap-2.5 mx-2 rounded-lg px-2 py-1.5 pointer-coarse:py-1 text-(length:--text-compact) font-medium text-foreground/80 hover:bg-accent/50 hover:text-foreground transition-colors"
           >
             <SquarePen className="h-4 w-4 shrink-0" />
-            <span className="truncate">New Task</span>
+            <span className="truncate">{t("componentsSidebar.newTask")}</span>
           </button>
-          <SidebarNavItem to="/search" label="Search" icon={Search} />
+          <SidebarNavItem to="/search" label={t("componentsSidebar.nav.search")} icon={Search} />
           {responsibilitiesHome ? (
             <>
-              <SidebarNavItem to="/responsibilities" label="Dashboard" icon={Compass} />
+              <SidebarNavItem to="/responsibilities" label={t("componentsSidebar.nav.dashboard")} icon={Compass} />
               {tasksItem}
             </>
           ) : dashboardItem}
           <SidebarNavItem
             to="/inbox"
-            label="Inbox"
+            label={t("componentsSidebar.nav.inbox")}
             icon={Inbox}
             badge={inboxBadge.inbox}
-            badgeLabel="unread"
+            badgeLabel={t("componentsSidebar.badge.unread")}
             badgeTone={inboxBadge.failedRuns > 0 ? "danger" : "default"}
             alert={inboxBadge.failedRuns > 0}
           />
           {showDecisions ? (
             <SidebarNavItem
               to="/decisions"
-              label="Decisions"
+              label={t("componentsSidebar.nav.decisions")}
               icon={ListChecks}
               badge={attentionCount}
-              badgeLabel="decisions"
+              badgeLabel={t("componentsSidebar.badge.decisions")}
             />
           ) : null}
           {showStatusCards ? (
-            <SidebarNavItem to="/status" label="Status" icon={LayoutGrid} textBadge="beta" />
+            <SidebarNavItem to="/status" label={t("componentsSidebar.nav.status")} icon={LayoutGrid} textBadge="beta" />
           ) : null}
           {conferenceRoomChatEnabled ? (
-            <SidebarNavItem to="/board-chat" label="Conference Room" icon={MessagesSquare} />
+            <SidebarNavItem to="/board-chat" label={t("componentsSidebar.nav.conferenceRoom")} icon={MessagesSquare} />
           ) : null}
         </div>
 
-        <SidebarSection label="Work" collapsible={{ open: workOpen, onOpenChange: setWorkOpen }}>
+        <SidebarSection label={t("componentsSidebar.nav.work")} collapsible={{ open: workOpen, onOpenChange: setWorkOpen }}>
           {responsibilitiesHome ? null : tasksItem}
           {showCases ? (
-            <SidebarNavItem to="/cases" label="Cases" icon={Layers} textBadge="beta" />
+            <SidebarNavItem to="/cases" label={t("componentsSidebar.nav.cases")} icon={Layers} textBadge="beta" />
           ) : null}
-          <SidebarNavItem to="/routines" label="Routines" icon={Repeat} />
+          <SidebarNavItem to="/routines" label={t("componentsSidebar.nav.routines")} icon={Repeat} />
           {showGoalsLink ? (
-            <SidebarNavItem to="/goals" label="Goals" icon={Target} />
+            <SidebarNavItem to="/goals" label={t("componentsSidebar.nav.goals")} icon={Target} />
           ) : goalsLinkPending ? (
             <div
               data-testid="sidebar-goals-placeholder"
@@ -184,14 +185,14 @@ export function Sidebar() {
               aria-hidden="true"
             />
           ) : null}
-          <SidebarNavItem to="/artifacts" label="Artifacts" icon={Package} />
-          <SidebarNavItem to="/skills" label="Skills" icon={Boxes} />
+          <SidebarNavItem to="/artifacts" label={t("componentsSidebar.nav.artifacts")} icon={Package} />
+          <SidebarNavItem to="/skills" label={t("componentsSidebar.nav.skills")} icon={Boxes} />
           {showWorkspacesLink ? (
-            <SidebarNavItem to="/workspaces" label="Workspaces" icon={GitBranch} />
+            <SidebarNavItem to="/workspaces" label={t("componentsSidebar.nav.workspaces")} icon={GitBranch} />
           ) : null}
           {streamlined ? (
             <>
-              <SidebarNavItem to="/projects" label="Projects" icon={FolderOpen} />
+              <SidebarNavItem to="/projects" label={t("componentsSidebar.nav.projects")} icon={FolderOpen} />
               <SidebarStarredProjects />
             </>
           ) : null}
@@ -215,15 +216,15 @@ export function Sidebar() {
 
         <SidebarAgents streamlined={streamlined} />
 
-        <SidebarSection label="Company" collapsible={{ open: companyOpen, onOpenChange: setCompanyOpen }}>
-          <SidebarNavItem to="/org" label="Org" icon={Network} />
-          {showApps ? <SidebarNavItem to="/apps" label="Connectors" icon={Unplug} /> : null}
-          <SidebarNavItem to="/timeline" label="Timeline" icon={GanttChartSquare} />
-          <SidebarNavItem to="/costs" label="Costs" icon={DollarSign} />
+        <SidebarSection label={t("componentsSidebar.nav.company")} collapsible={{ open: companyOpen, onOpenChange: setCompanyOpen }}>
+          <SidebarNavItem to="/org" label={t("componentsSidebar.nav.org")} icon={Network} />
+          {showApps ? <SidebarNavItem to="/apps" label={t("componentsSidebar.nav.connectors")} icon={Unplug} /> : null}
+          <SidebarNavItem to="/timeline" label={t("componentsSidebar.nav.timeline")} icon={GanttChartSquare} />
+          <SidebarNavItem to="/costs" label={t("componentsSidebar.nav.costs")} icon={DollarSign} />
           {/* One entry — /audit merged into the rich Activity feed (PAP-16302). */}
-          <SidebarNavItem to="/activity" label="Activity" icon={History} />
-          <SidebarNavItem to="/activity/commentary" label="Commentary" icon={History} />
-          <SidebarNavItem to="/company/settings" label="Settings" icon={Settings} />
+          <SidebarNavItem to="/activity" label={t("componentsSidebar.nav.activity")} icon={History} />
+          <SidebarNavItem to="/activity/commentary" label={t("componentsSidebar.nav.commentary")} icon={History} />
+          <SidebarNavItem to="/company/settings" label={t("componentsSidebar.nav.settings")} icon={Settings} />
         </SidebarSection>
 
         <PluginSlotOutlet

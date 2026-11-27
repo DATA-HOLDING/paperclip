@@ -1,0 +1,52 @@
+{
+  "cycling": {
+    "queued": {
+      "wakingUp": "Heartbeat disparado, acordando...",
+      "initializing": "Inicializando...",
+      "gettingReady": "Preparando..."
+    },
+    "running": {
+      "working": "Trabalhando em uma resposta...",
+      "reading": "Lendo a conversa...",
+      "thinking": "Pensando no plano...",
+      "drafting": "Redigindo uma resposta...",
+      "stillWorking": "Ainda trabalhando...",
+      "almostThere": "Quase lá..."
+    },
+    "waiting": {
+      "waiting": "Aguardando para acordar...",
+      "pending": "Heartbeat pendente...",
+      "soon": "Deve acordar em breve..."
+    }
+  },
+  "status": {
+    "succeeded": "{{name}} terminou",
+    "failed": "{{name}} encontrou um erro",
+    "cancelled": "A execução de {{name}} foi cancelada",
+    "timedOut": "A execução de {{name}} excedeu o tempo limite",
+    "thinking": "{{name}} está pensando..."
+  },
+  "loading": "Carregando conversa...",
+  "discussMessage": "Quero discutir o plano antes de você começar.",
+  "startMessage": "Sim, comece o plano de contratação!",
+  "you": "Você",
+  "planDetected": "Plano de contratação detectado",
+  "planReady": {
+    "title": "{{name}} preparou um plano de contratação",
+    "description": "Revise, faça ajustes e depois aprove.",
+    "reviewButton": "Revisar plano"
+  },
+  "placeholder": {
+    "revise": "Peça a {{name}} para revisar o plano...",
+    "message": "Mensagem para {{name}}..."
+  },
+  "welcome": {
+    "greeting": "Olá! Obrigado por me trazer para liderar",
+    "mission": "Nossa missão é:",
+    "ready": "Estou pronto para montar um plano de quem devemos contratar. Quer que eu comece?",
+    "discussChip": "Vamos discutir primeiro",
+    "startChip": "Sim, pode começar!",
+    "wakingUp": "{{name}} está acordando...",
+    "composing": "{{name}} está escrevendo uma mensagem..."
+  }
+}

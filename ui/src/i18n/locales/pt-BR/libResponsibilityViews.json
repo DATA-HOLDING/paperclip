@@ -1,0 +1,125 @@
+{
+  "dashboardViews": {
+    "outline": "Resumo",
+    "outlineV2": "Resumo v2",
+    "board": "Quadro",
+    "exceptions": "Exceções",
+    "automation": "Automação",
+    "agentStatus": "Status dos agentes"
+  },
+  "views": {
+    "full": "Completo"
+  },
+  "pageViews": {
+    "scorecard": "Placar",
+    "moving": "O que está andando",
+    "oneScreen": "Uma tela",
+    "oneScreenV2": "Uma tela v2"
+  },
+  "standing": {
+    "noneOwned": "Você ainda não é dono de nenhuma responsabilidade.",
+    "behindLead_one": "{{count}} responsabilidade está atrasada",
+    "behindLead_other": "{{count}} responsabilidades estão atrasadas",
+    "behindAndAtRisk_one": "{{lead}} e {{count}} está em risco.",
+    "behindAndAtRisk_other": "{{lead}} e {{count}} estão em risco.",
+    "behindOnly": "{{lead}}.",
+    "atRisk_one": "Nada está atrasado. {{count}} responsabilidade está em risco.",
+    "atRisk_other": "Nada está atrasado. {{count}} responsabilidades estão em risco.",
+    "allOnTrack": "Tudo o que é seu está no caminho certo.",
+    "notMeasured_one": "Nada está atrasado ou em risco. {{count}} responsabilidade ainda não é medida.",
+    "notMeasured_other": "Nada está atrasado ou em risco. {{count}} responsabilidades ainda não são medidas.",
+    "nothingMeasured": "Nada do que é seu é medido ainda."
+  },
+  "onTrackShare": "{{percent}}% no caminho certo",
+  "ownedLabel_one": "{{count}} responsabilidade sua",
+  "ownedLabel_other": "{{count}} responsabilidades suas",
+  "snapshot": {
+    "areasBehind": "{{count}} com algo atrasado",
+    "noAreasBehind": "Nenhuma com algo atrasado",
+    "behind": "{{count}} atrasadas",
+    "noneBehind": "Nenhuma atrasada"
+  },
+  "counts": {
+    "late": "{{count}} atrasados",
+    "noneLate": "Nenhum atrasado",
+    "blocked": "{{count}} bloqueadas",
+    "noneBlocked": "Nenhuma bloqueada",
+    "failed": "{{count}} falharam",
+    "paused": "{{count}} pausadas",
+    "tasksLine": "{{blocked}}, {{agents}}",
+    "withAgents": "{{count}} com agentes",
+    "noneWithAgents": "nenhuma com agentes",
+    "noneFailedOrPaused": "Nenhuma falhou ou está pausada"
+  },
+  "onTrackLine": "{{area}}: {{onTrack}} de {{total}} no caminho certo",
+  "notInArea": "Fora de uma área",
+  "kinds": {
+    "project": "Projeto",
+    "task": "Tarefa",
+    "routine": "Rotina"
+  },
+  "work": {
+    "lateDue": "Atrasado · {{date}}",
+    "due": "Prazo {{date}}",
+    "blocked": "Bloqueada",
+    "failedLastRun": "Falhou na última execução",
+    "paused": "Pausada"
+  },
+  "gap": {
+    "points_one": "{{points}} ponto",
+    "points_other": "{{points}} pontos",
+    "yes": "Sim",
+    "notYet": "Ainda não",
+    "belowRange": "{{amount}} abaixo da faixa {{range}}",
+    "aboveRange": "{{amount}} acima da faixa {{range}}",
+    "insideRange": "Dentro da faixa {{range}}",
+    "overLimit": "{{amount}} acima do limite de {{target}}",
+    "insideLimit": "{{amount}} dentro do limite de {{target}}",
+    "atLimit": "Exatamente no limite de {{target}}",
+    "short": "Faltam {{amount}} para {{target}}",
+    "pastTarget": "{{amount}} além da meta de {{target}}",
+    "atTarget": "Exatamente na meta de {{target}}"
+  },
+  "target": {
+    "noRange": "nenhuma faixa definida",
+    "range": "faixa {{range}}",
+    "noTarget": "nenhuma meta definida",
+    "limit": "limite {{target}}",
+    "target": "meta {{target}}",
+    "of": "de {{target}}"
+  },
+  "missing": {
+    "noNumber": "Nenhum número definido: adicione o que você mede e uma meta.",
+    "noAnswer": "Nenhuma resposta ainda.",
+    "noRange": "Nenhuma faixa definida para {{name}}.",
+    "noTarget": "Nenhuma meta definida para {{name}}.",
+    "noReading": "Nenhuma leitura de {{name}} ainda."
+  },
+  "explain": {
+    "markedWithNote": "Você marcou como {{label}}: {{note}}",
+    "marked": "Você marcou como {{label}}.",
+    "noWork": "Nenhum trabalho foi registrado aqui ainda.",
+    "noOpenWork": "Nada aqui está aberto no momento."
+  },
+  "bearing": {
+    "anAgent": "um agente",
+    "daysLate_one": "{{count}} dia de atraso (prazo {{date}})",
+    "daysLate_other": "{{count}} dias de atraso (prazo {{date}})",
+    "dueInProgress": "Prazo {{date}}, em andamento",
+    "inProgress": "Em andamento",
+    "ledBy": "liderado por {{name}}",
+    "notStarted": "Não iniciado",
+    "stateDue": "{{state}}, prazo {{date}}",
+    "notAssigned": "Não atribuída a ninguém",
+    "inProgressWith": "Em andamento com {{name}}",
+    "inReviewWith": "Em revisão com {{name}}",
+    "withNotStarted": "Com {{name}}, não iniciada",
+    "you": "você",
+    "aPerson": "uma pessoa",
+    "with": "Com {{name}}",
+    "noAgent": "Nenhum agente a executa",
+    "activeWith": "Ativa, {{detail}}",
+    "active": "Ativa",
+    "completed": "Concluída {{age}}"
+  }
+}

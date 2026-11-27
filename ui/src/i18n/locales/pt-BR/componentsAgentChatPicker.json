@@ -1,0 +1,25 @@
+{
+  "title": "Conversar com um agente",
+  "oneConversation": "Uma conversa por agente. Continue de onde parou.",
+  "openFailed": "Não foi possível abrir o chat. Tente novamente.",
+  "searchAria": "Buscar agentes por nome ou função",
+  "searchPlaceholder": "Buscar por nome ou função…",
+  "opening": "Abrindo a conversa…",
+  "loadFailed": "Não foi possível carregar os agentes. Tente novamente.",
+  "retry": "Tentar novamente",
+  "loading": "Carregando agentes…",
+  "noMatch": "Nenhum agente corresponde a “{{search}}”",
+  "noAgents": "Nenhum agente ainda.",
+  "tryAnother": "Tente outro nome ou função.",
+  "clearSearch": "Limpar busca",
+  "createHint": "Crie um agente na página Agentes para começar a conversar.",
+  "unread_one": "{{count}} mensagem não lida de {{name}}",
+  "unread_other": "{{count}} mensagens não lidas de {{name}}",
+  "openChat": "Abrir chat",
+  "newChat": "Novo chat",
+  "status": {
+    "paused": "Pausado",
+    "terminated": "Desligado",
+    "pendingApproval": "Aguardando aprovação"
+  }
+}

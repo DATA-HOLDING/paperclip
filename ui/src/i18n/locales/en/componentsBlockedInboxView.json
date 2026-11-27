@@ -1,0 +1,10 @@
+{
+  "errorTitle": "Couldn't load the Blocked tab.",
+  "otherTabsWork": "Other Inbox tabs still work.",
+  "loadAction": "load the Blocked tab",
+  "trying": "Trying…",
+  "tryAgain": "Try again",
+  "emptyTitle": "No work is stopped.",
+  "emptyHint": "Tasks that need a decision, recovery, or external action will appear here.",
+  "noSearchResults": "No stopped items match your search."
+}

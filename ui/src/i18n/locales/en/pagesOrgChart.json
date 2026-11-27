@@ -1,0 +1,38 @@
+{
+  "preview": {
+    "planLaunch": "Plan product launch",
+    "buildOnboarding": "Build onboarding flow",
+    "reviewRelease": "Review release readiness"
+  },
+  "runningTask": "Running task",
+  "breadcrumb": "Org Chart",
+  "tasksToggle": "Tasks",
+  "selectOrganization": "Select an organization to view the org chart.",
+  "selectCompany": "Select a company to view the org chart.",
+  "loadAction": "load the org chart",
+  "noHierarchy": "No organizational hierarchy defined.",
+  "importOrganization": "Import organization",
+  "exportOrganization": "Export organization",
+  "importCompany": "Import company",
+  "exportCompany": "Export company",
+  "idle": "Idle",
+  "legend": {
+    "simulated": "{{count}} simulated running tasks · preview only",
+    "loadRunningAction": "load running tasks",
+    "loadTitlesAction": "load task titles",
+    "paused": "Task updates paused while reconnecting…",
+    "loading": "Loading running tasks…",
+    "running_one": "{{count}} running task",
+    "running_other": "{{count}} running tasks",
+    "first100": " · showing first 100 runs",
+    "none": "No running tasks"
+  },
+  "taskTitle": "{{task}} · {{title}} · Working: {{agents}}",
+  "simulatedTask": "Simulated task",
+  "task": "Task",
+  "agent": "Agent",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "fitToScreen": "Fit to screen",
+  "fitChartToScreen": "Fit chart to screen"
+}

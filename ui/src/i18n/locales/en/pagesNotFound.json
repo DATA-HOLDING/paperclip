@@ -1,0 +1,10 @@
+{
+  "breadcrumb": "Not Found",
+  "orgNotFound": "Organization not found",
+  "pageNotFound": "Page not found",
+  "noOrgPrefix": "No organization matches prefix \"{{prefix}}\".",
+  "routeMissing": "This route does not exist.",
+  "requestedPath": "Requested path:",
+  "openDashboard": "Open dashboard",
+  "goHome": "Go home"
+}

@@ -1,0 +1,99 @@
+{
+  "modeBadge": {
+    "localTrusted": "Local trusted",
+    "authenticated": "Authenticated {{exposure}}",
+    "exposure": {
+      "private": "private",
+      "public": "public"
+    }
+  },
+  "roles": {
+    "viewer": {
+      "label": "Viewer",
+      "description": "Can view organization work and follow along.",
+      "gets": "View-only organization membership."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Can edit organization work and invite people.",
+      "gets": "Full editing and audit access. Cannot approve join requests or manage member permissions."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Recommended for operators who need to invite people, create agents, and approve joins.",
+      "gets": "Can create agents, invite users, assign tasks, and approve join requests."
+    },
+    "owner": {
+      "label": "Owner",
+      "description": "Full organization access, including membership management.",
+      "gets": "Everything in Admin, plus managing members."
+    }
+  },
+  "toast": {
+    "clipboardUnavailable": "Clipboard unavailable",
+    "urlSelected": "The invite URL is selected. Copy it manually from the field.",
+    "copyManually": "Copy the invite URL manually from the field below.",
+    "created": "Invite created",
+    "readyCopied": "Invite ready below and copied to clipboard.",
+    "ready": "Invite ready below.",
+    "createFailed": "Failed to create invite",
+    "revoked": "Invite revoked",
+    "revokeFailed": "Failed to revoke invite"
+  },
+  "selectOrganization": "Select an organization to manage invites.",
+  "loading": "Loading invites…",
+  "forbidden": "You do not have permission to manage organization invites.",
+  "intro": "Invite people to request access to this organization. New invite links are copied to your clipboard when they are generated.",
+  "create": {
+    "title": "Invite a person",
+    "description": "Generate a human invite link and choose the default access it should request.",
+    "chooseRole": "Choose a role",
+    "default": "Default",
+    "singleUse": "Each invite link is single-use. Human invitees get the selected role immediately after sign-in; agent invites still create a join request for approval.",
+    "creating": "Creating…",
+    "button": "Create invite",
+    "historyNote": "Invite history below keeps the audit trail."
+  },
+  "latest": {
+    "title": "Latest invite link",
+    "copied": "Copied",
+    "domainNote": "This URL includes the current Paperclip domain returned by the server.",
+    "urlLabel": "Latest invite URL",
+    "copyLink": "Copy link"
+  },
+  "history": {
+    "title": "Invite history",
+    "description": "Review invite status, audience, inviter, and any linked join request.",
+    "openQueue": "Open join request queue",
+    "empty": "No invites have been created for this organization yet.",
+    "columns": {
+      "state": "State",
+      "for": "For",
+      "invitedBy": "Invited by",
+      "created": "Created",
+      "joinRequest": "Join request",
+      "action": "Action"
+    },
+    "unknownInviter": "Unknown inviter",
+    "reviewRequest": "Review request",
+    "revoke": "Revoke",
+    "inactive": "Inactive",
+    "loadingMore": "Loading more…",
+    "viewMore": "View more",
+    "states": {
+      "active": "Active",
+      "accepted": "Accepted",
+      "expired": "Expired",
+      "revoked": "Revoked"
+    }
+  },
+  "audience": {
+    "agent": "Agent",
+    "humanOrAgentRole": "Human or agent · {{role}}",
+    "humanOrAgent": "Human or agent",
+    "human": "Human"
+  },
+  "errorActions": {
+    "loadInvites": "load invites"
+  }
+}

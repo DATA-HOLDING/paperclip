@@ -156,7 +156,7 @@ describe("default AI account names", () => {
   it("uses provider and method labels with a personal fallback", () => {
     expect(defaultAiConnectionName("dotta", "anthropic", "api_key")).toBe("dotta's Claude API account");
     expect(defaultAiConnectionName("Dotta", "openai", "subscription")).toBe("Dotta's ChatGPT subscription account");
-    expect(defaultAiConnectionName("You", "openai", "api_key")).toBe("My OpenAI API account");
+    expect(defaultAiConnectionName("", "openai", "api_key")).toBe("My OpenAI API account");
     expect(defaultAiConnectionName(undefined, "openrouter", "api_key")).toBe("My OpenRouter API account");
   });
 });

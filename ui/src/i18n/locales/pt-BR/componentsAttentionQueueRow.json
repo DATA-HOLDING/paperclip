@@ -1,0 +1,50 @@
+{
+  "collapseDecision": "Recolher decisão",
+  "expandDecision": "Expandir decisão",
+  "seeLess": "Ver menos",
+  "seeMore": "Ver mais",
+  "open": "Abrir",
+  "setByTitle": "Definido por {{name}}",
+  "setBy": "· definido por {{name}}",
+  "missingIssueReference": "Falta a referência da tarefa desta decisão.",
+  "completeFromDetail": "Esta decisão precisa ser concluída na visualização de detalhes.",
+  "couldNot": {
+    "sentForRevision": "Não foi possível enviar para revisão",
+    "approved": "Não foi possível aprovar",
+    "rejected": "Não foi possível rejeitar"
+  },
+  "decisionActions": "Ações da decisão",
+  "approvalResult": {
+    "sentForRevision": "Aprovação enviada para revisão",
+    "approved": "Aprovação aprovada",
+    "rejected": "Aprovação rejeitada"
+  },
+  "joinRequestResult": {
+    "sentForRevision": "Pedido de entrada enviado para revisão",
+    "approved": "Pedido de entrada aprovado",
+    "rejected": "Pedido de entrada rejeitado"
+  },
+  "confirmationAccepted": "Confirmação aceita",
+  "confirmationDeclined": "Confirmação recusada",
+  "moreCount": "Mais {{count}}",
+  "viewIssue": "Ver tarefa",
+  "anAgent": "um agente",
+  "you": "você",
+  "decisionSaveFailed": "Não foi possível salvar a decisão.",
+  "alreadySending": "Esta aprovação já está sendo enviada.",
+  "viewConfiguration": "Ver configuração",
+  "viewDetails": "Ver detalhes",
+  "reject": "Rejeitar",
+  "approveHire": "Aprovar contratação",
+  "approve": "Aprovar",
+  "notePlaceholder": "Nota opcional sobre a decisão…",
+  "requestRevision": "Pedir revisão",
+  "joinRequestSaveFailed": "Não foi possível salvar o pedido de entrada.",
+  "joinRequest": "Pedido de entrada",
+  "agentAccess": "Acesso de agente",
+  "memberAccess": "Acesso de membro",
+  "approvalAddsAgent": "A aprovação adiciona este agente à organização.",
+  "approvalAddsMember": "A aprovação adiciona a pessoa à organização como membro.",
+  "decline": "Recusar",
+  "approveAccess": "Aprovar acesso"
+}

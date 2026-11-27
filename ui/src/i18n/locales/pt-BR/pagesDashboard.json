@@ -1,0 +1,51 @@
+{
+  "breadcrumb": "Painel",
+  "empty": {
+    "welcome": "Boas-vindas ao Paperclip. Configure sua primeira organização e seu primeiro agente para começar.",
+    "getStarted": "Começar",
+    "selectOrganization": "Crie ou selecione uma organização para ver o painel."
+  },
+  "loadAction": "carregar o painel",
+  "paused": {
+    "importedTitle_one": "{{count}} agente importado está pausado e não será executado.",
+    "importedTitle_other": "{{count}} agentes importados estão pausados e não serão executados.",
+    "resuming": "Retomando…",
+    "resumeAll": "Retomar todos",
+    "importedBody": "Agentes vindos de uma importação de organização chegam pausados por segurança. Retome-os para que as tarefas atribuídas possam começar.",
+    "allTitle": "Todos os agentes desta organização estão pausados — nada será executado.",
+    "reviewAgents": "Revisar agentes",
+    "allBody": "Retome pelo menos um agente para que as tarefas atribuídas possam começar."
+  },
+  "noAgents": {
+    "message": "Você não tem agentes.",
+    "create": "Crie um aqui"
+  },
+  "budget": {
+    "incidents_one": "{{count}} incidente de orçamento ativo",
+    "incidents_other": "{{count}} incidentes de orçamento ativos",
+    "summary": "{{agents}} agentes pausados · {{projects}} projetos pausados · {{approvals}} aprovações de orçamento pendentes",
+    "open": "Abrir orçamentos"
+  },
+  "metrics": {
+    "agentsEnabled": "Agentes ativados",
+    "agentsDescription": "{{running}} em execução, {{paused}} pausados, {{errors}} com erro",
+    "tasksInProgress": "Tarefas em andamento",
+    "tasksDescription": "{{open}} abertas, {{blocked}} bloqueadas",
+    "monthSpend": "Gasto do mês",
+    "budgetUtilization": "{{percent}}% do orçamento de {{budget}}",
+    "unlimitedBudget": "Orçamento ilimitado",
+    "pendingApprovals": "Aprovações pendentes",
+    "budgetOverrides": "{{count}} exceções de orçamento aguardando revisão do conselho",
+    "awaitingBoardReview": "Aguardando revisão do conselho"
+  },
+  "charts": {
+    "runActivity": "Atividade de execuções",
+    "last14Days": "Últimos 14 dias",
+    "tasksByPriority": "Tarefas por prioridade",
+    "tasksByStatus": "Tarefas por status",
+    "successRate": "Taxa de sucesso"
+  },
+  "recentActivity": "Atividade recente",
+  "recentTasks": "Tarefas recentes",
+  "noTasks": "Nenhuma tarefa ainda."
+}

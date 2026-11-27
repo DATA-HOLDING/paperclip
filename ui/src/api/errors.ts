@@ -12,6 +12,7 @@
  * by hand-rolled fetches (health, uploads) classify the same way.
  */
 
+import { t } from "@/i18n";
 import { CancelledError } from "@tanstack/react-query";
 
 export type ErrorKind =
@@ -62,71 +63,71 @@ const CONNECTIVITY_CODES = new Set(["tenant_app_unavailable", "tenant_app_starti
 // raw `body.error`/`body.code`) or an `ErrorKind` fallback. Never return a raw
 // code to the user: anything not in this table falls back to its kind's copy.
 
-const UNAVAILABLE_BODY = "Paperclip is temporarily unavailable. Please try again in a moment.";
+const UNAVAILABLE_BODY = t("apiErrors.unavailableBody");
 
 const CODE_COPY: Record<string, { title: string; body: string }> = {
   tenant_app_unavailable: {
-    title: "Reconnecting to Paperclip",
-    body: "Paperclip is restarting or updating. Please try again in a moment.",
+    title: t("apiErrors.codes.tenantAppUnavailable.title"),
+    body: t("apiErrors.codes.tenantAppUnavailable.body"),
   },
   tenant_app_starting: {
-    title: "Paperclip is starting",
-    body: "Paperclip is starting up. Please try again in a few seconds.",
+    title: t("apiErrors.codes.tenantAppStarting.title"),
+    body: t("apiErrors.codes.tenantAppStarting.body"),
   },
   WORKER_UNAVAILABLE: {
-    title: "Plugin unavailable",
-    body: "This plugin is restarting. Please try again in a moment.",
+    title: t("apiErrors.codes.workerUnavailable.title"),
+    body: t("apiErrors.codes.workerUnavailable.body"),
   },
   TIMEOUT: {
-    title: "Request timed out",
-    body: "This took too long to respond. Please try again in a moment.",
+    title: t("apiErrors.codes.timeout.title"),
+    body: t("apiErrors.codes.timeout.body"),
   },
   // Queued message edits. The editor keeps the person's text in every case.
   queued_comment_revision_conflict: {
-    title: "Queue changed",
-    body: "The queue changed in another session. Your edit is still here; save again to apply it to the latest queue.",
+    title: t("apiErrors.codes.queueChanged.title"),
+    body: t("apiErrors.codes.queueChanged.body"),
   },
   queued_comment_stale_queue: {
-    title: "Queue changed",
-    body: "The queue changed in another session. Your edit is still here; save again to apply it to the latest queue.",
+    title: t("apiErrors.codes.queueChanged.title"),
+    body: t("apiErrors.codes.queueChanged.body"),
   },
   queued_comment_stale_target: {
-    title: "Queued message changed",
-    body: "This queued message was already sent or removed. Your text is still here; you can queue it as a new message.",
+    title: t("apiErrors.codes.queuedMessageChanged.title"),
+    body: t("apiErrors.codes.queuedMessageChanged.body"),
   },
   queued_comment_not_pending: {
-    title: "Queued message changed",
-    body: "This queued message was already sent or removed. Your text is still here; you can queue it as a new message.",
+    title: t("apiErrors.codes.queuedMessageChanged.title"),
+    body: t("apiErrors.codes.queuedMessageChanged.body"),
   },
   // Issue-thread interaction resolution (moved from lib/interaction-resolution-error.ts).
   interaction_audience_denied: {
-    title: "You can’t respond to this card",
-    body: "You are not in this card's resolver audience.",
+    title: t("apiErrors.codes.cannotRespond.title"),
+    body: t("apiErrors.codes.audienceDenied.body"),
   },
   interaction_forbidden: {
-    title: "You can’t respond to this card",
-    body: "You do not have permission to respond to this card.",
+    title: t("apiErrors.codes.cannotRespond.title"),
+    body: t("apiErrors.codes.forbidden.body"),
   },
   interaction_settled: {
-    title: "Already handled",
-    body: "This request is no longer waiting for a decision.",
+    title: t("apiErrors.codes.settled.title"),
+    body: t("apiErrors.codes.settled.body"),
   },
   interaction_submit_failed: {
-    title: "Couldn't submit",
-    body: "Couldn't submit. Try again.",
+    title: t("apiErrors.codes.submitFailed.title"),
+    body: t("apiErrors.codes.submitFailed.body"),
   },
 };
 
 const KIND_COPY: Record<ErrorKind, { title: string; body: string }> = {
   // Moved from `ApiUnavailableError` (api/response.ts).
-  transient: { title: "Connection interrupted", body: UNAVAILABLE_BODY },
-  auth: { title: "Signed out", body: "Your session has ended. Sign in again to continue." },
-  forbidden: { title: "Not allowed", body: "You don’t have permission to do that." },
-  not_found: { title: "Not found", body: "This item doesn’t exist or was moved." },
-  conflict: { title: "Out of date", body: "This changed since you loaded it. Refresh and try again." },
-  invalid: { title: "Check your input", body: "Some details aren’t valid. Review them and try again." },
-  aborted: { title: "Cancelled", body: "The request was cancelled." },
-  unknown: { title: "Something went wrong", body: "An unexpected error occurred. Please try again." },
+  transient: { title: t("apiErrors.kinds.transient.title"), body: UNAVAILABLE_BODY },
+  auth: { title: t("apiErrors.kinds.auth.title"), body: t("apiErrors.kinds.auth.body") },
+  forbidden: { title: t("apiErrors.kinds.forbidden.title"), body: t("apiErrors.kinds.forbidden.body") },
+  not_found: { title: t("apiErrors.kinds.notFound.title"), body: t("apiErrors.kinds.notFound.body") },
+  conflict: { title: t("apiErrors.kinds.conflict.title"), body: t("apiErrors.kinds.conflict.body") },
+  invalid: { title: t("apiErrors.kinds.invalid.title"), body: t("apiErrors.kinds.invalid.body") },
+  aborted: { title: t("apiErrors.kinds.aborted.title"), body: t("apiErrors.kinds.aborted.body") },
+  unknown: { title: t("apiErrors.kinds.unknown.title"), body: t("apiErrors.kinds.unknown.body") },
 };
 
 /** Copy for a specific code or kind, for callers that build their own messages. */
@@ -301,7 +302,7 @@ export function describeError(err: unknown, options: DescribeErrorOptions = {}):
   else body = readableServerMessage(err) ?? fallback.body;
 
   const title = options.action && kind !== "transient"
-    ? `Couldn't ${options.action}`
+    ? t("apiErrors.couldNot", { action: options.action })
     : (coded?.title ?? fallback.title);
   return { title, body, retryable };
 }

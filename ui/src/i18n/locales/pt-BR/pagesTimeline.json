@@ -1,0 +1,45 @@
+{
+  "range": {
+    "chooseDates": "Escolha uma data de início e de fim.",
+    "startBeforeEnd": "A data de início precisa ser anterior à data de fim.",
+    "label": "Período",
+    "today": "Hoje",
+    "sevenDays": "7 dias",
+    "thirtyDays": "30 dias",
+    "startAria": "Data de início da linha do tempo",
+    "to": "até",
+    "endAria": "Data de fim da linha do tempo"
+  },
+  "legend": {
+    "delegated": "Delegada",
+    "automation": "Automação",
+    "cancelled": "Cancelada",
+    "now": "Agora"
+  },
+  "stats": {
+    "runs": "Execuções",
+    "agents": "Agentes",
+    "runTime": "Tempo de execução",
+    "tokensUsed": "Tokens usados",
+    "notTracked": "Não rastreado"
+  },
+  "breadcrumb": "Linha do tempo",
+  "projectTimeline": "Linha do tempo do projeto",
+  "workTimeline": "Linha do tempo do trabalho",
+  "selectOrganization": "Selecione uma organização para ver a linha do tempo do trabalho.",
+  "zoom": {
+    "controls": "Controles de zoom da linha do tempo",
+    "out": "Diminuir zoom",
+    "in": "Aumentar zoom",
+    "reset": "Redefinir zoom"
+  },
+  "loadFailed": "Não foi possível carregar a linha do tempo. O endpoint de agregação pode estar indisponível.",
+  "noProjectActivity": "Nenhuma atividade do projeto neste intervalo.",
+  "noActivity": "Nenhuma atividade neste intervalo.",
+  "footer": {
+    "runCount_one": "{{count}} execução",
+    "runCount_other": "{{count}} execuções",
+    "window": "{{from}} até {{to}}",
+    "capped": " · intervalo limitado"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "health": {
+    "behind": "Behind",
+    "atRisk": "At risk",
+    "onTrack": "On track",
+    "notMeasured": "Not measured"
+  },
+  "reading": {
+    "yes": "Yes",
+    "no": "No",
+    "yesTarget": "yes",
+    "asTheBarAsks": "as the bar asks",
+    "theBarIsYes": "the bar is yes",
+    "summaryYesNo": "{{name}}: {{value}}",
+    "noAnswerYet": "no answer yet",
+    "noRangeSet": "no range set",
+    "noReadingYet": "no reading yet",
+    "summaryNoRange": "{{name}}: {{current}}, no range set",
+    "range": "range {{range}}",
+    "summaryRange": "{{name}}: {{current}}, range {{range}}",
+    "targetAtMost": "target at most {{target}}",
+    "target": "target {{target}}",
+    "noTargetSet": "no target set",
+    "summaryNoReading": "{{name}}: no reading yet, {{targetLabel}}",
+    "summaryNoTarget": "{{name}}: {{current}}, no target set",
+    "vsAtMost": "vs. at most {{target}}",
+    "summaryAtMost": "{{name}}: {{current}}, target at most {{target}}",
+    "of": "of {{target}}",
+    "summaryOf": "{{current}} of {{target}} {{name}}"
+  },
+  "age": {
+    "today": "today",
+    "yesterday": "yesterday",
+    "daysAgo_one": "{{count}} days ago",
+    "daysAgo_other": "{{count}} days ago",
+    "onDate": "on {{date}}"
+  },
+  "stale_one": "Not updated in {{count}} day",
+  "stale_other": "Not updated in {{count}} days",
+  "direction": {
+    "atLeast": "At least (higher is better)",
+    "atMost": "At most (lower is better)"
+  },
+  "agentWork": {
+    "tasks_one": "{{count}} task",
+    "tasks_other": "{{count}} tasks",
+    "routines_one": "{{count}} routine",
+    "routines_other": "{{count}} routines",
+    "projects_one": "leads {{count}} project",
+    "projects_other": "leads {{count}} projects"
+  },
+  "fields": {
+    "standard": "the bar",
+    "metricName": "what you measure",
+    "metricTarget": "a target",
+    "metricCurrent": "the current reading",
+    "metricUnit": "the unit",
+    "metricLow": "a low bound",
+    "metricHigh": "a high bound"
+  },
+  "problems": {
+    "share": "A share from 0 to 100",
+    "aboveLow": "Above the low bound"
+  },
+  "joinFields": "{{list}} and {{last}}",
+  "delegation": {
+    "planWithMe": {
+      "title": "Plan it with me",
+      "description": "The agent proposes a plan and waits for your approval before doing the work."
+    },
+    "prepareIDecide": {
+      "title": "Prepare it, I decide",
+      "description": "The agent does the groundwork and brings the decision back to you."
+    },
+    "handleAndTellMe": {
+      "title": "Handle it and tell me",
+      "description": "The agent does it end to end and tells you what it did."
+    },
+    "backOnSchedule": "Get “{{name}}” back on schedule"
+  },
+  "share": {
+    "noOpenTasks": "No open tasks",
+    "of": "{{count}} of {{total}}"
+  }
+}

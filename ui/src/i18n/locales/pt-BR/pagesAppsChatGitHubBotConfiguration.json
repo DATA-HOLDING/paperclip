@@ -1,0 +1,158 @@
+{
+  "events": {
+    "opened": "Novo pull request",
+    "synchronize": "Commits atualizados",
+    "reopened": "Reaberto",
+    "readyForReview": "Pronto para revisão",
+    "mention": "Menção",
+    "comment": "Comentário de acompanhamento",
+    "issueOpened": "Nova issue"
+  },
+  "help": {
+    "about": "Sobre {{label}}"
+  },
+  "score": {
+    "label": "Nota mínima",
+    "outOf5": "de 5",
+    "reportOnly": "Apenas relatório",
+    "invalid": "Informe um número inteiro de 1 a 5.",
+    "helpReportOnly": "Publica um check neutro sem exigência de nota. O GitHub pode aceitar checks neutros para o merge.",
+    "helpScore": "O Paperclip aprova o check quando uma revisão completa do último commit atinge esta nota. Notas menores falham. Isso não aprova o PR.",
+    "blockMergingBefore": "Para bloquear o merge, exija o check",
+    "blockMergingAfter": "deste App nas regras de branch do GitHub.",
+    "configureOnGitHub": "Configurar no GitHub"
+  },
+  "policy": {
+    "instructions": {
+      "heading": "Instruções",
+      "ariaLabel": "Instruções do agente",
+      "placeholder": "O que este agente deve fazer no GitHub?",
+      "help": "Incluídas em toda tarefa do GitHub. Digite / para selecionar uma skill para o agente usar.",
+      "eventSpecific": "Instruções por evento",
+      "event": "Evento",
+      "eventAriaLabel": "Instruções de {{event}}",
+      "eventHelp": "Adicionadas às instruções principais para este evento. Digite / para selecionar uma skill para o agente usar."
+    },
+    "triggers": {
+      "heading": "Quando executar",
+      "whenMentioned": "Quando mencionado",
+      "mentionHelp": "Pessoas autorizadas sempre podem @mencionar este bot.",
+      "manageAccess": "Gerenciar pessoas em Acesso",
+      "runAutomatically": "Executar automaticamente",
+      "runAutomaticallyDescription": "Começa o trabalho sem menção quando uma pessoa permitida cria uma issue ou atualiza um pull request.",
+      "automaticEvents": "Eventos automáticos",
+      "newIssues": "Novas issues",
+      "automaticHelp": "Executa para autores autorizados em Acesso. Use os filtros de autor abaixo para limitar de quem as issues e PRs iniciam trabalho."
+    },
+    "filters": {
+      "title": "Filtros de revisão automática",
+      "includeDrafts": "Incluir PRs em rascunho",
+      "includeBots": "Incluir autores bot",
+      "includeBotsDescription": "A conta também precisa de um patrocinador e de execuções automáticas de colaboradores externos ativadas em Acesso.",
+      "authors": "Autores",
+      "includedAuthors": "Autores incluídos",
+      "includedAuthorsHelp": "Deixe vazio para todos os autores autorizados. Um nome de usuário ou glob por linha.",
+      "excludedAuthors": "Autores excluídos",
+      "excludedAuthorsHelp": "Um nome de usuário ou glob por linha.",
+      "branches": "Branches",
+      "targetBranches": "Branches de destino",
+      "targetBranchesHelp": "Deixe vazio para todos os branches. Suporta * e **.",
+      "excludedBranches": "Branches excluídos",
+      "excludedBranchesHelp": "Suporta * e **.",
+      "labels": "Etiquetas",
+      "requiredLabels": "Etiquetas obrigatórias",
+      "requiredLabelsHelp": "Todas as etiquetas listadas devem estar presentes.",
+      "excludedLabels": "Etiquetas excluídas",
+      "excludedLabelsHelp": "Qualquer etiqueta listada impede a revisão automática.",
+      "mentionBypass": "Revisões pedidas por @menção ignoram esses filtros de agendamento. O acesso ao repositório e os arquivos ignorados continuam valendo."
+    },
+    "results": {
+      "heading": "Resultados da revisão",
+      "postSummary": "Publicar um resumo da revisão",
+      "postInline": "Publicar apontamentos inline"
+    },
+    "ignored": {
+      "title": "Arquivos ignorados",
+      "filePatterns": "Padrões de arquivo",
+      "filePatternsHelp": "Excluídos de todas as revisões, inclusive @menções. Um padrão por linha; suporta * e **."
+    },
+    "inline": {
+      "title": "Opções de comentários inline",
+      "findingCategories": "Categorias de apontamentos",
+      "minimumSeverity": "Severidade mínima inline",
+      "severity": {
+        "info": "Info",
+        "warning": "Aviso",
+        "error": "Erro"
+      },
+      "hiddenFindings": "Apontamentos ocultos ainda contam na avaliação."
+    },
+    "decisions": {
+      "title": "Aprovações e pedidos de alteração",
+      "description": "Decisões formais opcionais no GitHub. Notas, comentários e checks continuam funcionando quando estas estão desativadas.",
+      "allowApprovals": "Permitir aprovações",
+      "allowApprovalsHelp": "Permite que o agente envie uma revisão Approve no GitHub após uma avaliação completa. O agente precisa escolher isso explicitamente; uma nota 5/5 ou um check aprovado não aprovam o PR. Desativado, ainda permite notas, comentários e checks.",
+      "allowRequestChanges": "Permitir pedidos de alteração",
+      "allowRequestChangesHelp": "Permite que o agente envie uma revisão Request changes no GitHub após uma avaliação completa. Esta é uma decisão formal de revisão e pode impedir o merge pelas regras do seu repositório. Desativado, ainda permite apontamentos, comentários e um check com falha."
+    }
+  },
+  "access": {
+    "sponsoredBy": "Patrocinado por {{name}}",
+    "companyMember": "Membro da organização",
+    "needsLinking": "A conta do GitHub precisa ser vinculada.",
+    "mentions": "Menções",
+    "mentionsAllowedFor": "Menções permitidas para @{{login}}",
+    "mentionsUnavailableFor": "Menções indisponíveis para @{{login}}",
+    "allowed": "Permitidas",
+    "unlinked": "Não vinculada",
+    "allowMentionsFrom": "Permitir menções de @{{login}}",
+    "manage": "Gerenciar @{{login}}",
+    "removeAccess": "Remover acesso",
+    "unlinkAccount": "Desvincular conta do GitHub",
+    "people": "Pessoas",
+    "peopleDescription": "Escolha quem pode mencionar este bot e de quem a atividade pode iniciar trabalho automaticamente.",
+    "companyMembers": "Membros da organização",
+    "linkMember": "Vincular um membro",
+    "allowAllLinked": "Permitir menções de todos os membros vinculados",
+    "allowAllLinkedOn": "Inclui membros de {{company}} que vincularem a conta do GitHub depois.",
+    "thisCompany": "esta organização",
+    "allowAllLinkedOff": "Apenas os membros que você ativar abaixo podem mencionar este bot.",
+    "loadingLinked": "Carregando contas vinculadas…",
+    "noMembersLinked": "Nenhum membro vinculado ainda. Vincule uma conta para começar.",
+    "automaticOnBefore": "As execuções automáticas usam os eventos e filtros de autor em",
+    "automaticOffBefore": "As execuções automáticas estão desativadas em",
+    "settingsLink": "Configurações",
+    "automaticOffAfter": ". @menções autorizadas continuam funcionando.",
+    "externalContributors": "Colaboradores externos",
+    "addExternal": "Adicionar colaborador externo",
+    "externalDescription": "Permita usuários específicos do GitHub tendo um membro como patrocinador. Eles recebem acesso restrito, sem ser membros da organização nem usar as credenciais pessoais do patrocinador.",
+    "allowExternalAutomatic": "Permitir execuções automáticas para colaboradores externos",
+    "allowExternalAutomaticOn": "Colaboradores autorizados podem disparar os eventos e filtros de autor configurados em Configurações.",
+    "allowExternalAutomaticOff": "Ative primeiro as execuções automáticas em Configurações. As menções continuam disponíveis.",
+    "responsibility": {
+      "title": "Responsabilidade por tarefas automáticas",
+      "memberValue": "Membro responsável: {{name}}",
+      "member": "Membro responsável",
+      "description": "O membro responsável pelas tarefas do Paperclip criadas automaticamente. Os autores do GitHub continuam registrados à parte. Isso não dá acesso às credenciais pessoais do membro. Apenas proprietários e administradores da organização e administradores da instância podem escolher outra pessoa como patrocinador ou membro responsável."
+    },
+    "loadAction": "carregar os membros, as contas vinculadas e o seu acesso"
+  },
+  "dialog": {
+    "memberTitle": "Vincular um membro da organização",
+    "memberDescription": "Cada membro confirma a própria identidade no GitHub. Compartilhe este link com um membro existente da organização ou vincule sua própria conta.",
+    "guestDescription": "Permita que um usuário do GitHub mencione este bot. Um membro da organização precisa patrocinar o acesso restrito dele.",
+    "copyLinkAriaLabel": "Copiar URL de vinculação de conta",
+    "copyFailed": "Não foi possível copiar o link. Abra a vinculação de conta e copie o endereço.",
+    "copied": "Copiado",
+    "copyInvitation": "Copiar link de convite",
+    "linkYourAccount": "Vincular sua conta",
+    "githubUsername": "Usuário do GitHub",
+    "lookingUp": "Buscando…",
+    "lookUp": "Buscar",
+    "sponsor": "Patrocinador",
+    "alreadyListed": "@{{login}} já está listado em Pessoas.",
+    "found": "@{{login}} encontrado. Poderá mencionar o bot depois que você salvar.",
+    "cancel": "Cancelar",
+    "addContributor": "Adicionar colaborador"
+  }
+}

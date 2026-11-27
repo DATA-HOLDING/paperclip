@@ -15,6 +15,7 @@ import {
 } from "@paperclipai/shared";
 import { describeReadingAge } from "./responsibilities";
 import { outlineAreaGroups, type OutlineAreaGroup } from "./responsibility-views";
+import { t } from "@/i18n";
 
 /**
  * Derivations for the Dashboard's Automation view and the automation line on
@@ -24,19 +25,15 @@ import { outlineAreaGroups, type OutlineAreaGroup } from "./responsibility-views
  * has and puts it in words. Pure, so the view stays a plain renderer.
  */
 
-function count(n: number, singular: string, plural: string): string {
-  return `${n} ${n === 1 ? singular : plural}`;
-}
-
 /** "40% automated", or null with no share. */
 export function automationShareLabel(share: number | null): string | null {
   const percent = responsibilityAutomationPercent(share);
-  return percent === null ? null : `${percent}% automated`;
+  return percent === null ? null : t("libResponsibilityAutomation.shareLabel", { percent });
 }
 
 /** "2 automations · 5 manual tasks": the counts in words. */
 export function automationSplitWords(automations: number, manualTasks: number): string {
-  return `${count(automations, "automation", "automations")} · ${count(manualTasks, "manual task", "manual tasks")}`;
+  return `${t("libResponsibilityAutomation.automationCount", { count: automations })} · ${t("libResponsibilityAutomation.manualTaskCount", { count: manualTasks })}`;
 }
 
 /**
@@ -44,8 +41,8 @@ export function automationSplitWords(automations: number, manualTasks: number): 
  * this yet.").
  */
 export function automationCountsLine(automation: Pick<ResponsibilityAutomation, "automationCount" | "manualTaskCount" | "nothingFiled">): string {
-  if (automation.nothingFiled) return "Nothing is filed under this yet.";
-  if (automation.automationCount + automation.manualTaskCount === 0) return "No automations and no recent manual tasks.";
+  if (automation.nothingFiled) return t("libResponsibilityAutomation.nothingFiled");
+  if (automation.automationCount + automation.manualTaskCount === 0) return t("libResponsibilityAutomation.noAutomationsNoTasks");
   return automationSplitWords(automation.automationCount, automation.manualTaskCount);
 }
 
@@ -121,32 +118,32 @@ export function remainingCandidateCount(
  */
 export function automationSentence(input: { total: number; manual: number; candidates: number }): string {
   const { total, manual, candidates } = input;
-  if (total === 0) return "You do not own any responsibilities yet.";
+  if (total === 0) return t("libResponsibilityAutomation.sentence.noResponsibilities");
   const tail = candidates > 0
-    ? `${count(candidates, "manual task", "manual tasks")} could be automated.`
+    ? t("libResponsibilityAutomation.sentence.tail", { count: candidates })
     : null;
   if (manual === 0) {
-    return tail ? `Every responsibility you own has something automated; ${tail}` : "Everything you own is automated.";
+    return tail ? t("libResponsibilityAutomation.sentence.allHaveSomething", { tail }) : t("libResponsibilityAutomation.sentence.allAutomated");
   }
   const lead = manual === total
-    ? total === 1 ? "Your responsibility has nothing automated yet" : `None of your ${total} responsibilities has anything automated yet`
-    : `${manual} of your ${total} responsibilities ${manual === 1 ? "has" : "have"} nothing automated yet`;
+    ? total === 1 ? t("libResponsibilityAutomation.sentence.singleNothing") : t("libResponsibilityAutomation.sentence.noneOf", { total })
+    : t("libResponsibilityAutomation.sentence.someOf", { count: manual, total });
   return tail ? `${lead}; ${tail}` : `${lead}.`;
 }
 
 type AgentName = (id: string) => string | undefined;
 
-function agentLabel(id: string | null | undefined, agentName: AgentName, fallback = "an agent"): string {
+function agentLabel(id: string | null | undefined, agentName: AgentName, fallback = t("libResponsibilityAutomation.anAgent")): string {
   return (id ? agentName(id) : undefined) ?? fallback;
 }
 
 /** "3 minutes ago", "2 hours ago", else the day words ("yesterday", "4 days ago"). */
 export function describeCheckAge(at: Date | string, now: Date): string {
   const minutes = Math.floor((now.getTime() - new Date(at).getTime()) / 60_000);
-  if (!Number.isFinite(minutes) || minutes < 1) return "just now";
-  if (minutes < 60) return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
+  if (!Number.isFinite(minutes) || minutes < 1) return t("libResponsibilityAutomation.age.justNow");
+  if (minutes < 60) return t("libResponsibilityAutomation.age.minutesAgo", { count: minutes });
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  if (hours < 24) return t("libResponsibilityAutomation.age.hoursAgo", { count: hours });
   return describeReadingAge(at, now);
 }
 
@@ -176,22 +173,27 @@ export function automationStartWords(item: Pick<ResponsibilityAutomationItem, "s
       return {
         kind: start.kind,
         label: AUTOMATION_TRIGGER_LABEL.webhook,
-        detail: "when another system calls it",
-        status: start.lastDeliveryAt ? `Last called ${describeCheckAge(start.lastDeliveryAt, now)}` : "Not called yet",
+        detail: t("libResponsibilityAutomation.start.webhookDetail"),
+        status: start.lastDeliveryAt ? t("libResponsibilityAutomation.start.lastCalled", { age: describeCheckAge(start.lastDeliveryAt, now) }) : t("libResponsibilityAutomation.start.notCalled"),
       };
     case "standing_check": {
       const last = start.lastResult;
       return {
         kind: start.kind,
         label: AUTOMATION_TRIGGER_LABEL.standing_check,
-        detail: "on each wake-up",
+        detail: t("libResponsibilityAutomation.start.standingDetail"),
         status: last
-          ? `Last checked ${describeCheckAge(last.checkedAt, now)}: ${last.outcome === "acted" ? `acted${last.note ? ` (${last.note})` : ""}` : "nothing needed"}`
-          : "Not checked yet",
+          ? t("libResponsibilityAutomation.start.lastChecked", {
+            age: describeCheckAge(last.checkedAt, now),
+            result: last.outcome === "acted"
+              ? last.note ? t("libResponsibilityAutomation.start.actedWithNote", { note: last.note }) : t("libResponsibilityAutomation.start.acted")
+              : t("libResponsibilityAutomation.start.nothingNeeded"),
+          })
+          : t("libResponsibilityAutomation.start.notChecked"),
       };
     }
     case "on_request":
-      return { kind: start.kind, label: "On request", detail: "when someone runs it", status: null };
+      return { kind: start.kind, label: t("libResponsibilityAutomation.start.onRequest"), detail: t("libResponsibilityAutomation.start.onRequestDetail"), status: null };
   }
 }
 
@@ -199,11 +201,11 @@ export function automationStartWords(item: Pick<ResponsibilityAutomationItem, "s
 export function stalledWords(stalled: Pick<ResponsibilityAutomationStalled, "reason" | "assigneeAgentId">, agentName: AgentName): string {
   switch (stalled.reason) {
     case "paused":
-      return "Paused";
+      return t("libResponsibilityAutomation.stalled.paused");
     case "no_agent":
-      return "No agent to run it";
+      return t("libResponsibilityAutomation.stalled.noAgent");
     case "no_wakeups":
-      return `Not running: ${agentLabel(stalled.assigneeAgentId, agentName, "its agent")} doesn’t wake up on its own (heartbeat off)`;
+      return t("libResponsibilityAutomation.stalled.noWakeups", { agent: agentLabel(stalled.assigneeAgentId, agentName, t("libResponsibilityAutomation.itsAgent")) });
   }
 }
 
@@ -216,17 +218,17 @@ export function candidateReasonWords(candidate: AutomationCandidate, agentName: 
   switch (candidate.reason) {
     case "pending_offer": {
       const offer = candidate.pendingOffer;
-      if (!offer) return "An agent offered to repeat it";
-      return `${agentName(offer.agentId ?? "") ?? "Your agent"} offered: ${offer.cadenceLabel}`;
+      if (!offer) return t("libResponsibilityAutomation.candidate.agentOffered");
+      return t("libResponsibilityAutomation.candidate.offered", { agent: agentName(offer.agentId ?? "") ?? t("libResponsibilityAutomation.yourAgentCapitalized"), cadence: offer.cadenceLabel });
     }
     case "hint":
       return candidate.hint?.why ?? null;
     case "done_by_agent":
-      return `Done by ${agentLabel(candidate.assigneeAgentId, agentName)} ${describeReadingAge(candidate.completedAt ?? candidate.updatedAt, now)}`;
+      return t("libResponsibilityAutomation.candidate.doneByAgent", { agent: agentLabel(candidate.assigneeAgentId, agentName), age: describeReadingAge(candidate.completedAt ?? candidate.updatedAt, now) });
     case "done":
-      return `Done by hand ${describeReadingAge(candidate.completedAt ?? candidate.updatedAt, now)}`;
+      return t("libResponsibilityAutomation.candidate.doneByHand", { age: describeReadingAge(candidate.completedAt ?? candidate.updatedAt, now) });
     case "with_agent":
-      return `With ${agentLabel(candidate.assigneeAgentId, agentName)} now`;
+      return t("libResponsibilityAutomation.candidate.withAgent", { agent: agentLabel(candidate.assigneeAgentId, agentName) });
     case "open":
       return null;
   }
@@ -234,10 +236,10 @@ export function candidateReasonWords(candidate: AutomationCandidate, agentName: 
 
 /** The primary action's label: start, continue, or review the agent's proposal. */
 export function conversationButtonLabel(candidate: Pick<AutomationCandidate, "conversation" | "responsibleAgentId">, agentName: AgentName): string {
-  const who = agentLabel(candidate.responsibleAgentId, agentName, "your agent");
-  if (candidate.conversation?.state === "proposal_waiting") return `Review ${who}’s proposal`;
-  if (candidate.conversation?.state === "discussing") return `Continue with ${who}`;
-  return `Automate with ${who}`;
+  const who = agentLabel(candidate.responsibleAgentId, agentName, t("libResponsibilityAutomation.yourAgent"));
+  if (candidate.conversation?.state === "proposal_waiting") return t("libResponsibilityAutomation.button.review", { who });
+  if (candidate.conversation?.state === "discussing") return t("libResponsibilityAutomation.button.continue", { who });
+  return t("libResponsibilityAutomation.button.automate", { who });
 }
 
 /**
@@ -246,9 +248,9 @@ export function conversationButtonLabel(candidate: Pick<AutomationCandidate, "co
  */
 export function noCandidatesWords(automation: Pick<ResponsibilityAutomation, "automationCount" | "manualTaskCount" | "nothingFiled">): string | null {
   if (automation.nothingFiled) return null;
-  if (automation.manualTaskCount > 0) return "Nothing else here looks worth automating.";
-  if (automation.automationCount > 0) return "The automations are covering the work.";
-  return "No recent manual tasks to automate.";
+  if (automation.manualTaskCount > 0) return t("libResponsibilityAutomation.noCandidates.nothingElse");
+  if (automation.automationCount > 0) return t("libResponsibilityAutomation.noCandidates.covered");
+  return t("libResponsibilityAutomation.noCandidates.noRecent");
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,10 @@
+{
+  "worked": "Worked",
+  "stopped": "Stopped",
+  "workedFor": "Worked for {{duration}}",
+  "stoppedFor": "Stopped for {{duration}}",
+  "toolCount_one": "{{count}} tool",
+  "toolCount_other": "{{count}} tools",
+  "continuedAfterSteering": "Continued after steering · ",
+  "activity": "Activity"
+}

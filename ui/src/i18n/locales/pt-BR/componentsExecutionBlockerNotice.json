@@ -1,0 +1,36 @@
+{
+  "retry": "Tentar novamente",
+  "recoveryStep": {
+    "checkingPreviousRun": "Verificando se a tentativa anterior parou",
+    "savingPreviousFiles": "Salvando os arquivos da tentativa anterior",
+    "finishingRecovery": "Concluindo a recuperação do trabalho salvo"
+  },
+  "budgetWait": "Aguardando o orçamento permitir novo trabalho. Aumente o orçamento em Custos.",
+  "budgetCouldntFinish": "Não foi possível concluir esta tentativa. Sua mensagem está salva. {{wait}}",
+  "budgetNotStarted": "Esta tarefa ainda não começou. {{wait}}",
+  "blockerAction": {
+    "blocked": "Bloqueada: abra para tentar novamente",
+    "cancelled": "Cancelada: remova ou substitua",
+    "done": "Salvando os arquivos"
+  },
+  "takingLonger": "Demorando mais que o normal…",
+  "retryIn": "Tentando novamente em {{time}}…",
+  "respondToQuestion": "Responda à pergunta pendente para continuar.",
+  "reviewAiAccount": "Revisar conta de IA",
+  "willRetry": "O Paperclip vai tentar novamente automaticamente.",
+  "checkBilling": "Confira o faturamento e o limite de uso da conta do provedor e tente novamente.",
+  "taskStatus": "Status da tarefa",
+  "waitingForAgent": "Aguardando o agente terminar outro trabalho. O Paperclip continua esta tarefa sozinho.",
+  "moveForward": "Adiantar agora",
+  "task": "Tarefa",
+  "runStopped": {
+    "waiting": "O Paperclip não consegue confirmar que a execução anterior parou. Sua mensagem está salva.",
+    "question": "Como você confirmou que nenhum agente ainda está trabalhando nesta tarefa?",
+    "placeholder": "Por exemplo: nenhum processo codex ou claude desta tarefa está rodando no host do servidor.",
+    "resuming": "Iniciando sua nova tentativa…",
+    "confirm": "Confirmar que parou"
+  },
+  "workspaceFailure": "Não foi possível preparar as pastas da tarefa. {{message}}",
+  "setupFailure": "Não foi possível configurar o espaço de trabalho da tarefa. {{message}}. Corrija o comando nas configurações do espaço de trabalho do projeto e tente novamente.",
+  "couldntFinish": "Não foi possível concluir esta tentativa. Sua mensagem está salva."
+}

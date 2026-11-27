@@ -1,0 +1,24 @@
+{
+  "claimed": "Assumido",
+  "claimedBody": "{{title}} agora está em Para você.",
+  "claimedBodyGeneric": "O cartão agora está em Para você.",
+  "claimFailed": "Não foi possível assumir este cartão",
+  "dismissFailed": "Não foi possível dispensar este recibo",
+  "closeTitle": {
+    "withdraw": "Solicitação retirada",
+    "archive": "Arquivado para você",
+    "snooze": "Adiado para você"
+  },
+  "restored": "Restaurado",
+  "restoreFailed": "Não foi possível restaurar este cartão",
+  "backAt": "Volta em {{when}}.",
+  "undo": "Desfazer",
+  "withdrawFailed": "Não foi possível retirar esta solicitação",
+  "hideFailed": "Não foi possível ocultar este cartão",
+  "transferred": "Transferido para @{{name}}",
+  "transferFailed": "Não foi possível transferir este cartão",
+  "alreadyAnswered": "{{count}} já respondidas por outra pessoa.",
+  "couldNotWithdraw": "{{count}} não puderam ser retiradas.",
+  "withdrewStale_one": "1 solicitação antiga retirada",
+  "withdrewStale_other": "{{count}} solicitações antigas retiradas"
+}

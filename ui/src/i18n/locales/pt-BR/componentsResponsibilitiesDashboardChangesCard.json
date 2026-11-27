@@ -1,0 +1,30 @@
+{
+  "changeLabels": {
+    "addArea": "Nova área",
+    "renameArea": "Renomear área",
+    "removeArea": "Remover área",
+    "addResponsibility": "Nova responsabilidade",
+    "rewordResponsibility": "Reescrever responsabilidade",
+    "moveResponsibility": "Mover responsabilidade",
+    "removeResponsibility": "Abrir mão da responsabilidade"
+  },
+  "alsoLetsGo": "Também abre mão de: {{items}}",
+  "goesWith": "Vai junto com {{area}}",
+  "keep": "Manter",
+  "dropAriaLabel": "Descartar esta alteração",
+  "drop": "Descartar",
+  "changed": "Painel alterado.",
+  "changedWithSummary": "Painel alterado: {{summary}}.",
+  "replaced": "Alterações propostas para o painel, substituídas por outras mais recentes.",
+  "rejected": "Não estas alterações do painel.",
+  "yourAgent": "Seu agente",
+  "cardAriaLabel": "Alterações propostas para o painel",
+  "proposes": "{{agentName}} propõe",
+  "existingArea": "Área existente",
+  "responsibilitiesIn": "Responsabilidades em {{name}}",
+  "notRightDefault": "Essas alterações do painel ainda não estão certas.",
+  "notRightPlaceholder": "ex.: Manter Contratações, e menos responsabilidades em Captação de recursos",
+  "openConversation": "Abrir a conversa",
+  "notRight": "Não está certo",
+  "applyChanges": "Aplicar alterações"
+}

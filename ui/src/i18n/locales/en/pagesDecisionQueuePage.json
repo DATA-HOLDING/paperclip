@@ -1,0 +1,38 @@
+{
+  "breadcrumb": "Decisions",
+  "toast": {
+    "seedingFailed": "Could not update seeding",
+    "removed": "Removed from queue",
+    "excludeFailed": "Could not exclude"
+  },
+  "selectOrganization": "Select an organization first.",
+  "loadAction": "load this queue",
+  "empty": {
+    "title": "This queue is empty.",
+    "body": "Decisions land here when they match the queue's rules or an agent adds them."
+  },
+  "noMatch": {
+    "title": "No decisions match your search or filters.",
+    "body": "Adjust or clear your search and filters to see the rest."
+  },
+  "aging": {
+    "label": "Aging",
+    "body": "Idle past {{days}} days — kept off the queue. Keep any you still want surfaced."
+  },
+  "seed": {
+    "titleOn": "Auto-seeding is on",
+    "titleOff": "Auto-seeding is off",
+    "bodyOn": "This queue fills itself automatically. Decisions are added the moment they match any of its rules:",
+    "bodyOff": "Automatic adds are paused. These rules would add decisions to the queue when on:",
+    "noteOn": "Turning it off stops new automatic adds only — decisions already here stay, and you can still add or remove decisions by hand.",
+    "noteOff": "Adding or removing decisions by hand still works while automatic seeding is off.",
+    "disable": "Disable",
+    "enable": "Enable"
+  },
+  "exclude": {
+    "button": "Exclude",
+    "title": "Remove from this queue",
+    "reasonPlaceholder": "Reason (optional)…",
+    "cancel": "Cancel"
+  }
+}

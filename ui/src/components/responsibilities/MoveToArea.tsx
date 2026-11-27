@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 type AreaRef = Pick<ResponsibilityArea, "id" | "title" | "status">;
 
@@ -46,11 +47,11 @@ export function AreaRadioItems({
       {choices.map((area) => (
         <DropdownMenuRadioItem key={area.id} value={area.id} disabled={area.status === "archived"}>
           {area.title}
-          {area.status === "archived" ? " (archived)" : ""}
+          {area.status === "archived" ? t("componentsResponsibilitiesMoveToArea.archivedSuffix") : ""}
         </DropdownMenuRadioItem>
       ))}
       {choices.length > 0 ? <DropdownMenuSeparator /> : null}
-      <DropdownMenuRadioItem value="">No area</DropdownMenuRadioItem>
+      <DropdownMenuRadioItem value="">{t("componentsResponsibilitiesMoveToArea.noArea")}</DropdownMenuRadioItem>
     </DropdownMenuRadioGroup>
   );
 }
@@ -74,15 +75,15 @@ export function AreaControl({
             size="sm"
             variant="ghost"
             disabled={move.isPending}
-            aria-label={area ? `Area: ${area.title}. Move to another area` : "No area. Choose one"}
+            aria-label={area ? t("componentsResponsibilitiesMoveToArea.areaAriaLabel", { title: area.title }) : t("componentsResponsibilitiesMoveToArea.noAreaAriaLabel")}
           >
-            {area ? area.title : <span className="text-muted-foreground">No area</span>}
-            {area?.status === "archived" ? <span className="text-muted-foreground">(archived)</span> : null}
+            {area ? area.title : <span className="text-muted-foreground">{t("componentsResponsibilitiesMoveToArea.noArea")}</span>}
+            {area?.status === "archived" ? <span className="text-muted-foreground">{t("componentsResponsibilitiesMoveToArea.archived")}</span> : null}
             <ChevronDown aria-hidden="true" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="max-h-(--sz-50vh) overflow-y-auto">
-          <DropdownMenuLabel>Move to area</DropdownMenuLabel>
+          <DropdownMenuLabel>{t("componentsResponsibilitiesMoveToArea.moveToArea")}</DropdownMenuLabel>
           <AreaRadioItems
             areas={area && !areas.some((candidate) => candidate.id === area.id) ? [area, ...areas] : areas}
             value={area?.id ?? null}
@@ -94,7 +95,7 @@ export function AreaControl({
       </DropdownMenu>
       {move.error ? (
         <span role="alert" className="text-xs text-destructive">
-          Couldn’t move it. {describeError(move.error).body}
+          {t("componentsResponsibilitiesMoveToArea.moveFailed")} {describeError(move.error).body}
         </span>
       ) : null}
     </span>

@@ -1,0 +1,34 @@
+{
+  "never": "Nunca",
+  "edit": "Editar",
+  "unknownProject": "Projeto desconhecido",
+  "noProject": "Sem projeto",
+  "unknownAgent": "Agente desconhecido",
+  "noDefaultAgent": "Sem agente padrão",
+  "unavailableUser": "Usuário indisponível",
+  "noResponsibleUser": "Sem responsável",
+  "disableAria": "Desativar {{title}}",
+  "enableAria": "Ativar {{title}}",
+  "state": {
+    "archived": "Arquivada",
+    "draft": "Rascunho",
+    "on": "Ativada",
+    "off": "Desativada"
+  },
+  "badge": {
+    "archived": "arquivada",
+    "draft": "rascunho",
+    "paused": "pausada"
+  },
+  "selectAria": "Selecionar {{title}}",
+  "runningAria": "Executando {{title}}",
+  "runNowAria": "Executar agora: {{title}}",
+  "runningEllipsis": "Executando…",
+  "runNow": "Executar agora",
+  "moreActionsAria": "Mais ações para {{title}}",
+  "runningDots": "Executando...",
+  "pause": "Pausar",
+  "enable": "Ativar",
+  "restore": "Restaurar",
+  "archive": "Arquivar"
+}

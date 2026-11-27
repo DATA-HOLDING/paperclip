@@ -1,0 +1,7 @@
+{
+  "failedAfterPlanSaved": "Workspace restore failed after the plan was saved. The saved plan is available.",
+  "failed": "Workspace restore failed.",
+  "filesNeedRecovery": "Workspace files need recovery.",
+  "noFinalResponse": "No final response was recorded.",
+  "affectedPath": "Affected path: {{path}}."
+}

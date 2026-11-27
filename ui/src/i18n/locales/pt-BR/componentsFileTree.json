@@ -1,0 +1,25 @@
+{
+  "frontmatter": {
+    "name": "Nome",
+    "title": "Título",
+    "kind": "Tipo",
+    "reportsTo": "Reporta a",
+    "skills": "Skills",
+    "status": "Status",
+    "description": "Descrição",
+    "priority": "Prioridade",
+    "assignee": "Responsável",
+    "project": "Projeto",
+    "recurring": "Recorrente",
+    "targetDate": "Data-alvo"
+  },
+  "errorBadge": "erro",
+  "retry": "Tentar novamente",
+  "empty": {
+    "title": "Nenhum arquivo",
+    "description": "Os arquivos aparecerão aqui quando estiverem disponíveis."
+  },
+  "collapse": "Recolher {{name}}",
+  "expand": "Expandir {{name}}",
+  "select": "Selecionar {{path}}"
+}

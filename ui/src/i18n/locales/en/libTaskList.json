@@ -1,0 +1,13 @@
+{
+  "columns": {
+    "task": "Task",
+    "taskId": "Task ID",
+    "createdBy": "Created by",
+    "assignee": "Assignee",
+    "project": "Project",
+    "parentTask": "Parent Task",
+    "tags": "Tags",
+    "worktree": "Worktree",
+    "lastUpdated": "Last updated"
+  }
+}

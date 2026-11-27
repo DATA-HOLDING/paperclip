@@ -1,0 +1,30 @@
+{
+  "status": {
+    "backlog": "Backlog",
+    "todo": "A fazer",
+    "in_progress": "Em andamento",
+    "in_review": "Em revisão",
+    "blocked": "Bloqueada",
+    "done": "Concluída",
+    "cancelled": "Cancelada",
+    "idle": "Ociosa",
+    "monitoring": "Monitorando",
+    "in_queue": "Na fila"
+  },
+  "blocked": {
+    "plain": "Bloqueada",
+    "waitingOnSubtask": "Bloqueada · aguardando a subtarefa ativa {{identifier}}",
+    "waitingOnSubtasks_one": "Bloqueada · aguardando 1 subtarefa ativa",
+    "waitingOnSubtasks_other": "Bloqueada · aguardando {{count}} subtarefas ativas",
+    "coveredByDependency": "Bloqueada · coberta pela dependência ativa {{identifier}}",
+    "coveredByDependencies_one": "Bloqueada · coberta por 1 dependência ativa",
+    "coveredByDependencies_other": "Bloqueada · coberta por {{count}} dependências ativas",
+    "reviewStalledOn": "Bloqueada · revisão parada em {{identifier}}",
+    "reviewsStalled_one": "Bloqueada · revisão parada sem próximo passo claro",
+    "reviewsStalled_other": "Bloqueada · {{count}} revisões paradas sem próximo passo claro",
+    "attention_one": "{{count}} bloqueio precisa de atenção",
+    "attention_other": "{{count}} bloqueios precisam de atenção",
+    "attentionWithCovered": "Bloqueada · {{attention}}; {{coveredCount}} coberto(s) por trabalho ativo",
+    "withReason": "Bloqueada · {{reason}}"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "liveScanUnavailable": "Varredura ao vivo indisponível. Atualize a página e tente novamente.",
+  "unexpectedResponse": "Resposta inesperada da varredura do repositório. Tente novamente.",
+  "scanInterrupted": "A varredura do repositório foi interrompida. Tente novamente."
+}

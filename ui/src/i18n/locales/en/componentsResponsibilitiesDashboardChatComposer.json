@@ -1,0 +1,8 @@
+{
+  "chooseAgent": "Choose an agent to talk to.",
+  "startFailed": "Couldn’t start the chat with {{name}}. {{reason}}",
+  "addAgent": "Add an agent",
+  "toStartChat": " to start a chat from here.",
+  "send": "Send",
+  "removeFile": "Remove {{name}}"
+}

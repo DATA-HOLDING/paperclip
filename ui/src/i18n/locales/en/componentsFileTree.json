@@ -1,0 +1,25 @@
+{
+  "frontmatter": {
+    "name": "Name",
+    "title": "Title",
+    "kind": "Kind",
+    "reportsTo": "Reports to",
+    "skills": "Skills",
+    "status": "Status",
+    "description": "Description",
+    "priority": "Priority",
+    "assignee": "Responsible",
+    "project": "Project",
+    "recurring": "Recurring",
+    "targetDate": "Target date"
+  },
+  "errorBadge": "error",
+  "retry": "Retry",
+  "empty": {
+    "title": "No files",
+    "description": "Files will appear here when they are available."
+  },
+  "collapse": "Collapse {{name}}",
+  "expand": "Expand {{name}}",
+  "select": "Select {{path}}"
+}

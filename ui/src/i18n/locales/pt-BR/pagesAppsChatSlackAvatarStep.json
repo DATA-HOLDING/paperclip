@@ -1,0 +1,29 @@
+{
+  "avatarAlt": "Avatar Cliptoon de {{name}}",
+  "downloadHeading": "Baixe o avatar do seu agente",
+  "downloadHeadingNumbered": "1. Baixe o avatar do seu agente",
+  "imageSpecs": "PNG · 512 × 512 · Pronto para o Slack",
+  "downloadButton": "Baixar avatar",
+  "downloadError": "Não foi possível baixar o avatar. Tente baixá-lo novamente.",
+  "howToUpload": "Como enviar no Slack",
+  "uploadHeading": "Envie-o no Slack",
+  "uploadHeadingNumbered": "2. Envie-o no Slack",
+  "uploadDescription": "Você vai enviar a imagem baixada diretamente nas configurações do app no Slack.",
+  "steps": {
+    "openSettings": "Abra as configurações do app no Slack",
+    "andChoose": "e escolha",
+    "choose": "Escolha",
+    "basicInformation": "Basic Information",
+    "thenScrollTo": " e role até",
+    "displayInformation": "Display Information",
+    "under": "Em",
+    "appIconPreview": "App icon & Preview",
+    "clickAndUpload": ", clique no ícone do app e envie",
+    "confirmCrop": "Confirme o recorte e clique em",
+    "saveChanges": "Save Changes",
+    "inSlack": "no Slack."
+  },
+  "settingsAriaLabel": "Avatar no Slack",
+  "settingsTitle": "Avatar do agente",
+  "settingsDescription": "Use o avatar de {{name}} para que sua equipe reconheça o agente"
+}

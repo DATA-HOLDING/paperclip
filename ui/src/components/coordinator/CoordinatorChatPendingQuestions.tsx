@@ -6,6 +6,7 @@ import { Link } from "@/lib/router";
 import { useCoordinatorWorkspaceEnabled } from "@/hooks/useCoordinatorWorkspaceEnabled";
 import { AttentionInteractionResolver } from "@/components/AttentionInteractionResolver";
 import { Button } from "@/components/ui/button";
+import { t } from "@/i18n";
 
 const EMPTY_QUESTIONS: AttentionItem[] = [];
 
@@ -32,10 +33,10 @@ export function CoordinatorChatPendingQuestion({ item }: { item: AttentionItem }
   if (!task) return null;
   const href = `${(task.href ?? `/issues/${task.id}`).split("#")[0]}#interaction-${item.subject.id}`;
   return <section data-testid="coordinator-chat-pending-question" className="space-y-3">
-    <p className="text-sm text-muted-foreground">{item.originAgentName ?? "Your agent"} needs your input on {task.title ?? task.identifier ?? "this task"}.</p>
+    <p className="text-sm text-muted-foreground">{t("componentsCoordinator.pendingQuestions.needsInput", { agent: item.originAgentName ?? t("componentsCoordinator.pendingQuestions.yourAgent"), task: task.title ?? task.identifier ?? t("componentsCoordinator.pendingQuestions.thisTask") })}</p>
     <article className="coordinator-decision-card space-y-4 rounded-xl border border-border bg-card p-6">
       <AttentionInteractionResolver companyId={task.companyId} issueId={task.id} interactionId={item.subject.id} currentUserId={userId} presentation="coordinator-decision" footerSlot={<Link to={href} className="flex max-w-full items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-        <span className="shrink-0">{task.identifier ?? "Open task"}</span><span className="truncate">{task.title}</span><ArrowUpRight className="size-4 shrink-0" />
+        <span className="shrink-0">{task.identifier ?? t("componentsCoordinator.common.openTask")}</span><span className="truncate">{task.title}</span><ArrowUpRight className="size-4 shrink-0" />
       </Link>} />
 
     </article>
@@ -45,6 +46,6 @@ export function CoordinatorChatPendingQuestion({ item }: { item: AttentionItem }
 export function CoordinatorChatQuestionStatus({ query }: { query: ReturnType<typeof useCoordinatorChatPendingQuestions> }) {
   if (!query.enabled || !query.isError) return null;
   return <div role="status" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-    <span>Task questions couldn’t load.</span><Button size="sm" variant="ghost" onClick={() => void query.refetch()}>Retry</Button>
+    <span>{t("componentsCoordinator.pendingQuestions.loadError")}</span><Button size="sm" variant="ghost" onClick={() => void query.refetch()}>{t("componentsCoordinator.common.retry")}</Button>
   </div>;
 }

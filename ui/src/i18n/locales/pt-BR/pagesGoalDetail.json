@@ -1,0 +1,19 @@
+{
+  "showProperties": "Mostrar propriedades",
+  "noOrganization": "Nenhuma organização selecionada",
+  "breadcrumbs": {
+    "goals": "Objetivos",
+    "goal": "Objetivo"
+  },
+  "descriptionPlaceholder": "Adicione uma descrição...",
+  "tabs": {
+    "subGoals": "Subobjetivos ({{count}})",
+    "projects": "Projetos ({{count}})"
+  },
+  "addSubGoal": "Subobjetivo",
+  "noSubGoals": "Nenhum subobjetivo.",
+  "noProjects": "Nenhum projeto vinculado.",
+  "errorActions": {
+    "loadGoal": "carregar este objetivo"
+  }
+}

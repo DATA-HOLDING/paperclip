@@ -1,0 +1,42 @@
+{
+  "lifecycle": {
+    "compiling": {
+      "label": "Setting up",
+      "description": "Just created; setting up and generating the first summary."
+    },
+    "fresh": {
+      "label": "Fresh",
+      "description": "Summary reflects all known changes; nothing pending."
+    },
+    "stale": {
+      "label": "Stale",
+      "description": "Changes are pending since the last update."
+    },
+    "updating": {
+      "label": "Updating",
+      "description": "An update is streaming in now."
+    },
+    "error": {
+      "label": "Error",
+      "description": "The last run failed; the last good summary stays visible."
+    },
+    "pausedBudget": {
+      "label": "Paused — budget",
+      "description": "The daily token cap was hit; auto-updates are suspended."
+    },
+    "pausedHours": {
+      "label": "Paused — hours",
+      "description": "Outside active hours; changes batch into one update at window open."
+    },
+    "archived": {
+      "label": "Archived",
+      "description": "No auto-updates and no watches. Restore to start watching again."
+    }
+  },
+  "refresh": {
+    "manual": "manual",
+    "everyMinutes": "every {{minutes}}m if changed",
+    "onSchedule": "on a schedule if changed",
+    "onChange": "on change ({{seconds}}s)"
+  }
+}

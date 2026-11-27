@@ -1,0 +1,135 @@
+{
+  "unhealthy": "Com problema",
+  "card": {
+    "image": "Imagem",
+    "document": "Documento",
+    "text": "Texto",
+    "file": "Arquivo",
+    "openInNewTab": "Abrir o arquivo em nova aba",
+    "downloadFile": "Baixar o arquivo",
+    "lastEdited": "Editado em {{date}}"
+  },
+  "dropzone": {
+    "dropFiles": "Solte os arquivos para adicioná-los a esta tarefa",
+    "label": "Envio de artefatos"
+  },
+  "groupCard": {
+    "count_one": "{{count}} artefato",
+    "count_other": "{{count}} artefatos",
+    "updated": "Atualizado em {{date}}"
+  },
+  "uploadArea": {
+    "label": "Artefatos da tarefa"
+  },
+  "upload": {
+    "chooseFiles": "Escolher arquivos de artefato",
+    "uploadFiles": "Enviar arquivos",
+    "uploads": "Envios",
+    "uploading": "Enviando…",
+    "failed": "Falha no envio. Tente novamente.",
+    "retry": "Tentar novamente",
+    "dismiss": "Dispensar o envio: {{filename}}",
+    "emptyTitle": "Adicione arquivos a esta tarefa",
+    "emptyDescription": "Solte arquivos em qualquer lugar deste painel ou use o ícone de envio."
+  },
+  "toolbar": {
+    "kind": {
+      "all": "Todos",
+      "image": "Imagens",
+      "video": "Vídeos",
+      "document": "Documentos",
+      "text": "Texto",
+      "file": "Arquivos"
+    },
+    "group": {
+      "none": "Nenhum",
+      "task": "Tarefa",
+      "parentTask": "Tarefa pai"
+    },
+    "filterByType": "Filtrar artefatos por tipo",
+    "controls": "Controles de artefatos",
+    "search": "Buscar artefatos",
+    "searchPlaceholder": "Buscar artefatos…",
+    "clearSearch": "Limpar a busca de artefatos",
+    "groupCurrently": "Agrupar artefatos (atual: {{group}})",
+    "groupArtifacts": "Agrupar artefatos",
+    "groupBy": "Agrupar por"
+  },
+  "issueCard": {
+    "openInTabLabel": "Abrir em aba: {{title}}",
+    "openInTab": "Abrir em aba",
+    "loadingPreview": "Carregando a prévia…",
+    "previewPatch": "Ver prévia do patch",
+    "previewData": "Ver prévia dos dados",
+    "loadPatchPreviewAction": "carregar a prévia do patch",
+    "loadingPatchPreview": "Carregando a prévia do patch…",
+    "csvTooLarge": "O CSV é grande demais para a prévia. Baixe o arquivo para vê-lo.",
+    "loadCsvPreviewAction": "carregar a prévia do CSV",
+    "csvUnavailable": "A prévia do CSV não está disponível. Baixe o arquivo para vê-lo."
+  },
+  "media": {
+    "openGallery": "Abrir galeria: {{title}}",
+    "video": "Vídeo",
+    "image": "Imagem"
+  },
+  "rich": {
+    "filesChanged_one": "{{count}} arquivo",
+    "filesChanged_other": "{{count}} arquivos",
+    "checks": {
+      "passed": "Verificações aprovadas",
+      "pending": "Verificações pendentes",
+      "failed": "Verificações falharam",
+      "unknown": "Verificações indisponíveis"
+    },
+    "state": {
+      "open": "Aberto",
+      "draft": "Rascunho",
+      "merged": "Mesclado",
+      "closed": "Fechado",
+      "unknown": "Estado desconhecido"
+    },
+    "pullRequest": "Pull request",
+    "source": "Fonte: {{source}}",
+    "openPullRequest": "Abrir o pull request",
+    "commit": "Commit",
+    "viewCommit": "Ver o commit",
+    "openImage": "Abrir a imagem",
+    "patch": "Patch",
+    "revision": " · revisão {{revision}}",
+    "closeDocument": "Fechar o documento",
+    "readDocument": "Ler o documento",
+    "noRows": "Nenhuma linha",
+    "first": "Primeiras ",
+    "rowCount_one": "{{count}} linha",
+    "rowCount_other": "{{count}} linhas",
+    "columnCount_one": "{{count}} coluna",
+    "columnCount_other": "{{count}} colunas",
+    "viewData": "Ver os dados",
+    "downloadCsv": "Baixar CSV",
+    "noPreview": "Nenhuma prévia disponível",
+    "image": "Imagem",
+    "viewImageLabel": "Ver imagem: {{title}}",
+    "viewImage": "Ver a imagem",
+    "video": "Vídeo",
+    "openVideoLabel": "Abrir vídeo: {{title}}",
+    "openVideo": "Abrir o vídeo",
+    "linkPreview": "Prévia do link",
+    "openLink": "Abrir o link",
+    "file": "Arquivo",
+    "openFile": "Abrir o arquivo",
+    "downloadFile": "Baixar o arquivo",
+    "downloadUnavailable": "Download indisponível"
+  },
+  "fileRow": {
+    "openRawLabel": "Abrir {{filename}} sem formatação",
+    "openRaw": "Abrir sem formatação",
+    "downloadLabel": "Baixar {{filename}}",
+    "download": "Baixar",
+    "retryPreview": "Tentar a prévia novamente"
+  },
+  "v1Filters": {
+    "tasks": "Tarefas",
+    "allFiles": "Todos os arquivos",
+    "label": "Mostrar artefatos por tarefa ou por tipo"
+  }
+}

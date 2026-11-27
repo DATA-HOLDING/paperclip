@@ -1,0 +1,72 @@
+{
+  "paused": {
+    "canCheckHint": "Esta tarefa está bloqueada. Você pode pedir ao agente para verificar agora.",
+    "resumeHint": "Retome esta tarefa para continuar verificando.",
+    "title": "Verificações automáticas pausadas"
+  },
+  "provider": {
+    "title": "Aguardando o provedor do sandbox",
+    "bannerMeta": "O provedor do sandbox está indisponível. O trabalho continua automaticamente quando ele voltar.",
+    "stripMeta": "O trabalho continua automaticamente quando o provedor do sandbox voltar."
+  },
+  "workspace": {
+    "title": "Aguardando o espaço de trabalho",
+    "bannerMeta": "Outra tarefa está usando este espaço de trabalho. O trabalho começa automaticamente quando ele estiver livre.",
+    "stripMeta": "O trabalho começa automaticamente quando o espaço de trabalho estiver livre."
+  },
+  "executionWait": {
+    "hint": "A verificação pode começar depois que a execução atual terminar de salvar o trabalho.",
+    "title": "Monitor aguarda a execução atual",
+    "scheduledYourTime": "Agendado para {{absolute}} (seu horário)",
+    "scheduled": "Agendado para {{absolute}}"
+  },
+  "review": {
+    "title": "Revisão de pull request solicitada",
+    "nextCheckYourTime": "Próxima verificação {{eta}} · {{absolute}} (seu horário)",
+    "nextCheck": "Próxima verificação {{eta}} · {{absolute}}"
+  },
+  "pool": {
+    "title": "Pool esgotado",
+    "recheckYourTime": "Nova verificação de uso {{eta}} · {{absolute}} (seu horário)",
+    "recheck": "Nova verificação de uso {{eta}} · {{absolute}}",
+    "bannerHint": "Tarefas com uma conta selecionada a mantêm enquanto aguardam. O trabalho é retomado quando o uso permitir ou o agente usar outra conta.",
+    "stripHint": "Tarefas com uma conta selecionada a mantêm enquanto aguardam."
+  },
+  "state": {
+    "agentResumes": "O agente retoma {{eta}}",
+    "waitingResumes": "Aguardando o monitor — retoma {{eta}}",
+    "resumes": "Retoma {{eta}}",
+    "agentRetryDueNow": "Nova tentativa do agente prevista para agora",
+    "waitingDueNow": "Aguardando o monitor — previsto para agora",
+    "dueNow": "Previsto para agora",
+    "checkingMomentarily": "Verificando em instantes…",
+    "agentRetry": "Nova tentativa do agente {{eta}}",
+    "waiting": "Aguardando o monitor — {{eta}}",
+    "firesNextTick": "Dispara no próximo ciclo"
+  },
+  "meta": {
+    "attempt": "Tentativa {{count}}",
+    "watching": "Monitorando: {{service}}",
+    "yourTime": "{{absolute}} (seu horário)"
+  },
+  "actions": {
+    "checking": "Verificando…",
+    "checkStatus": "Verificar status",
+    "checkNow": "Verificar agora"
+  },
+  "cancel": {
+    "failed": "Não foi possível cancelar o monitor. Tente novamente.",
+    "button": "Cancelar monitor",
+    "title": "Cancelar monitor?",
+    "description": "Isso remove a verificação agendada do monitor. O agente não será mais retomado por este monitor. Você pode enviar uma mensagem para continuar a tarefa.",
+    "keep": "Manter monitor",
+    "cancelling": "Cancelando…"
+  },
+  "footer": {
+    "reviewWhileRun": "Revise no GitHub enquanto a execução atual termina de salvar o trabalho.",
+    "reviewThenCheck": "Revise no GitHub e depois verifique o status para o agente conferir o resultado.",
+    "keepSending": "Você pode continuar enviando instruções enquanto o agente aguarda.",
+    "usageWait": "Enviar uma resposta verifica o uso de novo agora. O agente começa assim que houver uso disponível.",
+    "wakesNow": "Enviar uma resposta acorda o agente agora — antes da verificação agendada."
+  }
+}

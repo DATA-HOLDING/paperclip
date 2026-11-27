@@ -1,0 +1,10 @@
+{
+  "harnessUnavailableOnCloud": "This harness is not available on Paperclip Cloud",
+  "agentUnavailableForBulkEdits": "This agent is not available for bulk edits",
+  "editPoolMembersOnAgentPage": "Edit connection pool members on the agent's configuration page",
+  "managedExternally": "Connection and model are managed externally",
+  "localCredentials": "Local credentials",
+  "connectionPool": "Connection pool",
+  "responsibleUserDefault": "Responsible user's default",
+  "assignedConnection": "Assigned connection"
+}

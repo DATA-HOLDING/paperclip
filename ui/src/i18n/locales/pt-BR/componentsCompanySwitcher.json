@@ -1,0 +1,9 @@
+{
+  "select": "Selecionar organização",
+  "organizations": "Organizações",
+  "loadFailed": "Não foi possível carregar as organizações",
+  "tryAgain": "Tentar novamente",
+  "none": "Nenhuma organização",
+  "settings": "Configurações",
+  "manage": "Gerenciar organizações"
+}

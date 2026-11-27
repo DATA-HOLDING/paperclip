@@ -1,0 +1,120 @@
+{
+  "model": {
+    "invalidName": "Invalid name — use letters, digits and _",
+    "duplicateName": "Duplicate name",
+    "reservedPrefix": "Reserved prefix — provided automatically and may be overridden",
+    "secretMissing": "This secret no longer exists — runs will fail until you rebind.",
+    "secretDisabled": "Runs will fail until re-enabled or rebound.",
+    "userSecretMissing": "This user secret definition no longer exists — runs will fail until you rebind.",
+    "userSecretDisabled": "Runs will fail until this user secret definition is re-enabled or rebound."
+  },
+  "secretForm": {
+    "nameRequired": "Name is required",
+    "nameFormat": "Use lowercase letters, digits and _",
+    "nameExists": "A secret with this name already exists",
+    "valueRequired": "Value is required",
+    "createFailed": "Failed to create secret",
+    "createAndBind": "Create & bind",
+    "storeAndBind": "Store & bind",
+    "createHeading": "Create secret",
+    "storeHeading": "Store value as secret",
+    "storeDescriptionBefore": "Moves the typed value into an encrypted organization secret and binds",
+    "thisVariable": "this variable",
+    "storeDescriptionAfter": " to it.",
+    "nameLabel": "Name",
+    "nameAriaLabel": "Secret name",
+    "valueLabel": "Value",
+    "valuePlaceholder": "value",
+    "valueAriaLabel": "Secret value",
+    "hideValue": "Hide value",
+    "showValue": "Show value",
+    "cancel": "Cancel"
+  },
+  "secretPicker": {
+    "upOneFolder": "Up one folder",
+    "browseSecrets": "Browse secrets",
+    "current": "Current",
+    "missingSecret": "Missing secret ({{id}})",
+    "recentlyUsed": "Recently used",
+    "allSecrets": "All secrets",
+    "selectSecret": "Select secret…",
+    "searchSecrets": "Search secrets…",
+    "noMatches": "No matching secrets",
+    "createSecretNamed": "Create secret",
+    "createNew": "Create new secret…"
+  },
+  "row": {
+    "secretCreated": "Secret {{name}} created",
+    "source": {
+      "textValue": "Text value",
+      "textValueDescription": "Store the value inline as plain text.",
+      "organizationSecret": "Organization secret",
+      "organizationSecretDescription": "Resolve a stored organization secret at run start.",
+      "organizationSecretReference": "Organization secret reference",
+      "userSecret": "User secret",
+      "userSecretDescription": "Resolve the responsible user's own value at run start.",
+      "userSecretReference": "User secret reference"
+    },
+    "variableName": "Variable name",
+    "valueSource": "Value source",
+    "valuePlaceholder": "value",
+    "variableValue": "Variable value",
+    "sensitive": {
+      "title": "This value looks sensitive — store it as a secret",
+      "storeAsSecret": "Store as secret",
+      "dismissAriaLabel": "Dismiss sensitive-value suggestion",
+      "dismissTitle": "Dismiss — keep this value as plain text"
+    },
+    "version": {
+      "ariaLabel": "Version",
+      "secretVersion": "Secret version",
+      "recommended": "(recommended)"
+    },
+    "userSecret": {
+      "ariaLabel": "User secret",
+      "selectPlaceholder": "Select user secret...",
+      "unknown": "Unknown ({{key}})",
+      "keyPlaceholder": "user-secret key",
+      "keyAriaLabel": "User secret key"
+    },
+    "requirement": {
+      "ariaLabel": "Requirement",
+      "required": "Required",
+      "optional": "Optional"
+    },
+    "undo": {
+      "revertedToText": "Reverted to text —",
+      "button": "Undo"
+    },
+    "moreActions": "More actions",
+    "storeAsSecretMenu": "Store as secret…",
+    "remove": "Remove {{name}}",
+    "variableFallback": "variable"
+  },
+  "editor": {
+    "defaultHint": "Set the KEY to the env var name the process expects, for example GH_TOKEN. Choose a secret to resolve a stored value at run start. PAPERCLIP_* variables are injected automatically.",
+    "changedNamesMore": "{{names}} +{{extra}} more",
+    "addVariable": "Add variable",
+    "summary": {
+      "new": "New: {{names}}",
+      "edited": "Edited: {{names}}",
+      "removed": "Removed: {{names}}"
+    },
+    "imported_one": "Imported {{count}} variable",
+    "imported_other": "Imported {{count}} variables",
+    "attention": "{{count}} bindings need attention",
+    "header": {
+      "name": "Name",
+      "value": "Value"
+    },
+    "empty": "No environment variables",
+    "recentlyUsed": "Recently used:",
+    "bindSecret": "Bind {{name}}",
+    "unsaved": {
+      "title": "Unsaved changes",
+      "revert": "Revert",
+      "save": "Save"
+    },
+    "userSecretsNote": "User secrets resolve from the user responsible for the run. Required bindings fail until that user sets their value under Secrets → My secrets."
+  }
+}

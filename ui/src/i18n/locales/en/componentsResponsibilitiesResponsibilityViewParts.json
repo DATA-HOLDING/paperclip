@@ -1,0 +1,49 @@
+{
+  "proposals": {
+    "this": "This responsibility was proposed for you and is waiting for your review.",
+    "list_one": "{{count}} proposed responsibility is waiting for your review.",
+    "list_other": "{{count}} proposed responsibilities are waiting for your review.",
+    "reviewIt": "Review it",
+    "reviewThem": "Review them"
+  },
+  "header": {
+    "letGo": "You let go of this.",
+    "dismissed": "You dismissed this when it was proposed."
+  },
+  "actions": {
+    "newTask": "New task for an agent",
+    "more": "More actions for this responsibility",
+    "letGo": "Let go",
+    "takeBack": "Take it back on",
+    "delete": "Delete…"
+  },
+  "strip": {
+    "moreSkills_one": "{{count}} more skill",
+    "moreSkills_other": "{{count}} more skills",
+    "manyMoreArtifacts": "many more artifacts",
+    "moreArtifacts_one": "{{formatted}} more artifact",
+    "moreArtifacts_other": "{{formatted}} more artifacts",
+    "and": " and ",
+    "moreLine": "And {{parts}}.",
+    "heading": "Skills and artifacts",
+    "empty": "No skills or artifacts yet."
+  },
+  "moreOf": {
+    "skillMany": "and many more skills",
+    "artifactMany": "and many more artifacts",
+    "skill_one": "and {{formatted}} more skill",
+    "skill_other": "and {{formatted}} more skills",
+    "artifact_one": "and {{formatted}} more artifact",
+    "artifact_other": "and {{formatted}} more artifacts"
+  },
+  "cards": {
+    "holderAndMore": "{{holder}} and {{count}} more",
+    "skill": "Skill",
+    "from": "From {{identifier}}",
+    "artifact": "Artifact",
+    "skillsTitle": "Skills",
+    "noSkills": "No skills yet. They come from the agents doing the work.",
+    "artifactsTitle": "Artifacts",
+    "noArtifacts": "Nothing produced yet."
+  }
+}

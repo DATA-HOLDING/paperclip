@@ -1,0 +1,7 @@
+{
+  "anServer": "An",
+  "serverFailed": " MCP server failed to start",
+  "serversCount": "{{count}} MCP servers",
+  "failedToStart": " failed to start: ",
+  "ranWithoutTools": "The agent ran without these tools. Fix the server's command or credentials, then try again."
+}

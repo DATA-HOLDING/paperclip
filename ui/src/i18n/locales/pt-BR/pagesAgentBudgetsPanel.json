@@ -1,0 +1,7 @@
+{
+  "loadFailed": "Não foi possível carregar os dados de orçamento. Mostrando o orçamento mensal salvo do agente.",
+  "updateFailed": "Não foi possível atualizar o orçamento de {{name}}. Revise o valor e tente novamente.",
+  "keepPausedFailed": "Não foi possível manter este agente pausado.",
+  "raiseFailed": "Não foi possível aumentar o orçamento e retomar.",
+  "tryAgain": "Tente novamente."
+}

@@ -1,0 +1,6 @@
+{
+  "title": "You completed {{count}} tasks!",
+  "description": "If you're enjoying Paperclip, consider giving us a star on GitHub!",
+  "star": "Star on GitHub",
+  "notNow": "Not now"
+}

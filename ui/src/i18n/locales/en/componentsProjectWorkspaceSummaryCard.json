@@ -1,0 +1,21 @@
+{
+  "kind": {
+    "execution": "Execution workspace",
+    "project": "Project workspace"
+  },
+  "updated": "Updated {{time}}",
+  "services": "{{running}}/{{total}} services",
+  "stopServices": "Stop services",
+  "startServices": "Start services",
+  "retryClose": "Retry close",
+  "closeWorkspace": "Close workspace",
+  "branch": "Branch",
+  "branchCopied": "Branch copied",
+  "copyBranch": "Copy branch",
+  "path": "Path",
+  "pathCopied": "Path copied",
+  "copyPath": "Copy path",
+  "service": "Service",
+  "linkedTasks": "Linked tasks",
+  "more": "+{{count}} more"
+}

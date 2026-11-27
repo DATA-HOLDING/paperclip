@@ -1,0 +1,7 @@
+{
+  "retry": "Tentar novamente",
+  "retrying": "Tentando novamente…",
+  "loading": "Carregando",
+  "reconnecting": "Reconectando",
+  "staleHint": "Atualização pausada enquanto reconecta…"
+}

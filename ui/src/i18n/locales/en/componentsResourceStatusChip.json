@@ -1,0 +1,42 @@
+{
+  "ready": {
+    "label": "Ready",
+    "title": "Materialized and matches the shipped default"
+  },
+  "needsSetup": {
+    "label": "Needs setup",
+    "title": "Present but not usable yet"
+  },
+  "missing": {
+    "label": "Missing",
+    "title": "Expected resource absent; reconcile will recreate it"
+  },
+  "error": {
+    "label": "Error",
+    "title": "Failed to load or reconcile"
+  },
+  "updateAvailable": {
+    "label": "Update available",
+    "title": "Unedited — a newer shipped default can be applied"
+  },
+  "drifted": {
+    "label": "Drifted",
+    "title": "You've edited this; your changes are kept, not overwritten"
+  },
+  "scheduleOff": {
+    "label": "Schedule off",
+    "title": "No background work runs until you enable it — costs zero tokens"
+  },
+  "scheduleOn": {
+    "label": "Weekly",
+    "title": "Runs on the weekly schedule"
+  },
+  "pendingApproval": {
+    "label": "Pending approval",
+    "title": "Waiting on board hire approval before it can run"
+  },
+  "proposalPending": {
+    "label": "Proposal pending",
+    "title": "A proposed update is waiting for your review"
+  }
+}

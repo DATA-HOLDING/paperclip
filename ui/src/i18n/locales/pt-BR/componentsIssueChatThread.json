@@ -1,0 +1,187 @@
+{
+  "liveStatus": {
+    "using": "Usando {{tool}}",
+    "noOutput": "sem saída há {{elapsed}} - ainda em execução",
+    "ago": "há {{elapsed}}"
+  },
+  "assigneeNotice": {
+    "stillSettingUp": " ainda está sendo configurado.",
+    "finishSetup": "Concluir configuração",
+    "preparing": "O computador dele está sendo preparado. As execuções começam automaticamente quando a configuração terminar.",
+    "setupUnfinished": "A configuração dele ainda não terminou. Conclua a configuração para que ele possa iniciar execuções.",
+    "pauseBudget": "Ele foi pausado por um limite rígido de orçamento.",
+    "pauseImport": "Ele chegou pausado de uma importação de organização — agentes importados ficam parados até você retomá-los.",
+    "pauseSystem": "Ele foi pausado pelo sistema.",
+    "pauseArchived": "Ele foi pausado porque a organização dele está arquivada.",
+    "pauseManual": "Ele foi pausado manualmente.",
+    "isPaused": " está pausado.",
+    "resuming": "Retomando…",
+    "resume": "Retomar agente",
+    "newRunsBlocked": "Novas execuções não vão começar até o agente ser retomado."
+  },
+  "authors": {
+    "agent": "Agente",
+    "you": "Você",
+    "system": "Sistema",
+    "board": "Conselho"
+  },
+  "fallback": {
+    "tool": "Ferramenta: {{name}}",
+    "args": "Argumentos:\n{{args}}",
+    "result": "Resultado:\n{{result}}",
+    "errorTitle": "O renderizador do chat encontrou um erro de estado interno.",
+    "errorBody": "Mostrando uma transcrição alternativa segura em vez de travar a página de tarefas.",
+    "noContent": "Mensagem sem conteúdo."
+  },
+  "values": {
+    "none": "Nenhum"
+  },
+  "toolSummary": {
+    "commands_one": "executou {{count}} comando",
+    "commands_other": "executou {{count}} comandos",
+    "tools_one": "chamou {{count}} ferramenta",
+    "tools_other": "chamou {{count}} ferramentas",
+    "separator": ", "
+  },
+  "cot": {
+    "working": "Trabalhando",
+    "worked": "Trabalhou",
+    "forDuration": "por {{duration}}"
+  },
+  "actions": {
+    "copy": "Copiar",
+    "cancel": "Cancelar",
+    "copyMessage": "Copiar mensagem",
+    "moreActions": "Mais ações"
+  },
+  "copy": {
+    "failedTitle": "Falha ao copiar",
+    "unableText": "Não foi possível copiar o texto",
+    "unableMessage": "Não foi possível copiar a mensagem",
+    "unableNotice": "Não foi possível copiar o aviso do sistema",
+    "unableNoticeLink": "Não foi possível copiar o link do aviso do sistema"
+  },
+  "tool": {
+    "input": "Entrada",
+    "result": "Resultado"
+  },
+  "providerActivity": {
+    "title": "Atividade do provedor",
+    "childAgent": "Agente filho",
+    "unavailableSource": "Fonte indisponível",
+    "providerReported": "(informado pelo provedor)",
+    "model": "Modelo"
+  },
+  "queue": {
+    "deferredWake": "⏸ Despertar adiado",
+    "queued": "Na fila",
+    "interrupting": "Interrompendo...",
+    "interrupt": "Interromper"
+  },
+  "badges": {
+    "followUp": "Acompanhamento"
+  },
+  "comment": {
+    "deleted": "Comentário excluído",
+    "sentFromIMessage": "Enviado pelo iMessage",
+    "sending": "Enviando...",
+    "delete": "Excluir comentário",
+    "deleteTitle": "Excluir comentário?",
+    "deleteDescription": "Isso vai substituir o comentário por um marcador de comentário excluído.",
+    "fallbackAuthor": "Comentário",
+    "deletedThis": " excluiu este comentário"
+  },
+  "run": {
+    "stop": "Parar execução",
+    "stopping": "Parando...",
+    "view": "Ver execução",
+    "running": "Em execução"
+  },
+  "assistant": {
+    "fastResponse": "Confirmação gerada pela plataforma. A resposta de fato do agente vem em seguida, separadamente."
+  },
+  "feedback": {
+    "helpful": "Útil",
+    "needsWork": "Precisa melhorar",
+    "whatBetter": "O que poderia ter sido melhor?",
+    "notePlaceholder": "Adicione uma nota curta",
+    "dismiss": "Dispensar",
+    "saving": "Salvando...",
+    "saveNote": "Salvar nota",
+    "sharingTitle": "Salve sua preferência de compartilhamento de feedback",
+    "sharingDescription": "Escolha se as respostas de IA avaliadas podem ser compartilhadas com a Paperclip Labs. Esta resposta passa a ser o padrão para as próximas avaliações positivas e negativas.",
+    "savedLocally": "Esta avaliação é sempre salva localmente.",
+    "choose": "Escolha",
+    "alwaysAllow": "Sempre permitir",
+    "toShare": "para compartilhar esta avaliação e as próximas respostas de IA avaliadas. Escolha",
+    "dontAllow": "Não permitir",
+    "toKeepLocal": "para manter esta e as próximas avaliações locais.",
+    "changeLater": "Você pode mudar isso depois em Configurações > Geral.",
+    "terms": "Leia nossos termos de serviço"
+  },
+  "timeline": {
+    "updatedTask": "atualizou esta tarefa",
+    "hideConfirmation": "Ocultar confirmação",
+    "expiredConfirmation": "Confirmação expirada",
+    "requestedFollowUp": "pediu acompanhamento",
+    "status": "Status",
+    "assignee": "Responsável",
+    "workspace": "Espaço de trabalho",
+    "run": "execução"
+  },
+  "notice": {
+    "noDetails": "Nenhum detalhe adicional.",
+    "staleDisposition": "Aviso de disposição desatualizada",
+    "copyLink": "Copiar link",
+    "copyLinkAria": "Copiar link do aviso do sistema",
+    "copyText": "Copiar texto do aviso",
+    "copyAria": "Copiar aviso do sistema"
+  },
+  "composer": {
+    "fileTypeNotAllowed": "Este tipo de arquivo não pode ser anexado aqui",
+    "dropToUpload": "Solte para enviar",
+    "dropHint": "Imagens entram na resposta. Outros arquivos são adicionados a esta tarefa.",
+    "draftConflict": "Outra aba alterou o rascunho salvo. Este rascunho fica guardado separadamente nesta aba.",
+    "storageUnavailable": " O armazenamento do navegador está indisponível; copie seu texto antes de sair.",
+    "restoreOnReload": " Ele será restaurado se você recarregar esta aba.",
+    "placeholder": "Responder",
+    "stopping": "Parando…",
+    "stop": "Parar",
+    "stopResponse": "Parar resposta",
+    "posting": "Publicando...",
+    "send": "Enviar"
+  },
+  "attachments": {
+    "uploading": "Enviando para a tarefa",
+    "failed": "Falha no envio",
+    "inline": "Inserido no texto",
+    "attached": "Anexado à tarefa",
+    "retry": "Tentar enviar {{name}} novamente",
+    "remove": "Remover {{name}}"
+  },
+  "responsible": {
+    "placeholder": "Responsável",
+    "none": "Sem responsável",
+    "search": "Buscar responsável...",
+    "empty": "Nenhum responsável encontrado."
+  },
+  "noAssignee": {
+    "title": "Nenhum responsável selecionado",
+    "description": "Este comentário será publicado sem responsável, então nenhum agente será acordado para agir sobre ele. Volte para escolher um responsável ou envie mesmo assim.",
+    "goBack": "Voltar",
+    "sendAnyway": "Enviar mesmo assim"
+  },
+  "thread": {
+    "noRunOutput": "Nenhuma saída de execução ainda.",
+    "empty": "Esta conversa da tarefa está vazia. Comece com uma mensagem abaixo.",
+    "jumpToLatest": "Ir para a mais recente",
+    "takingLonger": "Demorando mais que o normal…"
+  },
+  "legacyRecovery": {
+    "label": "Tarefa de recuperação legada",
+    "body": "Tarefa de recuperação legada. As ações de recuperação mais novas ficam na tarefa de origem"
+  },
+  "errorActions": {
+    "uploadFile": "enviar o arquivo"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "recoveryAria": "{{label}} — {{detail}}",
+  "recoveryTitleWithDetail": "{{label}} — {{detail}}. Open the source task to act.",
+  "recoveryTitle": "{{label}} — open the source task to act.",
+  "schedule": {
+    "dueNow": "due now",
+    "scheduledAt": "scheduled {{relative}}",
+    "scheduled": "scheduled"
+  },
+  "retryNowHint": "Paperclip will ask the assignee to choose the next step {{schedule}}. Retry now starts that follow-up immediately.",
+  "retrying": "Retrying...",
+  "alreadyPromoted": "Already promoted",
+  "promoted": "Promoted",
+  "retryNow": "Retry now",
+  "statusTitle": "{{status}} status",
+  "runningChip": "running",
+  "inFlight": "A correction run is in progress — the agent is working. This alert returns if the run stops without choosing a next step.",
+  "runLabel": "run {{id}}",
+  "live": {
+    "title": "Waiting on live work",
+    "queued_one": "Queued behind {{count}} task being worked in order. This task resumes automatically when the chain is done. Comments still notify the assignee.",
+    "queued_other": "Queued behind {{count}} tasks being worked in order. This task resumes automatically when the chain is done. Comments still notify the assignee.",
+    "doneOf": "{{done}} of {{total}} done",
+    "running": " · {{count}} running",
+    "progressAria": "Blocker chain progress",
+    "thisTask": "This task — resumes automatically when the chain is done",
+    "nowRunning": "Now running"
+  },
+  "blockedByParked": "Blocked by parked work",
+  "linkedTasks_one": "the linked task",
+  "linkedTasks_other": "the linked tasks",
+  "theAssignee": "the assignee",
+  "unavailable": "unavailable",
+  "private": "Private — you don't have access",
+  "handoff": {
+    "title": "This task still needs a next step.",
+    "body": "A run finished successfully, but the task is still open. Paperclip needs someone to choose what happens next.",
+    "option1": "Mark it done or cancelled.",
+    "option2": "Send it for review or ask for input.",
+    "option3": "Record what is blocking it and who owns that blocker.",
+    "option4": "Delegate follow-up work or queue a continuation.",
+    "asked": "Asked {{name}} to choose the next step",
+    "detectedProgress": "Detected progress: {{summary}}"
+  },
+  "blocked": {
+    "stalledMany": "Work on this task is blocked by {{blockers}}, but the chain is stalled in review without a clear next step. Resolve the stalled reviews below or remove them as blockers.",
+    "stalledOne": "Work on this task is blocked by {{blockers}}, but the chain is stalled in review without a clear next step. Resolve the stalled review below or remove it as a blocker.",
+    "reopenSuppressed_one": "A message won’t restart this task yet — it stays blocked by the linked task until it is done, then it reopens automatically. Comments still notify {{name}} for questions or triage in the meantime.",
+    "reopenSuppressed_other": "A message won’t restart this task yet — it stays blocked by the linked tasks until they are done, then it reopens automatically. Comments still notify {{name}} for questions or triage in the meantime.",
+    "byLinked_one": "Work on this task is blocked by the linked task until it is complete. Comments still notify the assignee for questions or triage.",
+    "byLinked_other": "Work on this task is blocked by the linked tasks until they are complete. Comments still notify the assignee for questions or triage.",
+    "untilMovedBack": "Work on this task is blocked until someone moves it back to To do. Comments still notify the assignee for questions or triage."
+  },
+  "stillBlockedBy": "Still blocked by",
+  "andOthers_one": " and {{count}} other task",
+  "andOthers_other": " and {{count}} other tasks",
+  "stalledInReview": "Stalled in review",
+  "ultimatelyWaitingOn": "Ultimately waiting on"
+}

@@ -17,6 +17,7 @@ import { deriveInitials } from "@/components/Identity";
 import { cn } from "@/lib/utils";
 import type { RoutinePageAgent, RoutinePageProject, RoutinePerson } from "./RoutinePage";
 import { WEBHOOK_HEALTH_LABELS, webhookHealth, webhookTitle } from "./routine-summary";
+import { t } from "@/i18n";
 
 export type RoutineFormDraft = {
   title: string;
@@ -185,9 +186,9 @@ export function RoutineEditDialog({
     <Dialog open={open} onOpenChange={(next) => (next ? onOpenChange(true) : requestClose())}>
       <DialogContent className="flex max-h-(--sz-calc-18) flex-col gap-0 overflow-hidden p-0 sm:max-w-3xl">
         <DialogHeader className="px-6 pb-4 pt-6">
-          <DialogTitle>{mode === "create" ? "New routine" : "Edit routine"}</DialogTitle>
+          <DialogTitle>{mode === "create" ? t("componentsRoutinePage.editDialog.titleCreate") : t("componentsRoutinePage.editDialog.titleEdit")}</DialogTitle>
           <DialogDescription className="sr-only">
-            {mode === "create" ? "Describe the work, then choose who does it and when." : "Change what this routine does, who does it, and when."}
+            {mode === "create" ? t("componentsRoutinePage.editDialog.descriptionCreate") : t("componentsRoutinePage.editDialog.descriptionEdit")}
           </DialogDescription>
         </DialogHeader>
 
@@ -200,18 +201,18 @@ export function RoutineEditDialog({
           }}
         >
           <div className="flex flex-col gap-2">
-            <Label htmlFor={titleId}>Title</Label>
+            <Label htmlFor={titleId}>{t("componentsRoutinePage.editDialog.title")}</Label>
             <Input
               id={titleId}
               value={draft.title}
               autoFocus={mode === "create"}
-              placeholder="Send the weekly digest"
+              placeholder={t("componentsRoutinePage.editDialog.titlePlaceholder")}
               onChange={(event) => patch({ title: event.target.value })}
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Instructions</Label>
+            <Label>{t("componentsRoutinePage.editDialog.instructions")}</Label>
             {/* The frame owns the border and the drag handle; the editor scrolls inside it. */}
             <div
               className="h-48 min-h-32 resize-y overflow-y-auto rounded-md border border-border px-3 py-2 focus-within:border-ring"
@@ -222,10 +223,10 @@ export function RoutineEditDialog({
             <MarkdownEditor
               ref={editorRef}
               bordered={false}
-              ariaLabel="Instructions"
+              ariaLabel={t("componentsRoutinePage.editDialog.instructions")}
               value={draft.description}
               onChange={(description) => patch({ description })}
-              placeholder="What should the agent do each time? Type / for skills and routines, @ to mention, {{name}} to ask for a value."
+              placeholder={t("componentsRoutinePage.editDialog.instructionsPlaceholder", { token: "{{name}}" })}
               contentClassName="text-sm leading-6"
               mentions={mentions}
               submitKey="mod-enter"
@@ -243,7 +244,7 @@ export function RoutineEditDialog({
           />
 
           <div className="flex flex-col gap-2">
-            <Label>Repeats</Label>
+            <Label>{t("componentsRoutinePage.editDialog.repeats")}</Label>
             {draft.schedule ? (
               <div className="flex flex-col gap-3">
                 <ScheduleEditor
@@ -260,7 +261,7 @@ export function RoutineEditDialog({
                         setDraft((current) => (current.schedule ? { ...current, schedule: { ...current.schedule, timezone } } : current))
                       }
                     >
-                      <SelectTrigger className="w-48" aria-label="Time zone">
+                      <SelectTrigger className="w-48" aria-label={t("componentsRoutinePage.editDialog.timeZone")}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -281,7 +282,7 @@ export function RoutineEditDialog({
                     patch({ schedule: null });
                   }}
                 >
-                  Remove schedule
+                  {t("componentsRoutinePage.editDialog.removeSchedule")}
                 </Button>
               </div>
             ) : (
@@ -293,18 +294,18 @@ export function RoutineEditDialog({
                 onClick={() => patch({ schedule: { cronExpression: "0 9 * * 1-5", timezone: localTimezone() } })}
               >
                 <Plus className="h-3.5 w-3.5" />
-                Add schedule
+                {t("componentsRoutinePage.editDialog.addSchedule")}
               </Button>
             )}
           </div>
 
           {onOpenWebhook ? (
             <div className="flex flex-col gap-2">
-              <Label>Webhooks</Label>
+              <Label>{t("componentsRoutinePage.editDialog.webhooks")}</Label>
               {removedWebhooks.map((trigger) => (
                 <p key={trigger.id} role="status" className="flex max-w-md items-center gap-2 text-sm text-muted-foreground">
-                  <span className="min-w-0 flex-1 truncate">{webhookTitle(trigger)} removed.</span>
-                  <Button type="button" variant="ghost" size="xs" onClick={() => onRestoreWebhook?.(trigger)}>Undo</Button>
+                  <span className="min-w-0 flex-1 truncate">{t("componentsRoutinePage.editDialog.webhookRemoved", { title: webhookTitle(trigger) })}</span>
+                  <Button type="button" variant="ghost" size="xs" onClick={() => onRestoreWebhook?.(trigger)}>{t("componentsRoutinePage.editDialog.undo")}</Button>
                 </p>
               ))}
               {webhooks.length > 0 ? (
@@ -316,7 +317,7 @@ export function RoutineEditDialog({
                       <li key={trigger.id} className="group/webhook -mx-2 flex items-center rounded-md hover:bg-accent/50 focus-within:bg-accent/50">
                         <button
                           type="button"
-                          aria-label={`Configure ${webhookTitle(trigger)}`}
+                          aria-label={t("componentsRoutinePage.editDialog.configureWebhook", { title: webhookTitle(trigger) })}
                           className="flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                           onClick={() => onOpenWebhook(trigger)}
                         >
@@ -331,7 +332,7 @@ export function RoutineEditDialog({
                             type="button"
                             variant="ghost"
                             size="icon-xs"
-                            aria-label={`Remove ${webhookTitle(trigger)}`}
+                            aria-label={t("componentsRoutinePage.editDialog.removeWebhook", { title: webhookTitle(trigger) })}
                             className="mr-1 text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover/webhook:opacity-100 group-focus-within/webhook:opacity-100"
                             onClick={() => onRemoveWebhook(trigger)}
                           >
@@ -345,21 +346,21 @@ export function RoutineEditDialog({
               ) : null}
               <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => onOpenWebhook(null)}>
                 <Plus className="h-3.5 w-3.5" />
-                Add webhook
+                {t("componentsRoutinePage.editDialog.addWebhook")}
               </Button>
             </div>
           ) : null}
 
           <div className="flex max-w-xs flex-col gap-6">
             <div className="flex min-w-0 flex-col gap-2">
-              <Label>Default agent</Label>
+              <Label>{t("componentsRoutinePage.editDialog.defaultAgent")}</Label>
               <InlineEntitySelector
                 value={draft.assigneeAgentId}
                 options={agents.map((agent) => ({ id: agent.id, label: agent.name }))}
-                placeholder="Choose an agent"
-                noneLabel="No default agent"
-                searchPlaceholder="Search agents…"
-                emptyMessage="No agents found."
+                placeholder={t("componentsRoutinePage.editDialog.chooseAgent")}
+                noneLabel={t("componentsRoutinePage.editDialog.noDefaultAgent")}
+                searchPlaceholder={t("componentsRoutinePage.editDialog.searchAgents")}
+                emptyMessage={t("componentsRoutinePage.editDialog.noAgentsFound")}
                 disablePortal
                 className="h-9 w-full justify-start"
                 onChange={(assigneeAgentId) => patch({ assigneeAgentId })}
@@ -371,7 +372,7 @@ export function RoutineEditDialog({
                       <span className="truncate">{agent.name}</span>
                     </>
                   ) : (
-                    <span className="text-muted-foreground">Choose an agent</span>
+                    <span className="text-muted-foreground">{t("componentsRoutinePage.editDialog.chooseAgent")}</span>
                   );
                 }}
                 renderOption={(option) => {
@@ -387,14 +388,14 @@ export function RoutineEditDialog({
             </div>
 
             <div className="flex min-w-0 flex-col gap-2">
-              <Label>Project</Label>
+              <Label>{t("componentsRoutinePage.editDialog.project")}</Label>
               <InlineEntitySelector
                 value={draft.projectId}
                 options={projects.map((project) => ({ id: project.id, label: project.name }))}
-                placeholder="No project"
-                noneLabel="No project"
-                searchPlaceholder="Search projects…"
-                emptyMessage="No projects found."
+                placeholder={t("componentsRoutinePage.editDialog.noProject")}
+                noneLabel={t("componentsRoutinePage.editDialog.noProject")}
+                searchPlaceholder={t("componentsRoutinePage.editDialog.searchProjects")}
+                emptyMessage={t("componentsRoutinePage.editDialog.noProjectsFound")}
                 disablePortal
                 className="h-9 w-full justify-start"
                 onChange={(projectId) => patch({ projectId })}
@@ -406,7 +407,7 @@ export function RoutineEditDialog({
                       <span className="truncate">{project.name}</span>
                     </>
                   ) : (
-                    <span className="text-muted-foreground">No project</span>
+                    <span className="text-muted-foreground">{t("componentsRoutinePage.editDialog.noProject")}</span>
                   );
                 }}
                 renderOption={(option) => {
@@ -425,7 +426,7 @@ export function RoutineEditDialog({
 
             {responsibilities ? (
               <div className="flex min-w-0 flex-col gap-2">
-                <Label>Responsibility</Label>
+                <Label>{t("componentsRoutinePage.editDialog.responsibility")}</Label>
                 <InlineEntitySelector
                   value={draft.responsibilityId}
                   options={responsibilities.map((responsibility) => ({
@@ -433,15 +434,15 @@ export function RoutineEditDialog({
                     label: responsibility.title,
                     searchText: responsibility.areaTitle ?? "",
                   }))}
-                  placeholder="No responsibility"
-                  noneLabel="No responsibility"
-                  searchPlaceholder="Search responsibilities…"
-                  emptyMessage="No responsibilities found."
+                  placeholder={t("componentsRoutinePage.editDialog.noResponsibility")}
+                  noneLabel={t("componentsRoutinePage.editDialog.noResponsibility")}
+                  searchPlaceholder={t("componentsRoutinePage.editDialog.searchResponsibilities")}
+                  emptyMessage={t("componentsRoutinePage.editDialog.noResponsibilitiesFound")}
                   disablePortal
                   className="h-9 w-full justify-start"
                   onChange={(responsibilityId) => patch({ responsibilityId })}
                   renderTriggerValue={(option) =>
-                    option?.id ? <span className="truncate">{option.label}</span> : <span className="text-muted-foreground">No responsibility</span>
+                    option?.id ? <span className="truncate">{option.label}</span> : <span className="text-muted-foreground">{t("componentsRoutinePage.editDialog.noResponsibility")}</span>
                   }
                   renderOption={(option) => {
                     const areaTitle = responsibilityById.get(option.id)?.areaTitle;
@@ -455,29 +456,29 @@ export function RoutineEditDialog({
                 />
                 {throughProject ? (
                   <p className="text-xs text-muted-foreground">
-                    Already under {throughProject.title} through {projectById.get(draft.projectId)?.name ?? "its project"}.
+                    {t("componentsRoutinePage.editDialog.alreadyUnder", { responsibility: throughProject.title, project: projectById.get(draft.projectId)?.name ?? t("componentsRoutinePage.editDialog.itsProject") })}
                   </p>
                 ) : null}
               </div>
             ) : null}
 
             <div className="flex min-w-0 flex-col gap-2">
-              <Label>Default responsible user</Label>
+              <Label>{t("componentsRoutinePage.editDialog.defaultResponsibleUser")}</Label>
               <InlineEntitySelector
                 value={draft.responsibleUserId}
                 options={people.map((person) => ({ id: person.id, label: person.name }))}
-                placeholder="Choose a person"
-                noneLabel="No one"
+                placeholder={t("componentsRoutinePage.editDialog.choosePerson")}
+                noneLabel={t("componentsRoutinePage.editDialog.noOne")}
                 // A responsible user can be changed but not cleared; "No one" only shows while there is none.
                 hideNone={Boolean(initial.responsibleUserId)}
-                searchPlaceholder="Find a person…"
-                emptyMessage="No people found."
+                searchPlaceholder={t("componentsRoutinePage.editDialog.findPerson")}
+                emptyMessage={t("componentsRoutinePage.editDialog.noPeopleFound")}
                 disablePortal
                 disabled={!canChangeResponsibleUser}
                 className="h-9 w-full justify-start"
                 onChange={(responsibleUserId) => patch({ responsibleUserId })}
                 renderTriggerValue={(option) =>
-                  (option && personOption(option.id)) || <span className="text-muted-foreground">Choose a person</span>
+                  (option && personOption(option.id)) || <span className="text-muted-foreground">{t("componentsRoutinePage.editDialog.choosePerson")}</span>
                 }
                 renderOption={(option) => personOption(option.id) ?? <span className="truncate">{option.label}</span>}
               />
@@ -485,7 +486,7 @@ export function RoutineEditDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label>Secrets</Label>
+            <Label>{t("componentsRoutinePage.editDialog.secrets")}</Label>
             {secretsOpen ? (
               <EnvironmentVariablesEditor
                 ref={secretsRef}
@@ -497,12 +498,12 @@ export function RoutineEditDialog({
                 footerHint={null}
                 hideDraftActions
                 startWithEmptyRow
-                addLabel="Add secret"
+                addLabel={t("componentsRoutinePage.editDialog.addSecret")}
               />
             ) : (
               <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setSecretsOpen(true)}>
                 <Plus className="h-3.5 w-3.5" />
-                Add secret
+                {t("componentsRoutinePage.editDialog.addSecret")}
               </Button>
             )}
           </div>
@@ -511,26 +512,26 @@ export function RoutineEditDialog({
         <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-6 py-4">
           {confirmingDiscard ? (
             <>
-              <p className="text-sm" role="alert">Discard your changes?</p>
+              <p className="text-sm" role="alert">{t("componentsRoutinePage.editDialog.discardQuestion")}</p>
               <div className="flex items-center gap-2">
-                <Button variant="ghost" onClick={() => setConfirmingDiscard(false)}>Keep editing</Button>
-                <Button variant="destructive" onClick={() => onOpenChange(false)}>Discard</Button>
+                <Button variant="ghost" onClick={() => setConfirmingDiscard(false)}>{t("componentsRoutinePage.editDialog.keepEditing")}</Button>
+                <Button variant="destructive" onClick={() => onOpenChange(false)}>{t("componentsRoutinePage.editDialog.discard")}</Button>
               </div>
             </>
           ) : saveConflict ? (
             <>
               <p className="min-w-0 flex-1 text-sm" role="alert">
-                This routine changed while you were editing. Reload to see the latest version.
+                {t("componentsRoutinePage.editDialog.conflict")}
               </p>
-              <Button variant="outline" onClick={onReloadLatest}>Reload latest</Button>
+              <Button variant="outline" onClick={onReloadLatest}>{t("componentsRoutinePage.editDialog.reloadLatest")}</Button>
             </>
           ) : (
             <>
-              <Button variant="ghost" onClick={requestClose} disabled={saving}>Cancel</Button>
+              <Button variant="ghost" onClick={requestClose} disabled={saving}>{t("componentsRoutinePage.cancel")}</Button>
               <div className="flex min-w-0 items-center gap-3">
                 {error ? <p className="min-w-0 text-sm text-destructive" role="alert">{error}</p> : null}
                 <Button type="submit" form={`${titleId}-form`} disabled={!canSave}>
-                  {saving ? "Saving…" : mode === "create" ? "Create routine" : "Save changes"}
+                  {saving ? t("componentsRoutinePage.editDialog.saving") : mode === "create" ? t("componentsRoutinePage.editDialog.createRoutine") : t("componentsRoutinePage.editDialog.saveChanges")}
                 </Button>
               </div>
             </>

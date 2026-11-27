@@ -1,0 +1,8 @@
+{
+  "refreshToSync": "Refresh this source to sync all files",
+  "removedFromSource": "Removed from source · last installed version retained",
+  "notSyncing": "Not syncing · installed copy retained",
+  "updateFailed": "Update failed · last installed version retained",
+  "syncedFromGithub": "Synced from GitHub",
+  "manageSource": "Manage source"
+}

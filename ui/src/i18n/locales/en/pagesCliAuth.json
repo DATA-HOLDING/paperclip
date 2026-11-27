@@ -1,0 +1,38 @@
+{
+  "invalidUrl": "Invalid CLI auth URL.",
+  "rateLimited": "Too many CLI approval requests. Retrying shortly...",
+  "loading": "Loading CLI auth challenge...",
+  "errorAction": "load the CLI auth challenge",
+  "unavailable": "CLI auth challenge unavailable.",
+  "approved": {
+    "title": "CLI access approved",
+    "body": "The Paperclip CLI can now finish authentication on the requesting machine.",
+    "command": "Command:"
+  },
+  "ended": {
+    "expired": "CLI auth challenge expired",
+    "cancelled": "CLI auth challenge cancelled",
+    "body": "Start the CLI auth flow again from your terminal to generate a new approval request."
+  },
+  "signIn": {
+    "title": "Sign in required",
+    "body": "Sign in or create an account, then return to this page to approve the CLI access request.",
+    "button": "Sign in / Create account"
+  },
+  "approve": {
+    "title": "Approve Paperclip CLI access",
+    "body": "A CLI client is requesting full board access to the organizations you can access on this instance. Approve only if you started this request in your own terminal.",
+    "command": "Command",
+    "client": "Client",
+    "requestedAccess": "Requested access",
+    "instanceAdmin": "Instance admin",
+    "board": "Board",
+    "auditOrganization": "Organization for audit context",
+    "requiresInstanceAdmin": "This challenge requires instance-admin access. Sign in with an instance admin account to approve it.",
+    "noAccess": "You do not have access to the requested organization.",
+    "approving": "Approving...",
+    "approveButton": "Approve CLI access",
+    "cancelling": "Cancelling...",
+    "cancel": "Cancel"
+  }
+}

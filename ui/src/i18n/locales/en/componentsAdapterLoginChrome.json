@@ -1,0 +1,46 @@
+{
+  "preparingSignIn": "Preparing the sign-in",
+  "copied": "Copied!",
+  "copyCode": "Copy the code",
+  "field": {
+    "label": "Authorization code",
+    "placeholder": "Paste authorization code here"
+  },
+  "subscription": {
+    "expired": "This sign-in expired",
+    "failed": "Sign-in didn’t finish",
+    "signInTo": "Sign in to {{provider}}",
+    "thenPasteRedirect": " then paste the redirect URL below",
+    "thenReturn": " then return here",
+    "thenEnterCode": " then come back and enter authorization code",
+    "byProvidingCode": " by providing the authorization code below",
+    "retryHint": "Retry sign-in to get a fresh code. Your setup is saved.",
+    "retry": "Retry sign-in"
+  },
+  "apiKey": {
+    "instruction": "Provide your {{provider}} API key to connect",
+    "label": "API key"
+  },
+  "local": {
+    "preparing": "Preparing sign-in…",
+    "differentAccount": "Use a different account",
+    "isolatedHint": "Sign in to {{provider}} for this connection on the machine running Paperclip. Your existing terminal login stays separate.",
+    "sharedHint": "Connect uses your local {{provider}} account on the machine running Paperclip.",
+    "preparingBrowser": "Preparing browser sign-in…",
+    "finishing": "Finishing sign-in…",
+    "submitCode": "Submit code",
+    "optionalRedirectBefore": "Finish signing in in the Google browser window, then return here. If your browser is on another machine and the ",
+    "optionalRedirectAfter": " redirect page won’t load, copy the full URL from your address bar and paste it below.",
+    "redirectBefore": "After signing in with Google, your browser will redirect to a ",
+    "redirectAfter": " page that won’t load. Copy the full URL from your browser’s address bar and paste it below.",
+    "redirectLabel": "Google redirect URL",
+    "redirectPlaceholder": "Paste http://127.0.0.1:... URL here",
+    "submitRedirect": "Submit redirect URL",
+    "finishGoogle": "Finish signing in in the Google browser window, then return here.",
+    "runCommand": "Run this in a terminal on that machine and finish signing in in your browser. We’ll check automatically when you return.",
+    "copyCommand": "Copy sign-in command",
+    "startAgain": "Start sign-in again",
+    "checkAgain": "Check again",
+    "signedIn": "{{account}} is signed in. Click Connect to use this account."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "visible": {
+    "weeks_one": "{{count}} week visible",
+    "weeks_other": "{{count}} weeks visible",
+    "days_one": "{{count}} day visible",
+    "days_other": "{{count}} days visible",
+    "daysHours": "{{days}}d {{hours}}h visible",
+    "daysShort": "{{days}}d visible",
+    "hours_one": "{{count}} hour visible",
+    "hours_other": "{{count}} hours visible",
+    "hoursMinutes": "{{hours}}h {{minutes}}m visible",
+    "minutes": "{{count}} minutes visible"
+  },
+  "connector": {
+    "dashed": "dashed handoff: retry or changes requested",
+    "solid": "solid handoff: delegation or assignment"
+  },
+  "tooltip": {
+    "runFallback": "run",
+    "now": "now",
+    "kickedOffBy": "kicked off by: {{name}}",
+    "retry": "retry"
+  },
+  "minimap": {
+    "leftHandle": "Drag left edge to resize visible range",
+    "rightHandle": "Drag right edge to resize visible range"
+  }
+}

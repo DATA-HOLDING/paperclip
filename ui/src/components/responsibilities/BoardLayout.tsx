@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 /**
  * The Dashboard's board layout for the Board (status columns): one sticky row
@@ -43,7 +44,7 @@ export function BoardAreaHeader({
     <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-0.5">
       <h2 id={headingId} className="min-w-0 text-sm font-semibold text-foreground">
         {title}
-        {archived ? <span className="font-normal text-muted-foreground"> · Archived</span> : null}
+        {archived ? <span className="font-normal text-muted-foreground">{t("componentsResponsibilitiesBoardLayout.archived")}</span> : null}
       </h2>
       <p className="text-xs text-muted-foreground">
         {ownedLabel}

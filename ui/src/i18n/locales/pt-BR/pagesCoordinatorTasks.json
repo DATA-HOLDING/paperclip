@@ -1,0 +1,25 @@
+{
+  "tasks": "Tarefas",
+  "errors": {
+    "pendingDecisions": "Algumas tarefas com decisões pendentes não puderam ser carregadas.",
+    "load": "Não foi possível carregar as tarefas",
+    "details": "Não foi possível carregar os detalhes das tarefas."
+  },
+  "unknownAgent": "Agente desconhecido",
+  "board": "Conselho",
+  "empty": {
+    "noMatch": "Nenhuma tarefa corresponde a esta visualização",
+    "noArchived": "Nenhuma tarefa arquivada",
+    "noDecision": "Nenhuma tarefa precisa de decisão.",
+    "none": "Nenhuma tarefa nesta organização",
+    "clearFilters": "Limpar filtros",
+    "newTask": "Nova tarefa"
+  },
+  "noOrg": "Selecione uma organização para ver as tarefas.",
+  "signIn": "Entre para ver as tarefas arquivadas.",
+  "retry": "Tentar novamente",
+  "loading": "Carregando tarefas…",
+  "loadedHint": "{{n}} tarefas carregadas. Carregue mais para incluí-las nos filtros.",
+  "loadingMore": "Carregando…",
+  "loadMore": "Carregar mais tarefas"
+}

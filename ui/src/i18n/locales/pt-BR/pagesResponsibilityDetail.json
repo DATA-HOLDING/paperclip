@@ -1,0 +1,22 @@
+{
+  "saveFailed": "Não foi possível salvar a alteração.",
+  "removed": "“{{label}}” foi removido desta responsabilidade. Ele continua existindo e permanece em qualquer outra responsabilidade em que esteja.",
+  "undo": "Desfazer",
+  "unlinkFailed": "Não foi possível removê-lo desta responsabilidade.",
+  "relinkFailed": "Não foi possível colocá-lo de volta.",
+  "deleteTitle": "Excluir {{title}}?",
+  "deleteDescription": "Isto remove a responsabilidade, sua barra e seu número. Os projetos, tarefas e rotinas ligados a ela continuam. Para deixar de ser responsável mas manter o histórico, abra mão dela em vez de excluir.",
+  "deleteFailed": "Não foi possível excluí-la.",
+  "keep": "Manter",
+  "deleting": "Excluindo…",
+  "delete": "Excluir responsabilidade",
+  "breadcrumbDashboard": "Painel",
+  "notAvailable": "Esta responsabilidade não está disponível",
+  "notAvailableHint": "Ela pode ter sido excluída ou pertence a outra pessoa.",
+  "backToDashboard": "Voltar ao painel",
+  "otherOrganization": "Esta responsabilidade pertence a outra organização",
+  "errorActions": {
+    "loadResponsibility": "carregar esta responsabilidade"
+  },
+  "back": "Voltar"
+}

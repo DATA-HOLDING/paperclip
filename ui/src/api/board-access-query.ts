@@ -1,4 +1,5 @@
 import type { BoardBootstrap } from "@paperclipai/shared";
+import { t } from "@/i18n";
 import { accessApi } from "./access";
 import { ApiError, detachInflightGet } from "./client";
 import { queryKeys } from "../lib/queryKeys";
@@ -22,7 +23,7 @@ export function boardAccessQueryOptions(
       const access = await accessApi.getCurrentBoardAccess();
       if (access.userId !== userId) {
         onAccountChanged();
-        throw new ApiError("The signed-in account changed. Checking your session again.", 401, { code: "session_changed" });
+        throw new ApiError(t("apiBoardAccessQuery.sessionChanged"), 401, { code: "session_changed" });
       }
       return { userId: access.userId, isInstanceAdmin: access.isInstanceAdmin, companyIds: access.companyIds };
     },

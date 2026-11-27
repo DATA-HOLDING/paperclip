@@ -1,5 +1,6 @@
 import { Blocks } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function ConnectionProvenanceChip({
   connection,
@@ -21,10 +22,10 @@ export function ConnectionProvenanceChip({
     return (
       <span
         className={chipClass}
-        title={connectorUid ? `Credentials managed by Vercel Connect (${connectorUid})` : "Credentials managed by Vercel Connect"}
+        title={connectorUid ? t("pagesApps.provenance.managedWithId", { id: connectorUid }) : t("pagesApps.provenance.managed")}
       >
         <Blocks className="h-3 w-3" />
-        via Vercel Connect
+        {t("pagesApps.provenance.via")}
       </span>
     );
   }

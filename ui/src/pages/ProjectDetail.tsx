@@ -51,6 +51,7 @@ import {
 } from "../hooks/useResourceMemberships";
 import { useUpdateIssueMutation } from "../hooks/useUpdateIssueMutation";
 import { companyProjectsQuery } from "@/lib/company-projects-query";
+import { t } from "@/i18n";
 
 /* ── Top-level tab types ── */
 
@@ -115,16 +116,16 @@ function ProjectTilePicker({
         <button
           type="button"
           className="shrink-0 rounded-lg cursor-pointer hover:ring-2 hover:ring-foreground/20 transition-(--tp-box-shadow)"
-          aria-label="Change project icon and color"
+          aria-label={t("pagesProjectDetail.picker.ariaLabel")}
         >
           <ProjectTile color={color} icon={icon} size="md" />
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-72 p-3" align="start">
         {/* Icon search + grid */}
-        <p className="text-xs font-medium text-muted-foreground mb-2">Icon</p>
+        <p className="text-xs font-medium text-muted-foreground mb-2">{t("pagesProjectDetail.picker.icon")}</p>
         <Input
-          placeholder="Search icons..."
+          placeholder={t("pagesProjectDetail.picker.searchIcons")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="mb-2 h-8 text-sm"
@@ -146,13 +147,13 @@ function ProjectTilePicker({
             </button>
           ))}
           {filteredIcons.length === 0 && (
-            <p className="col-span-7 text-xs text-muted-foreground text-center py-2">No icons match</p>
+            <p className="col-span-7 text-xs text-muted-foreground text-center py-2">{t("pagesProjectDetail.picker.noIcons")}</p>
           )}
         </div>
 
         {/* Color swatches */}
         <div className="mt-3 border-t border-border pt-3">
-          <p className="text-xs font-medium text-muted-foreground mb-2">Color</p>
+          <p className="text-xs font-medium text-muted-foreground mb-2">{t("pagesProjectDetail.picker.color")}</p>
           <div className="grid grid-cols-5 gap-1.5">
             {/* Neutral / reset-to-gray option */}
             <button
@@ -163,8 +164,8 @@ function ProjectTilePicker({
                   ? "ring-2 ring-foreground ring-offset-1 ring-offset-background rounded-md"
                   : ""
               }`}
-              aria-label="Reset to neutral gray"
-              title="Neutral (default)"
+              aria-label={t("pagesProjectDetail.picker.resetGray")}
+              title={t("pagesProjectDetail.picker.neutral")}
             >
               <ProjectTile color={null} size="sm" />
             </button>
@@ -179,7 +180,7 @@ function ProjectTilePicker({
                     : "hover:ring-2 hover:ring-foreground/30"
                 }`}
                 style={{ backgroundColor: swatch }}
-                aria-label={`Select color ${swatch}`}
+                aria-label={t("pagesProjectDetail.picker.selectColor", { color: swatch })}
               />
             ))}
           </div>
@@ -237,7 +238,7 @@ function ProjectIssuesList({ projectId, companyId }: { projectId: string; compan
     invalidateKeys: [queryKeys.issues.listByProject(companyId, projectId), queryKeys.issues.list(companyId)],
   });
 
-  if (issuesView.kind === "error") return <QueryErrorState error={issuesView.error} action="load project tasks" onRetry={issuesView.retry} retrying={issuesView.isFetching} />;
+  if (issuesView.kind === "error") return <QueryErrorState error={issuesView.error} action={t("pagesProjectDetail.loadTasksAction")} onRetry={issuesView.retry} retrying={issuesView.isFetching} />;
 
   return (
     <IssuesList
@@ -310,7 +311,7 @@ function ProjectPluginOperationsList({
     ],
   });
 
-  if (issuesView.kind === "error") return <QueryErrorState error={issuesView.error} action="load project tasks" onRetry={issuesView.retry} retrying={issuesView.isFetching} />;
+  if (issuesView.kind === "error") return <QueryErrorState error={issuesView.error} action={t("pagesProjectDetail.loadTasksAction")} onRetry={issuesView.retry} retrying={issuesView.isFetching} />;
 
   return (
     <IssuesList
@@ -473,7 +474,7 @@ export function ProjectDetail() {
       projectsApi.update(projectLookupRef, data, resolvedCompanyId ?? lookupCompanyId),
     onSuccess: (updated, data) => {
       const notice = configurationWarningMessages(updated);
-      if (notice) pushToast({ title: "Project saved", body: notice, tone: "warn" });
+      if (notice) pushToast({ title: t("pagesProjectDetail.toast.saved"), body: notice, tone: "warn" });
       invalidateProject();
       if (data.visibility !== undefined) queryClient.invalidateQueries({ queryKey: ["issues"] });
     },
@@ -488,17 +489,17 @@ export function ProjectDetail() {
       ),
     onSuccess: (updatedProject, archived) => {
       invalidateProject();
-      const name = updatedProject?.name ?? project?.name ?? "Project";
+      const name = updatedProject?.name ?? project?.name ?? t("pagesProjectDetail.fallbackName");
       if (archived) {
-        pushToast({ title: `"${name}" has been archived`, tone: "success" });
+        pushToast({ title: t("pagesProjectDetail.toast.archived", { name }), tone: "success" });
         navigate("/dashboard");
       } else {
-        pushToast({ title: `"${name}" has been unarchived`, tone: "success" });
+        pushToast({ title: t("pagesProjectDetail.toast.unarchived", { name }), tone: "success" });
       }
     },
     onError: (_, archived) => {
       pushToast({
-        title: archived ? "Failed to archive project" : "Failed to unarchive project",
+        title: archived ? t("pagesProjectDetail.toast.archiveFailed") : t("pagesProjectDetail.toast.unarchiveFailed"),
         tone: "error",
       });
     },
@@ -521,8 +522,8 @@ export function ProjectDetail() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Projects", href: "/projects" },
-      { label: project?.name ?? routeProjectRef ?? "Project" },
+      { label: t("pagesProjectDetail.breadcrumbs.projects"), href: "/projects" },
+      { label: project?.name ?? routeProjectRef ?? t("pagesProjectDetail.fallbackName") },
     ]);
   }, [setBreadcrumbs, project, routeProjectRef]);
 
@@ -607,7 +608,7 @@ export function ProjectDetail() {
     try {
       const updated = await projectsApi.update(projectLookupRef, data, resolvedCompanyId ?? lookupCompanyId);
       const notice = configurationWarningMessages(updated);
-      if (notice) pushToast({ title: "Project saved", body: notice, tone: "warn" });
+      if (notice) pushToast({ title: t("pagesProjectDetail.toast.saved"), body: notice, tone: "warn" });
       invalidateProject();
       if (data.visibility !== undefined) queryClient.invalidateQueries({ queryKey: ["issues"] });
       if (fieldSaveRequestIds.current[field] !== requestId) return;
@@ -631,7 +632,7 @@ export function ProjectDetail() {
       companyId: resolvedCompanyId ?? "",
       scopeType: "project",
       scopeId: project?.id ?? routeProjectRef,
-      scopeName: project?.name ?? "Project",
+      scopeName: project?.name ?? t("pagesProjectDetail.fallbackName"),
       metric: "billed_cents",
       windowKind: "lifetime",
       amount: 0,
@@ -713,7 +714,7 @@ export function ProjectDetail() {
 
   if (isLoading || projectView.kind === "reconnecting") return <PageSkeleton variant="detail" />;
   if (projectView.kind === "error") {
-    return <QueryErrorState size="page" error={error} action="load this project" onRetry={projectView.retry} retrying={projectView.isFetching} />;
+    return <QueryErrorState size="page" error={error} action={t("pagesProjectDetail.loadAction")} onRetry={projectView.retry} retrying={projectView.isFetching} />;
   }
   if (!project) return null;
   const showLeftProjectNotice =
@@ -753,7 +754,7 @@ export function ProjectDetail() {
       {showLeftProjectNotice ? (
         <div className="flex items-center gap-3 border border-yellow-300/35 bg-yellow-300/10 px-3 py-2 text-sm text-yellow-900 dark:text-yellow-100">
           <p className="min-w-0 flex-1">
-            You left this project. It no longer appears in your sidebar.
+            {t("pagesProjectDetail.leftNotice")}
           </p>
           <MembershipAction
             compact
@@ -777,7 +778,7 @@ export function ProjectDetail() {
           <button
             type="button"
             className="h-6 w-6 shrink-0 text-yellow-900/70 hover:text-yellow-900 dark:text-yellow-100/70 dark:hover:text-yellow-100"
-            aria-label="Dismiss project membership notice"
+            aria-label={t("pagesProjectDetail.dismissLeftNotice")}
             onClick={() => setDismissedLeftProjectIds((current) => new Set(current).add(project.id))}
           >
             ×
@@ -803,13 +804,13 @@ export function ProjectDetail() {
           {project.pauseReason === "budget" ? (
             <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-(length:--text-micro) font-medium uppercase tracking-(--tracking-caps) text-red-800 dark:text-red-200">
               <span className="h-2 w-2 rounded-full bg-red-400" />
-              Paused by budget hard stop
+              {t("pagesProjectDetail.pausedByBudget")}
             </div>
           ) : null}
           {project.managedByPlugin ? (
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-(length:--text-micro) font-medium text-muted-foreground">
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: project.color ?? "var(--project-seed)" }} />
-              Managed by {project.managedByPlugin.pluginDisplayName}
+              {t("pagesProjectDetail.managedBy", { plugin: project.managedByPlugin.pluginDisplayName })}
             </div>
           ) : null}
         </div>
@@ -835,8 +836,8 @@ export function ProjectDetail() {
         companyId={resolvedCompanyId}
         scopeKind="project"
         scopeId={project.id}
-        title="Project summary"
-        description="Summarizer keeps the latest project status, next step, and operator-needed items here."
+        title={t("pagesProjectDetail.summary.title")}
+        description={t("pagesProjectDetail.summary.description")}
       />
 
       <PluginSlotOutlet
@@ -873,12 +874,12 @@ export function ProjectDetail() {
       <Tabs value={activeTab ?? "list"} onValueChange={(value) => handleTabChange(value as ProjectTab)}>
         <PageTabBar
           items={[
-            { value: "list", label: "Tasks" },
+            { value: "list", label: t("pagesProjectDetail.tabs.tasks") },
 
-            ...(project.managedByPlugin ? [{ value: "plugin-operations", label: "Plugin operations" }] : []),
-            ...(showWorkspacesTab ? [{ value: "workspaces", label: "Workspaces" }] : []),
-            { value: "configuration", label: "Configuration" },
-            { value: "budget", label: "Budget" },
+            ...(project.managedByPlugin ? [{ value: "plugin-operations", label: t("pagesProjectDetail.tabs.pluginOperations") }] : []),
+            ...(showWorkspacesTab ? [{ value: "workspaces", label: t("pagesProjectDetail.tabs.workspaces") }] : []),
+            { value: "configuration", label: t("pagesProjectDetail.tabs.configuration") },
+            { value: "budget", label: t("pagesProjectDetail.tabs.budget") },
             ...pluginTabItems.map((item) => ({
               value: item.value,
               label: item.label,
@@ -909,7 +910,7 @@ export function ProjectDetail() {
           workspaceTabFailure ? (
             <QueryErrorState
               error={workspaceTabFailure.error}
-              action="load workspaces"
+              action={t("pagesProjectDetail.loadWorkspacesAction")}
               onRetry={workspaceTabFailure.retry}
               retrying={workspaceTabFailure.isFetching}
             />
@@ -922,7 +923,7 @@ export function ProjectDetail() {
             />
           )
         ) : (
-          <p className="text-sm text-muted-foreground">Loading workspaces...</p>
+          <p className="text-sm text-muted-foreground">{t("pagesProjectDetail.loadingWorkspaces")}</p>
         )
       ) : null}
 

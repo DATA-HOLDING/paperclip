@@ -1,0 +1,61 @@
+{
+  "source": {
+    "owner": "task owner",
+    "explicit": "shared directly",
+    "assignment": "via assignment",
+    "project": "via project"
+  },
+  "aclDescription": "Sharing grants access to this task and its descendants, including comments, documents, and run history. Parents and siblings need separate access.",
+  "toast": {
+    "granted": "Access granted",
+    "addFailed": "Couldn't add access",
+    "revoked": "Access revoked",
+    "revokeFailed": "Couldn't revoke access"
+  },
+  "unknownUser": "Unknown user",
+  "groups": {
+    "people": "People",
+    "agents": "Agents"
+  },
+  "title": "Who can access this task",
+  "empty": "Only you can see this task.",
+  "unknown": "Unknown",
+  "granter": {
+    "shared": "Shared",
+    "granted": "Granted"
+  },
+  "subtitle": {
+    "implicit": "{{role}} — access remains while this role applies",
+    "inherited": "Inherited access — managed at its source",
+    "granted": "{{granter}} {{time}}"
+  },
+  "removeSavedGrant": "Remove saved grant",
+  "revokeButton": "Revoke",
+  "projectManaged": "project-managed",
+  "addSomeone": "Add someone",
+  "choose": "Choose a person or agent…",
+  "search": "Search people and agents…",
+  "loadingDirectory": "Loading directory…",
+  "noOneLeft": "No one left to add.",
+  "caution": {
+    "ariaLabel": "Shared agent caution",
+    "title": "Shared agent.",
+    "body": "{{name}}'s memory & workspace may carry residual private context from this task into its later runs for other people. Grant only if that's acceptable."
+  },
+  "back": "Back",
+  "adding": "Adding…",
+  "add": "Add",
+  "revoke": {
+    "title": "Remove {{name}}'s saved grant?",
+    "thisSubject": "this subject",
+    "bodyBefore": "This removes this grant and the access it supplies to this task's descendants. Ownership, current assignment, project membership, inherited access, or another grant can still provide access. Revoking access does",
+    "bodyNot": "not",
+    "bodyAfter": "erase content already seen or retained in an agent's memory."
+  },
+  "cancel": "Cancel",
+  "removing": "Removing…",
+  "removeGrant": "Remove grant",
+  "errorActions": {
+    "loadAccess": "load access"
+  }
+}

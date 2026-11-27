@@ -1,0 +1,20 @@
+{
+  "fileUnder": {
+    "filed": "Filed “{{label}}” under {{responsibility}}.",
+    "failed": "Couldn’t file “{{label}}”. {{error}}",
+    "ariaLabel": "File {{label}} under a responsibility",
+    "button": "File under…",
+    "noArea": "No area"
+  },
+  "list": {
+    "showFewer": "Show fewer",
+    "showAll": "Show all {{count}}"
+  },
+  "taskNote": "Showing the {{shown}} most recently updated of {{total}} open tasks.",
+  "heading": "Outside your responsibilities",
+  "description": "Work in the company that is not filed under a responsibility. Not everything needs to be: a daily standup or a one-off errand can live here.",
+  "projects": "Projects",
+  "due": "Due {{label}}",
+  "openTasks": "Open tasks",
+  "routines": "Routines"
+}

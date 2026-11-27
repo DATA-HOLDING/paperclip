@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { AgentPublicIdentity } from "@paperclipai/shared";
 import type { AgentProjectAccess } from "@paperclipai/shared";
 import type {
@@ -286,7 +287,7 @@ export const agentsApi = {
       // that has already stopped. It does not mean a new attempt was queued.
       if (["failed", "timed_out", "cancelled", "interrupted"].includes(result.status)) {
         throw new Error(
-          "The previous retry has already stopped. Refresh the task and retry its latest failed run.",
+          t("apiAgents.retryStopped"),
         );
       }
       return { runId: result.id, issueId: null };
@@ -294,12 +295,12 @@ export const agentsApi = {
     if ("actionId" in result) {
       if (result.status === "failed" || result.status === "cancelled") {
         throw new Error(
-          "This retry could not start. Open the task to review its current access and recovery state.",
+          t("apiAgents.retryCouldNotStart"),
         );
       }
       return { runId: result.runId, issueId: result.issueId };
     }
-    throw new Error(result.message ?? "Retry was skipped.");
+    throw new Error(result.message ?? t("apiAgents.retrySkipped"));
   },
   loginWithClaude: (id: string, companyId?: string) =>
     api.post<ClaudeLoginResult>(agentPath(id, companyId, "/claude-login"), {}),

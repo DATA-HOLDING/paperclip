@@ -1,0 +1,51 @@
+{
+  "kinds": {
+    "suggestTasks": "Tarefas sugeridas",
+    "askUserQuestions": "Perguntas ao usuário",
+    "requestConfirmation": "Confirmações",
+    "requestCheckboxConfirmation": "Confirmações por caixa de seleção",
+    "requestItemVerdicts": "Veredictos por item",
+    "connectionIntent": "Pedidos de conexão",
+    "suggestRoutine": "Ofertas de rotina",
+    "proposeResponsibilityBar": "Metas propostas",
+    "proposeAutomation": "Automações propostas",
+    "proposeDashboardChanges": "Alterações de painel propostas"
+  },
+  "unset": {
+    "defaultPolicy": "Qualquer um (padrão)",
+    "cap": "Sem limite"
+  },
+  "effects": {
+    "unset": {
+      "defaultPolicy": "Novos cartões ficam abertos — o conselho ou qualquer agente pode responder, inclusive quem perguntou.",
+      "cap": "Um pedido mantém o público que ele pedir."
+    },
+    "defaultPolicy": {
+      "notCreator": "Novos cartões excluem o agente que os criou, então a resposta vem de outra pessoa ou agente.",
+      "humanOnly": "Novos cartões esperam por uma pessoa do conselho. Agentes são recusados."
+    },
+    "cap": {
+      "notCreator": "Mesmo um cartão que pede Qualquer um é restringido para excluir quem o criou.",
+      "humanOnly": "Todo cartão deste tipo espera por uma pessoa, seja o que for que tenha pedido."
+    }
+  },
+  "heading": "Governança de interações",
+  "intro": {
+    "openByDefault": "As interações da conversa são abertas por padrão:",
+    "anyone": "Qualquer um",
+    "anyoneRest": " na organização — o conselho ou qualquer agente, inclusive quem perguntou — pode responder. Restrinja um tipo só quando precisar.",
+    "defaultPolicy": "Política padrão",
+    "defaultPolicyRest": " é o público que os novos cartões recebem quando quem pede não escolhe um;",
+    "cap": "Limite",
+    "capRest": " restringe todo pedido desse tipo e nunca o amplia. Confirmações de aprovação de ferramentas sempre ficam em",
+    "humanOnly": "Só humanos",
+    "end": "."
+  },
+  "columns": {
+    "kind": "Tipo",
+    "defaultPolicy": "Política padrão",
+    "cap": "Limite"
+  },
+  "defaultPolicyAria": "Público padrão de resposta para {{kind}}",
+  "capAria": "Limite de resposta para {{kind}}"
+}

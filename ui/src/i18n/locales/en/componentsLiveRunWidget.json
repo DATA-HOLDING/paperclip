@@ -1,0 +1,7 @@
+{
+  "title": "Live Runs",
+  "description": "Uses the shared chat-style run surface from task activity.",
+  "stopping": "Stopping…",
+  "stop": "Stop",
+  "openRun": "Open run"
+}

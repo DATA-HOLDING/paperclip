@@ -1,0 +1,18 @@
+{
+  "checkSignInAction": "verificar o login",
+  "signInTitle": "Entrar no Paperclip",
+  "signUpTitle": "Crie sua conta no Paperclip",
+  "signInDescription": "Use seu e-mail e senha para acessar esta instância.",
+  "signUpDescription": "Crie uma conta para esta instância. A confirmação de e-mail não é exigida na v1.",
+  "fillRequired": "Preencha todos os campos obrigatórios.",
+  "name": "Nome",
+  "email": "E-mail",
+  "password": "Senha",
+  "working": "Processando…",
+  "signInButton": "Entrar",
+  "createAccountButton": "Criar conta",
+  "needAccount": "Precisa de uma conta?",
+  "haveAccount": "Já tem uma conta?",
+  "createOne": "Crie uma",
+  "signInLink": "Entrar"
+}

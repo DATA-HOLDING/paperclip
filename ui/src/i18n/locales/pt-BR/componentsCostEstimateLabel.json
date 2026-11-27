@@ -1,0 +1,6 @@
+{
+  "title_one": "{{count}} cobrança estimada. Calculada a partir do uso de tokens e das tarifas publicadas; as faturas do provedor podem ser diferentes.",
+  "title_other": "{{count}} cobranças estimadas. Calculadas a partir do uso de tokens e das tarifas publicadas; as faturas do provedor podem ser diferentes.",
+  "estimated": "Estimado",
+  "partiallyEstimated": "Parcialmente estimado"
+}

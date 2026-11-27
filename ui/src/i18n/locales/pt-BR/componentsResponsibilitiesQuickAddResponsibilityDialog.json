@@ -1,0 +1,11 @@
+{
+  "title": "Nova responsabilidade",
+  "sentenceLabel": "O que precisa ser verdade?",
+  "sentencePlaceholder": "ex.: Toda pergunta de cliente recebe resposta em até um dia.",
+  "area": "Área",
+  "noArea": "Sem área",
+  "error": "Não foi possível adicionar a responsabilidade. {{message}}",
+  "cancel": "Cancelar",
+  "adding": "Adicionando…",
+  "submit": "Adicionar responsabilidade"
+}

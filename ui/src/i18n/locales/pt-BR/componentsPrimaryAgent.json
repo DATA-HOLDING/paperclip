@@ -1,0 +1,14 @@
+{
+  "myPrimaryAgent": "Meu agente principal",
+  "retryLoading": "Tentar carregar o agente principal novamente",
+  "loadFailed": "Não foi possível carregar seu agente principal. Selecione para tentar novamente.",
+  "setAsPrimary": "Definir como meu principal",
+  "loading": "Carregando seu agente principal…",
+  "avatarLabel": "Avatar de {{name}}",
+  "newPrimaryAgent": "Novo agente principal",
+  "confirm": {
+    "title": "Trocar seu agente principal?",
+    "description": "Isso tornará {{name}} seu agente principal. Deseja fazer isso?",
+    "cancel": "Cancelar"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "placeholder": "Search tasks, agents, projects...",
+  "empty": {
+    "noQuickMatch": "No quick task matches. Press",
+    "to": "to",
+    "searchAll": "search all",
+    "keepTyping": "or keep typing to refine.",
+    "noResults": "No results found."
+  },
+  "groups": {
+    "search": "Search",
+    "quickFilters": "Quick filters",
+    "projects": "Projects",
+    "actions": "Actions",
+    "pages": "Pages",
+    "tasks": "Tasks",
+    "agents": "Agents"
+  },
+  "searchAllFor": "Search all for",
+  "openFullSearch": "open full search",
+  "actions": {
+    "createTask": "Create new task",
+    "openFile": "Open file in this issue...",
+    "createAgent": "Create new agent",
+    "createProject": "Create new project"
+  },
+  "pages": {
+    "dashboard": "Dashboard",
+    "myWork": "My work",
+    "inbox": "Inbox",
+    "tasks": "Tasks",
+    "projects": "Projects",
+    "goals": "Goals",
+    "agents": "Agents",
+    "costs": "Costs",
+    "activity": "Activity"
+  }
+}

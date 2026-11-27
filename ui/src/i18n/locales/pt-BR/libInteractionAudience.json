@@ -1,0 +1,38 @@
+{
+  "labels": {
+    "anyone": "Qualquer um",
+    "notCreator": "Qualquer um exceto o criador",
+    "humanOnly": "Só humanos",
+    "addressed": "Direcionado"
+  },
+  "effects": {
+    "anyone": "Qualquer um na organização pode responder — o conselho ou qualquer agente, inclusive quem perguntou.",
+    "notCreator": "Qualquer um na organização, exceto o agente que criou o cartão e a execução dele. Use quando a resposta precisa vir de outra pessoa.",
+    "humanOnly": "Só uma pessoa do conselho pode responder. Agentes são recusados."
+  },
+  "youMidSentence": "você",
+  "addressedUser": "o usuário destinatário",
+  "addressedAgent": "o agente destinatário",
+  "creatorFallback": "o agente que o criou",
+  "summary": {
+    "onlyAddressee": "Só {{addressee}} pode responder.",
+    "humanOnlyAssigned": "Atribuído a {{addressee}}. Só uma pessoa do conselho pode responder — agentes não podem resolver este cartão.",
+    "humanOnly": "Só uma pessoa do conselho pode responder — agentes não podem resolver este cartão.",
+    "addresseeOrBoard": "Só {{addressee}} ou uma pessoa do conselho pode responder.",
+    "notCreator": "Qualquer um na organização, exceto {{creator}}, pode responder.",
+    "anyone": "Qualquer um na organização pode responder — o conselho ou qualquer agente, inclusive quem perguntou."
+  },
+  "shortSummary": {
+    "onlyAddressee": "Só {{addressee}} pode responder",
+    "humanOnlyAssigned": "Atribuído a {{addressee}} · só o conselho",
+    "humanOnly": "Só o conselho pode responder",
+    "addresseeOrBoard": "Só {{addressee}} ou o conselho pode responder",
+    "notCreator": "Qualquer um exceto {{creator}} pode responder",
+    "anyone": "Qualquer um pode responder"
+  },
+  "narrowed": {
+    "governedAction": "Este cartão executa uma ação governada, então continua só para humanos, qualquer que seja o público pedido.",
+    "companyCap": "A governança de interações da organização restringiu de {{from}} para {{to}}.",
+    "legacy": "Criado antes de \"Qualquer um\" virar o padrão, então continua restrito. Um cartão novo seria aberto."
+  }
+}

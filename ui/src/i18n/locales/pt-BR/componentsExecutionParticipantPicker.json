@@ -1,0 +1,12 @@
+{
+  "user": "Usuário",
+  "reviewers": "Revisores",
+  "approvers": "Aprovadores",
+  "policyUnavailable": "Política de execução indisponível. Atualize para tentar novamente.",
+  "searchReviewers": "Buscar revisores...",
+  "searchApprovers": "Buscar aprovadores...",
+  "noReviewers": "Nenhum revisor",
+  "noApprovers": "Nenhum aprovador",
+  "assignToMe": "Atribuir a mim",
+  "requester": "Solicitante"
+}

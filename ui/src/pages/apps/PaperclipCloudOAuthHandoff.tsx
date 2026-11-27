@@ -8,6 +8,7 @@ import {
   readPendingCloudHandoff,
 } from "@/lib/oauthHandoff";
 import { describeError } from "@/api/errors";
+import { t } from "@/i18n";
 
 export type ManagedOAuthHandoffPhase = "loading" | "reauthenticating" | "error";
 
@@ -35,19 +36,19 @@ export function ManagedOAuthHandoffState({
         </span>
         <div className="min-w-0">
           <h1 className="text-xl font-bold tracking-tight">
-            {failed ? "Sign-in couldn’t continue" : "Preparing secure sign-in"}
+            {failed ? t("pagesApps.handoff.failedTitle") : t("pagesApps.handoff.preparingTitle")}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {failed
-              ? error ?? "Paperclip couldn’t prepare the provider sign-in. Try again."
+              ? error ?? t("pagesApps.handoff.prepareFailed")
               : phase === "reauthenticating"
-                ? "Your Paperclip sign-in is being refreshed."
-                : "Paperclip is opening the provider securely."}
+                ? t("pagesApps.handoff.refreshing")
+                : t("pagesApps.handoff.opening")}
           </p>
           {failed ? (
             <div className="mt-6 flex items-center gap-2">
-              <Button type="button" onClick={onRetry}>Try again</Button>
-              <Button type="button" variant="ghost" onClick={onCancel}>Return to Paperclip</Button>
+              <Button type="button" onClick={onRetry}>{t("pagesApps.common.tryAgain")}</Button>
+              <Button type="button" variant="ghost" onClick={onCancel}>{t("pagesApps.handoff.return")}</Button>
             </div>
           ) : null}
         </div>
@@ -65,7 +66,7 @@ export function PaperclipCloudOAuthHandoffPage() {
     const handoff = readPendingCloudHandoff();
     if (!handoff) {
       setPhase("error");
-      setError("This sign-in expired. Return to Paperclip and start the connection again.");
+      setError(t("pagesApps.handoff.expired"));
       return;
     }
     setPhase("loading");
@@ -74,7 +75,7 @@ export function PaperclipCloudOAuthHandoffPage() {
       const target = await prepareOAuthNavigation({ authorizationUrl: "", handoff });
       if (target.kind === "reauthentication") {
         setPhase("error");
-        setError("Paperclip couldn’t refresh this sign-in. Try again to continue.");
+        setError(t("pagesApps.handoff.refreshFailed"));
         return;
       }
       clearPendingCloudHandoff();

@@ -1,5 +1,6 @@
 import type { IssueRecoveryAction, IssueScheduledRetry } from "@paperclipai/shared";
-import { formatMonitorOffset } from "./issue-monitor";
+import { t } from "@/i18n";
+import { describeMonitorOffset, type MonitorOffset } from "./issue-monitor";
 
 /**
  * Which bounded retry budget the server is currently spending on a recovery action.
@@ -206,17 +207,28 @@ export function readRecoveryRetryLineage(
 /** "Attempt 2 of 5", or null when the server did not record a bounded budget. */
 export function formatRecoveryAttemptLabel(lineage: RecoveryRetryLineage): string | null {
   if (lineage.maxAttempts === null) return null;
-  return `Attempt ${Math.min(lineage.attempt, lineage.maxAttempts)} of ${lineage.maxAttempts}`;
+  return t("libRecoveryLineage.attemptOf", {
+    attempt: Math.min(lineage.attempt, lineage.maxAttempts),
+    max: lineage.maxAttempts,
+  });
+}
+
+/**
+ * The stored next attempt as a kind ("future" | "now" | "past") plus its display text, or
+ * null when none is stored. Branch on `kind`; the label is translated.
+ */
+export function describeRecoveryRetryOffset(lineage: RecoveryRetryLineage): MonitorOffset | null {
+  if (!lineage.nextRetryAt) return null;
+  try {
+    return describeMonitorOffset(lineage.nextRetryAt);
+  } catch {
+    return null;
+  }
 }
 
 /** "in 3m" / "now" / "3m ago" for the stored next attempt, or null when none is stored. */
 export function formatRecoveryRetryOffset(lineage: RecoveryRetryLineage): string | null {
-  if (!lineage.nextRetryAt) return null;
-  try {
-    return formatMonitorOffset(lineage.nextRetryAt);
-  } catch {
-    return null;
-  }
+  return describeRecoveryRetryOffset(lineage)?.label ?? null;
 }
 
 /**
@@ -227,17 +239,17 @@ export function formatRecoveryLineageSummary(lineage: RecoveryRetryLineage): str
   const parts: string[] = [];
   const attempt = formatRecoveryAttemptLabel(lineage);
   if (attempt) parts.push(attempt);
-  const offset = formatRecoveryRetryOffset(lineage);
+  const offset = describeRecoveryRetryOffset(lineage);
   if (lineage.liveRunId) {
-    parts.push("attempt running now");
+    parts.push(t("libRecoveryLineage.attemptRunningNow"));
   } else if (lineage.retryExpired) {
     // Never "next try 5m ago": a due time in the past is a missed attempt, and phrasing it as
     // an upcoming one is exactly the false healthy state this helper exists to prevent.
-    parts.push(offset ? `retry missed ${offset}` : "retry missed");
+    parts.push(offset ? t("libRecoveryLineage.retryMissedAt", { offset: offset.label }) : t("libRecoveryLineage.retryMissed"));
   } else if (offset) {
-    parts.push(offset === "now" ? "next try now" : `next try ${offset}`);
+    parts.push(offset.kind === "now" ? t("libRecoveryLineage.nextTryNow") : t("libRecoveryLineage.nextTryAt", { offset: offset.label }));
   } else if (lineage.exhausted) {
-    parts.push("retries used up");
+    parts.push(t("libRecoveryLineage.retriesUsedUp"));
   }
   return parts.length > 0 ? parts.join(" · ") : null;
 }

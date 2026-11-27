@@ -1,0 +1,6 @@
+{
+  "breadcrumb": "Organograma",
+  "selectOrganization": "Selecione uma organização para ver o organograma.",
+  "loadAction": "carregar o organograma",
+  "empty": "Nenhum agente na organização. Crie agentes para montar seu organograma."
+}

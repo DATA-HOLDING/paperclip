@@ -1,0 +1,52 @@
+{
+  "outOfDateSr": " (desatualizado)",
+  "anAgent": "Um agente",
+  "reportingHere": "Reportando aqui: {{names}}",
+  "outOfDateWritten": "Desatualizado · escrito {{ago}}",
+  "written": "Escrito {{ago}}",
+  "noAgentCanReport": "Nenhum agente pode reportar ainda",
+  "askedForUpdate": "Atualização solicitada",
+  "noReportYet": "Nenhum relato ainda",
+  "theAgent": "o agente",
+  "fromNumberNotAgent": " · Pelo número, não por um agente",
+  "noMetric": "Nenhuma métrica ainda",
+  "fromNumberSr": " (pelo número)",
+  "askAria": "Pedir a {{name}} uma atualização sobre {{title}}",
+  "noAgentToAsk": "Nenhum agente para perguntar",
+  "waitingFor": "Aguardando {{name}}",
+  "asking": "Pedindo…",
+  "askForUpdate": "Pedir atualização",
+  "editAria": "Editar o status de {{title}}",
+  "edit": "Editar",
+  "notInArea": "Fora de uma área",
+  "archived": " · Arquivada",
+  "nothingFiledHere": "Nada seu está nesta área ainda.",
+  "newResponsibility": "Nova responsabilidade",
+  "dialog": {
+    "title": "Editar o status",
+    "description": "diga como está e por quê. Aparece como escrito por você até que um agente escreva um mais recente.",
+    "status": "Status",
+    "why": "Por quê, em uma linha",
+    "whyPlaceholder": "ex.: Estável em 1,3 MB, com a limpeza de fontes ainda por entrar.",
+    "moreDetail": "Mais detalhes",
+    "optional": "(opcional)",
+    "saveFailed": "Não foi possível salvar o status.",
+    "cancel": "Cancelar",
+    "saving": "Salvando…",
+    "save": "Salvar status"
+  },
+  "countsHeading": "Como estão suas responsabilidades",
+  "summary": {
+    "title": "Resumo",
+    "provenance": "Montado a partir do que os agentes escreveram",
+    "waitingOn": "Aguardando: "
+  },
+  "askFailed": "Não foi possível pedir uma atualização.",
+  "areas": {
+    "title": "Áreas",
+    "description": "Cada status como o agente mais próximo do trabalho o escreveu.",
+    "newArea": "Nova área",
+    "empty": "Nada seu ainda. Revise o que foi proposto para você ou adicione uma nova responsabilidade."
+  },
+  "loadAction": "carregar o que seus agentes escreveram"
+}

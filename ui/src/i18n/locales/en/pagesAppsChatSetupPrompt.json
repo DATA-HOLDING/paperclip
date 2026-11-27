@@ -1,0 +1,4 @@
+{
+  "instanceContext": "Paperclip instance URL: {{origin}}\nUse this instance for setup. Do not ask me for its URL again unless it is unavailable or I ask to use a different instance.",
+  "instanceUnavailable": "Paperclip instance URL is unavailable. Ask me for it before starting setup."
+}

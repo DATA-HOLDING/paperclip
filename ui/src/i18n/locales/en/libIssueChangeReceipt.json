@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "assigneeAgentId": "Assignee",
+    "assigneeUserId": "Assignee (user)",
+    "responsibleUserId": "Responsible user",
+    "blockedByIssueIds": "Blockers",
+    "labelIds": "Labels",
+    "parentId": "Parent",
+    "projectId": "Project",
+    "goalId": "Goal",
+    "workMode": "Work mode",
+    "reviewPolicy": "Who can approve",
+    "billingCode": "Billing code",
+    "checkoutRunId": "Checkout run",
+    "executionRunId": "Execution run",
+    "hiddenAt": "Hidden",
+    "startedAt": "Started",
+    "completedAt": "Completed",
+    "cancelledAt": "Cancelled",
+    "requestDepth": "Request depth",
+    "sourceTrust": "Source trust",
+    "executionPolicy": "Execution policy",
+    "executionWorkspaceId": "Execution workspace",
+    "projectWorkspaceId": "Project workspace"
+  },
+  "value": {
+    "none": "none",
+    "yes": "yes",
+    "no": "no",
+    "items": "{{count}} items",
+    "updated": "updated"
+  },
+  "authorizationReasons": {
+    "allow_visible_issue_write": "default-open write on a visible task",
+    "allow_scoped_agent_write": "scoped agent write",
+    "allow_board_actor": "board actor",
+    "allow_self": "own task",
+    "allow_issue_mention_grant": "mention grant",
+    "allow_direct_parent_report": "direct parent report",
+    "allow_low_trust_boundary": "low-trust boundary allowance",
+    "allow_explicit_grant": "explicit permission grant",
+    "allow_instance_admin": "instance admin",
+    "allow_local_board": "local board",
+    "internal_agent_write": "internal agent write"
+  }
+}

@@ -94,3 +94,9 @@ if (typeof HTMLCanvasElement !== "undefined") {
     value: () => null,
   });
 }
+
+// The UI picks the browser language at startup (src/i18n). Tests assert the
+// English copy, so they always run in English whatever the machine's locale.
+const { i18n: appI18n } = await import("./src/i18n");
+await appI18n.changeLanguage("en");
+export {};

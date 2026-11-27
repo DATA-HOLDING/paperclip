@@ -1,0 +1,4 @@
+{
+  "runnerUnavailable": "Não foi possível confirmar a disponibilidade do runner para este ambiente. Tente a configuração novamente.",
+  "qualificationUnconfirmed": "Não foi possível confirmar a qualificação de plataforma do ambiente. Tente o teste de conexão novamente."
+}

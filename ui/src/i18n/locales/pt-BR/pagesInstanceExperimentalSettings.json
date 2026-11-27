@@ -1,0 +1,251 @@
+{
+  "cards": {
+    "enableResponsibilities": {
+      "title": "Painel de Áreas e Responsabilidades",
+      "description": "Substitua o painel clássico por um organizado em torno das áreas que importam para você e das responsabilidades que você tem em cada uma. Um agente pode entrevistar você para montá-lo, e você pode desfazer qualquer mudança.",
+      "footnote": "Desativar isto traz de volta o painel clássico. Suas áreas e responsabilidades são mantidas.",
+      "ariaLabel": "Alternar a configuração experimental do painel de Áreas e Responsabilidades"
+    },
+    "enableAwsConnector": {
+      "title": "Conector da AWS",
+      "description": "Permita que os agentes trabalhem na AWS pelo servidor MCP hospedado da AWS, com credenciais de curta duração criadas para cada conexão.",
+      "footnote": "Desativado por padrão. Enquanto estiver desativado, o conector da AWS não pode ser configurado nem executado.",
+      "ariaLabel": "Alternar a configuração experimental do conector da AWS"
+    },
+    "enableBetaSkills": {
+      "title": "Skills beta",
+      "description": "Permita que os agentes fixem versões beta da skill principal do Paperclip. Desativar isto devolve todos os agentes à skill padrão em produção, sem remover as fixações salvas.",
+      "ariaLabel": "Alternar a configuração experimental de skills beta"
+    },
+    "enableBuiltInAgents": {
+      "title": "Agentes integrados",
+      "description": "Mostre as áreas de agentes integrados gerenciados pelo Paperclip, incluindo os selos de agentes integrados na equipe, a aba Agentes integrados e os controles de configuração de agentes integrados.",
+      "ariaLabel": "Alternar a configuração experimental de agentes integrados"
+    },
+    "enableCases": {
+      "title": "Casos",
+      "description": "Produtos de trabalho duradouros (posts de blog, sequências de tweets…) que as tarefas criam e aprimoram. Adiciona a aba Casos e a API de casos para agentes.",
+      "footnote": "Desativar Casos oculta a aba e bloqueia a API de casos; os dados de casos existentes são mantidos.",
+      "ariaLabel": "Alternar a configuração experimental de casos"
+    },
+    "enableChatConnectors": {
+      "title": "Conectores de chat",
+      "description": "Conecte agentes a conversas do Slack, Discord, Microsoft Teams e Telegram.",
+      "footnote": "Desativar isto oculta a configuração experimental de chat e os controles de tarefas conectadas. As conexões de chat existentes continuam funcionando. AgentMail, bots de revisão do GitHub e conectores de ferramentas são controlados separadamente.",
+      "ariaLabel": "Alternar a configuração experimental de conectores de chat"
+    },
+    "enableCombinedInboxTasks": {
+      "title": "Caixa de entrada + lista de tarefas combinadas",
+      "description": "No espaço de trabalho Clássico, junte a Caixa de entrada às Tarefas. Uma linha de Tarefas mostra o selo de não lidas, e um menu Visualizações leva a todas as visualizações de tarefas pessoais e da organização.",
+      "footnote": "O Coordenador sempre inclui as visualizações pessoais em Tarefas. No Clássico, desativar isto restaura a Caixa de entrada separada. Nenhum dado muda.",
+      "ariaLabel": "Alternar a configuração experimental de caixa de entrada e lista de tarefas combinadas"
+    },
+    "enableConferenceRoomChat": {
+      "title": "Chat da sala de reunião",
+      "description": "Adiciona uma sala de reunião — um chat em que você e toda a sua equipe trabalham juntos — além do feed de atividade ao vivo e do onboarding redesenhado. Também deixa as conversas das tarefas com cara de balões de chat. Desative quando quiser para restaurar a interface clássica.",
+      "ariaLabel": "Alternar a configuração experimental do chat da sala de reunião"
+    },
+    "enableLegacyComposerSubmit": {
+      "title": "Command/Ctrl+Enter para enviar",
+      "description": "Restaura o atalho de teclado anterior para respostas em tarefas e novas tarefas: Command/Ctrl+Enter envia, e Enter adiciona uma nova linha.",
+      "footnote": "Desativado por padrão: Enter envia, e Shift+Enter adiciona uma nova linha.",
+      "ariaLabel": "Alternar Command/Ctrl+Enter para enviar"
+    },
+    "enableDecisions": {
+      "title": "Decisões",
+      "description": "Mostre o item Decisões na barra lateral principal — a central de atenção que reúne as tarefas que aguardam a sua resposta — enquanto essa área ainda está em avaliação.",
+      "ariaLabel": "Alternar a configuração experimental de decisões"
+    },
+    "enableMcpTasks": {
+      "title": "Ações duradouras de apps (MCP Tasks)",
+      "description": "Permita que apps conectados executem ações longas, como execuções de CI ou deploys, como tarefas acompanhadas pelo Paperclip. Se uma ação durar mais que uma chamada, um reinício ou um deploy, o agente coleta o resultado depois e o trabalho nunca é iniciado duas vezes.",
+      "footnote": "Vale para apps compatíveis com MCP Tasks. Desativar isto interrompe novas tarefas; os apps passam a responder como antes.",
+      "ariaLabel": "Alternar a configuração experimental de ações duradouras de apps"
+    },
+    "enableAntigravitySwarm": {
+      "title": "Swarm do Google Antigravity",
+      "description": "Comece um comentário na tarefa de um agente do Google Antigravity com /swarm para executar o swarm nativo dele: um coordenador, ajudantes e um verificador que trabalham juntos na pasta da tarefa.",
+      "footnote": "Somente computadores locais com login do Google. As ações dos ajudantes são aprovadas automaticamente. O Paperclip não coloca os ajudantes em sandbox: os comandos de shell deles podem gravar fora da pasta da tarefa, por exemplo em diretórios temporários.",
+      "ariaLabel": "Alternar a configuração experimental do swarm do Google Antigravity"
+    },
+    "enableEnvironments": {
+      "title": "Ativar ambientes",
+      "description": "Mostre o gerenciamento de ambientes nas configurações da organização e permita os controles de atribuição de ambiente a projetos e agentes.",
+      "ariaLabel": "Alternar a configuração experimental de ambientes"
+    },
+    "enableExternalObjects": {
+      "title": "Ativar objetos externos",
+      "description": "Detecte URLs externas nas tarefas e mostre o status resolvido de pull requests, tickets e outros objetos de trabalho referenciados.",
+      "ariaLabel": "Alternar a configuração experimental de objetos externos"
+    },
+    "enableIsolatedWorkspaces": {
+      "title": "Ativar espaços de trabalho isolados",
+      "description": "Mostre os controles de espaço de trabalho de execução na configuração do projeto e permita o comportamento de espaço de trabalho isolado em execuções de tarefas novas e existentes.",
+      "ariaLabel": "Alternar a configuração experimental de espaços de trabalho isolados"
+    },
+    "enableFastResponses": {
+      "title": "Respostas rápidas experimentais",
+      "description": "Permita confirmações curtas enquanto os agentes começam o trabalho. Configure-as em Configurações → Conexões.",
+      "ariaLabel": "Alternar a configuração experimental de respostas rápidas"
+    },
+    "enableExperimentalFileViewer": {
+      "title": "Visualizador de arquivos experimental",
+      "description": "Mostre nos detalhes da tarefa controles para navegar e pré-visualizar arquivos do espaço de trabalho relativos a uma tarefa.",
+      "ariaLabel": "Alternar a configuração experimental do visualizador de arquivos"
+    },
+    "enableFirstTaskPlanProposal": {
+      "title": "Primeira tarefa: propor com um documento de plano",
+      "description": "Quando o primeiro pedido do usuário é uma única tarefa, o chefe de gabinete escreve um documento de plano curto e um cartão com caixas de seleção, em vez de uma confirmação de um cartão só. Vale para organizações criadas depois que a opção for ativada.",
+      "ariaLabel": "Alternar a configuração experimental de proposta de plano na primeira tarefa"
+    },
+    "enableGitHubReviewBots": {
+      "title": "Bots de revisão do GitHub",
+      "description": "Conecte agentes ao GitHub com uma identidade de App própria para revisar pull requests e responder a issues.",
+      "footnote": "Independente dos conectores de chat. Desativar isto oculta a configuração e o gerenciamento; os bots existentes continuam funcionando. As conexões de ferramentas do GitHub continuam disponíveis.",
+      "ariaLabel": "Alternar a configuração experimental de bots de revisão do GitHub"
+    },
+    "enableGoogleWorkspaceConnector": {
+      "title": "Conector do Google Workspace (Paperclip)",
+      "description": "Mostre o conector integrado do Google Workspace para Gmail, Drive e Agenda enquanto a verificação do Google está pendente.",
+      "footnote": "Desativado por padrão. Enquanto estiver desativado, os apps do Google são oferecidos pelo Composio e pelo Arcade, e o conector integrado não pode ser configurado nem executado.",
+      "ariaLabel": "Alternar a configuração experimental do conector do Google Workspace do Paperclip"
+    },
+    "enableGrokBot": {
+      "title": "Grok Bot",
+      "description": "Conecte um Grok Bot existente como agente. Verifique a entrega de rotinas e uma resposta autenticada antes de atribuir trabalho.",
+      "footnote": "Requer o Paperclip Runner e HTTPS público autenticado. O uso não é informado. Desativar isto bloqueia chamadas ao Grok e novos despachos.",
+      "ariaLabel": "Alternar a configuração experimental do Grok Bot"
+    },
+    "enableMemoryConnectors": {
+      "title": "Conectores de memória",
+      "description": "Conecte Mem0, Zep, Supermemory, Cognee e Honcho para memória e contexto de longo prazo.",
+      "footnote": "Desativar isto oculta a configuração desses conectores. As conexões existentes continuam funcionando.",
+      "ariaLabel": "Alternar a configuração experimental de conectores de memória"
+    },
+    "enableMuse": {
+      "title": "Muse — Agente pessoal",
+      "description": "Conecte o seu Meta Muse pessoal. Faça o pareamento, detecte o receptor dele e verifique uma resposta independente em segundo plano antes de atribuir tarefas.",
+      "footnote": "Requer o Paperclip Runner e uma instância autenticada com uma URL HTTPS pública. Desativar isto bloqueia novos trabalhos; a limpeza e as evidências de parada continuam disponíveis. O uso e o custo do provedor não estão disponíveis.",
+      "ariaLabel": "Alternar a configuração experimental do Muse"
+    },
+    "enableOpenAiDot": {
+      "title": "OpenAI Dot",
+      "description": "Adicione o OpenAI Dot como uma opção de agente independente. Faça o pareamento do seu Dot e verifique a entrega de eventos antes de atribuir trabalho.",
+      "footnote": "Requer uma instância autenticada com uma URL HTTPS pública. Desativar isto bloqueia chamadas ao Dot e novos trabalhos; as conexões salvas são mantidas.",
+      "ariaLabel": "Alternar a configuração experimental do OpenAI Dot"
+    },
+    "enableNativeRunner": {
+      "title": "Paperclip Runner",
+      "description": "Permita que os agentes escolham o Paperclip Runner, incluindo a entrada autenticada do runner quando uma sandbox exigir. A configuração inicial oferece o GitHub Copilot qualificado. Desativar isto oculta a opção sem afetar as execuções nativas existentes.",
+      "ariaLabel": "Alternar a configuração experimental do Paperclip Runner"
+    },
+    "enableSimplifiedEnglishInteractions": {
+      "title": "Interações em inglês simplificado",
+      "description": "Instrua os agentes a escrever as interações com o usuário (confirmações de plano, perguntas, tarefas sugeridas, caixas de seleção) em ASD-STE100 Simplified Technical English, com um breve contexto sobre as informações de que a decisão precisa e o que acontece em cada escolha.",
+      "ariaLabel": "Alternar a configuração experimental de interações em inglês simplificado"
+    },
+    "enableStatusCards": {
+      "title": "Cartões de status",
+      "description": "Ative o quadro experimental compartilhado de cartões de status e a API restrita dele. Os dados de cartões existentes são mantidos quando isto é desativado.",
+      "footnote": "Ativar os Cartões de status também ativa os Resumos.",
+      "ariaLabel": "Alternar a configuração experimental de cartões de status"
+    },
+    "enableStreamlinedUi": {
+      "title": "Interface simplificada",
+      "description": "Use a barra lateral principal simplificada, a apresentação compartilhada de Tarefas e Caixa de entrada, o layout focado dos detalhes da tarefa e a navegação contextual em Agentes, Rotinas, Skills e Configurações.",
+      "footnote": "Desativar isto restaura o shell e a navegação antigos. Os dados de tarefas e páginas não mudam.",
+      "ariaLabel": "Alternar a configuração experimental da interface simplificada"
+    },
+    "enableSummaries": {
+      "title": "Resumos",
+      "description": "Mostre espaços de status gerados pelo Summarizer nas páginas de projeto e de espaço de trabalho, com atualização sob demanda e histórico de revisões. Os dados de resumos existentes são mantidos quando isto é desativado.",
+      "footnote": "Os Cartões de status exigem os Resumos. Desativar os Resumos também desativa os Cartões de status.",
+      "ariaLabel": "Alternar a configuração experimental de resumos"
+    },
+    "enableIsolatedWorkspacesByDefault": {
+      "title": "Usar espaços de trabalho isolados por padrão",
+      "description": "Trate um projeto sem política própria de espaço de trabalho de execução como se tivesse escolhido espaços de trabalho isolados, para que as tarefas dele recebam um worktree por tarefa em vez de compartilhar o checkout do projeto. Um projeto com política própria a mantém.",
+      "ariaLabel": "Alternar a configuração experimental de espaços de trabalho isolados por padrão"
+    },
+    "autoRestartDevServerWhenIdle": {
+      "title": "Reiniciar o servidor de desenvolvimento quando ocioso",
+      "description": "No `pnpm dev:once`, aguarde todas as execuções locais de agentes na fila e em andamento terminarem e reinicie o servidor automaticamente quando mudanças no backend ou migrações deixarem a inicialização atual desatualizada.",
+      "ariaLabel": "Alternar o reinício automático protegido do servidor de desenvolvimento"
+    },
+    "enableManagedSandboxOnly": {
+      "title": "Somente ambiente gerenciado",
+      "description": "Oculte o ambiente local e execute todos os agentes no ambiente gerenciado pela plataforma.",
+      "ariaLabel": "Alternar a configuração experimental de somente ambiente gerenciado"
+    },
+    "enablePaperclipDeveloperMode": {
+      "title": "Modo de desenvolvedor do Paperclip",
+      "description": "Mostre ferramentas internas de manutenção do Paperclip e links de observabilidade, incluindo consultas de traces do Honeycomb nas páginas de execução.",
+      "ariaLabel": "Alternar a configuração experimental do modo de desenvolvedor do Paperclip"
+    },
+    "enableServerInfoDebugView": {
+      "title": "Visualização de depuração de informações do servidor",
+      "description": "Mostre uma seção \"Servidor\" na gaveta da conta com o horário do último reinício do servidor e o commit em execução.",
+      "ariaLabel": "Alternar a configuração experimental da visualização de depuração de informações do servidor"
+    },
+    "enableSmokeLab": {
+      "title": "Smoke Lab",
+      "description": "Adicione uma aba \"Smoke Lab\" em Apps → Desenvolvedor e um cartão \"Smoke de integração\" no painel para exercitar cada caminho de integração com fixtures locais determinísticas (provedor OAuth falso + servidores MCP de loopback). Somente implantações privadas (não públicas).",
+      "ariaLabel": "Alternar a configuração experimental do Smoke Lab"
+    },
+    "enableIssuePlanDecompositions": {
+      "title": "Decomposição do plano da tarefa",
+      "description": "Mostre o histórico de decomposição de planos aceitos nas páginas de detalhes da tarefa. Destinado a depurar e validar o comportamento de criação de subtarefas enquanto a apresentação ainda está sendo refinada.",
+      "ariaLabel": "Alternar a configuração experimental do painel de decomposição do plano da tarefa"
+    },
+    "enableClassicTaskInterface": {
+      "title": "Interface clássica de tarefas",
+      "description": "Restaura a página anterior de detalhes da tarefa: o cabeçalho da página com edição da descrição no próprio lugar, a conversa de comentários simples e a barra lateral fixa de Propriedades. Recursos exclusivos do chat — agrupamento da atividade em streaming, cartões de plano e pergunta no próprio fluxo, o editor de três modos — não estão disponíveis na visualização clássica.",
+      "footnote": "A troca vale na hora. Nenhum dado de tarefa é afetado.",
+      "ariaLabel": "Alternar a configuração experimental da interface clássica de tarefas"
+    },
+    "enableGoalsSidebarLink": {
+      "title": "Link de Objetivos na barra lateral",
+      "description": "Restaure o item Objetivos na barra lateral principal enquanto a área de objetivos está em avaliação.",
+      "ariaLabel": "Alternar a configuração experimental do link de Objetivos na barra lateral"
+    }
+  },
+  "managedByCloud": "Gerenciado pelo Paperclip Cloud",
+  "breadcrumbs": {
+    "settings": "Configurações",
+    "experimental": "Experimental"
+  },
+  "loading": "Carregando configurações experimentais...",
+  "title": "Experimental",
+  "intro": "Ative recursos que ainda estão em avaliação antes de virarem o comportamento padrão.",
+  "warning": {
+    "title": "Recursos experimentais podem quebrar a qualquer momento.",
+    "body": "Estes recursos são opcionais e não têm garantia de compatibilidade. Podem mudar, quebrar ou ser removidos sem aviso. Não dependa deles em fluxos críticos ou de produção."
+  },
+  "sections": {
+    "experimental": {
+      "title": "Recursos experimentais",
+      "description": "Recursos opcionais do produto que ainda estão em avaliação."
+    },
+    "developer": {
+      "title": "Modo de desenvolvedor do Paperclip",
+      "description": "Ferramentas internas para desenvolver, testar e depurar o Paperclip."
+    },
+    "legacy": {
+      "title": "Legado",
+      "description": "Estes recursos serão removidos."
+    }
+  },
+  "worktree": {
+    "title": "Executar tarefas neste worktree",
+    "description": "Esta é uma instância de prévia isolada em git worktree. Ative isto para deixar o agendador executar aqui. Só as tarefas criadas depois de ativar vão rodar automaticamente — as copiadas ou preexistentes ficam paradas. Desativar e ativar de novo reinicia o ponto de corte.",
+    "ariaLabel": "Alternar a configuração de execução no worktree",
+    "runningAfter": "Executando tarefas criadas depois de",
+    "suppressed": "A execução está suprimida — na prática, desativada.",
+    "instanceMismatch": "Esta configuração foi ativada em outra instância e copiada para cá, então nenhuma tarefa roda automaticamente.",
+    "missingCutoff": "Falta o ponto de corte da ativação nesta configuração, então nenhuma tarefa roda automaticamente.",
+    "rearm": "Desative e ative de novo para habilitar a execução das tarefas criadas aqui."
+  },
+  "errorActions": {
+    "loadSettings": "carregar as configurações experimentais"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "selectOrganization": "Selecione uma organização para ver as tarefas.",
+  "assignee": {
+    "placeholder": "Responsável",
+    "none": "Sem responsável",
+    "search": "Buscar responsável...",
+    "empty": "Nenhum responsável encontrado."
+  },
+  "project": {
+    "placeholder": "Projeto",
+    "none": "Sem projeto",
+    "search": "Buscar projetos...",
+    "empty": "Nenhum projeto encontrado."
+  },
+  "loading": "Carregando",
+  "renderFailed": "A interface do plugin não pôde ser exibida."
+}

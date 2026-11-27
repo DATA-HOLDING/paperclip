@@ -1,0 +1,158 @@
+{
+  "events": {
+    "opened": "New pull request",
+    "synchronize": "Updated commits",
+    "reopened": "Reopened",
+    "readyForReview": "Ready for review",
+    "mention": "Mention",
+    "comment": "Follow-up comment",
+    "issueOpened": "New issue"
+  },
+  "help": {
+    "about": "About {{label}}"
+  },
+  "score": {
+    "label": "Passing score",
+    "outOf5": "out of 5",
+    "reportOnly": "Report only",
+    "invalid": "Enter a whole number from 1 to 5.",
+    "helpReportOnly": "Publishes a neutral check without a score requirement. GitHub can accept neutral checks for merging.",
+    "helpScore": "Paperclip passes the check when a complete review of the latest commit meets this score. Lower scores fail. This does not approve the PR.",
+    "blockMergingBefore": "To block merging, require the",
+    "blockMergingAfter": "check from this App in your GitHub branch rules.",
+    "configureOnGitHub": "Configure on GitHub"
+  },
+  "policy": {
+    "instructions": {
+      "heading": "Instructions",
+      "ariaLabel": "Agent instructions",
+      "placeholder": "What should this agent do on GitHub?",
+      "help": "Included in every GitHub task. Type / to select a skill for the agent to use.",
+      "eventSpecific": "Event-specific instructions",
+      "event": "Event",
+      "eventAriaLabel": "{{event}} instructions",
+      "eventHelp": "Added to the main instructions for this event. Type / to select a skill for the agent to use."
+    },
+    "triggers": {
+      "heading": "When to run",
+      "whenMentioned": "When mentioned",
+      "mentionHelp": "Authorized people can always @mention this bot.",
+      "manageAccess": "Manage people in Access",
+      "runAutomatically": "Run automatically",
+      "runAutomaticallyDescription": "Start work without a mention when an allowed person creates an issue or updates a pull request.",
+      "automaticEvents": "Automatic events",
+      "newIssues": "New issues",
+      "automaticHelp": "Runs for authorized authors in Access. Use the author filters below to limit whose issues and PRs start work."
+    },
+    "filters": {
+      "title": "Automatic review filters",
+      "includeDrafts": "Include draft PRs",
+      "includeBots": "Include bot authors",
+      "includeBotsDescription": "The account also needs a sponsor and external-contributor automatic runs enabled in Access.",
+      "authors": "Authors",
+      "includedAuthors": "Included authors",
+      "includedAuthorsHelp": "Leave empty for all authorized authors. One username or glob per line.",
+      "excludedAuthors": "Excluded authors",
+      "excludedAuthorsHelp": "One username or glob per line.",
+      "branches": "Branches",
+      "targetBranches": "Target branches",
+      "targetBranchesHelp": "Leave empty for all branches. Supports * and **.",
+      "excludedBranches": "Excluded branches",
+      "excludedBranchesHelp": "Supports * and **.",
+      "labels": "Labels",
+      "requiredLabels": "Required labels",
+      "requiredLabelsHelp": "All listed labels must be present.",
+      "excludedLabels": "Excluded labels",
+      "excludedLabelsHelp": "Any listed label prevents automatic review.",
+      "mentionBypass": "Reviews requested by @mention bypass these scheduling filters. Repository access and ignored files still apply."
+    },
+    "results": {
+      "heading": "Review results",
+      "postSummary": "Post a review summary",
+      "postInline": "Post inline findings"
+    },
+    "ignored": {
+      "title": "Ignored files",
+      "filePatterns": "File patterns",
+      "filePatternsHelp": "Excluded from all reviews, including @mentions. One pattern per line; supports * and **."
+    },
+    "inline": {
+      "title": "Inline comment options",
+      "findingCategories": "Finding categories",
+      "minimumSeverity": "Minimum inline severity",
+      "severity": {
+        "info": "Info",
+        "warning": "Warning",
+        "error": "Error"
+      },
+      "hiddenFindings": "Hidden findings still count in the assessment."
+    },
+    "decisions": {
+      "title": "Approvals and change requests",
+      "description": "Optional formal decisions on GitHub. Scores, comments, and checks still work when these are off.",
+      "allowApprovals": "Allow approvals",
+      "allowApprovalsHelp": "Lets the agent submit an Approve review on GitHub after a complete assessment. The agent must explicitly choose it; a 5/5 score or passing check does not approve the PR. Off still allows scores, comments, and checks.",
+      "allowRequestChanges": "Allow request changes",
+      "allowRequestChangesHelp": "Lets the agent submit a Request changes review on GitHub after a complete assessment. This is a formal review decision and may prevent merging under your repository rules. Off still allows findings, comments, and a failing check."
+    }
+  },
+  "access": {
+    "sponsoredBy": "Sponsored by {{name}}",
+    "companyMember": "Company member",
+    "needsLinking": "GitHub account needs linking.",
+    "mentions": "Mentions",
+    "mentionsAllowedFor": "Mentions allowed for @{{login}}",
+    "mentionsUnavailableFor": "Mentions unavailable for @{{login}}",
+    "allowed": "Allowed",
+    "unlinked": "Unlinked",
+    "allowMentionsFrom": "Allow mentions from @{{login}}",
+    "manage": "Manage @{{login}}",
+    "removeAccess": "Remove access",
+    "unlinkAccount": "Unlink GitHub account",
+    "people": "People",
+    "peopleDescription": "Choose who can mention this bot and whose activity can start work automatically.",
+    "companyMembers": "Company members",
+    "linkMember": "Link a member",
+    "allowAllLinked": "Allow mentions from all linked members",
+    "allowAllLinkedOn": "Includes members from {{company}} who link their GitHub account later.",
+    "thisCompany": "this company",
+    "allowAllLinkedOff": "Only members you enable below can mention this bot.",
+    "loadingLinked": "Loading linked accounts…",
+    "noMembersLinked": "No members linked yet. Link an account to get started.",
+    "automaticOnBefore": "Automatic runs use the events and author filters in",
+    "automaticOffBefore": "Automatic runs are off in",
+    "settingsLink": "Settings",
+    "automaticOffAfter": ". Authorized @mentions still work.",
+    "externalContributors": "External contributors",
+    "addExternal": "Add external contributor",
+    "externalDescription": "Allow specific GitHub users with a member as their sponsor. They receive restricted access, without company membership or the sponsor’s personal credentials.",
+    "allowExternalAutomatic": "Allow automatic runs for external contributors",
+    "allowExternalAutomaticOn": "Authorized contributors can trigger the events and author filters configured in Settings.",
+    "allowExternalAutomaticOff": "Turn on automatic runs in Settings first. Mentions remain available.",
+    "responsibility": {
+      "title": "Automatic task responsibility",
+      "memberValue": "Responsible member: {{name}}",
+      "member": "Responsible member",
+      "description": "The member accountable for automatically created Paperclip tasks. GitHub authors remain recorded separately. This grants no access to the member’s personal credentials. Only company owners, company admins, and instance admins can select another person as a sponsor or responsible member."
+    },
+    "loadAction": "load members, linked accounts, and your access"
+  },
+  "dialog": {
+    "memberTitle": "Link a company member",
+    "memberDescription": "Each member confirms their own GitHub identity. Share this link with an existing company member, or link your own account.",
+    "guestDescription": "Allow a GitHub user to mention this bot. A company member must sponsor their restricted access.",
+    "copyLinkAriaLabel": "Copy account linking URL",
+    "copyFailed": "Could not copy the link. Open account linking and copy the address.",
+    "copied": "Copied",
+    "copyInvitation": "Copy invitation link",
+    "linkYourAccount": "Link your account",
+    "githubUsername": "GitHub username",
+    "lookingUp": "Looking up…",
+    "lookUp": "Look up",
+    "sponsor": "Sponsor",
+    "alreadyListed": "@{{login}} is already listed in People.",
+    "found": "Found @{{login}}. They will be able to mention the bot after you save.",
+    "cancel": "Cancel",
+    "addContributor": "Add contributor"
+  }
+}

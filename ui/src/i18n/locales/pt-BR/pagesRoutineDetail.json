@@ -1,0 +1,47 @@
+{
+  "selectOrganization": "Selecione uma organização para ver as rotinas.",
+  "toasts": {
+    "on": "Rotina ativada",
+    "paused": "Rotina pausada",
+    "archived": "Rotina arquivada",
+    "changeFailed": "Não foi possível alterar a rotina",
+    "runStarted": "Execução da rotina iniciada",
+    "runFailed": "A execução da rotina falhou",
+    "triggerFailed": "Não foi possível alterar este gatilho",
+    "saved": "Rotina salva",
+    "editorFailed": "Não foi possível abrir o editor",
+    "scheduleSaved": "Agendamento salvo",
+    "scheduleRemoved": "Agendamento removido",
+    "triggerPaused": "Pausado",
+    "triggerResumed": "Retomado",
+    "removed": "Removido",
+    "restored": "Restaurado"
+  },
+  "actions": {
+    "changeRoutine": "alterar a rotina",
+    "startRun": "iniciar a execução da rotina",
+    "changeTrigger": "alterar este gatilho",
+    "save": "salvar a rotina",
+    "loadResponsibility": "carregar a responsabilidade desta rotina",
+    "reload": "recarregar a rotina",
+    "restoreWebhook": "restaurar o webhook",
+    "removeWebhook": "remover o webhook",
+    "load": "carregar esta rotina",
+    "refresh": "atualizar esta rotina",
+    "loadResponsibilities": "carregar as responsabilidades desta rotina",
+    "loadTasks": "carregar as tarefas desta rotina"
+  },
+  "stillLoading": "Esta rotina ainda está carregando. Tente novamente em instantes.",
+  "breadcrumbs": {
+    "routines": "Rotinas"
+  },
+  "versionHistory": "Histórico de versões",
+  "auditLog": "Registro de auditoria",
+  "loadFailed": "Não foi possível carregar esta rotina.",
+  "person": {
+    "loadFailed": "Não foi possível carregar esta pessoa",
+    "loading": "Carregando…",
+    "former": "Ex-membro"
+  },
+  "choicesLoadFailed": "Algumas opções não puderam ser carregadas. Feche e use Tentar novamente na página."
+}

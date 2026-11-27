@@ -1,0 +1,6 @@
+{
+  "configureAriaLabel": "Configurar o limite de execuções simultâneas de {{agentName}}",
+  "configure": "Configurar",
+  "waitingToStart": "Aguardando para iniciar",
+  "waiting": "Aguardando"
+}

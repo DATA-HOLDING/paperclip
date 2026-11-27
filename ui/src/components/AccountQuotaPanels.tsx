@@ -4,6 +4,7 @@ import { QuotaBar } from "./QuotaBar";
 import { quotaUnavailableMessage } from "../lib/quota-refresh";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function AccountQuotaPanels({
   accounts,
@@ -20,12 +21,12 @@ export function AccountQuotaPanels({
           key={account.accountKey ?? account.provider}
         >
           <p className={cn("text-sm font-medium", ANALYTICS_MASK_CLASS)}>
-            {account.accountLabel ?? "Subscription account"}
+            {account.accountLabel ?? t("componentsAccountQuotaPanels.subscriptionAccount")}
           </p>
           {(failed || !account.ok) && (
             <p className="text-sm text-muted-foreground">
               {account.errorFamily === "credentials_unavailable"
-                ? "Connect or reconnect a subscription in AI connections to view its quota."
+                ? t("componentsAccountQuotaPanels.credentialsUnavailable")
                 : quotaUnavailableMessage(account.windows.length > 0)}
             </p>
           )}
@@ -33,9 +34,9 @@ export function AccountQuotaPanels({
             <div key={`${window.label}:${index}`} className="space-y-1 text-sm">
               <div className="flex justify-between gap-3">
                 <span>{window.label}</span>
-                <span className="font-mono text-muted-foreground">{window.valueLabel ?? "Usage not reported"}</span>
+                <span className="font-mono text-muted-foreground">{window.valueLabel ?? t("componentsAccountQuotaPanels.usageNotReported")}</span>
               </div>
-              {window.resetsAt && <p className="text-xs font-mono text-muted-foreground">Resets {formatDateTime(window.resetsAt)}</p>}
+              {window.resetsAt && <p className="text-xs font-mono text-muted-foreground">{t("componentsAccountQuotaPanels.resets", { time: formatDateTime(window.resetsAt) })}</p>}
             </div>
           ) : (
             <QuotaBar
@@ -46,19 +47,19 @@ export function AccountQuotaPanels({
               leftLabel={
                 window.valueLabel ??
                 (window.usedPercent === null
-                  ? "Usage not reported"
-                  : `${window.usedPercent}% used`)
+                  ? t("componentsAccountQuotaPanels.usageNotReported")
+                  : t("componentsAccountQuotaPanels.percentUsed", { percent: window.usedPercent }))
               }
               rightLabel={
                 window.resetsAt
-                  ? `Resets ${formatDateTime(window.resetsAt)}`
+                  ? t("componentsAccountQuotaPanels.resets", { time: formatDateTime(window.resetsAt) })
                   : undefined
               }
             />
           ))}
           {account.capturedAt && (
             <p className="text-xs font-mono text-muted-foreground">
-              Last checked {formatDateTime(account.capturedAt)}
+              {t("componentsAccountQuotaPanels.lastChecked", { time: formatDateTime(account.capturedAt) })}
             </p>
           )}
         </section>

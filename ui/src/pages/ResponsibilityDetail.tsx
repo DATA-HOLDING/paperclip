@@ -42,6 +42,7 @@ import {
   RESPONSIBILITY_PAGE_DEFAULT_VIEW,
   RESPONSIBILITY_PAGE_VIEW_OPTIONS,
 } from "@/lib/responsibility-views";
+import { t } from "@/i18n";
 
 interface NewTaskLaunch {
   defaultTitle: string;
@@ -141,25 +142,25 @@ function ResponsibilityView({ responsibility, companyId }: { responsibility: Res
     <>
       {update.error ? (
         <p role="alert" className="text-sm text-destructive">
-          Couldn’t save the change. {describeError(update.error).body}
+          {t("pagesResponsibilityDetail.saveFailed")} {describeError(update.error).body}
         </p>
       ) : null}
       {removed ? (
         <div role="status" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-          <span>Removed “{removed.label}” from this responsibility. It still exists, and stays under any other responsibility it is filed under.</span>
+          <span>{t("pagesResponsibilityDetail.removed", { label: removed.label })}</span>
           <Button size="xs" variant="ghost" disabled={relink.isPending} onClick={() => relink.mutate(removed.relink)}>
-            Undo
+            {t("pagesResponsibilityDetail.undo")}
           </Button>
         </div>
       ) : null}
       {unlink.error ? (
         <p role="alert" className="text-sm text-destructive">
-          Couldn’t remove it from this responsibility. {describeError(unlink.error).body}
+          {t("pagesResponsibilityDetail.unlinkFailed")} {describeError(unlink.error).body}
         </p>
       ) : null}
       {relink.error ? (
         <p role="alert" className="text-sm text-destructive">
-          Couldn’t put it back. {describeError(relink.error).body}
+          {t("pagesResponsibilityDetail.relinkFailed")} {describeError(relink.error).body}
         </p>
       ) : null}
     </>
@@ -187,7 +188,7 @@ function ResponsibilityView({ responsibility, companyId }: { responsibility: Res
         {visiting ? (
           <div className="mx-auto flex w-full max-w-5xl justify-end">
             <Button variant="ghost" onClick={leave} data-responsibility-back="">
-              Back
+              {t("pagesResponsibilityDetail.back")}
             </Button>
           </div>
         ) : null}
@@ -220,21 +221,20 @@ function ResponsibilityView({ responsibility, companyId }: { responsibility: Res
       <AlertDialog open={confirmDelete} onOpenChange={setConfirmDelete}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete {responsibility.title}?</AlertDialogTitle>
+            <AlertDialogTitle>{t("pagesResponsibilityDetail.deleteTitle", { title: responsibility.title })}</AlertDialogTitle>
             <AlertDialogDescription>
-              This removes the responsibility, its bar and its number. The projects, tasks and routines filed under it
-              stay. To stop owning it but keep its history, let it go instead.
+              {t("pagesResponsibilityDetail.deleteDescription")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           {remove.error ? (
             <p role="alert" className="text-sm text-destructive">
-              Couldn’t delete it. {describeError(remove.error).body}
+              {t("pagesResponsibilityDetail.deleteFailed")} {describeError(remove.error).body}
             </p>
           ) : null}
           <AlertDialogFooter className="items-center sm:justify-between">
-            <AlertDialogCancel>Keep it</AlertDialogCancel>
+            <AlertDialogCancel>{t("pagesResponsibilityDetail.keep")}</AlertDialogCancel>
             <Button variant="destructive" disabled={remove.isPending} onClick={() => remove.mutate()}>
-              {remove.isPending ? "Deleting…" : "Delete responsibility"}
+              {remove.isPending ? t("pagesResponsibilityDetail.deleting") : t("pagesResponsibilityDetail.delete")}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -258,7 +258,7 @@ export function ResponsibilityDetail() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Dashboard", href: "/responsibilities" },
+      { label: t("pagesResponsibilityDetail.breadcrumbDashboard"), href: "/responsibilities" },
       ...(title ? [{ label: title }] : []),
     ]);
   }, [setBreadcrumbs, title]);
@@ -269,14 +269,14 @@ export function ResponsibilityDetail() {
     <QueryView
       query={detailQuery}
       size="page"
-      action="load this responsibility"
+      action={t("pagesResponsibilityDetail.errorActions.loadResponsibility")}
       loading={<PageSkeleton variant="detail" />}
       notFound={
         <div className="mx-auto flex max-w-xl flex-col items-start gap-3 py-10">
-          <h1 className="text-xl font-semibold text-foreground">This responsibility is not available</h1>
-          <p className="text-sm text-muted-foreground">It may have been deleted, or it belongs to someone else.</p>
+          <h1 className="text-xl font-semibold text-foreground">{t("pagesResponsibilityDetail.notAvailable")}</h1>
+          <p className="text-sm text-muted-foreground">{t("pagesResponsibilityDetail.notAvailableHint")}</p>
           <Button asChild variant="outline">
-            <Link to="/responsibilities">Back to the dashboard</Link>
+            <Link to="/responsibilities">{t("pagesResponsibilityDetail.backToDashboard")}</Link>
           </Button>
         </div>
       }
@@ -286,9 +286,9 @@ export function ResponsibilityDetail() {
           <ResponsibilityView responsibility={responsibility} companyId={selectedCompanyId} />
         ) : (
           <div className="mx-auto flex max-w-xl flex-col items-start gap-3 py-10">
-            <h1 className="text-xl font-semibold text-foreground">This responsibility belongs to another organization</h1>
+            <h1 className="text-xl font-semibold text-foreground">{t("pagesResponsibilityDetail.otherOrganization")}</h1>
             <Button asChild variant="outline">
-              <Link to="/responsibilities">Back to the dashboard</Link>
+              <Link to="/responsibilities">{t("pagesResponsibilityDetail.backToDashboard")}</Link>
             </Button>
           </div>
         )

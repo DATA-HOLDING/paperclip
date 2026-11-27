@@ -1,0 +1,10 @@
+{
+  "worked": "Trabalhou",
+  "stopped": "Parou",
+  "workedFor": "Trabalhou por {{duration}}",
+  "stoppedFor": "Parou após {{duration}}",
+  "toolCount_one": "{{count}} ferramenta",
+  "toolCount_other": "{{count}} ferramentas",
+  "continuedAfterSteering": "Continuou após o redirecionamento · ",
+  "activity": "Atividade"
+}

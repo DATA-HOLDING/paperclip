@@ -10,6 +10,7 @@ import { copyTextToClipboard } from "@/lib/clipboard";
 import { queryKeys } from "@/lib/queryKeys";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnected, onSaveExit }: {
   endpointId: string;
@@ -33,7 +34,7 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
   const identitiesView = useQueryView(identities);
   const local = health.data?.deploymentMode === "local_trusted";
   const userId = local ? "local-board" : session.data?.user.id;
-  const userLabel = local ? "Local Board" : session.data?.user.name || session.data?.user.email;
+  const userLabel = local ? t("pagesAppsChatSlackIdentityStep.localBoard") : session.data?.user.name || session.data?.user.email;
   const candidates = (identities.data ?? []).filter((identity) => identity.lastConnectAt &&
     (!testStartedAt || Date.parse(identity.lastConnectAt) >= Date.parse(testStartedAt)));
   const linkedToMe = candidates.some((identity) => identity.status === "linked" && identity.paperclipUserId === userId);
@@ -42,7 +43,7 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
     mutationFn: async (principalId: string) => {
       const { confirmationUrl } = await chatEndpointsApi.createLinkIntent(endpointId, principalId);
       const token = new URL(confirmationUrl, window.location.origin).searchParams.get("token");
-      if (!token) throw new Error("Could not create the account confirmation. Try again.");
+      if (!token) throw new Error(t("pagesAppsChatSlackIdentityStep.confirmationFailed"));
       await chatEndpointsApi.confirmIdentityLink(token);
     },
     onSuccess: () => client.invalidateQueries({ queryKey: queryKeys.chatEndpoints.principals(endpointId) }),
@@ -51,30 +52,30 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-bold">Connect your Slack account</h1>
+        <h1 className="text-xl font-bold">{t("pagesAppsChatSlackIdentityStep.title")}</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Send this command in Slack so we can identify your account. It won&apos;t start agent work.
+          {t("pagesAppsChatSlackIdentityStep.intro")}
         </p>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border p-3">
         <code className="text-sm">{connectCommand}</code>
         <Button variant="ghost" size="sm" onClick={() => {
           void copyTextToClipboard(connectCommand).then(() => { setCopied(true); setCopyError(false); }, () => setCopyError(true));
-        }}><Copy className="size-4" />{copied ? "Copied" : "Copy command"}</Button>
+        }}><Copy className="size-4" />{copied ? t("pagesAppsChatSlackIdentityStep.copied") : t("pagesAppsChatSlackIdentityStep.copyCommand")}</Button>
       </div>
-      {copyError && <p role="alert" className="text-sm text-destructive">Couldn&apos;t copy the command. Select and copy it above.</p>}
+      {copyError && <p role="alert" className="text-sm text-destructive">{t("pagesAppsChatSlackIdentityStep.copyFailed")}</p>}
       <p className="text-sm">
-        <a href="https://app.slack.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Open Slack <ExternalLink className="inline size-3" /></a>, send the command in your workspace, then return here.
+        <a href="https://app.slack.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{t("pagesAppsChatSlackIdentityStep.openSlack")}{" "}<ExternalLink className="inline size-3" /></a>{t("pagesAppsChatSlackIdentityStep.openSlackSuffix")}
       </p>
       {identitiesView.kind === "error" ? (
-        <p role="alert" className="text-sm text-destructive">Couldn&apos;t check for your Slack account. We&apos;ll keep trying.</p>
+        <p role="alert" className="text-sm text-destructive">{t("pagesAppsChatSlackIdentityStep.checkFailed")}</p>
       ) : candidates.length === 0 ? (
-        <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Waiting for your connect command…</p>
+        <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />{t("pagesAppsChatSlackIdentityStep.waiting")}</p>
       ) : (
         <div className={`space-y-3 rounded-lg border p-4 ${linkedToMe
           ? "border-(--status-task-done)/30 bg-(--status-task-done)/10"
           : "border-(--status-task-todo)/30 bg-(--status-task-todo)/10"}`}>
-          <p className="text-sm">Choose your Slack account below to link it to <strong>{userLabel ?? "your Paperclip account"}</strong>. Only confirm an account that belongs to you. Future messages will use your Paperclip permissions.</p>
+          <p className="text-sm">{t("pagesAppsChatSlackIdentityStep.chooseStart")}{" "}<strong>{userLabel ?? t("pagesAppsChatSlackIdentityStep.yourAccount")}</strong>{t("pagesAppsChatSlackIdentityStep.chooseEnd")}</p>
           {candidates.map((identity) => {
             const mine = identity.status === "linked" && identity.paperclipUserId === userId;
             return (
@@ -83,21 +84,21 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
                   <p className="text-sm font-medium">{identity.externalLabel}</p>
                   <p className="text-xs text-muted-foreground">{identity.externalDetail}</p>
                 </div>
-                {mine ? <p role="status" className="flex items-center gap-2 text-sm"><CheckCircle2 className="size-4 text-(--status-task-done)" />Linked to you</p>
-                  : identity.status === "linked" ? <p className="text-sm text-muted-foreground">Linked to {identity.paperclipUserLabel ?? "another Paperclip account"}</p>
-                  : <Button variant="outline" disabled={!userId || link.isPending} onClick={() => link.mutate(identity.principalId)} aria-label={`Link ${identity.externalLabel} to my Paperclip account`}>
-                    {link.isPending && link.variables === identity.principalId && <Loader2 className="size-4 animate-spin" />}This is my Slack account
+                {mine ? <p role="status" className="flex items-center gap-2 text-sm"><CheckCircle2 className="size-4 text-(--status-task-done)" />{t("pagesAppsChatSlackIdentityStep.linkedToYou")}</p>
+                  : identity.status === "linked" ? <p className="text-sm text-muted-foreground">{t("pagesAppsChatSlackIdentityStep.linkedTo", { label: identity.paperclipUserLabel ?? t("pagesAppsChatSlackIdentityStep.anotherAccount") })}</p>
+                  : <Button variant="outline" disabled={!userId || link.isPending} onClick={() => link.mutate(identity.principalId)} aria-label={t("pagesAppsChatSlackIdentityStep.linkAriaLabel", { label: identity.externalLabel })}>
+                    {link.isPending && link.variables === identity.principalId && <Loader2 className="size-4 animate-spin" />}{t("pagesAppsChatSlackIdentityStep.thisIsMine")}
                   </Button>}
               </div>
             );
           })}
         </div>
       )}
-      {!userId && !session.isPending && !health.isPending && sessionView.kind !== "reconnecting" && healthView.kind !== "reconnecting" && <p role="alert" className="text-sm text-destructive">Sign in to Paperclip to link your Slack account. Refresh this page after signing in.</p>}
-      {link.error ? <p role="alert" className="text-sm text-destructive">Couldn&apos;t link your account. Check that you are a member of this company and try again.</p> : null}
+      {!userId && !session.isPending && !health.isPending && sessionView.kind !== "reconnecting" && healthView.kind !== "reconnecting" && <p role="alert" className="text-sm text-destructive">{t("pagesAppsChatSlackIdentityStep.signIn")}</p>}
+      {link.error ? <p role="alert" className="text-sm text-destructive">{t("pagesAppsChatSlackIdentityStep.linkFailed")}</p> : null}
       <div className="flex items-center justify-between gap-3">
-        <Button variant="ghost" className="text-muted-foreground" onClick={onSaveExit}>Save &amp; exit</Button>
-        {linkedToMe && <Button onClick={onConnected}>Continue to message test</Button>}
+        <Button variant="ghost" className="text-muted-foreground" onClick={onSaveExit}>{t("pagesAppsChatSlackIdentityStep.saveExit")}</Button>
+        {linkedToMe && <Button onClick={onConnected}>{t("pagesAppsChatSlackIdentityStep.continue")}</Button>}
       </div>
     </div>
   );

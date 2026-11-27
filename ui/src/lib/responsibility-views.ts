@@ -30,6 +30,7 @@ import {
   type AreaGroup,
 } from "./responsibilities";
 import { issueUrl, projectUrl } from "./utils";
+import { t } from "@/i18n";
 
 /**
  * Derivations for the simpler views of the Dashboard and the responsibility
@@ -51,21 +52,21 @@ export type DashboardView = "full" | "outline" | "outline_v2" | "board" | "excep
 export type ResponsibilityPageView = "full" | "scorecard" | "moving" | "one_screen" | "one_screen_v2";
 
 export const DASHBOARD_VIEW_OPTIONS: readonly ViewOption<DashboardView>[] = [
-  { value: "full", label: "Full" },
-  { value: "outline", label: "Outline" },
-  { value: "outline_v2", label: "Outline v2" },
-  { value: "board", label: "Board" },
-  { value: "exceptions", label: "Exceptions" },
-  { value: "automation", label: "Automation" },
-  { value: "agent_status", label: "Agent status" },
+  { value: "full", label: t("libResponsibilityViews.views.full") },
+  { value: "outline", label: t("libResponsibilityViews.dashboardViews.outline") },
+  { value: "outline_v2", label: t("libResponsibilityViews.dashboardViews.outlineV2") },
+  { value: "board", label: t("libResponsibilityViews.dashboardViews.board") },
+  { value: "exceptions", label: t("libResponsibilityViews.dashboardViews.exceptions") },
+  { value: "automation", label: t("libResponsibilityViews.dashboardViews.automation") },
+  { value: "agent_status", label: t("libResponsibilityViews.dashboardViews.agentStatus") },
 ];
 
 export const RESPONSIBILITY_PAGE_VIEW_OPTIONS: readonly ViewOption<ResponsibilityPageView>[] = [
-  { value: "full", label: "Full" },
-  { value: "scorecard", label: "Scorecard" },
-  { value: "moving", label: "What's moving" },
-  { value: "one_screen", label: "One screen" },
-  { value: "one_screen_v2", label: "One screen v2" },
+  { value: "full", label: t("libResponsibilityViews.views.full") },
+  { value: "scorecard", label: t("libResponsibilityViews.pageViews.scorecard") },
+  { value: "moving", label: t("libResponsibilityViews.pageViews.moving") },
+  { value: "one_screen", label: t("libResponsibilityViews.pageViews.oneScreen") },
+  { value: "one_screen_v2", label: t("libResponsibilityViews.pageViews.oneScreenV2") },
 ];
 
 export const DASHBOARD_VIEW_STORAGE_KEY = "paperclip:responsibilities:dashboard-view";
@@ -106,18 +107,6 @@ export function writeStoredView(key: string, value: string): void {
 }
 
 // ---------------------------------------------------------------------------
-// Words
-// ---------------------------------------------------------------------------
-
-function count(n: number, singular: string, plural: string): string {
-  return `${n} ${n === 1 ? singular : plural}`;
-}
-
-function isAre(n: number): string {
-  return n === 1 ? "is" : "are";
-}
-
-// ---------------------------------------------------------------------------
 // The overall status
 // ---------------------------------------------------------------------------
 
@@ -142,18 +131,18 @@ export function overallStanding(counts: Record<ResponsibilityHealth, number>): O
 
   let sentence: string;
   if (total === 0) {
-    sentence = "You do not own any responsibilities yet.";
+    sentence = t("libResponsibilityViews.standing.noneOwned");
   } else if (behind > 0) {
-    const lead = `${count(behind, "responsibility", "responsibilities")} ${isAre(behind)} behind`;
-    sentence = atRisk > 0 ? `${lead} and ${atRisk} ${isAre(atRisk)} at risk.` : `${lead}.`;
+    const lead = t("libResponsibilityViews.standing.behindLead", { count: behind });
+    sentence = atRisk > 0 ? t("libResponsibilityViews.standing.behindAndAtRisk", { lead, count: atRisk }) : t("libResponsibilityViews.standing.behindOnly", { lead });
   } else if (atRisk > 0) {
-    sentence = `Nothing is behind. ${count(atRisk, "responsibility", "responsibilities")} ${isAre(atRisk)} at risk.`;
+    sentence = t("libResponsibilityViews.standing.atRisk", { count: atRisk });
   } else if (onTrack > 0) {
     sentence = notMeasured === 0
-      ? "Everything you own is on track."
-      : `Nothing is behind or at risk. ${count(notMeasured, "responsibility", "responsibilities")} ${isAre(notMeasured)} not measured yet.`;
+      ? t("libResponsibilityViews.standing.allOnTrack")
+      : t("libResponsibilityViews.standing.notMeasured", { count: notMeasured });
   } else {
-    sentence = "Nothing you own is measured yet.";
+    sentence = t("libResponsibilityViews.standing.nothingMeasured");
   }
   return { health, sentence, total };
 }
@@ -171,7 +160,7 @@ export function activeResponsibilities(responsibilities: readonly Responsibility
 export function onTrackShare(onTrack: number, total: number): { percent: number; label: string } | null {
   if (total <= 0) return null;
   const percent = Math.round((Math.max(0, Math.min(onTrack, total)) / total) * 100);
-  return { percent, label: `${percent}% on track` };
+  return { percent, label: t("libResponsibilityViews.onTrackShare", { percent }) };
 }
 
 export interface OutlineAreaGroup extends AreaGroup<ResponsibilityWithRollup> {
@@ -193,7 +182,7 @@ export function outlineAreaGroups(
 ): OutlineAreaGroup[] {
   return groupByArea(areas, sortByStatus(activeResponsibilities(responsibilities)), keepEmpty).map((group) => ({
     ...group,
-    ownedLabel: `${count(group.items.length, "responsibility", "responsibilities")} you own`,
+    ownedLabel: t("libResponsibilityViews.ownedLabel", { count: group.items.length }),
     share: onTrackShare(group.items.filter((item) => item.rollup.health === "on_track").length, group.items.length),
   }));
 }
@@ -246,22 +235,22 @@ export function dashboardSnapshot(overview: Pick<ResponsibilityOverview, "areas"
   return {
     areas: {
       value: owningAreas.length,
-      line: areasBehind > 0 ? `${areasBehind} with something behind` : "None with anything behind",
+      line: areasBehind > 0 ? t("libResponsibilityViews.snapshot.areasBehind", { count: areasBehind }) : t("libResponsibilityViews.snapshot.noAreasBehind"),
       alert: areasBehind > 0,
     },
     responsibilities: {
       value: responsibilities,
-      line: totals.byHealth.behind > 0 ? `${totals.byHealth.behind} behind` : "None behind",
+      line: totals.byHealth.behind > 0 ? t("libResponsibilityViews.snapshot.behind", { count: totals.byHealth.behind }) : t("libResponsibilityViews.snapshot.noneBehind"),
       alert: totals.byHealth.behind > 0,
     },
     projects: {
       value: totals.projects,
-      line: totals.lateProjects > 0 ? `${totals.lateProjects} late` : "None late",
+      line: totals.lateProjects > 0 ? t("libResponsibilityViews.counts.late", { count: totals.lateProjects }) : t("libResponsibilityViews.counts.noneLate"),
       alert: totals.lateProjects > 0,
     },
     tasks: {
       value: totals.openTasks,
-      line: totals.blockedTasks > 0 ? `${totals.blockedTasks} blocked` : "None blocked",
+      line: totals.blockedTasks > 0 ? t("libResponsibilityViews.counts.blocked", { count: totals.blockedTasks }) : t("libResponsibilityViews.counts.noneBlocked"),
       alert: totals.blockedTasks > 0,
     },
   };
@@ -314,7 +303,7 @@ export function responsibilityExceptions(
     if (onTrackHere.length === 0) continue;
     onTrack.push({
       areaId: group.area?.id ?? null,
-      label: `${group.area?.title ?? "Not in an area"}: ${onTrackHere.length} of ${group.items.length} on track`,
+      label: t("libResponsibilityViews.onTrackLine", { area: group.area?.title ?? t("libResponsibilityViews.notInArea"), onTrack: onTrackHere.length, total: group.items.length }),
       responsibilities: onTrackHere.filter((item) => !item.rollup.metric?.stale),
     });
   }
@@ -328,9 +317,9 @@ export function responsibilityExceptions(
 export type WorkItemKind = "project" | "task" | "routine";
 
 export const WORK_ITEM_KIND_LABEL: Record<WorkItemKind, string> = {
-  project: "Project",
-  task: "Task",
-  routine: "Routine",
+  project: t("libResponsibilityViews.kinds.project"),
+  task: t("libResponsibilityViews.kinds.task"),
+  routine: t("libResponsibilityViews.kinds.routine"),
 };
 
 interface WorkItemBase {
@@ -399,8 +388,8 @@ export function responsibilityWorkList(
       id: project.id,
       title: project.name,
       href: projectUrl(project),
-      attention: due?.late ? `Late · ${due.label}` : null,
-      note: due && !due.late ? `Due ${due.label}` : null,
+      attention: due?.late ? t("libResponsibilityViews.work.lateDue", { date: due.label }) : null,
+      note: due && !due.late ? t("libResponsibilityViews.work.due", { date: due.label }) : null,
       project,
     });
   }
@@ -414,7 +403,7 @@ export function responsibilityWorkList(
       id: task.id,
       title: task.title,
       href: issueUrl(task),
-      attention: task.status === "blocked" ? "Blocked" : null,
+      attention: task.status === "blocked" ? t("libResponsibilityViews.work.blocked") : null,
       note: null,
       task,
     });
@@ -429,8 +418,8 @@ export function responsibilityWorkList(
       id: routine.id,
       title: routine.title,
       href: routinePath(routine.id),
-      attention: failed.has(routine.id) ? "Failed on its last run" : null,
-      note: routine.status === "paused" ? "Paused" : null,
+      attention: failed.has(routine.id) ? t("libResponsibilityViews.work.failedLastRun") : null,
+      note: routine.status === "paused" ? t("libResponsibilityViews.work.paused") : null,
       routine,
     });
   }
@@ -462,23 +451,21 @@ export function responsibilityWorkCounts(
   const late = rollup.overdueProjects.length;
   const failed = signalCount(rollup.workSummary, "routine_failed");
   const paused = detail.routines.filter((routine) => routine.status === "paused").length;
-  const routineParts = [failed > 0 ? `${failed} failed` : null, paused > 0 ? `${paused} paused` : null].filter(Boolean);
+  const routineParts = [failed > 0 ? t("libResponsibilityViews.counts.failed", { count: failed }) : null, paused > 0 ? t("libResponsibilityViews.counts.paused", { count: paused }) : null].filter(Boolean);
   return {
     projects: {
       value: detail.projects.filter((project) => !isFinishedProject(project)).length,
-      line: late > 0 ? `${late} late` : "None late",
+      line: late > 0 ? t("libResponsibilityViews.counts.late", { count: late }) : t("libResponsibilityViews.counts.noneLate"),
       alert: late > 0,
     },
     tasks: {
       value: rollup.openTasks,
-      line: `${rollup.blockedTasks > 0 ? `${rollup.blockedTasks} blocked` : "None blocked"}, ${
-        rollup.agentTasks > 0 ? `${rollup.agentTasks} with agents` : "none with agents"
-      }`,
+      line: t("libResponsibilityViews.counts.tasksLine", { blocked: rollup.blockedTasks > 0 ? t("libResponsibilityViews.counts.blocked", { count: rollup.blockedTasks }) : t("libResponsibilityViews.counts.noneBlocked"), agents: rollup.agentTasks > 0 ? t("libResponsibilityViews.counts.withAgents", { count: rollup.agentTasks }) : t("libResponsibilityViews.counts.noneWithAgents") }),
       alert: rollup.blockedTasks > 0,
     },
     routines: {
       value: rollup.routines,
-      line: routineParts.length > 0 ? routineParts.join(", ") : "None failed or paused",
+      line: routineParts.length > 0 ? routineParts.join(", ") : t("libResponsibilityViews.counts.noneFailedOrPaused"),
       alert: failed > 0,
     },
   };
@@ -500,7 +487,7 @@ type MetricForGap = Pick<ResponsibilityMetricSummary, "name" | "unit" | "target"
 function formatGapAmount(value: number, unit: string | null): string {
   if (unit?.trim() === "%") {
     const points = formatMetricValue(value, null);
-    return `${points} ${value === 1 ? "point" : "points"}`;
+    return t("libResponsibilityViews.gap.points", { count: value, points });
   }
   return formatMetricValue(value, unit);
 }
@@ -525,14 +512,14 @@ function formatRange(low: number, high: number, unit: string | null): string {
 export function describeMetricGap(metric: MetricForGap): string | null {
   const { current, unit } = metric;
   if (current === null) return null;
-  if (metric.kind === "yes_no") return current >= 1 ? "Yes" : "Not yet";
+  if (metric.kind === "yes_no") return current >= 1 ? t("libResponsibilityViews.gap.yes") : t("libResponsibilityViews.gap.notYet");
   if (metric.kind === "range") {
     const { low, high } = metric;
     if (low === null || low === undefined || high === null || high === undefined) return null;
     const range = formatRange(low, high, unit);
-    if (current < low) return `${formatGapAmount(roundGap(low - current), unit)} below the range ${range}`;
-    if (current > high) return `${formatGapAmount(roundGap(current - high), unit)} above the range ${range}`;
-    return `Inside the range ${range}`;
+    if (current < low) return t("libResponsibilityViews.gap.belowRange", { amount: formatGapAmount(roundGap(low - current), unit), range });
+    if (current > high) return t("libResponsibilityViews.gap.aboveRange", { amount: formatGapAmount(roundGap(current - high), unit), range });
+    return t("libResponsibilityViews.gap.insideRange", { range });
   }
   const { target } = metric;
   if (target === null) return null;
@@ -541,13 +528,13 @@ export function describeMetricGap(metric: MetricForGap): string | null {
   const targetText = formatMetricValue(target, unit);
   const amount = formatGapAmount(Math.abs(diff), unit);
   if (atMost) {
-    if (diff > 0) return `${amount} over the limit of ${targetText}`;
-    if (diff < 0) return `${amount} inside the limit of ${targetText}`;
-    return `Right at the limit of ${targetText}`;
+    if (diff > 0) return t("libResponsibilityViews.gap.overLimit", { amount, target: targetText });
+    if (diff < 0) return t("libResponsibilityViews.gap.insideLimit", { amount, target: targetText });
+    return t("libResponsibilityViews.gap.atLimit", { target: targetText });
   }
-  if (diff > 0) return `${amount} short of ${targetText}`;
-  if (diff < 0) return `${amount} past the target of ${targetText}`;
-  return `Right at the target of ${targetText}`;
+  if (diff > 0) return t("libResponsibilityViews.gap.short", { amount, target: targetText });
+  if (diff < 0) return t("libResponsibilityViews.gap.pastTarget", { amount, target: targetText });
+  return t("libResponsibilityViews.gap.atTarget", { target: targetText });
 }
 
 /**
@@ -559,13 +546,13 @@ export function describeTargetPhrase(metric: MetricForGap): string | null {
   if (metric.kind === "yes_no") return null;
   if (metric.kind === "range") {
     return metric.low === null || metric.low === undefined || metric.high === null || metric.high === undefined
-      ? "no range set"
-      : `range ${formatRange(metric.low, metric.high, metric.unit)}`;
+      ? t("libResponsibilityViews.target.noRange")
+      : t("libResponsibilityViews.target.range", { range: formatRange(metric.low, metric.high, metric.unit) });
   }
-  if (metric.target === null) return "no target set";
+  if (metric.target === null) return t("libResponsibilityViews.target.noTarget");
   const target = formatMetricValue(metric.target, metric.unit);
-  if (metric.direction === "at_most") return `limit ${target}`;
-  return metric.current === null ? `target ${target}` : `of ${target}`;
+  if (metric.direction === "at_most") return t("libResponsibilityViews.target.limit", { target });
+  return metric.current === null ? t("libResponsibilityViews.target.target", { target }) : t("libResponsibilityViews.target.of", { target });
 }
 
 /** The reading on a card, value and unit together ("20 hours", "Yes"); null before the first one. Same as every view's reading. */
@@ -581,15 +568,15 @@ function lowerFirst(text: string): string {
 export function describeMissingMeasure(
   metric: (Pick<ResponsibilityMetricSummary, "name" | "target" | "current"> & Partial<Pick<ResponsibilityMetricSummary, "kind" | "low" | "high">>) | null,
 ): string | null {
-  if (!metric) return "No number set: add what you measure and a target.";
+  if (!metric) return t("libResponsibilityViews.missing.noNumber");
   const name = lowerFirst(metric.name.trim());
-  if (metric.kind === "yes_no") return metric.current === null ? "No answer yet." : null;
+  if (metric.kind === "yes_no") return metric.current === null ? t("libResponsibilityViews.missing.noAnswer") : null;
   if (metric.kind === "range") {
-    if (metric.low === null || metric.low === undefined || metric.high === null || metric.high === undefined) return `No range set for ${name}.`;
+    if (metric.low === null || metric.low === undefined || metric.high === null || metric.high === undefined) return t("libResponsibilityViews.missing.noRange", { name });
   } else if (metric.target === null) {
-    return `No target set for ${name}.`;
+    return t("libResponsibilityViews.missing.noTarget", { name });
   }
-  if (metric.current === null) return `No reading of ${name} yet.`;
+  if (metric.current === null) return t("libResponsibilityViews.missing.noReading", { name });
   return null;
 }
 
@@ -642,7 +629,7 @@ export function explainResponsibilityStatus(
   if (rollup.healthOverridden) {
     const note = responsibility.healthNote?.trim();
     const label = RESPONSIBILITY_HEALTH_LABEL[health].toLowerCase();
-    lines.push({ kind: "override", role: "note", text: note ? `You marked it ${label}: ${note}` : `You marked it ${label}.` });
+    lines.push({ kind: "override", role: "note", text: note ? t("libResponsibilityViews.explain.markedWithNote", { label, note }) : t("libResponsibilityViews.explain.marked", { label }) });
   }
   const attention = workSummary.filter((signal) => signal.tone === "attention");
   let candidates: ExplanationLine[];
@@ -662,10 +649,10 @@ export function explainResponsibilityStatus(
       // Nothing flagged: say what work there is and who has it, or that there is none.
       const hasWork = rollup.projects + rollup.routines + rollup.openTasks + rollup.doneTasks > 0;
       if (!hasWork) {
-        candidates = [{ kind: "no_work", role: "holding", text: "No work is filed under this yet." }];
+        candidates = [{ kind: "no_work", role: "holding", text: t("libResponsibilityViews.explain.noWork") }];
       } else if (health !== "not_measured") {
         const present = workSummary.map((signal) => ({ kind: signal.kind, role: "note" as const, text: signal.text }));
-        candidates = present.length > 0 ? present : [{ kind: "no_open_work", role: "note", text: "Nothing under this is open right now." }];
+        candidates = present.length > 0 ? present : [{ kind: "no_open_work", role: "note", text: t("libResponsibilityViews.explain.noOpenWork") }];
       }
     }
   }
@@ -701,7 +688,7 @@ function routineRunDetail(signal: ResponsibilityWorkSignal | undefined, title: s
 }
 
 function agentLabel(agentId: string, agentName: (id: string) => string | undefined): string {
-  return agentName(agentId) ?? "an agent";
+  return agentName(agentId) ?? t("libResponsibilityViews.bearing.anAgent");
 }
 
 /**
@@ -730,46 +717,46 @@ export function workBearings(
       const due = describeNextDue(project.targetDate, now);
       if (due?.late) {
         const days = overdue.get(project.id)?.daysOverdue ?? daysBetween(`${project.targetDate}T00:00:00`, now);
-        return { item, bearing: "holding", reason: `${days} ${days === 1 ? "day" : "days"} late (due ${due.label})`, finished: false };
+        return { item, bearing: "holding", reason: t("libResponsibilityViews.bearing.daysLate", { count: days, date: due.label }), finished: false };
       }
       const daysUntil = project.targetDate && project.targetDate >= today
         ? Math.round((new Date(`${project.targetDate}T00:00:00`).getTime() - new Date(`${today}T00:00:00`).getTime()) / (24 * 60 * 60 * 1000))
         : null;
       const dueSoon = daysUntil !== null && daysUntil <= RESPONSIBILITY_DUE_SOON_DAYS;
       if (project.status === "in_progress" && (dueSoon || project.leadAgentId)) {
-        const parts = [dueSoon && due ? `Due ${due.label}, in progress` : "In progress"];
-        if (project.leadAgentId) parts.push(`led by ${agentLabel(project.leadAgentId, agentName)}`);
+        const parts = [dueSoon && due ? t("libResponsibilityViews.bearing.dueInProgress", { date: due.label }) : t("libResponsibilityViews.bearing.inProgress")];
+        if (project.leadAgentId) parts.push(t("libResponsibilityViews.bearing.ledBy", { name: agentLabel(project.leadAgentId, agentName) }));
         return { item, bearing: "moving", reason: parts.join(", "), finished: false };
       }
-      const state = project.status === "backlog" || project.status === "planned" ? "Not started" : "In progress";
-      return { item, bearing: "neutral", reason: due ? `${state}, due ${due.label}` : state, finished: false };
+      const state = project.status === "backlog" || project.status === "planned" ? t("libResponsibilityViews.bearing.notStarted") : t("libResponsibilityViews.bearing.inProgress");
+      return { item, bearing: "neutral", reason: due ? t("libResponsibilityViews.bearing.stateDue", { state, date: due.label }) : state, finished: false };
     }
     if (item.kind === "task") {
       const { task } = item;
-      if (task.status === "blocked") return { item, bearing: "holding", reason: "Blocked", finished: false };
-      if (!task.assigneeAgentId && !task.assigneeUserId) return { item, bearing: "holding", reason: "Not assigned to anyone", finished: false };
+      if (task.status === "blocked") return { item, bearing: "holding", reason: t("libResponsibilityViews.work.blocked"), finished: false };
+      if (!task.assigneeAgentId && !task.assigneeUserId) return { item, bearing: "holding", reason: t("libResponsibilityViews.bearing.notAssigned"), finished: false };
       if (task.assigneeAgentId) {
         const name = agentLabel(task.assigneeAgentId, agentName);
-        const reason = task.status === "in_progress" ? `In progress with ${name}`
-          : task.status === "in_review" ? `In review with ${name}`
-          : `With ${name}, not started`;
+        const reason = task.status === "in_progress" ? t("libResponsibilityViews.bearing.inProgressWith", { name })
+          : task.status === "in_review" ? t("libResponsibilityViews.bearing.inReviewWith", { name })
+          : t("libResponsibilityViews.bearing.withNotStarted", { name });
         return { item, bearing: "moving", reason, finished: false };
       }
-      const who = task.assigneeUserId === detail.ownerUserId ? "you" : "a person";
-      return { item, bearing: "neutral", reason: task.status === "in_review" ? `In review with ${who}` : `With ${who}`, finished: false };
+      const who = task.assigneeUserId === detail.ownerUserId ? t("libResponsibilityViews.bearing.you") : t("libResponsibilityViews.bearing.aPerson");
+      return { item, bearing: "neutral", reason: task.status === "in_review" ? t("libResponsibilityViews.bearing.inReviewWith", { name: who }) : t("libResponsibilityViews.bearing.with", { name: who }), finished: false };
     }
     const { routine } = item;
     if (item.attention) return { item, bearing: "holding", reason: item.attention, finished: false };
-    if (routine.status === "paused") return { item, bearing: "holding", reason: "Paused", finished: false };
-    if (!routine.assigneeAgentId) return { item, bearing: "holding", reason: "No agent runs it", finished: false };
+    if (routine.status === "paused") return { item, bearing: "holding", reason: t("libResponsibilityViews.work.paused"), finished: false };
+    if (!routine.assigneeAgentId) return { item, bearing: "holding", reason: t("libResponsibilityViews.bearing.noAgent"), finished: false };
     const detailText = routineRunDetail(
       signals.find((signal) => signal.kind === "routine_active" && signal.refId === routine.id),
       routine.title,
     );
     if (detailText && GOOD_LAST_RUN.test(detailText)) {
-      return { item, bearing: "moving", reason: `Active, ${detailText}`, finished: false };
+      return { item, bearing: "moving", reason: t("libResponsibilityViews.bearing.activeWith", { detail: detailText }), finished: false };
     }
-    return { item, bearing: "neutral", reason: detailText ? `Active, ${detailText}` : "Active", finished: false };
+    return { item, bearing: "neutral", reason: detailText ? t("libResponsibilityViews.bearing.activeWith", { detail: detailText }) : t("libResponsibilityViews.bearing.active"), finished: false };
   });
   const ordered = marked
     .map((entry, index) => ({ entry, index }))
@@ -782,7 +769,7 @@ export function workBearings(
     .map((task): BearingItem => ({
       item: { kind: "task", id: task.id, title: task.title, href: issueUrl(task), attention: null, note: null, task },
       bearing: "moving",
-      reason: `Completed ${describeReadingAge(task.updatedAt, now)}`,
+      reason: t("libResponsibilityViews.bearing.completed", { age: describeReadingAge(task.updatedAt, now) }),
       finished: true,
     }));
   return [...ordered, ...recent];

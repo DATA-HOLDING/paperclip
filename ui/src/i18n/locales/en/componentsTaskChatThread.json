@@ -1,0 +1,109 @@
+{
+  "durableInput": {
+    "questions": "Questions",
+    "suggestedTasks": "Suggested tasks",
+    "chooseOptions": "Choose options",
+    "reviewItems": "Review items",
+    "connectService": "Connect service",
+    "routineOffer": "Routine offer",
+    "proposedBar": "Proposed bar",
+    "proposedAutomation": "Proposed automation",
+    "proposedDashboardChanges": "Proposed dashboard changes",
+    "reviewPlan": "Review plan",
+    "approveToolAction": "Approve tool action",
+    "reviewSecretProposal": "Review secret proposal",
+    "confirmation": "Confirmation"
+  },
+  "emptyMessage": "No messages yet.",
+  "errors": {
+    "notReassignable": "The task is not available for reassignment.",
+    "queuedNotEditable": "This queued message is no longer editable.",
+    "alreadyAnswered": "This question has already been answered or closed.",
+    "cancelUnavailable": "Cancelling this question is unavailable.",
+    "submitThroughCard": "Submit the answer through the saved question card.",
+    "missingTurnIdentity": "This runtime request is missing the provider turn identity needed to resolve it.",
+    "permissionNoForm": "This runtime permission does not accept submitted form data.",
+    "skipUnavailable": "Skipping this interaction is unavailable.",
+    "dismissFailed": "Unable to dismiss this request. Try again.",
+    "reorderUnavailable": "Queue reordering is unavailable.",
+    "steeringUnavailable": "Steering is unavailable.",
+    "discardUnavailable": "Discard is unavailable."
+  },
+  "agentAttachment": "Agent attachment",
+  "browserN": "Browser {{n}}",
+  "browser": "Browser",
+  "waiting": {
+    "label": "Waiting to resume",
+    "detail": "The previous execution needs to be checked before work can continue. See the task’s execution hold for the next action. Individual checks remain in the run history."
+  },
+  "failure": {
+    "label": {
+      "runtimeMissing": "Runtime missing",
+      "modelUnavailable": "Model unavailable",
+      "swarmNotStarted": "Swarm did not start",
+      "swarmNotFinished": "Swarm did not finish",
+      "approvalRequired": "Approval required",
+      "usageLimit": "Usage limit reached",
+      "diskFull": "Disk full",
+      "runCancelled": "Run cancelled",
+      "runInterrupted": "Run interrupted",
+      "runTimedOut": "Run timed out",
+      "branchUnavailable": "Starting branch unavailable",
+      "restoreFailed": "Workspace restore failed",
+      "aiNeeded": "AI connection needed",
+      "stopped": "Stopped",
+      "couldntStart": "Couldn't start",
+      "runFailed": "Run failed"
+    },
+    "afterResponse": " after returning a final response",
+    "cancelled": "The run was cancelled{{boundary}}.",
+    "interrupted": "The run was interrupted{{boundary}}.",
+    "runtimeMissing": "The selected provider runtime is missing a required package. Reinstall or rebuild Paperclip with its bundled provider dependencies, restart the server, then test the agent's runtime before retrying.",
+    "approvalRequired": "This operation requires approval, but this runner has no interactive approval handler. Review the operation and update the agent's permission setting before retrying.",
+    "modelRejected": "The provider rejected the model \"{{model}}\".",
+    "selectedModelRejected": "The provider rejected the selected model.",
+    "chooseModel": "Choose a supported model or clear the task's model override, then retry.",
+    "swarmNotStarted": "Swarm did not start, and nothing was changed. Send /swarm again to try once more.",
+    "usageLimit": "The model provider has reached its current usage limit. Try again after the limit resets.",
+    "diskFull": "The agent filled the disk of its computer, so the run stopped. Ask the agent to use less disk space, then retry.",
+    "frameTooLarge": "Provider output exceeded the safe limit.",
+    "runnerTimedOut": "The runner timed out{{boundary}} ({{code}}).",
+    "runnerStopped": "The runner stopped{{boundary}} ({{code}}).",
+    "repairBranch": "Repair the starting branch below before retrying.",
+    "useConnectionCard": "Use the connection card below to continue.",
+    "aiUnavailable": "This run stopped because its AI account was unavailable.",
+    "reconciliation": "The previous execution must be checked before this task can continue. Your message is preserved. View the stopped run for details.",
+    "executionStopped": "Execution was stopped.",
+    "runFailedCode": "The run failed ({{code}}). {{retry}}",
+    "workspaceSetup": "Workspace setup failed before the agent started."
+  },
+  "retry": {
+    "scheduled": "Retry scheduled automatically.",
+    "canRetry": "You can retry this message now.",
+    "preserved": "Your message is preserved."
+  },
+  "terminal": {
+    "runCompleted": "Run completed",
+    "noResponse": "The runner returned no user-facing response.",
+    "turnCancelled": "This turn was cancelled before it returned a response."
+  },
+  "runtime": {
+    "permission": "Runtime permission",
+    "input": "Runtime input"
+  },
+  "interrupting": "Interrupting…",
+  "interrupt": "Interrupt",
+  "moreRunOutput": "More run output",
+  "history": {
+    "error": "Some task history could not be loaded.",
+    "loading": "Some task history is still loading.",
+    "retry": "Retry",
+    "loadingFull": "Loading task history…"
+  },
+  "takingLonger": "Taking longer than usual…",
+  "stoppedBeforeResponse": "This run stopped before a response was available. Review the task’s connection or recovery action below.",
+  "waitingTranscript": "Waiting for transcript...",
+  "pendingInputs_one": "{{count}} pending input",
+  "pendingInputs_other": "{{count}} pending inputs",
+  "documentRevision": "Document · rev {{revision}}"
+}

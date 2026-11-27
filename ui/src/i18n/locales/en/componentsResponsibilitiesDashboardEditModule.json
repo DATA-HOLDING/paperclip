@@ -1,0 +1,35 @@
+{
+  "undo": "Undo",
+  "dismiss": "Dismiss",
+  "versions": {
+    "empty": "No versions yet.",
+    "now": "Now",
+    "restore": "Restore",
+    "title": "Previous versions",
+    "description": "Saved versions of your dashboard, newest first.",
+    "loadAction": "load the versions"
+  },
+  "loading": "Loading",
+  "errors": {
+    "restore": "Couldn’t restore it.",
+    "start": "Couldn’t start it.",
+    "undo": "Couldn’t undo it."
+  },
+  "anAgent": "an agent",
+  "openConversation": "Open the conversation",
+  "create": {
+    "title": "Create your custom dashboard",
+    "description": "Have an agent research and interview you to generate a custom dashboard of areas and responsibilities that matter to you.",
+    "talking": "Talking it through with {{agent}}.",
+    "noAgent": "No agent is free to do this. Add your areas yourself.",
+    "startWith": "Start with {{agent}}",
+    "addArea": "Add an area yourself"
+  },
+  "edit": {
+    "editingWith": "Editing it with {{agent}}.",
+    "noAgent": "No agent is free to edit your dashboard.",
+    "button": "Edit your dashboard",
+    "versions": "Versions",
+    "loadAction": "load your dashboard's changes"
+  }
+}

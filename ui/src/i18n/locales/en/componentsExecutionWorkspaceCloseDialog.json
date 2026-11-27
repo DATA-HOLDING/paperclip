@@ -1,0 +1,54 @@
+{
+  "retryClose": "Retry close",
+  "closeWorkspace": "Close workspace",
+  "toast": {
+    "retried": "Workspace close retried",
+    "closed": "Workspace closed",
+    "failed": "Failed to close workspace"
+  },
+  "description": {
+    "beforeName": "Archive",
+    "afterName": "and clean up any owned workspace artifacts. Paperclip keeps the workspace record and task history, but removes it from active workspace views."
+  },
+  "checking": "Checking whether this workspace is safe to close...",
+  "inspectAction": "inspect workspace close readiness",
+  "state": {
+    "blocked": "Close is blocked",
+    "warnings": "Close is allowed with warnings",
+    "ready": "Close is ready"
+  },
+  "detail": {
+    "shared": "This is a shared workspace session. Archiving it removes this session record but keeps the underlying project workspace.",
+    "ownCheckout": "This execution workspace has its own checkout path and can be archived independently.",
+    "primary": "This execution workspace currently points at the project's primary workspace path.",
+    "disposable": "This workspace is disposable and can be archived."
+  },
+  "sections": {
+    "blockingTasks": "Blocking tasks",
+    "blockingReasons": "Blocking reasons",
+    "warnings": "Warnings",
+    "gitStatus": "Git status",
+    "otherLinkedTasks": "Other linked tasks",
+    "runtimeServices": "Attached runtime services",
+    "cleanupActions": "Cleanup actions"
+  },
+  "git": {
+    "branch": "Branch",
+    "baseRef": "Base ref",
+    "mergedIntoBase": "Merged into base",
+    "aheadBehind": "Ahead / behind",
+    "dirtyFiles": "Dirty tracked files",
+    "untrackedFiles": "Untracked files",
+    "unknown": "Unknown",
+    "notSet": "Not set",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "noAdditionalDetails": "No additional details",
+  "cleanupFailed": "Cleanup previously failed on this workspace. Retrying close will rerun the cleanup flow and update the workspace status if it succeeds.",
+  "alreadyArchived": "This workspace is already archived.",
+  "repoRoot": "Repo root:",
+  "workspacePath": "Workspace path:",
+  "lastChecked": "Last checked {{time}}",
+  "cancel": "Cancel"
+}

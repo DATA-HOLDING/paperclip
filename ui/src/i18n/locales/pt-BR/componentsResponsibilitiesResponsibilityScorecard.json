@@ -1,0 +1,14 @@
+{
+  "noReading": "Nenhuma leitura ainda",
+  "meterLabel": "{{name}}, rumo ao seu padrão",
+  "noNumber": "Nenhum número para acompanhar ainda",
+  "workAriaLabel": "O trabalho",
+  "routines": "Rotinas",
+  "projects": "Projetos",
+  "tasks": "Tarefas",
+  "skills": "Skills",
+  "noneYet": "Nenhum ainda",
+  "andMore": " e mais {{count}}",
+  "artifacts": "Artefatos",
+  "newest": "Mais recente:"
+}

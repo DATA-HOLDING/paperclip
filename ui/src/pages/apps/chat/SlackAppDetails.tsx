@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { ReactNode } from "react";
 import { ChevronRight, CircleHelp } from "lucide-react";
 import { slackAppConfigurationSchema, type SlackAppConfiguration } from "@paperclipai/shared";
@@ -6,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
 
-export function SlackSetupAdvanced({ children, label = "Advanced" }: { children: ReactNode; label?: string }) {
+export function SlackSetupAdvanced({ children, label = t("pagesAppsChatSlackAppDetails.advanced") }: { children: ReactNode; label?: string }) {
   return <details className="group text-sm">
     <summary className="flex cursor-pointer list-none items-center gap-1.5 text-muted-foreground hover:text-foreground">
       <ChevronRight className="size-4 transition-transform group-open:rotate-90" aria-hidden="true" />{label}
@@ -24,13 +25,13 @@ export function SlackAppDetails({ value, readOnly, onChange, onBlur }: {
   const validation = slackAppConfigurationSchema.safeParse(value);
   return <div className="space-y-3 text-sm">
     {([
-      ["appName", "Slack app name", 35, "The name of your app in Slack’s app directory and settings."],
-      ["botName", "Bot display name", 80, "The name people see when your bot sends a message."],
-      ["command", "Slash command", 32, "The command people type in Slack to talk to this agent."],
+      ["appName", t("pagesAppsChatSlackAppDetails.fields.appName.label"), 35, t("pagesAppsChatSlackAppDetails.fields.appName.help")],
+      ["botName", t("pagesAppsChatSlackAppDetails.fields.botName.label"), 80, t("pagesAppsChatSlackAppDetails.fields.botName.help")],
+      ["command", t("pagesAppsChatSlackAppDetails.fields.command.label"), 32, t("pagesAppsChatSlackAppDetails.fields.command.help")],
     ] as const).map(([key, label, maxLength, help]) => <div key={key} className="grid items-center gap-2 sm:grid-cols-2">
       <div className="flex items-center gap-1.5">
         <label htmlFor={`slack-${key}`}>{label}</label>
-        <Tooltip><TooltipTrigger asChild><button type="button" aria-label={`Help with ${label.toLowerCase()}`} className="rounded-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <Tooltip><TooltipTrigger asChild><button type="button" aria-label={t(`pagesAppsChatSlackAppDetails.fields.${key}.helpAria`)} className="rounded-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <CircleHelp className="size-3.5" aria-hidden="true" />
         </button></TooltipTrigger><TooltipContent className={cn("max-w-xs", ANALYTICS_MASK_CLASS)}>{help}</TooltipContent></Tooltip>
       </div>

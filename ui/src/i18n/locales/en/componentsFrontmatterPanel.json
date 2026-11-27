@@ -1,0 +1,36 @@
+{
+  "validation": {
+    "needsName": "SKILL.md needs a name.",
+    "slug": "Use lowercase letters, numbers and hyphens.",
+    "needsDescription": "SKILL.md needs a description.",
+    "expectedList": "Expected a list — edit in YAML."
+  },
+  "title": "Frontmatter",
+  "none": "None",
+  "fields": "Fields",
+  "fieldsDisabledTooltip": "Switch to YAML to edit. This frontmatter uses YAML features the form can't safely round-trip (e.g. comments, anchors, or custom ordering). Editing here keeps it byte-for-byte.",
+  "addFrontmatter": "Add frontmatter",
+  "issues_one": "{{count}} issue",
+  "issues_other": "{{count}} issues",
+  "noFrontmatter": "This file has no frontmatter.",
+  "summary": {
+    "tools_one": "{{count}} tool",
+    "tools_other": "{{count}} tools",
+    "metadata": "{{n}} metadata"
+  },
+  "addToolPlaceholder": "Add a tool…",
+  "complexValue": "Complex value — edit in YAML.",
+  "metadata": {
+    "keyAria": "Metadata key {{n}}",
+    "keyPlaceholder": "key",
+    "valueAria": "Value for {{field}}",
+    "field": "field {{n}}",
+    "valuePlaceholder": "value",
+    "addField": "add field"
+  },
+  "remove": "Remove {{item}}",
+  "addToolAria": "Add tool",
+  "rawYamlNotice": "Editing raw YAML to preserve formatting the form can't reconstruct.",
+  "yamlAria": "Frontmatter YAML",
+  "rawYamlHint": "Raw YAML is the source of truth in this mode."
+}

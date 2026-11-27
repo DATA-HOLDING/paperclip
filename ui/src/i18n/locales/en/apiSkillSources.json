@@ -1,0 +1,5 @@
+{
+  "liveScanUnavailable": "Live scan unavailable. Refresh the page and try again.",
+  "unexpectedResponse": "Unexpected repository scan response. Try again.",
+  "scanInterrupted": "Repository scan interrupted. Try again."
+}

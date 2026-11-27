@@ -1,0 +1,30 @@
+{
+  "repaired": {
+    "title": "Workspace repaired",
+    "body": "Dirty changes were quarantined onto a rescue branch and the recorded branch restored; the task will resume."
+  },
+  "reconciled": {
+    "title": "Workspace branch reconciled",
+    "body": "The recorded branch now matches the live branch; the task will resume."
+  },
+  "reconcileFailed": {
+    "title": "Reconcile failed",
+    "body": "Unable to reconcile the workspace branch."
+  },
+  "taskNotLoaded": "Task is not loaded yet.",
+  "reissueCreated": {
+    "title": "Isolated re-issue created",
+    "bodyWithId": "{{identifier}} will run on a fresh isolated workspace.",
+    "body": "A fresh isolated re-issue was created."
+  },
+  "reissueFailed": {
+    "title": "Re-issue failed",
+    "body": "Unable to create an isolated re-issue."
+  },
+  "noRecoveryAction": "No recovery action to resolve.",
+  "resolveFailed": {
+    "title": "Recovery resolution failed",
+    "body": "Unable to resolve recovery action"
+  },
+  "heading": "Workspace recovery"
+}

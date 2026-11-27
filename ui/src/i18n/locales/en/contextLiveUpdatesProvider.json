@@ -1,0 +1,63 @@
+{
+  "actor": {
+    "agent": "Agent {{id}}",
+    "system": "System",
+    "board": "Board",
+    "user": "User {{id}}",
+    "plugin": "Plugin",
+    "unknown": "Unknown actor"
+  },
+  "task": "Task",
+  "status": {
+    "backlog": "backlog",
+    "todo": "to do",
+    "inProgress": "in progress",
+    "inReview": "in review",
+    "done": "done",
+    "blocked": "blocked",
+    "cancelled": "cancelled"
+  },
+  "change": {
+    "reopenedFromTo": "reopened from {{from}} to {{to}}",
+    "reopenedFrom": "reopened from {{from}}",
+    "reopenedTo": "reopened the task to {{to}}",
+    "reopened": "reopened the task",
+    "statusFromTo": "changed status from {{from}} to {{to}}",
+    "statusTo": "changed status to {{to}}",
+    "priority": "set priority to {{priority}}",
+    "reassigned": "reassigned the task",
+    "unassigned": "unassigned the task",
+    "title": "changed the title",
+    "description": "changed the description"
+  },
+  "viewTask": "View task",
+  "activity": {
+    "created": "{{actor}} created the task",
+    "commented": "{{actor}} added a comment"
+  },
+  "join": {
+    "agent": "Agent wants to join",
+    "someone": "Someone wants to join",
+    "body": "A new join request is waiting for approval.",
+    "viewInbox": "View inbox"
+  },
+  "agentStatus": {
+    "started": "{{name}} started",
+    "errored": "{{name}} errored"
+  },
+  "viewAgent": "View agent",
+  "agentFallback": "Agent",
+  "chat": {
+    "cannotStart": "{{name}} couldn't start this chat",
+    "body": "This external chat identity isn't linked, and isolated guest workspaces are disabled. Link the identity in Connectors or enable isolated workspaces, then start a new task.",
+    "openConnections": "Open chat connections"
+  },
+  "run": {
+    "succeeded": "{{name}} run succeeded",
+    "failed": "{{name}} run failed",
+    "timedOut": "{{name}} run timed out",
+    "cancelled": "{{name}} run cancelled",
+    "trigger": "Trigger: {{detail}}",
+    "view": "View run"
+  }
+}

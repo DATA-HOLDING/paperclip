@@ -1,0 +1,30 @@
+{
+  "type": {
+    "hireAgent": "Hire Agent",
+    "ceoStrategy": "CEO Strategy",
+    "budgetOverride": "Budget Override",
+    "boardApproval": "Board Approval"
+  },
+  "labelWithSubject": "{{base}}: {{subject}}",
+  "field": {
+    "skills": "Skills",
+    "name": "Name",
+    "role": "Role",
+    "title": "Title",
+    "icon": "Icon",
+    "capabilities": "Capabilities",
+    "adapter": "Adapter",
+    "scope": "Scope",
+    "window": "Window",
+    "metric": "Metric"
+  },
+  "limitObserved": "Limit {{limit}} · Observed {{observed}}",
+  "board": {
+    "title": "Title",
+    "summary": "Summary",
+    "recommendedAction": "Recommended action",
+    "onApproval": "On approval",
+    "risks": "Risks",
+    "proposedComment": "Proposed comment"
+  }
+}

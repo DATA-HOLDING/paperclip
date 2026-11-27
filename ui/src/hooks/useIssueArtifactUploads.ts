@@ -5,6 +5,7 @@ import { issuesApi } from "@/api/issues";
 import { queryKeys } from "@/lib/queryKeys";
 import { uploadedDocumentKey } from "@/lib/issue-artifact-upload";
 import type { ArtifactUploadEntry } from "@/components/artifacts/ArtifactUploadControls";
+import { t } from "@/i18n";
 
 export function useIssueArtifactUploads(issue: Pick<Issue, "id" | "companyId">) {
   const client = useQueryClient();
@@ -42,10 +43,10 @@ export function useIssueArtifactUploads(issue: Pick<Issue, "id" | "companyId">) 
           void client.invalidateQueries({ queryKey: queryKeys.issues.detail(issue.id) });
           files.current.delete(id);
           setEntries(current => current.filter(entry => entry.id !== id));
-          setAnnouncement(`${file.name} added to this task.`);
+          setAnnouncement(t("hooksUseIssueArtifactUploads.added", { name: file.name }));
         } catch (error) {
           setEntries(current => current.map(entry => entry.id === id ? {
-            ...entry, status: "error", error: error instanceof Error ? error.message : "Upload failed. Try again.",
+            ...entry, status: "error", error: error instanceof Error ? error.message : t("hooksUseIssueArtifactUploads.uploadFailed"),
           } : entry));
         }
       }

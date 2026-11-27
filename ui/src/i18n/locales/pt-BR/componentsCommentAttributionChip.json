@@ -1,0 +1,6 @@
+{
+  "tooltip": "{{agent}} publicou isto em nome de {{user}}. {{agent}} não é responsável por esta tarefa — a autorização para escrever aqui vem de {{user}} e nunca vai além dela.",
+  "thisAgent": "Este agente",
+  "ariaLabel": "Publicado em nome de {{user}}",
+  "chip": "por {{user}}"
+}

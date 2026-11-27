@@ -1,0 +1,24 @@
+{
+  "retry": {
+    "afterOverload": "Retrying after overload",
+    "reconnecting": "Reconnecting",
+    "connection": "Retrying connection",
+    "afterRateLimit": "Retrying after rate limit",
+    "default": "Retrying"
+  },
+  "attemptOfMax": " (attempt {{attempt}} of {{max}})",
+  "attempt": " (attempt {{attempt}})",
+  "providerError": "Provider error",
+  "providerErrorNoMessage": "The provider reported an error without a message.",
+  "compactionFailed": "Context compaction failed",
+  "compactionStopped": "Compaction stopped",
+  "compactingContext": "Compacting context",
+  "contextCompacted": "Context compacted",
+  "retryStopped": "Retry stopped",
+  "recoveredAfterRetry": "Recovered after retry",
+  "fellBackTo": "Fell back to {{model}}",
+  "fellBackToAnother": "Fell back to another model",
+  "providerWarning": "Provider warning",
+  "providerUpdate": "Provider update",
+  "commandOutput": "Command output"
+}

@@ -1,0 +1,317 @@
+{
+  "common": {
+    "retry": "Retry",
+    "loading": "Loading…",
+    "openTask": "Open task"
+  },
+  "attentionTasks": {
+    "title": "Tasks",
+    "searchLabel": "Search tasks needing attention",
+    "searchPlaceholder": "Search tasks…",
+    "loading": "Loading tasks…",
+    "loadError": "Tasks needing attention could not be loaded.",
+    "noSearchMatch": "No tasks match this search.",
+    "empty": "No tasks need a decision.",
+    "pending": "pending"
+  },
+  "chatDecisionReceipts": {
+    "loadError": "Decision updates couldn’t load.",
+    "loadingEarlier": "Loading earlier decisions…",
+    "loadEarlier": "Load earlier decisions"
+  },
+  "pendingQuestions": {
+    "needsInput": "{{agent}} needs your input on {{task}}.",
+    "yourAgent": "Your agent",
+    "thisTask": "this task",
+    "loadError": "Task questions couldn’t load."
+  },
+  "chatReferences": {
+    "chatWith": "Chat with {{name}}"
+  },
+  "taskHandoffs": {
+    "loadError": "Created tasks couldn’t load.",
+    "loadingEarlier": "Loading earlier tasks…",
+    "loadEarlier": "Load earlier tasks"
+  },
+  "conversationTasks": {
+    "ariaLabel": "Tasks from this conversation",
+    "title": "Tasks",
+    "subtitle": "Created from this conversation.",
+    "searchLabel": "Search conversation tasks",
+    "searchPlaceholder": "Search tasks or IDs…",
+    "statusFilterLabel": "Filter conversation tasks by status",
+    "status": {
+      "all": "All statuses",
+      "todo": "Ready to start",
+      "inProgress": "In progress",
+      "inReview": "Needs review",
+      "blocked": "Blocked",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "sortLabel": "Sort conversation tasks",
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "title": "Title"
+    },
+    "loading": "Loading tasks…",
+    "loadError": "Tasks couldn’t load.",
+    "noMatch": "No loaded tasks match these filters.",
+    "empty": "Tasks created from this conversation will appear here.",
+    "loadMore": "Load more tasks"
+  },
+  "decisionReceipt": {
+    "someoneElse": "someone else",
+    "handledFor": " · for @{{name}}",
+    "reason": "Reason: {{reason}}"
+  },
+  "interactionReceipt": {
+    "answersRecorded": "Answers recorded",
+    "approved": "Approved",
+    "changesRequested": "Changes requested",
+    "viewInTask": "View decision in task"
+  },
+  "sidePanel": {
+    "document": "Document",
+    "waitingOnYou": "Waiting on you",
+    "nothingElseWaiting": "Nothing else is waiting on you.",
+    "openNewTab": "Open a new tab",
+    "noLongerWaiting": "This is no longer waiting on you."
+  },
+  "relativeTime": {
+    "justNow": "Just now",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago"
+  },
+  "review": {
+    "approval": "Approval",
+    "attachments": "Attachments",
+    "attachment": "Attachment",
+    "plan": "Plan",
+    "loadingRequested": "Loading the requested document…",
+    "requestedLoadError": "The requested document could not be loaded.",
+    "openFile": "Open file",
+    "openIn": "Open in {{target}}",
+    "approvalsTarget": "approvals",
+    "taskTarget": "task",
+    "answerOnCard": "Answer on the inbox card while reviewing this artifact.",
+    "loadingLabel": "Loading {{label}}…",
+    "documentLoadError": "This document couldn't be loaded. Open it in the task instead.",
+    "loadingApproval": "Loading approval…",
+    "approvalLoadError": "This approval couldn't be loaded. Open it instead.",
+    "cannotPreview": "This file cannot be previewed. Open the original file below."
+  },
+  "taskCommitment": {
+    "taskCreated": "Task created",
+    "createdSuffix": " · Created",
+    "noneCreated": "No tasks were created."
+  },
+  "providerLimit": {
+    "needsRetry": "Needs retry",
+    "retryRequested": "Retry requested",
+    "retryScheduled": "Retry scheduled",
+    "retryScheduledFor": " for ",
+    "tasksHitLimits_one": "{{count}} task hit usage limits",
+    "tasksHitLimits_other": "{{count}} tasks hit usage limits",
+    "attempts_one": "{{count}} attempt",
+    "attempts_other": "{{count}} attempts",
+    "providerResetAt": "Provider reset at ",
+    "resetUnknown": "Reset time unknown",
+    "openTaskToRetry": "Open task to retry",
+    "agentRunLog": "{{agent}} run log",
+    "titleNeedRetry_one": "{{count}} task needs a retry after the usage limit",
+    "titleNeedRetry_other": "{{count}} tasks need a retry after the usage limit",
+    "titlePaused_one": "{{count}} task paused by the provider usage limit",
+    "titlePaused_other": "{{count}} tasks paused by the provider usage limit",
+    "taskWord_one": "task",
+    "taskWord_other": "tasks",
+    "retryScheduledForCount": "Retry scheduled for {{count}} {{tasks}}",
+    "at": " at ",
+    "retryRequestedWaiting": "Retry requested. Waiting for work to resume.",
+    "openAffected": "Open the affected task to retry it when capacity is available.",
+    "viewTasks": "View {{count}} {{tasks}}",
+    "runLog": "Run log"
+  },
+  "runHistory": {
+    "title": "Recent run history",
+    "loading": "Loading runs…",
+    "empty": "No failed runs on visible tasks.",
+    "columnsLabel": "Run history columns",
+    "columns": {
+      "task": "Task",
+      "taskId": "Task ID",
+      "outcome": "Outcome",
+      "runLog": "Run log",
+      "recorded": "Recorded"
+    },
+    "runLogFor": "{{agent}} run log for {{task}}",
+    "showOlder": "Show older runs"
+  },
+  "cardBodies": {
+    "task": "Task",
+    "inReview": "In review",
+    "assignedTo": "Assigned to {{name}}",
+    "reviewStalled": "Review stalled",
+    "noReviewerMoving": "No reviewer, approval or run is moving this review.",
+    "blocksTask": "Blocks {{task}}",
+    "andMore": " and {{count}} more",
+    "blocksCount_one": "Blocks {{count}} task",
+    "blocksCount_other": "Blocks {{count}} tasks",
+    "blocked": "Blocked",
+    "markTaskDone": "Mark task done",
+    "openBlockingTask": "Open blocking task",
+    "recovery": "Recovery",
+    "recoveryEscalated": "Recovery escalated",
+    "recoveryPaused": "Recovery paused",
+    "resolveInControl": "Resolve, reassign or cancel it in the recovery control on the task.",
+    "openRecovery": "Open recovery"
+  },
+  "recoveryKinds": {
+    "missingDisposition": "No next step chosen",
+    "deliberateWait": "Waiting on nothing",
+    "stranded": "Task stranded",
+    "workspaceValidation": "Workspace unavailable",
+    "configurationValidation": "Configuration missing",
+    "runWatchdog": "Run gone quiet",
+    "graphLiveness": "Task needs a next step"
+  },
+  "cardTypes": {
+    "answerQuestions": "Answer questions",
+    "makeChoice": "Make a choice",
+    "reviewPlan": "Review a plan",
+    "confirm": "Confirm or decline",
+    "suggestedTasks": "Accept suggested tasks",
+    "reviewDeliverable": "Review a deliverable",
+    "reviewItems": "Review items",
+    "boardApproval": "Approve a request",
+    "joinRequest": "Review a join request",
+    "toolAccess": "Approve tool or secret access",
+    "connectService": "Connect a service",
+    "reviewTask": "Review a task",
+    "failedRun": "Fix a failed run",
+    "budgetStop": "Resolve a budget stop",
+    "blockedTask": "Unblock a task",
+    "recovery": "Recover a run",
+    "agentError": "Fix an agent error",
+    "budgetWarning": "Review a budget warning"
+  },
+  "approvalTypes": {
+    "hireAgent": "Approve an agent hire",
+    "ceoStrategy": "Approve a strategy",
+    "budgetOverride": "Approve a budget override"
+  },
+  "sections": {
+    "decisions": "Decisions",
+    "problems": "Problems",
+    "updates": "Updates"
+  },
+  "cardParts": {
+    "aTeammate": "A teammate",
+    "fromName": "from {{name}}",
+    "whyMe": "Why me? {{text}}",
+    "someone": "someone",
+    "noOwnerYet": "No owner yet",
+    "claiming": "Claiming…",
+    "claim": "Claim",
+    "openToAssign": "Open to assign",
+    "someoneCap": "Someone",
+    "viewRequestUpdate": "View a request update",
+    "yourRequest": "Your request",
+    "dismiss": "Dismiss",
+    "viewRequest": "View request"
+  },
+  "needsYou": {
+    "folders": {
+      "needs": {
+        "label": "Needs you",
+        "description": "Review open requests and decide what happens next."
+      },
+      "waiting": {
+        "label": "Waiting",
+        "description": "See what you’ve snoozed and which tasks are waiting for an automatic retry."
+      },
+      "history": {
+        "label": "History",
+        "description": "Look back at past decisions and see what happened to failed runs."
+      }
+    },
+    "openToReview": "Open to review",
+    "emptyView": {
+      "mine": "You're caught up.",
+      "unassigned": "No cards need an owner.",
+      "company": "No company alerts right now.",
+      "archived": "Nothing archived. Cards you archive or snooze for yourself show here.",
+      "all": "No open cards for anyone."
+    },
+    "groups": {
+      "otherDecisions": "Other decisions",
+      "otherAgents": "Other agents",
+      "noProject": "No project"
+    },
+    "assignee": {
+      "me": "Assigned to you",
+      "all": "All assignees",
+      "unassigned": "No owner yet",
+      "company": "Company alerts"
+    },
+    "inbox": "Inbox",
+    "plan": "Plan",
+    "openInSidebarShowing": "Open in sidebar · Showing",
+    "openInSidebar": "Open in sidebar",
+    "closeInSidebar": "Close {{label}} in the sidebar",
+    "openArtifactInSidebar": "Open {{label}} in the sidebar",
+    "providerUsageLimit": "Provider usage limit",
+    "stalled": {
+      "title": "Choose how this task continues",
+      "body": "This task is still in review with no active reviewer or continuation. Return it to work, request changes, or mark the task done."
+    },
+    "chooseCompany": "Choose a company to see its decisions.",
+    "inboxViews": "Inbox views",
+    "decisionHistory": "Decision history",
+    "backToNeedsYou": "Back to Needs You",
+    "archived": "Archived",
+    "toolbar": {
+      "controls": "Decisions controls",
+      "searchLabel": "Search decisions",
+      "searchPlaceholder": "Search…",
+      "agentFilter": "Filter decisions by agent",
+      "agents": "Agents",
+      "byAgents": "By agents",
+      "allAgents": "All agents",
+      "projectFilter": "Filter decisions by project",
+      "projects": "Projects",
+      "byProjects": "By projects",
+      "allProjects": "All projects",
+      "assigneeFilter": "Filter decisions by assignee",
+      "assignedTo": "Assigned to",
+      "byAssigned": "By assigned",
+      "someoneElse": "Someone else",
+      "groupLabel": "Group decisions",
+      "groupBy": "Group by",
+      "byType": "By type",
+      "byTask": "By task",
+      "byAgent": "By agent",
+      "byProject": "By project",
+      "noGrouping": "No grouping",
+      "view": "View"
+    },
+    "summary": {
+      "decisions_one": "{{count}} decision",
+      "decisions_other": "{{count}} decisions",
+      "problems_one": "{{count}} problem",
+      "problems_other": "{{count}} problems",
+      "updates_one": "{{count}} update",
+      "updates_other": "{{count}} updates"
+    },
+    "loading": "Loading decisions…",
+    "staleBelow": "No current cards. Stale cards are below.",
+    "snoozedBelow": "No archived cards. Snoozed cards are below.",
+    "noMatch": "No open decisions match these filters.",
+    "nothingWaiting": "Nothing is waiting.",
+    "caughtUpWaiting_one": "You’re caught up. {{count}} item is waiting.",
+    "caughtUpWaiting_other": "You’re caught up. {{count}} items are waiting.",
+    "showMore": "Show more decisions"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "user": {
+    "board": "Board",
+    "you": "{{name}} (you)"
+  },
+  "chip": {
+    "agent": "Agent",
+    "user": "User",
+    "noResponsible": "No responsible —",
+    "unassigned": "Unassigned"
+  },
+  "wake": "Wake",
+  "mentionCoach": {
+    "didYouMean": "Did you mean",
+    "plainText": "? Plain text won't notify or assign an agent.",
+    "insertAria": "Insert mention for {{name}} into your comment",
+    "insert": "Insert mention",
+    "dismiss": "Dismiss suggestion"
+  },
+  "handOffTo": "Hand off to",
+  "pause": {
+    "title": "What this affects",
+    "nothingLive": "Nothing live to pause — no agent run is in flight or queued. This records a hold so new work won't start until you resume.",
+    "noTasks": "No tasks are affected."
+  }
+}

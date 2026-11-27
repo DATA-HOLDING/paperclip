@@ -1,0 +1,9 @@
+{
+  "keptOnDesk": "Mantida na mesa",
+  "keepError": "Não foi possível manter esta decisão",
+  "tryAgain": "Tente novamente.",
+  "idleDays_one": "Parada há {{count}} dia",
+  "idleDays_other": "Parada há {{count}} dias",
+  "kept": "Mantida",
+  "keepOnDesk": "Manter na mesa"
+}

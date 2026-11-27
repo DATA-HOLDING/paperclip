@@ -1,0 +1,77 @@
+{
+  "repos": {
+    "title": "Repositórios",
+    "manage": "Gerenciar repositórios",
+    "manageOnGitHub": "Gerenciar no GitHub",
+    "refresh": "Atualizar repositórios",
+    "description": "Escolha onde o bot pode receber mensagens e usar ferramentas. Alterações nos repositórios são salvas na hora.",
+    "search": "Buscar repositórios",
+    "disableAllAria": "Desativar todos os repositórios",
+    "enableAllAria": "Ativar todos os repositórios",
+    "disableAll": "Desativar todos",
+    "enableAll": "Ativar todos",
+    "summary": "{{enabled}} de {{total}} repositórios ativados. Alternar todos vale para a conexão inteira.",
+    "loadAction": "carregar os repositórios",
+    "unavailable": "Indisponível no GitHub. Atualize o acesso da instalação do App e depois atualize a lista.",
+    "taskDefaults": "Padrões de tarefa",
+    "loading": "Carregando repositórios…",
+    "noMatch": "Nenhum repositório corresponde à sua busca.",
+    "none": "Nenhum repositório disponível. Adicione acesso a repositórios no GitHub e depois atualize.",
+    "loadMore": "Carregar mais repositórios",
+    "refreshed": "Acesso aos repositórios atualizado. Novos repositórios continuam desativados."
+  },
+  "config": {
+    "loadAction": "carregar a configuração do bot",
+    "loading": "Carregando a configuração…",
+    "toolsDisabled": "Este bot salvo está com as ferramentas do GitHub desativadas, então não pode iniciar trabalho nem responder.",
+    "enableTools": "Ativar ferramentas do bot",
+    "manageToolPermissions": "Gerenciar permissões de ferramentas",
+    "discard": "Descartar alterações",
+    "saved": "Alterações salvas.",
+    "saving": "Salvando…",
+    "save": "Salvar alterações"
+  },
+  "result": {
+    "conclusion": {
+      "success": "Aprovada",
+      "failure": "Abaixo do limite",
+      "neutral": "Apenas relatório",
+      "actionRequired": "Ação necessária"
+    },
+    "awaitingCheck": "Aguardando verificação",
+    "state": {
+      "queued": "Na fila",
+      "running": "Revisando",
+      "incomplete": "Incompleta",
+      "error": "A revisão falhou",
+      "superseded": "Substituída"
+    }
+  },
+  "review": {
+    "commit": "Commit",
+    "noAssessment": "Nenhuma avaliação foi enviada ainda.",
+    "paperclipTask": "Tarefa do Paperclip",
+    "githubComment": "Comentário no GitHub",
+    "check": "Verificação",
+    "evidence": "Evidências da revisão",
+    "agentRun": "Execução do agente",
+    "rationale": "Justificativa",
+    "findings": "Achados",
+    "coverage": "Cobertura",
+    "coverageSummary": "{{reviewed}} arquivos revisados · {{omitted}} omitidos"
+  },
+  "list": {
+    "empty": "Nenhuma revisão ainda",
+    "emptyDescription": "Mencione o bot em um pull request ou ative eventos automáticos em Configurações.",
+    "aria": "Revisões",
+    "pullRequest": "Pull request #{{number}}",
+    "loadAction": "carregar as revisões",
+    "loading": "Carregando revisões…"
+  },
+  "detail": {
+    "backToAll": "← Todas as revisões",
+    "notFound": "Esta revisão não foi encontrada nesta conexão.",
+    "allReviews": "Todas as revisões",
+    "loadReviewAction": "carregar a revisão"
+  }
+}

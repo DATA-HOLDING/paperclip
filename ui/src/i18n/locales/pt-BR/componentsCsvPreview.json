@@ -1,0 +1,13 @@
+{
+  "fileIsEmpty": "O arquivo está vazio.",
+  "csvPreview": "Prévia do CSV",
+  "rowCount_one": "{{formatted}} linha",
+  "rowCount_other": "{{formatted}} linhas",
+  "columnCount_one": "{{formatted}} coluna",
+  "columnCount_other": "{{formatted}} colunas",
+  "truncated": "Mostrando as primeiras {{rows}} linhas e {{columns}} colunas. Baixe o arquivo completo.",
+  "tableLabel": "Tabela CSV de {{title}}",
+  "caption": "{{title}} — o primeiro registro é usado como cabeçalho das colunas",
+  "row": "Linha",
+  "column": "Coluna {{number}}"
+}

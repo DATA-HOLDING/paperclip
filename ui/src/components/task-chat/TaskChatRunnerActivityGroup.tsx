@@ -36,6 +36,7 @@ import { useTaskChatShimmer } from "./TaskChatShimmer";
 import { TaskChatDiffCounts, TaskChatDiffView } from "./TaskChatDiffView";
 import { useTaskReferenceLabel, withTaskReference } from "./task-reference";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 type Activity = TaskChatActivityPhaseItem["items"][number];
 type ToolActivity = Extract<Activity, { kind: "tool" }>;
@@ -135,7 +136,7 @@ function presentation(item: Activity, active: boolean, taskLabel?: string): Acti
     if (item.blockedReason) {
       return {
         icon: ShieldX,
-        label: "Blocked",
+        label: t("componentsTaskChatTaskChatRunnerActivityGroup.blocked"),
         target: subject ? (terminal ? `$ ${subject}` : subject) : undefined,
         mono: true,
         running: false,
@@ -157,7 +158,7 @@ function presentation(item: Activity, active: boolean, taskLabel?: string): Acti
     const running = active && Boolean(item.streaming);
     return {
       icon: Brain,
-      label: running ? "Thinking" : "Thought",
+      label: running ? t("componentsTaskChatTaskChatRunnerActivityGroup.thinking") : t("componentsTaskChatTaskChatRunnerActivityGroup.thought"),
       target:
         latestReasoningHeadline(item.lines.join("\n")) ??
         item.lines
@@ -204,7 +205,7 @@ function presentation(item: Activity, active: boolean, taskLabel?: string): Acti
     .join(" · ");
   return {
     icon: Gauge,
-    label: item.label ?? "Token usage",
+    label: item.label ?? t("componentsTaskChatTaskChatRunnerActivityGroup.tokenUsage"),
     target: usage || item.detail,
     mono: false,
     running: false,
@@ -426,13 +427,13 @@ function ActivityDetailsBody({ item }: { item: Activity }) {
       {item.target ? (
         <p className="break-all font-mono">{item.target}</p>
       ) : null}
-      {item.blockedReason ? <p className="text-destructive">Blocked: {item.blockedReason}</p> : null}
+      {item.blockedReason ? <p className="text-destructive">{t("componentsTaskChatTaskChatRunnerActivityGroup.blockedReason", { reason: item.blockedReason })}</p> : null}
       {item.detail ? (
         <pre className={cn("whitespace-pre-wrap break-words font-mono", ANALYTICS_MASK_CLASS)}>
           {item.detail}
         </pre>
       ) : null}
-      {item.decision ? <p>Permission {item.decision}</p> : null}
+      {item.decision ? <p>{t("componentsTaskChatTaskChatRunnerActivityGroup.permission", { decision: item.decision })}</p> : null}
       {item.diff ? (
         <p className="break-all font-mono">
           {item.diff.path} · +{item.diff.added} −{item.diff.removed}
@@ -563,14 +564,14 @@ function ReadRunActivity({ items }: { items: ToolActivity[] }) {
             <BookOpen className="size-3.5" aria-hidden="true" />
           </span>
           <span className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden whitespace-nowrap">
-            <span className="shrink-0 text-xs">Read {items.length} files</span>
+            <span className="shrink-0 text-xs">{t("componentsTaskChatTaskChatRunnerActivityGroup.readFiles", { count: items.length })}</span>
             <span className="truncate font-mono text-xs text-muted-foreground">{readRunPreview(items)}</span>
           </span>
         </span>
         <ChevronRight className={cn("size-3.5 shrink-0", open && "rotate-90")} aria-hidden="true" />
       </button>
       {open ? (
-        <ol id={listId} className="ml-2.5 flex min-w-0 flex-col border-l border-border pl-2" aria-label="Files read">
+        <ol id={listId} className="ml-2.5 flex min-w-0 flex-col border-l border-border pl-2" aria-label={t("componentsTaskChatTaskChatRunnerActivityGroup.filesRead")}>
           {items.map((item) => (
             <ExpandedActivity key={item.id} item={item} active={false} />
           ))}
@@ -599,7 +600,7 @@ export function TaskChatRunnerActivityGroup({
   const latest = activities.at(-1);
   const summary = completedActivitySummary(activities);
   const SummaryIcon = summary.icon;
-  const countLabel = `${activities.length} ${activities.length === 1 ? "activity" : "activities"}`;
+  const countLabel = t("componentsTaskChatTaskChatRunnerActivityGroup.activityCount", { count: activities.length });
   const editTotals = activities.reduce(
     (sum, activity) =>
       activity.kind === "tool" && activity.diff
@@ -634,7 +635,7 @@ export function TaskChatRunnerActivityGroup({
             onClick={() => setExpanded(!expanded)}
             aria-expanded={expanded}
             aria-controls={expanded ? historyId : undefined}
-            aria-label={`${expanded ? "Collapse" : "Expand"} ${item.active ? countLabel : `${summary.fullLabel.toLowerCase()} (${countLabel})`}`}
+            aria-label={t("componentsTaskChatTaskChatRunnerActivityGroup.toggleLabel", { action: expanded ? t("componentsTaskChatTaskChatRunnerActivityGroup.collapse") : t("componentsTaskChatTaskChatRunnerActivityGroup.expand"), target: item.active ? countLabel : `${summary.fullLabel.toLowerCase()} (${countLabel})` })}
           >
             {!item.active ? (
               <span
@@ -677,7 +678,7 @@ export function TaskChatRunnerActivityGroup({
             <ol
               id={historyId}
               className="flex min-w-0 flex-col gap-1"
-              aria-label="Activity history"
+              aria-label={t("componentsTaskChatTaskChatRunnerActivityGroup.activityHistory")}
               data-testid="task-chat-runner-activity-list"
             >
               {foldReadRuns(activities).map((row) =>

@@ -1,0 +1,33 @@
+{
+  "breadcrumbs": {
+    "settings": "Configurações",
+    "instanceSettings": "Configurações da instância",
+    "access": "Acesso"
+  },
+  "toast": {
+    "organizationAccessUpdated": "Acesso à organização atualizado",
+    "instanceRoleUpdated": "Função na instância atualizada"
+  },
+  "loadingInstanceAccess": "Carregando acesso à instância…",
+  "adminRequired": "É necessário acesso de administrador da instância para gerenciar usuários.",
+  "actions": {
+    "loadUsers": "carregar usuários",
+    "loadOrganizations": "carregar organizações",
+    "loadUserAccess": "carregar o acesso do usuário"
+  },
+  "title": "Acesso à instância",
+  "description": "Busque usuários, gerencie o status de administrador da instância e controle quais organizações eles podem acessar.",
+  "searchUsers": "Buscar usuários",
+  "searchPlaceholder": "Buscar por nome ou e-mail",
+  "activeMemberships": "{{count}} vínculos ativos com organizações",
+  "selectUser": "Selecione um usuário para inspecionar o acesso à instância.",
+  "loadingUserAccess": "Carregando acesso do usuário…",
+  "removeAdmin": "Remover administrador da instância",
+  "promoteAdmin": "Promover a administrador da instância",
+  "organizationAccess": "Acesso às organizações",
+  "organizationAccessHint": "Ative ou desative a participação deste usuário nas organizações. Novos acessos são, por padrão, uma participação ativa de operador.",
+  "saving": "Salvando…",
+  "saveOrganizationAccess": "Salvar acesso às organizações",
+  "currentMemberships": "Vínculos atuais",
+  "unsetRole": "não definida"
+}

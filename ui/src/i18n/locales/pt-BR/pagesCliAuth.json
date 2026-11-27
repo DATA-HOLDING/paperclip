@@ -1,0 +1,38 @@
+{
+  "invalidUrl": "URL de autenticação da CLI inválida.",
+  "rateLimited": "Muitas solicitações de aprovação da CLI. Tentando novamente em instantes...",
+  "loading": "Carregando o desafio de autenticação da CLI...",
+  "errorAction": "carregar o desafio de autenticação da CLI",
+  "unavailable": "Desafio de autenticação da CLI indisponível.",
+  "approved": {
+    "title": "Acesso da CLI aprovado",
+    "body": "A CLI do Paperclip agora pode concluir a autenticação na máquina que fez a solicitação.",
+    "command": "Comando:"
+  },
+  "ended": {
+    "expired": "Desafio de autenticação da CLI expirado",
+    "cancelled": "Desafio de autenticação da CLI cancelado",
+    "body": "Inicie o fluxo de autenticação da CLI novamente no seu terminal para gerar uma nova solicitação de aprovação."
+  },
+  "signIn": {
+    "title": "É necessário entrar",
+    "body": "Entre ou crie uma conta e depois volte a esta página para aprovar a solicitação de acesso da CLI.",
+    "button": "Entrar / Criar conta"
+  },
+  "approve": {
+    "title": "Aprovar o acesso da CLI do Paperclip",
+    "body": "Um cliente de CLI está solicitando acesso total do conselho às organizações que você pode acessar nesta instância. Aprove apenas se você iniciou esta solicitação no seu próprio terminal.",
+    "command": "Comando",
+    "client": "Cliente",
+    "requestedAccess": "Acesso solicitado",
+    "instanceAdmin": "Administrador da instância",
+    "board": "Conselho",
+    "auditOrganization": "Organização para o contexto de auditoria",
+    "requiresInstanceAdmin": "Este desafio exige acesso de administrador da instância. Entre com uma conta de administrador da instância para aprová-lo.",
+    "noAccess": "Você não tem acesso à organização solicitada.",
+    "approving": "Aprovando...",
+    "approveButton": "Aprovar acesso da CLI",
+    "cancelling": "Cancelando...",
+    "cancel": "Cancelar"
+  }
+}

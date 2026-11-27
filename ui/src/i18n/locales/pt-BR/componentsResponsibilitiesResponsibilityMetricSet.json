@@ -1,0 +1,28 @@
+{
+  "starterLabel": "Métricas iniciais do seu trabalho até agora",
+  "readLine": {
+    "weekByWeek": "Contado a partir do trabalho, semana a semana",
+    "justNow": "Contado a partir do trabalho agora mesmo",
+    "noReadings": "Nenhuma leitura ainda",
+    "read": "Lido {{age}}"
+  },
+  "noReading": "Nenhuma leitura ainda",
+  "towardBar": "{{title}}, em direção à meta",
+  "howMeasuredLabel": "Como “{{title}}” é medido",
+  "howMeasured": "Como é medido",
+  "removeLabel": "Remover “{{title}}”",
+  "removeThis": "Remover esta métrica",
+  "chosenWith": "Escolhido com {{name}}",
+  "anAgent": "um agente",
+  "setByHand": "Definido manualmente",
+  "metrics": "Métricas",
+  "noMetrics": "Nenhuma métrica ainda.",
+  "removeDialog": {
+    "title": "Remover “{{title}}”?",
+    "description": "Ela deixa de aparecer nesta responsabilidade e os agentes deixam de registrá-la. As leituras são mantidas. Para escolher outras métricas, discuta a meta com um agente.",
+    "failed": "Não foi possível removê-la.",
+    "keep": "Manter",
+    "removing": "Removendo…",
+    "remove": "Remover métrica"
+  }
+}

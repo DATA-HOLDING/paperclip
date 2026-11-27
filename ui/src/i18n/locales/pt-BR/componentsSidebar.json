@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "chat": "Chat",
+    "tasks": "Tarefas",
+    "inbox": "Caixa de entrada",
+    "dashboard": "Painel",
+    "search": "Buscar",
+    "decisions": "Decisões",
+    "status": "Status",
+    "conferenceRoom": "Sala de reunião",
+    "work": "Trabalho",
+    "projects": "Projetos",
+    "routines": "Rotinas",
+    "artifacts": "Artefatos",
+    "cases": "Casos",
+    "goals": "Objetivos",
+    "workspaces": "Espaços de trabalho",
+    "org": "Organograma",
+    "agents": "Agentes",
+    "skills": "Skills",
+    "connectors": "Conectores",
+    "audit": "Auditoria",
+    "organization": "Organização",
+    "timeline": "Linha do tempo",
+    "costs": "Custos",
+    "activity": "Atividade",
+    "commentary": "Comentários",
+    "settings": "Configurações",
+    "company": "Organização"
+  },
+  "badge": {
+    "unreadChats": "chats não lidos",
+    "unread": "não lidas",
+    "decisions": "decisões"
+  },
+  "newTask": "Nova tarefa",
+  "section": {
+    "org": "Organização"
+  }
+}

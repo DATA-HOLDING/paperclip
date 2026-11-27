@@ -1,0 +1,28 @@
+{
+  "nonSetterTooltip": "Só o responsável pela tarefa ou um administrador pode alterar quem vê esta tarefa.",
+  "blocked": {
+    "checkFailed": "Não foi possível verificar a privacidade da tarefa. Tente novamente antes de torná-la pública.",
+    "checking": "Verificando a privacidade da tarefa…",
+    "parent": "Tire esta tarefa da tarefa-mãe privada antes de torná-la pública.",
+    "project": "Tire esta tarefa do projeto privado antes de torná-la pública."
+  },
+  "toast": {
+    "nowPrivate": "A tarefa agora é privada",
+    "nowPublic": "A tarefa agora é pública",
+    "changeFailed": "Não foi possível alterar a visibilidade"
+  },
+  "menu": {
+    "share": "Compartilhar…",
+    "makePublic": "Tornar pública",
+    "retryCheck": "Verificar acesso novamente",
+    "makePrivate": "Tornar privada"
+  },
+  "dialog": {
+    "title": "Tornar esta tarefa pública?",
+    "body": "Todos na organização poderão ler esta tarefa, seus comentários, documentos e histórico de execuções. As subtarefas privadas existentes continuam privadas.",
+    "leavesPersonalProject": "Esta tarefa também vai sair do projeto pessoal. ",
+    "cannotTakeBack": "O conteúdo já visto por outras pessoas não pode ser desfeito.",
+    "keepPrivate": "Manter privada",
+    "makingPublic": "Tornando pública…"
+  }
+}

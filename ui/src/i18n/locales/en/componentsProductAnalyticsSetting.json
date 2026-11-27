@@ -1,0 +1,7 @@
+{
+  "title": "Product analytics",
+  "withRecordings": "Share usage analytics and session recordings from this browser to help improve Paperclip. Recordings hide what you type and your messages, documents and connected accounts, but may show page names like task titles. ",
+  "analyticsOnly": "Share usage analytics from this browser to help improve Paperclip. ",
+  "blocked": "Your browser asks sites not to track you, so analytics stays off. ",
+  "privacyPolicy": "Privacy policy"
+}

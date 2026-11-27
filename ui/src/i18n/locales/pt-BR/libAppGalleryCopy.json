@@ -1,0 +1,110 @@
+{
+  "apps": {
+    "zapier": {
+      "tagline": "Alcance mais de 9.000 apps que sua equipe já usa.",
+      "short": "Alcance mais de 9.000 apps pelos seus agentes."
+    },
+    "github": {
+      "tagline": "Leia código e pull requests, comente em issues.",
+      "short": "Leia código e pull requests, comente em issues."
+    },
+    "slack": {
+      "tagline": "Envie e leia mensagens nos canais da sua equipe.",
+      "short": "Envie e leia mensagens nos seus canais."
+    },
+    "notion": {
+      "tagline": "Leia e atualize páginas no seu espaço de trabalho.",
+      "short": "Leia e atualize páginas no seu espaço de trabalho."
+    },
+    "railway": {
+      "tagline": "Inspecione serviços, leia logs e gerencie deploys.",
+      "short": "Conecte o Railway para deploys, logs e acesso aos contêineres."
+    },
+    "posthog": {
+      "tagline": "Explore uso do produto, erros, flags e experimentos.",
+      "short": "Entre com o PostHog. Fixar projetos e controles de acesso são opcionais."
+    },
+    "ditto": {
+      "tagline": "Reaproveite textos aprovados do produto e siga seu guia de estilo.",
+      "short": "Entre com o Ditto. Chaves de API são opcionais."
+    },
+    "circleback": {
+      "tagline": "Busque notas de reunião, transcrições e itens de ação.",
+      "short": "Entre com o Circleback. As reuniões aparecem como cartões no chat."
+    },
+    "gauge": {
+      "tagline": "Acompanhe sua marca nas respostas de IA e rode fluxos de conteúdo.",
+      "short": "Entre com o Gauge e escolha uma organização. Chaves de API são opcionais."
+    },
+    "neon": {
+      "tagline": "Gerencie projetos, branches e consultas do Postgres.",
+      "short": "Entre com o Neon. Fixar projetos e o modo somente leitura são opcionais."
+    },
+    "superagent": {
+      "tagline": "Revise achados de segurança e rode testes de red team.",
+      "short": "Conecte com uma chave de API do Superagent. Ferramentas cobradas e destrutivas seguem as regras de ação."
+    },
+    "linear": {
+      "tagline": "Crie, atualize e leia tickets.",
+      "short": "Crie, atualize e leia tickets."
+    },
+    "googleSheets": {
+      "tagline": "Leia e atualize as planilhas selecionadas.",
+      "short": "Leia planilhas ou atualize os arquivos que você escolher."
+    },
+    "gmail": {
+      "tagline": "Leia e-mails e crie rascunhos para sua revisão.",
+      "short": "Leia e-mails e crie rascunhos para sua revisão."
+    },
+    "googleDrive": {
+      "tagline": "Encontre, leia e crie arquivos no Drive.",
+      "short": "Encontre, leia e crie arquivos no Drive."
+    },
+    "googleDocs": {
+      "tagline": "Leia e atualize documentos.",
+      "short": "Leia e atualize documentos."
+    },
+    "googleSlides": {
+      "tagline": "Leia e atualize apresentações.",
+      "short": "Leia e atualize apresentações."
+    },
+    "googleCalendar": {
+      "tagline": "Consulte agendas e gerencie eventos.",
+      "short": "Consulte agendas e gerencie eventos."
+    },
+    "googleChat": {
+      "tagline": "Leia conversas e envie mensagens.",
+      "short": "Leia conversas e envie mensagens."
+    },
+    "googlePeople": {
+      "tagline": "Procure contatos e pessoas no seu diretório.",
+      "short": "Procure contatos e pessoas no seu diretório."
+    },
+    "googleWorkspaceSearch": {
+      "tagline": "Busque em todo o seu Google Workspace.",
+      "short": "Busque em todo o seu Google Workspace."
+    },
+    "hubspot": {
+      "tagline": "Procure contatos e atualize as etapas dos negócios.",
+      "short": "Procure contatos e atualize as etapas dos negócios."
+    },
+    "intercom": {
+      "tagline": "Leia e responda conversas com clientes.",
+      "short": "Leia e responda conversas com clientes."
+    },
+    "figma": {
+      "tagline": "Leia arquivos e comente em frames.",
+      "short": "Leia arquivos e comente em frames."
+    },
+    "stripe": {
+      "tagline": "Leia clientes, faturas e repasses.",
+      "short": "Leia clientes, faturas e repasses."
+    },
+    "context7": {
+      "tagline": "Consulte a documentação atualizada das suas bibliotecas.",
+      "short": "Consulte a documentação atualizada das suas bibliotecas."
+    }
+  },
+  "generic": "Dê aos seus agentes acesso a este app.",
+  "yourKey": "Sua chave do {{appName}}"
+}

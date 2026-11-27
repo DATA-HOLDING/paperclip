@@ -1,0 +1,15 @@
+{
+  "author": {
+    "anAgent": "um agente",
+    "owner": "o responsável",
+    "teammate": "um colega",
+    "formerAgent": "um agente que não está mais aqui",
+    "writtenBy": "Escrito por {{who}} · {{age}}"
+  },
+  "theAgent": "o agente",
+  "outOfDate": "Desatualizado",
+  "asked": "Atualização pedida a {{name}}",
+  "ask": "Pedir atualização a {{name}}",
+  "askFailed": "Não foi possível pedir.",
+  "fromNumber": "Pelo número"
+}

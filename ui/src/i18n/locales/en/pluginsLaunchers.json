@@ -1,0 +1,5 @@
+{
+  "failedToRender": "{{name}}: failed to render",
+  "unresolvedTarget": "{{name}}: could not resolve launcher target \"{{target}}\".",
+  "close": "Close"
+}

@@ -1,0 +1,21 @@
+{
+  "reorder": "Reordenar {{name}}",
+  "nounOrganization": "organização",
+  "nounCompany": "organização",
+  "openSwitcherNamed": "Abrir o seletor de {{noun}} ({{name}})",
+  "openSwitcher": "Abrir o seletor de {{noun}}",
+  "selectNoun": "Selecionar {{noun}}",
+  "organizations": "Organizações",
+  "done": "Concluir",
+  "edit": "Editar",
+  "loadOrganizationsFailed": "Não foi possível carregar as organizações",
+  "loadCompaniesFailed": "Não foi possível carregar as organizações",
+  "tryAgain": "Tentar novamente",
+  "noOrganizations": "Nenhuma organização",
+  "noCompanies": "Nenhuma organização",
+  "createOrganization": "Criar organização",
+  "invitePeopleTo": "Convidar pessoas para {{name}}",
+  "invitePeople": "Convidar pessoas",
+  "signingOut": "Saindo...",
+  "signOut": "Sair"
+}

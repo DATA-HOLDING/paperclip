@@ -1,0 +1,179 @@
+{
+  "views": {
+    "overview": "Visão geral",
+    "pipeline": "Pipeline",
+    "trace": "Trace exato"
+  },
+  "badge": {
+    "capturing": "Trace bruto ativado",
+    "incomplete": "Incompleto",
+    "truncated": "Truncado",
+    "deleted": "Excluído",
+    "expired": "Expirado",
+    "expiresIn": "Expira em {{hours}}h"
+  },
+  "visibility": {
+    "unregistered": "Não existe registro de superfície de produção para este tipo de evento.",
+    "primaryTurn": "turno principal da execução",
+    "collapsedActivity": "atividade recolhida",
+    "render": "renderizar",
+    "fold": "recolher",
+    "operatorOnly": "só para operador"
+  },
+  "operation": {
+    "providerFrame": "Frame do provedor",
+    "frame": "frame {{id}}",
+    "frames": "frames {{from}}–{{to}}",
+    "prpEvents_one": "{{count}} evento PRP",
+    "prpEvents_other": "{{count}} eventos PRP",
+    "eventSeq": "evento {{seq}}",
+    "noRawCorrelation": "sem correlação bruta",
+    "visibleEvent": "Evento de produção visível",
+    "hiddenEvent": "Evento de produção oculto",
+    "noEvent": "Nenhum evento de produção",
+    "framesBadge": "{{frames}} frames"
+  },
+  "json": {
+    "collapse": "Recolher valor JSON",
+    "expand": "Expandir valor JSON",
+    "pathCopied": "Caminho JSON copiado",
+    "copyFailed": "Falha ao copiar",
+    "copyPath": "Copiar caminho JSON",
+    "valueCopied": "Valor copiado",
+    "copyValue": "Copiar valor",
+    "noMatch": "Nenhum campo corresponde.",
+    "search": "Buscar neste JSON"
+  },
+  "stage": {
+    "notCarried": "O campo não foi levado para a etapa seguinte",
+    "action": "Ação",
+    "providerPath": "Caminho no provedor",
+    "outputPath": "Caminho de saída",
+    "reason": "Motivo",
+    "noMapping": "Nenhum mapeamento por campo foi registrado nesta etapa."
+  },
+  "prpFields": {
+    "eventType": "Tipo de evento",
+    "sourceEvent": "Evento de origem",
+    "sequence": "Sequência",
+    "itemType": "Tipo de item",
+    "status": "Status",
+    "query": "Consulta"
+  },
+  "surfacePreview": "Superfície de produção: {{surface}} · {{action}} em {{container}}",
+  "confirm": {
+    "reveal": "Este frame exato do provedor pode conter prompts, argumentos de ferramentas, segredos ou raciocínio. Revelar agora?",
+    "download": "Baixar o trace bruto exato? Ele pode conter prompts sensíveis, argumentos de ferramentas e campos exclusivos do provedor.",
+    "delete": "Excluir este trace bruto imediatamente? Isto não pode ser desfeito."
+  },
+  "title": "Runner Inspector",
+  "description": "Correlacione o tráfego exato do provedor com cada etapa de interpretação, evento PRP canônico e superfície de produção.",
+  "viewsLabel": "Visualizações do Runner Inspector",
+  "loadAction": "carregar a inspeção do runner",
+  "deleteAction": "excluir o trace bruto",
+  "noAccess": {
+    "title": "Traces brutos do provedor exigem um administrador da instância.",
+    "body": "Os eventos PRP canônicos e as decisões de apresentação continuam inspecionáveis abaixo."
+  },
+  "captureOff": {
+    "title": "A captura bruta do provedor estava desligada nesta execução.",
+    "body": "Os eventos PRP canônicos e as decisões de apresentação persistidas continuam disponíveis abaixo.",
+    "rerun": "Executar novamente com trace do provedor"
+  },
+  "loading": "Carregando o pipeline da execução…",
+  "stats": {
+    "provider": "Provedor",
+    "prpOnly": "Só PRP",
+    "capturedThrough": "capturado via {{provider}}",
+    "captureWasOff": "captura desligada",
+    "rawFrames": "Frames brutos",
+    "noExactBytes": "sem bytes exatos",
+    "operations": "Operações",
+    "correlatedGroups": "grupos correlacionados",
+    "prpEvents": "Eventos PRP",
+    "visible": "{{count}} visíveis",
+    "mappings": "Mapeamentos",
+    "ignored": "{{count}} ignorados",
+    "runStatus": "Status da execução",
+    "rawCaptureOff": "Captura bruta desligada"
+  },
+  "unknown": "desconhecido",
+  "overview": {
+    "outcomes": "Resultados da interpretação",
+    "noRecords": "Nenhum registro de interpretação foi persistido.",
+    "recent": "Operações correlacionadas recentes",
+    "sensitiveTitle": "Dados de depuração sensíveis",
+    "sensitiveBody": "Os frames analisados são ocultados no servidor. Revelações exatas e downloads são exclusivos de administradores, avisados, auditados e expiram automaticamente."
+  },
+  "filters": {
+    "search": "Buscar operações, campos e eventos",
+    "direction": "Direção",
+    "allDirections": "Todas as direções",
+    "clientToProvider": "Cliente → provedor",
+    "providerToClient": "Provedor → cliente",
+    "providerStderr": "stderr do provedor",
+    "nativeMethod": "Método nativo",
+    "allNativeMethods": "Todos os métodos nativos",
+    "mapping": "Mapeamento",
+    "allMappings": "Todos os mapeamentos",
+    "prpType": "Tipo PRP",
+    "allPrpTypes": "Todos os tipos PRP",
+    "visibility": "Visibilidade",
+    "visibleAndHidden": "Visíveis + ocultos",
+    "visible": "Visíveis",
+    "hidden": "Ocultos",
+    "noMatch": "Nenhuma operação corresponde a estes filtros."
+  },
+  "pipeline": {
+    "rawFrames_one": "{{count}} frame bruto",
+    "rawFrames_other": "{{count}} frames brutos",
+    "mappingStages_one": "{{count}} etapa de mapeamento",
+    "mappingStages_other": "{{count}} etapas de mapeamento",
+    "providerFrames": "Frames do provedor",
+    "serverRedacted": "ocultado no servidor por padrão",
+    "withheldPaths": "Caminhos retidos: {{paths}}",
+    "reveal": "Revelar frame exato",
+    "exactUnredacted": "Frame exato sem ocultação",
+    "searchExactFrame": "Buscar no frame exato",
+    "noRawFrame": "Este evento PRP não tem frame bruto recuperável.",
+    "interpretationStages": "Etapas de interpretação",
+    "noStage": "Nenhuma etapa de interpretação foi registrada para este frame.",
+    "canonicalEvents": "Eventos PRP canônicos",
+    "seq": "seq {{seq}}",
+    "whyNotVisible": "Por que isto não está visível?",
+    "canonicalEventJson": "JSON do evento canônico",
+    "noCanonicalEvents": "Esta operação do provedor não emitiu eventos PRP canônicos.",
+    "productionPresentation": "Apresentação em produção",
+    "surfacePreview": "Prévia da superfície de produção",
+    "noSurface": "Nenhuma superfície de apresentação foi emitida para esta operação.",
+    "resolvedDecision": "Decisão final de resposta resolvida",
+    "selectOperation": "Selecione uma operação correlacionada para inspecionar o pipeline."
+  },
+  "decision": {
+    "visible": "Visível",
+    "yes": "sim",
+    "no": "não",
+    "surface": "Superfície",
+    "container": "Contêiner",
+    "state": "Estado",
+    "action": "Ação",
+    "reason": "Motivo",
+    "reasonCode": "Código do motivo"
+  },
+  "lineage": {
+    "title": "Linhagem da finalização semântica",
+    "body": "O transporte nativo do provedor e os argumentos de ferramentas escritos pelo modelo são camadas separadas. O PRP normalizou o payload do modelo e depois a política do servidor escolheu a disposição da tarefa.",
+    "environmentConstraint": "era um dado do payload de ferramenta escrito pelo modelo, não um evento do app-server do Codex. Foi normalizado em uma ressalva de verificação não bloqueante.",
+    "policy": "Política",
+    "decisionReason": "Motivo da decisão",
+    "caveats": "Ressalvas normalizadas e solicitações ignoradas"
+  },
+  "trace": {
+    "noFrames": "Nenhum frame bruto foi capturado nesta execução.",
+    "frameTitle": "Frame #{{id}} do trace exato",
+    "selectFrame": "Selecione um frame do trace cronológico."
+  },
+  "footer": "{{frames}} frames · {{size}} · expira em {{date}}",
+  "downloadTrace": "Baixar trace exato",
+  "deleteTrace": "Excluir trace"
+}

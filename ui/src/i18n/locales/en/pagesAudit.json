@@ -1,0 +1,194 @@
+{
+  "agentCommentary": {
+    "suggestion": "Suggestion",
+    "complaint": "Complaint",
+    "commentary": "Commentary",
+    "readSuggestion": "Read suggestion from {{agent}}",
+    "readComplaint": "Read complaint from {{agent}}",
+    "task": "Task",
+    "submittedAt": "Submitted {{time}}",
+    "detailDescription": "Message details and source context.",
+    "loadingMessage": "Loading message…",
+    "tryAgain": "Try again",
+    "sourceTask": "Source task",
+    "viewRun": "View run",
+    "subtitle": "Suggestions and complaints from your agents.",
+    "filters": "Commentary filters",
+    "searchLabel": "Search commentary",
+    "searchPlaceholder": "Search messages…",
+    "filterByAgent": "Filter by agent",
+    "allAgents": "All agents",
+    "filterByType": "Filter by message type",
+    "allTypes": "All types",
+    "suggestions": "Suggestions",
+    "complaints": "Complaints",
+    "clearFilters": "Clear filters",
+    "agentFiltersError": "Could not load agent filters.",
+    "loading": "Loading commentary…",
+    "empty": {
+      "page": "No messages on this page.",
+      "filtered": "No messages match these filters.",
+      "none": "No agent commentary yet.",
+      "pageDescription": "Return to the newest messages.",
+      "filteredDescription": "Try another agent, message type, or search.",
+      "noneDescription": "Suggestions and complaints will appear here when agents submit them.",
+      "backToLatest": "Back to latest"
+    },
+    "columns": {
+      "agent": "Agent",
+      "type": "Type",
+      "message": "Message",
+      "submitted": "Submitted"
+    },
+    "messagesLabel": "Commentary messages",
+    "pageRange": "{{from}}–{{to}} of {{total}} messages",
+    "previousPage": "Previous page",
+    "previous": "Previous",
+    "nextPage": "Next page",
+    "next": "Next"
+  },
+  "auditHub": {
+    "title": "Audit",
+    "selectOrganization": "Select an organization to view Audit."
+  },
+  "companyActivity": {
+    "title": "Activity",
+    "selectOrganization": "Select an organization to view activity."
+  },
+  "routineAuditActivity": {
+    "loading": "Loading routine activity…",
+    "loadAction": "load routine activity",
+    "empty": "No routine activity yet.",
+    "label": "Routine activity"
+  },
+  "auditRuns": {
+    "routineRun": "Routine run",
+    "loadingRoutineRuns": "Loading routine runs…",
+    "loadRoutineRunsAction": "load routine runs",
+    "noRoutineRuns": "No routine runs yet.",
+    "routineRuns": "Routine runs",
+    "routineRunsDescription": "Executions created by this routine, newest first.",
+    "showingRoutineRuns": "Showing the {{limit}} most recent routine runs.",
+    "runs": "Runs",
+    "runsDescription": "Recent agent executions across the organization. Open a run to inspect its transcript, output, and task context.",
+    "filters": "Audit filters",
+    "agent": "Agent",
+    "allAgents": "All agents",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "clearFilters": "Clear filters",
+    "loadingRuns": "Loading runs…",
+    "loadRunsAction": "load runs",
+    "noMatchingRuns": "No runs match these filters.",
+    "noRuns": "No runs yet.",
+    "recentRuns": "Recent runs",
+    "unknownAgent": "Unknown agent",
+    "sourceRun": "{{source}} run",
+    "showingRuns": "Showing the {{limit}} most recent runs."
+  },
+  "auditFeed": {
+    "title": "Activity",
+    "descriptionAll": "Everything happening in your organization, newest first — people, agents, and the system. Each line is one recorded action.",
+    "descriptionAgents": "Every recorded agent action, newest first — with the responsible person and run behind each one.",
+    "actions": {
+      "all": "All actions",
+      "tasks": "Tasks",
+      "cases": "Cases",
+      "agents": "Agents",
+      "runs": "Runs",
+      "approvals": "Approvals",
+      "projects": "Projects",
+      "goals": "Goals",
+      "appsAndTools": "Apps & tools",
+      "costs": "Costs",
+      "organization": "Organization"
+    },
+    "entities": {
+      "all": "All entities",
+      "task": "Task",
+      "case": "Case",
+      "agent": "Agent",
+      "run": "Run",
+      "routine": "Routine",
+      "project": "Project",
+      "goal": "Goal",
+      "organization": "Organization",
+      "connection": "Connection"
+    },
+    "actor": {
+      "user": "User",
+      "plugin": "Plugin",
+      "agent": "Agent",
+      "system": "System"
+    },
+    "theCase": "the case",
+    "theTask": "the task",
+    "aUser": "a user",
+    "caseInstructions": "Case instructions",
+    "document": "Document",
+    "onBehalfOf": "on behalf of {{name}}",
+    "viewRun": "View run",
+    "upsell": {
+      "title": "Agent audit is a Paperclip Enterprise view",
+      "body": "The agent audit log gives you a searchable, exportable record of everything your agents did — every comment, task change, approval, and run — with the responsible person for each action. Ask an administrator to grant you the",
+      "permission": "permission to view it."
+    },
+    "export": {
+      "successTitle": "Audit exported",
+      "successBody": "Your CSV download has started.",
+      "failedTitle": "Export failed",
+      "action": "export the audit log",
+      "exporting": "Exporting…",
+      "button": "Export CSV"
+    },
+    "scope": {
+      "label": "Activity scope",
+      "requiresAccess": "Agent Actions requires audit access",
+      "agentActions": "Agent Actions"
+    },
+    "scoped": {
+      "run": "Scoped to run {{id}}",
+      "agent": "Scoped to one agent",
+      "case": "Case",
+      "entity": "Scoped to {{name}}",
+      "entityFallback": "entity"
+    },
+    "filters": {
+      "label": "Audit filters",
+      "agent": "Agent",
+      "allAgents": "All agents",
+      "responsibleUser": "Responsible user",
+      "allResponsibleUsers": "All responsible users",
+      "action": "Action",
+      "entity": "Entity",
+      "case": "Case",
+      "caseId": "Case ID or identifier",
+      "from": "From",
+      "fromDate": "From date",
+      "to": "To",
+      "toDate": "To date"
+    },
+    "clearFilters": "Clear filters",
+    "refreshingAccess": "Refreshing audit access…",
+    "loading": "Loading…",
+    "loadAction": "load the audit log",
+    "empty": {
+      "filtered": "No actions match these filters",
+      "none": "Nothing here yet",
+      "filteredDescription": "Try a wider date range or different filters.",
+      "agentsDescription": "As soon as your agents start doing things, their actions show up here.",
+      "allDescription": "As soon as anyone in your organization does something, it shows up here."
+    },
+    "listLabel": "Audit activity",
+    "loadMore": "Load more",
+    "footer": "Recorded by Paperclip — entries can't be edited. Sensitive values are never stored.",
+    "production": {
+      "tools": "Tools",
+      "company": "Company",
+      "descriptionAll": "Everything happening in your company, newest first — people, agents, and the system. Each line is one recorded action.",
+      "allActivity": "All activity",
+      "agentActions": "Agent actions",
+      "emptyAllDescription": "As soon as anyone in your company does something, it shows up here."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "provenance": {
+    "draftedBy": "Rascunho feito por {{name}} durante a configuração inicial.",
+    "drafted": "Rascunho feito durante a configuração inicial.",
+    "confirmed": "Confirmado por você em {{date}}."
+  },
+  "loadDashboardAction": "carregar seu painel",
+  "title": "Painel",
+  "searchLabel": "Buscar no seu painel",
+  "searchPlaceholder": "Buscar",
+  "subtitle": "O que é seu, se cada item está atingindo a meta, e o trabalho por trás.",
+  "back": "Voltar",
+  "newArea": "Nova área",
+  "addArea": "Adicionar área",
+  "addResponsibility": "Adicionar responsabilidade",
+  "restoreError": "Não foi possível restaurar a área. {{message}}",
+  "loadResponsibilitiesAction": "carregar suas responsabilidades",
+  "loadAgentsAction": "carregar seus agentes"
+}

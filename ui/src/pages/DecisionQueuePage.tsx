@@ -49,6 +49,7 @@ import { DecisionDateChips, type AttentionCustomRange } from "../components/Deci
 import { IssueGroupHeader } from "../components/IssueGroupHeader";
 import { Button } from "../components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
+import { t } from "@/i18n";
 
 /**
  * Queue page. A single queue's pending
@@ -129,7 +130,7 @@ export function DecisionQueuePage() {
   }, [agents]);
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Decisions", href: "/decisions" }, { label: queue?.title ?? queueKey }]);
+    setBreadcrumbs([{ label: t("pagesDecisionQueuePage.breadcrumb"), href: "/decisions" }, { label: queue?.title ?? queueKey }]);
   }, [setBreadcrumbs, queue?.title, queueKey]);
 
   // Re-hydrate per-company preferences when the company changes.
@@ -210,14 +211,14 @@ export function DecisionQueuePage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.decisionQueues.list(selectedCompanyId!) }),
     onError: (err) =>
       pushToast({
-        title: "Could not update seeding",
+        title: t("pagesDecisionQueuePage.toast.seedingFailed"),
         body: describeError(err).body,
         tone: "error",
       }),
   });
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">Select an organization first.</p>;
+    return <p className="text-sm text-muted-foreground">{t("pagesDecisionQueuePage.selectOrganization")}</p>;
   }
   // Keep a loaded queue on screen through a failed refetch; only a real
   // failure, or an outage before the first load, replaces the page.
@@ -229,7 +230,7 @@ export function DecisionQueuePage() {
       <QueryErrorState
         size="page"
         error={feedView.error}
-        action="load this queue"
+        action={t("pagesDecisionQueuePage.loadAction")}
         onRetry={feedView.retry}
         retrying={feedView.isFetching}
       />
@@ -282,17 +283,17 @@ export function DecisionQueuePage() {
 
       {isEmpty ? (
         <div className="rounded-xl border border-dashed border-border py-14 text-center">
-          <p className="text-sm font-medium text-foreground">This queue is empty.</p>
+          <p className="text-sm font-medium text-foreground">{t("pagesDecisionQueuePage.empty.title")}</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            Decisions land here when they match the queue's rules or an agent adds them.
+            {t("pagesDecisionQueuePage.empty.body")}
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           {visibleCount === 0 ? (
             <div className="rounded-xl border border-dashed border-border py-10 text-center">
-              <p className="text-sm font-medium text-foreground">No decisions match your search or filters.</p>
-              <p className="mt-1 text-xs text-muted-foreground">Adjust or clear your search and filters to see the rest.</p>
+              <p className="text-sm font-medium text-foreground">{t("pagesDecisionQueuePage.noMatch.title")}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{t("pagesDecisionQueuePage.noMatch.body")}</p>
             </div>
           ) : (
             groups.map((group) => {
@@ -339,13 +340,13 @@ export function DecisionQueuePage() {
 
           {agingItems.length > 0 && (
             <Curtain
-              label="Aging"
+              label={t("pagesDecisionQueuePage.aging.label")}
               count={agingItems.length}
               open={agingOpen}
               onToggle={() => setAgingOpen((prev) => !prev)}
             >
               <p className="text-xs text-muted-foreground">
-                Idle past {ATTENTION_AGING_DAYS} days — kept off the queue. Keep any you still want surfaced.
+                {t("pagesDecisionQueuePage.aging.body", { days: ATTENTION_AGING_DAYS })}
               </p>
               {agingItems.map((item) => (
                 <AgingItemRow
@@ -394,11 +395,11 @@ function SeedRulesCard({
         <div className="flex min-w-0 items-start gap-2">
           <Settings2 className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
           <div className="min-w-0 space-y-1">
-            <p className="text-sm font-medium text-foreground">Auto-seeding is {enabled ? "on" : "off"}</p>
+            <p className="text-sm font-medium text-foreground">{enabled ? t("pagesDecisionQueuePage.seed.titleOn") : t("pagesDecisionQueuePage.seed.titleOff")}</p>
             <p className="text-xs text-muted-foreground">
               {enabled
-                ? "This queue fills itself automatically. Decisions are added the moment they match any of its rules:"
-                : "Automatic adds are paused. These rules would add decisions to the queue when on:"}
+                ? t("pagesDecisionQueuePage.seed.bodyOn")
+                : t("pagesDecisionQueuePage.seed.bodyOff")}
             </p>
             <ul className="mt-0.5 space-y-0.5">
               {rules.map((rule) => (
@@ -410,14 +411,14 @@ function SeedRulesCard({
             </ul>
             <p className="text-(length:--text-nano) text-muted-foreground">
               {enabled
-                ? "Turning it off stops new automatic adds only — decisions already here stay, and you can still add or remove decisions by hand."
-                : "Adding or removing decisions by hand still works while automatic seeding is off."}
+                ? t("pagesDecisionQueuePage.seed.noteOn")
+                : t("pagesDecisionQueuePage.seed.noteOff")}
             </p>
           </div>
         </div>
         <Button type="button" variant="outline" size="xs" className="h-7 shrink-0" disabled={pending} onClick={onToggle}>
           {pending && <Loader2 className="h-3 w-3 animate-spin" />}
-          {enabled ? "Disable" : "Enable"}
+          {enabled ? t("pagesDecisionQueuePage.seed.disable") : t("pagesDecisionQueuePage.seed.enable")}
         </Button>
       </div>
     </div>
@@ -467,12 +468,12 @@ function QueueItemRow({
     onSuccess: () => {
       setOpen(false);
       setReason("");
-      pushToast({ title: "Removed from queue", body: item.subject.title ?? undefined, tone: "info" });
+      pushToast({ title: t("pagesDecisionQueuePage.toast.removed"), body: item.subject.title ?? undefined, tone: "info" });
       onExcluded();
     },
     onError: (err) =>
       pushToast({
-        title: "Could not exclude",
+        title: t("pagesDecisionQueuePage.toast.excludeFailed"),
         body: describeError(err).body,
         tone: "error",
       }),
@@ -485,20 +486,20 @@ function QueueItemRow({
           <PopoverTrigger asChild>
             <Button type="button" variant="ghost" size="xs" className="h-7 gap-1 text-muted-foreground">
               <X className="h-3.5 w-3.5" />
-              Exclude
+              {t("pagesDecisionQueuePage.exclude.button")}
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end" className="w-64 space-y-2 p-3">
-            <p className="text-xs font-medium text-foreground">Remove from this queue</p>
+            <p className="text-xs font-medium text-foreground">{t("pagesDecisionQueuePage.exclude.title")}</p>
             <textarea
               value={reason}
               onChange={(event) => setReason(event.target.value)}
-              placeholder="Reason (optional)…"
+              placeholder={t("pagesDecisionQueuePage.exclude.reasonPlaceholder")}
               className="min-h-16 w-full rounded-sm border border-border bg-background px-2 py-1 text-xs"
             />
             <div className="flex justify-end gap-1">
               <Button type="button" variant="ghost" size="xs" onClick={() => setOpen(false)}>
-                Cancel
+                {t("pagesDecisionQueuePage.exclude.cancel")}
               </Button>
               <Button
                 type="button"
@@ -508,7 +509,7 @@ function QueueItemRow({
                 onClick={() => exclude.mutate()}
               >
                 {exclude.isPending && <Loader2 className="h-3 w-3 animate-spin" />}
-                Exclude
+                {t("pagesDecisionQueuePage.exclude.button")}
               </Button>
             </div>
           </PopoverContent>

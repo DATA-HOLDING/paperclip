@@ -11,16 +11,17 @@ import { queryKeys } from "@/lib/queryKeys";
 import { RelativeTime } from "@/pages/tools/shared";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 const PAGE_SIZE = 25;
 
 const OUTCOME_META: Record<ToolAuditOutcome, { label: string; status: string }> = {
-  allowed: { label: "Allowed", status: "allowed" },
-  blocked: { label: "Blocked", status: "denied" },
-  asked_first: { label: "Asked first", status: "require-approval" },
-  waiting: { label: "Waiting", status: "deferred" },
-  failed: { label: "Failed", status: "failed" },
-  unknown: { label: "Recorded", status: "unchecked" },
+  allowed: { label: t("pagesAppsGateways.activity.outcome.allowed"), status: "allowed" },
+  blocked: { label: t("pagesAppsGateways.activity.outcome.blocked"), status: "denied" },
+  asked_first: { label: t("pagesAppsGateways.activity.outcome.askedFirst"), status: "require-approval" },
+  waiting: { label: t("pagesAppsGateways.activity.outcome.waiting"), status: "deferred" },
+  failed: { label: t("pagesAppsGateways.activity.outcome.failed"), status: "failed" },
+  unknown: { label: t("pagesAppsGateways.activity.outcome.recorded"), status: "unchecked" },
 };
 
 function detailString(details: Record<string, unknown> | null, key: string): string | null {
@@ -68,9 +69,9 @@ function Fact({ label, value, mono = false }: { label: string; value: string; mo
 function ActivityRow({ event }: { event: ToolGatewayActivityEvent }) {
   const [open, setOpen] = useState(false);
   const outcome = OUTCOME_META[event.normalizedOutcome] ?? OUTCOME_META.unknown;
-  const actor = event.agentDisplayName ?? "Client";
-  const app = event.appDisplayName ?? event.connectionDisplayName ?? event.applicationDisplayName ?? "App";
-  const tool = event.toolDisplayName ?? event.invocation?.toolName ?? "Tool call";
+  const actor = event.agentDisplayName ?? t("pagesAppsGateways.activity.client");
+  const app = event.appDisplayName ?? event.connectionDisplayName ?? event.applicationDisplayName ?? t("pagesAppsGateways.activity.app");
+  const tool = event.toolDisplayName ?? event.invocation?.toolName ?? t("pagesAppsGateways.activity.toolCall");
   const rawTool = event.invocation?.toolName ?? detailString(event.details, "tool") ?? detailString(event.details, "toolName");
   const reason = detailString(event.details, "reasonCode");
   const argumentsText = formatSummary(
@@ -96,7 +97,7 @@ function ActivityRow({ event }: { event: ToolGatewayActivityEvent }) {
         )}
         <span className="min-w-0 flex-1">
           <span className="block text-foreground">
-            <span className="font-medium">{actor}</span> used <span className="font-medium">{tool}</span> in {app}
+            <span className="font-medium">{actor}</span>{t("pagesAppsGateways.activity.used")}<span className="font-medium">{tool}</span>{t("pagesAppsGateways.activity.in", { app })}
           </span>
         </span>
         <span className="flex shrink-0 items-center gap-2 whitespace-nowrap">
@@ -110,18 +111,18 @@ function ActivityRow({ event }: { event: ToolGatewayActivityEvent }) {
       {open ? (
         <div className="border-t border-border bg-muted/30 px-4 py-3 pl-10 text-xs">
           <dl>
-            {rawTool ? <Fact label="Tool" value={rawTool} mono /> : null}
-            {event.invocation?.status ? <Fact label="Call status" value={event.invocation.status} /> : null}
-            {event.invocation?.policyDecision ? <Fact label="Decision" value={event.invocation.policyDecision} /> : null}
-            {reason ? <Fact label="Reason" value={reason} mono /> : null}
-            {duration ? <Fact label="Duration" value={duration} /> : null}
-            {event.invocation?.id ? <Fact label="Invocation ID" value={event.invocation.id} mono /> : null}
-            {event.invocation?.errorCode ? <Fact label="Error code" value={event.invocation.errorCode} mono /> : null}
-            {event.invocation?.errorMessage ? <Fact label="Error" value={event.invocation.errorMessage} /> : null}
+            {rawTool ? <Fact label={t("pagesAppsGateways.activity.fact.tool")} value={rawTool} mono /> : null}
+            {event.invocation?.status ? <Fact label={t("pagesAppsGateways.activity.fact.callStatus")} value={event.invocation.status} /> : null}
+            {event.invocation?.policyDecision ? <Fact label={t("pagesAppsGateways.activity.fact.decision")} value={event.invocation.policyDecision} /> : null}
+            {reason ? <Fact label={t("pagesAppsGateways.activity.fact.reason")} value={reason} mono /> : null}
+            {duration ? <Fact label={t("pagesAppsGateways.activity.fact.duration")} value={duration} /> : null}
+            {event.invocation?.id ? <Fact label={t("pagesAppsGateways.activity.fact.invocationId")} value={event.invocation.id} mono /> : null}
+            {event.invocation?.errorCode ? <Fact label={t("pagesAppsGateways.activity.fact.errorCode")} value={event.invocation.errorCode} mono /> : null}
+            {event.invocation?.errorMessage ? <Fact label={t("pagesAppsGateways.activity.fact.error")} value={event.invocation.errorMessage} /> : null}
           </dl>
           {argumentsText ? (
             <div className="mt-2 space-y-1">
-              <div className="text-muted-foreground">Arguments (redacted)</div>
+              <div className="text-muted-foreground">{t("pagesAppsGateways.activity.arguments")}</div>
               <pre className={cn("overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-border bg-background p-3 font-mono text-xs text-foreground", ANALYTICS_MASK_CLASS)}>
                 {argumentsText}
               </pre>
@@ -129,7 +130,7 @@ function ActivityRow({ event }: { event: ToolGatewayActivityEvent }) {
           ) : null}
           {resultText ? (
             <div className="mt-3 space-y-1">
-              <div className="text-muted-foreground">Result (redacted)</div>
+              <div className="text-muted-foreground">{t("pagesAppsGateways.activity.result")}</div>
               <pre className={cn("overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-border bg-background p-3 font-mono text-xs text-foreground", ANALYTICS_MASK_CLASS)}>
                 {resultText}
               </pre>
@@ -181,7 +182,7 @@ export function GatewayActivityPanel({
     return (
       <QueryErrorState
         error={activityQuery.error}
-        action="load gateway activity"
+        action={t("pagesAppsGateways.activity.loadAction")}
         onRetry={activityView.retry}
         retrying={activityView.isFetching}
       />
@@ -191,11 +192,11 @@ export function GatewayActivityPanel({
   return (
     <div className="space-y-3">
       <p className="text-sm text-muted-foreground">
-        Calls through this gateway from the last 30 days. Open a row to inspect its tool, redacted arguments, result, and decision.
+        {t("pagesAppsGateways.activity.intro")}
       </p>
       {events.length === 0 ? (
         <div className="rounded-md border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
-          No calls have gone through this gateway yet.
+          {t("pagesAppsGateways.activity.empty")}
         </div>
       ) : (
         <ul className="divide-y divide-border rounded-lg border border-border">
@@ -210,7 +211,7 @@ export function GatewayActivityPanel({
             onClick={() => activityQuery.fetchNextPage()}
             disabled={activityQuery.isFetchingNextPage}
           >
-            {activityQuery.isFetchingNextPage ? "Loading…" : "Load more"}
+            {activityQuery.isFetchingNextPage ? t("pagesAppsGateways.activity.loading") : t("pagesAppsGateways.activity.loadMore")}
           </Button>
         </div>
       ) : null}

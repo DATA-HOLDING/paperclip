@@ -1,0 +1,8 @@
+{
+  "decision": {
+    "allowed": "allowed",
+    "rejected": "rejected"
+  },
+  "interrupted": "Interrupted",
+  "changed": "Changed"
+}

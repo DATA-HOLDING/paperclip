@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   RESPONSIBILITY_STATUS_REPORT_LABEL,
@@ -45,11 +46,11 @@ export function describeStatusAuthor(
   ownerUserId: string,
 ): string {
   const who = current.agentId
-    ? agentsById.get(current.agentId)?.name ?? "an agent"
+    ? agentsById.get(current.agentId)?.name ?? t("componentsResponsibilitiesResponsibilityStatusLead.author.anAgent")
     : current.userId
-      ? current.userId === ownerUserId ? "the owner" : "a teammate"
-      : "an agent no longer here";
-  return `Written by ${who} · ${describeReadingAge(current.writtenAt, now)}`;
+      ? current.userId === ownerUserId ? t("componentsResponsibilitiesResponsibilityStatusLead.author.owner") : t("componentsResponsibilitiesResponsibilityStatusLead.author.teammate")
+      : t("componentsResponsibilitiesResponsibilityStatusLead.author.formerAgent");
+  return t("componentsResponsibilitiesResponsibilityStatusLead.author.writtenBy", { who, age: describeReadingAge(current.writtenAt, now) });
 }
 
 /**
@@ -92,7 +93,7 @@ export function ResponsibilityStatusBlock({
   if (!current) return <div className={cn("flex flex-col gap-1.5", className)}>{derived}</div>;
 
   const reporterId = report.data?.reporterAgentId ?? current.agentId;
-  const reporterName = reporterId ? agentsById.get(reporterId)?.name ?? "the agent" : null;
+  const reporterName = reporterId ? agentsById.get(reporterId)?.name ?? t("componentsResponsibilitiesResponsibilityStatusLead.theAgent") : null;
   const requested = report.data?.updateRequested ?? false;
   return (
     <div className={cn("flex flex-col gap-3", className)}>
@@ -103,7 +104,7 @@ export function ResponsibilityStatusBlock({
         <p className="text-sm text-foreground" data-agent-status-message="">{current.message}</p>
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
           <span>{describeStatusAuthor(current, agentsById, now, responsibility.ownerUserId)}</span>
-          {current.outOfDate ? <StaleFlag label="Out of date" /> : null}
+          {current.outOfDate ? <StaleFlag label={t("componentsResponsibilitiesResponsibilityStatusLead.outOfDate")} /> : null}
         </p>
         {editable && reporterName ? (
           <div className="flex flex-wrap items-center gap-2">
@@ -117,16 +118,16 @@ export function ResponsibilityStatusBlock({
               data-ask-for-update=""
             >
               {ask.isPending ? <Loader2 aria-hidden="true" className="animate-spin" /> : <MessageSquare aria-hidden="true" />}
-              {requested ? `Asked ${reporterName} for an update` : `Ask ${reporterName} for an update`}
+              {requested ? t("componentsResponsibilitiesResponsibilityStatusLead.asked", { name: reporterName }) : t("componentsResponsibilitiesResponsibilityStatusLead.ask", { name: reporterName })}
             </Button>
             {ask.error ? (
-              <p role="alert" className="text-xs text-destructive">Couldn’t ask. {describeError(ask.error).body}</p>
+              <p role="alert" className="text-xs text-destructive">{t("componentsResponsibilitiesResponsibilityStatusLead.askFailed")} {describeError(ask.error).body}</p>
             ) : null}
           </div>
         ) : null}
       </div>
       <div className="flex flex-col gap-1.5 border-t border-border pt-3" data-derived-status="">
-        <span className="text-xs text-muted-foreground">From the number</span>
+        <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesResponsibilityStatusLead.fromNumber")}</span>
         {derived}
       </div>
     </div>

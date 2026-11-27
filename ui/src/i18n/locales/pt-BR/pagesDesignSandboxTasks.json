@@ -1,0 +1,19 @@
+{
+  "breadcrumb": "Tarefas",
+  "unknownAgent": "Agente desconhecido",
+  "board": "Conselho",
+  "unknownUser": "Usuário desconhecido",
+  "emptyOrg": "Nenhuma tarefa nesta organização",
+  "newTask": "Nova tarefa",
+  "emptyView": "Nenhuma tarefa corresponde a esta visualização",
+  "clearFilters": "Limpar filtros",
+  "selectOrganization": "Selecione uma organização para ver as tarefas.",
+  "loadError": "Não foi possível carregar as tarefas",
+  "retry": "Tentar novamente",
+  "loading": "Carregando tarefas…",
+  "matching": "{{n}} tarefas correspondentes",
+  "parentsIncluded": " · Tarefas pai incluídas para contexto",
+  "loadedCoverage": "Busca, visualizações e filtros cobrem as {{n}} tarefas carregadas.",
+  "loadingMore": "Carregando…",
+  "loadMore": "Carregar mais tarefas"
+}

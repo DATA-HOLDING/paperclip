@@ -1,0 +1,32 @@
+{
+  "risk": "risco {{level}}",
+  "subject": {
+    "toolCall": "uma chamada de ferramenta",
+    "prompt": "o prompt",
+    "action": "a ação"
+  },
+  "hook": {
+    "named": "Hook {{event}}",
+    "generic": "Hook",
+    "stoppedNoResult": "{{subject}} parou sem resultado",
+    "runningNamed": "Executando o hook {{event}}",
+    "running": "Executando um hook",
+    "blocked": "{{subject}} bloqueou {{target}}",
+    "stoppedTurn": "{{subject}} interrompeu o turno",
+    "failed": "{{subject}} falhou",
+    "feedback": "{{subject}} enviou feedback",
+    "context": "{{subject}} adicionou contexto",
+    "ran": "{{subject}} executou"
+  },
+  "review": {
+    "stoppedNoDecision": "A revisão automática parou sem decisão",
+    "running": "Revisando automaticamente",
+    "approved": "A revisão automática aprovou",
+    "denied": "A revisão automática negou",
+    "timedOut": "A revisão automática excedeu o tempo",
+    "didNotRun": "A ação não foi executada.",
+    "stopped": "A revisão automática parou",
+    "askedApproval": "A revisão automática pediu aprovação",
+    "finished": "A revisão automática terminou"
+  }
+}

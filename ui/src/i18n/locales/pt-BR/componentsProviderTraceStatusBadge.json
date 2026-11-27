@@ -1,0 +1,17 @@
+{
+  "label": {
+    "expired": "Rastreamento expirado",
+    "capturing": "Rastreamento bruto ativado",
+    "complete": "Rastreamento capturado",
+    "incomplete": "Rastreamento incompleto",
+    "truncated": "Rastreamento truncado",
+    "deleted": "Rastreamento excluído",
+    "requested": "Rastreamento solicitado",
+    "off": "Rastreamento desligado"
+  },
+  "title": {
+    "summary": "{{frameCount}} quadros · {{byteCount}} bytes · expira em {{expiresAt}}",
+    "requested": "Esta execução solicitou a captura de quadros sensíveis do provedor.",
+    "disabled": "A captura bruta de quadros do provedor foi desativada para esta execução."
+  }
+}

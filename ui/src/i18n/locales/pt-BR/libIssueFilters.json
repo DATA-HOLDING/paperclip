@@ -1,0 +1,18 @@
+{
+  "externalObjects": {
+    "failed": "Alguma com falha",
+    "waiting": "Alguma aguardando",
+    "running": "Alguma em execução",
+    "authRequired": "Autenticação necessária",
+    "rateLimited": "Limite de taxa atingido",
+    "unreachable": "Inacessível",
+    "stale": "Desatualizado",
+    "none": "Nenhum objeto externo"
+  },
+  "quickFilters": {
+    "all": "Todas",
+    "active": "Ativas",
+    "backlog": "Backlog",
+    "done": "Concluídas"
+  }
+}

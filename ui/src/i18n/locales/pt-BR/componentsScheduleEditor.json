@@ -1,0 +1,53 @@
+{
+  "presets": {
+    "everyMinute": "A cada minuto",
+    "everyHour": "A cada hora",
+    "everyDay": "Todo dia",
+    "weekdays": "Dias úteis",
+    "weekly": "Semanal",
+    "monthly": "Mensal",
+    "custom": "Personalizado (cron)"
+  },
+  "days": {
+    "mon": "Seg",
+    "tue": "Ter",
+    "wed": "Qua",
+    "thu": "Qui",
+    "fri": "Sex",
+    "sat": "Sáb",
+    "sun": "Dom"
+  },
+  "describe": {
+    "everyMinute": "A cada minuto",
+    "everyHour": "A cada hora, no minuto :{{minute}}",
+    "everyDay": "Todo dia às {{time}}",
+    "weekdays": "Dias úteis às {{time}}",
+    "weekly": "Toda {{day}} às {{time}}",
+    "monthly": "Mensalmente no dia {{day}}{{suffix}} às {{time}}",
+    "none": "Nenhum agendamento definido"
+  },
+  "ordinal": {
+    "th": "",
+    "st": "",
+    "nd": "",
+    "rd": ""
+  },
+  "validation": {
+    "empty": "Informe uma expressão cron de 5 campos.",
+    "fieldCount": "Use exatamente 5 campos; esta tem {{count}}.",
+    "invalidFields": "Os campos do cron precisam usar números, intervalos, listas, curingas ou passos válidos.",
+    "valid": "Cron válido.",
+    "validNoFires": "Cron válido, mas nenhuma execução futura foi encontrada.",
+    "next": " Próximas: {{fires}}."
+  },
+  "frequencyAria": "Frequência do agendamento",
+  "frequencyPlaceholder": "Escolha a frequência...",
+  "cronAria": "Expressão cron",
+  "cronHelp": "Cinco campos: minuto hora dia-do-mês mês dia-da-semana",
+  "labels": {
+    "at": "às",
+    "atMinute": "no minuto",
+    "on": "em",
+    "onDay": "no dia"
+  }
+}

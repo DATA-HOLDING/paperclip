@@ -1,0 +1,34 @@
+{
+  "state": {
+    "resolved": "Resolved",
+    "dismissed": "Dismissed",
+    "escalated": "Escalated",
+    "pendingApproval": "Pending approval",
+    "open": "Open"
+  },
+  "scope": {
+    "company": "company",
+    "agent": "agent",
+    "project": "project"
+  },
+  "kind": {
+    "warning": "{{scope}} budget warning",
+    "hardStop": "{{scope}} hard stop"
+  },
+  "description": {
+    "incomplete": "Accounting is incomplete. Known spend is {{spend}}; review pending or unpriced usage in the budget policy.",
+    "reached": "Spending reached {{spend}} against a limit of {{limit}}."
+  },
+  "warningNotice": "Spending crossed the warning threshold. This warning does not pause work.",
+  "paused": {
+    "project": "Project execution is paused. New work in this project will not start until you resolve the budget incident.",
+    "scope": "This scope is paused. New heartbeats will not start until you resolve the budget incident."
+  },
+  "newBudget": "New budget (USD)",
+  "applying": "Applying...",
+  "raise": "Raise budget",
+  "raiseAndResume": "Raise budget & resume",
+  "mustExceed": "The new budget must exceed current observed spend.",
+  "dismissWarning": "Dismiss warning",
+  "keepPaused": "Keep paused"
+}

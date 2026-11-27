@@ -1,0 +1,44 @@
+{
+  "options": {
+    "projectDefault": "Padrão do projeto",
+    "newIsolated": "Novo espaço de trabalho isolado",
+    "reuseExisting": "Reutilizar espaço de trabalho existente",
+    "existingIsolated": "Espaço de trabalho isolado existente"
+  },
+  "copy": {
+    "copied": "Copiado!",
+    "copy": "Copiar",
+    "copiedToClipboard": "Copiado para a área de transferência",
+    "copyAria": "Copiar {{label}}",
+    "value": "valor"
+  },
+  "mode": {
+    "isolatedWorkspace": "Espaço de trabalho isolado",
+    "operatorBranch": "Branch do operador",
+    "cloudSandbox": "Ambiente na nuvem",
+    "adapterManaged": "Gerenciado pelo adaptador",
+    "workspace": "Espaço de trabalho"
+  },
+  "status": {
+    "active": "ativo",
+    "idle": "ocioso",
+    "in_review": "em revisão",
+    "archived": "arquivado"
+  },
+  "cancel": "Cancelar",
+  "save": "Salvar",
+  "edit": "Editar",
+  "repo": "Repositório:",
+  "environment": "Ambiente:",
+  "reusedWorkspaceSuffix": " · espaço de trabalho reutilizado",
+  "pending": {
+    "isolated": "Um novo espaço de trabalho isolado será criado quando esta tarefa for executada.",
+    "reuse": "Esta tarefa vai reutilizar um espaço de trabalho existente quando for executada.",
+    "projectDefault": "Esta tarefa vai usar a configuração de espaço de trabalho padrão do projeto quando for executada."
+  },
+  "reusing": "Reutilizando:",
+  "viewDetails": "Ver detalhes do espaço de trabalho →",
+  "current": "Atual:",
+  "browseFiles": "Procurar arquivos…",
+  "openFileByPath": "Abrir arquivo pelo caminho…"
+}

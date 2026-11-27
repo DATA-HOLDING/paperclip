@@ -1,5 +1,6 @@
 import type { IssueSummary } from "@paperclipai/shared";
 import type { LiveRunForIssue } from "../../api/heartbeats";
+import { t } from "@/i18n";
 export interface ChartTask { id: string; title: string; identifier: string | null; agentIds: string[]; ownerId: string }
 /** Only actual running executions create associations. No inference from reporting lines. */
 export function collectChartTasks(runs: LiveRunForIssue[], summaries: IssueSummary[], agentIds: ReadonlySet<string>): ChartTask[] {
@@ -12,6 +13,6 @@ export function collectChartTasks(runs: LiveRunForIssue[], summaries: IssueSumma
   }
   return [...associations].sort(([a], [b]) => a.localeCompare(b)).map(([id, agents]) => {
     const task = names.get(id), ids = [...agents].sort();
-    return { id, title: task?.title ?? "Running task", identifier: task?.identifier ?? null, agentIds: ids, ownerId: ids[0] };
+    return { id, title: task?.title ?? t("pagesOrgChart.runningTask"), identifier: task?.identifier ?? null, agentIds: ids, ownerId: ids[0] };
   });
 }

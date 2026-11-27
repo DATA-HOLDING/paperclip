@@ -1,0 +1,24 @@
+{
+  "level": {
+    "company": "Organização",
+    "team": "Equipe",
+    "agent": "Agente",
+    "task": "Tarefa"
+  },
+  "noOrganization": "Nenhuma organização selecionada",
+  "newSubGoal": "Novo subobjetivo",
+  "newGoal": "Novo objetivo",
+  "titlePlaceholder": "Título do objetivo",
+  "descriptionPlaceholder": "Adicione uma descrição...",
+  "status": {
+    "planned": "planejado",
+    "active": "ativo",
+    "achieved": "alcançado",
+    "cancelled": "cancelado"
+  },
+  "parentGoal": "Objetivo pai",
+  "noParent": "Sem objetivo pai",
+  "creating": "Criando…",
+  "createSubGoal": "Criar subobjetivo",
+  "createGoal": "Criar objetivo"
+}

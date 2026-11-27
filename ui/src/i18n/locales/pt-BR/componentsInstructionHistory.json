@@ -1,0 +1,15 @@
+{
+  "history": "Histórico",
+  "loadHistoryAction": "carregar o histórico de revisões",
+  "loadDiffAction": "carregar a comparação da revisão",
+  "loading": "Carregando revisões…",
+  "current": " · Atual",
+  "older": "Revisões anteriores",
+  "selected": "Revisão selecionada",
+  "changes": "Alterações da revisão selecionada até a atual",
+  "removed": "Removido:",
+  "added": "Adicionado:",
+  "noChanges": "Nenhuma alteração no conteúdo.",
+  "restore": "Restaurar como nova revisão",
+  "saveFirst": "Salve ou cancele suas edições antes de restaurar."
+}

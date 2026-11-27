@@ -1,0 +1,10 @@
+{
+  "eventsAcrossKinds_one": "{{count}} event across {{kinds}}",
+  "eventsAcrossKinds_other": "{{count}} events across {{kinds}}",
+  "kinds_one": "{{count}} kind",
+  "kinds_other": "{{count}} kinds",
+  "net": "net",
+  "debits": "debits",
+  "credits": "credits",
+  "estimated": "estimated"
+}

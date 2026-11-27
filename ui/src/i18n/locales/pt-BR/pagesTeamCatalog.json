@@ -1,0 +1,211 @@
+{
+  "trust": {
+    "markdownOnly": {
+      "label": "Só markdown",
+      "tip": "Contém só markdown e referências. Nenhum conteúdo executável."
+    },
+    "assets": {
+      "label": "Recursos",
+      "tip": "Inclui recursos estáticos (imagens, fixtures). Nenhum conteúdo executável."
+    },
+    "scripts": {
+      "label": "Scripts",
+      "tip": "Inclui scripts executáveis que passaram por revisão de segurança antes do empacotamento."
+    },
+    "external": {
+      "label": "Fontes externas",
+      "tip": "Referencia fontes externas resolvidas no momento da instalação."
+    }
+  },
+  "compat": {
+    "compatible": "Compatível",
+    "unknown": "Compat. desconhecida",
+    "invalid": "Inválido"
+  },
+  "provenance": "Origem do pacote do catálogo",
+  "risk": {
+    "title_one": "Esta equipe referencia {{count}} fonte externa",
+    "unsupported": "não suportado na instalação pelo navegador",
+    "unpinned": "sem versão fixada",
+    "title_other": "Esta equipe referencia {{count}} fontes externas"
+  },
+  "hierarchy": {
+    "rootAgent": "agente raiz",
+    "noAgents": "Nenhum agente nesta equipe."
+  },
+  "skills": {
+    "resolved": "resolvida",
+    "external": "externa",
+    "none": "Nenhuma skill necessária."
+  },
+  "env": {
+    "title": "Segredos e variáveis de ambiente",
+    "required": "obrigatório"
+  },
+  "external": {
+    "title": "Fontes externas · {{count}}",
+    "pinned": "Fixada",
+    "unpinned": "Não fixada",
+    "unsupported": "Não suportada na instalação pelo navegador"
+  },
+  "detail": {
+    "reinstall": "Reinstalar a mais recente",
+    "install": "Instalar equipe",
+    "installed": "Instalada",
+    "updateAvailable": "Atualização disponível",
+    "invalidTip": "Esta equipe não pode ser instalada — o manifesto do pacote é inválido.",
+    "permissionTip": "Requer permissão de operador do conselho ou de criação de agentes.",
+    "agents": "Agentes",
+    "projects": "Projetos",
+    "routines": "Rotinas",
+    "requiredSkills": "Skills necessárias",
+    "agentHierarchy": "Hierarquia de agentes",
+    "files": "Arquivos",
+    "close": "Fechar"
+  },
+  "steps": {
+    "targetManager": "Gestor de destino",
+    "sourcePolicy": "Política de fontes",
+    "skillPlan": "Skills pré-requisito",
+    "preview": "Prévia"
+  },
+  "actions": {
+    "loadPreview": "carregar a prévia da instalação",
+    "install": "instalar a equipe"
+  },
+  "errors": {
+    "enableLegacyAdapter": "Ative um adaptador legado antes de instalar esta equipe."
+  },
+  "wizard": {
+    "title": "Instalar {{name}}",
+    "step": "Etapa {{current}} de {{total}} · {{label}}",
+    "installFailed": "Falha na instalação",
+    "partialState": "O estado parcial não é desfeito. Revise o registro de atividade da organização antes de tentar novamente.",
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "blocked_one": "Instalação bloqueada: {{count}} erro",
+    "secretsMissing": "Segredos obrigatórios ausentes: {{count}}",
+    "enableLegacy": "Ative um adaptador legado para instalar esta equipe",
+    "confirmExecutables": "Confirmar — instalar com executáveis",
+    "installWithExecutables": "Instalar com executáveis",
+    "continue": "Continuar",
+    "blocked_other": "Instalação bloqueada: {{count}} erros"
+  },
+  "targetManager": {
+    "help": "Os agentes raiz desta equipe precisam de um gestor na sua organização. Escolha o agente que será o superior deles. A hierarquia interna da equipe é preservada.",
+    "rootAgents": "Agentes raiz",
+    "noAgents": "Nenhum agente está disponível para gerir esta equipe. Crie um agente na sua organização e tente novamente.",
+    "search": "Buscar agentes…",
+    "noneFound": "Nenhum agente encontrado.",
+    "fullOrganization": "Usar esta equipe como pacote de organização completa (sem gestor de destino)"
+  },
+  "sourcePolicy": {
+    "intro_one": "Esta equipe referencia {{count}} fonte externa. Revise cada uma e decida o que permitir antes de continuar.",
+    "pinned": "fixada",
+    "unpinned": "referência não fixada",
+    "unsupported": "não instalável pelo navegador",
+    "allowExternal": "Permitir fontes externas",
+    "allowExternalHint": "Resolve fontes github/url de skills e equipes no momento da instalação.",
+    "allowUnpinned": "Permitir fontes opcionais não fixadas",
+    "allowUnpinnedHint": "Permite fontes opcionais que não estão fixadas a uma ref ou checksum.",
+    "allowLocalPath": "Permitir fontes de caminho local",
+    "allowLocalPathHint": "Necessário para fontes local_path / agent_package. Somente para desenvolvimento.",
+    "localPathWarning": "Esta equipe tem fontes de caminho local. Ative “Permitir fontes de caminho local” para continuar ou instale-a pela CLI.",
+    "intro_other": "Esta equipe referencia {{count}} fontes externas. Revise cada uma e decida o que permitir antes de continuar."
+  },
+  "skillAction": {
+    "bundled": "Incluída no pacote",
+    "catalog": "Será instalada do catálogo",
+    "external": "Será importada da fonte",
+    "blocked": "Bloqueada"
+  },
+  "skillPlan": {
+    "intro": "Antes de importar os agentes, o catálogo resolve as skills de que eles dependem. Este é o plano de resolução."
+  },
+  "preview": {
+    "preparing": "Preparando a prévia…",
+    "retry": "Tentar novamente",
+    "summary": "Resumo",
+    "starterTasks": "Tarefas iniciais",
+    "collisionStrategy": "Estratégia de conflito",
+    "renameCollisions": "Renomear conflitos",
+    "skipCollisions": "Ignorar conflitos",
+    "installBlocked": "Instalação bloqueada",
+    "agentsSection": "Agentes · {{count}}",
+    "projectsSection": "Projetos · {{count}}",
+    "starterTasksSection": "Tarefas iniciais · {{count}}",
+    "adapterSection": "Seleção de adaptador · {{count}}",
+    "noLegacyAdapter": "Nenhum adaptador legado ativado",
+    "adapterHint": "Cada agente importado usa por padrão o adaptador do pacote; altere aqui antes de instalar. A configuração detalhada de modelo por adaptador pode ser editada no agente depois da instalação.",
+    "envSection": "Segredos e variáveis de ambiente · {{count}}",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "valueAria": "Valor de {{key}}",
+    "hideKey": "Ocultar {{key}}",
+    "showKey": "Mostrar {{key}}",
+    "hideValue": "Ocultar valor",
+    "showValue": "Mostrar valor",
+    "provenance": {
+      "stamped": "As entidades importadas são marcadas com",
+      "contentHash": "({{package}}, hash do conteúdo",
+      "end": "), e um evento de atividade é registrado para a prévia e a instalação."
+    }
+  },
+  "apply": {
+    "installing": "Instalando {{name}}…",
+    "progressHint": "Resolvendo skills e importando agentes, projetos e rotinas. Isso pode levar um momento.",
+    "success": "Equipe instalada",
+    "successBody": "{{name}} foi importada para a sua organização. As entidades importadas são marcadas com a origem do catálogo.",
+    "agentsImported": "Agentes importados",
+    "projectsImported": "Projetos importados",
+    "skillsResolved": "Skills resolvidas",
+    "viewAgents": "Ver agentes importados →",
+    "viewProjects": "Ver projetos importados →",
+    "viewRoutines": "Ver rotinas →",
+    "viewActivity": "Ver registro de atividade →",
+    "done": "Concluir"
+  },
+  "row": {
+    "outOfDate": "Atualização disponível — a equipe instalada está desatualizada",
+    "hasExternal": "Tem fontes externas"
+  },
+  "card": {
+    "agents_one": "{{count}} agente",
+    "projects_one": "{{count}} projeto",
+    "routines_one": "{{count}} rotina",
+    "agents_other": "{{count}} agentes",
+    "projects_other": "{{count}} projetos",
+    "routines_other": "{{count}} rotinas"
+  },
+  "breadcrumbs": {
+    "orgChart": "Organograma",
+    "teams": "Equipes"
+  },
+  "list": {
+    "selectOrganization": "Selecione uma organização para navegar no catálogo de equipes.",
+    "controlsAria": "Controles de equipes",
+    "search": "Buscar equipes",
+    "allKinds": "Todos os tipos",
+    "bundled": "Incluídas",
+    "optional": "Opcionais",
+    "kind": "Tipo",
+    "categoryValue": "Categoria · {{category}}",
+    "allCategories": "Todas as categorias",
+    "category": "Categoria",
+    "anyRisk": "Qualquer risco",
+    "safeOnly": "Só seguras",
+    "hasWarnings": "Com avisos",
+    "blocked": "Bloqueadas",
+    "risk": "Risco",
+    "resetFilters": "Limpar filtros",
+    "loadAction": "carregar o catálogo de equipes",
+    "noCatalog": "Nenhum catálogo de equipes configurado.",
+    "noMatch": "Nenhuma equipe corresponde a este filtro.",
+    "bundledGroup": "Incluídas · {{count}}",
+    "optionalGroup": "Opcionais · {{count}}",
+    "installedGroup": "Instaladas · {{count}}",
+    "backToCatalog": "Voltar ao catálogo",
+    "selectTeam": "Selecione uma equipe para ver os detalhes.",
+    "importedToast": "{{name}} foi importada."
+  }
+}

@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { describeError } from "@/api/errors";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export function ComposioAppManager({ app, connections, initialConnectionId, onClose }: {
   app: AggregatorAppCatalogEntry; connections: ToolConnection[]; initialConnectionId?: string; onClose: () => void;
@@ -21,12 +22,12 @@ export function ComposioAppManager({ app, connections, initialConnectionId, onCl
   const [connectionId, setConnectionId] = useState(initialConnectionId ?? connections[0]?.id ?? "");
   const connection = connections.find(candidate => candidate.id === connectionId);
   return <Dialog open onOpenChange={open => { if (!open) onClose(); }}><DialogContent className={ANALYTICS_MASK_CLASS}>
-    <DialogHeader><DialogTitle>Manage {app.name}</DialogTitle><DialogDescription>Accounts and sign-in are managed in Composio.</DialogDescription></DialogHeader>
-    {connections.length > 1 ? <div className="space-y-2"><Label htmlFor="composio-manage-gateway">Composio account</Label>
+    <DialogHeader><DialogTitle>{t("pagesApps.aggregatorManager.title", { name: app.name })}</DialogTitle><DialogDescription>{t("pagesApps.composio.managedIn")}</DialogDescription></DialogHeader>
+    {connections.length > 1 ? <div className="space-y-2"><Label htmlFor="composio-manage-gateway">{t("pagesApps.composio.account")}</Label>
       <select id="composio-manage-gateway" value={connectionId} onChange={event => setConnectionId(event.target.value)} className={cn("h-9 w-full rounded-md border border-input bg-background px-3 text-sm", ANALYTICS_MASK_CLASS)}>
         {connections.map(candidate => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}
       </select></div> : null}
-    {connection ? <ComposioAccountObservations key={connection.id} app={app} connection={connection} onClose={onClose} /> : <p role="alert">This Composio connection is no longer available.</p>}
+    {connection ? <ComposioAccountObservations key={connection.id} app={app} connection={connection} onClose={onClose} /> : <p role="alert">{t("pagesApps.composio.unavailable")}</p>}
   </DialogContent></Dialog>;
 }
 
@@ -52,21 +53,21 @@ function ComposioAccountObservations({ app, connection, onClose }: { app: Aggreg
   }
   return <>
     {error ? <p role="alert" className="text-sm text-destructive">{error}</p> : null}
-    {accountsView.kind === "error" ? <QueryErrorState error={accountsQuery.error} action="load Composio accounts" onRetry={accountsView.retry} retrying={accountsView.isFetching} /> : null}
-    {accountsQuery.isLoading || accountsView.kind === "reconnecting" ? <p role="status" className="text-sm text-muted-foreground">Loading accounts…</p> : accounts.length === 0 ? <p className="text-sm text-muted-foreground">No connected {app.name} accounts.</p> : <div className="divide-y divide-border">
+    {accountsView.kind === "error" ? <QueryErrorState error={accountsQuery.error} action={t("pagesApps.errorActions.loadComposioAccounts")} onRetry={accountsView.retry} retrying={accountsView.isFetching} /> : null}
+    {accountsQuery.isLoading || accountsView.kind === "reconnecting" ? <p role="status" className="text-sm text-muted-foreground">{t("pagesApps.aggregatorManager.loadingAccounts")}</p> : accounts.length === 0 ? <p className="text-sm text-muted-foreground">{t("pagesApps.aggregatorManager.noAccounts", { name: app.name })}</p> : <div className="divide-y divide-border">
       {accounts.map(({ account, snapshot }) => <div key={`${snapshot.toolkit}:${account.id}`} className="py-3">
-        <p className={cn("truncate text-sm font-medium", ANALYTICS_MASK_CLASS)}>{account.alias || `${app.name} account`}</p>
+        <p className={cn("truncate text-sm font-medium", ANALYTICS_MASK_CLASS)}>{account.alias || t("pagesApps.aggregatorManager.accountFallback", { name: app.name })}</p>
         <p className="text-xs text-muted-foreground">{snapshot.errorAt || Date.now() - new Date(snapshot.checkedAt).getTime() > 5 * 60_000
-          ? "Last known account · Refresh to verify" : account.status === "ACTIVE" ? "Connected" : account.status === "INITIATED" ? "Waiting for sign-in" : "Needs sign-in"}{account.isDefault ? " · Default" : ""}</p>
+          ? t("pagesApps.accountStatus.lastKnown") : account.status === "ACTIVE" ? t("pagesApps.accountStatus.connected") : account.status === "INITIATED" ? t("pagesApps.accountStatus.waitingForSignIn") : t("pagesApps.accountStatus.needsSignIn")}{account.isDefault ? t("pagesApps.accountStatus.defaultSuffix") : ""}</p>
       </div>)}
     </div>}
     <div className="space-y-1 text-xs text-muted-foreground">
-      <p>Via <Link to={`/apps/${connection.id}/permissions`} onClick={onClose} className={cn("underline underline-offset-2", ANALYTICS_MASK_CLASS)}>“{connection.name}”</Link></p>
-      <p>Composio permissions apply to all apps on this connection.</p>
+      <p>{t("pagesApps.aggregatorManager.via")} <Link to={`/apps/${connection.id}/permissions`} onClick={onClose} className={cn("underline underline-offset-2", ANALYTICS_MASK_CLASS)}>“{connection.name}”</Link></p>
+      <p>{t("pagesApps.composio.permissionsNote")}</p>
     </div>
-    <DialogFooter className="sm:items-center sm:justify-between"><Button variant="ghost" onClick={onClose}>Close</Button>
-      <div className="flex items-center gap-2"><Button variant="ghost" disabled={busy} onClick={() => void refresh()}>{busy ? "Checking…" : "Refresh"}</Button>
-        <Button asChild><a href={COMPOSIO_APP_MANAGEMENT_URL} target="_blank" rel="noopener noreferrer">Open in Composio<ExternalLink className="size-4" /></a></Button></div>
+    <DialogFooter className="sm:items-center sm:justify-between"><Button variant="ghost" onClick={onClose}>{t("pagesApps.common.close")}</Button>
+      <div className="flex items-center gap-2"><Button variant="ghost" disabled={busy} onClick={() => void refresh()}>{busy ? t("pagesApps.common.checking") : t("pagesApps.common.refresh")}</Button>
+        <Button asChild><a href={COMPOSIO_APP_MANAGEMENT_URL} target="_blank" rel="noopener noreferrer">{t("pagesApps.common.openIn", { name: "Composio" })}<ExternalLink className="size-4" /></a></Button></div>
     </DialogFooter>
   </>;
 }

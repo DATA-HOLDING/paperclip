@@ -1,5 +1,6 @@
 import type { IssueChangeReceiptEntry } from "@paperclipai/shared";
 import { formatReviewPolicyValue } from "./review-policy";
+import { t } from "@/i18n";
 
 /**
  * Read + format the field-level change receipts carried on an `issue.updated`
@@ -17,28 +18,28 @@ import { formatReviewPolicyValue } from "./review-policy";
 
 /** Field names whose raw ids carry no meaning in a scannable summary. */
 const FIELD_LABELS: Record<string, string> = {
-  assigneeAgentId: "Assignee",
-  assigneeUserId: "Assignee (user)",
-  responsibleUserId: "Responsible user",
-  blockedByIssueIds: "Blockers",
-  labelIds: "Labels",
-  parentId: "Parent",
-  projectId: "Project",
-  goalId: "Goal",
-  workMode: "Work mode",
-  reviewPolicy: "Who can approve",
-  billingCode: "Billing code",
-  checkoutRunId: "Checkout run",
-  executionRunId: "Execution run",
-  hiddenAt: "Hidden",
-  startedAt: "Started",
-  completedAt: "Completed",
-  cancelledAt: "Cancelled",
-  requestDepth: "Request depth",
-  sourceTrust: "Source trust",
-  executionPolicy: "Execution policy",
-  executionWorkspaceId: "Execution workspace",
-  projectWorkspaceId: "Project workspace",
+  assigneeAgentId: t("libIssueChangeReceipt.fields.assigneeAgentId"),
+  assigneeUserId: t("libIssueChangeReceipt.fields.assigneeUserId"),
+  responsibleUserId: t("libIssueChangeReceipt.fields.responsibleUserId"),
+  blockedByIssueIds: t("libIssueChangeReceipt.fields.blockedByIssueIds"),
+  labelIds: t("libIssueChangeReceipt.fields.labelIds"),
+  parentId: t("libIssueChangeReceipt.fields.parentId"),
+  projectId: t("libIssueChangeReceipt.fields.projectId"),
+  goalId: t("libIssueChangeReceipt.fields.goalId"),
+  workMode: t("libIssueChangeReceipt.fields.workMode"),
+  reviewPolicy: t("libIssueChangeReceipt.fields.reviewPolicy"),
+  billingCode: t("libIssueChangeReceipt.fields.billingCode"),
+  checkoutRunId: t("libIssueChangeReceipt.fields.checkoutRunId"),
+  executionRunId: t("libIssueChangeReceipt.fields.executionRunId"),
+  hiddenAt: t("libIssueChangeReceipt.fields.hiddenAt"),
+  startedAt: t("libIssueChangeReceipt.fields.startedAt"),
+  completedAt: t("libIssueChangeReceipt.fields.completedAt"),
+  cancelledAt: t("libIssueChangeReceipt.fields.cancelledAt"),
+  requestDepth: t("libIssueChangeReceipt.fields.requestDepth"),
+  sourceTrust: t("libIssueChangeReceipt.fields.sourceTrust"),
+  executionPolicy: t("libIssueChangeReceipt.fields.executionPolicy"),
+  executionWorkspaceId: t("libIssueChangeReceipt.fields.executionWorkspaceId"),
+  projectWorkspaceId: t("libIssueChangeReceipt.fields.projectWorkspaceId"),
 };
 
 /** Human label for a changed field, e.g. `assigneeAgentId` → "Assignee". */
@@ -69,24 +70,24 @@ export function formatIssueChangeValue(
   // `reviewPolicy` is nullable-by-default: a cleared column means "anyone can
   // approve", not "no value" (PAP-16506), so it resolves before the null branch.
   if (options.field === "reviewPolicy") return formatReviewPolicyValue(value);
-  if (value === null || value === undefined || value === "") return "none";
-  if (typeof value === "boolean") return value ? "yes" : "no";
+  if (value === null || value === undefined || value === "") return t("libIssueChangeReceipt.value.none");
+  if (typeof value === "boolean") return value ? t("libIssueChangeReceipt.value.yes") : t("libIssueChangeReceipt.value.no");
   if (typeof value === "number") return String(value);
 
   if (Array.isArray(value)) {
-    if (value.length === 0) return "none";
+    if (value.length === 0) return t("libIssueChangeReceipt.value.none");
     const strings = value.filter((entry): entry is string => typeof entry === "string");
-    if (strings.length !== value.length) return `${value.length} items`;
+    if (strings.length !== value.length) return t("libIssueChangeReceipt.value.items", { count: value.length });
     return strings.length <= 3
       ? strings.map((id) => shortenId(id)).join(", ")
-      : `${strings.length} items`;
+      : t("libIssueChangeReceipt.value.items", { count: strings.length });
   }
 
   if (value instanceof Date) return value.toLocaleString();
 
   if (typeof value === "string") {
     const trimmed = value.trim();
-    if (!trimmed) return "none";
+    if (!trimmed) return t("libIssueChangeReceipt.value.none");
     // Ids resolve to names when the directory is loaded; otherwise they shorten.
     const resolved = options.field?.toLowerCase().includes("agent")
       ? options.resolveAgentLabel?.(trimmed)
@@ -102,7 +103,7 @@ export function formatIssueChangeValue(
 
   // Objects (execution policy, workspace settings) are structural — the receipt
   // records that they moved, and the audit log holds the full value.
-  return "updated";
+  return t("libIssueChangeReceipt.value.updated");
 }
 
 function truncate(value: string): string {
@@ -165,17 +166,17 @@ export function readIssueChangeReceipt(
 
 /** Authorization reasons, as recorded by the server's write-policy decision. */
 const AUTHORIZATION_REASON_LABELS: Record<string, string> = {
-  allow_visible_issue_write: "default-open write on a visible task",
-  allow_scoped_agent_write: "scoped agent write",
-  allow_board_actor: "board actor",
-  allow_self: "own task",
-  allow_issue_mention_grant: "mention grant",
-  allow_direct_parent_report: "direct parent report",
-  allow_low_trust_boundary: "low-trust boundary allowance",
-  allow_explicit_grant: "explicit permission grant",
-  allow_instance_admin: "instance admin",
-  allow_local_board: "local board",
-  internal_agent_write: "internal agent write",
+  allow_visible_issue_write: t("libIssueChangeReceipt.authorizationReasons.allow_visible_issue_write"),
+  allow_scoped_agent_write: t("libIssueChangeReceipt.authorizationReasons.allow_scoped_agent_write"),
+  allow_board_actor: t("libIssueChangeReceipt.authorizationReasons.allow_board_actor"),
+  allow_self: t("libIssueChangeReceipt.authorizationReasons.allow_self"),
+  allow_issue_mention_grant: t("libIssueChangeReceipt.authorizationReasons.allow_issue_mention_grant"),
+  allow_direct_parent_report: t("libIssueChangeReceipt.authorizationReasons.allow_direct_parent_report"),
+  allow_low_trust_boundary: t("libIssueChangeReceipt.authorizationReasons.allow_low_trust_boundary"),
+  allow_explicit_grant: t("libIssueChangeReceipt.authorizationReasons.allow_explicit_grant"),
+  allow_instance_admin: t("libIssueChangeReceipt.authorizationReasons.allow_instance_admin"),
+  allow_local_board: t("libIssueChangeReceipt.authorizationReasons.allow_local_board"),
+  internal_agent_write: t("libIssueChangeReceipt.authorizationReasons.internal_agent_write"),
 };
 
 /**

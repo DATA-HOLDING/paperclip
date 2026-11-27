@@ -1,0 +1,25 @@
+{
+  "status": "Status",
+  "level": "Level",
+  "owner": "Owner",
+  "none": "None",
+  "parentGoal": "Parent Goal",
+  "created": "Created",
+  "updated": "Updated",
+  "options": {
+    "planned": "Planned",
+    "active": "Active",
+    "achieved": "Achieved",
+    "cancelled": "Cancelled",
+    "company": "Company",
+    "team": "Team",
+    "agent": "Agent",
+    "task": "Task"
+  },
+  "levels": {
+    "company": "company",
+    "team": "team",
+    "agent": "agent",
+    "task": "task"
+  }
+}

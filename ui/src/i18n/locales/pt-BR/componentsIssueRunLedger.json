@@ -1,0 +1,145 @@
+{
+  "liveness": {
+    "completed": {
+      "label": "Concluída",
+      "description": "A tarefa chegou a um estado final."
+    },
+    "advanced": {
+      "label": "Avançou",
+      "description": "A execução produziu evidências concretas de progresso."
+    },
+    "planOnly": {
+      "label": "Só plano",
+      "description": "A execução descreveu trabalho futuro sem evidência de ação concreta."
+    },
+    "emptyResponse": {
+      "label": "Resposta vazia",
+      "description": "A execução terminou sem saída útil."
+    },
+    "blocked": {
+      "label": "Bloqueada",
+      "description": "A execução ou a tarefa declarou um bloqueio."
+    },
+    "failed": {
+      "label": "Falhou",
+      "description": "A execução terminou sem sucesso."
+    },
+    "needsFollowup": {
+      "label": "Precisa de acompanhamento",
+      "description": "A execução produziu saída útil, mas não comprovou progresso concreto."
+    },
+    "pending": {
+      "label": "Verifica ao terminar",
+      "description": "A atividade é avaliada depois que a execução termina."
+    },
+    "retryPending": {
+      "label": "Nova tentativa pendente",
+      "description": "O Paperclip enfileirou uma nova tentativa automática que ainda não começou."
+    },
+    "missing": {
+      "label": "Sem dados de atividade",
+      "description": "Esta execução não tem uma classificação de atividade salva."
+    }
+  },
+  "silence": {
+    "suspicious": "Silêncio na saída",
+    "critical": "Silêncio crítico",
+    "snoozed": "Silêncio adiado"
+  },
+  "summary": {
+    "running": "Em execução agora por {{agent}}",
+    "queued": "Na fila para {{agent}}",
+    "retryScheduled": "Nova tentativa automática agendada para {{agent}}",
+    "statusBy": "{{status}} por {{agent}}"
+  },
+  "stop": {
+    "timeoutSeconds": "tempo limite de {{seconds}}s",
+    "timeoutWith": "tempo esgotado ({{detail}})",
+    "timeout": "tempo esgotado",
+    "maxTurns": "máximo de turnos esgotado",
+    "budgetPaused": "pausada por orçamento",
+    "cancelled": "cancelada",
+    "pausedByBoard": "pausada pelo conselho",
+    "processLost": "processo perdido",
+    "unmanagedStopped": "tarefa em segundo plano não gerenciada interrompida",
+    "adapterFailedWith": "falha do adaptador ({{cause}})",
+    "adapterFailed": "falha do adaptador",
+    "completedWith": "concluída ({{detail}})",
+    "completed": "concluída"
+  },
+  "stopStatus": {
+    "retryPending": "Nova tentativa pendente",
+    "waitingToStart": "Aguardando início",
+    "stillRunning": "Ainda em execução",
+    "noStopReason": "Sem motivo de parada"
+  },
+  "unavailable": "Indisponível",
+  "lastAction": {
+    "waitingNextAttempt": "Aguardando a próxima tentativa",
+    "noneYet": "Nenhuma ação registrada ainda",
+    "noConcrete": "Nenhuma ação concreta",
+    "noUsefulOutput": "Nenhuma saída útil",
+    "noneRecorded": "Nenhuma registrada"
+  },
+  "continuationAttempt": "Tentativa de continuação {{n}}",
+  "age": {
+    "underMinute": "menos de 1 minuto",
+    "minutes_one": "{{count}} minuto",
+    "minutes_other": "{{count}} minutos",
+    "hours_one": "{{count}} hora",
+    "hours_other": "{{count}} horas"
+  },
+  "watchdog": {
+    "forbidden": "Apenas o conselho ou o responsável pela recuperação atribuído pode registrar decisões do watchdog",
+    "failed": "O Paperclip não conseguiu registrar a decisão do watchdog.",
+    "toastTitle": "Decisão do watchdog não registrada",
+    "continue": "Continuar monitorando",
+    "snooze": "Adiar 1h",
+    "falsePositive": "Marcar como falso positivo"
+  },
+  "trace": {
+    "toastTitle": "Nova execução com trace não iniciada",
+    "failed": "O Paperclip não conseguiu iniciar a nova execução com trace."
+  },
+  "ariaLabel": "Registro de execuções da tarefa",
+  "title": "Registro de execuções",
+  "waitingFirstRun": "Aguardando o primeiro registro de execução.",
+  "noRuns": "Nenhuma execução vinculada ainda.",
+  "latestRun": "Última execução",
+  "children": {
+    "title": "Trabalho filho",
+    "active": "{{active}} ativas, {{done}} concluídas, {{cancelled}} canceladas",
+    "allTerminal": "todas as {{total}} finalizadas ({{done}} concluídas, {{cancelled}} canceladas)",
+    "more": "+{{n}} mais"
+  },
+  "silenceBanner": {
+    "critical": "Silêncio crítico na saída",
+    "warning": "Alerta do watchdog de silêncio na saída",
+    "silentFor": "A última execução ativa está em silêncio há",
+    "extendedPeriod": "um período prolongado",
+    "review": "Revise",
+    "forRecoveryContext": "para ver o contexto da recuperação.",
+    "infoDelegated": "Este sinal é informativo. O Paperclip não criou novo trabalho de recuperação delegado.",
+    "infoNoTask": "Este sinal é informativo. O Paperclip não criou nem atribuiu uma tarefa de recuperação."
+  },
+  "empty": {
+    "withActivity": "As execuções e a atividade aparecerão aqui quando esta tarefa tiver histórico.",
+    "runsOnly": "As execuções históricas sem metadados de atividade aparecerão aqui quando forem vinculadas a esta tarefa."
+  },
+  "run": {
+    "label": "Execução",
+    "by": "por {{agent}}",
+    "actingOnBehalf": "Agindo em nome de {{user}}",
+    "onBehalfOf": "em nome de",
+    "live": "ao vivo",
+    "exhausted": "Esgotada",
+    "inspect": "Inspecionar execução",
+    "elapsed": "Decorrido",
+    "unknown": "desconhecido",
+    "lastUsefulAction": "Última ação útil",
+    "stop": "Parada",
+    "retryOf": "Nova tentativa de",
+    "nextAction": "Próxima ação:"
+  },
+  "olderNotShown": "{{n}} itens mais antigos não exibidos"
+}

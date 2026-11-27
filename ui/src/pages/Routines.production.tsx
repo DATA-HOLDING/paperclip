@@ -58,6 +58,7 @@ import {
   selectedFolderFromList,
   type FolderSelection,
 } from "../components/folders/FolderControls";
+import { t } from "@/i18n";
 
 
 type RoutinesTab = "routines" | "runs";
@@ -99,8 +100,8 @@ export function buildRoutineGroups(
         const positionCompare = leftPosition - rightPosition;
         if (positionCompare !== 0) return positionCompare;
 
-        const labelCompare = (leftFolder?.name ?? "Unknown folder").localeCompare(
-          rightFolder?.name ?? "Unknown folder",
+        const labelCompare = (leftFolder?.name ?? t("pagesRoutines.groups.unknownFolder")).localeCompare(
+          rightFolder?.name ?? t("pagesRoutines.groups.unknownFolder"),
           undefined,
           { sensitivity: "base" },
         );
@@ -108,7 +109,7 @@ export function buildRoutineGroups(
       })
       .map((key) => ({
         key,
-        label: key === "__unfiled" ? "Unfiled" : (folderById.get(key)?.name ?? "Unknown folder"),
+        label: key === "__unfiled" ? t("pagesRoutines.groups.unfiled") : (folderById.get(key)?.name ?? t("pagesRoutines.groups.unknownFolder")),
         items: groups[key]!,
       }));
   }
@@ -117,13 +118,13 @@ export function buildRoutineGroups(
     const groups = groupBy(routines, (routine) => routine.projectId ?? "__no_project");
     return Object.keys(groups)
       .sort((left, right) => {
-        const leftLabel = left === "__no_project" ? "No project" : (projectById.get(left)?.name ?? "Unknown project");
-        const rightLabel = right === "__no_project" ? "No project" : (projectById.get(right)?.name ?? "Unknown project");
+        const leftLabel = left === "__no_project" ? t("pagesRoutines.groups.noProject") : (projectById.get(left)?.name ?? t("pagesRoutines.groups.unknownProject"));
+        const rightLabel = right === "__no_project" ? t("pagesRoutines.groups.noProject") : (projectById.get(right)?.name ?? t("pagesRoutines.groups.unknownProject"));
         return leftLabel.localeCompare(rightLabel);
       })
       .map((key) => ({
         key,
-        label: key === "__no_project" ? "No project" : (projectById.get(key)?.name ?? "Unknown project"),
+        label: key === "__no_project" ? t("pagesRoutines.groups.noProject") : (projectById.get(key)?.name ?? t("pagesRoutines.groups.unknownProject")),
         items: groups[key]!,
       }));
   }
@@ -131,13 +132,13 @@ export function buildRoutineGroups(
   const groups = groupBy(routines, (routine) => routine.assigneeAgentId ?? "__unassigned");
   return Object.keys(groups)
     .sort((left, right) => {
-      const leftLabel = left === "__unassigned" ? "Unassigned" : (agentById.get(left)?.name ?? "Unknown agent");
-      const rightLabel = right === "__unassigned" ? "Unassigned" : (agentById.get(right)?.name ?? "Unknown agent");
+      const leftLabel = left === "__unassigned" ? t("pagesRoutines.groups.unassigned") : (agentById.get(left)?.name ?? t("pagesRoutines.groups.unknownAgent"));
+      const rightLabel = right === "__unassigned" ? t("pagesRoutines.groups.unassigned") : (agentById.get(right)?.name ?? t("pagesRoutines.groups.unknownAgent"));
       return leftLabel.localeCompare(rightLabel);
     })
     .map((key) => ({
       key,
-      label: key === "__unassigned" ? "Unassigned" : (agentById.get(key)?.name ?? "Unknown agent"),
+      label: key === "__unassigned" ? t("pagesRoutines.groups.unassigned") : (agentById.get(key)?.name ?? t("pagesRoutines.groups.unknownAgent")),
       items: groups[key]!,
     }));
 }
@@ -159,7 +160,7 @@ export function buildRoutineSections(
     .filter((group) => group.items.length > 0)
     .map((group) => (
       builtInRoutines.length > 0 && groupByValue === "none" && group.key === "__all"
-        ? { ...group, label: "Custom routines" }
+        ? { ...group, label: t("pagesRoutines.groups.custom") }
         : group
     ));
 
@@ -169,7 +170,7 @@ export function buildRoutineSections(
     ...customGroups,
     {
       key: builtInRoutineGroupKey,
-      label: "Built-in routines",
+      label: t("pagesRoutines.groups.builtIn"),
       items: builtInRoutines,
     },
   ];
@@ -233,7 +234,7 @@ export function Routines() {
   const folderSelection = normalizeFolderSelection(searchParams.get("folder"));
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Routines" }]);
+    setBreadcrumbs([{ label: t("pagesRoutines.title") }]);
   }, [setBreadcrumbs]);
 
   const routinesQuery = useQuery({
@@ -310,8 +311,8 @@ export function Routines() {
           ]);
         } catch (moveError) {
           pushToast({
-            title: "Folder created, move failed",
-            body: describeError(moveError, { action: "move the selected routines" }).body,
+            title: t("pagesRoutines.toast.folderCreatedMoveFailed"),
+            body: describeError(moveError, { action: t("pagesRoutines.actions.moveSelected") }).body,
             tone: "error",
           });
           return;
@@ -319,12 +320,12 @@ export function Routines() {
       } else {
         setFolderSelection(folder.id);
       }
-      pushToast({ title: "Folder created", body: folder.name, tone: "success" });
+      pushToast({ title: t("pagesRoutines.toast.folderCreated"), body: folder.name, tone: "success" });
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Failed to save folder",
-        body: describeError(mutationError, { action: "save the folder" }).body,
+        title: t("pagesRoutines.toast.saveFolderFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.saveFolder") }).body,
         tone: "error",
       });
     },
@@ -339,8 +340,8 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Folder save failed",
-        body: describeError(mutationError, { action: "update the folder" }).body,
+        title: t("pagesRoutines.toast.folderSaveFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.updateFolder") }).body,
         tone: "error",
       });
     },
@@ -354,12 +355,12 @@ export function Routines() {
         queryClient.invalidateQueries({ queryKey: queryKeys.routines.list(selectedCompanyId!) }),
         queryClient.invalidateQueries({ queryKey: queryKeys.folders.list(selectedCompanyId!, "routine") }),
       ]);
-      pushToast({ title: "Folder deleted", body: "Items moved to Unfiled.", tone: "success" });
+      pushToast({ title: t("pagesRoutines.toast.folderDeleted"), body: t("pagesRoutines.toast.itemsMovedToUnfiled"), tone: "success" });
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Folder delete failed",
-        body: describeError(mutationError, { action: "delete the folder" }).body,
+        title: t("pagesRoutines.toast.folderDeleteFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.deleteFolder") }).body,
         tone: "error",
       });
     },
@@ -375,8 +376,8 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Move failed",
-        body: describeError(mutationError, { action: "move the routine" }).body,
+        title: t("pagesRoutines.toast.moveFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.moveRoutine") }).body,
         tone: "error",
       });
     },
@@ -404,8 +405,8 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Failed to update routine",
-        body: describeError(mutationError, { action: "update the routine" }).body,
+        title: t("pagesRoutines.toast.updateFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.updateRoutine") }).body,
         tone: "error",
       });
     },
@@ -439,8 +440,8 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Routine run failed",
-        body: describeError(mutationError, { action: "start the routine run" }).body,
+        title: t("pagesRoutines.toast.runFailed"),
+        body: describeError(mutationError, { action: t("pagesRoutines.actions.startRun") }).body,
         tone: "error",
       });
     },
@@ -472,7 +473,7 @@ export function Routines() {
   const recentRunsIssueLinkState = useMemo(
     () =>
       createIssueDetailLocationState(
-        "Recent Runs",
+        t("pagesRoutines.recentRuns"),
         buildRoutinesTabHref("runs"),
         "issues",
       ),
@@ -518,11 +519,11 @@ export function Routines() {
         queryClient.invalidateQueries({ queryKey: queryKeys.routines.list(selectedCompanyId!) }),
         queryClient.invalidateQueries({ queryKey: queryKeys.folders.list(selectedCompanyId!, "routine") }),
       ]);
-      pushToast({ title: "Routines moved", body: `${ids.length} routine${ids.length === 1 ? "" : "s"} filed.`, tone: "success" });
+      pushToast({ title: t("pagesRoutines.toast.routinesMoved"), body: t("pagesRoutines.toast.routinesFiled", { count: ids.length }), tone: "success" });
     } catch (moveError) {
       pushToast({
-        title: "Failed to move routines",
-        body: describeError(moveError, { action: "move the selected routines" }).body,
+        title: t("pagesRoutines.toast.moveRoutinesFailed"),
+        body: describeError(moveError, { action: t("pagesRoutines.actions.moveSelected") }).body,
         tone: "error",
       });
     }
@@ -535,8 +536,8 @@ export function Routines() {
   function handleToggleEnabled(routine: RoutineListItem, enabled: boolean) {
     if (!enabled && !routine.assigneeAgentId) {
       pushToast({
-        title: "Default agent required",
-        body: "Set a default agent before enabling routine automation.",
+        title: t("pagesRoutines.toast.defaultAgentRequired"),
+        body: t("pagesRoutines.toast.defaultAgentRequiredBody"),
         tone: "warn",
       });
       return;
@@ -555,7 +556,7 @@ export function Routines() {
   }
 
   if (!selectedCompanyId) {
-    return <EmptyState placement="upper" icon={Repeat} message="Select a company to view routines." />;
+    return <EmptyState placement="upper" icon={Repeat} message={t("pagesRoutines.selectCompany")} />;
   }
 
   // Keep loaded routines on screen through a failed refetch; only a real
@@ -567,7 +568,7 @@ export function Routines() {
   const emptyList = activeTab === "routines" && sortedRoutines.length === 0;
   return (
     <div className={cn("space-y-6", emptyList && "empty-state-page")}>
-      <h1 className="sr-only">Routines</h1>
+      <h1 className="sr-only">{t("pagesRoutines.title")}</h1>
       <RoutinesToolbar
         showListControls={activeTab === "routines"}
         query={query} onQueryChange={query => updateRoutineView({ query })}
@@ -587,8 +588,8 @@ export function Routines() {
           value={activeTab}
           onValueChange={handleTabChange}
           items={[
-            { value: "routines", label: "Routines" },
-            { value: "runs", label: "Recent Runs" },
+            { value: "routines", label: t("pagesRoutines.title") },
+            { value: "runs", label: t("pagesRoutines.recentRuns") },
           ]}
         />
         <TabsContent value="routines" className="space-y-4">
@@ -597,7 +598,7 @@ export function Routines() {
               <FolderChip
                 result={railFolderResult}
                 selection={folderSelection}
-                allLabel="All routines"
+                allLabel={t("pagesRoutines.allRoutines")}
                 onClick={() => setMobileFoldersOpen(true)}
               />
             </div>
@@ -632,14 +633,14 @@ export function Routines() {
       {routinesView.kind === "error" ? (
         <QueryErrorState
           error={routinesView.error}
-          action="load routines"
+          action={t("pagesRoutines.actions.loadRoutines")}
           onRetry={routinesView.retry}
           retrying={routinesView.isFetching}
         />
       ) : null}
 
       {activeTab === "routines" && companyMembersView.kind === "error" ? (
-        <QueryErrorState error={companyMembersView.error} action="load responsible people" size="inline"
+        <QueryErrorState error={companyMembersView.error} action={t("pagesRoutines.actions.loadResponsiblePeople")} size="inline"
           onRetry={companyMembersView.retry} retrying={companyMembersView.isFetching} />
       ) : null}
 
@@ -649,8 +650,8 @@ export function Routines() {
             <FolderRail
               result={railFolderResult}
               selection={folderSelection}
-              allLabel="All routines"
-              itemLabelPlural="routines"
+              allLabel={t("pagesRoutines.allRoutines")}
+              itemLabelPlural={t("pagesRoutines.itemPlural")}
               loading={foldersLoading}
               onSelect={setFolderSelection}
               onCreate={() => openCreateFolder()}
@@ -665,11 +666,11 @@ export function Routines() {
           <div className={cn("min-w-0 flex-1", emptyList && "flex flex-col")}>
           {routineViewState.groupBy === "folder" && hasRoutineFolders ? (
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              {folderSelection === "all" ? <FolderIconHeader label="All routines" count={sortedRoutines.length} /> : (
+              {folderSelection === "all" ? <FolderIconHeader label={t("pagesRoutines.allRoutines")} count={sortedRoutines.length} /> : (
                 <div className="flex min-w-0 items-center gap-2 text-sm">
                   <FolderSwatch color={activeFolder?.color} />
-                  <span className="truncate font-medium">{folderSelection === "unfiled" ? "Unfiled" : activeFolder?.name ?? "Folder"}</span>
-                  <span className="text-muted-foreground">{sortedRoutines.length} routine{sortedRoutines.length === 1 ? "" : "s"}</span>
+                  <span className="truncate font-medium">{folderSelection === "unfiled" ? t("pagesRoutines.groups.unfiled") : activeFolder?.name ?? t("pagesRoutines.folder")}</span>
+                  <span className="text-muted-foreground">{t("pagesRoutines.routineCount", { count: sortedRoutines.length })}</span>
                 </div>
               )}
             </div>
@@ -677,11 +678,11 @@ export function Routines() {
           {routineViewState.groupBy === "folder" && !hasRoutineFolders && !foldersLoading && visibleRoutines.length > 0 ? (
             <AllUnfiledBanner
               storageKey={`paperclip:routines-folder-nudge:${selectedCompanyId ?? "none"}`}
-              itemLabelPlural="routines"
+              itemLabelPlural={t("pagesRoutines.itemPlural")}
               onCreateFolder={() => openCreateFolder()}
             />
           ) : null}
-          {showFolderRail ? <Button variant="ghost" size="sm" onClick={() => setSelectMode(current => !current)}>{selectMode ? "Done" : "Select"}</Button> : null}
+          {showFolderRail ? <Button variant="ghost" size="sm" onClick={() => setSelectMode(current => !current)}>{selectMode ? t("pagesRoutines.done") : t("pagesRoutines.select")}</Button> : null}
           {selectMode ? (
             <BulkBar
               selectedCount={selectedRoutineIds.length}
@@ -696,11 +697,11 @@ export function Routines() {
             />
           ) : null}
           {visibleRoutines.length === 0 && !routineViewState.statuses.length ? (
-            <EmptyState placement="upper" message="No active routines." action="New routine" onAction={openCreateRoutine} />
+            <EmptyState placement="upper" message={t("pagesRoutines.empty.noActive")} action={t("pagesRoutines.newRoutine")} onAction={openCreateRoutine} />
           ) : sortedRoutines.length === 0 ? (
             <EmptyState placement="upper"
-              message={query.trim() ? "No routines match your search." : routineFilterKeys.some(key => routineViewState[key].length) || folderSelection === "all" ? "No routines match this view." : "This folder is empty."}
-              action={folderSelection !== "all" ? "New routine in this folder" : undefined}
+              message={query.trim() ? t("pagesRoutines.empty.noSearchMatch") : routineFilterKeys.some(key => routineViewState[key].length) || folderSelection === "all" ? t("pagesRoutines.empty.noViewMatch") : t("pagesRoutines.empty.folderEmpty")}
+              action={folderSelection !== "all" ? t("pagesRoutines.newRoutineInFolder") : undefined}
               onAction={openCreateRoutine}
             />
           ) : (
@@ -727,7 +728,7 @@ export function Routines() {
                       />
                     ) : null}
                     <CollapsibleContent>
-                      <RoutineTable columns={routineViewState.columns} label={group.label ?? "Routines"} selectMode={selectMode}>
+                      <RoutineTable columns={routineViewState.columns} label={group.label ?? t("pagesRoutines.title")} selectMode={selectMode}>
                       {group.items.map((routine) => (
                         <RoutineTableRow
                           key={routine.id}
@@ -761,13 +762,13 @@ export function Routines() {
                                 const previousFolderId = routine.folderId ?? null;
                                 moveRoutineToFolder.mutate({ itemId: routine.id, folderId });
                                 pushToast({
-                                  title: "Routine moved",
+                                  title: t("pagesRoutines.toast.routineMoved"),
                                   body: folderId
-                                    ? `Moved "${routine.title}" to ${routineFolders?.folders.find((folder) => folder.id === folderId)?.name ?? "folder"}.`
-                                    : `Moved "${routine.title}" to Unfiled.`,
+                                    ? t("pagesRoutines.toast.movedTo", { title: routine.title, folder: routineFolders?.folders.find((folder) => folder.id === folderId)?.name ?? t("pagesRoutines.folderLower") })
+                                    : t("pagesRoutines.toast.movedToUnfiled", { title: routine.title }),
                                   tone: "success",
                                   action: {
-                                    label: "Undo",
+                                    label: t("pagesRoutines.undo"),
                                     onClick: () => moveRoutineToFolder.mutate({ itemId: routine.id, folderId: previousFolderId }),
                                   },
                                 });
@@ -802,7 +803,7 @@ export function Routines() {
       <DeleteFolderDialog
         open={deleteFolderTarget !== null}
         folder={deleteFolderTarget}
-        itemLabelPlural="routines"
+        itemLabelPlural={t("pagesRoutines.itemPlural")}
         pending={deleteFolder.isPending}
         onOpenChange={(open) => {
           if (!open) setDeleteFolderTarget(null);
@@ -816,8 +817,8 @@ export function Routines() {
         onOpenChange={setMobileFoldersOpen}
         result={railFolderResult}
         selection={folderSelection}
-        allLabel="All routines"
-        itemLabelPlural="Routines"
+        allLabel={t("pagesRoutines.allRoutines")}
+        itemLabelPlural={t("pagesRoutines.title")}
         onSelect={setFolderSelection}
         onCreate={() => openCreateFolder()}
       />
@@ -849,7 +850,7 @@ function FolderIconHeader({ label, count }: { label: string; count: number }) {
     <div className="flex min-w-0 items-center gap-2 text-sm">
       <Repeat className="h-3.5 w-3.5 text-muted-foreground" />
       <span className="truncate font-medium">{label}</span>
-      <span className="text-muted-foreground">{count} routine{count === 1 ? "" : "s"}</span>
+      <span className="text-muted-foreground">{t("pagesRoutines.routineCount", { count })}</span>
     </div>
   );
 }

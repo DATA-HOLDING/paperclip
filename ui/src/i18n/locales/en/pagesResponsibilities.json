@@ -1,0 +1,19 @@
+{
+  "provenance": {
+    "draftedBy": "Drafted by {{name}} during onboarding.",
+    "drafted": "Drafted during onboarding.",
+    "confirmed": "Confirmed by you on {{date}}."
+  },
+  "loadDashboardAction": "load your dashboard",
+  "title": "Dashboard",
+  "searchLabel": "Search your dashboard",
+  "searchPlaceholder": "Search",
+  "subtitle": "What you own, whether each one is meeting its bar, and the work underneath.",
+  "back": "Back",
+  "newArea": "New area",
+  "addArea": "Add area",
+  "addResponsibility": "Add responsibility",
+  "restoreError": "Couldn’t restore the area. {{message}}",
+  "loadResponsibilitiesAction": "load your responsibilities",
+  "loadAgentsAction": "load your agents"
+}

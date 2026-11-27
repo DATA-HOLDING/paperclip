@@ -1,0 +1,35 @@
+{
+  "events": {
+    "created": "criado",
+    "updated": "atualizado",
+    "fieldsChanged": "campos alterados",
+    "statusChanged": "status alterado",
+    "issueLinked": "tarefa vinculada",
+    "issueUnlinked": "tarefa desvinculada",
+    "documentRevised": "documento revisado",
+    "childLinked": "filho vinculado",
+    "attachmentAdded": "anexo adicionado",
+    "labelAdded": "etiqueta adicionada",
+    "labelRemoved": "etiqueta removida",
+    "handoffRequested": "repasse solicitado",
+    "handoffApplied": "tarefa repassada",
+    "handoffDelivered": "despertar do agente enfileirado",
+    "handoffCompleted": "caso concluído",
+    "handoffCancelled": "repasse cancelado"
+  },
+  "actor": {
+    "agent": "Agente",
+    "user": "Usuário",
+    "system": "Sistema"
+  },
+  "relation": {
+    "issue": "tarefa",
+    "via": "via"
+  },
+  "allActivity": "Toda a atividade",
+  "filterCount": "{{count}} filtros",
+  "empty": "Nenhuma atividade ainda.",
+  "eventCount": "{{shown}} de {{total}} eventos",
+  "activityFilter": "Filtro de atividade",
+  "noMatch": "Nenhum evento corresponde a este filtro."
+}

@@ -9,6 +9,7 @@ import {
   type ResponsibilityMetricView,
 } from "@paperclipai/shared";
 import { formatMetricRange, formatMetricValue } from "./responsibilities";
+import { t } from "@/i18n";
 
 /**
  * Geometry and words for the small charts a responsibility's metrics are
@@ -174,7 +175,7 @@ function round(value: number) {
 
 /** A value as the metric shows it: "Yes"/"No" for a yes-or-no bar, otherwise with its unit. */
 export function formatMetricViewValue(metric: Pick<ResponsibilityMetricView, "kind" | "unit" | "display">, value: number): string {
-  if (metric.kind === "yes_no") return value >= 1 ? "Yes" : "No";
+  if (metric.kind === "yes_no") return value >= 1 ? t("libMetricCharts.yes") : t("libMetricCharts.no");
   return formatMetricValue(value, metric.display === "percent" ? "%" : metric.unit);
 }
 
@@ -185,23 +186,23 @@ export function formatChartDate(iso: string): string {
 
 /** What the metric aims for, in words: "target at least 20", "target at most 2 days", "range 12–24 months", "the bar is yes"; null without one. */
 export function describeMetricTarget(metric: Pick<ResponsibilityMetricView, "kind" | "unit" | "display" | "target" | "direction" | "low" | "high">): string | null {
-  if (metric.kind === "yes_no") return "the bar is yes";
-  if (metric.kind === "range" && metric.low !== null && metric.high !== null) return `range ${formatMetricRange(metric.low, metric.high, metric.unit)}`;
+  if (metric.kind === "yes_no") return t("libMetricCharts.target.barIsYes");
+  if (metric.kind === "range" && metric.low !== null && metric.high !== null) return t("libMetricCharts.target.range", { range: formatMetricRange(metric.low, metric.high, metric.unit) });
   if (metric.target === null) return null;
   const target = formatMetricValue(metric.target, metric.display === "percent" ? "%" : metric.unit);
-  return metric.direction === "at_most" ? `target at most ${target}` : `target ${target}`;
+  return metric.direction === "at_most" ? t("libMetricCharts.target.atMost", { target }) : t("libMetricCharts.target.target", { target });
 }
 
 /** The reference lines a chart draws: the target, or a range's two bounds. */
 export function metricReferences(metric: Pick<ResponsibilityMetricView, "kind" | "unit" | "display" | "target" | "direction" | "low" | "high">): { value: number; label: string }[] {
   if (metric.kind === "range" && metric.low !== null && metric.high !== null) {
     return [
-      { value: metric.high, label: `High ${formatMetricViewValue(metric, metric.high)}` },
-      { value: metric.low, label: `Low ${formatMetricViewValue(metric, metric.low)}` },
+      { value: metric.high, label: t("libMetricCharts.reference.high", { value: formatMetricViewValue(metric, metric.high) }) },
+      { value: metric.low, label: t("libMetricCharts.reference.low", { value: formatMetricViewValue(metric, metric.low) }) },
     ];
   }
   if (metric.target === null || metric.kind === "yes_no") return [];
-  return [{ value: metric.target, label: `${metric.direction === "at_most" ? "At most" : "Target"} ${formatMetricViewValue(metric, metric.target)}` }];
+  return [{ value: metric.target, label: metric.direction === "at_most" ? t("libMetricCharts.reference.atMost", { value: formatMetricViewValue(metric, metric.target) }) : t("libMetricCharts.reference.target", { value: formatMetricViewValue(metric, metric.target) }) }];
 }
 
 /**
@@ -209,22 +210,22 @@ export function metricReferences(metric: Pick<ResponsibilityMetricView, "kind" |
  * 8 readings from Oct 1 to Nov 16, latest 2 days, target at most 2 days."
  */
 export function describeMetricChart(metric: ResponsibilityMetricView): string {
-  const form = metric.display === "bar" ? "Bars per week" : metric.display === "line" ? "Line over time" : metric.display === "percent" ? "Percentage" : "Number";
+  const form = metric.display === "bar" ? t("libMetricCharts.chart.barsPerWeek") : metric.display === "line" ? t("libMetricCharts.chart.lineOverTime") : metric.display === "percent" ? t("libMetricCharts.chart.percentage") : t("libMetricCharts.chart.number");
   const target = describeMetricTarget(metric);
-  const tail = target ? `, ${target}` : "";
+  const tail = target ? t("libMetricCharts.chart.tail", { target }) : "";
   const { readings } = metric;
-  if (readings.length === 0) return `${form} of ${metric.title}: no readings yet${tail}.`;
+  if (readings.length === 0) return t("libMetricCharts.chart.noReadings", { form, title: metric.title, tail });
   const latest = formatMetricViewValue(metric, readings.at(-1)!.value);
   if (metric.display === "number" || metric.display === "percent" || readings.length === 1) {
-    return `${form} of ${metric.title}: ${latest}${readings.length === 1 && metric.display !== "number" && metric.display !== "percent" ? ", one reading so far" : ""}${tail}.`;
+    return t("libMetricCharts.chart.single", { form, title: metric.title, latest, oneReading: readings.length === 1 && metric.display !== "number" && metric.display !== "percent" ? t("libMetricCharts.chart.oneReadingSoFar") : "", tail });
   }
   const values = readings.map((reading) => reading.value);
   const low = formatMetricViewValue(metric, Math.min(...values));
   const high = formatMetricViewValue(metric, Math.max(...values));
   const span = metric.display === "bar"
-    ? `${readings.length} weeks from ${formatChartDate(readings[0]!.recordedAt)}`
-    : `${readings.length} readings from ${formatChartDate(readings[0]!.recordedAt)} to ${formatChartDate(readings.at(-1)!.recordedAt)}`;
-  return `${form} of ${metric.title}: ${span}, between ${low} and ${high}, latest ${latest}${tail}.`;
+    ? t("libMetricCharts.chart.weeksFrom", { count: readings.length, from: formatChartDate(readings[0]!.recordedAt) })
+    : t("libMetricCharts.chart.readingsFromTo", { count: readings.length, from: formatChartDate(readings[0]!.recordedAt), to: formatChartDate(readings.at(-1)!.recordedAt) });
+  return t("libMetricCharts.chart.full", { form, title: metric.title, span, low, high, latest, tail });
 }
 
 // ---------------------------------------------------------------------------

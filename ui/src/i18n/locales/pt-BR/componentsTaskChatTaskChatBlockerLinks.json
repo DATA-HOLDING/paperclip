@@ -1,0 +1,12 @@
+{
+  "stillBlockedBy": "Ainda bloqueada por",
+  "blockedBy": "Bloqueada por",
+  "rootBlockerRemains": "O bloqueio de origem continua",
+  "rootBlocker": "Bloqueio de origem",
+  "ultimatelyBlockedBy": "Bloqueada em última instância por",
+  "blockersAria": "Bloqueios da tarefa",
+  "stillWaitingOnLiveWork": "Ainda aguardando trabalho em andamento",
+  "waitingOnLiveWork": "Aguardando trabalho em andamento",
+  "liveWorkAria": "Tarefas aguardando trabalho em andamento",
+  "nowRunning": "Rodando agora"
+}

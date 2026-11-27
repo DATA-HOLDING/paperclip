@@ -1,10 +1,11 @@
 import type { HeartbeatRun } from "@paperclipai/shared";
 import { ApiError } from "../api/client";
 import { heartbeatsApi } from "../api/heartbeats";
+import { t } from "@/i18n";
 
 const STOPPED_STATUSES = new Set(["succeeded", "interrupted", "failed", "cancelled", "timed_out"]);
 
-const VERIFICATION_ERROR = "The stop was requested, but stopping could not be verified. Refresh and try Stop again if work is still running.";
+const VERIFICATION_ERROR = t("libWaitForStoppedRuns.verificationError");
 
 type StopRunEvidence = Pick<HeartbeatRun, "id" | "companyId" | "resultJson"> & {
   status: string;
@@ -54,7 +55,7 @@ export async function waitForStoppedRuns(
   while (remaining.length > 0) {
     if (Date.now() >= deadline) {
       throw new StopVerificationError(transientFailure ? VERIFICATION_ERROR
-        : "The stop was requested, but work is still stopping. Try Stop again if it continues.", targets);
+        : t("libWaitForStoppedRuns.stillStopping"), targets);
     }
     let states;
     let timeout: ReturnType<typeof setTimeout> | undefined;
@@ -85,7 +86,7 @@ export async function waitForStoppedRuns(
     if (remaining.length === 0) return;
     if (Date.now() >= deadline) {
       throw new StopVerificationError(
-        "The stop was requested, but work is still stopping. Try Stop again if it continues.",
+        t("libWaitForStoppedRuns.stillStopping"),
         targets,
       );
     }

@@ -1,0 +1,179 @@
+{
+  "harness": {
+    "acpAgents": "Agentes ACP",
+    "cursorCloud": "Cursor Cloud (experimental)",
+    "label": "Harness",
+    "hint": "Escolha o harness de agente que executa suas tarefas.",
+    "unknownProvider": "{{provider}} (provedor desconhecido)"
+  },
+  "engine": {
+    "label": "Motor de execução",
+    "hint": "O padrão usa ACP. Se o ACP não estiver disponível, a execução falha com um erro de configuração. Escolha CLI explicitamente para usá-lo.",
+    "default": "Padrão (ACP)"
+  },
+  "cursor": {
+    "repoUrl": {
+      "label": "Repositório do GitHub",
+      "hint": "Selecione um repositório ou um ambiente de nuvem nomeado do Cursor."
+    },
+    "repoRef": {
+      "label": "Ref inicial",
+      "placeholder": "Padrão do repositório"
+    },
+    "prUrl": {
+      "label": "URL do pull request",
+      "placeholder": "Opcional"
+    },
+    "cloudEnvName": {
+      "label": "Ambiente de nuvem do Cursor",
+      "placeholder": "Use no lugar de um repositório"
+    },
+    "workOnCurrentBranch": "Trabalhar no branch atual",
+    "autoCreatePR": "Criar pull request automaticamente",
+    "skipReviewerRequest": "Pular pedido de revisor",
+    "description": "Experimental. O Cursor hospeda o ambiente de execução deste agente. Não é preciso um computador Paperclip. O Cursor gerencia as permissões de comandos; a identidade efetiva do modelo não está disponível. As configurações de ambiente do agente aceitam apenas CURSOR_API_KEY. Configure os segredos hospedados no seu ambiente do Cursor Cloud."
+  },
+  "dot": {
+    "connection": {
+      "label": "Conexão do Dot",
+      "hint": "É preciso um ciclo de evento verificado antes de atribuir trabalho."
+    },
+    "attachments": {
+      "label": "Ler anexos da tarefa",
+      "hint": "Permite que o Dot leia arquivos anexados à tarefa atribuída a ele. O conteúdo dos arquivos é enviado à OpenAI. Não exige acesso a comandos do espaço de trabalho; desligado por padrão."
+    },
+    "workspace": {
+      "label": "Arquivos e comandos do espaço de trabalho",
+      "hint": "Permite que o Dot leia e escreva no espaço de trabalho atribuído e publique arquivos. Exige um Runner local. Comandos só estão disponíveis no Linux com bubblewrap; não podem ler seu diretório pessoal nem usar credenciais injetadas."
+    },
+    "unmeteredHint": "O Dot não informa uso de tokens nem custo. O Paperclip não consegue impor um teto de gasto do provedor; os limites de orçamento conhecidos da organização e do agente continuam valendo."
+  },
+  "external": {
+    "allowUnmetered": "Permitir provedor cobrado externamente"
+  },
+  "muse": {
+    "connection": {
+      "label": "Conexão do Muse",
+      "hint": "Pareamento, contato do receptor, resposta em segundo plano e configuração do agente são verificados separadamente."
+    },
+    "unmeteredHint": "O Muse não informa uso nem custo. O Paperclip não consegue impor um teto de gasto do Muse; os limites de orçamento conhecidos da organização e do agente continuam valendo."
+  },
+  "acpAgent": {
+    "label": "Agente ACP",
+    "hint": "Escolha um harness qualificado e informe o ID exato do modelo.",
+    "qualificationPending": " — qualificação pendente"
+  },
+  "cursorMode": {
+    "label": "Modo do Cursor",
+    "hint": "Selecione o modo de sessão do Cursor. As permissões e as regras de aprovação da organização continuam valendo.",
+    "unsupported": "Modo salvo não suportado — selecione Agent, Plan ou Ask",
+    "agent": "Agent",
+    "plan": "Plan",
+    "ask": "Ask"
+  },
+  "piThinking": {
+    "label": "Nível de raciocínio do Pi",
+    "hint": "O runner verifica este nível exato antes de cada sessão poder enviar prompts. Alterá-lo inicia uma nova sessão.",
+    "unsupported": "Nível de raciocínio salvo não suportado",
+    "off": "Desligado",
+    "low": "Baixo",
+    "high": "Alto",
+    "max": "Máximo"
+  },
+  "claudeManaged": {
+    "profile": {
+      "label": "Perfil do Managed Agent",
+      "hint": "ID ou chave de perfil qualificado da organização. A identidade do recurso remoto é carregada do perfil armazenado, não desta configuração do agente."
+    },
+    "ceiling": {
+      "label": "Teto de gasto por sessão (USD)",
+      "hint": "Teto rígido opcional por agente. Deixe 1.00 para usar um padrão conservador."
+    },
+    "retention": {
+      "label": "Reconhecer a retenção gerenciada",
+      "hint": "O Claude Managed é um serviço beta com estado e não é elegível para os modos ZDR ou HIPAA."
+    }
+  },
+  "agentCore": {
+    "profile": {
+      "label": "Perfil do AgentCore",
+      "hint": "ID ou chave de perfil qualificado da organização. A identidade de harness, Memory, IAM e context store vem do perfil armazenado."
+    },
+    "ceiling": {
+      "label": "Teto estimado por sessão (USD)",
+      "hint": "Estimativa do Paperclip; a AWS não oferece um limite rígido de valor por sessão."
+    },
+    "maxIterations": {
+      "label": "Máximo de iterações",
+      "hint": "O intervalo qualificado é de 1 a 8. Valores inválidos ficam em 8 por segurança."
+    },
+    "maxOutputTokens": {
+      "label": "Máximo de tokens de saída",
+      "hint": "O intervalo qualificado é de 1 a 4096."
+    },
+    "timeout": {
+      "label": "Tempo limite da invocação (segundos)",
+      "hint": "O intervalo qualificado é de 1 a 300 segundos."
+    },
+    "retention": {
+      "label": "Reconhecer a retenção de 90 dias da Memory",
+      "hint": "O perfil qualificado do AgentCore retém eventos de Memory de curto prazo por exatamente 90 dias."
+    }
+  },
+  "permissionMode": {
+    "label": "Modo de permissão",
+    "hint": "{{description}} O modo selecionado não amplia os limites de espaço de trabalho, rede, credenciais ou planejamento do Paperclip.",
+    "unsupported": "Modo salvo não suportado — selecione um modo qualificado",
+    "codexUnsupported": "Este modo salvo do Codex não pode iniciar nem recuperar uma execução do Paperclip Runner. Selecione Automático (isolado) para corrigir."
+  },
+  "lifecycle": {
+    "label": "Ciclo de vida do runner",
+    "hint": "Automático mantém Codex e OpenCode aquecidos neste computador por 5 minutos depois de uma execução, para que a seguinte comece mais rápido, e roda os outros harnesses turno a turno. Turno a turno suspende depois de cada execução. Aquecido mantém o mesmo processo do provedor disponível entre execuções governadas.",
+    "automatic": "Automático",
+    "perTurn": "Turno a turno",
+    "warm": "Sessão aquecida"
+  },
+  "warmIdle": {
+    "label": "Tempo limite ocioso aquecido (ms)",
+    "hint": "Depois desse tempo de inatividade, o runnerd faz um checkpoint e suspende a sessão do provedor. O máximo é 24 horas."
+  },
+  "acp": {
+    "serverCommand": {
+      "label": "Comando do servidor ACP",
+      "hint": "Substituição opcional do comando do servidor ACP do Codex. O padrão é o binário codex-acp local do pacote."
+    },
+    "sessionMode": {
+      "label": "Modo de sessão ACP",
+      "hint": "Persistente mantém o estado da sessão ACP entre execuções. Única começa do zero a cada execução.",
+      "persistent": "Persistente",
+      "oneshot": "Única"
+    },
+    "nonInteractive": {
+      "label": "Permissões não interativas do ACP",
+      "hint": "Comportamento de reserva se o agente ACP pedir uma entrada fora de uma sessão interativa.",
+      "deny": "Negar",
+      "fail": "Falhar"
+    },
+    "stateDir": {
+      "label": "Diretório de estado do ACP",
+      "hint": "Diretório opcional de estado da sessão ACP. O padrão é um armazenamento gerenciado pelo Paperclip, por organização/agente."
+    },
+    "warmIdle": {
+      "label": "Ociosidade do processo ACP aquecido (ms)",
+      "hint": "O padrão é 0, que fecha o processo ACP depois de cada execução, mantendo o estado persistente da sessão."
+    }
+  },
+  "instructionsFile": {
+    "label": "Arquivo de instruções do agente",
+    "hint": "Caminho absoluto para um arquivo markdown (ex.: AGENTS.md) que define o comportamento deste agente. Injetado no prompt de sistema em tempo de execução. Observação: o Codex ainda pode aplicar automaticamente arquivos AGENTS.md do repositório no espaço de trabalho."
+  },
+  "bypassSandbox": "Ignorar o sandbox",
+  "enableSearch": "Ativar busca",
+  "fastMode": {
+    "label": "Modo rápido",
+    "manual": "O modo rápido será repassado para este modelo manual. Se o Codex rejeitar, desligue a opção.",
+    "supported": "O modo rápido consome créditos/tokens muito mais rápido do que as execuções normais do Codex.",
+    "unsupported": "O modo rápido hoje só funciona em {{models}} ou em IDs de modelo manuais. O Paperclip vai ignorar esta opção até o modelo ser trocado."
+  },
+  "unknownProviderDescription": "A configuração de provedor desconhecido é preservada."
+}

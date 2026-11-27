@@ -1,0 +1,10 @@
+{
+  "title": "Distribuição de eventos financeiros",
+  "description": "Cobranças da conta agrupadas por tipo de evento.",
+  "empty": "Nenhum evento financeiro neste período.",
+  "events_one": "{{count}} evento",
+  "events_other": "{{count}} eventos",
+  "billers_one": "{{count}} cobrador",
+  "billers_other": "{{count}} cobradores",
+  "debits": "{{amount}} em débitos"
+}

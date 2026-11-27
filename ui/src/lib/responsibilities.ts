@@ -24,15 +24,16 @@ import {
   type ResponsibilityMetricKind,
 } from "@paperclipai/shared";
 import { ApiError } from "@/api/client";
+import { t } from "@/i18n";
 
 /** Display order for status everywhere: what needs you first. */
 export const RESPONSIBILITY_HEALTH_ORDER: readonly ResponsibilityHealth[] = ["behind", "at_risk", "on_track", "not_measured"];
 
 export const RESPONSIBILITY_HEALTH_LABEL: Record<ResponsibilityHealth, string> = {
-  behind: "Behind",
-  at_risk: "At risk",
-  on_track: "On track",
-  not_measured: "Not measured",
+  behind: t("libResponsibilities.health.behind"),
+  at_risk: t("libResponsibilities.health.atRisk"),
+  on_track: t("libResponsibilities.health.onTrack"),
+  not_measured: t("libResponsibilities.health.notMeasured"),
 };
 
 /**
@@ -153,13 +154,13 @@ export function describeMetricReading(metric: ReadableMetric): MetricReading {
 
   if (kind === "yes_no") {
     const value = metric.current === null ? null : metric.current >= 1;
-    const current = value === null ? null : value ? "Yes" : "No";
+    const current = value === null ? null : value ? t("libResponsibilities.reading.yes") : t("libResponsibilities.reading.no");
     return {
       current,
-      target: "yes",
-      targetLabel: value === true ? "as the bar asks" : "the bar is yes",
+      target: t("libResponsibilities.reading.yesTarget"),
+      targetLabel: value === true ? t("libResponsibilities.reading.asTheBarAsks") : t("libResponsibilities.reading.theBarIsYes"),
       progress,
-      summary: `${name}: ${current ? current.toLowerCase() : "no answer yet"}`,
+      summary: t("libResponsibilities.reading.summaryYesNo", { name, value: current ? current.toLowerCase() : t("libResponsibilities.reading.noAnswerYet") }),
       visual: { kind: "yes_no", value },
     };
   }
@@ -170,8 +171,8 @@ export function describeMetricReading(metric: ReadableMetric): MetricReading {
     const current = metric.current === null ? null : formatMetricValue(metric.current, metric.unit);
     if (low === null || high === null || !(high > low)) {
       return {
-        current, target: null, targetLabel: "no range set", progress: null,
-        summary: `${name}: ${current ?? "no reading yet"}, no range set`,
+        current, target: null, targetLabel: t("libResponsibilities.reading.noRangeSet"), progress: null,
+        summary: t("libResponsibilities.reading.summaryNoRange", { name, current: current ?? t("libResponsibilities.reading.noReadingYet") }),
         visual: { kind: "fill", progress: null },
       };
     }
@@ -184,9 +185,9 @@ export function describeMetricReading(metric: ReadableMetric): MetricReading {
     return {
       current,
       target: range,
-      targetLabel: `range ${range}`,
+      targetLabel: t("libResponsibilities.reading.range", { range }),
       progress,
-      summary: `${name}: ${current ?? "no reading yet"}, range ${range}`,
+      summary: t("libResponsibilities.reading.summaryRange", { name, current: current ?? t("libResponsibilities.reading.noReadingYet"), range }),
       visual: { kind: "range", low: at(low), high: at(high), marker: metric.current === null ? null : at(metric.current) },
     };
   }
@@ -197,17 +198,17 @@ export function describeMetricReading(metric: ReadableMetric): MetricReading {
   const visual: MetricVisual = { kind: "fill", progress };
 
   if (current === null) {
-    const targetLabel = target ? (atMost ? `target at most ${target}` : `target ${target}`) : "no target set";
-    return { current: null, target, targetLabel, progress, summary: `${name}: no reading yet, ${targetLabel}`, visual };
+    const targetLabel = target ? (atMost ? t("libResponsibilities.reading.targetAtMost", { target }) : t("libResponsibilities.reading.target", { target })) : t("libResponsibilities.reading.noTargetSet");
+    return { current: null, target, targetLabel, progress, summary: t("libResponsibilities.reading.summaryNoReading", { name, targetLabel }), visual };
   }
   if (target === null) {
-    return { current, target, targetLabel: "no target set", progress, summary: `${name}: ${current}, no target set`, visual };
+    return { current, target, targetLabel: t("libResponsibilities.reading.noTargetSet"), progress, summary: t("libResponsibilities.reading.summaryNoTarget", { name, current }), visual };
   }
   if (atMost) {
-    const targetLabel = `vs. at most ${target}`;
-    return { current, target, targetLabel, progress, summary: `${name}: ${current}, target at most ${target}`, visual };
+    const targetLabel = t("libResponsibilities.reading.vsAtMost", { target });
+    return { current, target, targetLabel, progress, summary: t("libResponsibilities.reading.summaryAtMost", { name, current, target }), visual };
   }
-  return { current, target, targetLabel: `of ${target}`, progress, summary: `${current} of ${target} ${lowerName}`, visual };
+  return { current, target, targetLabel: t("libResponsibilities.reading.of", { target }), progress, summary: t("libResponsibilities.reading.summaryOf", { current, target, name: lowerName }), visual };
 }
 
 /** Whole days between two instants, never negative. */
@@ -218,21 +219,21 @@ export function daysBetween(earlier: Date | string, later: Date): number {
 /** When a reading was taken, as a phrase: "today", "yesterday", "3 days ago", "on Oct 2". */
 export function describeReadingAge(updatedAt: Date | string, now: Date): string {
   const days = daysBetween(updatedAt, now);
-  if (days === 0) return "today";
-  if (days === 1) return "yesterday";
-  if (days < 30) return `${days} days ago`;
+  if (days === 0) return t("libResponsibilities.age.today");
+  if (days === 1) return t("libResponsibilities.age.yesterday");
+  if (days < 30) return t("libResponsibilities.age.daysAgo", { count: days });
   const date = new Date(updatedAt);
-  return `on ${date.toLocaleDateString("en-US", {
+  return t("libResponsibilities.age.onDate", { date: date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     ...(date.getFullYear() !== now.getFullYear() ? { year: "numeric" as const } : {}),
-  })}`;
+  }) });
 }
 
 /** The stale flag's words: "Not updated in 16 days". */
 export function describeStale(updatedAt: Date | string, now: Date): string {
   const days = daysBetween(updatedAt, now);
-  return `Not updated in ${days} ${days === 1 ? "day" : "days"}`;
+  return t("libResponsibilities.stale", { count: days });
 }
 
 /** How close (ms) an activity entry must be to `metricUpdatedAt` to be the same reading. */
@@ -259,8 +260,8 @@ export function lastReadingActor(
 }
 
 export const METRIC_DIRECTION_OPTIONS: ReadonlyArray<{ value: ResponsibilityMetricDirection; label: string }> = [
-  { value: "at_least", label: "At least (higher is better)" },
-  { value: "at_most", label: "At most (lower is better)" },
+  { value: "at_least", label: t("libResponsibilities.direction.atLeast") },
+  { value: "at_most", label: t("libResponsibilities.direction.atMost") },
 ];
 
 // ---------------------------------------------------------------------------
@@ -425,9 +426,9 @@ export function agentsWorkingUnder(detail: {
 /** "2 tasks, 1 routine" */
 export function describeAgentWork(work: Pick<AgentAtWork, "tasks" | "routines" | "projects">): string {
   const parts: string[] = [];
-  if (work.tasks) parts.push(`${work.tasks} ${work.tasks === 1 ? "task" : "tasks"}`);
-  if (work.routines) parts.push(`${work.routines} ${work.routines === 1 ? "routine" : "routines"}`);
-  if (work.projects) parts.push(`leads ${work.projects} ${work.projects === 1 ? "project" : "projects"}`);
+  if (work.tasks) parts.push(t("libResponsibilities.agentWork.tasks", { count: work.tasks }));
+  if (work.routines) parts.push(t("libResponsibilities.agentWork.routines", { count: work.routines }));
+  if (work.projects) parts.push(t("libResponsibilities.agentWork.projects", { count: work.projects }));
   return parts.join(", ");
 }
 
@@ -438,13 +439,13 @@ export function describeAgentWork(work: Pick<AgentAtWork, "tasks" | "routines" |
 export type BarField = "standard" | "metricName" | "metricTarget" | "metricCurrent" | "metricUnit" | "metricLow" | "metricHigh";
 
 export const BAR_FIELD_LABEL: Record<BarField, string> = {
-  standard: "the bar",
-  metricName: "what you measure",
-  metricTarget: "a target",
-  metricCurrent: "the current reading",
-  metricUnit: "the unit",
-  metricLow: "a low bound",
-  metricHigh: "a high bound",
+  standard: t("libResponsibilities.fields.standard"),
+  metricName: t("libResponsibilities.fields.metricName"),
+  metricTarget: t("libResponsibilities.fields.metricTarget"),
+  metricCurrent: t("libResponsibilities.fields.metricCurrent"),
+  metricUnit: t("libResponsibilities.fields.metricUnit"),
+  metricLow: t("libResponsibilities.fields.metricLow"),
+  metricHigh: t("libResponsibilities.fields.metricHigh"),
 };
 
 /** The bar templates in the order the form offers them, with their person-facing names. */
@@ -549,11 +550,11 @@ export function validateBarDraft(draft: BarDraft): BarValidation {
   const high = number("metricHigh");
   if (kind === "percentage" && target !== null && (target < 0 || target > 100)) {
     invalid.push("metricTarget");
-    problems.metricTarget = "A share from 0 to 100";
+    problems.metricTarget = t("libResponsibilities.problems.share");
   }
   if (low !== null && high !== null && !(high > low)) {
     invalid.push("metricHigh");
-    problems.metricHigh = "Above the low bound";
+    problems.metricHigh = t("libResponsibilities.problems.aboveLow");
   }
   let current: number | boolean | null = null;
   if (kind === "yes_no") {
@@ -563,7 +564,7 @@ export function validateBarDraft(draft: BarDraft): BarValidation {
     if (parsed === "invalid") invalid.push("metricCurrent");
     else if (kind === "percentage" && parsed !== null && (parsed < 0 || parsed > 100)) {
       invalid.push("metricCurrent");
-      problems.metricCurrent = "A share from 0 to 100";
+      problems.metricCurrent = t("libResponsibilities.problems.share");
     } else current = parsed;
   }
   if (missing.length > 0 || invalid.length > 0) return { ok: false, missing, invalid, problems };
@@ -657,7 +658,7 @@ export function isMetricDraftBlank(draft: BarDraft): boolean {
 export function joinFieldLabels(fields: readonly BarField[]): string {
   const labels = fields.map((field) => BAR_FIELD_LABEL[field]);
   if (labels.length <= 1) return labels[0] ?? "";
-  return `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)}`;
+  return t("libResponsibilities.joinFields", { list: labels.slice(0, -1).join(", "), last: labels.at(-1) });
 }
 
 /**
@@ -683,18 +684,18 @@ export interface DelegationModeOption {
 export const RESPONSIBILITY_DELEGATION_MODE_OPTIONS: readonly DelegationModeOption[] = [
   {
     value: "plan_with_me",
-    title: "Plan it with me",
-    description: "The agent proposes a plan and waits for your approval before doing the work.",
+    title: t("libResponsibilities.delegation.planWithMe.title"),
+    description: t("libResponsibilities.delegation.planWithMe.description"),
   },
   {
     value: "prepare_i_decide",
-    title: "Prepare it, I decide",
-    description: "The agent does the groundwork and brings the decision back to you.",
+    title: t("libResponsibilities.delegation.prepareIDecide.title"),
+    description: t("libResponsibilities.delegation.prepareIDecide.description"),
   },
   {
     value: "handle_and_tell_me",
-    title: "Handle it and tell me",
-    description: "The agent does it end to end and tells you what it did.",
+    title: t("libResponsibilities.delegation.handleAndTellMe.title"),
+    description: t("libResponsibilities.delegation.handleAndTellMe.description"),
   },
   // "own_from_now_on" is left out: a person gives an agent a task, a routine
   // or a project, never a whole responsibility.
@@ -734,15 +735,15 @@ export function delegationPrefillForReason(
   overdueProjects: readonly ResponsibilityOverdueProject[],
 ): { title: string; projectId: string | null } {
   const project = overdueProjects.find((candidate) => reason.startsWith(`${candidate.name} is `));
-  if (project) return { title: `Get “${project.name}” back on schedule`, projectId: project.id };
+  if (project) return { title: t("libResponsibilities.delegation.backOnSchedule", { name: project.name }), projectId: project.id };
   return { title: reason, projectId: null };
 }
 
 /** Agent-run share of open work: `agentTasks` of `openTasks`, as a whole percentage. */
 export function agentPoweredShare(agentTasks: number, openTasks: number): { percent: number; label: string } {
-  if (openTasks <= 0) return { percent: 0, label: "No open tasks" };
+  if (openTasks <= 0) return { percent: 0, label: t("libResponsibilities.share.noOpenTasks") };
   const percent = Math.round((Math.min(agentTasks, openTasks) / openTasks) * 100);
-  return { percent, label: `${agentTasks} of ${openTasks}` };
+  return { percent, label: t("libResponsibilities.share.of", { count: agentTasks, total: openTasks }) };
 }
 
 /** Local calendar date as `YYYY-MM-DD`, to compare with target dates. */

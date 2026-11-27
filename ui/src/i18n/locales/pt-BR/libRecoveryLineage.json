@@ -1,0 +1,9 @@
+{
+  "attemptOf": "Tentativa {{attempt}} de {{max}}",
+  "attemptRunningNow": "tentativa em execução agora",
+  "retryMissedAt": "tentativa perdida {{offset}}",
+  "retryMissed": "tentativa perdida",
+  "nextTryNow": "próxima tentativa agora",
+  "nextTryAt": "próxima tentativa {{offset}}",
+  "retriesUsedUp": "tentativas esgotadas"
+}

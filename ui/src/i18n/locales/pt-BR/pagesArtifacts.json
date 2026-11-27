@@ -1,0 +1,16 @@
+{
+  "breadcrumb": "Artefatos",
+  "selectOrganization": "Selecione uma organização para ver os artefatos.",
+  "empty": {
+    "stacksSearch": "Nenhuma pilha de artefatos corresponde a esta busca.",
+    "stacks": "Nenhuma pilha de artefatos ainda.",
+    "search": "Nenhum artefato corresponde a esta busca.",
+    "stackFilters": "Nenhum artefato desta pilha corresponde aos filtros atuais.",
+    "all": "Nenhum artefato ainda. Os resultados anexados às tarefas aparecerão aqui.",
+    "kind": "Nenhum artefato deste tipo ainda."
+  },
+  "allStacks": "Todas as pilhas",
+  "loadAction": "carregar os artefatos",
+  "loadingMore": "Carregando mais artefatos...",
+  "updating": "Atualizando artefatos..."
+}

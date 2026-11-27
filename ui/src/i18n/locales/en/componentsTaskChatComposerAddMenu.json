@@ -1,0 +1,21 @@
+{
+  "actions": {
+    "files": "Files and images",
+    "privateTask": "Private task",
+    "goal": "Goal",
+    "goalDetail": "Keep pursuing",
+    "planMode": "Plan mode",
+    "planDetail": "Plan before acting",
+    "askMode": "Ask mode",
+    "askDetail": "Answer without changes"
+  },
+  "addToComposer": "Add to composer",
+  "add": "Add",
+  "closeMenu": "Close Add menu",
+  "removeMode": "Remove {{label}}",
+  "privacy": {
+    "explanation": "Only you and people you share with can read this task",
+    "remove": "Remove private task",
+    "chip": "Private"
+  }
+}

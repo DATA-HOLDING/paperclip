@@ -16,6 +16,7 @@ import {
   readChunkSeq,
   type ChunkRetentionBudget,
 } from "../../lib/run-log-chunks";
+import { t } from "@/i18n";
 
 const LOG_POLL_INTERVAL_MS = 2000;
 const LOG_READ_LIMIT_BYTES = 256_000;
@@ -503,7 +504,7 @@ export function useLiveRunTranscripts({
           setErrorsByRun((previous) => {
             if (previous.has(run.id)) return previous;
             const next = new Map(previous);
-            next.set(run.id, error instanceof Error ? error : new Error("Run history could not be loaded"));
+            next.set(run.id, error instanceof Error ? error : new Error(t("componentsTranscript.historyLoadFailed")));
             return next;
           });
         }

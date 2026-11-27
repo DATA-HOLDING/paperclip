@@ -1,0 +1,6 @@
+{
+  "noAgents": "No agents on this yet",
+  "anAgent": "An agent",
+  "agentsOnThis": "Agents on this: {{names}}",
+  "noneAtWork": "No agent is working on this yet. Give one a task, a routine or a project below."
+}

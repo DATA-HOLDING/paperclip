@@ -1,0 +1,12 @@
+{
+  "giveAria": "Give {{label}} to an agent",
+  "give": "Give to an agent",
+  "whoLeadsProject": "Who leads this project",
+  "whoTakesRoutine": "Who takes this routine",
+  "whoTakesTask": "Who takes this task",
+  "noAgents": "No agents yet. Add an agent first.",
+  "theAgent": "the agent",
+  "leadsNow": "{{name}} leads it now.",
+  "hasNow": "{{name}} has it now.",
+  "giveFailed": "Couldn’t give it to {{name}}. {{reason}}"
+}

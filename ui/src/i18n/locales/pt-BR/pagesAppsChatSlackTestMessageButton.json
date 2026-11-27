@@ -1,0 +1,26 @@
+{
+  "button": {
+    "sending": "Enviando…",
+    "sent": "Mensagem de teste enviada",
+    "requestNew": "Solicitar um novo convite",
+    "waiting": "Aguardando a conexão com o Slack…",
+    "send": "Enviar uma mensagem de teste para mim"
+  },
+  "status": {
+    "expired": "O convite do Slack expirou.",
+    "openInvitation": "Abra o convite no Slack para conectar sua conta."
+  },
+  "dismiss": "Dispensar",
+  "dialog": {
+    "title": "Conecte sua conta do Slack",
+    "description": "Escolha sua conta. As mensagens para este agente usarão suas permissões do Paperclip.",
+    "findLabel": "Encontre sua conta do Slack",
+    "findPlaceholder": "Encontre seu nome",
+    "accountGroup": "Sua conta do Slack",
+    "noAccounts": "Nenhuma conta disponível encontrada neste espaço de trabalho do Slack.",
+    "loadMore": "Carregar mais contas do Slack",
+    "cancel": "Cancelar",
+    "sendingInvitation": "Enviando convite…",
+    "sendInvitation": "Enviar convite de conexão"
+  }
+}

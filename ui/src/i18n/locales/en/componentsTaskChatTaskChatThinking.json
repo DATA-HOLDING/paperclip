@@ -1,0 +1,8 @@
+{
+  "reasoningDetail": "Reasoning detail",
+  "reasoning": "Reasoning",
+  "thinking": "Thinking…",
+  "thought": "Thought",
+  "collapseAria": "Collapse {{label}}: {{preview}}",
+  "expandAria": "Expand {{label}}: {{preview}}"
+}

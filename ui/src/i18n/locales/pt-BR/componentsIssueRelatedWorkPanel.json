@@ -1,0 +1,20 @@
+{
+  "externalObjects": {
+    "title": "Objetos externos",
+    "description": "Trabalho remoto referenciado nesta tarefa — pull requests, implantações, tickets em outros sistemas e mais.",
+    "loadFailed": "Não foi possível carregar os objetos externos.",
+    "retry": "Tentar novamente",
+    "loading": "Carregando objetos externos…",
+    "empty": "Esta tarefa ainda não referencia nenhum objeto externo."
+  },
+  "references": {
+    "title": "Referências",
+    "description": "Outras tarefas que esta tarefa cita no título, na descrição, nos comentários ou nos documentos.",
+    "empty": "Esta tarefa ainda não referencia nenhuma outra tarefa."
+  },
+  "referencedBy": {
+    "title": "Referenciada por",
+    "description": "Outras tarefas que citam esta tarefa.",
+    "empty": "Nenhuma outra tarefa referencia esta tarefa ainda."
+  }
+}

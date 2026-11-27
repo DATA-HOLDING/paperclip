@@ -3,6 +3,7 @@ import { FileCode2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WorkspaceFileRef } from "@paperclipai/shared";
 import { useFileViewer } from "@/context/FileViewerContext";
+import { t } from "@/i18n";
 
 export interface ArtifactFileChipProps {
   workspaceFileRef: WorkspaceFileRef;
@@ -33,14 +34,16 @@ export function ArtifactFileChip({
   const display = typeof label !== "undefined" ? label : artifactFileDisplay(workspaceFileRef);
   const canOpen = !!(onOpen || viewer);
   const lineSuffix = workspaceFileRef.line
-    ? ` line ${workspaceFileRef.line}${workspaceFileRef.column ? ` column ${workspaceFileRef.column}` : ""}`
+    ? (workspaceFileRef.column
+      ? t("componentsArtifactFileChip.lineColumnSuffix", { line: workspaceFileRef.line, column: workspaceFileRef.column })
+      : t("componentsArtifactFileChip.lineSuffix", { line: workspaceFileRef.line }))
     : "";
   const ariaLabel = canOpen
-    ? `Open ${workspaceFileRef.displayPath}${lineSuffix} in the file viewer`
-    : `Workspace file ${workspaceFileRef.displayPath}${lineSuffix}`;
+    ? t("componentsArtifactFileChip.openInViewer", { path: workspaceFileRef.displayPath, suffix: lineSuffix })
+    : t("componentsArtifactFileChip.workspaceFile", { path: workspaceFileRef.displayPath, suffix: lineSuffix });
   const tooltip = title ?? (canOpen
-    ? `Open ${workspaceFileRef.displayPath}${lineSuffix} in the file viewer`
-    : `Workspace file ${workspaceFileRef.displayPath}${lineSuffix}`);
+    ? t("componentsArtifactFileChip.openInViewer", { path: workspaceFileRef.displayPath, suffix: lineSuffix })
+    : t("componentsArtifactFileChip.workspaceFile", { path: workspaceFileRef.displayPath, suffix: lineSuffix }));
 
   const classNames = cn(
     "paperclip-artifact-file-chip inline-flex items-center gap-1 rounded-sm border border-border bg-muted/60 px-1.5 py-0.5 font-mono text-xs leading-tight text-foreground/90 align-middle no-underline hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",

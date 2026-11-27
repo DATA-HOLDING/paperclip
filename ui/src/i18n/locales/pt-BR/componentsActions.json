@@ -1,0 +1,28 @@
+{
+  "actionCard": {
+    "previousCatalogHash": "Hash anterior do catálogo",
+    "currentCatalogHash": "Hash atual do catálogo",
+    "rows": {
+      "application": "Aplicação",
+      "connection": "Conexão",
+      "catalog": "Catálogo",
+      "payload": "Payload"
+    },
+    "manifestVersion": "manifesto v{{version}}",
+    "signed": "assinado",
+    "staleApproveTitle": "Reemita a solicitação antes de aprovar — o hash do catálogo mudou.",
+    "approve": "Aprovar",
+    "deny": "Negar",
+    "editResign": "Editar e reassinar",
+    "requestedApproval": "solicitou aprovação para chamar",
+    "stale": {
+      "title": "O catálogo mudou desde que esta solicitação foi assinada.",
+      "body": "O hash do catálogo de ferramentas da aplicação não corresponde mais ao usado quando esta aprovação foi emitida. A aprovação está desativada — o agente precisa editar e reassinar para solicitar novamente."
+    },
+    "input": "Entrada",
+    "whyAsking": "Por que estou pedindo",
+    "policy": "Política nº {{number}}",
+    "requiresApproval": "exige aprovação aqui.",
+    "noExpiry": "sem expiração definida"
+  }
+}

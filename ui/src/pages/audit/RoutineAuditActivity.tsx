@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useQuery } from "@tanstack/react-query";
 import { Activity } from "lucide-react";
 import { routinesApi } from "@/api/routines";
@@ -33,7 +34,7 @@ export function RoutineAuditActivity({
   if (activityView.kind === "loading" || activityView.kind === "reconnecting") {
     return (
       <div className="border-y border-border py-14 text-center text-sm text-muted-foreground">
-        Loading routine activity…
+        {t("pagesAudit.routineAuditActivity.loading")}
       </div>
     );
   }
@@ -42,7 +43,7 @@ export function RoutineAuditActivity({
     return (
       <QueryErrorState
         error={activityView.error}
-        action="load routine activity"
+        action={t("pagesAudit.routineAuditActivity.loadAction")}
         onRetry={activityView.retry}
         retrying={activityView.isFetching}
       />
@@ -51,11 +52,11 @@ export function RoutineAuditActivity({
 
   const events = activityView.data ?? [];
   if (events.length === 0) {
-    return <EmptyState icon={Activity} message="No routine activity yet." />;
+    return <EmptyState icon={Activity} message={t("pagesAudit.routineAuditActivity.empty")} />;
   }
 
   return (
-    <div className="border-y border-border" aria-label="Routine activity">
+    <div className="border-y border-border" aria-label={t("pagesAudit.routineAuditActivity.label")}>
       {events.map((event) => (
         <RoutineActivityRow key={event.id} event={event} />
       ))}

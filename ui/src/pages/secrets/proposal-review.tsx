@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { useCallback, useMemo, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -42,8 +43,8 @@ import { describeError } from "@/api/errors";
 
 /** Short, non-reversible fingerprint label. Never renders the value. */
 export function fingerprintLabel(fingerprint: string | null, length: number | null): string {
-  const digest = fingerprint ? `sha256:${fingerprint.slice(0, 10)}…` : "no fingerprint";
-  const size = typeof length === "number" ? `${length} ${length === 1 ? "byte" : "bytes"}` : null;
+  const digest = fingerprint ? `sha256:${fingerprint.slice(0, 10)}…` : t("pagesSecretsProposalReview.noFingerprint");
+  const size = typeof length === "number" ? t("pagesSecretsProposalReview.bytes", { count: length }) : null;
   return size ? `${digest} · ${size}` : digest;
 }
 
@@ -77,10 +78,10 @@ export function FingerprintChip({
       type="button"
       onClick={() => {
         copyTextToClipboard(full)
-          .then(() => pushToast({ title: "Fingerprint copied", tone: "success" }))
-          .catch(() => pushToast({ title: "Couldn’t copy fingerprint", tone: "error" }));
+          .then(() => pushToast({ title: t("pagesSecretsProposalReview.fingerprintCopied"), tone: "success" }))
+          .catch(() => pushToast({ title: t("pagesSecretsProposalReview.fingerprintCopyFailed"), tone: "error" }));
       }}
-      title={`Copy full digest — ${full}`}
+      title={t("pagesSecretsProposalReview.copyFullDigest", { digest: full })}
       className={cn(
         "inline-flex items-center gap-1 font-mono hover:text-foreground",
         className,
@@ -122,13 +123,13 @@ export function ProposalJustification({
           className,
         )}
       >
-        <span className="sr-only">Reason given by the agent: </span>“{justification}”
+        <span className="sr-only">{t("pagesSecretsProposalReview.reasonGivenSr")}</span>“{justification}”
       </p>
     );
   }
   return (
     <div className={cn("space-y-0.5", className)}>
-      <p className="text-(length:--text-micro) text-muted-foreground">Reason given by the agent</p>
+      <p className="text-(length:--text-micro) text-muted-foreground">{t("pagesSecretsProposalReview.reasonGiven")}</p>
       <p className="whitespace-pre-wrap break-words text-xs text-foreground/80">
         “{justification}”
       </p>
@@ -184,7 +185,7 @@ export function ProposedBadge({ className }: { className?: string }) {
         className,
       )}
     >
-      <ShieldAlert className="size-3" /> Proposed
+      <ShieldAlert className="size-3" /> {t("pagesSecretsProposalReview.proposed")}
     </Badge>
   );
 }
@@ -274,11 +275,11 @@ export function useProposalDecision(
       secretsApi.approveProposal(companyId!, proposal.id, input),
     onSuccess: (result) => {
       pushToast({
-        title: result.kind === "secret" ? "Secret approved" : "Access approved",
+        title: result.kind === "secret" ? t("pagesSecretsProposalReview.secretApproved") : t("pagesSecretsProposalReview.accessApproved"),
         body:
           result.kind === "secret"
-            ? (result.proposedName ?? "Secret created")
-            : `${result.target?.name ?? "Agent"} · ${bindingEnvKey(result) || "access"}`,
+            ? (result.proposedName ?? t("pagesSecretsProposalReview.secretCreated"))
+            : `${result.target?.name ?? t("pagesSecretsProposalReview.agent")} · ${bindingEnvKey(result) || t("pagesSecretsProposalReview.access")}`,
         tone: "success",
       });
       setError(null);
@@ -293,7 +294,7 @@ export function useProposalDecision(
       secretsApi.rejectProposal(companyId!, proposal.id, { reason: reason.trim() }),
     onSuccess: (result) => {
       pushToast({
-        title: "Proposal rejected",
+        title: t("pagesSecretsProposalReview.proposalRejected"),
         body: result.kind === "secret" ? (result.proposedName ?? undefined) : undefined,
         tone: "info",
       });
@@ -470,19 +471,19 @@ function ApproveDialog({
           <>
             <DialogHeader>
               <DialogTitle>
-                {isSecret ? "Approve and save secret" : "Approve access"}
+                {isSecret ? t("pagesSecretsProposalReview.approveAndSaveSecret") : t("pagesSecretsProposalReview.approveAccess")}
               </DialogTitle>
               <DialogDescription>
                 {isSecret
-                  ? "The value is saved exactly as the agent recorded it. You can rename it or move it to another folder first."
-                  : "Give the agent access to this secret. Access is granted with your permissions."}
+                  ? t("pagesSecretsProposalReview.approveSecretDescription")
+                  : t("pagesSecretsProposalReview.approveAccessDescription")}
               </DialogDescription>
             </DialogHeader>
 
             {/* Provenance recap — keeps the social-engineering surface visible. */}
             <div className="space-y-1.5 rounded-md border border-border bg-muted/30 p-2.5 text-xs">
               <div className="flex items-center gap-1.5 text-muted-foreground">
-                <span>Proposed by</span>
+                <span>{t("pagesSecretsProposalReview.proposedBy")}</span>
                 <AgentRefChip agent={draft.proposal.proposedBy} className="font-medium text-foreground" />
               </div>
               <ProposalJustification justification={draft.proposal.justification} />
@@ -492,7 +493,7 @@ function ApproveDialog({
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1">
-                    <Label htmlFor="approve-folder">Folder</Label>
+                    <Label htmlFor="approve-folder">{t("pagesSecretsProposalReview.folder")}</Label>
                     <Input
                       id="approve-folder"
                       value={draft.folder}
@@ -502,7 +503,7 @@ function ApproveDialog({
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="approve-name">Name</Label>
+                    <Label htmlFor="approve-name">{t("pagesSecretsProposalReview.name")}</Label>
                     <Input
                       id="approve-name"
                       value={draft.leaf}
@@ -515,27 +516,27 @@ function ApproveDialog({
                   </div>
                 </div>
                 <p className="text-(length:--text-micro) text-muted-foreground">
-                  Saved as{" "}
+                  {t("pagesSecretsProposalReview.savedAs")}{" "}
                   {previewName ? (
                     <SecretPathName name={previewName} className="font-mono" />
                   ) : (
-                    <span className="italic">enter a name</span>
+                    <span className="italic">{t("pagesSecretsProposalReview.enterName")}</span>
                   )}
                 </p>
 
                 <div className="space-y-1">
-                  <Label htmlFor="approve-description">Description</Label>
+                  <Label htmlFor="approve-description">{t("pagesSecretsProposalReview.description")}</Label>
                   <Input
                     id="approve-description"
                     value={draft.description}
                     onChange={(event) => onChange({ ...draft, description: event.target.value })}
-                    placeholder="Optional"
+                    placeholder={t("pagesSecretsProposalReview.optional")}
                   />
                 </div>
 
                 {localConfigs.length > 0 ? (
                   <div className="space-y-1">
-                    <Label htmlFor="approve-provider-config">Stored in</Label>
+                    <Label htmlFor="approve-provider-config">{t("pagesSecretsProposalReview.storedIn")}</Label>
                     <select
                       id="approve-provider-config"
                       value={draft.providerConfigId}
@@ -544,7 +545,7 @@ function ApproveDialog({
                       }
                       className="h-9 w-full rounded-md border border-input bg-transparent px-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
-                      <option value="">Default vault</option>
+                      <option value="">{t("pagesSecretsProposalReview.defaultVault")}</option>
                       {localConfigs.map((config) => (
                         <option key={config.id} value={config.id}>
                           {config.displayName}
@@ -573,16 +574,16 @@ function ApproveDialog({
 
             <DialogFooter>
               <Button variant="ghost" onClick={onCancel} disabled={pending}>
-                Cancel
+                {t("pagesSecretsProposalReview.cancel")}
               </Button>
               <Button onClick={onConfirm} disabled={pending || !canConfirm}>
                 {pending
-                  ? "Approving…"
+                  ? t("pagesSecretsProposalReview.approving")
                   : isSecret
-                    ? "Approve and save secret"
+                    ? t("pagesSecretsProposalReview.approveAndSaveSecret")
                     : draft.cascade
-                      ? "Approve access and save secret"
-                      : "Approve access"}
+                      ? t("pagesSecretsProposalReview.approveAccessAndSaveSecret")
+                      : t("pagesSecretsProposalReview.approveAccess")}
               </Button>
             </DialogFooter>
           </>
@@ -606,7 +607,7 @@ function BindingApproveBody({
     <div className="space-y-3 text-sm">
       <div className="space-y-2 rounded-md border border-border p-3">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-muted-foreground">Agent</span>
+          <span className="text-xs text-muted-foreground">{t("pagesSecretsProposalReview.agent")}</span>
           {proposal.target ? (
             <AgentRefChip agent={proposal.target} className="text-sm font-medium" />
           ) : (
@@ -614,14 +615,14 @@ function BindingApproveBody({
           )}
         </div>
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-muted-foreground">Delivered as</span>
+          <span className="text-xs text-muted-foreground">{t("pagesSecretsProposalReview.deliveredAs")}</span>
           <span className="flex items-center gap-1.5">
             <DeliveryBadge configPath={proposal.configPath} />
             <code className="font-mono text-xs">{envKey || proposal.configPath}</code>
           </span>
         </div>
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-muted-foreground">Secret</span>
+          <span className="text-xs text-muted-foreground">{t("pagesSecretsProposalReview.secret")}</span>
           <span className="flex items-center gap-1.5">
             <KeyRound className="size-3.5 text-muted-foreground" />
             <span className="font-medium">{secret.name}</span>
@@ -637,12 +638,11 @@ function BindingApproveBody({
             checked={draft.cascade}
             onCheckedChange={(checked) => onChange({ ...draft, cascade: checked === true })}
             className="mt-0.5"
-            aria-label="Also approve the proposed secret"
+            aria-label={t("pagesSecretsProposalReview.alsoApproveSecret")}
           />
           <span className="text-foreground/90">
-            Also approve the proposed secret{" "}
-            <span className="font-medium">{secret.name}</span> and save it in the same step. Access
-            can’t be approved without it.
+            {t("pagesSecretsProposalReview.alsoApproveSecret")}{" "}
+            <span className="font-medium">{secret.name}</span>{t("pagesSecretsProposalReview.alsoApproveSecretAfter")}
           </span>
         </label>
       ) : null}
@@ -678,22 +678,21 @@ function RejectDialog({
         {proposal ? (
           <>
             <DialogHeader>
-              <DialogTitle>Reject proposal</DialogTitle>
+              <DialogTitle>{t("pagesSecretsProposalReview.rejectProposal")}</DialogTitle>
               <DialogDescription>
-                The reason is sent back to{" "}
-                <AgentRefChip agent={proposal.proposedBy} className="text-foreground" />. Requests to
-                use this secret are rejected too.
+                {t("pagesSecretsProposalReview.reasonSentBackTo")}{" "}
+                <AgentRefChip agent={proposal.proposedBy} className="text-foreground" />{t("pagesSecretsProposalReview.reasonSentBackAfter")}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-1">
-              <Label htmlFor="reject-reason">Reason</Label>
+              <Label htmlFor="reject-reason">{t("pagesSecretsProposalReview.reason")}</Label>
               <Textarea
                 id="reject-reason"
                 value={reason}
                 onChange={(event) => onReasonChange(event.target.value)}
                 rows={3}
                 autoFocus
-                placeholder="Why is this being rejected?"
+                placeholder={t("pagesSecretsProposalReview.rejectPlaceholder")}
               />
             </div>
             {error ? (
@@ -703,10 +702,10 @@ function RejectDialog({
             ) : null}
             <DialogFooter>
               <Button variant="ghost" onClick={onCancel} disabled={pending}>
-                Cancel
+                {t("pagesSecretsProposalReview.cancel")}
               </Button>
               <Button variant="destructive" onClick={onConfirm} disabled={pending || !canConfirm}>
-                {pending ? "Rejecting…" : "Reject"}
+                {pending ? t("pagesSecretsProposalReview.rejecting") : t("pagesSecretsProposalReview.reject")}
               </Button>
             </DialogFooter>
           </>
@@ -742,7 +741,7 @@ export function ProposalActions({
       disabled={disabled || blocked}
       onClick={() => onApprove(proposal)}
     >
-      Approve
+      {t("pagesSecretsProposalReview.approve")}
     </Button>
   );
   return (
@@ -754,7 +753,7 @@ export function ProposalActions({
               <span tabIndex={0}>{approveButton}</span>
             </TooltipTrigger>
             <TooltipContent className="max-w-72">
-              {proposal.approveBlockReason ?? "You don’t have permission to approve this."}
+              {proposal.approveBlockReason ?? t("pagesSecretsProposalReview.noPermission")}
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -768,7 +767,7 @@ export function ProposalActions({
         disabled={disabled}
         onClick={() => onReject(proposal)}
       >
-        Reject
+        {t("pagesSecretsProposalReview.reject")}
       </Button>
     </div>
   );

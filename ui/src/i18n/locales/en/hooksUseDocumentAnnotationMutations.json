@@ -1,0 +1,6 @@
+{
+  "you": "You",
+  "createFailed": "Failed to create comment.",
+  "replyFailed": "Failed to add reply.",
+  "statusFailed": "Failed to update comment status."
+}

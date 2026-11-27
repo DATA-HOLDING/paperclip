@@ -6,6 +6,7 @@ import { isRunLogOnlyProviderEvent } from "./run-log-only-events";
 import { createBridgeCallPairing } from "./bridge-call-pairing";
 import { workspaceChangeEntry } from "@/adapters/paperclip-runner";
 import { createUnifiedDiffClassifier } from "@/components/task-chat/diff-lines";
+import { t } from "@/i18n";
 
 function record(value: unknown): Record<string, unknown> | null {
   return value && typeof value === "object" && !Array.isArray(value)
@@ -162,8 +163,8 @@ function planProposalEntry(
     family: "plan_proposal",
     eventType,
     status: completed ? "completed" : "running",
-    title: "Plan",
-    summary: completed ? "Proposed a plan" : "Writing a plan",
+    title: t("componentsTranscript.nativeRunEvents.plan"),
+    summary: completed ? t("componentsTranscript.nativeRunEvents.proposedPlan") : t("componentsTranscript.nativeRunEvents.writingPlan"),
     payload: { ...payload, proposalId, markdown, status: completed ? "completed" : "streaming" },
   };
 }
@@ -280,7 +281,7 @@ function runtimeRequestEntry(input: {
     .map(record)
     .flatMap((field, index) => {
       const name = text(field?.name) ?? `answer_${index + 1}`;
-      const label = text(field?.label) ?? text(field?.name) ?? `Answer ${index + 1}`;
+      const label = text(field?.label) ?? text(field?.name) ?? t("componentsTranscript.nativeRunEvents.answerN", { number: index + 1 });
       return name && label
         ? [{ name: name.slice(0, 160), label: label.slice(0, 240), placeholder: text(field?.placeholder)?.slice(0, 500) ?? null }]
         : [];
@@ -300,7 +301,7 @@ function runtimeRequestEntry(input: {
     status,
     prompt: text(request.prompt)
       ?? input.previous?.prompt
-      ?? "Runtime approval requested",
+      ?? t("componentsTranscript.nativeRunEvents.runtimeApprovalRequested"),
     choices: choices.length > 0 ? choices : input.previous?.choices ?? [],
     fields: fields.length > 0 ? fields : input.previous?.fields ?? [],
     questionSet: canonicalQuestionSet(request.input)
@@ -329,14 +330,14 @@ function runResultEntry(
     kind: "run_result",
     ts,
     disposition,
-    summary: text(payload.summary) ?? "Run completed",
+    summary: text(payload.summary) ?? t("componentsTranscript.nativeRunEvents.runCompleted"),
     objectiveSatisfied: typeof completion.objectiveSatisfied === "boolean"
       ? completion.objectiveSatisfied
       : null,
     verification: (Array.isArray(payload.verification) ? payload.verification : [])
       .map(record)
       .flatMap((item) => item ? [{
-        commandOrCheck: text(item.commandOrCheck) ?? "Verification",
+        commandOrCheck: text(item.commandOrCheck) ?? t("componentsTranscript.nativeRunEvents.verification"),
         status: verificationStatus(item.status),
         ...(text(item.detail) ? { detail: text(item.detail)! } : {}),
         ...(text(item.artifactRef) ? { artifactRef: text(item.artifactRef)! } : {}),
@@ -351,7 +352,7 @@ function runResultEntry(
       .slice(0, 64),
     blocker: blocker ? {
       reasonCode: text(blocker.reasonCode) ?? "blocked",
-      unblockAction: text(blocker.unblockAction) ?? "Resolve the blocker to continue.",
+      unblockAction: text(blocker.unblockAction) ?? t("componentsTranscript.nativeRunEvents.resolveBlocker"),
       scope: blocker.scope === "task_wide" ? "task_wide" : "current_track",
     } : null,
     artifacts: (Array.isArray(payload.artifacts) ? payload.artifacts : [])
@@ -608,16 +609,16 @@ const CARD_PROVIDER_ACTIVITY_FAMILIES: Partial<Record<ProviderActivityEventType,
   family: Extract<TranscriptEntry, { kind: "provider_activity" }>["family"];
   title: string;
 }>> = {
-  "research.started": { family: "research", title: "Research" },
-  "research.progressed": { family: "research", title: "Research" },
-  "research.completed": { family: "research", title: "Research" },
-  "model.route.changed": { family: "model_identity", title: "Model" },
-  "model.verification.updated": { family: "model_identity", title: "Model" },
-  "artifact.viewed": { family: "artifact", title: "Artifact" },
-  "artifact.generated": { family: "artifact", title: "Artifact" },
-  "review.mode.changed": { family: "review", title: "Review mode" },
-  "wait.started": { family: "wait", title: "Intentional wait" },
-  "wait.completed": { family: "wait", title: "Intentional wait" },
+  "research.started": { family: "research", title: t("componentsTranscript.nativeRunEvents.research") },
+  "research.progressed": { family: "research", title: t("componentsTranscript.nativeRunEvents.research") },
+  "research.completed": { family: "research", title: t("componentsTranscript.nativeRunEvents.research") },
+  "model.route.changed": { family: "model_identity", title: t("componentsTranscript.nativeRunEvents.model") },
+  "model.verification.updated": { family: "model_identity", title: t("componentsTranscript.nativeRunEvents.model") },
+  "artifact.viewed": { family: "artifact", title: t("componentsTranscript.nativeRunEvents.artifact") },
+  "artifact.generated": { family: "artifact", title: t("componentsTranscript.nativeRunEvents.artifact") },
+  "review.mode.changed": { family: "review", title: t("componentsTranscript.nativeRunEvents.reviewMode") },
+  "wait.started": { family: "wait", title: t("componentsTranscript.nativeRunEvents.intentionalWait") },
+  "wait.completed": { family: "wait", title: t("componentsTranscript.nativeRunEvents.intentionalWait") },
 };
 
 function cardProviderActivityEntry(
@@ -672,7 +673,7 @@ function verificationActivityEntry(
     family: "verification",
     eventType: "verification.recorded",
     status: status === "passed" ? "completed" : status === "failed" ? "failed" : "informational",
-    title: "Verification",
+    title: t("componentsTranscript.nativeRunEvents.verification"),
     summary: commandOrCheck,
     payload: {
       verificationId: itemId ?? `${commandOrCheck}:${ts}`,
@@ -732,7 +733,7 @@ function serializedNativeToolResult(item: NativeToolItemDetails): string {
   try {
     return JSON.stringify(item.result) ?? "";
   } catch {
-    return "Tool result could not be serialized";
+    return t("componentsTranscript.nativeRunEvents.toolResultNotSerialized");
   }
 }
 
@@ -810,7 +811,7 @@ function fileChangeDiffEntries(
       entries.push({ kind: "diff", ts, changeType: kind, text: value, toolUseId });
     }
     if (change.diffTruncated === true) {
-      entries.push({ kind: "diff", ts, changeType: "truncation", text: "Diff shortened for display.", toolUseId });
+      entries.push({ kind: "diff", ts, changeType: "truncation", text: t("componentsTranscript.nativeRunEvents.diffShortened"), toolUseId });
     }
   }
   return entries;
@@ -1046,8 +1047,8 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
         family: "context",
         eventType: event.eventType,
         status: "completed",
-        title: "Context compacted",
-        summary: "Context compacted",
+        title: t("componentsTranscript.nativeRunEvents.contextCompacted"),
+        summary: t("componentsTranscript.nativeRunEvents.contextCompacted"),
         payload: compaction,
       });
       continue;
@@ -1165,8 +1166,8 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
         family: "provider_notice",
         eventType: event.eventType,
         status: payload.severity === "error" ? "failed" : "informational",
-        title: "Provider notice",
-        summary: text(payload.summary)?.trim() || text(payload.message)?.trim() || "Provider notice",
+        title: t("componentsTranscript.nativeRunEvents.providerNotice"),
+        summary: text(payload.summary)?.trim() || text(payload.message)?.trim() || t("componentsTranscript.nativeRunEvents.providerNotice"),
         payload,
       });
       continue;
@@ -1188,8 +1189,8 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
           })
             ? "failed"
             : "running",
-        title: "Plan",
-        summary: text(payload.explanation)?.trim() || "Plan",
+        title: t("componentsTranscript.nativeRunEvents.plan"),
+        summary: text(payload.explanation)?.trim() || t("componentsTranscript.nativeRunEvents.plan"),
         payload,
       });
       continue;
@@ -1229,7 +1230,7 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
         family: "hook",
         eventType: event.eventType,
         status: outcome === "running" ? "running" : outcome === "failed" ? "failed" : "completed",
-        title: "Hook",
+        title: t("componentsTranscript.nativeRunEvents.hook"),
         summary: text(payload.message)?.trim() || text(payload.summary)?.trim() || "",
         payload,
       });
@@ -1246,7 +1247,7 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
         status: decision === "pending" || payload.status === "running"
           ? "running"
           : decision === "denied" || decision === "timed_out" ? "failed" : "completed",
-        title: "Auto-review",
+        title: t("componentsTranscript.nativeRunEvents.autoReview"),
         summary: text(payload.rationale)?.trim() || text(payload.summary)?.trim() || "",
         payload,
       });
@@ -1272,8 +1273,8 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
             : status === "completed" || status === "closed"
               ? "completed"
               : "running",
-        title: "Subagent",
-        summary: "Subagent",
+        title: t("componentsTranscript.nativeRunEvents.subagent"),
+        summary: t("componentsTranscript.nativeRunEvents.subagent"),
         payload,
       });
       continue;
@@ -1539,7 +1540,7 @@ export function nativeRunEventsToTranscript(events: readonly HeartbeatRunEvent[]
     entries.push({
       kind: "result",
       ...cumulativeUsageSummary,
-      text: "Provider-reported session-cumulative usage; a per-run delta was unavailable.",
+      text: t("componentsTranscript.nativeRunEvents.cumulativeUsage"),
       subtype: "paperclip_runner_session_usage",
       isError: false,
       errors: [],

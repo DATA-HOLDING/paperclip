@@ -1,0 +1,46 @@
+{
+  "gatewaySetup": {
+    "useCustomGateway": "Use a custom gateway",
+    "title": "Custom gateway connection",
+    "description": "Save the connection, then choose a model and test it with your agent.",
+    "saveConnection": "Save connection"
+  },
+  "credentialModeLink": {
+    "subscription": "Use subscription instead",
+    "api": "Use API key instead"
+  },
+  "stepper": {
+    "createFirstAgent": "Create your first agent",
+    "connectModel": "Connect a model",
+    "review": "Review",
+    "nameOrganization": "Name your organization",
+    "step": "Step {{step}}",
+    "stepOf": "Step {{step}} of {{total}}"
+  },
+  "connectModelPreview": {
+    "lede": "Paperclip works with your existing subscription or API keys.",
+    "modelSource": "Model source",
+    "useApiKeys": "Use API keys instead",
+    "connect": "Connect"
+  },
+  "footerNav": {
+    "back": "Back"
+  },
+  "modelSourceTiles": {
+    "subscription": "Subscription",
+    "apiKey": "API key",
+    "customGateway": "Custom Gateway"
+  },
+  "savedProviderKey": {
+    "apiKey": "API key",
+    "subscription": "Subscription",
+    "savedApiKey": "Saved API key",
+    "savedSubscription": "Saved subscription",
+    "enterNewKey": "Enter a new API key",
+    "signInAnother": "Sign in to another account",
+    "checking": "Checking saved API keys…",
+    "loadError": "Some saved keys could not be loaded. You can still enter a new key.",
+    "reuseKey": "Reuse this saved key for this agent.",
+    "reuseSubscription": "Reuse this saved subscription for this agent."
+  }
+}

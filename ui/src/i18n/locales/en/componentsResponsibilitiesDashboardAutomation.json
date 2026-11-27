@@ -1,0 +1,76 @@
+{
+  "hint": {
+    "schedule": "Could run on a schedule",
+    "webhook": "Could start from a webhook",
+    "standingCheck": "Could be a standing check"
+  },
+  "summary": {
+    "title": "How much runs without you",
+    "responsibilities_one": "{{count}} responsibility",
+    "responsibilities_other": "{{count}} responsibilities",
+    "filterLabel": "Show responsibilities by how automated they are",
+    "automations_one": "{{count}} automation running",
+    "automations_other": "{{count}} automations running",
+    "manualTasks_one": "{{count}} manual task in the last {{days}} days",
+    "manualTasks_other": "{{count}} manual tasks in the last {{days}} days",
+    "showAll": "Show all"
+  },
+  "automatedNow": "“{{title}}” is automated now: {{cadence}}.",
+  "offer": {
+    "offeredToRepeat": "{{agent}} offered to repeat it: {{cadence}}",
+    "accepting": "Accepting…",
+    "accept": "Accept",
+    "change": "Change"
+  },
+  "yourAgent": "Your agent",
+  "unclearWithAgent": "How it could run is unclear from the title; work it out with {{agent}}.",
+  "unclear": "How it could run is unclear from the title.",
+  "conversation": {
+    "proposed": "{{agent}} has proposed an automation",
+    "talking": "Talking it through with {{agent}}"
+  },
+  "yourAgentLower": "your agent",
+  "errors": {
+    "openConversation": "Couldn’t open the conversation.",
+    "acceptOffer": "Couldn’t accept the offer."
+  },
+  "noAgentTitle": "No agent can take this; set it up by hand",
+  "opening": "Opening…",
+  "setUpByHand": "Set up by hand",
+  "dismiss": {
+    "noThanksLabel": "No thanks to repeating {{title}}",
+    "doesntRepeatLabel": "{{title}} doesn't repeat",
+    "noThanks": "No thanks",
+    "doesntRepeat": "Doesn't repeat"
+  },
+  "standing": {
+    "resumeLabel": "Resume {{title}}",
+    "pauseLabel": "Pause {{title}}",
+    "resume": "Resume",
+    "pause": "Pause",
+    "removeLabel": "Remove {{title}}",
+    "remove": "Remove",
+    "changeFailed": "Couldn’t change it."
+  },
+  "anAgent": "An agent",
+  "otherStarts_one": " · +{{count}} more way to start",
+  "otherStarts_other": " · +{{count}} more ways to start",
+  "notCounted": "Not counted yet.",
+  "running": {
+    "title": "Runs without you",
+    "more_one": "and {{count}} more automation",
+    "more_other": "and {{count}} more automations",
+    "none": "Nothing runs on its own yet.",
+    "notRunning": "Not running"
+  },
+  "manual": {
+    "title": "Manual tasks that could be automated",
+    "more_one": "and {{count}} more manual task",
+    "more_other": "and {{count}} more manual tasks",
+    "unlisted": "and {{count}} more on the responsibility’s page"
+  },
+  "notInArea": "Not in an area",
+  "loading": "Loading how automated your responsibilities are",
+  "dismissMade": "Dismiss",
+  "loadAction": "load how automated your responsibilities are"
+}

@@ -1,0 +1,6 @@
+{
+  "defaultBody": "O modelo selecionado ainda está indisponível.",
+  "title": "Modelo ainda indisponível",
+  "openModelSettings": "Abrir configurações de modelo de {{name}}",
+  "agentFallback": "agente"
+}

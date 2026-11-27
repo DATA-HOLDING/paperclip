@@ -1,6 +1,7 @@
 import type { SVGProps } from "react";
 import { cn } from "../lib/utils";
 import { useBlockingPageGate } from "../hooks/usePageContentReady";
+import { t } from "@/i18n";
 
 export function AnimatedPaperclipIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
@@ -33,7 +34,7 @@ export function PaperclipLoading({ className }: { className?: string }) {
       className={cn("flex min-h-dvh w-full items-center justify-center", className)}
     >
       <AnimatedPaperclipIcon className="h-24 w-24 text-muted-foreground" />
-      <span className="sr-only">Loading…</span>
+      <span className="sr-only">{t("componentsAnimatedPaperclipIcon.loading")}</span>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+{
+  "empty": "Nenhum membro ainda.",
+  "filterPlaceholder": "Filtrar pessoas",
+  "selectPeople": "Selecionar pessoas",
+  "peopleSelected_one": "{{count}} pessoa selecionada",
+  "peopleSelected_other": "{{count}} pessoas selecionadas",
+  "allow": "Permitir {{label}}",
+  "noMatches": "Nenhum resultado.",
+  "noneSelected": "Nenhuma pessoa selecionada",
+  "selected": "{{n}} selecionada(s)",
+  "cancel": "Cancelar",
+  "saving": "Salvando…",
+  "save": "Salvar",
+  "done": "Concluir",
+  "andMore": "e mais {{n}}"
+}

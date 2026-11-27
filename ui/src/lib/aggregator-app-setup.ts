@@ -1,4 +1,5 @@
 import { aggregatorContinuationInstruction, type Agent, type ToolConnection } from "@paperclipai/shared";
+import { t } from "@/i18n";
 import type { AggregatorAppRoute } from "@paperclipai/shared/aggregator-app-catalog";
 import { isAgentTaskTarget } from "./company-members";
 
@@ -46,7 +47,7 @@ export function aggregatorAppSetupTask(appName: string, route: AggregatorAppRout
   return {
     navigateOnCreate: true,
     ...(agent ? { assigneeAgentId: agent.id } : {}),
-    title: `Connect ${appName} through ${providerName}`,
+    title: t("libAggregatorAppSetup.taskTitle", { appName, providerName }),
     description: `Help me connect ${appName} through ${providerName}, using my existing ${providerName} gateway.${accountInstruction} The provider toolkit is ${route.toolkit}. Do not switch providers or create another gateway.\n\nHandle this connection setup directly. Do not hire agents or delegate the setup. If a human needs to sign in or authorize access, provide the browser link and wait for them.\n\n${permissionInstruction}\n\n${aggregatorContinuationInstruction(route.provider, appName)}`,
   };
 }

@@ -1,0 +1,17 @@
+{
+  "selectOrganization": "Select an organization to view tasks.",
+  "assignee": {
+    "placeholder": "Responsible",
+    "none": "No responsible",
+    "search": "Search responsible...",
+    "empty": "No responsible found."
+  },
+  "project": {
+    "placeholder": "Project",
+    "none": "No project",
+    "search": "Search projects...",
+    "empty": "No projects found."
+  },
+  "loading": "Loading",
+  "renderFailed": "Plugin UI failed to render."
+}

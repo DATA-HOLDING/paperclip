@@ -1,0 +1,63 @@
+{
+  "connection": {
+    "idle": {
+      "title": "Test your agent",
+      "description": "Check that your runtime and model can respond.",
+      "action": "Run test"
+    },
+    "running": {
+      "title": "Testing connection",
+      "description": "Checking the runtime and waiting for a model response…",
+      "action": "Testing…"
+    },
+    "pass": {
+      "title": "Connection successful",
+      "description": "Your runtime checks passed. Review the details below.",
+      "action": "Test again"
+    },
+    "warn": {
+      "title": "Connection needs attention",
+      "description": "Review the test details before running your agent.",
+      "action": "Test again"
+    },
+    "fail": {
+      "title": "Couldn't connect",
+      "description": "Check your model and provider connection, then try again.",
+      "action": "Retry test"
+    }
+  },
+  "prerequisites": {
+    "idle": {
+      "title": "Check prerequisites",
+      "description": "Check instance settings and public connection configuration.",
+      "action": "Check setup"
+    },
+    "running": {
+      "title": "Checking prerequisites",
+      "description": "Checking instance settings and public connection configuration…",
+      "action": "Checking…"
+    },
+    "pass": {
+      "title": "Setup checks passed",
+      "description": "Review the setup details before assigning work.",
+      "action": "Check again"
+    },
+    "warn": {
+      "title": "Pairing required",
+      "description": "Create this agent, then pair it and verify event delivery.",
+      "action": "Check again"
+    },
+    "fail": {
+      "title": "Prerequisite check failed",
+      "description": "Review the setup details and retry.",
+      "action": "Retry check"
+    }
+  },
+  "runtimeMissing": "Runtime missing",
+  "metadataOnly": {
+    "idle": "Verify your saved token, runtime installation, and selected model without sending a model prompt.",
+    "running": "Checking the saved token, runtime, and selected model…"
+  },
+  "ariaLabel": "Runtime test",
+  "testDetails": "Test details"
+}

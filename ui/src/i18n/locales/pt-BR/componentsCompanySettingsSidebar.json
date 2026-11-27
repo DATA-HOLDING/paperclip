@@ -1,0 +1,21 @@
+{
+  "title": "Configurações",
+  "companyFallback": "Organização",
+  "nav": {
+    "backToApp": "Voltar ao app",
+    "general": "Geral",
+    "profile": "Perfil",
+    "members": "Membros",
+    "invites": "Convites",
+    "secrets": "Segredos",
+    "environments": "Ambientes",
+    "connections": "Conexões",
+    "access": "Acesso",
+    "heartbeats": "Heartbeats",
+    "export": "Exportar",
+    "import": "Importar",
+    "experimental": "Experimental",
+    "plugins": "Plugins",
+    "adapters": "Adaptadores"
+  }
+}

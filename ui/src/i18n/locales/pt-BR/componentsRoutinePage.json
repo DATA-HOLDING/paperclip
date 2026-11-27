@@ -1,0 +1,260 @@
+{
+  "saveParts": {
+    "details": "os detalhes da rotina",
+    "schedule": "o agendamento",
+    "responsibility": "a responsabilidade",
+    "and": " e "
+  },
+  "partialSave": "Salvamos {{saved}}, mas não foi possível atualizar {{failed}}{{detail}}. Salve de novo para concluir.",
+  "state": {
+    "active": "Ativa",
+    "paused": "Pausada",
+    "draft": "Rascunho",
+    "archived": "Arquivada"
+  },
+  "pausedNotice": {
+    "both": "As execuções agendadas são puladas e os eventos de webhook são ignorados até esta rotina ser ligada.",
+    "webhooks": "Os eventos de webhook são ignorados até esta rotina ser ligada. O app que envia recebe um erro.",
+    "schedule": "As execuções agendadas são puladas até esta rotina ser ligada."
+  },
+  "statusDetail": {
+    "archived": "Não executa mais",
+    "paused": "Executar agora continua funcionando",
+    "nextRun": "Próxima execução {{when}}",
+    "webhook": "Executa quando chega um webhook",
+    "standingCheck": "Verificada sempre que o agente acorda",
+    "manual": "Só executa quando você a inicia"
+  },
+  "nextRun": {
+    "today": "hoje às {{time}}",
+    "tomorrow": "amanhã às {{time}}",
+    "onDay": "{{day}} às {{time}}"
+  },
+  "scheduleFallback": "Agendamento",
+  "webhook": {
+    "github": "Webhook do GitHub",
+    "generic": "Webhook"
+  },
+  "webhookHealth": {
+    "setup": "Configuração não concluída",
+    "testing": "Em teste · eventos não executam",
+    "paused": "Pausado",
+    "rejected": "Chave rejeitada",
+    "receiving": "Recebendo eventos",
+    "waiting": "Aguardando o primeiro evento"
+  },
+  "webhookStatus": {
+    "setup": {
+      "title": "Aguardando um evento de teste",
+      "detail": "Envie um pelo seu app. Eventos de teste nunca iniciam a rotina."
+    },
+    "setupTesting": {
+      "title": "Aguardando um evento de teste",
+      "detail": "Envie um pelo seu app. Ele não vai iniciar a rotina. Eventos reais são ignorados até você concluir o teste."
+    },
+    "testing": {
+      "title": "Em teste",
+      "detail": "Envie um evento pelo seu app. Ele não vai iniciar a rotina. Eventos reais são ignorados até você concluir o teste."
+    },
+    "waiting": {
+      "title": "Pronto",
+      "detail": "O próximo evento inicia esta rotina."
+    },
+    "receiving": {
+      "title": "Recebendo eventos",
+      "detail": "Cada evento inicia esta rotina."
+    },
+    "rejected": {
+      "title": "O último evento foi rejeitado",
+      "detail": "A chave não conferiu. Substitua a chave e cole a nova no seu app."
+    },
+    "testReceived": {
+      "title": "Evento de teste recebido",
+      "detail": "A conexão funciona. Nenhuma tarefa foi criada."
+    },
+    "ignoredWhilePaused": {
+      "title": "Ignorando eventos enquanto a rotina está pausada",
+      "detail": "Ligue a rotina para iniciá-la por este webhook. Até lá o app que envia recebe um erro."
+    },
+    "paused": {
+      "title": "Pausado",
+      "detail": "Os eventos são ignorados até você retomar este webhook."
+    }
+  },
+  "runRules": {
+    "alwaysEnqueue": "Enfileira toda execução, mesmo com outra ainda em andamento",
+    "skipIfActive": "Pula uma execução enquanto outra ainda está em andamento",
+    "catchUp": "Recupera as execuções perdidas enquanto pausada",
+    "activityGateProject": "Pula execuções agendadas quando nada mudou no projeto dela",
+    "activityGate": "Pula execuções agendadas quando nada mudou"
+  },
+  "unnamedPerson": "Pessoa sem nome",
+  "cancel": "Cancelar",
+  "create": {
+    "missing": {
+      "responsibleUser": "o usuário responsável"
+    },
+    "created": "Rotina criada",
+    "missingBody": "Não foi possível salvar {{missing}}. Abra Editar para tentar novamente.",
+    "action": "criar a rotina",
+    "loadErrors": "Algumas opções não puderam ser carregadas. Feche isto e tente novamente."
+  },
+  "webhookDialog": {
+    "senders": {
+      "custom": "Outro app ou script"
+    },
+    "addTitle": "Adicionar webhook",
+    "startsFromGithub": "Inicia “{{title}}” quando o GitHub envia um evento.",
+    "startsFromApp": "Inicia “{{title}}” quando outro app envia um evento.",
+    "addDescription": "Inicie esta rotina quando algo acontecer em outro app.",
+    "senderQuestion": "O que está enviando o webhook?",
+    "testWebhook": "Testar webhook",
+    "payloadUrl": "URL do payload",
+    "webhookUrl": "URL do webhook",
+    "hmacHelp": "Assine o timestamp, um ponto e o corpo JSON exato com HMAC-SHA256. Envie X-Paperclip-Timestamp e X-Paperclip-Signature: sha256=<signature>.",
+    "noKey": "Este webhook não tem chave. A URL dele é o segredo compartilhado, então mantenha-a privada.",
+    "secret": "Segredo",
+    "authorizationHeader": "Valor do cabeçalho Authorization",
+    "secretKey": "Chave secreta",
+    "copyNow": "Copie agora. Ela fica oculta depois que você fechar isto.",
+    "keyHidden": "A chave secreta está oculta.",
+    "replaceKey": "Substituir chave",
+    "creating": "Criando…",
+    "create": "Criar webhook",
+    "testingFooter": "Em teste. Nenhuma tarefa é criada.",
+    "finishTesting": "Concluir teste",
+    "remove": "Remover",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "finishWithoutTesting": "Concluir sem testar",
+    "done": "Concluir"
+  },
+  "editDialog": {
+    "titleCreate": "Nova rotina",
+    "titleEdit": "Editar rotina",
+    "descriptionCreate": "Descreva o trabalho e depois escolha quem o faz e quando.",
+    "descriptionEdit": "Mude o que esta rotina faz, quem a faz e quando.",
+    "title": "Título",
+    "titlePlaceholder": "Enviar o resumo semanal",
+    "instructions": "Instruções",
+    "instructionsPlaceholder": "O que o agente deve fazer a cada vez? Digite / para skills e rotinas, @ para mencionar, {{token}} para pedir um valor.",
+    "repeats": "Repete",
+    "timeZone": "Fuso horário",
+    "removeSchedule": "Remover agendamento",
+    "addSchedule": "Adicionar agendamento",
+    "webhooks": "Webhooks",
+    "webhookRemoved": "{{title}} removido.",
+    "undo": "Desfazer",
+    "configureWebhook": "Configurar {{title}}",
+    "removeWebhook": "Remover {{title}}",
+    "addWebhook": "Adicionar webhook",
+    "defaultAgent": "Agente padrão",
+    "chooseAgent": "Escolha um agente",
+    "noDefaultAgent": "Nenhum agente padrão",
+    "searchAgents": "Buscar agentes…",
+    "noAgentsFound": "Nenhum agente encontrado.",
+    "project": "Projeto",
+    "noProject": "Nenhum projeto",
+    "searchProjects": "Buscar projetos…",
+    "noProjectsFound": "Nenhum projeto encontrado.",
+    "responsibility": "Responsabilidade",
+    "noResponsibility": "Nenhuma responsabilidade",
+    "searchResponsibilities": "Buscar responsabilidades…",
+    "noResponsibilitiesFound": "Nenhuma responsabilidade encontrada.",
+    "alreadyUnder": "Já está em {{responsibility}} por meio de {{project}}.",
+    "itsProject": "seu projeto",
+    "defaultResponsibleUser": "Usuário responsável padrão",
+    "choosePerson": "Escolha uma pessoa",
+    "noOne": "Ninguém",
+    "findPerson": "Encontrar uma pessoa…",
+    "noPeopleFound": "Nenhuma pessoa encontrada.",
+    "secrets": "Segredos",
+    "addSecret": "Adicionar segredo",
+    "discardQuestion": "Descartar suas alterações?",
+    "keepEditing": "Continuar editando",
+    "discard": "Descartar",
+    "conflict": "Esta rotina mudou enquanto você editava. Recarregue para ver a versão mais recente.",
+    "reloadLatest": "Recarregar a mais recente",
+    "saving": "Salvando…",
+    "createRoutine": "Criar rotina",
+    "saveChanges": "Salvar alterações"
+  },
+  "page": {
+    "changeSchedule": "Alterar agendamento: {{schedule}}",
+    "paused": "Pausado",
+    "timesIn": "Os horários estão em {{timezone}}.",
+    "removeSchedule": "Remover agendamento",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "saveSchedule": "Salvar agendamento",
+    "openWebhook": "Abrir {{title}}",
+    "ignoringEvents": "Ignorando eventos",
+    "changeTrigger": "Alterar {{title}}",
+    "remove": "Remover",
+    "standingCheck": {
+      "title": "Verificação contínua",
+      "detail": "Sempre que o agente acorda",
+      "description": "O agente executa estas instruções sempre que acorda e relata o que encontrou. Ele nunca cria uma tarefa sozinho."
+    },
+    "api": {
+      "title": "API",
+      "detail": "Iniciada por uma chamada de API",
+      "description": "Inicia esta rotina quando um app ou agente chama a API de rotinas."
+    },
+    "apiTrigger": "Gatilho de API",
+    "instructions": "Instruções",
+    "comments_one": "{{count}} comentário",
+    "comments_other": "{{count}} comentários",
+    "instructionsCopied": "Instruções copiadas",
+    "copyInstructions": "Copiar instruções",
+    "noInstructions": "Nenhuma instrução ainda. O agente recebe só o título.",
+    "addInstructions": "Adicionar instruções",
+    "showLess": "Mostrar menos",
+    "showAll": "Mostrar tudo",
+    "managedBy": "Gerenciada por {{plugin}}",
+    "status": "Status",
+    "pauseRoutine": "Pausar esta rotina",
+    "turnOn": "Ligar esta rotina",
+    "chooseDefaultAgent": "Escolha um agente padrão",
+    "toTurnOn": "para ligar esta rotina.",
+    "repeats": "Repete",
+    "doesntRepeat": "Não se repete. Só executa quando você a inicia.",
+    "noOneYet": "Ninguém ainda",
+    "none": "Nenhuma",
+    "through": "Por meio de {{project}}",
+    "asksFor": "Pede",
+    "usually": "Normalmente {{value}}",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "runRules": "Regras de execução",
+    "history": "Histórico",
+    "loadingTasks": "Carregando tarefas…",
+    "noTasksNext": "Nenhuma tarefa ainda. A primeira começa {{when}}.",
+    "noTasks": "Nenhuma tarefa ainda. Cada execução cria uma tarefa aqui.",
+    "historyLabel": "Tarefas criadas por esta rotina",
+    "loading": "Carregando…",
+    "loadMore": "Carregar mais",
+    "skippedRuns_one": "{{count}} execução foi agrupada numa tarefa que ainda estava em andamento.",
+    "skippedRuns_other": "{{count}} execuções foram agrupadas numa tarefa que ainda estava em andamento.",
+    "moreActions": "Mais ações da rotina",
+    "versionHistory": "Histórico de versões",
+    "auditLog": "Log de auditoria",
+    "restore": "Restaurar rotina",
+    "archive": "Arquivar rotina"
+  },
+  "errorActions": {
+    "loadAgents": "carregar os agentes",
+    "loadProjects": "carregar os projetos",
+    "loadPeople": "carregar as pessoas",
+    "loadSecrets": "carregar os segredos",
+    "loadResponsibilities": "carregar as responsabilidades",
+    "finishSettingUpWebhook": "concluir a configuração do webhook",
+    "finishTestingWebhook": "concluir o teste do webhook",
+    "createWebhook": "criar o webhook",
+    "replaceKey": "substituir a chave",
+    "pauseWebhook": "pausar o webhook",
+    "resumeWebhook": "retomar o webhook",
+    "removeWebhook": "remover o webhook",
+    "startTestingWebhook": "começar a testar o webhook"
+  }
+}

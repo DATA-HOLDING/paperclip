@@ -1,0 +1,7 @@
+{
+  "placeholder": "Choose an existing workspace",
+  "search": "Search workspaces...",
+  "loadFailed": "Workspaces failed to load.",
+  "empty": "No matching workspaces.",
+  "loading": "Loading workspaces..."
+}

@@ -20,6 +20,7 @@ import {
 import { Link } from "@/lib/router";
 import { cn } from "@/lib/utils";
 import { NotRightForm } from "./BarProposalCard";
+import { t } from "@/i18n";
 
 /**
  * Applying proposed dashboard changes (optionally only some, by index) and
@@ -60,13 +61,13 @@ export function useDashboardChangesActions(interaction: Pick<ProposeDashboardCha
 }
 
 const CHANGE_LABELS: Record<ResponsibilityDashboardChange["op"], string> = {
-  add_area: "New area",
-  rename_area: "Rename area",
-  remove_area: "Remove area",
-  add_responsibility: "New responsibility",
-  reword_responsibility: "Reword responsibility",
-  move_responsibility: "Move responsibility",
-  remove_responsibility: "Let go of responsibility",
+  add_area: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.addArea"),
+  rename_area: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.renameArea"),
+  remove_area: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.removeArea"),
+  add_responsibility: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.addResponsibility"),
+  reword_responsibility: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.rewordResponsibility"),
+  move_responsibility: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.moveResponsibility"),
+  remove_responsibility: t("componentsResponsibilitiesDashboardChangesCard.changeLabels.removeResponsibility"),
 };
 
 function ChangeRow({
@@ -112,14 +113,14 @@ function ChangeRow({
         )}
         {words.note ? <p className="text-xs text-muted-foreground">{words.note}</p> : null}
         {lettingGo.length > 0 ? (
-          <p className="text-xs text-muted-foreground">Also lets go of: {lettingGo.join("; ")}</p>
+          <p className="text-xs text-muted-foreground">{t("componentsResponsibilitiesDashboardChangesCard.alsoLetsGo", { items: lettingGo.join("; ") })}</p>
         ) : null}
         {change.reason ? <p className="break-words text-xs text-muted-foreground">{change.reason}</p> : null}
       </div>
       {isDropped ? (
         <div className="flex max-w-1/3 shrink-0 flex-col items-end gap-1">
-          {withArea ? <span className="text-xs text-muted-foreground">Goes with {withArea}</span> : null}
-          <Button type="button" size="xs" variant="ghost" disabled={busy} onClick={onToggle}>Keep</Button>
+          {withArea ? <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesDashboardChangesCard.goesWith", { area: withArea })}</span> : null}
+          <Button type="button" size="xs" variant="ghost" disabled={busy} onClick={onToggle}>{t("componentsResponsibilitiesDashboardChangesCard.keep")}</Button>
         </div>
       ) : (
         <Button
@@ -127,8 +128,8 @@ function ChangeRow({
           size="icon-xs"
           variant="ghost"
           className="shrink-0 text-muted-foreground"
-          aria-label="Drop this change"
-          title="Drop"
+          aria-label={t("componentsResponsibilitiesDashboardChangesCard.dropAriaLabel")}
+          title={t("componentsResponsibilitiesDashboardChangesCard.drop")}
           disabled={busy}
           onClick={onToggle}
           data-drop-change=""
@@ -179,30 +180,30 @@ export function DashboardChangesCard({
     return (
       <div id={`interaction-${interaction.id}`} data-testid="dashboard-changes-accepted" className="flex min-w-0 items-start gap-2 text-sm text-muted-foreground">
         <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
-        <span className="min-w-0">Dashboard changed{result?.summary ? `: ${result.summary}` : ""}.</span>
+        <span className="min-w-0">{result?.summary ? t("componentsResponsibilitiesDashboardChangesCard.changedWithSummary", { summary: result.summary }) : t("componentsResponsibilitiesDashboardChangesCard.changed")}</span>
       </div>
     );
   }
   if (interaction.status === "rejected" || result?.outcome === "replaced") {
     return (
       <p id={`interaction-${interaction.id}`} data-testid="dashboard-changes-closed" className="text-sm text-muted-foreground">
-        {result?.outcome === "replaced" ? "Proposed dashboard changes, replaced by newer ones." : "Not these dashboard changes."}
+        {result?.outcome === "replaced" ? t("componentsResponsibilitiesDashboardChangesCard.replaced") : t("componentsResponsibilitiesDashboardChangesCard.rejected")}
       </p>
     );
   }
   if (interaction.status !== "pending") return null;
 
-  const agentName = knownAgentName ?? agentQuery.data?.name ?? "Your agent";
+  const agentName = knownAgentName ?? agentQuery.data?.name ?? t("componentsResponsibilitiesDashboardChangesCard.yourAgent");
   const keptCount = changes.length - dropped.size;
   return (
     <article
       id={`interaction-${interaction.id}`}
       data-testid="dashboard-changes"
-      aria-label="Proposed dashboard changes"
+      aria-label={t("componentsResponsibilitiesDashboardChangesCard.cardAriaLabel")}
       className="flex flex-col gap-4 rounded-md border border-border bg-card px-4 py-3"
     >
       <div className="flex min-w-0 flex-col gap-1">
-        <p className="text-xs text-muted-foreground">{agentName} proposes</p>
+        <p className="text-xs text-muted-foreground">{t("componentsResponsibilitiesDashboardChangesCard.proposes", { agentName })}</p>
         {payload.message ? <p className="text-sm text-foreground">{payload.message}</p> : null}
       </div>
       <div className="flex flex-col gap-6">
@@ -223,11 +224,11 @@ export function DashboardChangesCard({
               {areaChanges.length > 0 ? areaChanges.map(row) : (
                 <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-1">
                   <h3 className="min-w-0 break-words text-base font-semibold text-foreground">{group.name}</h3>
-                  {group.hasExistingArea ? <span className="text-xs text-muted-foreground">Existing area</span> : null}
+                  {group.hasExistingArea ? <span className="text-xs text-muted-foreground">{t("componentsResponsibilitiesDashboardChangesCard.existingArea")}</span> : null}
                 </div>
               )}
               {responsibilityChanges.length > 0 ? (
-                <ul aria-label={`Responsibilities in ${group.name}`} className="flex min-w-0 flex-col gap-3 pl-4 sm:pl-6">
+                <ul aria-label={t("componentsResponsibilitiesDashboardChangesCard.responsibilitiesIn", { name: group.name })} className="flex min-w-0 flex-col gap-3 pl-4 sm:pl-6">
                   {responsibilityChanges.map(row)}
                 </ul>
               ) : null}
@@ -242,19 +243,19 @@ export function DashboardChangesCard({
           sending={decline.isPending}
           onSend={(text) => decline.mutate(text, { onSuccess: () => setNotRight(false) })}
           onBack={() => setNotRight(false)}
-          defaultText="Those dashboard changes aren't right yet."
-          placeholder="e.g. Keep Hiring, and fewer responsibilities under Fundraising"
+          defaultText={t("componentsResponsibilitiesDashboardChangesCard.notRightDefault")}
+          placeholder={t("componentsResponsibilitiesDashboardChangesCard.notRightPlaceholder")}
         />
       ) : (
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-2">
             {showConversationLink ? (
               <Button asChild type="button" variant="ghost" size="sm">
-                <Link to={`/issues/${interaction.issueId}`}>Open the conversation</Link>
+                <Link to={`/issues/${interaction.issueId}`}>{t("componentsResponsibilitiesDashboardChangesCard.openConversation")}</Link>
               </Button>
             ) : null}
             <Button type="button" variant="ghost" size="sm" disabled={busy} onClick={() => setNotRight(true)}>
-              Not right
+              {t("componentsResponsibilitiesDashboardChangesCard.notRight")}
             </Button>
           </div>
           <Button
@@ -264,7 +265,7 @@ export function DashboardChangesCard({
             onClick={() => accept.mutate(keptDashboardChanges(changes, dropped))}
           >
             {accept.isPending ? <Loader2 aria-hidden="true" className="animate-spin" /> : null}
-            Apply changes
+            {t("componentsResponsibilitiesDashboardChangesCard.applyChanges")}
           </Button>
         </div>
       )}

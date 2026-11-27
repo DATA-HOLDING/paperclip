@@ -1,0 +1,46 @@
+{
+  "notRight": {
+    "defaultText": "That bar isn't right yet.",
+    "placeholder": "e.g. Count only paying customers, and the target should be higher",
+    "label": "What should change? (optional)",
+    "back": "Back",
+    "send": "Send"
+  },
+  "metrics": {
+    "label": "Proposed metrics",
+    "heading_one": "The metric on the page",
+    "heading_other": "{{count}} metrics on the page",
+    "keepsSupporting": "Keeps the supporting metrics it has.",
+    "onlyBar": "Only the bar’s own metric; any supporting metrics are removed.",
+    "barMetricPrefix": "The bar’s metric · ",
+    "startingReadings": "Starting readings: {{readings}}"
+  },
+  "forPrefix": " for ",
+  "accepted": {
+    "barSet": "Bar set",
+    "withSupporting_one": " With {{count}} supporting metric.",
+    "withSupporting_other": " With {{count}} supporting metrics."
+  },
+  "closed": {
+    "replaced": "Proposed bar, replaced by a newer one: ",
+    "rejected": "Not this bar: "
+  },
+  "yourAgent": "Your agent",
+  "pending": {
+    "label": "Proposed bar for {{title}}",
+    "proposed": "{{agent}} proposed a bar"
+  },
+  "rows": {
+    "kind": "Kind of measure",
+    "measured": "What is measured",
+    "bar": "The bar",
+    "now": "Where it is now",
+    "statusRule": "How status is read",
+    "statusWith": "Status with it"
+  },
+  "actions": {
+    "openConversation": "Open the conversation",
+    "notRight": "Not right",
+    "use": "Use this bar"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "dismissedInBrowser": "Dismissed in this browser",
+  "dismissedForVisit": "Dismissed for this visit",
+  "saveFailedBody": "Couldn’t save across devices. We’ll retry when you reconnect or return.",
+  "ariaLabel": "Paperclip announcements"
+}

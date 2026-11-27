@@ -1,0 +1,12 @@
+{
+  "requestFailed": "A solicitação falhou ({{status}})",
+  "requestFailedGeneric": "A solicitação falhou. Tente novamente em instantes.",
+  "headline": {
+    "promoted": "Nova tentativa antecipada",
+    "alreadyPromoted": "Nova tentativa já em andamento",
+    "waiting": "Nova tentativa aguardando",
+    "noScheduledRetry": "Nenhuma nova tentativa agendada",
+    "gateSuppressed": "Não foi possível tentar agora"
+  },
+  "errorToastTitle": "Não foi possível tentar agora"
+}

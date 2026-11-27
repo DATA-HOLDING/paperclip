@@ -15,6 +15,7 @@ import { NativeSelect } from "./ui/select";
 import { Button } from "./ui/button";
 import { ProjectRepositoryInput, repositoryOptionsKey } from "./ProjectRepositoryInput";
 import { ConnectionSetupFlow } from "@/features/connections/ConnectionSetupFlow";
+import { t } from "@/i18n";
 
 export function NewProjectDialog() {
   const { newProjectOpen, closeNewProject } = useDialog();
@@ -55,7 +56,7 @@ export function NewProjectForm({ companyId, onClose, onCreated }: { companyId: s
       className="flex max-h-(--sz-calc-18) flex-col gap-0 overflow-hidden p-0 shadow-sm sm:max-w-lg"
       onOpenAutoFocus={(event) => { event.preventDefault(); input.current?.focus(); }}>
       {connecting ? <div className="min-h-0 overflow-y-auto p-5">
-        <DialogTitle className="sr-only">Connect GitHub</DialogTitle>
+        <DialogTitle className="sr-only">{t("componentsNewProjectDialog.connectGithub")}</DialogTitle>
         <ConnectionSetupFlow host="dialog" serviceSlug="github" forceNewConnection onCancel={() => setConnecting(false)} onComplete={() => {
           void client.invalidateQueries({ queryKey: repositoryOptionsKey(companyId) });
           setConnecting(false);
@@ -63,37 +64,37 @@ export function NewProjectForm({ companyId, onClose, onCreated }: { companyId: s
       </div> : <form className="flex min-h-0 flex-col overflow-hidden" onSubmit={(event) => { event.preventDefault(); if (name.trim() && environmentReady && !create.isPending) create.mutate(); }}>
         <div className="flex shrink-0 flex-col gap-4 px-5 pb-4 pt-5">
           <div className="flex items-center justify-between gap-3">
-            <DialogTitle className="text-lg font-semibold">Create project</DialogTitle>
-            <Button type="button" variant="ghost" size="icon-sm" disabled={create.isPending} aria-label="Close new project" onClick={onClose}><X className="size-4" /></Button>
+            <DialogTitle className="text-lg font-semibold">{t("componentsNewProjectDialog.title")}</DialogTitle>
+            <Button type="button" variant="ghost" size="icon-sm" disabled={create.isPending} aria-label={t("componentsNewProjectDialog.close")} onClick={onClose}><X className="size-4" /></Button>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-input px-3 focus-within:border-ring focus-within:ring-1 focus-within:ring-ring">
             <ProjectTile color={color} size="sm" />
-            <input ref={input} aria-label="Project name" value={name} disabled={create.isPending} onChange={(event) => setName(event.target.value)} placeholder="Project name" required
+            <input ref={input} aria-label={t("componentsNewProjectDialog.projectName")} value={name} disabled={create.isPending} onChange={(event) => setName(event.target.value)} placeholder={t("componentsNewProjectDialog.projectName")} required
               className="h-10 w-full min-w-0 border-0 bg-transparent text-base outline-none placeholder:text-muted-foreground md:text-sm" />
           </div>
         </div>
-        <div role="region" aria-label="Source repositories" tabIndex={0} className="min-h-0 overflow-y-auto overscroll-contain px-5 pb-1 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ring">
+        <div role="region" aria-label={t("componentsNewProjectDialog.sourceRepositories")} tabIndex={0} className="min-h-0 overflow-y-auto overscroll-contain px-5 pb-1 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ring">
           {options && options.groups.length > 1 && <div className="mb-4 space-y-2">
-            <label htmlFor="project-environment" className="text-sm font-medium">Available in</label>
+            <label htmlFor="project-environment" className="text-sm font-medium">{t("componentsNewProjectDialog.availableIn")}</label>
             <NativeSelect id="project-environment" value={selectedGroup?.environments[0].id ?? ""} disabled={create.isPending}
               onChange={event => setSelectedEnvironmentId(event.target.value)}>
-              {!selectedGroup && <option value="" disabled>Select environments</option>}
+              {!selectedGroup && <option value="" disabled>{t("componentsNewProjectDialog.selectEnvironments")}</option>}
               {options.groups.map(group => <option key={group.environments[0].id} value={group.environments[0].id}>
                 {group.environments.map(environment => environment.name).join(", ")}
               </option>)}
             </NativeSelect>
-            <p className="text-xs text-muted-foreground">These environments can share this project's working files. The storage choice stays with the project.</p>
+            <p className="text-xs text-muted-foreground">{t("componentsNewProjectDialog.environmentsHint")}</p>
           </div>}
-          {(environmentView.kind === "loading" || environmentView.kind === "reconnecting") && <p role="status" className="mb-3 text-sm text-muted-foreground">Loading environments…</p>}
-          {environmentView.kind === "error" && <QueryErrorState error={environmentView.error} size="inline" action="load project environments"
+          {(environmentView.kind === "loading" || environmentView.kind === "reconnecting") && <p role="status" className="mb-3 text-sm text-muted-foreground">{t("componentsNewProjectDialog.loadingEnvironments")}</p>}
+          {environmentView.kind === "error" && <QueryErrorState error={environmentView.error} size="inline" action={t("componentsNewProjectDialog.loadEnvironmentsAction")}
             className="mb-3" onRetry={environmentView.retry} retrying={environmentView.isFetching} />}
           {options?.error && !selectedGroup && <p role="alert" className="mb-3 text-sm text-destructive">{options.error}</p>}
           <ProjectRepositoryInput companyId={companyId} selected={repos} onChange={setRepos} onConnect={() => setConnecting(true)} disabled={create.isPending} />
         </div>
         {create.status === "error" && <p role="alert" className="px-5 pt-3 text-sm text-destructive">{describeError(create.error).body}</p>}
         <div className="flex shrink-0 justify-between gap-2 px-5 py-5">
-          <Button type="button" variant="ghost" disabled={create.isPending} onClick={onClose}>Cancel</Button>
-          <Button type="submit" disabled={!name.trim() || !environmentReady || create.isPending}>{create.isPending ? "Creating…" : "Create project"}</Button>
+          <Button type="button" variant="ghost" disabled={create.isPending} onClick={onClose}>{t("componentsNewProjectDialog.cancel")}</Button>
+          <Button type="submit" disabled={!name.trim() || !environmentReady || create.isPending}>{create.isPending ? t("componentsNewProjectDialog.creating") : t("componentsNewProjectDialog.title")}</Button>
         </div>
       </form>}
     </DialogContent>

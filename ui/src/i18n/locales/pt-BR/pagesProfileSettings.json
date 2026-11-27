@@ -1,0 +1,33 @@
+{
+  "breadcrumbs": {
+    "settings": "Configurações"
+  },
+  "title": "Perfil",
+  "errors": {
+    "selectOrganization": "Selecione uma organização antes de enviar uma foto de perfil."
+  },
+  "loading": "Carregando perfil...",
+  "loadFailed": "Falha ao carregar o perfil.",
+  "defaultName": "Conselho",
+  "description": "Controle como sua conta aparece na barra lateral e em outras áreas do conselho.",
+  "noEmail": "Sem e-mail",
+  "avatar": {
+    "storedFor": "Armazenado no armazenamento de arquivos do Paperclip para {{company}}.",
+    "selectOrganization": "Selecione uma organização para enviar uma foto ao armazenamento do Paperclip.",
+    "change": "Trocar foto",
+    "upload": "Enviar foto",
+    "remove": "Remover",
+    "clickHint": "Clique na foto para enviar uma nova imagem. "
+  },
+  "form": {
+    "displayName": "Nome de exibição",
+    "displayNameHint": "Exibido no rodapé da conta na barra lateral e na autoria dos comentários.",
+    "email": "E-mail",
+    "emailHint": "O e-mail é gerenciado pela sua sessão de autenticação e é somente leitura aqui.",
+    "saving": "Salvando...",
+    "save": "Salvar perfil"
+  },
+  "errorActions": {
+    "loadProfile": "carregar seu perfil"
+  }
+}

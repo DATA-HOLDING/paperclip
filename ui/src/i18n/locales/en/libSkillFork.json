@@ -1,0 +1,13 @@
+{
+  "sourceFallback": {
+    "url": "a URL",
+    "catalog": "the catalog",
+    "localPath": "a local path",
+    "default": "its source"
+  },
+  "agentUsage": {
+    "none": "No agents currently use this skill",
+    "some_one": "{{count}} agent currently uses this skill",
+    "some_other": "{{count}} agents currently use this skill"
+  }
+}

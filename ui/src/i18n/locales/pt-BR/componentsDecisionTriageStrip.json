@@ -1,0 +1,43 @@
+{
+  "snooze": {
+    "oneHour": "1 hora",
+    "fourHours": "4 horas",
+    "tomorrow": "Amanhã",
+    "nextWeek": "Próxima semana"
+  },
+  "expiry": {
+    "expired": "Expirada",
+    "minutes": "Expira em {{n}} min",
+    "hours": "Expira em {{n}} h",
+    "days": "Expira em {{n}} d"
+  },
+  "errors": {
+    "couldNot": "Não foi possível {{verb}}",
+    "tryAgain": "Tente novamente.",
+    "noLinkedTask": "Esta decisão não tem uma tarefa vinculada para encaminhar.",
+    "couldNotCreateQueue": "Não foi possível criar a fila"
+  },
+  "verbs": {
+    "setDecideBy": "definir quando decidir",
+    "snooze": "adiar",
+    "addToQueue": "adicionar à fila",
+    "removeFromQueue": "remover da fila",
+    "askAgent": "pedir uma recomendação a esse agente"
+  },
+  "askedAgent": "Recomendação pedida a {{name}}",
+  "whenToDecide": "Quando decidir",
+  "pickDate": "Escolher data",
+  "queues": "Filas",
+  "removeFrom": "Remover de {{title}}",
+  "snoozedUntil": "Adiado até {{date}}",
+  "clear": "Limpar",
+  "snoozeButton": "Adiar",
+  "noLinkedTaskToAsk": "Nenhuma tarefa vinculada para perguntar",
+  "queueButton": "Fila",
+  "newQueuePlaceholder": "Nome da nova fila…",
+  "cancel": "Cancelar",
+  "create": "Criar",
+  "noOtherQueues": "Nenhuma outra fila ainda.",
+  "newQueue": "Nova fila…",
+  "askAgent": "Pedir recomendação ao agente"
+}

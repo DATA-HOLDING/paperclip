@@ -6,6 +6,7 @@ import { accessApi } from "@/api/access";
 import { QueryErrorState, useQueryView } from "@/components/QueryView";
 import { queryKeys } from "@/lib/queryKeys";
 import { useCompany } from "@/context/CompanyContext";
+import { t } from "@/i18n";
 
 /**
  * Best-effort admin gate for the access-profiles surface, mirroring
@@ -25,14 +26,14 @@ export function ToolsAdminGate({ children }: { children: ReactNode }) {
   const view = useQueryView(boardAccess);
 
   if (boardAccess.isLoading || view.kind === "reconnecting") {
-    return <div className="mx-auto max-w-xl py-10 text-sm text-muted-foreground">Loading…</div>;
+    return <div className="mx-auto max-w-xl py-10 text-sm text-muted-foreground">{t("pagesToolsProfiles.adminGate.loading")}</div>;
   }
   if (view.kind === "error" && view.errorKind !== "forbidden") {
     return (
       <div className="mx-auto max-w-xl py-10">
         <QueryErrorState
           error={boardAccess.error}
-          action="check your access"
+          action={t("pagesToolsProfiles.adminGate.checkAccessAction")}
           onRetry={view.retry}
           retrying={view.isFetching}
         />
@@ -56,13 +57,12 @@ export function ToolsAdminGate({ children }: { children: ReactNode }) {
         <div className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6">
           <div className="flex items-center gap-2 text-foreground">
             <ShieldAlert className="h-5 w-5 text-muted-foreground" />
-            <h1 className="text-lg font-semibold">Access profiles require editing access</h1>
+            <h1 className="text-lg font-semibold">{t("pagesToolsProfiles.adminGate.deniedTitle")}</h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            Access profiles decide which tools your agents can use. Ask a company editor to set these up, or
-            head back to{" "}
+            {t("pagesToolsProfiles.adminGate.deniedBody")}{" "}
             <Link to="/apps" className="font-medium text-primary hover:underline">
-              your apps
+              {t("pagesToolsProfiles.adminGate.yourApps")}
             </Link>
             .
           </p>

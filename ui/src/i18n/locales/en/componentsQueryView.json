@@ -1,0 +1,7 @@
+{
+  "retry": "Retry",
+  "retrying": "Retrying…",
+  "loading": "Loading",
+  "reconnecting": "Reconnecting",
+  "staleHint": "Updating paused while reconnecting…"
+}

@@ -1,0 +1,22 @@
+{
+  "notInArea": "Not in an area",
+  "archivedSuffix": "· Archived",
+  "moreForArea": "More for the {{area}} area",
+  "restoreArea": "Restore area",
+  "addHere": "Add a responsibility here",
+  "renameArea": "Rename area",
+  "archiveArea": "Archive area…",
+  "moreAreas_one": "1 more area in the company",
+  "moreAreas_other": "{{count}} more areas in the company",
+  "otherAreasHint": "Areas the company cares about where you own nothing yet.",
+  "newTaskAriaLabel": "New task for an agent: {{text}}",
+  "newTask": "New task for an agent",
+  "needsYou": "Needs you",
+  "nothingNeedsYou": "Nothing needs you right now. Everything you own is on track or quiet.",
+  "itemsSr_one": " item",
+  "itemsSr_other": " items",
+  "needsYouHint": "What is holding your responsibilities back. Give any of it to an agent.",
+  "runningWithoutYou": "Running without you",
+  "runningHint": "What agents and routines are doing under your responsibilities.",
+  "runningEmpty": "Nothing is running without you yet. Give a task, a routine or a project to an agent to start."
+}

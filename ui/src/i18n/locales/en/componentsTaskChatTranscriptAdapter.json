@@ -1,0 +1,71 @@
+{
+  "contextCompacted": {
+    "label": "Context compacted",
+    "fromTo": "{{from}} → {{to}} tokens",
+    "from": "from {{from}} tokens"
+  },
+  "unnamedTool": "Unnamed tool",
+  "thoughtForSeconds": "Thought for {{seconds}}s",
+  "thoughtForMinutes": "Thought for {{minutes}}m {{seconds}}s",
+  "planStep": "Plan step",
+  "subagent": "Subagent",
+  "usage": {
+    "providerSessionTotal": "Provider session total",
+    "providerSessionDetail": "This cumulative usage can include earlier runs in the resumed provider session."
+  },
+  "interrupted": {
+    "tool": "Interrupted before the provider reported completion.",
+    "protocol": "Interrupted before completion."
+  },
+  "phrases": {
+    "readFiles_one": "Read a file",
+    "readFiles_other": "Read {{count}} files",
+    "editedFiles_one": "Edited a file",
+    "editedFiles_other": "Edited {{count}} files",
+    "ranCommands_one": "Ran a command",
+    "ranCommands_other": "Ran {{count}} commands",
+    "searched_one": "Searched once",
+    "searched_other": "Searched {{count}} times",
+    "usedTools_one": "Used a tool",
+    "usedTools_other": "Used {{count}} tools",
+    "updatedPlans_one": "Updated the plan",
+    "updatedPlans_other": "Updated {{count}} plans",
+    "usedSubagents_one": "Used a subagent",
+    "usedSubagents_other": "Used {{count}} subagents",
+    "updatedModel_one": "Updated the model",
+    "updatedModel_other": "Updated the model {{count}} times",
+    "compactedContext_one": "Compacted context",
+    "compactedContext_other": "Compacted context {{count}} times",
+    "handledArtifacts_one": "Handled an artifact",
+    "handledArtifacts_other": "Handled {{count}} artifacts",
+    "changedReviewMode_one": "Changed review mode",
+    "changedReviewMode_other": "Changed review mode {{count}} times",
+    "ranHooks_one": "Ran a hook",
+    "ranHooks_other": "Ran {{count}} hooks",
+    "referencedMemory_one": "Referenced memory",
+    "referencedMemory_other": "Referenced memory {{count}} times",
+    "ranSafetyReviews_one": "Ran a safety review",
+    "ranSafetyReviews_other": "Ran {{count}} safety reviews",
+    "sentTerminalInput_one": "Sent terminal input",
+    "sentTerminalInput_other": "Sent terminal input {{count}} times",
+    "waited_one": "Waited",
+    "waited_other": "Waited {{count}} times",
+    "receivedProviderNotices_one": "Received a provider notice",
+    "receivedProviderNotices_other": "Received {{count}} provider notices",
+    "searchedAvailableTools_one": "Searched available tools",
+    "searchedAvailableTools_other": "Searched available tools {{count}} times",
+    "readFromPaperclip_one": "Read from Paperclip",
+    "readFromPaperclip_other": "Read from Paperclip {{count}} times",
+    "usedPaperclip_one": "Used Paperclip",
+    "usedPaperclip_other": "Used Paperclip {{count}} times",
+    "changedFiles_one": "Changed a file",
+    "changedFiles_other": "Changed {{count}} files"
+  },
+  "summary": {
+    "more": ", +{{hidden}} more",
+    "runnerActivity": "Runner activity",
+    "runnerUpdates": "{{n}} runner updates",
+    "reasoning": "Reasoning",
+    "noToolActivity": "No tool activity"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "defaultNotRight": "Essa automação ainda não está certa.",
+  "noResponsibility": "Sem responsabilidade: a tarefa não está arquivada em nenhuma.",
+  "and": " e ",
+  "start": {
+    "schedule": "Por agenda: {{label}}",
+    "webhook": "Por um webhook, quando outro sistema o chamar",
+    "standingCheck": "Uma verificação contínua: {{label}}"
+  },
+  "calledBy": "Chamado por: {{caller}}",
+  "looksFor": "Procura: {{value}}",
+  "whenFound": "Quando encontrar: {{value}}",
+  "automationSetUp": "Automação configurada:",
+  "settingUp": "Configurando a automação…",
+  "replaced": "Automação proposta, substituída por uma mais nova: ",
+  "notThis": "Não esta automação: ",
+  "proposedFor": "Automação proposta para {{title}}",
+  "proposedBy": "{{name}} propôs uma automação para ",
+  "rows": {
+    "eachTime": "A cada vez",
+    "howItStarts": "Como começa",
+    "whoRunsIt": "Quem executa",
+    "filedUnder": "Arquivada em"
+  },
+  "webhookHint": "Depois de configurada, você recebe o endereço a chamar e o segredo para passar a esse sistema.",
+  "whatShouldChange": "O que deve mudar? (opcional)",
+  "reasonPlaceholder": "ex.: Execute às segundas-feiras, e só para clientes pagantes",
+  "back": "Voltar",
+  "send": "Enviar",
+  "notRight": "Não está certa",
+  "setItUp": "Configurar"
+}

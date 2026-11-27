@@ -1,0 +1,46 @@
+{
+  "chooseAnAgent": "Choose an agent",
+  "unavailable": {
+    "noAgent": "Choose an agent to select its model and effort.",
+    "muse": "Muse chooses its model and effort. Paperclip has no per-task override.",
+    "process": "This agent runs a command. Its harness does not expose a model or effort setting.",
+    "http": "This agent calls an HTTP endpoint. The destination service chooses its model.",
+    "gateway": "This gateway chooses its model remotely; Paperclip has no per-task model setting for it."
+  },
+  "default": "Default",
+  "noAssignee": "No assignee",
+  "unassigned": "Unassigned",
+  "closePicker": "Close picker",
+  "selectModelAndEffort": "Select model and effort",
+  "selectModel": "Select model",
+  "selectAssignee": "Select assignee",
+  "chooseAssignee": "Choose assignee",
+  "resetToAgentDefault": "Reset to agent default",
+  "chooseExactModel": "Choose exact model",
+  "model": "Model",
+  "fastMode": "Fast mode",
+  "thinking": "Thinking",
+  "effort": "Effort",
+  "searchAssignees": "Search assignees",
+  "searchAssigneesPlaceholder": "Search assignees…",
+  "assignees": "Assignees",
+  "noMatches": "No matches.",
+  "backToSelection": "Back to selection",
+  "chooseModel": "Choose model",
+  "searchModel": "Search or paste a model ID",
+  "models": "Models",
+  "useAgentDefault": "Use agent default",
+  "agentDefault": "Agent default",
+  "loadingModels": "Loading models…",
+  "noCatalogMatch": "No catalog match.",
+  "useExactId": "Use exact ID",
+  "invalid": {
+    "openrouter": "Use openrouter/provider/model with no spaces.",
+    "spaces": "Model IDs cannot contain spaces."
+  },
+  "customHint": {
+    "openrouter": "Custom IDs: openrouter/provider/model. Provider access is checked when the run starts.",
+    "default": "Custom model IDs can be pasted here. Provider access is checked when the run starts."
+  },
+  "agentRunSettings": "Agent run settings"
+}

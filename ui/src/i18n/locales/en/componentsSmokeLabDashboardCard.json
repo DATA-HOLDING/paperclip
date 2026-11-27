@@ -1,0 +1,11 @@
+{
+  "health": {
+    "green": "All paths passing",
+    "amber": "Needs a run",
+    "red": "Failing paths",
+    "unknown": "No runs yet"
+  },
+  "title": "Integration smoke",
+  "lastRun": "Last run {{time}}",
+  "runOne": "Run one from the Smoke Lab tab"
+}

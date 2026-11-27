@@ -1,0 +1,39 @@
+{
+  "invalidBranch": "Enter a valid branch name, such as master or release/next.",
+  "refreshAndRetry": "Refresh the task to check its current state, then try again.",
+  "title": {
+    "repaired": "Branch updated · retry requested",
+    "missingBefore": "Branch",
+    "missingAfter": "was not found",
+    "couldNotUse": "Couldn’t use branch"
+  },
+  "body": {
+    "repairedBefore": "This task now starts from",
+    "repairedAfter": ". A retry has been requested for {{agentName}}.",
+    "hasNoBranchNamed": "has no branch named",
+    "couldNotResolve": "could not resolve the starting branch. Check the branch name and repository access.",
+    "notStarted": "{{agentName}} hasn’t started."
+  },
+  "isDefaultBranch": "is the repository’s default branch.",
+  "changesOnlyThisTask": "Changes only this task’s starting branch.",
+  "confirmFailed": "Couldn’t confirm the repair.",
+  "startingBranch": "Starting branch",
+  "branchNamePlaceholder": "Branch name",
+  "cancel": "Cancel",
+  "saving": "Saving & requesting retry…",
+  "saveAndRetry": "Save branch & retry",
+  "chooseAnother": "Choose another branch",
+  "useBranchAndRetry": "Use {{branch}} & retry",
+  "hideDetails": "Hide details",
+  "whyDidThisHappen": "Why did this happen?",
+  "details": {
+    "setting": "Setting",
+    "taskSpecific": "Task-specific starting branch",
+    "workspaceBranch": "Workspace starting branch",
+    "requestedBranch": "Requested branch",
+    "setBy": "Set by",
+    "whyStopped": "Why it stopped",
+    "whyTaskOverride": "An explicit task branch overrides the repository default. Paperclip does not silently switch branches.",
+    "whyWorkspace": "The configured starting branch must resolve before the agent can start. This repair overrides it for this task."
+  }
+}

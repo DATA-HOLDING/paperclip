@@ -31,6 +31,7 @@ import { Download, Network, Upload, Layers, Paperclip } from "lucide-react";
 import { AGENT_ROLE_LABELS, type Agent } from "@paperclipai/shared";
 import { useCloudInstance } from "@/hooks/useCloudInstance";
 import { useHiddenSettings } from "@/hooks/useHiddenSettings";
+import { t } from "@/i18n";
 
 const modelLabels = new Map([...claudeModels, ...codexModels].map(model => [model.id, model.label]));
 const MIN_ZOOM = 0.05;
@@ -173,7 +174,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
   }, [agents]);
 
   useEffect(() => {
-    if (!embedded) setBreadcrumbs([{ label: "Org Chart" }]);
+    if (!embedded) setBreadcrumbs([{ label: t("pagesOrgChart.breadcrumb") }]);
   }, [embedded, setBreadcrumbs]);
 
   const [tasksVisible, setShowTasks] = useState(simulateTasks);
@@ -458,7 +459,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
   useImperativeHandle(actionsRef, () => cameraActions, [cameraActions]);
   const controls = (
     <OrgChartControls {...cameraActions}>
-      {enableTaskLayer && <Button variant={showTasks ? "secondary" : "outline"} size="sm" aria-pressed={showTasks} onClick={() => setShowTasks(value => !value)}><Layers className="size-4" />Tasks</Button>}
+      {enableTaskLayer && <Button variant={showTasks ? "secondary" : "outline"} size="sm" aria-pressed={showTasks} onClick={() => setShowTasks(value => !value)}><Layers className="size-4" />{t("pagesOrgChart.tasksToggle")}</Button>}
     </OrgChartControls>
   );
   const taskWidth = Math.min(geometry.taskLabelWidth, Math.max(0, viewport.width - geometry.padding * 2));
@@ -480,7 +481,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
   }, [tasks, taskStartX, taskWidth, taskGap, taskScroll, viewport.width, nodesById]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Network} message="Select an organization to view the org chart." />;
+    return <EmptyState icon={Network} message={t("pagesOrgChart.selectOrganization")} />;
   }
 
   // Keep a loaded chart on screen through a failed refetch; only a real
@@ -494,7 +495,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
       <QueryErrorState
         size="page"
         error={orgTreeView.error}
-        action="load the org chart"
+        action={t("pagesOrgChart.loadAction")}
         onRetry={orgTreeView.retry}
         retrying={orgTreeView.isFetching}
       />
@@ -502,7 +503,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
   }
 
   if (orgTree && orgTree.length === 0) {
-    return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
+    return <EmptyState icon={Network} message={t("pagesOrgChart.noHierarchy")} />;
   }
 
   return (
@@ -518,7 +519,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
           <Link to="/company/import">
             <Button variant="outline" size="sm">
               <Upload className="mr-1.5 h-3.5 w-3.5" />
-              Import organization
+              {t("pagesOrgChart.importOrganization")}
             </Button>
           </Link>
         ) : null}
@@ -526,7 +527,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
           <Link to="/company/export">
             <Button variant="outline" size="sm">
               <Download className="mr-1.5 h-3.5 w-3.5" />
-              Export organization
+              {t("pagesOrgChart.exportOrganization")}
             </Button>
           </Link>
         ) : null}
@@ -591,7 +592,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
               .replace(/^(?:Claude|Codex)\s+/i, "");
             const effort = agent ? readComposerRunSettings({ adapterConfig: agent.adapterConfig }, agent.adapterType).effort : null;
             const status = (agent?.status ?? node.status).replace(/_/g, " ");
-            const statusLabel = status === "active" ? "Idle" : status.charAt(0).toUpperCase() + status.slice(1);
+            const statusLabel = status === "active" ? t("pagesOrgChart.idle") : status.charAt(0).toUpperCase() + status.slice(1);
             const starPending = membershipMutation.isPending && membershipMutation.variables?.resourceId === node.id;
             const openAgent = () => navigate(agent ? agentUrl(agent) : `/agents/${node.id}`);
 
@@ -692,11 +693,11 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
           </svg>
           <div className="org-task-band absolute inset-x-0" style={{ top: toolbarHeight }}>
             <div className="org-task-legend text-xs text-muted-foreground" role="status">
-              {simulateTasks ? `${tasks.length} simulated running tasks · preview only`
-                : taskRunsView.kind === "error" ? <QueryErrorState size="inline" error={taskRunsView.error} action="load running tasks" onRetry={taskRunsView.retry} />
-                : taskTitlesView.kind === "error" && taskIds.length ? <QueryErrorState size="inline" error={taskTitlesView.error} action="load task titles" onRetry={taskTitlesView.retry} />
-                : taskRunsView.kind === "stale" ? "Task updates paused while reconnecting…"
-                : taskRunsQuery.isPending || taskRunsView.kind === "reconnecting" ? "Loading running tasks…" : tasks.length ? `${tasks.length} running ${tasks.length === 1 ? "task" : "tasks"}${(taskRunsQuery.data?.length ?? 0) >= 100 ? " · showing first 100 runs" : ""}` : "No running tasks"}
+              {simulateTasks ? t("pagesOrgChart.legend.simulated", { count: tasks.length })
+                : taskRunsView.kind === "error" ? <QueryErrorState size="inline" error={taskRunsView.error} action={t("pagesOrgChart.legend.loadRunningAction")} onRetry={taskRunsView.retry} />
+                : taskTitlesView.kind === "error" && taskIds.length ? <QueryErrorState size="inline" error={taskTitlesView.error} action={t("pagesOrgChart.legend.loadTitlesAction")} onRetry={taskTitlesView.retry} />
+                : taskRunsView.kind === "stale" ? t("pagesOrgChart.legend.paused")
+                : taskRunsQuery.isPending || taskRunsView.kind === "reconnecting" ? t("pagesOrgChart.legend.loading") : tasks.length ? `${t("pagesOrgChart.legend.running", { count: tasks.length })}${(taskRunsQuery.data?.length ?? 0) >= 100 ? t("pagesOrgChart.legend.first100") : ""}` : t("pagesOrgChart.legend.none")}
             </div>
             <div className="org-task-strip" onScroll={event => setTaskScroll(event.currentTarget.scrollLeft)} onWheel={event => event.stopPropagation()} onMouseDown={event => event.stopPropagation()}
               onTouchStart={event => { event.stopPropagation(); taskTouchX.current = event.touches[0]?.clientX ?? null; }}
@@ -712,7 +713,7 @@ export function OrgChart({ orgTree: providedOrgTree, agents: providedAgents, mat
                 {tasks.map((task, index) => {
                   const labelProps = {
                     "data-org-task": true,
-                    title: `${simulateTasks ? "Simulated task" : task.identifier ?? "Task"} · ${task.title} · Working: ${task.agentIds.map(id => agentMap.get(id)?.name ?? "Agent").join(", ")}`,
+                    title: t("pagesOrgChart.taskTitle", { task: simulateTasks ? t("pagesOrgChart.simulatedTask") : task.identifier ?? t("pagesOrgChart.task"), title: task.title, agents: task.agentIds.map(id => agentMap.get(id)?.name ?? t("pagesOrgChart.agent")).join(", ") }),
                     className: "org-task-label absolute flex items-center gap-1.5 rounded px-2 text-xs text-muted-foreground no-underline hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
                     style: { left: taskStartX + index * (taskWidth + taskGap), width: taskWidth, height: geometry.taskHeight },
                     children: <><Paperclip className="size-3 shrink-0" /><span className="truncate">{task.title}</span></>,

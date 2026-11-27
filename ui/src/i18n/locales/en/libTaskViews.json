@@ -1,0 +1,50 @@
+{
+  "groups": {
+    "myWork": "My work",
+    "organization": "Organization"
+  },
+  "mine": {
+    "label": "Mine",
+    "hint": "Assigned to you or waiting on you"
+  },
+  "unread": {
+    "label": "Unread",
+    "hint": "Tasks you touched with new activity"
+  },
+  "blocked": {
+    "label": "Blocked",
+    "hint": "Blocked tasks, grouped by blocker"
+  },
+  "recent": {
+    "label": "Recent",
+    "hint": "Everything you touched lately"
+  },
+  "everything": {
+    "label": "Everything",
+    "hint": "Tasks, approvals, failed runs and join requests"
+  },
+  "archived": {
+    "label": "Archived",
+    "hint": "Tasks archived for you"
+  },
+  "needsAttention": {
+    "label": "Needs attention",
+    "hint": "Tasks with pending decisions"
+  },
+  "all": {
+    "label": "All tasks",
+    "hint": "Every task in the organization"
+  },
+  "active": {
+    "label": "Active",
+    "hint": "Open tasks, running or not"
+  },
+  "backlog": {
+    "label": "Backlog",
+    "hint": "Not started yet"
+  },
+  "done": {
+    "label": "Done",
+    "hint": "Completed and cancelled"
+  }
+}

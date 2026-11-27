@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { Star, SquarePen } from "lucide-react";
 import { SidebarNavItem } from "@/components/SidebarNavItem";
 import { AgentIcon } from "@/components/AgentIconPicker";
@@ -41,9 +42,9 @@ export function AgentChatSidebar({
           type="button"
           variant="ghost"
           size="icon-xs"
-          aria-label={`${pinned ? "Unstar" : "Star"} ${agent.name}`}
+          aria-label={pinned ? t("componentsAgentChatSidebar.unstarAgentName", { name: agent.name }) : t("componentsAgentChatSidebar.starAgentName", { name: agent.name })}
           aria-pressed={pinned}
-          title={pinned ? "Unstar agent" : "Star agent to pin"}
+          title={pinned ? t("componentsAgentChatSidebar.unstarAgent") : t("componentsAgentChatSidebar.starAgent")}
           onClick={(event) => {
             event.stopPropagation();
             onToggleStar(agent.id);
@@ -59,15 +60,15 @@ export function AgentChatSidebar({
     );
   };
   return (
-    <section aria-label="Chats" className="group/chats flex flex-col gap-0.5">
+    <section aria-label={t("componentsAgentChatSidebar.chats")} className="group/chats flex flex-col gap-0.5">
       <div className="relative flex min-h-9 items-center px-4 py-1.5">
-        <span className="font-mono text-(length:--text-nano) font-medium uppercase tracking-widest text-muted-foreground/60">Chats</span>
+        <span className="font-mono text-(length:--text-nano) font-medium uppercase tracking-widest text-muted-foreground/60">{t("componentsAgentChatSidebar.chats")}</span>
         <Button
           type="button"
           variant="ghost"
           size="icon-xs"
-          aria-label="Chat with an agent"
-          title="Chat with an agent"
+          aria-label={t("componentsAgentChatSidebar.chatWithAgent")}
+          title={t("componentsAgentChatSidebar.chatWithAgent")}
           onClick={onOpenChat}
           className="absolute right-2 top-(--pct-50) -translate-y-(--pct-50) text-muted-foreground opacity-0 group-hover/chats:opacity-100 focus-visible:opacity-100 pointer-coarse:opacity-100"
         >

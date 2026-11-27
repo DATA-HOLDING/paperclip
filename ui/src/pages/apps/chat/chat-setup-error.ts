@@ -1,5 +1,6 @@
+import { t } from "@/i18n";
 export const chatSetupErrorFallback =
-  "Check the required values and provider access, then try again.";
+  t("pagesAppsChatChatSetupError.fallback");
 
 function uriEncoded(value: string): string | null {
   try {

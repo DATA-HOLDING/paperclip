@@ -1,0 +1,92 @@
+{
+  "title": "Adapters",
+  "loading": "Loading adapters...",
+  "alpha": "Alpha",
+  "cancel": "Cancel",
+  "breadcrumbs": {
+    "organization": "Organization",
+    "settings": "Settings"
+  },
+  "row": {
+    "external": "External",
+    "builtIn": "Built-in",
+    "installedFromLocalPath": "Installed from local path",
+    "installedFromNpm": "Installed from npm",
+    "overridesBuiltIn": "Overrides built-in",
+    "overriddenBy": "Overridden by {{name}}",
+    "hiddenFromMenus": "Hidden from menus",
+    "modelsCount": "{{models}} models",
+    "reinstallTitle": "Reinstall adapter (pull latest from npm)",
+    "reloadTitle": "Reload adapter (hot-swap)",
+    "showInMenus": "Show in agent menus",
+    "hideFromMenus": "Hide from agent menus",
+    "removeTitle": "Remove adapter"
+  },
+  "reinstall": {
+    "title": "Reinstall Adapter",
+    "descriptionBefore": "This will pull the latest version of",
+    "descriptionAfter": " from npm and hot-swap the running adapter module. Existing agents will use the new version on their next run.",
+    "package": "Package",
+    "current": "Current",
+    "unknown": "unknown",
+    "latestOnNpm": "Latest on npm",
+    "checking": "checking...",
+    "unavailable": "unavailable",
+    "upToDate": "Already on the latest version.",
+    "reinstalling": "Reinstalling...",
+    "confirm": "Reinstall"
+  },
+  "toast": {
+    "installed": "Adapter installed",
+    "installedBody": "Type \"{{type}}\" registered successfully.{{versionSuffix}}",
+    "installFailed": "Install failed",
+    "removed": "Adapter removed",
+    "removeFailed": "Removal failed",
+    "toggleFailed": "Toggle failed",
+    "overrideToggleFailed": "Override toggle failed",
+    "reloaded": "Adapter reloaded",
+    "reloadedBody": "Type \"{{type}}\" reloaded.{{versionSuffix}}",
+    "reloadFailed": "Reload failed",
+    "reinstalled": "Adapter reinstalled",
+    "reinstalledBody": "Type \"{{type}}\" updated from npm.{{versionSuffix}}",
+    "reinstallFailed": "Reinstall failed"
+  },
+  "install": {
+    "trigger": "Install Adapter",
+    "title": "Install External Adapter",
+    "description": "Add an adapter from npm or a local path. The adapter package must export",
+    "npmPackage": "npm package",
+    "localPath": "Local path",
+    "pathLabel": "Path to adapter package",
+    "pathHint": "Accepts Linux, WSL, and Windows paths. Windows paths are auto-converted.",
+    "packageName": "Package Name",
+    "version": "Version (optional)",
+    "installing": "Installing...",
+    "confirm": "Install"
+  },
+  "alphaNotice": {
+    "title": "External adapters are alpha.",
+    "body": "The adapter plugin system is under active development. APIs and storage format may change. Use the power icon to hide adapters from agent menus without removing them."
+  },
+  "external": {
+    "title": "External Adapters",
+    "emptyTitle": "No external adapters installed",
+    "emptyBody": "Install an adapter package to extend model support.",
+    "pauseOverride": "Pause external override",
+    "resumeOverride": "Resume external override",
+    "overridePaused": "Override paused"
+  },
+  "builtIn": {
+    "title": "Built-in Adapters",
+    "empty": "No built-in adapters found."
+  },
+  "remove": {
+    "title": "Remove Adapter",
+    "descriptionBefore": "Are you sure you want to remove the",
+    "descriptionAfter": " adapter? It will be unregistered and removed from the adapter store.",
+    "npmCleanup": "npm packages will be cleaned up from disk.",
+    "cannotUndo": "This action cannot be undone.",
+    "removing": "Removing...",
+    "confirm": "Remove"
+  }
+}

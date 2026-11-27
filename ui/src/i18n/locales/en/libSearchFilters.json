@@ -1,0 +1,31 @@
+{
+  "sort": {
+    "relevance": "Relevance",
+    "updated": "Recently updated",
+    "created": "Newest created",
+    "priority": "Priority"
+  },
+  "updatedWithin": {
+    "24h": "Last 24 hours",
+    "7d": "Last 7 days",
+    "30d": "Last 30 days",
+    "90d": "Last 90 days",
+    "other": "Updated ≤ {{value}}"
+  },
+  "unassigned": "Unassigned",
+  "agent": "Agent",
+  "me": "Me",
+  "user": "User",
+  "assignee": "Assignee",
+  "project": "Project",
+  "label": "Label",
+  "chip": {
+    "status": "Status: {{value}}",
+    "priority": "Priority: {{value}}",
+    "assignee": "Assignee: {{value}}",
+    "project": "Project: {{value}}",
+    "label": "Label: {{value}}",
+    "updated": "Updated: {{value}}"
+  },
+  "updatedWindow": "Updated window"
+}

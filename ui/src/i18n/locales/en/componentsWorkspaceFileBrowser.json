@@ -1,0 +1,71 @@
+{
+  "unavailable": {
+    "remote": {
+      "title": "Remote workspace preview not supported",
+      "body": "This workspace is hosted remotely and is not available for inline preview yet."
+    },
+    "none": {
+      "title": "No workspace yet",
+      "body": "This issue does not have a workspace to browse. Files appear here once a run creates one."
+    },
+    "cleaned": {
+      "title": "Workspace is no longer available",
+      "body": "The isolated worktree for this issue has been cleaned up, so files cannot be previewed."
+    },
+    "generic": {
+      "title": "Workspace unavailable",
+      "body": "These workspace files can't be browsed right now."
+    }
+  },
+  "currentFolder": "Current folder",
+  "download": "Download {{name}}",
+  "loadingFolder": "Loading folder…",
+  "loadMore": "Load more from this folder",
+  "tree": "Workspace files",
+  "announce": {
+    "loading": "Loading workspace files…",
+    "error": "Unable to load workspace files.",
+    "noMatches": "No matching files.",
+    "found_one": "{{count}} item found.",
+    "found_other": "{{count}} items found."
+  },
+  "states": {
+    "noOrganization": {
+      "title": "No organization selected",
+      "body": "Choose an organization before browsing another project workspace."
+    },
+    "loadingProjects": {
+      "title": "Loading project workspaces",
+      "body": "Registered workspaces will appear here."
+    },
+    "noProjects": {
+      "title": "No project workspaces",
+      "body": "No same-organization project has a registered workspace to browse."
+    },
+    "error": {
+      "saturatedTitle": "Changed files temporarily unavailable",
+      "title": "Couldn't load files",
+      "saturatedBody": "Paperclip is limiting workspace scans to keep the server responsive. Try again in a moment.",
+      "notFound": "Workspace browsing isn't available for this issue.",
+      "loadAction": "load workspace files"
+    },
+    "empty": {
+      "noMatch": "No files match “{{query}}”",
+      "noRecent": "No recently changed files yet",
+      "body": "Try searching by name or path."
+    }
+  },
+  "retry": "Retry",
+  "search": {
+    "placeholder": "Search files by name or path…",
+    "label": "Search workspace files"
+  },
+  "refresh": "Refresh workspace files",
+  "source": {
+    "label": "Workspace file source",
+    "live": "Live workspace",
+    "savedCopy": "Saved copy",
+    "from": "from"
+  },
+  "showingFirst": "Showing first {{shown}} — refine the search to narrow."
+}

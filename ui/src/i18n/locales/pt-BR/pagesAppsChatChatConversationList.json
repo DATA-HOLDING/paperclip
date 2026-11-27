@@ -1,0 +1,12 @@
+{
+  "empty": {
+    "title": "Nenhuma conversa ainda",
+    "speko": "Abra uma tarefa atribuída e escolha Falar com o agente.",
+    "agentmail": "Envie um e-mail para o endereço deste agente para começar uma.",
+    "default": "Mencione o agente em um destino habilitado para começar uma."
+  },
+  "ariaLabel": "Conversas",
+  "paperclipTask": "Tarefa do Paperclip",
+  "waitingForTask": "Aguardando tarefa",
+  "completed": "Concluída"
+}

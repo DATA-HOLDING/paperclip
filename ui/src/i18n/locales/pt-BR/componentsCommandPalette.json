@@ -1,0 +1,38 @@
+{
+  "placeholder": "Buscar tarefas, agentes, projetos...",
+  "empty": {
+    "noQuickMatch": "Nenhuma tarefa encontrada na busca rápida. Pressione",
+    "to": "para",
+    "searchAll": "buscar em tudo",
+    "keepTyping": "ou continue digitando para refinar.",
+    "noResults": "Nenhum resultado encontrado."
+  },
+  "groups": {
+    "search": "Buscar",
+    "quickFilters": "Filtros rápidos",
+    "projects": "Projetos",
+    "actions": "Ações",
+    "pages": "Páginas",
+    "tasks": "Tarefas",
+    "agents": "Agentes"
+  },
+  "searchAllFor": "Buscar em tudo por",
+  "openFullSearch": "abrir busca completa",
+  "actions": {
+    "createTask": "Criar nova tarefa",
+    "openFile": "Abrir arquivo nesta tarefa...",
+    "createAgent": "Criar novo agente",
+    "createProject": "Criar novo projeto"
+  },
+  "pages": {
+    "dashboard": "Painel",
+    "myWork": "Meu trabalho",
+    "inbox": "Caixa de entrada",
+    "tasks": "Tarefas",
+    "projects": "Projetos",
+    "goals": "Objetivos",
+    "agents": "Agentes",
+    "costs": "Custos",
+    "activity": "Atividade"
+  }
+}

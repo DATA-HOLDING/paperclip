@@ -1,0 +1,12 @@
+{
+  "unknownAgent": "Agente desconhecido",
+  "user": "Usuário",
+  "unassigned": "Sem responsável",
+  "collapse": "Recolher {{title}}",
+  "expand": "Expandir {{title}}",
+  "noProject": "Sem projeto",
+  "listLabel": "Lista de tarefas ({{density}})",
+  "groupLabel": "Grupo de tarefas {{title}}",
+  "rendering": "Exibindo {{shown}} de {{total}} tarefas",
+  "showMore": "Mostrar mais tarefas"
+}

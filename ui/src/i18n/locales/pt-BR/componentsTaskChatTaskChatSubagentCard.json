@@ -1,0 +1,17 @@
+{
+  "status": {
+    "running": "Em execução",
+    "completed": "Concluído",
+    "failed": "Falhou",
+    "cancelled": "Interrompido"
+  },
+  "toolCount_one": "{{count}} ferramenta",
+  "toolCount_other": "{{count}} ferramentas",
+  "prompt": "Prompt",
+  "tree": {
+    "running": "Executando {{total}} subagentes · {{done}} concluídos",
+    "ranWithFailures": "Executou {{total}} subagentes · {{failed}} com falha",
+    "ran": "Executou {{total}} subagentes",
+    "ariaLabel": "Subagentes"
+  }
+}

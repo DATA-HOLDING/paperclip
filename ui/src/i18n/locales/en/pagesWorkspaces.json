@@ -1,0 +1,13 @@
+{
+  "taskWorkspaces": "Task workspaces",
+  "title": "Workspaces",
+  "loadAction": "load workspaces",
+  "summaryTitle": "Workspace summary",
+  "summaryDescription": "Summarizer tracks workspace activity, live services, and follow-up needs across projects.",
+  "empty": "No workspace activity yet.",
+  "workspaceCount_one": "{{count}} workspace",
+  "workspaceCount_other": "{{count}} workspaces",
+  "showingOf": "Showing {{shown}} of {{total}} workspaces.",
+  "loading": "Loading...",
+  "loadMore": "Load more"
+}

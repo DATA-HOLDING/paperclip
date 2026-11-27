@@ -1,0 +1,37 @@
+{
+  "status": {
+    "pendingReview": "Precisa de revisão",
+    "approved": "Aprovada",
+    "declined": "Recusada",
+    "unavailable": "Indisponível"
+  },
+  "notes": {
+    "changed": "{{app}} alterou esta skill. Os agentes não vão usá-la até você aprovar a nova versão.",
+    "dynamic": "Esta skill é gerada a cada uso, então o Paperclip não consegue verificar o conteúdo dela. Ela não é oferecida aos agentes.",
+    "tooLarge": "Esta skill é maior do que os apps conseguem suportar (512 arquivos ou 16 MiB), então não é oferecida aos agentes.",
+    "invalid": "A listagem desta skill não segue o formato de skills MCP, então ela não é oferecida aos agentes.",
+    "verificationFailed": "{{app}} enviou arquivos que não correspondem ao que listou, então o Paperclip parou de usar esta skill. Atualize o app para ver a versão atual.",
+    "removed": "{{app}} não oferece mais esta skill."
+  },
+  "heading": "Skills de apps conectados",
+  "waiting_one": "{{count}} aguardando revisão. ",
+  "waiting_other": "{{count}} aguardando revisão. ",
+  "approvalNote": "Os agentes que usam um app só recebem as skills dele depois que você as aprova.",
+  "fromApp": "de {{app}}",
+  "files_one": "1 arquivo",
+  "files_other": "{{count}} arquivos",
+  "nameCollision": "Outra skill usa este nome. Os agentes recebem esta com o nome de {{app}}, então nenhuma substitui a outra.",
+  "alsoLetItUse": "Também permitir usar: {{tools}}",
+  "canUse": "Pode usar",
+  "askedNotAllowed": "Pediu para usar, não permitido",
+  "hideInstructions": "Ocultar instruções",
+  "readInstructions": "Ler instruções",
+  "approve": "Aprovar",
+  "turnOff": "Desativar",
+  "decline": "Recusar",
+  "approvingNote": "Aprovar permite que os agentes que usam {{app}} sigam estas instruções, inclusive os comandos que elas descrevem.",
+  "loadingInstructions": "Carregando instruções…",
+  "approveFailed": "Não foi possível aprovar a skill",
+  "updateFailed": "Não foi possível atualizar a skill",
+  "loadFailed": "Não foi possível carregar as skills de apps conectados."
+}

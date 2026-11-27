@@ -4,6 +4,7 @@ import { useAccountBoundMutation } from "./useAccountBoundMutation";
 import { useResolvedViewerId } from "./useResolvedViewerId";
 import { workspacePreferencesApi } from "@/api/workspacePreferences";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 let detachedClient: QueryClient | null = null;
 const getDetachedClient = () => detachedClient ??= new QueryClient();
@@ -21,7 +22,7 @@ export function useCoordinatorWorkspaceEnabled() {
   const mutation = useAccountBoundMutation({
     mutationFn: async ({ companyId, enabled, owner }: { companyId: string; enabled: boolean; owner: string }) => {
       const result = await workspacePreferencesApi.update(companyId, { coordinatorWorkspaceEnabled: enabled });
-      if (result.userId !== owner) throw new Error("Your account changed. Reload your workspace preference and try again.");
+      if (result.userId !== owner) throw new Error(t("hooksUseCoordinatorWorkspaceEnabled.accountChanged"));
       return result;
     },
     onSuccess: (result) => {
@@ -39,7 +40,7 @@ export function useCoordinatorWorkspaceEnabled() {
       ?? (mutation.variables?.owner === userId ? mutation.error : null),
     isSaving: mutation.isPending && mutation.variables?.owner === userId,
     setEnabled: async (companyId: string, enabled: boolean) => {
-      if (!contextClient || !userId) throw new Error("Sign in before changing your workspace.");
+      if (!contextClient || !userId) throw new Error(t("hooksUseCoordinatorWorkspaceEnabled.signInFirst"));
       return mutation.mutateAsync({ companyId, enabled, owner: userId });
     },
     retry: async () => {

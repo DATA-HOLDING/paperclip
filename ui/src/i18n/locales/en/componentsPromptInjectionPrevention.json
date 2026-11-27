@@ -1,0 +1,41 @@
+{
+  "title": "Prompt Injection Prevention",
+  "description": "Check tool results for instructions that could redirect your agents. The selected provider receives tool content and charges API usage. Built-in detection is used when the model is unavailable.",
+  "choice": {
+    "connected": "Connected",
+    "needsAttention": "Needs attention"
+  },
+  "noChoices": "Add a shared OpenRouter API connection to use model checks.",
+  "addConnection": "Add OpenRouter connection",
+  "manageConnections": "Manage connections",
+  "connectionUnavailable": "The saved connection is unavailable. Choose a replacement, disable model checks, or clear the selection. Built-in detection stays active.",
+  "model": "Model",
+  "useModel": "Use model for prompt injection checks",
+  "clearSelection": "Clear selection",
+  "result": {
+    "passed": "Both model checks passed.",
+    "failed": "Model checks did not pass. Check the connection and model, then try again.",
+    "samplePassed": "Passed",
+    "modelUnavailable": "Model unavailable ({{reason}}); built-in detection is the fallback.",
+    "incorrectVerdict": "Incorrect verdict",
+    "seconds": "{{value}} seconds"
+  },
+  "test": {
+    "testing": "Testing…",
+    "button": "Test model checks",
+    "saveFirst": "Save changes before testing.",
+    "hint": "Tests two fixed samples with an API charge."
+  },
+  "save": {
+    "saving": "Saving…",
+    "button": "Save prompt injection settings"
+  },
+  "loading": "Loading prompt injection settings…",
+  "loadFailed": "Could not load prompt injection settings.",
+  "tryAgain": "Try again",
+  "modelsLoadFailed": "Could not load model suggestions. You can still enter and save a model ID.",
+  "addDialog": {
+    "title": "Add an OpenRouter connection",
+    "description": "Use a shared API connection for prompt injection checks."
+  }
+}

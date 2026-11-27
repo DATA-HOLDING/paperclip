@@ -1,0 +1,11 @@
+{
+  "defaultTitle": "Passagem de continuidade",
+  "collapse": "Recolher passagem de continuidade",
+  "expand": "Expandir passagem de continuidade",
+  "badge": "passagem",
+  "updated": "Atualizado {{time}}",
+  "revision": " - revisão {{number}}",
+  "continueLabel": "Continuar com um agente",
+  "promptTitle": "Passagem da tarefa",
+  "promptDescription": "Cole isto no seu agente para continuar a partir desta passagem."
+}

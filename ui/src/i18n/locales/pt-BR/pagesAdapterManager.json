@@ -1,0 +1,92 @@
+{
+  "title": "Adaptadores",
+  "loading": "Carregando adaptadores...",
+  "alpha": "Alfa",
+  "cancel": "Cancelar",
+  "breadcrumbs": {
+    "organization": "Organização",
+    "settings": "Configurações"
+  },
+  "row": {
+    "external": "Externo",
+    "builtIn": "Integrado",
+    "installedFromLocalPath": "Instalado a partir de um caminho local",
+    "installedFromNpm": "Instalado pelo npm",
+    "overridesBuiltIn": "Substitui o integrado",
+    "overriddenBy": "Substituído por {{name}}",
+    "hiddenFromMenus": "Oculto dos menus",
+    "modelsCount": "{{models}} modelos",
+    "reinstallTitle": "Reinstalar adaptador (baixar a versão mais recente do npm)",
+    "reloadTitle": "Recarregar adaptador (troca a quente)",
+    "showInMenus": "Mostrar nos menus de agentes",
+    "hideFromMenus": "Ocultar dos menus de agentes",
+    "removeTitle": "Remover adaptador"
+  },
+  "reinstall": {
+    "title": "Reinstalar adaptador",
+    "descriptionBefore": "Isso vai baixar a versão mais recente de",
+    "descriptionAfter": " do npm e trocar a quente o módulo do adaptador em execução. Os agentes existentes usarão a nova versão na próxima execução.",
+    "package": "Pacote",
+    "current": "Atual",
+    "unknown": "desconhecida",
+    "latestOnNpm": "Mais recente no npm",
+    "checking": "verificando...",
+    "unavailable": "indisponível",
+    "upToDate": "Já está na versão mais recente.",
+    "reinstalling": "Reinstalando...",
+    "confirm": "Reinstalar"
+  },
+  "toast": {
+    "installed": "Adaptador instalado",
+    "installedBody": "Tipo \"{{type}}\" registrado com sucesso.{{versionSuffix}}",
+    "installFailed": "Falha na instalação",
+    "removed": "Adaptador removido",
+    "removeFailed": "Falha na remoção",
+    "toggleFailed": "Falha ao alternar",
+    "overrideToggleFailed": "Falha ao alternar a substituição",
+    "reloaded": "Adaptador recarregado",
+    "reloadedBody": "Tipo \"{{type}}\" recarregado.{{versionSuffix}}",
+    "reloadFailed": "Falha ao recarregar",
+    "reinstalled": "Adaptador reinstalado",
+    "reinstalledBody": "Tipo \"{{type}}\" atualizado pelo npm.{{versionSuffix}}",
+    "reinstallFailed": "Falha na reinstalação"
+  },
+  "install": {
+    "trigger": "Instalar adaptador",
+    "title": "Instalar adaptador externo",
+    "description": "Adicione um adaptador do npm ou de um caminho local. O pacote do adaptador deve exportar",
+    "npmPackage": "Pacote npm",
+    "localPath": "Caminho local",
+    "pathLabel": "Caminho do pacote do adaptador",
+    "pathHint": "Aceita caminhos do Linux, WSL e Windows. Caminhos do Windows são convertidos automaticamente.",
+    "packageName": "Nome do pacote",
+    "version": "Versão (opcional)",
+    "installing": "Instalando...",
+    "confirm": "Instalar"
+  },
+  "alphaNotice": {
+    "title": "Os adaptadores externos estão em alfa.",
+    "body": "O sistema de plugins de adaptadores está em desenvolvimento ativo. As APIs e o formato de armazenamento podem mudar. Use o ícone de energia para ocultar adaptadores dos menus de agentes sem removê-los."
+  },
+  "external": {
+    "title": "Adaptadores externos",
+    "emptyTitle": "Nenhum adaptador externo instalado",
+    "emptyBody": "Instale um pacote de adaptador para ampliar o suporte a modelos.",
+    "pauseOverride": "Pausar substituição externa",
+    "resumeOverride": "Retomar substituição externa",
+    "overridePaused": "Substituição pausada"
+  },
+  "builtIn": {
+    "title": "Adaptadores integrados",
+    "empty": "Nenhum adaptador integrado encontrado."
+  },
+  "remove": {
+    "title": "Remover adaptador",
+    "descriptionBefore": "Tem certeza de que deseja remover o adaptador",
+    "descriptionAfter": "? Ele será desregistrado e removido do armazenamento de adaptadores.",
+    "npmCleanup": "Os pacotes npm serão apagados do disco.",
+    "cannotUndo": "Esta ação não pode ser desfeita.",
+    "removing": "Removendo...",
+    "confirm": "Remover"
+  }
+}

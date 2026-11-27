@@ -1,0 +1,47 @@
+{
+  "unavailable": {
+    "noContext": "Open the task to review its current state.",
+    "notActive": "This recovery notice is no longer active.",
+    "stateChanged": "The task’s state has changed. Review its current state before retrying.",
+    "recoveryChanged": "The task’s recovery state has changed. Refresh to see the current action.",
+    "agentChanged": "The assigned agent has changed. Review the task before retrying.",
+    "pendingInteraction": "Respond to the pending question or confirmation before retrying.",
+    "activeRun": "The task already has an active run. Wait for it to finish.",
+    "waitingReview": "The task is waiting for a review or approval.",
+    "blockers": "Resolve the task’s blockers before retrying.",
+    "agentPaused": "The assigned agent is paused. Resume the agent before retrying.",
+    "agentTerminated": "The assigned agent is no longer available."
+  },
+  "description": {
+    "start": "The agent stopped without recording an outcome or a next step.",
+    "budgetBlocked": "{{start}} Automatic recovery stopped because a spending or pause limit prevents the agent from running.",
+    "notInvokable": "{{start}} Automatic recovery stopped because the assigned agent is unavailable.",
+    "two": "Two",
+    "exhausted_one": "{{start}} {{attempts}} automatic attempt to resolve this failed.",
+    "exhausted_other": "{{start}} {{attempts}} automatic attempts to resolve this failed.",
+    "stopped": "{{start}} Automatic recovery stopped. Review the details before trying again."
+  },
+  "theAssignedAgent": "the assigned agent",
+  "refreshAndRetry": "Refresh the task to check its current state, then try again.",
+  "title": {
+    "requested": "Retry requested",
+    "historical": "Agent needed attention",
+    "needsAttention": "Agent needs attention"
+  },
+  "returnedToTodo": "The task was returned to To do for {{agentName}}.",
+  "retryUnavailable": "Retry unavailable. ",
+  "couldntConfirm": "Couldn’t confirm the retry. {{error}}",
+  "requestingRetry": "Requesting retry…",
+  "retryAgent": "Retry agent",
+  "hideDetails": "Hide details",
+  "viewDetails": "View details",
+  "details": {
+    "assigned": "Assigned when recovery stopped",
+    "attempts": "Automatic attempts",
+    "attemptsValue": "{{count}} of {{max}}",
+    "retries": "Automatic retries for this recovery",
+    "stopped": "Stopped",
+    "explanation": "Recovery asked the assigned agent to record an outcome or a next step. Retrying keeps the same task and agent, and checks the task’s current controls before continuing.",
+    "technicalReason": "Technical reason"
+  }
+}

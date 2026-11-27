@@ -1,0 +1,31 @@
+{
+  "yes": "Sim",
+  "no": "Não",
+  "target": {
+    "barIsYes": "a meta é sim",
+    "range": "faixa {{range}}",
+    "atMost": "meta no máximo {{target}}",
+    "target": "meta {{target}}"
+  },
+  "reference": {
+    "high": "Máximo {{value}}",
+    "low": "Mínimo {{value}}",
+    "atMost": "No máximo {{value}}",
+    "target": "Meta {{value}}"
+  },
+  "chart": {
+    "barsPerWeek": "Barras por semana",
+    "lineOverTime": "Linha ao longo do tempo",
+    "percentage": "Porcentagem",
+    "number": "Número",
+    "tail": ", {{target}}",
+    "noReadings": "{{form}} de {{title}}: nenhuma leitura ainda{{tail}}.",
+    "single": "{{form}} de {{title}}: {{latest}}{{oneReading}}{{tail}}.",
+    "oneReadingSoFar": ", uma leitura até agora",
+    "weeksFrom_one": "{{count}} semana desde {{from}}",
+    "weeksFrom_other": "{{count}} semanas desde {{from}}",
+    "readingsFromTo_one": "{{count}} leitura de {{from}} a {{to}}",
+    "readingsFromTo_other": "{{count}} leituras de {{from}} a {{to}}",
+    "full": "{{form}} de {{title}}: {{span}}, entre {{low}} e {{high}}, a mais recente {{latest}}{{tail}}."
+  }
+}

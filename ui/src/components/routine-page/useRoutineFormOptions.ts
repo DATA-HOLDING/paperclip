@@ -14,6 +14,7 @@ import { buildCompanyUserProfileMap, buildMarkdownMentionOptions } from "@/lib/c
 import { queryKeys } from "@/lib/queryKeys";
 import type { RoutineResponsibilityOption } from "./RoutineEditDialog";
 import type { RoutinePerson } from "./RoutinePage";
+import { t } from "@/i18n";
 
 // Stable empty lists, so memoized consumers do not rebuild while reads are pending.
 const NO_AGENTS: Agent[] = [];
@@ -65,11 +66,11 @@ export function useRoutineFormOptions(
   const secretsView = useQueryView(secretsQuery);
   const responsibilitiesView = useQueryView(responsibilitiesQuery);
   const loadErrors = [
-    { action: "load agents", view: agentsView },
-    { action: "load projects", view: projectsView },
-    { action: "load people", view: peopleView },
-    { action: "load secrets", view: secretsView },
-    { action: "load responsibilities", view: responsibilitiesView },
+    { action: t("componentsRoutinePage.errorActions.loadAgents"), view: agentsView },
+    { action: t("componentsRoutinePage.errorActions.loadProjects"), view: projectsView },
+    { action: t("componentsRoutinePage.errorActions.loadPeople"), view: peopleView },
+    { action: t("componentsRoutinePage.errorActions.loadSecrets"), view: secretsView },
+    { action: t("componentsRoutinePage.errorActions.loadResponsibilities"), view: responsibilitiesView },
   ]
     .filter(({ view }) => view.kind === "error")
     .map(({ action, view }) => ({ action, error: view.error, retry: view.retry, retrying: view.isFetching }));
@@ -93,7 +94,7 @@ export function useRoutineFormOptions(
       if (member.status !== "active" || seen.has(member.principalId)) continue;
       seen.add(member.principalId);
       const profile = profiles.get(member.principalId);
-      result.push({ id: member.principalId, name: profile?.label ?? "Unnamed person", avatarUrl: profile?.image ?? null });
+      result.push({ id: member.principalId, name: profile?.label ?? t("componentsRoutinePage.unnamedPerson"), avatarUrl: profile?.image ?? null });
     }
     return result.sort((left, right) => left.name.localeCompare(right.name));
   }, [members]);

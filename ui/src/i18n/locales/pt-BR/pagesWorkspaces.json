@@ -1,0 +1,13 @@
+{
+  "taskWorkspaces": "Espaços de trabalho de tarefas",
+  "title": "Espaços de trabalho",
+  "loadAction": "carregar os espaços de trabalho",
+  "summaryTitle": "Resumo dos espaços de trabalho",
+  "summaryDescription": "O resumidor acompanha a atividade dos espaços de trabalho, os serviços ativos e o que precisa de acompanhamento em todos os projetos.",
+  "empty": "Nenhuma atividade em espaços de trabalho ainda.",
+  "workspaceCount_one": "{{count}} espaço de trabalho",
+  "workspaceCount_other": "{{count}} espaços de trabalho",
+  "showingOf": "Mostrando {{shown}} de {{total}} espaços de trabalho.",
+  "loading": "Carregando...",
+  "loadMore": "Carregar mais"
+}

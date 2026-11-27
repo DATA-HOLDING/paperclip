@@ -1,0 +1,18 @@
+{
+  "boardName": "Conselho",
+  "signedIn": "Conectado",
+  "localBoard": "Conselho do espaço de trabalho local",
+  "openMenu": "Abrir o menu da conta",
+  "viewProfile": "Ver perfil",
+  "invite": "Convidar",
+  "documentation": "Documentação",
+  "signingOut": "Saindo...",
+  "signOut": "Sair",
+  "shareFeedback": "Enviar feedback",
+  "account": "Conta",
+  "viewCommit": "Ver o commit {{commit}} no GitHub",
+  "settings": "Configurações",
+  "inviteDescription": "Convide pessoas para a sua organização.",
+  "documentationDescription": "Abrir a documentação do Paperclip em uma nova aba.",
+  "signOutDescription": "Encerrar esta sessão do navegador."
+}

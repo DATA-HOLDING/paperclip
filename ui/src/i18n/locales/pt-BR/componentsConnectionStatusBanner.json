@@ -1,0 +1,7 @@
+{
+  "pendingWrites_one": "{{count}} alteração será enviada quando você estiver online novamente.",
+  "pendingWrites_other": "{{count}} alterações serão enviadas quando você estiver online novamente.",
+  "backOnline": "Online novamente.",
+  "offline": "Você está offline. Reconectando quando sua rede voltar…",
+  "reconnecting": "Conexão interrompida. Reconectando automaticamente…"
+}

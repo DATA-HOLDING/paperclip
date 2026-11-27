@@ -14,6 +14,7 @@
 
 import { describeError, errorCopy, isRawErrorCode, isTransientError } from "@/api/errors";
 import type { InteractionAudienceDescription } from "./interaction-audience";
+import { t } from "@/i18n";
 
 /**
  * Denials that mean "you are outside this card's resolver audience". Mirrors the
@@ -162,7 +163,7 @@ export function describeInteractionResolutionFailure(
   return {
     kind: "transient",
     code,
-    message: reason ? `${reason} Try again.` : errorCopy("interaction_submit_failed").body,
+    message: reason ? t("libInteractionResolutionError.tryAgain", { reason }) : errorCopy("interaction_submit_failed").body,
   };
 }
 

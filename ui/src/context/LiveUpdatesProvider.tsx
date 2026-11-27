@@ -66,6 +66,7 @@ import { agentRouteRef } from "../lib/utils";
 import { markdownToPlainText } from "../lib/markdown-plain-text";
 import { buildSameOriginWebSocketUrl } from "../lib/websocket-url";
 import { tryCreateWebSocket } from "../lib/websocket";
+import { t } from "@/i18n";
 
 const TOAST_COOLDOWN_WINDOW_MS = 10_000;
 const TOAST_COOLDOWN_MAX = 3;
@@ -275,15 +276,15 @@ function resolveActorLabel(
   if (actorType === "agent" && actorId) {
     return (
       resolveAgentName(queryClient, companyId, actorId) ??
-      `Agent ${shortId(actorId)}`
+      t("contextLiveUpdatesProvider.actor.agent", { id: shortId(actorId) })
     );
   }
-  if (actorType === "system") return "System";
+  if (actorType === "system") return t("contextLiveUpdatesProvider.actor.system");
   if (actorType === "user" && actorId) {
     return resolveUserName(queryClient, companyId, actorId) ??
-      (actorId === "board" || actorId === "local-board" ? "Board" : `User ${shortId(actorId)}`);
+      (actorId === "board" || actorId === "local-board" ? t("contextLiveUpdatesProvider.actor.board") : t("contextLiveUpdatesProvider.actor.user", { id: shortId(actorId) }));
   }
-  return actorType === "plugin" ? "Plugin" : "Unknown actor";
+  return actorType === "plugin" ? t("contextLiveUpdatesProvider.actor.plugin") : t("contextLiveUpdatesProvider.actor.unknown");
 }
 
 interface IssueToastContext {
@@ -387,7 +388,7 @@ function resolveIssueToastContext(
     readString(details?.identifier) ??
     readString(details?.issueIdentifier) ??
     cachedIssue?.identifier;
-  const ref = identifier ?? "Task";
+  const ref = identifier ?? t("contextLiveUpdatesProvider.task");
   const title =
     readString(details?.title) ??
     readString(details?.issueTitle) ??
@@ -1139,29 +1140,41 @@ const CASE_DOCUMENT_ANNOTATION_ACTIVITY_ACTIONS = new Set([
 const AGENT_TOAST_STATUSES = new Set(["error"]);
 const RUN_TOAST_STATUSES = new Set(["failed", "timed_out", "cancelled"]);
 
+const STATUS_LABELS: Record<string, () => string> = {
+  backlog: () => t("contextLiveUpdatesProvider.status.backlog"),
+  todo: () => t("contextLiveUpdatesProvider.status.todo"),
+  in_progress: () => t("contextLiveUpdatesProvider.status.inProgress"),
+  in_review: () => t("contextLiveUpdatesProvider.status.inReview"),
+  done: () => t("contextLiveUpdatesProvider.status.done"),
+  blocked: () => t("contextLiveUpdatesProvider.status.blocked"),
+  cancelled: () => t("contextLiveUpdatesProvider.status.cancelled"),
+};
+
 function describeIssueUpdate(
   details: Record<string, unknown> | null,
 ): string | null {
   if (!details) return null;
   const changes: string[] = [];
-  const statusLabel = (status: string) => status === "todo" ? "to do" : status.replace(/_/g, " ");
+  const statusLabel = (status: string) => STATUS_LABELS[status]?.() ?? status.replace(/_/g, " ");
   if (details.reopened === true) {
     const from = readString(details.reopenedFrom) ?? readString(details.statusFrom);
     const to = readString(details.status);
-    changes.push(`reopened${from ? ` from ${statusLabel(from)}` : " the task"}${to ? ` to ${statusLabel(to)}` : ""}`);
+    changes.push(from
+      ? (to ? t("contextLiveUpdatesProvider.change.reopenedFromTo", { from: statusLabel(from), to: statusLabel(to) }) : t("contextLiveUpdatesProvider.change.reopenedFrom", { from: statusLabel(from) }))
+      : (to ? t("contextLiveUpdatesProvider.change.reopenedTo", { to: statusLabel(to) }) : t("contextLiveUpdatesProvider.change.reopened")));
   } else if (typeof details.status === "string") {
     changes.push(typeof details.statusFrom === "string"
-      ? `changed status from ${statusLabel(details.statusFrom)} to ${statusLabel(details.status)}`
-      : `changed status to ${statusLabel(details.status)}`);
+      ? t("contextLiveUpdatesProvider.change.statusFromTo", { from: statusLabel(details.statusFrom), to: statusLabel(details.status) })
+      : t("contextLiveUpdatesProvider.change.statusTo", { to: statusLabel(details.status) }));
   }
-  if (typeof details.priority === "string") changes.push(`set priority to ${details.priority}`);
+  if (typeof details.priority === "string") changes.push(t("contextLiveUpdatesProvider.change.priority", { priority: details.priority }));
   if (details.assignment === "reassigned" || typeof details.assigneeAgentId === "string" || typeof details.assigneeUserId === "string") {
-    changes.push("reassigned the task");
+    changes.push(t("contextLiveUpdatesProvider.change.reassigned"));
   } else if (details.assignment === "unassigned" || details.assigneeAgentId === null || details.assigneeUserId === null) {
-    changes.push("unassigned the task");
+    changes.push(t("contextLiveUpdatesProvider.change.unassigned"));
   }
-  if (details.titleChanged === true || typeof details.title === "string") changes.push("changed the title");
-  if (details.descriptionChanged === true || typeof details.description === "string") changes.push("changed the description");
+  if (details.titleChanged === true || typeof details.title === "string") changes.push(t("contextLiveUpdatesProvider.change.title"));
+  if (details.descriptionChanged === true || typeof details.description === "string") changes.push(t("contextLiveUpdatesProvider.change.description"));
   return changes.length > 0 ? changes.join(", ") : null;
 }
 
@@ -1222,13 +1235,13 @@ function buildActivityToast(
       actorId === currentActor.agentId);
   if (isSelfActivity) return null;
 
-  const title = truncate((issue.title?.trim() || "Task").replace(/\s+/g, " "), 120);
-  const actionLink = { label: "View task", href: issue.href };
+  const title = truncate((issue.title?.trim() || t("contextLiveUpdatesProvider.task")).replace(/\s+/g, " "), 120);
+  const actionLink = { label: t("contextLiveUpdatesProvider.viewTask"), href: issue.href };
   if (action === "issue.created") {
     return {
       actor: toastActor,
       title,
-      body: truncate(`${actor} created the task`, 240),
+      body: truncate(t("contextLiveUpdatesProvider.activity.created", { actor }), 240),
       tone: "success",
       action: actionLink,
       dedupeKey: `activity:${action}:${entityId}`,
@@ -1254,7 +1267,7 @@ function buildActivityToast(
   return {
     actor: toastActor,
     title,
-    body: truncate(snippet ? `${summary}: ${snippet}` : changeDesc ? summary : `${actor} added a comment`, 240),
+    body: truncate(snippet ? `${summary}: ${snippet}` : changeDesc ? summary : t("contextLiveUpdatesProvider.activity.commented", { actor }), 240),
     tone: "info",
     action: actionLink,
     dedupeKey: `activity:${action}:${entityId}:${commentId ?? "na"}`,
@@ -1274,13 +1287,12 @@ function buildJoinRequestToast(
     return null;
 
   const requestType = readString(details?.requestType);
-  const label = requestType === "agent" ? "Agent" : "Someone";
-
+  
   return {
-    title: `${label} wants to join`,
-    body: "A new join request is waiting for approval.",
+    title: requestType === "agent" ? t("contextLiveUpdatesProvider.join.agent") : t("contextLiveUpdatesProvider.join.someone"),
+    body: t("contextLiveUpdatesProvider.join.body"),
     tone: "info",
-    action: { label: "View inbox", href: "/inbox/mine" },
+    action: { label: t("contextLiveUpdatesProvider.join.viewInbox"), href: "/inbox/mine" },
     dedupeKey: `join-request:${entityId}`,
   };
 }
@@ -1296,8 +1308,8 @@ function buildAgentStatusToast(
   if (!agentId || !status || !AGENT_TOAST_STATUSES.has(status)) return null;
 
   const tone = status === "error" ? "error" : "info";
-  const name = nameOf(agentId) ?? `Agent ${shortId(agentId)}`;
-  const title = status === "running" ? `${name} started` : `${name} errored`;
+  const name = nameOf(agentId) ?? t("contextLiveUpdatesProvider.actor.agent", { id: shortId(agentId) });
+  const title = status === "running" ? t("contextLiveUpdatesProvider.agentStatus.started", { name }) : t("contextLiveUpdatesProvider.agentStatus.errored", { name });
 
   const agents = queryClient.getQueryData<Agent[]>(
     queryKeys.agents.list(companyId),
@@ -1309,7 +1321,7 @@ function buildAgentStatusToast(
     title,
     body,
     tone,
-    action: { label: "View agent", href: `/agents/${agentId}` },
+    action: { label: t("contextLiveUpdatesProvider.viewAgent"), href: `/agents/${agentId}` },
     dedupeKey: `agent-status:${agentId}:${status}`,
   };
 }
@@ -1334,18 +1346,18 @@ function buildRunStatusToast(
   if (errorCode === "workspace_busy" || errorCode === "agent_directory_busy") return null;
   const contextSource = readString(payload.contextSource);
   const triggerDetail = readString(payload.triggerDetail);
-  const name = nameOf(agentId) ?? "Agent";
+  const name = nameOf(agentId) ?? t("contextLiveUpdatesProvider.agentFallback");
   if (
     status === "failed" &&
     errorCode === "low_trust_isolation_unavailable" &&
     contextSource?.startsWith("chat:")
   ) {
     return {
-      title: `${name} couldn't start this chat`,
-      body: "This external chat identity isn't linked, and isolated guest workspaces are disabled. Link the identity in Connectors or enable isolated workspaces, then start a new task.",
+      title: t("contextLiveUpdatesProvider.chat.cannotStart", { name }),
+      body: t("contextLiveUpdatesProvider.chat.body"),
       tone: "warn",
       ttlMs: 10_000,
-      action: { label: "Open chat connections", href: "/apps" },
+      action: { label: t("contextLiveUpdatesProvider.chat.openConnections"), href: "/apps" },
       dedupeKey: `run-status:${runId}:${status}`,
     };
   }
@@ -1355,21 +1367,20 @@ function buildRunStatusToast(
       : status === "cancelled"
         ? "info"
         : "error";
-  const statusLabel =
+  const title =
     status === "succeeded"
-      ? "succeeded"
+      ? t("contextLiveUpdatesProvider.run.succeeded", { name })
       : status === "failed"
-        ? "failed"
+        ? t("contextLiveUpdatesProvider.run.failed", { name })
         : status === "timed_out"
-          ? "timed out"
-          : "cancelled";
-  const title = `${name} run ${statusLabel}`;
+          ? t("contextLiveUpdatesProvider.run.timedOut", { name })
+          : t("contextLiveUpdatesProvider.run.cancelled", { name });
 
   let body: string | undefined;
   if (error) {
     body = truncate(error, 100);
   } else if (triggerDetail) {
-    body = `Trigger: ${triggerDetail}`;
+    body = t("contextLiveUpdatesProvider.run.trigger", { detail: triggerDetail });
   }
 
   return {
@@ -1377,7 +1388,7 @@ function buildRunStatusToast(
     body,
     tone,
     ttlMs: status === "succeeded" ? 5000 : 7000,
-    action: { label: "View run", href: `/agents/${agentId}/runs/${runId}` },
+    action: { label: t("contextLiveUpdatesProvider.run.view"), href: `/agents/${agentId}/runs/${runId}` },
     dedupeKey: `run-status:${runId}:${status}`,
   };
 }

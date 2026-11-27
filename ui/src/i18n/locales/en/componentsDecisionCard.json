@@ -1,0 +1,85 @@
+{
+  "counts": {
+    "blocker_one": "{{count}} blocker",
+    "blocker_other": "{{count}} blockers",
+    "issue_one": "{{count}} issue",
+    "issue_other": "{{count}} issues",
+    "target_one": "{{count}} target",
+    "target_other": "{{count}} targets"
+  },
+  "unknownStatus": "unknown",
+  "issueFallback": "issue {{id}}",
+  "effects": {
+    "comment": "Comment on {{target}}",
+    "createIssue": "Create issue “{{title}}” under {{parent}}",
+    "setStatus": "Set {{target}} to {{status}}",
+    "reassign": "Reassign {{target}}",
+    "unblock": "Unblock {{target}} — remove {{blockers}}",
+    "cancelTree": "Cancel {{target}} and its sub-tree ({{issues}})",
+    "apply": "Apply effect"
+  },
+  "failureCauses": {
+    "denyIntersection": "blocked by the permission boundary (fail-closed)",
+    "invalidReference": "a referenced issue no longer exists",
+    "targetChanged": "the target changed since this was proposed",
+    "executionFailed": "the effect errored while running",
+    "generic": "the effect could not run"
+  },
+  "results": {
+    "skipped": "Skipped {{target}} — target changed since proposal",
+    "failed": "Failed on {{target}} — {{cause}}",
+    "running": "Running on {{target}}…",
+    "commented": "Commented on {{target}}",
+    "created": "Created {{issue}}",
+    "aNewIssue": "a new issue",
+    "setStatus": "Set {{target}} to {{status}}",
+    "reassigned": "Reassigned {{target}}",
+    "removedBlockers": "Removed {{blockers}} from {{target}}",
+    "cancelledIssues": "Cancelled {{issues}} under {{target}}",
+    "applied": "Applied effect on {{target}}"
+  },
+  "badges": {
+    "pending": "Pending",
+    "expired": "Expired",
+    "cancelled": "Cancelled",
+    "dismissed": "Dismissed",
+    "decided": "Decided",
+    "partial": "Partial",
+    "failed": "Failed",
+    "destructive": "Destructive"
+  },
+  "provenance": {
+    "proposedBy": "Proposed by",
+    "anAgent": "an agent",
+    "whileRunning": "while running",
+    "appliesTo": " · applies to ",
+    "viewRun": "view run"
+  },
+  "stale": {
+    "changed": "{{targets}} changed since this was proposed",
+    "changedValue": "changed",
+    "optionsDisabled": "Options that require an unchanged target are disabled below.",
+    "blocked": "Blocked · stale"
+  },
+  "confirm": {
+    "title": "This cancels an entire issue tree",
+    "willBeCancelled": "{{issues}} will be cancelled:",
+    "wholeTree": "This issue and every sub-issue beneath it will be cancelled.",
+    "typeBefore": "Type",
+    "typeAfter": "to confirm.",
+    "ariaLabel": "Type the issue identifier to confirm",
+    "cancel": "Cancel",
+    "cancelIssues": "Cancel {{issues}}",
+    "cancelTree": "Cancel tree"
+  },
+  "terminal": {
+    "windowClosed": "The decision window closed",
+    "targetGone": "A target issue was cancelled before this was decided.",
+    "targetCompleted": "All target issues were completed before this was decided.",
+    "noResponse": "No response before the expiry deadline.",
+    "rewoken": " The proposer was re-woken.",
+    "withdrawn": "This decision was withdrawn by the proposer before a response.",
+    "dismissed": "Dismissed — no effects were run.",
+    "partialNote": "Some effects may already have been applied. Review the results before asking the proposer to re-propose."
+  }
+}

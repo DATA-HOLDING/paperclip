@@ -1,0 +1,9 @@
+{
+  "label": {
+    "notice": "System notice",
+    "warning": "System warning",
+    "alert": "System alert"
+  },
+  "hideDetails": "Hide details",
+  "details": "Details"
+}

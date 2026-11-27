@@ -1,0 +1,8 @@
+{
+  "pendingApprovalTitle": "Waiting on board hire approval before the feature can run",
+  "needsSetupTitle": "Needs adapter/model setup before the feature can run",
+  "approvalShort": "Approval",
+  "pendingApproval": "Pending approval",
+  "setupShort": "Setup",
+  "needsSetup": "Needs setup"
+}

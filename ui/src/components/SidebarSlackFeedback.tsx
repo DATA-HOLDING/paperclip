@@ -3,8 +3,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { t } from "@/i18n";
 
-const label = "Slack the Paperclip team";
+const label = t("componentsSidebarSlackFeedback.label");
 
 export function SidebarSlackFeedback({ feedback, className }: {
   feedback: NonNullable<CloudStackPortfolio["slackFeedback"]>;
@@ -24,16 +25,16 @@ export function SidebarSlackFeedback({ feedback, className }: {
       </Tooltip>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Your private Slack channel</DialogTitle>
+          <DialogTitle>{t("componentsSidebarSlackFeedback.title")}</DialogTitle>
           <DialogDescription>
-            {"message" in feedback ? feedback.message : "Open your shared channel to talk with the Paperclip team. If you still need to join, check your organization owner’s inbox for the Slack invitation."}
+            {"message" in feedback ? feedback.message : t("componentsSidebarSlackFeedback.description")}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           {"href" in feedback ? (
-            <Button asChild><a href={feedback.href} target="_blank" rel="noreferrer">Open Slack channel</a></Button>
+            <Button asChild><a href={feedback.href} target="_blank" rel="noreferrer">{t("componentsSidebarSlackFeedback.open")}</a></Button>
           ) : (
-            <DialogClose asChild><Button>Got it</Button></DialogClose>
+            <DialogClose asChild><Button>{t("componentsSidebarSlackFeedback.gotIt")}</Button></DialogClose>
           )}
         </DialogFooter>
       </DialogContent>

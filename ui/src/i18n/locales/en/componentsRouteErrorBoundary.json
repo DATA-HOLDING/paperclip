@@ -1,0 +1,6 @@
+{
+  "title": "This page hit an error",
+  "description": "Something went wrong while rendering this page. You can go back and try again, or reload.",
+  "goBack": "Go back",
+  "reloadPage": "Reload page"
+}

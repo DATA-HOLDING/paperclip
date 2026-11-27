@@ -6,6 +6,7 @@ import { agentsApi } from "../../api/agents";
 import { toolsApi } from "../../api/tools";
 import { chatEndpointsApi } from "../../api/chatEndpoints";
 import { secretsApi } from "../../api/secrets";
+import { t } from "@/i18n";
 
 export const ownedAdapterKeys = ["paperclipSkillSync", "instructionsBundleMode", "instructionsRootPath", "instructionsEntryFile", "instructionsFilePath"] as const;
 export const equal = (a: unknown, b: unknown) => canonicalAgentConfiguration(a) === canonicalAgentConfiguration(b);
@@ -53,7 +54,7 @@ export async function loadAgentConfiguration(id: string, companyId: string) {
       const [detail, resources, principals] = await Promise.all([
         chatEndpointsApi.get(endpoint.id), chatEndpointsApi.listResources(endpoint.id), chatEndpointsApi.listPrincipals(endpoint.id),
       ]);
-      if (detail.assignedAgentId !== id || detail.companyId !== companyId) throw new Error("Channel ownership changed. Reload configuration.");
+      if (detail.assignedAgentId !== id || detail.companyId !== companyId) throw new Error(t("libAgentConfiguration.load.channelOwnershipChanged"));
       return { detail, resources, principals };
     }),
   ]);

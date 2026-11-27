@@ -10,6 +10,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { Navigate, useSearchParams } from "@/lib/router";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 const providerNames: Record<ChatProvider, string> = {
   speko: "Speko",
@@ -53,7 +54,7 @@ export function ChatIdentityConfirm() {
   if (accountFailure) {
     return (
       <main className="mx-auto max-w-lg px-6 py-12">
-        <QueryErrorState size="page" error={accountFailure.error} action="load your account" onRetry={accountFailure.retry} retrying={accountFailure.isFetching} />
+        <QueryErrorState size="page" error={accountFailure.error} action={t("pagesAppsChatChatIdentityConfirm.loadAccountAction")} onRetry={accountFailure.retry} retrying={accountFailure.isFetching} />
       </main>
     );
   }
@@ -67,10 +68,9 @@ export function ChatIdentityConfirm() {
   if (token.length < 32 || previewRejected) {
     return (
       <main className="mx-auto max-w-lg space-y-4 px-6 py-12">
-        <h1 className="text-xl font-bold">This identity link is unavailable</h1>
+        <h1 className="text-xl font-bold">{t("pagesAppsChatChatIdentityConfirm.unavailable.title")}</h1>
         <p className="text-sm text-muted-foreground">
-          The link is invalid, expired, already used, or belongs to another
-          Paperclip organization.
+          {t("pagesAppsChatChatIdentityConfirm.unavailable.body")}
         </p>
       </main>
     );
@@ -78,7 +78,7 @@ export function ChatIdentityConfirm() {
   if (!confirmed && previewView.kind === "error") {
     return (
       <main className="mx-auto max-w-lg px-6 py-12">
-        <QueryErrorState size="page" error={preview.error} action="load the identity link" onRetry={previewView.retry} retrying={previewView.isFetching} />
+        <QueryErrorState size="page" error={preview.error} action={t("pagesAppsChatChatIdentityConfirm.loadLinkAction")} onRetry={previewView.retry} retrying={previewView.isFetching} />
       </main>
     );
   }
@@ -87,28 +87,27 @@ export function ChatIdentityConfirm() {
     return (
       <main className="flex items-center justify-center gap-2 px-6 py-12 text-sm text-muted-foreground">
         <Loader2 className="h-4 w-4 animate-spin" />
-        Checking identity link…
+        {t("pagesAppsChatChatIdentityConfirm.checking")}
       </main>
     );
   }
   const identity = preview.data;
-  const paperclipAccount = local ? "Local Board" :
+  const paperclipAccount = local ? t("pagesAppsChatChatIdentityConfirm.localBoard") :
     session.data?.user.name?.trim() ||
     session.data?.user.email?.trim() ||
     session.data?.user.id ||
-    "the signed-in account";
+    t("pagesAppsChatChatIdentityConfirm.signedInAccount");
   if (confirmed) {
     return (
       <main className="mx-auto max-w-lg space-y-5 px-6 py-12">
         <CheckCircle2 className="h-8 w-8" />
         <div>
-          <h1 className="text-xl font-bold">Identity linked</h1>
+          <h1 className="text-xl font-bold">{t("pagesAppsChatChatIdentityConfirm.linked.title")}</h1>
           <p className={cn("mt-1 text-sm text-muted-foreground", ANALYTICS_MASK_CLASS)}>
-            Future messages from {identity.externalLabel} use your current
-            Paperclip permissions in {identity.companyName}.
+            {t("pagesAppsChatChatIdentityConfirm.linked.body", { externalLabel: identity.externalLabel, companyName: identity.companyName })}
           </p>
         </div>
-        {identity.provider === "slack" && <Button asChild><a href="https://app.slack.com/" target="_blank" rel="noopener noreferrer">Return to Slack</a></Button>}
+        {identity.provider === "slack" && <Button asChild><a href="https://app.slack.com/" target="_blank" rel="noopener noreferrer">{t("pagesAppsChatChatIdentityConfirm.linked.returnToSlack")}</a></Button>}
       </main>
     );
   }
@@ -116,53 +115,51 @@ export function ChatIdentityConfirm() {
     <main className="mx-auto max-w-lg space-y-6 px-6 py-12">
       <div>
         <p className="text-sm text-muted-foreground">{identity.companyName}</p>
-        <h1 className="mt-1 text-xl font-bold">Link your external identity</h1>
+        <h1 className="mt-1 text-xl font-bold">{t("pagesAppsChatChatIdentityConfirm.title")}</h1>
       </div>
       <dl className={cn("divide-y divide-border border-y border-border", ANALYTICS_MASK_CLASS)}>
         <div className="flex items-center justify-between gap-4 py-3">
-          <dt className="text-sm text-muted-foreground">Provider</dt>
+          <dt className="text-sm text-muted-foreground">{t("pagesAppsChatChatIdentityConfirm.fields.provider")}</dt>
           <dd className="text-sm font-medium">
             {providerNames[identity.provider]}
           </dd>
         </div>
         <div className="flex items-center justify-between gap-4 py-3">
-          <dt className="text-sm text-muted-foreground">External identity</dt>
+          <dt className="text-sm text-muted-foreground">{t("pagesAppsChatChatIdentityConfirm.fields.externalIdentity")}</dt>
           <dd className={cn("text-right text-sm font-medium", ANALYTICS_MASK_CLASS)}>
             {identity.externalLabel}
             {identity.externalDetail ? ` · ${identity.externalDetail}` : ""}
           </dd>
         </div>
         <div className="flex items-center justify-between gap-4 py-3">
-          <dt className="text-sm text-muted-foreground">Paperclip account</dt>
+          <dt className="text-sm text-muted-foreground">{t("pagesAppsChatChatIdentityConfirm.fields.paperclipAccount")}</dt>
           <dd className="text-right text-sm font-medium">{paperclipAccount}</dd>
         </div>
         <div className="flex items-center justify-between gap-4 py-3">
-          <dt className="text-sm text-muted-foreground">Agent</dt>
+          <dt className="text-sm text-muted-foreground">{t("pagesAppsChatChatIdentityConfirm.fields.agent")}</dt>
           <dd className="text-sm font-medium">
-            {identity.botLabel ?? "Paperclip agent"}
+            {identity.botLabel ?? t("pagesAppsChatChatIdentityConfirm.fields.defaultAgent")}
           </dd>
         </div>
       </dl>
       <p className="text-sm text-muted-foreground">
-        Confirm only if this is your {providerNames[identity.provider]}{" "}
-        identity. Paperclip will check your current organization membership on
-        every action.
+        {t("pagesAppsChatChatIdentityConfirm.confirmHint", { provider: providerNames[identity.provider] })}
       </p>
       {confirm.error ? (
         <p className="text-sm text-destructive">
-          This link could not be confirmed. It may have expired or been revoked.
+          {t("pagesAppsChatChatIdentityConfirm.confirmError")}
         </p>
       ) : null}
       {identity.canConfirm === false ? (
         <div className="space-y-3">
-          <p className="text-sm">You need membership in {identity.companyName} before linking this account.</p>
-          {requestAccess.isSuccess ? <p role="status" className="text-sm">Access requested. An admin can approve it in Paperclip. After approval, return here to confirm; if this link expires, send the connect command in Slack again.</p>
-            : <Button disabled={requestAccess.isPending || !identity.selfService} onClick={() => requestAccess.mutate()}>Request access</Button>}
-          {requestAccess.error ? <p role="alert" className="text-sm text-destructive">Couldn&apos;t request access. The link may have expired. Send the connect command again and retry.</p> : null}
+          <p className="text-sm">{t("pagesAppsChatChatIdentityConfirm.access.membershipRequired", { companyName: identity.companyName })}</p>
+          {requestAccess.isSuccess ? <p role="status" className="text-sm">{t("pagesAppsChatChatIdentityConfirm.access.requested")}</p>
+            : <Button disabled={requestAccess.isPending || !identity.selfService} onClick={() => requestAccess.mutate()}>{t("pagesAppsChatChatIdentityConfirm.access.request")}</Button>}
+          {requestAccess.error ? <p role="alert" className="text-sm text-destructive">{t("pagesAppsChatChatIdentityConfirm.access.error")}</p> : null}
         </div>
       ) : <Button disabled={confirm.isPending} onClick={() => confirm.mutate()}>
         {confirm.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
-        Confirm identity
+        {t("pagesAppsChatChatIdentityConfirm.confirm")}
       </Button>}
     </main>
   );

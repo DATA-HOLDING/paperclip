@@ -1,0 +1,442 @@
+{
+  "groups": {
+    "toolSearch": {
+      "singular": "busca de ferramenta",
+      "plural": "buscas de ferramenta"
+    },
+    "taskOperation": {
+      "singular": "operação de tarefa",
+      "plural": "operações de tarefa"
+    },
+    "swarmUpdate": {
+      "singular": "atualização do swarm",
+      "plural": "atualizações do swarm"
+    },
+    "command": {
+      "singular": "comando",
+      "plural": "comandos"
+    },
+    "read": {
+      "singular": "leitura",
+      "plural": "leituras"
+    },
+    "search": {
+      "singular": "busca",
+      "plural": "buscas"
+    },
+    "fileChange": {
+      "singular": "alteração de arquivo",
+      "plural": "alterações de arquivo"
+    },
+    "delegation": {
+      "singular": "delegação",
+      "plural": "delegações"
+    },
+    "wait": {
+      "singular": "espera",
+      "plural": "esperas"
+    },
+    "toolAction": {
+      "singular": "ação de ferramenta",
+      "plural": "ações de ferramenta"
+    },
+    "paperclipRead": {
+      "singular": "leitura do Paperclip",
+      "plural": "leituras do Paperclip"
+    }
+  },
+  "exactActions": {
+    "applyPatch": {
+      "running": "Aplicando um patch",
+      "completed": "Aplicou um patch"
+    },
+    "read": {
+      "running": "Lendo um arquivo",
+      "completed": "Leu um arquivo"
+    },
+    "write": {
+      "running": "Escrevendo um arquivo",
+      "completed": "Escreveu um arquivo"
+    },
+    "edit": {
+      "running": "Editando um arquivo",
+      "completed": "Editou um arquivo"
+    },
+    "notebookRead": {
+      "running": "Lendo um notebook",
+      "completed": "Leu um notebook"
+    },
+    "notebookEdit": {
+      "running": "Editando um notebook",
+      "completed": "Editou um notebook"
+    },
+    "glob": {
+      "running": "Buscando arquivos",
+      "completed": "Buscou arquivos"
+    },
+    "grep": {
+      "running": "Buscando no conteúdo dos arquivos",
+      "completed": "Buscou no conteúdo dos arquivos"
+    },
+    "toolSearch": {
+      "running": "Buscando ferramentas disponíveis",
+      "completed": "Buscou ferramentas disponíveis"
+    },
+    "webSearch": {
+      "running": "Pesquisando na web",
+      "completed": "Pesquisou na web"
+    },
+    "webFetch": {
+      "running": "Buscando uma página da web",
+      "completed": "Buscou uma página da web"
+    },
+    "todoWrite": {
+      "running": "Atualizando a lista de tarefas",
+      "completed": "Atualizou a lista de tarefas"
+    },
+    "taskCreate": {
+      "running": "Criando uma tarefa",
+      "completed": "Criou uma tarefa"
+    },
+    "taskUpdate": {
+      "running": "Atualizando uma tarefa",
+      "completed": "Atualizou uma tarefa"
+    },
+    "taskList": {
+      "running": "Listando tarefas",
+      "completed": "Listou tarefas"
+    },
+    "taskGet": {
+      "running": "Lendo uma tarefa",
+      "completed": "Leu uma tarefa"
+    },
+    "enterPlanMode": {
+      "running": "Entrando no modo de plano",
+      "completed": "Entrou no modo de plano"
+    },
+    "exitPlanMode": {
+      "running": "Saindo do modo de plano",
+      "completed": "Saiu do modo de plano"
+    },
+    "skill": {
+      "running": "Carregando uma skill",
+      "completed": "Carregou uma skill"
+    },
+    "askUserQuestion": {
+      "running": "Solicitando informações",
+      "completed": "Solicitou informações"
+    },
+    "requestHumanInput": {
+      "running": "Solicitando informações",
+      "completed": "Solicitou informações"
+    },
+    "agent": {
+      "running": "Iniciando um subagente",
+      "completed": "Iniciou um subagente"
+    },
+    "task": {
+      "running": "Iniciando um subagente",
+      "completed": "Iniciou um subagente"
+    },
+    "taskOutput": {
+      "running": "Verificando o progresso do subagente",
+      "completed": "Verificou o progresso do subagente"
+    },
+    "taskStop": {
+      "running": "Parando um subagente",
+      "completed": "Parou um subagente"
+    },
+    "sendMessage": {
+      "running": "Enviando mensagem a um subagente",
+      "completed": "Enviou mensagem a um subagente"
+    },
+    "spawnAgent": {
+      "running": "Iniciando um subagente",
+      "completed": "Iniciou um subagente"
+    },
+    "waitAgent": {
+      "running": "Verificando o progresso do subagente",
+      "completed": "Verificou o progresso do subagente"
+    },
+    "waitThreads": {
+      "running": "Verificando o progresso da tarefa",
+      "completed": "Verificou o progresso da tarefa"
+    },
+    "interruptAgent": {
+      "running": "Interrompendo um subagente",
+      "completed": "Interrompeu um subagente"
+    },
+    "reportFindings": {
+      "running": "Relatando descobertas",
+      "completed": "Relatou descobertas"
+    },
+    "guardianReview": {
+      "running": "Revisando a segurança",
+      "completed": "Revisou a segurança"
+    },
+    "lsp": {
+      "running": "Inspecionando a inteligência de código",
+      "completed": "Inspecionou a inteligência de código"
+    },
+    "compactConversation": {
+      "running": "Compactando o contexto",
+      "completed": "Compactou o contexto"
+    },
+    "imageGeneration": {
+      "running": "Gerando uma imagem",
+      "completed": "Gerou uma imagem"
+    },
+    "viewImage": {
+      "running": "Visualizando uma imagem",
+      "completed": "Visualizou uma imagem"
+    },
+    "multiToolUseParallel": {
+      "running": "Executando ferramentas em paralelo",
+      "completed": "Executou ferramentas em paralelo"
+    },
+    "getTaskContext": {
+      "running": "Lendo o contexto da tarefa",
+      "completed": "Leu o contexto da tarefa"
+    },
+    "getTaskHistory": {
+      "running": "Lendo o histórico da tarefa",
+      "completed": "Leu o histórico da tarefa"
+    },
+    "listDocuments": {
+      "running": "Listando documentos",
+      "completed": "Listou documentos"
+    },
+    "readDocument": {
+      "running": "Lendo um documento",
+      "completed": "Leu um documento"
+    },
+    "listDocumentRevisions": {
+      "running": "Listando revisões do documento",
+      "completed": "Listou revisões do documento"
+    },
+    "reportProgress": {
+      "running": "Relatando o progresso",
+      "completed": "Relatou o progresso"
+    },
+    "answerStatusQuestion": {
+      "running": "Respondendo a uma pergunta de status",
+      "completed": "Respondeu a uma pergunta de status"
+    },
+    "writeDocument": {
+      "running": "Escrevendo um documento",
+      "completed": "Escreveu um documento"
+    },
+    "registerDeliverable": {
+      "running": "Anexando um arquivo",
+      "completed": "Anexou um arquivo"
+    },
+    "swarmUpdate": {
+      "running": "Swarm",
+      "completed": "Swarm"
+    },
+    "finishTask": {
+      "running": "Informando a conclusão",
+      "completed": "Informou a conclusão"
+    },
+    "paperclipFinish": {
+      "running": "Informando a conclusão",
+      "completed": "Informou a conclusão"
+    },
+    "blockTask": {
+      "running": "Informando um bloqueio",
+      "completed": "Informou um bloqueio"
+    },
+    "paperclipBlock": {
+      "running": "Informando um bloqueio",
+      "completed": "Informou um bloqueio"
+    },
+    "requestReview": {
+      "running": "Solicitando revisão",
+      "completed": "Solicitou revisão"
+    },
+    "listAgents": {
+      "running": "Listando agentes",
+      "completed": "Listou agentes"
+    },
+    "getAgent": {
+      "running": "Lendo os detalhes do agente",
+      "completed": "Leu os detalhes do agente"
+    },
+    "searchTasks": {
+      "running": "Buscando tarefas",
+      "completed": "Buscou tarefas"
+    },
+    "listApprovals": {
+      "running": "Listando aprovações",
+      "completed": "Listou aprovações"
+    },
+    "getApproval": {
+      "running": "Lendo uma aprovação",
+      "completed": "Leu uma aprovação"
+    },
+    "getApprovalContext": {
+      "running": "Lendo o contexto da aprovação",
+      "completed": "Leu o contexto da aprovação"
+    },
+    "getWorkspaceRuntime": {
+      "running": "Lendo o status do espaço de trabalho",
+      "completed": "Leu o status do espaço de trabalho"
+    },
+    "controlWorkspaceService": {
+      "running": "Controlando um serviço do espaço de trabalho",
+      "completed": "Controlou um serviço do espaço de trabalho"
+    },
+    "setDependencies": {
+      "running": "Atualizando as dependências da tarefa",
+      "completed": "Atualizou as dependências da tarefa"
+    },
+    "setTaskTitle": {
+      "running": "Nomeando a tarefa",
+      "completed": "Nomeou a tarefa"
+    },
+    "createTask": {
+      "running": "Criando uma tarefa",
+      "completed": "Criou uma tarefa"
+    },
+    "requestApproval": {
+      "running": "Solicitando aprovação",
+      "completed": "Solicitou aprovação"
+    },
+    "decideApproval": {
+      "running": "Decidindo uma aprovação",
+      "completed": "Decidiu uma aprovação"
+    },
+    "commentOnApproval": {
+      "running": "Comentando em uma aprovação",
+      "completed": "Comentou em uma aprovação"
+    },
+    "scheduleWake": {
+      "running": "Agendando um despertar",
+      "completed": "Agendou um despertar"
+    },
+    "genericApiRequest": {
+      "running": "Chamando a API do Paperclip",
+      "completed": "Chamou a API do Paperclip"
+    }
+  },
+  "actions": {
+    "read": {
+      "running": "Lendo dados",
+      "completed": "Leu dados",
+      "runningObject": "Lendo {{object}}",
+      "completedObject": "Leu {{object}}"
+    },
+    "list": {
+      "running": "Listando itens",
+      "completed": "Listou itens",
+      "runningObject": "Listando {{object}}",
+      "completedObject": "Listou {{object}}"
+    },
+    "search": {
+      "running": "Buscando",
+      "completed": "Buscou",
+      "runningObject": "Buscando {{object}}",
+      "completedObject": "Buscou {{object}}"
+    },
+    "fetch": {
+      "running": "Buscando dados",
+      "completed": "Buscou dados",
+      "runningObject": "Buscando {{object}}",
+      "completedObject": "Buscou {{object}}"
+    },
+    "open": {
+      "running": "Abrindo um item",
+      "completed": "Abriu um item",
+      "runningObject": "Abrindo {{object}}",
+      "completedObject": "Abriu {{object}}"
+    },
+    "update": {
+      "running": "Atualizando dados",
+      "completed": "Atualizou dados",
+      "runningObject": "Atualizando {{object}}",
+      "completedObject": "Atualizou {{object}}"
+    },
+    "create": {
+      "running": "Criando um item",
+      "completed": "Criou um item",
+      "runningObject": "Criando {{object}}",
+      "completedObject": "Criou {{object}}"
+    },
+    "delete": {
+      "running": "Excluindo um item",
+      "completed": "Excluiu um item",
+      "runningObject": "Excluindo {{object}}",
+      "completedObject": "Excluiu {{object}}"
+    },
+    "move": {
+      "running": "Movendo um item",
+      "completed": "Moveu um item",
+      "runningObject": "Movendo {{object}}",
+      "completedObject": "Moveu {{object}}"
+    },
+    "request": {
+      "running": "Solicitando informações",
+      "completed": "Solicitou informações",
+      "runningObject": "Solicitando {{object}}",
+      "completedObject": "Solicitou {{object}}"
+    },
+    "post": {
+      "running": "Publicando uma atualização",
+      "completed": "Publicou uma atualização",
+      "runningObject": "Publicando {{object}}",
+      "completedObject": "Publicou {{object}}"
+    },
+    "start": {
+      "running": "Iniciando uma operação",
+      "completed": "Iniciou uma operação",
+      "runningObject": "Iniciando {{object}}",
+      "completedObject": "Iniciou {{object}}"
+    },
+    "stop": {
+      "running": "Parando uma operação",
+      "completed": "Parou uma operação",
+      "runningObject": "Parando {{object}}",
+      "completedObject": "Parou {{object}}"
+    },
+    "switch": {
+      "running": "Trocando de modo",
+      "completed": "Trocou de modo",
+      "runningObject": "Trocando {{object}}",
+      "completedObject": "Trocou {{object}}"
+    },
+    "run": {
+      "running": "Executando um comando",
+      "completed": "Executou um comando"
+    },
+    "wait": {
+      "running": "Aguardando",
+      "completed": "Terminou de aguardar"
+    },
+    "finish": {
+      "running": "Informando a conclusão",
+      "completed": "Informou a conclusão"
+    },
+    "block": {
+      "running": "Informando um bloqueio",
+      "completed": "Informou um bloqueio"
+    },
+    "think": {
+      "running": "Pensando",
+      "completed": "Terminou de pensar"
+    },
+    "other": {
+      "running": "Executando",
+      "completed": "Executou"
+    }
+  },
+  "unnamedTool": "Ferramenta sem nome",
+  "runningUnnamed": "Executando uma ferramenta sem nome",
+  "ranUnnamed": "Executou uma ferramenta sem nome",
+  "runningNamed": "Executando {{name}}",
+  "ranNamed": "Executou {{name}}",
+  "markers": {
+    "failed": "falhou",
+    "stopped": "parado",
+    "retried": "repetido"
+  }
+}

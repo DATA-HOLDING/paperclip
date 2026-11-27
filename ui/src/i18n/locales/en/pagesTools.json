@@ -1,0 +1,669 @@
+{
+  "tabs": {
+    "pasteConfig": "Paste a config",
+    "gateways": "Gateways",
+    "profiles": "Profiles",
+    "smokeLab": "Smoke Lab"
+  },
+  "common": {
+    "loading": "Loading…",
+    "loadToolsAction": "load Tools & Access"
+  },
+  "advancedRoute": {
+    "checkAccessAction": "check your access",
+    "deniedTitle": "Advanced setup requires editing access",
+    "deniedBody": "This area lets company editors wire up tools that aren't in the gallery. Ask a company editor if you need a new app connected, or head back to",
+    "yourApps": "your apps"
+  },
+  "mcpConfigHelp": {
+    "triggerAriaLabel": "Get help creating an MCP config",
+    "title": "Ask an agent for an MCP config",
+    "description": "Don't know the URL or headers a tool needs? Hand this request to an agent and paste back what it gives you.",
+    "promptLabel": "Prompt to send",
+    "agentPromptLabel": "Get a config with an agent",
+    "agentPromptTitle": "MCP configuration",
+    "agentPromptDescription": "Paste this into your agent to create an MCP config, then paste its JSON reply back into Paperclip."
+  },
+  "risk": {
+    "unknown": "unknown",
+    "low": "low",
+    "medium": "medium",
+    "high": "high",
+    "critical": "critical"
+  },
+  "capability": {
+    "readOnly": "read-only",
+    "write": "write",
+    "destructive": "destructive"
+  },
+  "decision": {
+    "allowed": "allowed",
+    "denied": "denied",
+    "block": "block",
+    "requireApproval": "require approval",
+    "redacted": "redacted",
+    "rateLimited": "rate limited",
+    "deferred": "deferred",
+    "hidden": "hidden"
+  },
+  "relativeTime": {
+    "never": "never",
+    "justNow": "just now",
+    "inFuture": "in {{value}}",
+    "ago": "{{value}} ago"
+  },
+  "pendingBackend": {
+    "trackedIn": "Tracked in {{identifier}} →"
+  },
+  "breadcrumbs": {
+    "company": "Company",
+    "apps": "Apps",
+    "advancedSetup": "Advanced setup",
+    "developerTools": "Developer tools"
+  },
+  "toolsAccess": {
+    "selectOrganization": "Select an organization to open advanced setup.",
+    "title": "Advanced setup",
+    "advancedBadge": "Advanced",
+    "subtitle": "For tools that aren't in the gallery. You'll need details from the tool's documentation. Most people never need this — if the app you want is in the gallery,",
+    "connectThereInstead": "connect it there instead",
+    "developerSurfacePrompt": "Looking for the developer surface?",
+    "openDeveloperTools": "Open developer tools"
+  },
+  "smokeLab": {
+    "paths": {
+      "P1": {
+        "title": "Remote HTTP · OAuth",
+        "detail": "HTTP MCP fixture behind the fake OAuth provider"
+      },
+      "P2": {
+        "title": "Remote HTTP · API key",
+        "detail": "HTTP MCP fixture with a static bearer key"
+      },
+      "P3": {
+        "title": "Local stdio (template)",
+        "detail": "stdio fixture via the runtime supervisor"
+      },
+      "P4": {
+        "title": "Plugin integration",
+        "detail": "plugin-provided catalog entry + install flow"
+      },
+      "P5": {
+        "title": "Paste-a-config import",
+        "detail": "prosumer import via Advanced setup"
+      },
+      "P6": {
+        "title": "Token broker / gateway",
+        "detail": "run-scoped connection token, TTL + scope checks"
+      },
+      "P7": {
+        "title": "Governance surfaces",
+        "detail": "profiles, ask-first rules, quarantine"
+      }
+    },
+    "stages": {
+      "connect": "Connect",
+      "discover": "Discover catalog",
+      "read": "Allowed read",
+      "write": "Ask-first write",
+      "deny": "Denied call",
+      "quarantine": "Schema-change quarantine",
+      "revoke": "Revoke",
+      "audit": "Audit evidence"
+    },
+    "status": {
+      "pass": "pass",
+      "fail": "fail",
+      "skipped": "skipped",
+      "notRun": "not run"
+    },
+    "toast": {
+      "started": "Smoke services started",
+      "startFailed": "Couldn't start services",
+      "stopped": "Smoke services stopped",
+      "stopFailed": "Couldn't stop services",
+      "installed": "Fixture apps installed",
+      "alreadyPresent": "Fixture apps already present",
+      "installFailed": "Couldn't install fixtures",
+      "reset": "Smoke Lab reset",
+      "resetFailed": "Couldn't reset",
+      "runStarted": "Smoke run started",
+      "runStartedBody": "The browser runner records each step as it completes.",
+      "runFailed": "Couldn't start a run"
+    },
+    "off": {
+      "title": "Smoke Lab is turned off",
+      "bodyBefore": "The Smoke Lab is an experimental developer surface for exercising the integration paths against deterministic local fixtures. Turn on",
+      "bodyAfter": "under Settings → Experimental to enable it."
+    },
+    "loading": "Loading Smoke Lab…",
+    "experimental": "Experimental",
+    "tutorialLink": "Hands-on tutorial",
+    "intro": "Exercise every integration path (P1–P7) end-to-end against deterministic local fixtures — a fake OAuth provider and loopback MCP servers. Nothing here touches a real vendor or a real credential. Start the services, install the fixture apps, then drive the governed lifecycle from a browser smoke run. New here? Follow the",
+    "tutorialInline": "hands-on tutorial",
+    "services": {
+      "title": "Fixture services",
+      "start": "Start services",
+      "stop": "Stop",
+      "install": "Install fixture apps",
+      "reset": "Reset",
+      "notRunning": "not running",
+      "none": "No services reported. Start the fixture services above."
+    },
+    "demo": {
+      "title": "Fake OAuth demo credentials",
+      "body": "Type these into the fake provider's real consent page during a P1 (OAuth) smoke. Fixed fixture values — safe to show.",
+      "email": "email: {{value}}",
+      "password": "password: {{value}}"
+    },
+    "matrix": {
+      "title": "Integration matrix",
+      "path": "Path",
+      "empty": "No steps recorded for the selected run yet. Run a browser smoke to populate the matrix."
+    },
+    "health": {
+      "green": "green",
+      "amber": "amber",
+      "red": "red"
+    },
+    "runs": {
+      "title": "Runs",
+      "noRunsYet": "no runs yet",
+      "failing": " · failing: {{paths}}",
+      "runNow": "Run browser smoke now",
+      "none": "No runs recorded yet.",
+      "selectRun": "Select a run to see its steps.",
+      "startedFinished": "Started {{started}} · finished {{finished}}",
+      "noSteps": "No steps recorded for this run.",
+      "viewScreenshot": "View screenshot"
+    }
+  },
+  "audit": {
+    "outcome": {
+      "allowed": "Allowed",
+      "blocked": "Blocked",
+      "askedFirst": "Asked first",
+      "waiting": "Waiting",
+      "failed": "Failed",
+      "unknown": "Recorded"
+    },
+    "outcomeFilter": {
+      "all": "All outcomes"
+    },
+    "window": {
+      "allTime": "All time",
+      "last1h": "Last 1 hour",
+      "last24h": "Last 24 hours",
+      "last7d": "Last 7 days",
+      "last30d": "Last 30 days"
+    },
+    "lifecycle": {
+      "someone": "Someone",
+      "thisApp": "this app",
+      "connected": "{{who}} connected {{app}}",
+      "paused": "{{who}} paused {{app}}",
+      "resumed": "{{who}} resumed {{app}}",
+      "reconnected": "{{who}} reconnected {{app}}",
+      "disconnected": "{{who}} disconnected {{app}}",
+      "addedAllowed_one": "{{who}} added {{count}} allowed item in {{app}}",
+      "addedAllowed_other": "{{who}} added {{count}} allowed items in {{app}}",
+      "removedAllowed_one": "{{who}} removed {{count}} allowed item in {{app}}",
+      "removedAllowed_other": "{{who}} removed {{count}} allowed items in {{app}}",
+      "updatedAllowlist": "{{who}} updated the allowlist for {{app}}",
+      "actionsQuarantined_one": "{{count}} new action needs review in {{app}}",
+      "actionsQuarantined_other": "{{count}} new actions need review in {{app}}",
+      "updated": "{{who}} updated {{app}}"
+    },
+    "reason": {
+      "lifecycle": "This connection change was recorded in the app's activity history.",
+      "notInstalled": "Permitted connections were not installed, so their tools were not added to this run.",
+      "allowed": "Allowed by your rules.",
+      "rateLimited": "Blocked because it ran too many times in a short window.",
+      "secret": "Blocked to keep a sensitive value from leaving.",
+      "blockedByRule": "Blocked by a rule.",
+      "askedFirst": "Held for someone to approve before it could run.",
+      "waiting": "Waiting — the app it needs wasn't ready yet.",
+      "failed": "The app was allowed to run it, but returned an error.",
+      "recorded": "Recorded by Paperclip."
+    },
+    "row": {
+      "anAgent": "An agent",
+      "anAction": "an action",
+      "runReceivedNoServers_one": "<0>{{who}}</0>'s run received 0 MCP servers — <0>{{count}}</0> permitted connection not installed",
+      "runReceivedNoServers_other": "<0>{{who}}</0>'s run received 0 MCP servers — <0>{{count}}</0> permitted connections not installed",
+      "usedAction": "<0>{{who}}</0> used <0>{{action}}</0>",
+      "usedActionInApp": "<0>{{who}}</0> used <0>{{action}}</0> in <0>{{app}}</0>",
+      "viewTask": "View task",
+      "viewRun": "View run",
+      "details": "Details"
+    },
+    "detail": {
+      "actionName": "Action name",
+      "reasonCode": "Reason code",
+      "actorType": "Actor type",
+      "runId": "Run ID",
+      "type": "Type",
+      "httpRequest": "HTTP request",
+      "mcpMethod": "MCP method",
+      "requestId": "Request ID",
+      "dispatched": "Dispatched",
+      "httpStatus": "HTTP status",
+      "contentType": "Content type",
+      "responseSize": "Response size",
+      "upstreamId": "Upstream ID",
+      "deliveredServers": "Delivered MCP servers",
+      "yes": "Yes",
+      "no": "No",
+      "bytes_one": "{{count}} bytes",
+      "bytes_other": "{{count}} bytes",
+      "unnamedConnection": "Unnamed connection",
+      "notInstalled": "Not installed",
+      "parametersRedacted": "Parameters (redacted)"
+    },
+    "header": {
+      "title": "Activity",
+      "description": "What your agents actually did with your apps, newest first. Each line is one decision — allowed, blocked, asked first, waiting, or failed."
+    },
+    "filters": {
+      "ariaLabel": "Tool audit filters",
+      "appPlaceholder": "App",
+      "allApps": "All apps",
+      "allAgents": "All agents",
+      "searchPlaceholder": "Search activity…",
+      "clear": "Clear filters"
+    },
+    "loadActivityAction": "load activity",
+    "empty": {
+      "filteredTitle": "No activity matches these filters",
+      "filteredBody": "Try a wider time window or different filters.",
+      "title": "Nothing here yet",
+      "body": "As soon as your agents start using connected apps, what they do shows up here."
+    },
+    "loadMore": "Load more"
+  },
+  "gateways": {
+    "owner": {
+      "agent": "Agent {{id}}",
+      "boardUser": "Board user {{id}}",
+      "board": "Board"
+    },
+    "scope": {
+      "project": "Project {{name}}",
+      "agent": "Agent {{name}}",
+      "issue": "Issue {{id}}",
+      "company": "Company"
+    },
+    "allowedTools": {
+      "profileUnavailable": "Profile unavailable",
+      "none": "No tools allowed",
+      "count_one": "{{count}} tool allowed",
+      "count_other": "{{count}} tools allowed"
+    },
+    "toast": {
+      "created": "Gateway created",
+      "notCreated": "Gateway was not created",
+      "tokenIssued": "Token issued",
+      "tokenIssuedBody": "{{name}} was created. Copy it now; it will not be shown again.",
+      "tokenNotIssued": "Token was not issued",
+      "tokenRevoked": "Token revoked",
+      "tokenNotRevoked": "Token was not revoked",
+      "copied": "Copied to clipboard",
+      "copyFailed": "Copy failed",
+      "pickProfile": "Pick a profile",
+      "pickProfileBody": "A gateway needs an access profile before it can be created.",
+      "pickActions": "Pick token actions",
+      "pickActionsBody": "Gateway tokens need at least one allowed MCP action."
+    },
+    "loading": "Loading gateways...",
+    "loadAction": "load gateways",
+    "header": {
+      "title": "Named MCP gateways",
+      "description": "Stable endpoints for external clients that use the same profiles, rules, and audit trail as agent tool access."
+    },
+    "createGateway": "Create gateway",
+    "cancel": "Cancel",
+    "issueToken": "Issue token",
+    "form": {
+      "name": "Gateway name",
+      "namePlaceholder": "Engineering laptops",
+      "profile": "Access profile",
+      "loadingProfiles": "Loading profiles...",
+      "chooseProfile": "Choose a profile",
+      "description": "Description",
+      "descriptionPlaceholder": "Who this endpoint is for and when it should be rotated.",
+      "noProfiles": "Create an access profile before adding a gateway.",
+      "creating": "Creating..."
+    },
+    "empty": "No named gateways yet. Create one here, then issue a token for the client that will connect to it.",
+    "copy": {
+      "endpointLabel": "Gateway endpoint",
+      "endpoint": "Copy endpoint",
+      "tokenLabel": "Gateway bearer token",
+      "token": "Copy token"
+    },
+    "fields": {
+      "owner": "Owner",
+      "scope": "Scope",
+      "allowedTools": "Allowed tools",
+      "allowedToolsVia": "{{allowed}} via {{profile}}",
+      "profileId": "Profile {{id}}",
+      "lastActivity": "Last activity",
+      "neverUsed": "Never used"
+    },
+    "tokenForm": {
+      "name": "Token name",
+      "namePlaceholder": "Dotta's MacBook",
+      "clientLabel": "Client label",
+      "clientLabelPlaceholder": "Cursor on work laptop",
+      "ownerNote": "Owner note",
+      "ownerNotePlaceholder": "Who owns this token and why it exists",
+      "expires": "Expires",
+      "issuing": "Issuing..."
+    },
+    "newTokenFor": "New token for {{name}}",
+    "tokens": {
+      "title": "Tokens",
+      "none": "No tokens issued.",
+      "revoked": "revoked",
+      "expires": "expires",
+      "noExpiry": "no expiry",
+      "revokeAria": "Revoke {{name}}",
+      "revoke": "Revoke",
+      "confirmRevoke": "Revoke this token now?",
+      "confirm": "Confirm"
+    },
+    "snippets": {
+      "title": "Client snippets",
+      "none": "No snippets available.",
+      "copyLabel": "{{label}} snippet",
+      "copy": "Copy"
+    }
+  },
+  "pasteConfig": {
+    "keyFallback": "Key",
+    "summary": {
+      "runsLocally": "Runs in your workspace",
+      "connectsOverWeb": "Connects over the web",
+      "noKeys": "{{where}}  ·  no keys needed",
+      "needsKeys_one": "{{where}}  ·  needs {{count}} key",
+      "needsKeys_other": "{{where}}  ·  needs {{count}} keys"
+    },
+    "oauth": {
+      "windowClosed": "The sign-in window closed. Try again to finish connecting.",
+      "cancelled": "Sign-in was cancelled. Try again when you’re ready.",
+      "failed": "Sign-in failed. Try again to finish connecting.",
+      "manualClientRequired": "This server requires OAuth client details from its provider settings. Continue in setup to add them."
+    },
+    "errors": {
+      "onlyRemote": "Only remote HTTP drafts can be checked and activated from pasted config.",
+      "invalidJson": "That doesn't look like valid JSON yet — paste the whole snippet, including the outer braces."
+    },
+    "importedApp": "Imported app",
+    "intro": "Paste the MCP config snippet from the tool's README and we'll turn it into a friendly setup.",
+    "justUrl": "Just a URL?",
+    "browsePlanned": "Browse planned app connections",
+    "instead": "instead.",
+    "textareaHint": "Paste an MCP config — the snippet a README tells you to copy.",
+    "checking": "Checking…",
+    "checkConfig": "Check config",
+    "checkHint": "We'll read it and show what we found before anything is saved.",
+    "actions": {
+      "checkConfig": "check the config",
+      "checkApp": "check the app",
+      "finishSetup": "finish setup"
+    },
+    "noApps": "We couldn't find an app in that config. Double-check you pasted the whole snippet.",
+    "foundApps_one": "We found {{count}} app in that config",
+    "foundApps_other": "We found {{count}} apps in that config",
+    "remoteHint": "Checking a remote app creates a draft connection, stores any header replacements as Paperclip secrets, and runs health/catalog discovery before activation.",
+    "localHint": "We humanized the field names from the config. These run-in-your-workspace tools stay as drafts until an admin maps them to an approved template.",
+    "draft": {
+      "checkActions": "Check actions",
+      "connectionName": "Connection name",
+      "replacementPlaceholder": "Paste replacement value",
+      "keysDraftOnly": "Keys from this config stay draft-only until an admin maps them to an approved template.",
+      "noKeys": "No keys needed for this one."
+    },
+    "review": {
+      "title": "Review actions for {{name}}",
+      "passed": "Health and catalog checks passed. Every discovered action starts allowed; you can narrow access after activation.",
+      "activate": "Activate {{enabled}} of {{total}}",
+      "readOnly": "Read-only",
+      "canMakeChanges": "Can make changes",
+      "activeForAll": "{{name}} is active for all agents."
+    },
+    "group": {
+      "turnAllOn": "Turn all on",
+      "turnAllOff": "Turn all off",
+      "askFirstWhenEnabled": "Ask first when enabled"
+    }
+  },
+  "connections": {
+    "catalog": {
+      "titlePrefix": "Tool catalog —",
+      "loadAction": "load the tool catalog",
+      "empty": "No tools discovered yet. Use “Refresh catalog” to discover tools from this connection."
+    },
+    "toast": {
+      "createFailed": "Could not create connection",
+      "probeFailed": "Probe failed",
+      "activated": "Connection activated",
+      "activationFailed": "Activation failed"
+    },
+    "add": {
+      "title": "Add application",
+      "description": "Choose an existing application or create one as part of the same connection flow. Credentials stay as vault references and the connection is probed before activation.",
+      "stepApplication": "1 Application",
+      "stepConnection": "2 Connection",
+      "application": "Application",
+      "useExisting": "Use existing application",
+      "createNew": "Create new application",
+      "existingApplication": "Existing application",
+      "selectApplication": "Select an application",
+      "newApplicationName": "New application name",
+      "newApplicationPlaceholder": "e.g. GitHub Triage",
+      "typeInferred": "Application type is inferred from the transport you choose next.",
+      "willBeCreatedAs": "<0>{{name}}</0> will be created as {{type}}.",
+      "connectionName": "Connection name",
+      "connectionNamePlaceholder": "e.g. Production GitHub",
+      "transport": "Transport",
+      "transportRemote": "Remote HTTP (no local process)",
+      "transportLocal": "Local stdio (approved template)",
+      "endpointUrl": "Endpoint URL",
+      "commandTemplate": "Command template",
+      "selectTemplate": "Select an approved template",
+      "templatesOnly": "Only board-approved command templates can run. Arbitrary commands are never accepted.",
+      "credentialRefs": "Credential references",
+      "removeCredentialAria": "Remove credential reference for {{name}}",
+      "selectSecret": "Select a vault secret",
+      "headerPlaceholder": "Header",
+      "headerAria": "Header name",
+      "addButton": "Add",
+      "vaultHintBefore": "Free-text secrets are not accepted — pick a vault entry; Paperclip stores only the",
+      "vaultHintAfter": "reference and resolves it at gateway use time."
+    },
+    "probe": {
+      "probing": "Probing connection…",
+      "action": "probe the connection",
+      "result": "Probe result",
+      "toolsDiscovered": "tools discovered",
+      "latency": "probe latency",
+      "quarantined": "quarantined",
+      "latencyNote": "Probe latency is a single round-trip sample. Aggregate p95 latency across traffic is tracked on the Runtime tab once the connection is live."
+    },
+    "footer": {
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "back": "Back",
+      "creatingDraft": "Creating draft…",
+      "createAndProbe": "Create & probe",
+      "probing": "Probing…",
+      "reprobe": "Re-probe",
+      "activating": "Activating…",
+      "activate": "Activate"
+    }
+  },
+  "profiles": {
+    "selectorTypes": {
+      "toolName": "Tool name",
+      "riskLevel": "Risk level",
+      "application": "Application",
+      "connection": "Connection",
+      "catalogEntry": "Catalog entry ID"
+    },
+    "targetTypes": {
+      "company": "Company",
+      "agent": "Agent",
+      "project": "Project",
+      "routine": "Routine",
+      "issue": "Issue ID"
+    },
+    "entryFallback": {
+      "application": "application",
+      "connection": "connection",
+      "catalogEntry": "catalog entry",
+      "riskLevel": "risk level",
+      "tool": "tool"
+    },
+    "bindings": {
+      "unbound": "unbound",
+      "boundToAgents_one": "bound to {{count}} agent",
+      "boundToAgents_other": "bound to {{count}} agents",
+      "count_one": "{{count}} binding",
+      "count_other": "{{count}} bindings"
+    },
+    "entry": {
+      "selector": "Selector",
+      "effect": "Effect",
+      "include": "Include",
+      "exclude": "Exclude",
+      "selectApplication": "Select an application",
+      "selectConnection": "Select a connection",
+      "toolNamePlaceholder": "e.g. send_email or slack.list_*"
+    },
+    "effective": {
+      "pickAgent": "Pick an agent to see what it can use right now.",
+      "checking": "Checking access...",
+      "checkAction": "check this agent's access",
+      "canUse": "Can use",
+      "toolCount_one": "{{count}} tools",
+      "toolCount_other": "{{count}} tools",
+      "noTools": "This agent cannot use any app tools right now.",
+      "accessProfiles": "Access profiles",
+      "noProfiles": "No active profile applies to this agent."
+    },
+    "organizationDefault": "Organization default",
+    "source": {
+      "explicit": "explicit",
+      "defaultAllow": "default allow",
+      "pattern": "pattern {{label}}"
+    },
+    "allowList": {
+      "title": "Allow list",
+      "toolCount_one": "{{count}} tool",
+      "toolCount_other": "{{count}} tools",
+      "explicitSuffix": " · {{count}} explicit",
+      "patternSuffix": " · {{count}} via pattern",
+      "defaultSuffix": " · {{count}} via default",
+      "resolving": "Resolving allowed tools…",
+      "empty": "No tools resolved for this profile. Add an include selector or refresh the tool catalog.",
+      "columns": {
+        "tool": "Tool",
+        "application": "Application",
+        "capabilities": "Capabilities",
+        "risk": "Risk",
+        "source": "Source"
+      },
+      "patternNote": "Tools marked <0>pattern</0> were pulled in by a wildcard, application, connection, or risk selector rather than named explicitly — review them when the catalog changes."
+    },
+    "toast": {
+      "created": "Profile created",
+      "updated": "Profile updated",
+      "entryAdded": "Entry added",
+      "entryRemoved": "Entry removed",
+      "bound": "Profile bound",
+      "bindingRemoved": "Binding removed",
+      "entryTargetRequired": "Entry target required",
+      "bindingTargetRequired": "Binding target required",
+      "createFailed": "Could not create profile",
+      "updateFailed": "Could not update profile",
+      "addEntryFailed": "Could not add entry",
+      "removeEntryFailed": "Could not remove entry",
+      "bindFailed": "Could not bind profile",
+      "unbindFailed": "Could not remove binding"
+    },
+    "loadAction": "load profiles",
+    "header": {
+      "title": "Access profiles",
+      "description": "Reusable bundles of allowed applications, connections, and tools, assignable to agents, projects, routines, or issues."
+    },
+    "newProfile": "New profile",
+    "empty": {
+      "message": "No access profiles yet",
+      "description": "Create a profile to group tool selectors, then bind it to the organization or a specific agent."
+    },
+    "status": {
+      "active": "active",
+      "disabled": "disabled",
+      "archived": "archived",
+      "draft": "draft"
+    },
+    "defaultAction": {
+      "allow": "allow",
+      "deny": "deny"
+    },
+    "effect": {
+      "include": "include",
+      "exclude": "exclude"
+    },
+    "rail": {
+      "summary_one": "{{count}} tool · {{bindings}}",
+      "summary_other": "{{count}} tools · {{bindings}}"
+    },
+    "dialog": {
+      "editTitle": "Edit profile",
+      "description": "Profile rules are enforced by the tool gateway policy service.",
+      "name": "Name",
+      "namePlaceholder": "Engineering write tools",
+      "key": "Key",
+      "description_label": "Description",
+      "descriptionPlaceholder": "Optional context for reviewers.",
+      "defaultAction": "Default action",
+      "denyUnlessIncluded": "Deny unless included",
+      "allowUnlessExcluded": "Allow unless excluded",
+      "status": "Status",
+      "statusActive": "Active",
+      "statusDisabled": "Disabled",
+      "statusArchived": "Archived",
+      "save": "Save",
+      "creating": "Creating...",
+      "create": "Create"
+    },
+    "cancel": "Cancel",
+    "addEntry": "Add entry",
+    "bind": "Bind",
+    "bindDialog": {
+      "title": "Bind profile",
+      "targetType": "Target type",
+      "selectProject": "Select a project",
+      "selectRoutine": "Select a routine",
+      "priority": "Priority"
+    },
+    "detail": {
+      "defaultBadge": "default {{action}}",
+      "updated": "updated",
+      "edit": "Edit",
+      "entry": "Entry",
+      "targets": "Targets",
+      "noTargets": "No targets bound.",
+      "removeBindingAria": "Remove {{type}} binding",
+      "effectiveScope": "Effective scope",
+      "scopeDefault": "Default <0>{{action}}</0>",
+      "scopeToolsAllowed": "<0>{{tools}}</0> tools allowed",
+      "scopeIncludeExclude": "<0>{{include}}</0> include / <0>{{exclude}}</0> exclude",
+      "selectors": "Selectors",
+      "noSelectors": "No selectors.",
+      "deleteEntryAria": "Delete {{type}} entry"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "breadcrumbs": {
+    "settings": "Settings"
+  },
+  "title": "Profile",
+  "errors": {
+    "selectOrganization": "Select an organization before uploading a profile avatar."
+  },
+  "loading": "Loading profile...",
+  "loadFailed": "Failed to load profile.",
+  "defaultName": "Board",
+  "description": "Control how your account appears in the sidebar and other board surfaces.",
+  "noEmail": "No email",
+  "avatar": {
+    "storedFor": "Stored in Paperclip file storage for {{company}}.",
+    "selectOrganization": "Select an organization to upload an avatar into Paperclip storage.",
+    "change": "Change photo",
+    "upload": "Upload photo",
+    "remove": "Remove",
+    "clickHint": "Click the avatar to upload a new image. "
+  },
+  "form": {
+    "displayName": "Display name",
+    "displayNameHint": "Shown in the sidebar account footer and comment author surfaces.",
+    "email": "Email",
+    "emailHint": "Email is managed by your auth session and is read-only here.",
+    "saving": "Saving...",
+    "save": "Save profile"
+  },
+  "errorActions": {
+    "loadProfile": "load your profile"
+  }
+}

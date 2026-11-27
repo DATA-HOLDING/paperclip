@@ -1,0 +1,11 @@
+{
+  "title": "Autorização do GitHub em segundo plano",
+  "description": "Permita que o provedor de espaço de trabalho deste projeto use seu Conector do GitHub para provisionar e manter repositórios até que a autorização seja revogada. Isso compartilha a credencial do Conector com o provedor, usando as permissões do GitHub já existentes. Editores de repositórios do projeto podem adicionar repositórios cobertos por esta conexão. Gerencie o acesso aos repositórios na conexão do GitHub. As execuções de tarefas continuam usando a própria identidade.",
+  "authorized": "Autorizado:",
+  "unavailableGrant": "autorização selecionada (indisponível ou de outro membro)",
+  "select": "Sua autorização do GitHub",
+  "selectPlaceholder": "Selecione sua conta do GitHub",
+  "authorize": "Autorizar projeto",
+  "revoke": "Revogar autorização",
+  "noOptions": "Conecte sua conta do GitHub e instale o Conector nesta organização para autorizá-la."
+}

@@ -14,6 +14,7 @@ import { NeedsYouPanel, NeedsYouPanelNote } from "./coordinator/NeedsYouCardKit"
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 interface DecisionResolverProps {
   companyId: string;
@@ -53,20 +54,20 @@ export function signedCancelTreePreviewIds(targetIssueId: string, snapshot: { de
  * success — same conventions as {@link AttentionInteractionResolver}.
  */
 function issueLabel(ref: DecisionIssueRef | null, id: string) {
-  return ref?.identifier ?? ref?.title ?? `issue ${id.slice(0, 8)}`;
+  return ref?.identifier ?? ref?.title ?? t("componentsDecisionResolver.issueFallback", { id: id.slice(0, 8) });
 }
 
 /** What choosing an option does, in one line (mirrors the full card's preview). */
 function effectLine(effect: DecisionEffect, resolve: (id: string) => DecisionIssueRef | null) {
   const target = issueLabel(resolve(effect.targetIssueId), effect.targetIssueId);
   switch (effect.type) {
-    case "comment_on_issue": return `Comment on ${target}`;
-    case "create_issue": return `Create “${effect.draft.title}”`;
-    case "update_issue_status": return `Set ${target} to ${effect.status.replaceAll("_", " ")}`;
-    case "assign_issue": return `Reassign ${target}`;
-    case "resolve_blocker": return `Unblock ${target}`;
-    case "cancel_issue_tree": return `Cancel ${target} and its sub-tree`;
-    default: return "Apply effect";
+    case "comment_on_issue": return t("componentsDecisionResolver.effect.comment", { target });
+    case "create_issue": return t("componentsDecisionResolver.effect.create", { title: effect.draft.title });
+    case "update_issue_status": return t("componentsDecisionResolver.effect.setStatus", { target, status: effect.status.replaceAll("_", " ") });
+    case "assign_issue": return t("componentsDecisionResolver.effect.reassign", { target });
+    case "resolve_blocker": return t("componentsDecisionResolver.effect.unblock", { target });
+    case "cancel_issue_tree": return t("componentsDecisionResolver.effect.cancelTree", { target });
+    default: return t("componentsDecisionResolver.effect.default");
   }
 }
 
@@ -100,7 +101,7 @@ function CompactDecision({ decision, resolveIssue, targetChanged, busy, errorMes
       <NeedsYouPanel>
         {(decision.inputs ?? []).map((field) => (
           <label key={field.id} className="flex flex-col gap-1">
-            <span className="text-xs font-medium text-muted-foreground">{field.label}{field.required ? " · Required" : ""}</span>
+            <span className="text-xs font-medium text-muted-foreground">{field.label}{field.required ? ` · ${t("componentsDecisionResolver.required")}` : ""}</span>
             <Textarea
               value={inputValues[field.id] ?? ""}
               onChange={(event) => setInputValues((current) => ({ ...current, [field.id]: event.target.value }))}
@@ -110,7 +111,7 @@ function CompactDecision({ decision, resolveIssue, targetChanged, busy, errorMes
             />
           </label>
         ))}
-        <div role="radiogroup" aria-label="Options" className="flex flex-col">
+        <div role="radiogroup" aria-label={t("componentsDecisionResolver.options")} className="flex flex-col">
           {decision.options.map((option) => {
             const selected = optionId === option.id;
             const disabled = busy || blocked(option.id);
@@ -123,7 +124,7 @@ function CompactDecision({ decision, resolveIssue, targetChanged, busy, errorMes
                   {selected ? <span className="size-2 rounded-full bg-foreground" /> : null}
                 </span>
                 <span className="flex min-w-0 flex-col gap-0.5">
-                  <span className="text-(length:--text-compact) leading-5">{option.label}{blocked(option.id) ? " · Target changed" : ""}</span>
+                  <span className="text-(length:--text-compact) leading-5">{option.label}{blocked(option.id) ? ` · ${t("componentsDecisionResolver.targetChanged")}` : ""}</span>
                   {option.description ? <span className="text-xs leading-4.5 text-muted-foreground">{option.description}</span> : null}
                   {effects.length > 0 ? <span className="text-xs leading-4.5 text-muted-foreground">{effects.join(" · ")}</span> : null}
                 </span>
@@ -131,12 +132,12 @@ function CompactDecision({ decision, resolveIssue, targetChanged, busy, errorMes
             );
           })}
         </div>
-        {stale.size > 0 ? <NeedsYouPanelNote>A target changed since this was proposed, so options that need it unchanged are off.</NeedsYouPanelNote> : null}
+        {stale.size > 0 ? <NeedsYouPanelNote>{t("componentsDecisionResolver.staleNote")}</NeedsYouPanelNote> : null}
       </NeedsYouPanel>
       {errorMessage ? <p className="text-xs text-destructive">{errorMessage}</p> : null}
       <DecisionCardFooter leading={leading}>
         <Button size="sm" disabled={!optionId || busy || requiredUnmet || blocked(optionId)} onClick={() => { if (optionId) onDecide(optionId, inputValues); }}>
-          {busy ? <><Loader2 className="h-3.5 w-3.5 animate-spin" />Submitting…</> : "Submit choice"}
+          {busy ? <><Loader2 className="h-3.5 w-3.5 animate-spin" />{t("componentsDecisionResolver.submitting")}</> : t("componentsDecisionResolver.submit")}
         </Button>
       </DecisionCardFooter>
     </div>
@@ -263,7 +264,7 @@ export function DecisionResolver({ companyId, decisionId, originIssue, agentMap,
   if (!recordedDecision && detail.isLoading) {
     const loading = (
       <div className="flex items-center gap-2 py-3 text-xs text-muted-foreground">
-        <Loader2 className="h-3.5 w-3.5 animate-spin" /> Loading decision…
+        <Loader2 className="h-3.5 w-3.5 animate-spin" /> {t("componentsDecisionResolver.loading")}
       </div>
     );
     return compact ? <div className="space-y-3">{loading}<DecisionCardFooter leading={leading} /></div> : loading;
@@ -272,7 +273,7 @@ export function DecisionResolver({ companyId, decisionId, originIssue, agentMap,
   if ((!recordedDecision && detail.error) || !decision) {
     const gone = (
       <p className="py-3 text-xs text-muted-foreground">
-        This decision is no longer available — it may have been resolved elsewhere.
+        {t("componentsDecisionResolver.gone")}
       </p>
     );
     return compact ? <div className="space-y-3">{gone}<DecisionCardFooter leading={leading} /></div> : gone;

@@ -1,0 +1,35 @@
+{
+  "events": {
+    "created": "created",
+    "updated": "updated",
+    "fieldsChanged": "fields changed",
+    "statusChanged": "status changed",
+    "issueLinked": "issue linked",
+    "issueUnlinked": "issue unlinked",
+    "documentRevised": "document revised",
+    "childLinked": "child linked",
+    "attachmentAdded": "attachment added",
+    "labelAdded": "label added",
+    "labelRemoved": "label removed",
+    "handoffRequested": "handoff requested",
+    "handoffApplied": "task handed off",
+    "handoffDelivered": "agent wake queued",
+    "handoffCompleted": "case completed",
+    "handoffCancelled": "handoff cancelled"
+  },
+  "actor": {
+    "agent": "Agent",
+    "user": "User",
+    "system": "System"
+  },
+  "relation": {
+    "issue": "issue",
+    "via": "via"
+  },
+  "allActivity": "All activity",
+  "filterCount": "{{count}} filters",
+  "empty": "No activity yet.",
+  "eventCount": "{{shown}} of {{total}} events",
+  "activityFilter": "Activity filter",
+  "noMatch": "No events match this filter."
+}

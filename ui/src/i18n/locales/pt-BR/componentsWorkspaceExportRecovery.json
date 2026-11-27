@@ -1,0 +1,104 @@
+{
+  "resources": {
+    "sandboxLease": {
+      "what": "Uma reserva de sandbox da execução anterior desta tarefa",
+      "releasing": "Liberando a reserva do sandbox…"
+    },
+    "controllerLease": {
+      "what": "A execução anterior desta tarefa",
+      "releasing": "Recuperando a execução…"
+    },
+    "teardown": {
+      "what": "Uma limpeza de sandbox da execução anterior desta tarefa",
+      "releasing": "Retomando a limpeza do sandbox…"
+    },
+    "sandboxCreation": {
+      "what": "Um sandbox que a execução anterior desta tarefa estava criando",
+      "releasing": "Reconciliando o sandbox…"
+    },
+    "runtimeControl": {
+      "what": "Uma mudança de serviço do espaço de trabalho da execução anterior desta tarefa",
+      "releasing": "Liberando o espaço de trabalho…"
+    },
+    "finalize": {
+      "what": "Um salvamento do espaço de trabalho da execução anterior desta tarefa",
+      "releasing": "Liberando o salvamento do espaço de trabalho…"
+    },
+    "finalizer": {
+      "what": "O tratamento do resultado da execução anterior desta tarefa",
+      "releasing": "Retomando o tratamento do resultado…"
+    },
+    "cleanup": {
+      "what": "A limpeza da execução anterior desta tarefa",
+      "releasing": "Retomando a limpeza…"
+    },
+    "default": {
+      "what": "Um recurso da execução anterior desta tarefa",
+      "releasing": "Liberando o recurso…"
+    }
+  },
+  "controller": {
+    "waiting": "O servidor anterior desta execução foi registrado antes de o Paperclip guardar em qual host ela rodava, então o Paperclip não consegue verificar se ele parou. O estado salvo da execução foi mantido.",
+    "resuming": "Parada do controlador registrada. Verificando a recuperação…"
+  },
+  "confirmQuestion": "Como você confirmou que o servidor anterior parou?",
+  "confirmPlaceholder": "Por exemplo: o contêiner do servidor antigo foi substituído e não está mais rodando.",
+  "ownerGone": {
+    "waiting": "{{what}} foi registrado antes de o Paperclip guardar qual servidor o mantinha, então o Paperclip não consegue verificar se o servidor parou. Ele fica reservado até lá."
+  },
+  "restoringSavedWork": "Restaurando o trabalho salvo…",
+  "notRecoveredYet": "O trabalho salvo ainda não foi recuperado. O resultado do agente está salvo.",
+  "stop": {
+    "waiting": "O servidor anterior parou enquanto salvava os arquivos desta tarefa, e o Paperclip não consegue verificar se ele parou. O resultado do agente está salvo.",
+    "checkingAccess": "Verificando acesso…",
+    "waitingConfirm": "O Paperclip está aguardando a confirmação de que o servidor anterior parou.",
+    "confirmButton": "Confirmar que o servidor anterior parou",
+    "question": "Como você confirmou que o servidor anterior e a cópia de arquivos dele pararam?",
+    "placeholder": "Por exemplo: o processo do servidor antigo terminou e não foi reiniciado.",
+    "confirming": "Confirmando…",
+    "confirmAndResume": "Confirmar e retomar",
+    "notAccepted": "A confirmação não foi aceita. Atualize a tarefa e tente novamente."
+  },
+  "cancel": "Cancelar",
+  "source": {
+    "notInspected": "O Paperclip não consegue verificar aqui a origem dos arquivos salvos porque a execução registrou origens demais.",
+    "ambiguous": "O Paperclip não consegue confirmar que só esta execução usou o sandbox que guarda os arquivos salvos.",
+    "unverified": "O Paperclip não consegue verificar a origem registrada dos arquivos salvos ({{code}})."
+  },
+  "errors": {
+    "changed": "A recuperação de arquivos mudou. Confira o status atual antes de pedir a recuperação.",
+    "sourceNotVerified": "Não foi possível verificar a origem dos arquivos salvos.",
+    "accountChanged": "Sua conta mudou. Atualize a página antes de pedir a recuperação de arquivos.",
+    "previousNotConfirmed": "A recuperação anterior que falhou não está confirmada. Confira o status antes de tentar novamente.",
+    "couldNotSave": "Não foi possível salvar o pedido de recuperação neste navegador. Nenhum pedido foi enviado.",
+    "ackNotConfirmed": "Não foi possível confirmar o recebimento da recuperação.",
+    "requestNotConfirmed": "O pedido de recuperação não foi confirmado: {{reason}}",
+    "inspectStatus": "Confira o status.",
+    "requestCouldNotConfirm": "Não foi possível confirmar o pedido de recuperação. Confira o status antes de tentar novamente; o pedido salvo será reaproveitado.",
+    "unableToInspect": "Não foi possível verificar a recuperação de arquivos.",
+    "replaced": "Esta recuperação de arquivos foi substituída. Mostrando a recuperação atual da tarefa.",
+    "noneConfirmed": "Nenhum pedido de recuperação foi confirmado ainda. Tentar novamente reaproveitará o pedido salvo."
+  },
+  "retained": {
+    "saved": "Arquivos salvos recuperados. A recuperação da tarefa ainda está sendo verificada.",
+    "diskFull": "O disco do sandbox estava cheio quando o Paperclip salvou os arquivos. Libere espaço e use Tentar novamente para salvá-los e concluir a tarefa.",
+    "gitInProgress": "Uma operação do Git ainda estava em andamento quando o Paperclip salvou os arquivos. Conclua-a ou aborte-a e use Tentar novamente para salvá-los e concluir a tarefa.",
+    "failedReceipt": "A recuperação de arquivos não terminou. A origem salva continua protegida.",
+    "restoring": "Recuperando os arquivos salvos. O trabalho fica pausado até a recuperação ser verificada.",
+    "waiting": "A recuperação de arquivos está na fila. Aguardando os arquivos salvos verificados.",
+    "needsRecovery": "Os arquivos salvos precisam ser recuperados antes que o trabalho continue.",
+    "requesting": "Pedindo a recuperação de arquivos…",
+    "tryAgain": "Tentar recuperar os arquivos de novo",
+    "recover": "Recuperar arquivos salvos",
+    "checking": "Verificando a recuperação de arquivos…",
+    "checkStatus": "Verificar o status da recuperação de arquivos",
+    "inspecting": "Verificando a origem registrada dos arquivos…",
+    "couldNotInspect": "Não foi possível verificar a recuperação de arquivos. Confira o status de novo.",
+    "notFinished": "A recuperação de arquivos não terminou. Os arquivos salvos continuam protegidos e não são aplicados.",
+    "doesNotApply": "O Paperclip não aplica arquivos que não consegue verificar.",
+    "replaced": "Esta recuperação de arquivos foi substituída. Confira o status para ver a recuperação atual da tarefa.",
+    "accessError": "Não foi possível verificar o acesso à tarefa. Atualize a página antes de pedir a recuperação de arquivos.",
+    "checkingAccess": "Verificando o acesso à recuperação de arquivos…",
+    "boardMemberCan": "Um membro do conselho com acesso à tarefa pode pedir a recuperação de arquivos."
+  }
+}

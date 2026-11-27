@@ -1,0 +1,31 @@
+{
+  "yes": "Yes",
+  "no": "No",
+  "target": {
+    "barIsYes": "the bar is yes",
+    "range": "range {{range}}",
+    "atMost": "target at most {{target}}",
+    "target": "target {{target}}"
+  },
+  "reference": {
+    "high": "High {{value}}",
+    "low": "Low {{value}}",
+    "atMost": "At most {{value}}",
+    "target": "Target {{value}}"
+  },
+  "chart": {
+    "barsPerWeek": "Bars per week",
+    "lineOverTime": "Line over time",
+    "percentage": "Percentage",
+    "number": "Number",
+    "tail": ", {{target}}",
+    "noReadings": "{{form}} of {{title}}: no readings yet{{tail}}.",
+    "single": "{{form}} of {{title}}: {{latest}}{{oneReading}}{{tail}}.",
+    "oneReadingSoFar": ", one reading so far",
+    "weeksFrom_one": "{{count}} weeks from {{from}}",
+    "weeksFrom_other": "{{count}} weeks from {{from}}",
+    "readingsFromTo_one": "{{count}} readings from {{from}} to {{to}}",
+    "readingsFromTo_other": "{{count}} readings from {{from}} to {{to}}",
+    "full": "{{form}} of {{title}}: {{span}}, between {{low}} and {{high}}, latest {{latest}}{{tail}}."
+  }
+}

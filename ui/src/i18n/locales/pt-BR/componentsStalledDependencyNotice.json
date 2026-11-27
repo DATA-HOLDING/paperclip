@@ -1,0 +1,14 @@
+{
+  "title_one": "Uma dependência precisa do conselho",
+  "title_other": "{{count}} dependências precisam do conselho",
+  "child": "Subtarefa",
+  "blocker": "Bloqueio",
+  "task": "Tarefa",
+  "loadError": "Não foi possível carregar o estado desta tarefa: {{error}}",
+  "reload": "Recarregar",
+  "takingLonger": "Demorando mais que o normal…",
+  "retryAria": "Tentar {{name}} novamente",
+  "taskLower": "tarefa",
+  "retrying": "Tentando novamente…",
+  "retry": "Tentar novamente"
+}

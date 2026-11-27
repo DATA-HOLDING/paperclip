@@ -1,0 +1,46 @@
+{
+  "gatewaySetup": {
+    "useCustomGateway": "Usar um gateway personalizado",
+    "title": "Conexão de gateway personalizado",
+    "description": "Salve a conexão, depois escolha um modelo e teste-o com o seu agente.",
+    "saveConnection": "Salvar conexão"
+  },
+  "credentialModeLink": {
+    "subscription": "Usar assinatura em vez disso",
+    "api": "Usar chave de API em vez disso"
+  },
+  "stepper": {
+    "createFirstAgent": "Crie seu primeiro agente",
+    "connectModel": "Conecte um modelo",
+    "review": "Revisão",
+    "nameOrganization": "Dê um nome à sua organização",
+    "step": "Etapa {{step}}",
+    "stepOf": "Etapa {{step}} de {{total}}"
+  },
+  "connectModelPreview": {
+    "lede": "O Paperclip funciona com a sua assinatura ou as suas chaves de API atuais.",
+    "modelSource": "Origem do modelo",
+    "useApiKeys": "Usar chaves de API em vez disso",
+    "connect": "Conectar"
+  },
+  "footerNav": {
+    "back": "Voltar"
+  },
+  "modelSourceTiles": {
+    "subscription": "Assinatura",
+    "apiKey": "Chave de API",
+    "customGateway": "Gateway personalizado"
+  },
+  "savedProviderKey": {
+    "apiKey": "Chave de API",
+    "subscription": "Assinatura",
+    "savedApiKey": "Chave de API salva",
+    "savedSubscription": "Assinatura salva",
+    "enterNewKey": "Informar uma nova chave de API",
+    "signInAnother": "Entrar em outra conta",
+    "checking": "Verificando chaves de API salvas…",
+    "loadError": "Não foi possível carregar algumas chaves salvas. Você ainda pode informar uma nova chave.",
+    "reuseKey": "Reutilizar esta chave salva para este agente.",
+    "reuseSubscription": "Reutilizar esta assinatura salva para este agente."
+  }
+}

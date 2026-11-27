@@ -1,0 +1,13 @@
+{
+  "disabledEmpty": "Reporta a: N/A (CEO)",
+  "choose": "Reporta a...",
+  "unknownManager": "Gestor desconhecido (ID antigo)",
+  "reportsTo": "Reporta a {{name}}",
+  "reportsToTerminated": "Reporta a {{name}} (desligado)",
+  "chooseManager": "Escolher gestor",
+  "header": "Reporta a",
+  "noManager": "Sem gestor",
+  "currentTerminated": "Atual: {{name}} (desligado)",
+  "missingManager": "O gestor salvo não está mais nesta organização. Escolha outro gestor ou limpe o campo.",
+  "loop": "Criaria um ciclo de subordinação"
+}

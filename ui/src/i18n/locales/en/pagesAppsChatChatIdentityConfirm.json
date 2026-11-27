@@ -1,0 +1,33 @@
+{
+  "loadAccountAction": "load your account",
+  "loadLinkAction": "load the identity link",
+  "unavailable": {
+    "title": "This identity link is unavailable",
+    "body": "The link is invalid, expired, already used, or belongs to another Paperclip organization."
+  },
+  "checking": "Checking identity link…",
+  "localBoard": "Local Board",
+  "signedInAccount": "the signed-in account",
+  "linked": {
+    "title": "Identity linked",
+    "body": "Future messages from {{externalLabel}} use your current Paperclip permissions in {{companyName}}.",
+    "returnToSlack": "Return to Slack"
+  },
+  "title": "Link your external identity",
+  "fields": {
+    "provider": "Provider",
+    "externalIdentity": "External identity",
+    "paperclipAccount": "Paperclip account",
+    "agent": "Agent",
+    "defaultAgent": "Paperclip agent"
+  },
+  "confirmHint": "Confirm only if this is your {{provider}} identity. Paperclip will check your current organization membership on every action.",
+  "confirmError": "This link could not be confirmed. It may have expired or been revoked.",
+  "access": {
+    "membershipRequired": "You need membership in {{companyName}} before linking this account.",
+    "requested": "Access requested. An admin can approve it in Paperclip. After approval, return here to confirm; if this link expires, send the connect command in Slack again.",
+    "request": "Request access",
+    "error": "Couldn't request access. The link may have expired. Send the connect command again and retry."
+  },
+  "confirm": "Confirm identity"
+}

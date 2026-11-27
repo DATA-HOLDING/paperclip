@@ -1,0 +1,43 @@
+{
+  "breadcrumbs": {
+    "approvals": "Approvals",
+    "approval": "Approval"
+  },
+  "errorActions": {
+    "approve": "approve this request",
+    "reject": "reject this request",
+    "requestRevision": "request a revision",
+    "resubmit": "resubmit this request"
+  },
+  "commentFailed": "Comment failed",
+  "deleteFailed": "Delete failed",
+  "notFound": "Approval not found.",
+  "cta": {
+    "reviewLinkedTasks": "Review linked tasks",
+    "reviewLinkedTask": "Review linked task",
+    "openHiredAgent": "Open hired agent",
+    "backToApprovals": "Back to approvals"
+  },
+  "confirmed": {
+    "title": "Approval confirmed",
+    "body": "Requesting agent was notified to review this approval and linked tasks."
+  },
+  "requestedBy": "Requested by",
+  "agentFallback": "Agent",
+  "seeFullRequest": "See full request",
+  "decisionNote": "Decision note: {{note}}",
+  "linkedTasks": "Linked Tasks",
+  "linkedTasksHint": "Linked tasks remain open until the requesting agent follows up and closes them.",
+  "approve": "Approve",
+  "reject": "Reject",
+  "budgetStop": "Resolve this budget stop from the budget controls on",
+  "requestRevision": "Request revision",
+  "markResubmitted": "Mark resubmitted",
+  "deleteConfirm": "Delete this disapproved agent? This cannot be undone.",
+  "deleteAgent": "Delete disapproved agent",
+  "comments": "Comments ({{n}})",
+  "board": "Board",
+  "commentPlaceholder": "Add a comment...",
+  "posting": "Posting…",
+  "postComment": "Post comment"
+}

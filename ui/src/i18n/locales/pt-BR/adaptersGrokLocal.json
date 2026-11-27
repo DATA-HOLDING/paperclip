@@ -1,0 +1,4 @@
+{
+  "instructionsFileHint": "Caminho absoluto de um arquivo markdown (ex.: AGENTS.md) que define o comportamento deste agente. Quando possível, o Paperclip o coloca no espaço de trabalho do Grok como Agents.md.",
+  "instructionsFile": "Arquivo de instruções do agente"
+}

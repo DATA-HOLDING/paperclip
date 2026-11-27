@@ -1,0 +1,37 @@
+{
+  "runNow": "Executar agora",
+  "resume": "Retomar",
+  "pause": "Pausar",
+  "clearErrorAria": "Limpar erro e devolver o agente ao estado ocioso",
+  "clearError": "Limpar erro",
+  "assignTask": "Atribuir tarefa",
+  "toast": {
+    "actionFailed": "A ação falhou",
+    "duplicated": "Agente duplicado",
+    "couldNotDuplicate": "Não foi possível duplicar o agente",
+    "copyFailed": "Falha ao copiar",
+    "clipboardUnavailable": "O acesso à área de transferência não está disponível."
+  },
+  "errors": {
+    "notReadyToDuplicate": "O agente não está pronto para ser duplicado",
+    "duplicateFailed": "Falha ao duplicar o agente",
+    "resetSessionFailed": "Falha ao redefinir a sessão"
+  },
+  "confirmDuplicate": "Duplicar {{name}} como {{nextName}}?",
+  "cancel": "Cancelar",
+  "pauseAnyway": "Pausar mesmo assim",
+  "rawTracingTitle": "O tráfego exato do provedor será capturado nas próximas execuções e guardado por até 24 horas.",
+  "rawTracingOn": "Rastreamento bruto ativo",
+  "openActionsAria": "Abrir ações de {{name}}",
+  "duplicateAgent": "Duplicar agente",
+  "copyAgentId": "Copiar ID do agente",
+  "resetSessions": "Redefinir sessões",
+  "terminate": "Desligar",
+  "chatWithAria": "Conversar com {{name}}",
+  "chatWithThisAgent": "Conversar com este agente",
+  "chat": "Chat",
+  "finishSetup": "Concluir configuração",
+  "duplicateAgentTitle": "Duplicar agente",
+  "copyAgentIdTitle": "Copiar ID do agente",
+  "resetSessionsTitle": "Redefinir sessões"
+}

@@ -1,0 +1,6 @@
+{
+  "configureAriaLabel": "Configure {{agentName}}'s concurrent run limit",
+  "configure": "Configure",
+  "waitingToStart": "Waiting to start",
+  "waiting": "Waiting"
+}

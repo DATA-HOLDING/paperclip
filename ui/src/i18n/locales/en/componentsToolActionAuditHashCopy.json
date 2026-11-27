@@ -1,0 +1,7 @@
+{
+  "copied": "Copied",
+  "copyFailed": "Couldn’t copy",
+  "copy": "Copy audit hash",
+  "copyTitle": "Copy the hash that identifies these exact arguments",
+  "hashLabel": "Audit hash"
+}

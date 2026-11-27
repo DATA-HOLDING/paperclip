@@ -6,23 +6,24 @@ import {
   type ToolIcon,
 } from "./tool-taxonomy";
 import { protocolActivityPresentation, providerNoticeSeverity } from "./task-chat-activity-presentation";
+import { t } from "@/i18n";
 
 type Activity = TaskChatActivityPhaseItem["items"][number];
 const labels: Record<ToolFamily, string> = {
-  terminal: "Ran commands",
-  grep: "Searched files",
-  search: "Searched files",
-  read: "Read files",
-  edit: "Edited files",
-  web: "Searched the web",
-  plan: "Worked on a plan",
-  question: "Requested input",
-  agent: "Worked with agents",
-  safety: "Reviewed safety",
-  image: "Worked with images",
-  wait: "Waited",
-  mcp: "Used connected tools",
-  other: "Used tools",
+  terminal: t("componentsTaskChatCompletedActivitySummary.labels.ranCommands"),
+  grep: t("componentsTaskChatCompletedActivitySummary.labels.searchedFiles"),
+  search: t("componentsTaskChatCompletedActivitySummary.labels.searchedFiles"),
+  read: t("componentsTaskChatCompletedActivitySummary.labels.readFiles"),
+  edit: t("componentsTaskChatCompletedActivitySummary.labels.editedFiles"),
+  web: t("componentsTaskChatCompletedActivitySummary.labels.searchedWeb"),
+  plan: t("componentsTaskChatCompletedActivitySummary.labels.workedOnPlan"),
+  question: t("componentsTaskChatCompletedActivitySummary.labels.requestedInput"),
+  agent: t("componentsTaskChatCompletedActivitySummary.labels.workedWithAgents"),
+  safety: t("componentsTaskChatCompletedActivitySummary.labels.reviewedSafety"),
+  image: t("componentsTaskChatCompletedActivitySummary.labels.workedWithImages"),
+  wait: t("componentsTaskChatCompletedActivitySummary.labels.waited"),
+  mcp: t("componentsTaskChatCompletedActivitySummary.labels.usedConnectedTools"),
+  other: t("componentsTaskChatCompletedActivitySummary.labels.usedTools"),
 };
 
 /** Describe observed activities, never infer success from a finished group. */
@@ -85,18 +86,18 @@ export function completedActivitySummary(items: Activity[]) {
           // A hook or reviewer that stopped an action is the headline of the
           // group; routine passes only describe a group with nothing else.
           if (p.tone === "blocked" || p.tone === "failed") add(p.completedLabel, p.icon, -1);
-          else quietGovernance.push({ label: item.family === "hook" ? "Ran hooks" : "Auto-reviewed actions", single: p.completedLabel, icon: p.icon, order });
+          else quietGovernance.push({ label: item.family === "hook" ? t("componentsTaskChatCompletedActivitySummary.labels.ranHooks") : t("componentsTaskChatCompletedActivitySummary.labels.autoReviewedActions"), single: p.completedLabel, icon: p.icon, order });
           continue;
         }
         if (item.surface === "provider_activity" && item.family === "verification") {
           // A failed check stays visible even when the compact label truncates.
-          if (item.status === "failed") add("Check failed", p.icon, -1);
-          else if (item.details.find((entry) => entry.label === "Status")?.value === "not_run") add("Skipped checks", p.icon, order);
-          else add("Ran checks", p.icon, order);
+          if (item.status === "failed") add(t("componentsTaskChatCompletedActivitySummary.labels.checkFailed"), p.icon, -1);
+          else if (item.details.find((entry) => entry.label === "Status")?.value === "not_run") add(t("componentsTaskChatCompletedActivitySummary.labels.skippedChecks"), p.icon, order);
+          else add(t("componentsTaskChatCompletedActivitySummary.labels.ranChecks"), p.icon, order);
           continue;
         }
         if (item.surface === "provider_activity" && item.eventType === "model.route.changed") {
-          add("Switched models", p.icon, order);
+          add(t("componentsTaskChatCompletedActivitySummary.labels.switchedModels"), p.icon, order);
           continue;
         }
         const family =
@@ -104,24 +105,24 @@ export function completedActivitySummary(items: Activity[]) {
         const label =
           (
             {
-              research: "Searched the web",
-              plan: "Worked on a plan",
-              delegation: "Worked with agents",
-              artifact: "Worked with artifacts",
-              context: "Managed context",
-              memory: "Checked memory",
-              model_identity: "Checked model settings",
-              review: "Worked in review mode",
-              hook: "Ran hooks",
-              safety: "Reviewed safety",
-              terminal: "Ran commands",
-              wait: "Waited",
-              verification: "Ran checks",
-              workspace_change: "Worked on files",
-              workspace_file: "Referenced files",
-              resource: "Added resources",
+              research: t("componentsTaskChatCompletedActivitySummary.labels.searchedWeb"),
+              plan: t("componentsTaskChatCompletedActivitySummary.labels.workedOnPlan"),
+              delegation: t("componentsTaskChatCompletedActivitySummary.labels.workedWithAgents"),
+              artifact: t("componentsTaskChatCompletedActivitySummary.labels.workedWithArtifacts"),
+              context: t("componentsTaskChatCompletedActivitySummary.labels.managedContext"),
+              memory: t("componentsTaskChatCompletedActivitySummary.labels.checkedMemory"),
+              model_identity: t("componentsTaskChatCompletedActivitySummary.labels.checkedModelSettings"),
+              review: t("componentsTaskChatCompletedActivitySummary.labels.workedInReviewMode"),
+              hook: t("componentsTaskChatCompletedActivitySummary.labels.ranHooks"),
+              safety: t("componentsTaskChatCompletedActivitySummary.labels.reviewedSafety"),
+              terminal: t("componentsTaskChatCompletedActivitySummary.labels.ranCommands"),
+              wait: t("componentsTaskChatCompletedActivitySummary.labels.waited"),
+              verification: t("componentsTaskChatCompletedActivitySummary.labels.ranChecks"),
+              workspace_change: t("componentsTaskChatCompletedActivitySummary.labels.workedOnFiles"),
+              workspace_file: t("componentsTaskChatCompletedActivitySummary.labels.referencedFiles"),
+              resource: t("componentsTaskChatCompletedActivitySummary.labels.addedResources"),
             } as Record<string, string>
-          )[family] ?? "Used tools";
+          )[family] ?? t("componentsTaskChatCompletedActivitySummary.labels.usedTools");
         add(label, p.icon, order);
       }
     }
@@ -131,12 +132,12 @@ export function completedActivitySummary(items: Activity[]) {
       ?? notices.find((notice) => notice.severity === "warning")
       ?? notices[0]!;
     const label = notices.length === 1
-      ? strongest.summary || "Received a provider update"
+      ? strongest.summary || t("componentsTaskChatCompletedActivitySummary.labels.receivedProviderUpdate")
       : strongest.severity === "error"
-        ? "Provider error reported"
+        ? t("componentsTaskChatCompletedActivitySummary.labels.providerError")
         : strongest.severity === "warning"
-          ? "Provider warning reported"
-          : "Received provider updates";
+          ? t("componentsTaskChatCompletedActivitySummary.labels.providerWarning")
+          : t("componentsTaskChatCompletedActivitySummary.labels.receivedProviderUpdates");
     // One notice category leaves room for actual work. Keep warnings and errors
     // visible when the compact label truncates other activity categories.
     add(label, strongest.icon, strongest.severity === "info" ? notices[0]!.order : -1);
@@ -149,9 +150,9 @@ export function completedActivitySummary(items: Activity[]) {
     const succeeded = completedFamilies.has(tool.family);
     const label =
       tool.family === "read" && !succeeded
-        ? "Checked files"
+        ? t("componentsTaskChatCompletedActivitySummary.labels.checkedFiles")
         : tool.family === "edit" && !succeeded
-          ? "Worked on files"
+          ? t("componentsTaskChatCompletedActivitySummary.labels.workedOnFiles")
           : labels[tool.family];
     add(label, tool.icon, tool.order);
   }
@@ -162,10 +163,10 @@ export function completedActivitySummary(items: Activity[]) {
   }
   if (!categories.size) {
     if (items.some((item) => item.kind === "thinking"))
-      add("Thought through the task", Brain);
+      add(t("componentsTaskChatCompletedActivitySummary.labels.thoughtThrough"), Brain);
     else if (items.some((item) => item.kind === "marker"))
-      add("Activity stopped", CirclePause);
-    else add("Recorded usage", Gauge);
+      add(t("componentsTaskChatCompletedActivitySummary.labels.activityStopped"), CirclePause);
+    else add(t("componentsTaskChatCompletedActivitySummary.labels.recordedUsage"), Gauge);
   }
   const values = [...categories.values()].sort((a, b) => a.order - b.order);
   const join = (parts: string[]) =>
@@ -176,7 +177,7 @@ export function completedActivitySummary(items: Activity[]) {
   return {
     label:
       values.length > 3
-        ? `${join(values.slice(0, 2).map((v) => v.label))}, and more`
+        ? t("componentsTaskChatCompletedActivitySummary.andMore", { labels: join(values.slice(0, 2).map((v) => v.label)) })
         : fullLabel,
     fullLabel,
     icon: values.length === 1 ? values[0].icon : Layers3,

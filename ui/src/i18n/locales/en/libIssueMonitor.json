@@ -1,0 +1,12 @@
+{
+  "todayAt": "Today, {{time}}",
+  "eta": {
+    "in": "in {{duration}}",
+    "dueNow": "due now",
+    "overdueBy": "overdue by {{duration}}"
+  },
+  "offset": {
+    "now": "now",
+    "ago": "{{duration}} ago"
+  }
+}

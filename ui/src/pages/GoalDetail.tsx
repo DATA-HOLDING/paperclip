@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, SlidersHorizontal } from "lucide-react";
 import type { Goal, Project } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 interface GoalPropertiesToggleButtonProps {
   panelVisible: boolean;
@@ -40,7 +41,7 @@ export function GoalPropertiesToggleButton({
         panelVisible ? "opacity-0 pointer-events-none w-0 overflow-hidden" : "opacity-100",
       )}
       onClick={onShowProperties}
-      title="Show properties"
+      title={t("pagesGoalDetail.showProperties")}
     >
       <SlidersHorizontal className="h-4 w-4" />
     </Button>
@@ -97,7 +98,7 @@ export function GoalDetail() {
 
   const uploadImage = useMutation({
     mutationFn: async (file: File) => {
-      if (!resolvedCompanyId) throw new Error("No organization selected");
+      if (!resolvedCompanyId) throw new Error(t("pagesGoalDetail.noOrganization"));
       return assetsApi.uploadImage(
         resolvedCompanyId,
         file,
@@ -116,8 +117,8 @@ export function GoalDetail() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Goals", href: "/goals" },
-      { label: goal?.title ?? goalId ?? "Goal" }
+      { label: t("pagesGoalDetail.breadcrumbs.goals"), href: "/goals" },
+      { label: goal?.title ?? goalId ?? t("pagesGoalDetail.breadcrumbs.goal") }
     ]);
   }, [setBreadcrumbs, goal, goalId]);
 
@@ -135,7 +136,7 @@ export function GoalDetail() {
 
   if (isLoading || goalView.kind === "reconnecting") return <PageSkeleton variant="detail" />;
   if (goalView.kind === "error") {
-    return <QueryErrorState size="page" error={error} action="load this goal" onRetry={goalView.retry} retrying={goalView.isFetching} />;
+    return <QueryErrorState size="page" error={error} action={t("pagesGoalDetail.errorActions.loadGoal")} onRetry={goalView.retry} retrying={goalView.isFetching} />;
   }
   if (!goal) return null;
 
@@ -167,7 +168,7 @@ export function GoalDetail() {
           onSave={(description) => updateGoal.mutate({ description })}
           as="p"
           className="text-sm text-muted-foreground"
-          placeholder="Add a description..."
+          placeholder={t("pagesGoalDetail.descriptionPlaceholder")}
           multiline
           imageUploadHandler={async (file) => {
             const asset = await uploadImage.mutateAsync(file);
@@ -179,10 +180,10 @@ export function GoalDetail() {
       <Tabs defaultValue="children">
         <TabsList>
           <TabsTrigger value="children">
-            Sub-Goals ({childGoals.length})
+            {t("pagesGoalDetail.tabs.subGoals", { count: childGoals.length })}
           </TabsTrigger>
           <TabsTrigger value="projects">
-            Projects ({linkedProjects.length})
+            {t("pagesGoalDetail.tabs.projects", { count: linkedProjects.length })}
           </TabsTrigger>
         </TabsList>
 
@@ -194,11 +195,11 @@ export function GoalDetail() {
               onClick={() => openNewGoal({ parentId: goalId })}
             >
               <Plus className="h-3.5 w-3.5 mr-1.5" />
-              Sub Goal
+              {t("pagesGoalDetail.addSubGoal")}
             </Button>
           </div>
           {childGoals.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No sub-goals.</p>
+            <p className="text-sm text-muted-foreground">{t("pagesGoalDetail.noSubGoals")}</p>
           ) : (
             <GoalTree goals={childGoals} goalLink={(g) => `/goals/${g.id}`} />
           )}
@@ -206,7 +207,7 @@ export function GoalDetail() {
 
         <TabsContent value="projects" className="mt-4">
           {linkedProjects.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No linked projects.</p>
+            <p className="text-sm text-muted-foreground">{t("pagesGoalDetail.noProjects")}</p>
           ) : (
             <div className="border border-border">
               {linkedProjects.map((project) => (

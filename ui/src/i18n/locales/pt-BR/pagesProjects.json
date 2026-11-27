@@ -1,0 +1,15 @@
+{
+  "breadcrumb": "Projetos",
+  "selectOrganization": "Selecione uma organização para ver os projetos.",
+  "loadAction": "carregar os projetos",
+  "empty": "Nenhum projeto ainda.",
+  "create": "Criar projeto",
+  "noMatch": "Nenhum projeto corresponde à sua busca.",
+  "myProjects": "Meus projetos",
+  "otherProjects": "Outros projetos",
+  "projectCount_one": "{{count}} projeto",
+  "projectCount_other": "{{count}} projetos",
+  "privateProject": "Projeto privado",
+  "taskCount_one": "{{formatted}} tarefa",
+  "taskCount_other": "{{formatted}} tarefas"
+}

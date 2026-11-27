@@ -1,0 +1,6 @@
+{
+  "lineSuffix": " line {{line}}",
+  "lineColumnSuffix": " line {{line}} column {{column}}",
+  "openInViewer": "Open {{path}}{{suffix}} in the file viewer",
+  "workspaceFile": "Workspace file {{path}}{{suffix}}"
+}

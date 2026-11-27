@@ -1,0 +1,13 @@
+{
+  "reconnecting": "Reconnecting to Paperclip",
+  "unableToLoad": "Unable to load Paperclip",
+  "reconnectingDescription": "The server may be restarting or your connection was interrupted. We’ll try again every few seconds and reconnect automatically.",
+  "unableDescription": "We couldn’t check your access to this instance. Try again, or contact your instance administrator if this continues.",
+  "connecting": "Connecting…",
+  "tryAgain": "Try again",
+  "noAccess": {
+    "title": "No organization access",
+    "description": "This account is signed in, but it does not have an active organization membership or instance-admin access on this Paperclip instance.",
+    "hint": "Use an organization invite or sign in with an account that already belongs to this org."
+  }
+}

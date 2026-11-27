@@ -1,0 +1,16 @@
+{
+  "title": "GitHub conectado",
+  "access": {
+    "unavailable": "Acesso aos repositórios indisponível",
+    "label": "Acesso aos repositórios",
+    "none": "Nenhum repositório ativado",
+    "enabled_one": "{{count}} repositório ativado",
+    "enabled_other": "{{count}} repositórios ativados"
+  },
+  "beforeFirstReview": "Antes da primeira revisão",
+  "tryTitle": "Teste seu bot",
+  "tryEnable": "Ative um repositório em Acesso para testar seu bot.",
+  "tryPost": "Publique isto em um pull request de um repositório ativado.",
+  "copyMention": "Copiar menção",
+  "done": "Concluir"
+}

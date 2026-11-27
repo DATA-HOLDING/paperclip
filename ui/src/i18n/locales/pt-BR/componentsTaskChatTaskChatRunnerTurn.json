@@ -1,0 +1,12 @@
+{
+  "status": {
+    "stopped": "Parou",
+    "worked": "Trabalhou",
+    "working": "Trabalhando",
+    "after": "depois de {{elapsed}}",
+    "for": "por {{elapsed}}"
+  },
+  "continuedAfterSteering": "Continuou após o redirecionamento",
+  "thinking": "Pensando",
+  "activityUnavailable": "A atividade do runner ao vivo está indisponível no momento. Tentando de novo…"
+}

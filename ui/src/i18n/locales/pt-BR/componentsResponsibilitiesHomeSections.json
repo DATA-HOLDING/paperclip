@@ -1,0 +1,22 @@
+{
+  "notInArea": "Fora de uma área",
+  "archivedSuffix": "· Arquivada",
+  "moreForArea": "Mais opções da área {{area}}",
+  "restoreArea": "Restaurar área",
+  "addHere": "Adicionar uma responsabilidade aqui",
+  "renameArea": "Renomear área",
+  "archiveArea": "Arquivar área…",
+  "moreAreas_one": "Mais 1 área na organização",
+  "moreAreas_other": "Mais {{count}} áreas na organização",
+  "otherAreasHint": "Áreas importantes para a organização em que você ainda não é responsável por nada.",
+  "newTaskAriaLabel": "Nova tarefa para um agente: {{text}}",
+  "newTask": "Nova tarefa para um agente",
+  "needsYou": "Precisa de você",
+  "nothingNeedsYou": "Nada precisa de você agora. Tudo pelo que você é responsável está no rumo ou tranquilo.",
+  "itemsSr_one": " item",
+  "itemsSr_other": " itens",
+  "needsYouHint": "O que está travando suas responsabilidades. Passe qualquer item para um agente.",
+  "runningWithoutYou": "Funcionando sem você",
+  "runningHint": "O que agentes e rotinas estão fazendo nas suas responsabilidades.",
+  "runningEmpty": "Nada está funcionando sem você ainda. Passe uma tarefa, uma rotina ou um projeto para um agente para começar."
+}

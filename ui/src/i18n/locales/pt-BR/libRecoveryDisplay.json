@@ -1,0 +1,10 @@
+{
+  "chip": {
+    "needed": "Recuperação necessária",
+    "inProgress": "Recuperação em andamento",
+    "observeOnly": "Observando execução ativa",
+    "escalated": "Recuperação escalada"
+  },
+  "workspaceRecoveryNeeded": "Recuperação do espaço de trabalho necessária",
+  "inProgressAttempt": "Recuperação em andamento · {{attempt}}/{{max}}"
+}

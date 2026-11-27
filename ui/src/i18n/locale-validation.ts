@@ -68,7 +68,13 @@ function validateString(path: string[], candidateValue: string, englishValue: st
   }
 }
 
-function validateNode(path: string[], candidate: unknown, englishReference: unknown, errors: string[]) {
+function validateNode(
+  path: string[],
+  candidate: unknown,
+  englishReference: unknown,
+  errors: string[],
+  requireComplete: boolean,
+) {
   if (typeof englishReference === "string") {
     if (typeof candidate !== "string") {
       errors.push(`${formatPath(path)} must be a string`);
@@ -93,8 +99,13 @@ function validateNode(path: string[], candidate: unknown, englishReference: unkn
   const missingKeys = englishKeys.filter((key) => !candidateKeys.includes(key));
   const extraKeys = candidateKeys.filter((key) => !englishKeys.includes(key));
 
-  for (const key of missingKeys) {
-    errors.push(`${formatPath([...path, key])} is missing`);
+  // A translation may be partial: a missing key falls back to English at
+  // runtime (i18next `fallbackLng`). Only callers that need a complete
+  // catalog ask for the missing keys.
+  if (requireComplete) {
+    for (const key of missingKeys) {
+      errors.push(`${formatPath([...path, key])} is missing`);
+    }
   }
   for (const key of extraKeys) {
     errors.push(`${formatPath([...path, key])} is not defined in English`);
@@ -102,19 +113,33 @@ function validateNode(path: string[], candidate: unknown, englishReference: unkn
 
   for (const key of englishKeys) {
     if (key in candidate) {
-      validateNode([...path, key], candidate[key], englishReference[key], errors);
+      validateNode([...path, key], candidate[key], englishReference[key], errors, requireComplete);
     }
   }
 }
 
-export function validateLocaleMessages(candidate: unknown, englishReference: unknown = en) {
+export interface LocaleValidationOptions {
+  /** Report English keys the candidate does not translate. Off by default:
+   * partial catalogs are valid and fall back to English. */
+  requireComplete?: boolean;
+}
+
+export function validateLocaleMessages(
+  candidate: unknown,
+  englishReference: unknown = en,
+  { requireComplete = false }: LocaleValidationOptions = {},
+) {
   const errors: string[] = [];
-  validateNode([], candidate, englishReference, errors);
+  validateNode([], candidate, englishReference, errors, requireComplete);
   return errors;
 }
 
-export function assertValidLocaleMessages(candidate: unknown, englishReference: unknown = en) {
-  const errors = validateLocaleMessages(candidate, englishReference);
+export function assertValidLocaleMessages(
+  candidate: unknown,
+  englishReference: unknown = en,
+  options: LocaleValidationOptions = {},
+) {
+  const errors = validateLocaleMessages(candidate, englishReference, options);
   if (errors.length > 0) {
     throw new Error(`Invalid locale messages:\n${errors.join("\n")}`);
   }

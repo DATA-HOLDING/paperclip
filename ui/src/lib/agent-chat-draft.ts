@@ -1,4 +1,5 @@
 import type { Agent, Issue, IssueWorkMode } from "@paperclipai/shared";
+import { t } from "@/i18n";
 /** Ephemeral view model; never persisted until first send or upload. */
 export function agentChatDraft(
   agent: Agent,
@@ -7,7 +8,7 @@ export function agentChatDraft(
   return {
     id: `chat:${agent.id}`,
     companyId: agent.companyId,
-    title: `Chat with ${agent.name}`,
+    title: t("libAgentChatDraft.title", { name: agent.name }),
     conversationAgentId: agent.id,
     conversationUserId: "draft",
     conversationState: "waiting",

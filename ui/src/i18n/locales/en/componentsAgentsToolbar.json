@@ -1,0 +1,9 @@
+{
+  "ariaLabel": "Agents controls",
+  "searchLabel": "Search agents",
+  "searchPlaceholder": "Search agents…",
+  "viewGroupLabel": "Agent view",
+  "listView": "List view",
+  "orgChartView": "Org chart view",
+  "newAgent": "New Agent"
+}

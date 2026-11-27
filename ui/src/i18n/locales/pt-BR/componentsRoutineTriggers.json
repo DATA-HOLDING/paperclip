@@ -1,0 +1,80 @@
+{
+  "urlWarning": {
+    "loopback": {
+      "title": "Outros apps não conseguem acessar esta URL localhost",
+      "message": "Este endereço aponta de volta para a máquina que envia a requisição. Serviços como o GitHub não conseguem usá-lo para acessar o Paperclip no seu computador."
+    },
+    "private": {
+      "title": "Esta URL de webhook parece ser privada",
+      "message": "Só remetentes com acesso a esta rede conseguem acessar este endereço. Apps na internet pública, como o GitHub, geralmente não conseguem entregar webhooks aqui."
+    },
+    "tailscale": {
+      "title": "Esta URL do Tailscale pode não ser pública",
+      "message": "O Tailscale Serve é privado à sua tailnet, mesmo com HTTPS. Apps fora da sua tailnet precisam do Tailscale Funnel ou de outro endereço HTTPS público. Se o Funnel já estiver ativado para esta URL, você pode continuar."
+    },
+    "https": {
+      "title": "Use HTTPS para webhooks de outros apps",
+      "message": "Esta URL usa HTTP. Muitos apps exigem HTTPS, e o HTTP não criptografa as credenciais nem os payloads do webhook."
+    },
+    "invalid": {
+      "title": "Confira a URL do webhook",
+      "message": "Esta não é uma URL HTTP ou HTTPS válida. O app remetente precisa de um endereço completo que ele consiga acessar."
+    },
+    "continueNote": "Você pode continuar para uso local ou em rede privada. Para remetentes públicos, use uma URL HTTPS acessível publicamente.",
+    "learnHttps": "Saiba como configurar HTTPS e acesso público"
+  },
+  "instructions": {
+    "connect": "Conecte o app remetente à rotina do Paperclip {{title}}.",
+    "webhookUrl": "URL do webhook: {{url}}",
+    "sendPost": "Envie uma requisição HTTP POST com um objeto JSON no corpo (não um array nem uma string).",
+    "github": {
+      "open": "No GitHub, abra seu repositório → Settings → Webhooks → Add webhook.",
+      "payloadUrl": "Use a URL do webhook acima como Payload URL e selecione application/json como Content type.",
+      "secret": "Secret: {{secret}}",
+      "pasteSecret": "Cole este valor no campo Secret do GitHub. O GitHub assina as requisições com X-Hub-Signature-256; não use autenticação Bearer.",
+      "selectEvents": "Selecione os eventos que devem iniciar esta rotina, ative o webhook e salve.",
+      "check": "Para conferir a conexão, abra Recent Deliveries e reenvie um evento."
+    },
+    "none": {
+      "noKey": "Este webhook não tem chave. A URL dele é o segredo compartilhado, então mantenha-a privada.",
+      "addWebhook": "No app remetente, adicione um webhook com esta URL, o método POST e corpo JSON, e salve."
+    },
+    "idempotency": "Envie um cabeçalho Idempotency-Key único para cada evento e reutilize-o nas novas tentativas.",
+    "secretKey": "Chave secreta: {{secret}}",
+    "hmac": {
+      "sign": "Assine cada requisição com HMAC-SHA256 usando a chave secreta. A mensagem assinada é o timestamp Unix em segundos, um ponto e o corpo JSON exato.",
+      "headers": "Envie o timestamp em X-Paperclip-Timestamp e a assinatura em X-Paperclip-Signature, no formato sha256=<hex digest>.",
+      "oldTimestamp": "Requisições com timestamp antigo são recusadas, então assine cada requisição no momento do envio. Não use autenticação Bearer."
+    },
+    "app": {
+      "signingSecret": "Se o app pedir um segredo de assinatura, cole a chave secreta acima. O Paperclip aceita HMAC-SHA256 sobre o corpo exato da requisição em {{headers}}, no formato sha256=<hex digest>.",
+      "eitherHeader": "X-Hub-Signature ou X-Hub-Signature-256",
+      "customHeaders": "Para apps com cabeçalhos personalizados, use Authorization: Bearer {{secret}}",
+      "subscribe": "Assine só os eventos que devem iniciar esta rotina. Serviços públicos precisam de uma URL HTTPS acessível publicamente.",
+      "addWebhook": "No app remetente, adicione um webhook com esta URL, o método POST, corpo JSON e os cabeçalhos, e salve.",
+      "idempotency": "Envie um cabeçalho Idempotency-Key único para cada evento e reutilize-o nas novas tentativas, para que repetir um teste de configuração depois da ativação não inicie a rotina.",
+      "example": "Exemplo de corpo JSON: {{example}}",
+      "check": "Para conferir a conexão, envie um evento de teste pelo app ou faça a ação que dispara uma entrega."
+    },
+    "arrived": "O webhook no Paperclip mostra se o evento chegou e se a autenticação passou.",
+    "pending": {
+      "test": "Durante a configuração, as entregas só testam a conexão. Elas não iniciam a rotina nem criam tarefa.",
+      "finish": "Conclua no Paperclip para ativar este webhook para os próximos eventos. Os eventos de teste não são repetidos."
+    },
+    "enabled": "Este webhook está ativado. As entregas podem iniciar a rotina e criar tarefas.",
+    "storeUrl": "Guarde a URL com segurança; não a coloque no controle de código nem em logs.",
+    "storeKey": "Guarde a chave com segurança; não a coloque no controle de código nem em logs."
+  },
+  "fields": {
+    "copyLabel": "Copiar {{label}}",
+    "copied": "Copiado",
+    "copy": "Copiar",
+    "copyFailed": "Não foi possível copiar. Selecione e copie o texto abaixo.",
+    "textLabel": "Texto de {{label}}",
+    "agentInstructions": "Instruções para o agente",
+    "agentInstructionsDescription": "Dê ao seu agente tudo o que ele precisa para conectar este webhook: a URL, a chave de autenticação e as instruções passo a passo.",
+    "copyForAgent": "Copiar para o seu agente",
+    "webhookSetup": "Configuração do webhook",
+    "webhookSetupDescription": "Cole isto no seu agente para conectar este webhook à sua rotina."
+  }
+}

@@ -1,5 +1,6 @@
 import type { CostByAgent } from "@paperclipai/shared";
 import { Badge } from "./ui/badge";
+import { t } from "@/i18n";
 
 /** Use this group's ledger counts, never the page-wide estimate count. */
 export function CostEstimateLabel({
@@ -12,9 +13,9 @@ export function CostEstimateLabel({
     <Badge
       variant="outline"
       className="font-normal text-muted-foreground"
-      title={`${estimatedEventCount} estimated ${estimatedEventCount === 1 ? "charge" : "charges"}. Calculated from token usage and published rates; provider bills may differ.`}
+      title={t("componentsCostEstimateLabel.title", { count: estimatedEventCount })}
     >
-      {allEstimated ? "Estimated" : "Partially estimated"}
+      {allEstimated ? t("componentsCostEstimateLabel.estimated") : t("componentsCostEstimateLabel.partiallyEstimated")}
     </Badge>
   );
 }

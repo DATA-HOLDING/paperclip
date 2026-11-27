@@ -1,0 +1,17 @@
+{
+  "badges": {
+    "notCreator": {
+      "label": "Qualquer outra pessoa",
+      "description": "Qualquer pessoa, exceto quem pediu a revisão, pode aprová-la."
+    },
+    "humanOnly": {
+      "label": "Só pessoas",
+      "description": "Só uma pessoa pode aprovar esta revisão. Agentes não podem dar o veredito."
+    }
+  },
+  "values": {
+    "anyone": "qualquer pessoa",
+    "notCreator": "qualquer outra pessoa",
+    "humanOnly": "só pessoas"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "issueFallback": "tarefa {{id}}",
+  "effect": {
+    "comment": "Comentar em {{target}}",
+    "create": "Criar “{{title}}”",
+    "setStatus": "Definir {{target}} como {{status}}",
+    "reassign": "Reatribuir {{target}}",
+    "unblock": "Desbloquear {{target}}",
+    "cancelTree": "Cancelar {{target}} e suas subtarefas",
+    "default": "Aplicar efeito"
+  },
+  "required": "Obrigatório",
+  "options": "Opções",
+  "targetChanged": "O alvo mudou",
+  "staleNote": "Um alvo mudou desde que isto foi proposto, então as opções que dependem dele inalterado estão desativadas.",
+  "submitting": "Enviando…",
+  "submit": "Enviar escolha",
+  "loading": "Carregando decisão…",
+  "gone": "Esta decisão não está mais disponível — ela pode ter sido resolvida em outro lugar."
+}

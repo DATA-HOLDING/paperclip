@@ -1,0 +1,415 @@
+{
+  "actionDialog": {
+    "archive": {
+      "title": "Arquivar perfil",
+      "body_one": "Este perfil deixa de se aplicar a {{count}} agente. Você pode restaurá-lo depois.",
+      "body_other": "Este perfil deixa de se aplicar a {{count}} agentes. Você pode restaurá-lo depois.",
+      "confirm": "Arquivar"
+    },
+    "restore": {
+      "title": "Restaurar perfil",
+      "body": "Este perfil voltará a ficar ativo e poderá ser atribuído a agentes.",
+      "confirm": "Restaurar"
+    },
+    "delete": {
+      "title": "Excluir perfil",
+      "defaultBlockedBody": "Este perfil é o padrão da organização. Defina outro perfil como padrão da organização antes de excluí-lo.",
+      "body_one": "Isto exclui o perfil permanentemente e remove {{count}} atribuição.",
+      "body_other": "Isto exclui o perfil permanentemente e remove {{count}} atribuições.",
+      "confirm": "Excluir",
+      "defaultBlockedHint": "Escolha outro perfil de acesso e torne-o o padrão da organização primeiro."
+    },
+    "cancel": "Cancelar"
+  },
+  "breadcrumbs": {
+    "company": "Organização",
+    "organization": "Organização",
+    "apps": "Apps",
+    "accessProfiles": "Perfis de acesso",
+    "profileDetail": "Detalhes do perfil",
+    "resumeDraft": "Retomar rascunho",
+    "newProfile": "Novo perfil"
+  },
+  "detailRoute": {
+    "selectOrganizationAndProfile": "Selecione uma organização e um perfil."
+  },
+  "wizardRoute": {
+    "selectOrganization": "Selecione uma organização para criar um perfil.",
+    "titleEdit": "Conclua seu perfil",
+    "titleNew": "Novo perfil de acesso",
+    "subtitle": "Escolha quais ferramentas este perfil permite e depois atribua-o aos agentes que precisam delas."
+  },
+  "adminGate": {
+    "loading": "Carregando…",
+    "checkAccessAction": "verificar seu acesso",
+    "deniedTitle": "Perfis de acesso exigem permissão de edição",
+    "deniedBody": "Os perfis de acesso definem quais ferramentas seus agentes podem usar. Peça a um editor da organização para configurá-los ou volte para",
+    "yourApps": "seus apps"
+  },
+  "summary": {
+    "allTools": "Todas as ferramentas",
+    "allExceptTools_one": "Todas, exceto {{count}} ferramenta",
+    "allExceptTools_other": "Todas, exceto {{count}} ferramentas",
+    "toolCount_one": "{{count}} ferramenta",
+    "toolCount_other": "{{count}} ferramentas",
+    "appCount_one": "{{count}} app",
+    "appCount_other": "{{count}} apps",
+    "organizationDefault": "Padrão da organização",
+    "agentCount_one": "{{count}} agente",
+    "agentCount_other": "{{count}} agentes",
+    "assignmentCount_one": "{{count}} atribuição",
+    "assignmentCount_other": "{{count}} atribuições",
+    "notAssignedYet": "Ainda não atribuído"
+  },
+  "status": {
+    "draft": "Rascunho",
+    "active": "Ativo",
+    "disabled": "Desligado",
+    "archived": "Arquivado"
+  },
+  "capability": {
+    "read": "Somente leitura",
+    "write": "Faz alterações",
+    "destructive": "Destrutiva"
+  },
+  "model": {
+    "toolsFallbackName": "Ferramentas",
+    "noneSelected": "Nenhuma selecionada",
+    "allAppTools": "Todas as ferramentas de {{name}} ({{total}})",
+    "allAppExcept": "Todas de {{name}}, exceto {{excluded}}",
+    "someAppTools": "{{selected}} de {{total}} ferramentas de {{name}}"
+  },
+  "templates": {
+    "readOnly": {
+      "title": "Somente leitura",
+      "description": "Ver e buscar, mas nunca alterar nada."
+    },
+    "everyday": {
+      "title": "Trabalho do dia a dia",
+      "description": "Ler e fazer alterações de rotina — sem ferramentas destrutivas."
+    },
+    "fullAccess": {
+      "title": "Acesso total",
+      "description": "Tudo o que cada app conectado oferece."
+    },
+    "scratch": {
+      "title": "Começar do zero",
+      "description": "Um perfil vazio que você monta ferramenta por ferramenta."
+    },
+    "copy": {
+      "title": "Copiar um perfil existente",
+      "description": "Comece a partir de um perfil que você já tem."
+    }
+  },
+  "index": {
+    "copyName": "{{name}} (cópia)",
+    "toast": {
+      "duplicated": "Perfil duplicado",
+      "duplicatedBody": "A cópia ainda não está atribuída a ninguém.",
+      "duplicateFailed": "Não foi possível duplicar",
+      "archived": "Perfil arquivado",
+      "archiveFailed": "Não foi possível arquivar",
+      "restored": "Perfil restaurado",
+      "restoreFailed": "Não foi possível restaurar",
+      "deleted": "Perfil excluído",
+      "deleteFailed": "Não foi possível excluir"
+    },
+    "title": "Perfis de acesso",
+    "description": "Defina quais ferramentas seus agentes podem usar. Monte um perfil uma vez e atribua-o aos agentes que precisam dele.",
+    "checkAgentAccess": "Verificar o acesso de um agente",
+    "newProfile": "Novo perfil",
+    "resolverDescription": "Veja exatamente quais ferramentas um agente pode usar agora e qual perfil permite cada uma.",
+    "loading": "Carregando perfis…",
+    "loadAction": "carregar os perfis",
+    "filterActive": "Ativos",
+    "filterArchived": "Arquivados",
+    "noArchived": "Nenhum perfil arquivado.",
+    "columns": {
+      "profile": "Perfil",
+      "allows": "Permite",
+      "assignedTo": "Atribuído a",
+      "status": "Status",
+      "updated": "Atualizado"
+    },
+    "newToolsBadge": "{{pending}} novas",
+    "unassignedHint": "— não altera o acesso",
+    "resume": "Retomar",
+    "menu": {
+      "label": "Ações do perfil",
+      "edit": "Editar",
+      "duplicate": "Duplicar",
+      "restore": "Restaurar",
+      "archive": "Arquivar",
+      "delete": "Excluir"
+    },
+    "empty": {
+      "title": "Crie seu primeiro perfil de acesso",
+      "body": "Escolha um ponto de partida. Você pode ajustar exatamente quais ferramentas ele permite no próximo passo."
+    }
+  },
+  "detail": {
+    "toast": {
+      "updated": "Perfil atualizado",
+      "updateFailed": "Não foi possível atualizar o perfil",
+      "duplicated": "Perfil duplicado",
+      "duplicatedBody": "A cópia ainda não está atribuída a ninguém.",
+      "duplicateFailed": "Não foi possível duplicar",
+      "deleted": "Perfil excluído",
+      "deleteFailed": "Não foi possível excluir",
+      "assignmentRemoved": "Atribuição removida",
+      "removeAssignmentFailed": "Não foi possível remover a atribuição",
+      "newToolsReviewed": "Novas ferramentas revisadas",
+      "reviewFailed": "Não foi possível enviar a revisão"
+    },
+    "loading": "Carregando perfil...",
+    "loadAction": "carregar o perfil",
+    "notFound": {
+      "title": "Perfil não encontrado",
+      "description": "Este perfil de acesso pode ter sido excluído."
+    },
+    "backToProfiles": "Voltar aos perfis",
+    "noDescription": "Nenhuma descrição ainda.",
+    "actions": {
+      "edit": "Editar",
+      "duplicate": "Duplicar",
+      "restore": "Restaurar",
+      "archive": "Arquivar",
+      "delete": "Excluir"
+    },
+    "updated": "Atualizado",
+    "created": {
+      "title": "Perfil salvo",
+      "unassigned": "Atribua-o a agentes para que ele altere o acesso deles.",
+      "assigned": "As atribuições já estão ativas.",
+      "dismiss": "Dispensar"
+    },
+    "assign": "Atribuir",
+    "archivedNotice": "Este perfil está arquivado. Ele não se aplica aos agentes até ser restaurado.",
+    "sections": {
+      "allows": "O que ele permite",
+      "assignments": "Quem o tem",
+      "newTools": "Novas ferramentas que surgirem depois"
+    },
+    "editTools": "Editar ferramentas",
+    "checkAgent": "Verificar o que um agente realmente pode fazer",
+    "banner": {
+      "needsReview": "Novas ferramentas precisam de revisão",
+      "added_one": "{{app}} adicionou {{count}} nova ferramenta desde sua última revisão",
+      "added_other": "{{app}} adicionou {{count}} novas ferramentas desde sua última revisão",
+      "body": "Escolha quais delas este perfil deve permitir.",
+      "review": "Revisar"
+    },
+    "review": {
+      "title": "Revisar novas ferramentas",
+      "description": "Permita as ferramentas que este perfil deve usar. Mantenha o resto bloqueado.",
+      "loading": "Carregando novas ferramentas...",
+      "loadAction": "carregar as novas ferramentas",
+      "empty": "Não há novas ferramentas aguardando revisão.",
+      "appToolFallback": "Ferramenta de app",
+      "addedOn": "adicionada em {{date}}",
+      "allow": "Permitir",
+      "keepBlocked": "Manter bloqueada",
+      "submit": "Enviar revisão"
+    },
+    "cancel": "Cancelar",
+    "allowList": {
+      "empty": "Este perfil permite 0 ferramentas. Agentes que só tiverem este perfil não poderão usar ferramentas de apps.",
+      "columns": {
+        "tool": "Ferramenta",
+        "app": "App",
+        "capabilities": "Capacidades",
+        "source": "Origem"
+      },
+      "reconnect": "Reconectar",
+      "disconnected": "{{app}} está desconectado",
+      "addedAutomatically": "adicionada automaticamente · {{date}}",
+      "showing": "Mostrando 80 de {{total}} ferramentas permitidas.",
+      "allows": "Permite {{allowed}} de {{total}} ferramentas conhecidas."
+    },
+    "assignments": {
+      "emptyTitle": "Ainda não atribuído",
+      "emptyBody": "Atribua este perfil para que ele altere o acesso.",
+      "organizationInitials": "Or",
+      "remove": "Remover"
+    },
+    "newToolsSetting": {
+      "deny": {
+        "title": "Ficam bloqueadas até a revisão",
+        "body": "Novas ferramentas não ficam disponíveis automaticamente."
+      },
+      "allow": {
+        "title": "Permitidas automaticamente",
+        "body": "Novas ferramentas dos apps selecionados ficam disponíveis na hora."
+      }
+    },
+    "duplicateDialog": {
+      "defaultName": "{{name}} cópia",
+      "title": "Duplicar perfil",
+      "description": "A cópia começa sem atribuições, a menos que você escolha copiá-las também.",
+      "copyAssignments": "Copiar também as atribuições?",
+      "confirm": "Duplicar"
+    },
+    "editDialog": {
+      "title": "Editar perfil",
+      "description": "Atualize o nome e a descrição do perfil.",
+      "save": "Salvar"
+    },
+    "fields": {
+      "name": "Nome",
+      "duplicateName": "Outro perfil já usa este nome.",
+      "description": "Descrição",
+      "advanced": "Avançado",
+      "identifier": "Identificador"
+    },
+    "removeDialog": {
+      "title": "Remover atribuição",
+      "organizationDefault": "Remover o padrão da organização altera o acesso de todos os agentes que dependem dele.",
+      "body": "Remover este perfil de {{label}}.",
+      "confirm": "Remover"
+    },
+    "unknownApp": "App desconhecido",
+    "source": {
+      "addedDirectly": "adicionada diretamente",
+      "ruleAllApp": "adicionada por regra: tudo de {{app}}",
+      "ruleRiskLevel": "adicionada por regra: ferramentas {{riskLevel}}"
+    },
+    "capability": {
+      "destructive": "Destrutiva",
+      "write": "Escrita",
+      "read": "Leitura"
+    },
+    "appLabel": {
+      "anApp": "Um app",
+      "two": "{{first}} e {{second}}",
+      "more": "{{first}} e mais {{more}} apps"
+    },
+    "assignmentLabel": {
+      "organizationDefault": "Padrão da organização",
+      "unknownAgent": "Agente desconhecido",
+      "unknownProject": "Projeto desconhecido",
+      "unknownRoutine": "Rotina desconhecida",
+      "organization": "Organização"
+    },
+    "assignmentType": {
+      "organizationDefault": "Padrão da organização",
+      "agent": "Agente",
+      "project": "Projeto",
+      "routine": "Rotina",
+      "scoped": "Atribuição com escopo"
+    }
+  },
+  "wizard": {
+    "steps": {
+      "name": "Nome",
+      "chooseTools": "Escolher ferramentas",
+      "assign": "Atribuir"
+    },
+    "untitledProfile": "Perfil sem nome",
+    "toast": {
+      "saveFailed": "Não foi possível salvar",
+      "saved": "Perfil salvo",
+      "saveProfileFailed": "Não foi possível salvar o perfil",
+      "draftSaved": "Rascunho salvo",
+      "draftSavedBody": "Retome-o pela lista de perfis."
+    },
+    "loadingDraft": "Carregando rascunho…",
+    "footer": {
+      "allowsBefore": "Permite",
+      "allowsAfter": "de {{total}} ferramentas",
+      "saveAndFinishLater": "Salvar e concluir depois",
+      "back": "Voltar",
+      "cancel": "Cancelar",
+      "continue": "Continuar",
+      "saveProfile": "Salvar perfil"
+    },
+    "stepName": {
+      "startFrom": "Começar a partir de",
+      "whichProfile": "Qual perfil?",
+      "noProfileToCopy": "Você ainda não tem outro perfil para copiar.",
+      "name": "Nome",
+      "namePlaceholder": "ex.: Trabalho do dia a dia",
+      "description": "Descrição (opcional)",
+      "descriptionPlaceholder": "Para que serve este perfil?",
+      "advanced": "Avançado",
+      "identifier": "Identificador",
+      "identifierHint": "Usado nas exportações e na API. Preenchido automaticamente a partir do nome."
+    },
+    "stepAssign": {
+      "makeDefault": "Tornar este o padrão da organização",
+      "makeDefaultHint": "Todo agente sem perfil próprio usa este.",
+      "replaces": "Substitui “{{name}}”.",
+      "assignToAgents": "Atribuir a agentes",
+      "organizationDefault": "padrão da organização",
+      "alreadyHas": "já tem: {{profiles}}",
+      "noProfilesYet": "nenhum perfil ainda",
+      "severalProfilesHint": "Se um agente tiver vários perfis, ele pode usar tudo o que qualquer um deles permite.",
+      "moreTargets": "Mais destinos",
+      "moreTargetsHint": "Atribua este perfil a um projeto inteiro ou a uma rotina agendada em vez de (ou além de) agentes individuais.",
+      "projects": "Projetos",
+      "routines": "Rotinas"
+    }
+  },
+  "toolsStep": {
+    "loading": "Carregando ferramentas…",
+    "empty": {
+      "title": "As conexões de apps chegam em breve",
+      "body": "Os perfis ficarão disponíveis quando as conexões de apps estiverem prontas. Enquanto isso, veja as integrações planejadas.",
+      "browse": "Ver conexões de apps"
+    },
+    "searchPlaceholder": "Buscar ferramentas…",
+    "noMatch": "Nenhuma ferramenta corresponde a “{{search}}”.",
+    "clearSearch": "Limpar busca",
+    "appRow": {
+      "allToolsAria": "Todas as ferramentas de {{name}}",
+      "allTools": "Todas as ferramentas de {{name}} ({{total}})",
+      "includesLater": "inclui as ferramentas que {{name}} adicionar depois"
+    },
+    "newTools": {
+      "deny": {
+        "label": "Ficam bloqueadas até alguém permiti-las",
+        "hint": "Novas ferramentas que um app adicionar depois não poderão ser usadas até você revisá-las."
+      },
+      "allow": {
+        "label": "Permitidas automaticamente",
+        "hint": "Qualquer ferramenta que um app adicionar depois pode ser usada na hora."
+      },
+      "legend": "Novas ferramentas que surgirem depois",
+      "recommended": "Recomendado",
+      "risky": "(arriscado)"
+    },
+    "rules": {
+      "kind": {
+        "toolName": "Padrão de nome da ferramenta",
+        "riskLevel": "Nível de risco",
+        "catalogEntry": "Por ID da ferramenta"
+      },
+      "summary": {
+        "allow": {
+          "toolName": "Permitir ferramentas que correspondem a {{value}}",
+          "riskLevel": "Permitir ferramentas {{value}}",
+          "catalogEntry": "Permitir a ferramenta {{value}}"
+        },
+        "block": {
+          "toolName": "Bloquear ferramentas que correspondem a {{value}}",
+          "riskLevel": "Bloquear ferramentas {{value}}",
+          "catalogEntry": "Bloquear a ferramenta {{value}}"
+        }
+      },
+      "title": "Regras avançadas",
+      "description": "Encontre ferramentas por um padrão de nome, um nível de risco ou um ID de ferramenta específico. Estas regras se aplicam sobre as escolhas acima.",
+      "remove": "Remover regra",
+      "effect": {
+        "include": "Permitir",
+        "exclude": "Bloquear"
+      },
+      "risk": {
+        "read": "Somente leitura",
+        "write": "Faz alterações",
+        "destructive": "Destrutiva"
+      },
+      "patternPlaceholder": "ex.: gmail.send*",
+      "toolIdPlaceholder": "ID da ferramenta",
+      "add": "Adicionar regra"
+    }
+  }
+}

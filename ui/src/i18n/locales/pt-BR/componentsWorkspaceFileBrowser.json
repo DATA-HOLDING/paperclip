@@ -1,0 +1,71 @@
+{
+  "unavailable": {
+    "remote": {
+      "title": "Prévia de espaço de trabalho remoto não suportada",
+      "body": "Este espaço de trabalho está hospedado remotamente e ainda não pode ser visualizado aqui."
+    },
+    "none": {
+      "title": "Nenhum espaço de trabalho ainda",
+      "body": "Esta tarefa não tem um espaço de trabalho para navegar. Os arquivos aparecem aqui quando uma execução criar um."
+    },
+    "cleaned": {
+      "title": "O espaço de trabalho não está mais disponível",
+      "body": "A worktree isolada desta tarefa foi limpa, então os arquivos não podem ser visualizados."
+    },
+    "generic": {
+      "title": "Espaço de trabalho indisponível",
+      "body": "Não é possível navegar por estes arquivos do espaço de trabalho agora."
+    }
+  },
+  "currentFolder": "Pasta atual",
+  "download": "Baixar {{name}}",
+  "loadingFolder": "Carregando pasta…",
+  "loadMore": "Carregar mais desta pasta",
+  "tree": "Arquivos do espaço de trabalho",
+  "announce": {
+    "loading": "Carregando arquivos do espaço de trabalho…",
+    "error": "Não foi possível carregar os arquivos do espaço de trabalho.",
+    "noMatches": "Nenhum arquivo correspondente.",
+    "found_one": "{{count}} item encontrado.",
+    "found_other": "{{count}} itens encontrados."
+  },
+  "states": {
+    "noOrganization": {
+      "title": "Nenhuma organização selecionada",
+      "body": "Escolha uma organização antes de navegar pelo espaço de trabalho de outro projeto."
+    },
+    "loadingProjects": {
+      "title": "Carregando espaços de trabalho dos projetos",
+      "body": "Os espaços de trabalho registrados aparecerão aqui."
+    },
+    "noProjects": {
+      "title": "Nenhum espaço de trabalho de projeto",
+      "body": "Nenhum projeto desta organização tem um espaço de trabalho registrado para navegar."
+    },
+    "error": {
+      "saturatedTitle": "Arquivos alterados temporariamente indisponíveis",
+      "title": "Não foi possível carregar os arquivos",
+      "saturatedBody": "O Paperclip está limitando as varreduras de espaços de trabalho para manter o servidor responsivo. Tente de novo em instantes.",
+      "notFound": "A navegação no espaço de trabalho não está disponível para esta tarefa.",
+      "loadAction": "carregar os arquivos do espaço de trabalho"
+    },
+    "empty": {
+      "noMatch": "Nenhum arquivo corresponde a “{{query}}”",
+      "noRecent": "Nenhum arquivo alterado recentemente ainda",
+      "body": "Tente buscar por nome ou caminho."
+    }
+  },
+  "retry": "Tentar novamente",
+  "search": {
+    "placeholder": "Buscar arquivos por nome ou caminho…",
+    "label": "Buscar arquivos do espaço de trabalho"
+  },
+  "refresh": "Atualizar arquivos do espaço de trabalho",
+  "source": {
+    "label": "Origem dos arquivos do espaço de trabalho",
+    "live": "Espaço de trabalho ao vivo",
+    "savedCopy": "Cópia salva",
+    "from": "de"
+  },
+  "showingFirst": "Mostrando os primeiros {{shown}} — refine a busca para restringir."
+}

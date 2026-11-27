@@ -1,0 +1,11 @@
+{
+  "label": "Shell Process",
+  "command": {
+    "label": "Command",
+    "placeholder": "e.g. node, python"
+  },
+  "args": {
+    "label": "Args (comma-separated)",
+    "placeholder": "e.g. script.js, --flag"
+  }
+}

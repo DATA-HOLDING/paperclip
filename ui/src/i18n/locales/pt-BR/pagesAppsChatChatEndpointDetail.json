@@ -1,0 +1,264 @@
+{
+  "tabs": {
+    "settings": "Configurações",
+    "access": "Acesso",
+    "reviews": "Revisões",
+    "conversations": "Conversas",
+    "activity": "Atividade"
+  },
+  "lifecycle": {
+    "speko": {
+      "reconnect": "Verifique de novo esta persona de voz e atualize as ferramentas da sessão assinada. As atribuições de tarefas existentes continuam ligadas ao histórico.",
+      "remove": "Faz esta conexão parar de aceitar pedidos por voz. O trabalho aceito e o histórico de tarefas continuam no Paperclip."
+    },
+    "agentmail": {
+      "reconnect": "Reconecte a mesma caixa de entrada de e-mail.",
+      "remove": "Desconecte o e-mail e mantenha o histórico de tarefas."
+    },
+    "imessagePhoton": {
+      "reconnect": "Reconectar verifica o mesmo projeto Photon e a mesma alocação de linha e depois recupera as mensagens perdidas elegíveis.",
+      "remove": "Desconectar arquiva este canal e remove o segredo salvo. Seu projeto Photon, número, assinatura e histórico do Mensagens continuam no Photon."
+    },
+    "slack": {
+      "reconnect": "Reconectar verifica ou substitui as credenciais deste mesmo app do Slack. Não reinstala o app nem muda o workspace ou a participação em canais.",
+      "remove": "O Paperclip arquiva o endpoint, interrompe novas entradas e desativa as credenciais do Slack salvas. Ele não desinstala o app do Slack: o app continua instalado, e o bot continua nos canais, até você removê-los no Slack."
+    },
+    "github": {
+      "reconnect": "Reconectar verifica este mesmo App e instalação e depois atualiza a URL do webhook, o segredo e as configurações de entrega segura. Não reinstala o App nem muda o acesso aos repositórios.",
+      "remove": "O Paperclip arquiva o endpoint, interrompe novas entradas e desativa a chave do App e o segredo do webhook salvos. Ele não desinstala o GitHub App: o App, as instalações e as configurações de webhook continuam até você removê-los ou atualizá-los no GitHub."
+    },
+    "discord": {
+      "reconnect": "Reconectar verifica este mesmo aplicativo do Discord e a instalação no servidor. Não adiciona nem remove o bot do servidor.",
+      "remove": "O Paperclip arquiva o endpoint, encerra a conexão com o Paperclip Gateway e desativa o token do bot salvo. Ele não desinstala o bot: o bot continua no servidor do Discord, e o aplicativo continua no Developer Portal, até você removê-los lá."
+    },
+    "microsoftTeams": {
+      "reconnect": "Reconectar verifica este mesmo app, tenant e identidade de bot da Microsoft. Não envia nem reinstala o app do Teams.",
+      "remove": "O Paperclip arquiva o endpoint, interrompe novas entradas e desativa o segredo do cliente salvo. Ele não desinstala o app do Teams: o registro de app no Entra, o Azure Bot, o app personalizado do Teams e as instalações no Teams continuam até você removê-los na Microsoft."
+    },
+    "telegram": {
+      "reconnect": "Reconectar verifica este mesmo bot do BotFather e atualiza automaticamente o webhook e o menu de comandos do Paperclip.",
+      "remove": "O Paperclip arquiva o endpoint e agenda a remoção definitiva do webhook e do menu de comandos do Telegram. Depois que o Telegram confirma essa limpeza, o Paperclip desativa o token salvo. O bot do BotFather e as participações dele em chats continuam até você removê-los no Telegram."
+    }
+  },
+  "activityKinds": {
+    "delivery": "Entrega recebida",
+    "publication": "Publicação enviada",
+    "action": "Ação do provedor",
+    "health": "Saúde da conexão",
+    "repair": "Reparo da conexão"
+  },
+  "resolution": {
+    "fileInfoUnknown": "O envio do arquivo foi confirmado, mas a notificação no Teams não. Confira o Teams primeiro. Tentar de novo envia só essa notificação, não os bytes do arquivo, e pode criar um cartão duplicado.",
+    "consentUnknown": "O cartão de consentimento pode ter chegado ao Teams. A entrega do arquivo não está confirmada. Cancelar aqui não remove nenhum cartão já enviado.",
+    "uploadUnknown": "O arquivo pode já existir no OneDrive. Cancelar interrompe esta transferência do Paperclip; não apaga os bytes remotos. Envios não podem ser marcados como entregues nem tentados de novo a partir deste estado incerto.",
+    "default": "O Paperclip perdeu a confirmação depois do envio. Confira primeiro a conversa no provedor. Tentar de novo pode criar uma mensagem duplicada."
+  },
+  "lifecycleStatus": {
+    "draft": "A configuração da conexão está incompleta.",
+    "verifying": "A verificação da conexão está em andamento.",
+    "paused": "A conexão está pausada. Retome-a para receber novas mensagens.",
+    "attention": "A conexão precisa de atenção.",
+    "revoked": "O acesso da conexão foi revogado. Reconecte para verificar o acesso.",
+    "archived": "A conexão foi removida do Paperclip."
+  },
+  "health": {
+    "reason": "Motivo",
+    "lastReportedError": "Último erro informado",
+    "lastReportedHealth": "Última saúde informada:",
+    "controls": "Saúde e controles da conexão"
+  },
+  "breadcrumbs": {
+    "connectors": "Conectores",
+    "review": "Revisão"
+  },
+  "loadingConnection": "Carregando a conexão…",
+  "loadAction": "carregar a conexão",
+  "header": {
+    "inSpeko": " no Speko",
+    "emailConnection": "Conexão de e-mail",
+    "chatConnection": "Conexão de chat",
+    "copyNumberAria": "Copiar o número dedicado",
+    "numberCopied": "Número copiado",
+    "numberCopyFailed": "Não foi possível copiar o número. Selecione e copie manualmente.",
+    "copyNumber": "Copiar número",
+    "openSpeko": "Abrir o Speko",
+    "openSlack": "Abrir o Slack",
+    "openSlackConfiguration": "Abrir a configuração do Slack",
+    "continueSetup": "Continuar a configuração"
+  },
+  "voice": {
+    "title": "Acesso privado por voz",
+    "browserCalls": "Chamadas pelo navegador usam o acesso atual à organização do usuário conectado no Paperclip. Cada chamada fica vinculada ao agente e à tarefa selecionados.",
+    "phoneCalls": "Chamadas feitas usam o número de retorno e a autorização que você salvou. Para uma chamada recebida privada, digite no Paperclip, já conectado, o código falado ao telefone e selecione uma tarefa para aprovar essa chamada em andamento. Chamadas recebidas podem iniciar uma nova tarefa de conversa sem login, sob uma política de baixa confiança restrita à tarefa. O modo privado é opcional e exige aprovação antes de acessar tarefas existentes."
+  },
+  "emailAccess": {
+    "loadFailed": "Não foi possível carregar o acesso da conexão.",
+    "loadAction": "carregar o acesso da conexão",
+    "loading": "Carregando o acesso…",
+    "sharedAccount": "Estas configurações valem para a conta do AgentMail salva e para todas as caixas de entrada que a usam."
+  },
+  "settings": {
+    "updateDestinationFailed": "Não foi possível atualizar o destino",
+    "updateFailed": "Não foi possível atualizar as configurações",
+    "photonShared": "Projeto Photon compartilhado · apenas mensagens diretas. Cadastre os remetentes no Photon e vincule as identidades do Mensagens em Acesso. Grupos não podem ser ativados.",
+    "photonDedicated": "Ative cada grupo individualmente. As respostas do agente ficam visíveis para todos no grupo; apenas remetentes autorizados podem iniciar trabalho.",
+    "telegramCommand": "Comando de grupo do Telegram",
+    "telegramPrivacy": "O modo de privacidade padrão do Telegram não entrega menções comuns aos bots. Use este comando para iniciar ou continuar trabalho em grupo, ou responda diretamente a uma mensagem do bot.",
+    "allowedChannels": "Canais permitidos",
+    "destinations": "Destinos",
+    "loadChannelsAction": "carregar os canais",
+    "loadDestinationsAction": "carregar os destinos",
+    "loadingDestinations": "Carregando destinos…",
+    "noDestinations": "Nenhum destino ainda.",
+    "unavailableAtProvider": "Indisponível no provedor",
+    "participants": "Participantes: {{list}}",
+    "enableResource": "Ativar {{label}}",
+    "taskDefaults": "Padrões de tarefa",
+    "inviteToChannel": "Convide {{name}} para um canal para adicioná-lo",
+    "allowDirectMessages": "Permitir mensagens diretas",
+    "discordDirectMessages": "As pessoas também precisam ativar as Mensagens Diretas nas Configurações de Privacidade do servidor do Discord que compartilham.",
+    "requireAtMention": "Exigir @menção nos canais",
+    "requireAtMentionDetail": "Nos canais, exige uma @menção para iniciar uma conversa com este bot. Respostas em conversas existentes e mensagens diretas não exigem @menção. As mensagens diretas precisam estar permitidas acima.",
+    "allowGroupChats": "Permitir chats em grupo",
+    "allowGroupChatsDetail": "O bot pode participar de chats em grupo onde está instalado.",
+    "slackTools": "Ferramentas do Slack"
+  },
+  "access": {
+    "updateFailed": "Não foi possível atualizar o acesso",
+    "createLinkFailed": "Não foi possível criar o vínculo de identidade",
+    "disconnectFailed": "Não foi possível desconectar a conta",
+    "people": "Pessoas",
+    "invitePeople": "Convidar pessoas",
+    "inviteTitle": "Convide pessoas para conversar com {{name}}",
+    "inviteDescription": "Compartilhe estas instruções com alguém do seu workspace do Slack.",
+    "steps": {
+      "send": "Envie",
+      "inSlack": "no Slack.",
+      "openLink": "Abra o link privado do bot e entre no Paperclip para confirmar sua conta do Slack.",
+      "requestAccess": "Se você é novo nesta organização, solicite acesso e aguarde a aprovação de um administrador."
+    },
+    "linkExpires": "O link de confirmação é pessoal e expira em 15 minutos.",
+    "copyCommandFailed": "Não foi possível copiar o comando",
+    "copied": "Copiado",
+    "copyCommand": "Copiar comando",
+    "invitationText": "Converse com {{name}} no Slack: {{workspace}}\nEnvie {{command}}, depois abra o link privado do bot e entre no Paperclip para confirmar sua conta. Se você é novo na organização, solicite acesso para um administrador aprovar.",
+    "copyInvitationFailed": "Não foi possível copiar o convite",
+    "invitationCopied": "Convite copiado",
+    "copyInvitation": "Copiar convite",
+    "linkedPermissions": "Pessoas com contas vinculadas usam as próprias permissões do Paperclip.",
+    "manageMembers": "Gerenciar membros",
+    "confirmAccount": "Confirmar {{name}}",
+    "thisAccount": "esta conta",
+    "shareOnly": "Compartilhe apenas com esta pessoa. Ela precisa entrar e confirmar a própria conta.",
+    "linkCopied": "Link de confirmação copiado",
+    "copyLinkFailed": "Não foi possível copiar o link",
+    "copyManually": "Selecione e copie manualmente.",
+    "copyLink": "Copiar link",
+    "loadingPeople": "Carregando pessoas…",
+    "loadPeopleAction": "carregar as pessoas",
+    "noLinkedAccounts": "Nenhuma conta vinculada ainda. Convide alguém para se conectar.",
+    "disconnected": "Desconectada",
+    "waitingConfirmation": "Aguardando a confirmação da conta",
+    "disconnect": "Desconectar",
+    "createConfirmationLink": "Criar link de confirmação",
+    "guestAccess": "Acesso de convidados",
+    "allowUnlinked": "Permitir pessoas não vinculadas",
+    "allowUnlinkedDetail": "Pessoas sem contas vinculadas podem iniciar tarefas isoladas. Elas não podem aprovar ações, gastar nem gerenciar acesso. Os pedidos são recusados quando o isolamento não está disponível.",
+    "personalSlackSearch": "Busca pessoal no Slack"
+  },
+  "conversations": {
+    "loading": "Carregando conversas…",
+    "loadAction": "carregar as conversas"
+  },
+  "activity": {
+    "details": "Detalhes",
+    "publicationQueued": "Publicação na fila para reenvio",
+    "deliveryQueued": "Entrega na fila para reprocessamento",
+    "replayFailed": "Não foi possível reprocessar a atividade",
+    "resolved": {
+      "taskStartRetried": "Início da tarefa tentado de novo",
+      "taskStartCancelled": "Início da tarefa cancelado",
+      "providerReplyDelivered": "Resposta do provedor marcada como entregue",
+      "providerReplyRetried": "Resposta do provedor tentada de novo",
+      "providerReplyCancelled": "Resposta do provedor cancelada",
+      "publicationDelivered": "Publicação marcada como entregue",
+      "publicationRetried": "Publicação na fila para nova tentativa",
+      "publicationCancelled": "Publicação cancelada"
+    },
+    "resolveFailed": "Não foi possível resolver a atividade",
+    "title": "Atividade da conexão",
+    "recent": "Atividade recente",
+    "refresh": "Atualizar",
+    "reviewEmailPrefix": "Revise a entrega de e-mail não confirmada na",
+    "reviewEmailLink": "tarefa da conversa",
+    "reviewEmailSuffix": ".",
+    "loading": "Carregando a atividade…",
+    "loadAction": "carregar a atividade da conexão",
+    "replayFailedAria": {
+      "delivery": "Reprocessar a entrega que falhou",
+      "publication": "Reenviar a publicação que falhou"
+    },
+    "replay": "Reprocessar",
+    "resolve": "Resolver",
+    "empty": "Nenhuma atividade da conexão ainda."
+  },
+  "lifecycleToasts": {
+    "paused": "Conexão pausada",
+    "resumed": "Conexão retomada",
+    "updateFailed": "Não foi possível atualizar a conexão"
+  },
+  "callbacks": {
+    "events": "Events API",
+    "interactivity": "Interatividade",
+    "slashCommand": "Comando de barra",
+    "needAttention": "As URLs de callback precisam de atenção",
+    "title": "Saúde dos callbacks do Slack",
+    "needUpdate": "As URLs de callback do Slack precisam ser atualizadas. Salve o App Manifest atual e depois teste de novo Events, Interatividade e o comando registrado.",
+    "recordsIndependently": "O Paperclip registra cada superfície de callback separadamente depois que o Slack a chama com sucesso.",
+    "current": "Atual",
+    "stale": "URL desatualizada",
+    "notObserved": "Não observado",
+    "lastObserved": "Última observação"
+  },
+  "controls": {
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "finishSetup": "Concluir a configuração",
+    "reconnect": "Reconectar",
+    "remove": "Remover conexão"
+  },
+  "calls": {
+    "loadFailed": "Não foi possível carregar a atividade de chamadas. {{error}}",
+    "unapprovedLoadFailed": "Não foi possível carregar as chamadas não aprovadas. {{error}}",
+    "endFailed": "Não foi possível encerrar a chamada. {{error}}",
+    "retry": "Tentar as chamadas de novo"
+  },
+  "pagination": {
+    "aria": "Paginação da atividade",
+    "page": "Página {{page}}",
+    "previous": "Anterior",
+    "next": "Próxima"
+  },
+  "resolveDialog": {
+    "titleTaskStart": "Resolver início de tarefa não confirmado",
+    "titleProviderReply": "Resolver resposta do provedor não confirmada",
+    "titleDelivery": "Resolver entrega não confirmada",
+    "taskStartDescription": "O Paperclip perdeu a confirmação depois de pedir ao Slack para iniciar a tarefa. Confira o Slack primeiro. Tentar de novo pode criar uma mensagem inicial e uma tarefa duplicadas.",
+    "providerReplyDescription": "O Paperclip perdeu a confirmação depois de enviar esta resposta do provedor. Confira o provedor primeiro. Marcar como entregue aplica qualquer mudança de estado pendente no Paperclip; tentar de novo pode criar uma mensagem duplicada.",
+    "keepUnresolved": "Manter sem resolver",
+    "cancelTaskStart": "Cancelar início da tarefa",
+    "cancelProviderReply": "Cancelar resposta do provedor",
+    "cancelFileTransfer": "Cancelar transferência de arquivo",
+    "cancelPublication": "Cancelar publicação",
+    "retryFileNotification": "Tentar a notificação do arquivo de novo",
+    "retryAnyway": "Tentar de novo mesmo assim",
+    "markDelivered": "Marcar como entregue"
+  },
+  "removeDialog": {
+    "title": "Remover esta conexão?",
+    "description": "{{name}} vai deixar de receber trabalho novo do {{provider}}. As tarefas existentes no Paperclip continuam disponíveis.",
+    "openSlackSettings": "Abra as configurações do app do Slack",
+    "slackSuffix": "para gerenciar ou excluir o app do Slack.",
+    "cancel": "Cancelar"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "theAssignee": "the assignee",
+  "parked": "Parked",
+  "willNotBeAsked": "will not be asked to work on this until status changes to To do or In progress.",
+  "commentsStillNotify": "Comments still notify the assignee for questions or triage. Leave this parked only if the work is intentionally on hold.",
+  "resuming": "Resuming…",
+  "resumeNow": "Resume now"
+}

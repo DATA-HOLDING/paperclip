@@ -1,0 +1,4 @@
+{
+  "unavailableCount_one": "{{count}} cost unavailable",
+  "unavailableCount_other": "{{count}} costs unavailable"
+}

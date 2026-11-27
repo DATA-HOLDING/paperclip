@@ -1,0 +1,14 @@
+{
+  "swarm": "Swarm",
+  "sentFromIMessage": "Enviado pelo iMessage",
+  "from": "De {{task}}",
+  "images": "Imagens · {{count}}",
+  "open": "Abrir {{name}}",
+  "imageN": "imagem {{n}}",
+  "openMore": "Abrir mais {{n}} capturas de tela",
+  "image": "imagem",
+  "files": "Arquivos · {{count}}",
+  "verificationCaveat": "Ressalva da verificação",
+  "queued": "Na fila",
+  "sending": "Enviando…"
+}

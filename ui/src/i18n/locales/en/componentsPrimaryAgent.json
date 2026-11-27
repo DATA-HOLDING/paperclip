@@ -1,0 +1,14 @@
+{
+  "myPrimaryAgent": "My primary agent",
+  "retryLoading": "Retry loading primary agent",
+  "loadFailed": "Couldn't load your primary agent. Select to retry.",
+  "setAsPrimary": "Set as my primary",
+  "loading": "Loading your primary agent…",
+  "avatarLabel": "{{name}} avatar",
+  "newPrimaryAgent": "New primary agent",
+  "confirm": {
+    "title": "Change your primary agent?",
+    "description": "This will make {{name}} your primary agent, do you want to do this?",
+    "cancel": "Cancel"
+  }
+}

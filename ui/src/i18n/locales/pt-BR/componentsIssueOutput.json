@@ -1,0 +1,17 @@
+{
+  "browseInGallery": "Ver {{filename}} na galeria",
+  "openFile": "Abrir {{filename}}",
+  "downloadFile": "Baixar {{filename}}",
+  "taskOutputs": "Resultados da tarefa",
+  "output": "Resultado",
+  "alsoProduced": "Também produzido",
+  "metadataUnavailable": "Os metadados do resultado estão indisponíveis — este arquivo não pode ser reproduzido nem baixado aqui.",
+  "primary": "Principal",
+  "browse": "Ver",
+  "open": "Abrir",
+  "download": "Baixar",
+  "fileDetailsUnavailable": "Detalhes do arquivo indisponíveis",
+  "openInNewTab": "Abrir em nova aba",
+  "videoOutputNamed": "Resultado em vídeo: {{title}}",
+  "videoOutput": "Resultado em vídeo"
+}

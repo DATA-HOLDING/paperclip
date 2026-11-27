@@ -1,0 +1,7 @@
+{
+  "notConfigured": "{{name}} is not configured for low-trust review",
+  "risk": "GitHub comments and pull requests can contain malicious instructions. We recommend a low-trust agent with a scoped work boundary and an isolated sandbox runtime.",
+  "continuing": "Continuing keeps this agent’s current permissions. A restricted guest profile does not replace the agent’s trust and runtime settings.",
+  "change": "Change {{name}} to a low trust agent",
+  "learn": "Learn about low-trust agents"
+}

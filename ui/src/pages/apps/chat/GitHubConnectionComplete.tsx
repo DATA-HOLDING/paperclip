@@ -14,6 +14,7 @@ import { Link } from "@/lib/router";
 import { GitHubAppBranding, gitHubBotMention } from "./GitHubAppIdentity";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 
 export type GitHubConnectionCompleteLocationState = {
   githubConnectionComplete?: {
@@ -58,7 +59,7 @@ export function GitHubConnectionComplete({
           <header className="space-y-5">
             <div className="flex items-center gap-3">
               <CheckCircle2 className="size-6 shrink-0 text-(--status-task-done)" />
-              <DialogTitle className="text-xl leading-normal">GitHub connected</DialogTitle>
+              <DialogTitle className="text-xl leading-normal">{t("pagesAppsChatGitHubConnectionComplete.title")}</DialogTitle>
             </div>
             <div className="flex items-center gap-3">
               <AgentAvatar agent={avatar} size={48} />
@@ -79,14 +80,14 @@ export function GitHubConnectionComplete({
                   </>}
                 </p>
                 <Link to={`/apps/chat/${endpoint.id}/access`} className="inline-block text-xs text-muted-foreground underline underline-offset-4">
-                  {repositoriesView.kind === "error" ? "Repository access unavailable" : count === undefined ? "Repository access" : count === 0 ? "No repositories enabled" : `${count} ${count === 1 ? "repository" : "repositories"} enabled`}
+                  {repositoriesView.kind === "error" ? t("pagesAppsChatGitHubConnectionComplete.access.unavailable") : count === undefined ? t("pagesAppsChatGitHubConnectionComplete.access.label") : count === 0 ? t("pagesAppsChatGitHubConnectionComplete.access.none") : t("pagesAppsChatGitHubConnectionComplete.access.enabled", { count })}
                 </Link>
               </div>
             </div>
           </header>
           {incomplete.length > 0 && (
             <section className="space-y-2">
-              <h2 className="text-sm font-medium">Before your first review</h2>
+              <h2 className="text-sm font-medium">{t("pagesAppsChatGitHubConnectionComplete.beforeFirstReview")}</h2>
               {incomplete.map((check) => (
                 <p key={check.key} className="text-sm text-muted-foreground">{check.detail}</p>
               ))}
@@ -94,17 +95,17 @@ export function GitHubConnectionComplete({
           )}
           <section className="space-y-3">
             <div className="space-y-1">
-              <h2 className="text-base font-semibold">Try your bot</h2>
+              <h2 className="text-base font-semibold">{t("pagesAppsChatGitHubConnectionComplete.tryTitle")}</h2>
               <p className="text-sm text-muted-foreground">
                 {count === 0
-                  ? "Enable a repository in Access to try your bot."
-                  : "Post this on a pull request in an enabled repository."}
+                  ? t("pagesAppsChatGitHubConnectionComplete.tryEnable")
+                  : t("pagesAppsChatGitHubConnectionComplete.tryPost")}
               </p>
             </div>
             <CopyText
               text={mention}
-              ariaLabel="Copy mention"
-              title="Copy mention"
+              ariaLabel={t("pagesAppsChatGitHubConnectionComplete.copyMention")}
+              title={t("pagesAppsChatGitHubConnectionComplete.copyMention")}
               containerClassName="w-full"
               className="flex w-full items-center gap-3 rounded-md border border-border bg-muted/30 p-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
@@ -117,7 +118,7 @@ export function GitHubConnectionComplete({
             avatarUrl={agentAvatarUrl(resolveAgentAppearance(avatar.appearance, endpoint.assignedAgentId), 512, 1, "rest")}
           />
           <DialogFooter>
-            <Button onClick={onClose}>Done</Button>
+            <Button onClick={onClose}>{t("pagesAppsChatGitHubConnectionComplete.done")}</Button>
           </DialogFooter>
         </div>
       </DialogContent>

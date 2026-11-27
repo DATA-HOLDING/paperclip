@@ -1,0 +1,16 @@
+{
+  "loadAction": "load connection access",
+  "loading": "Loading access…",
+  "human": {
+    "organization": "Any human in the organization",
+    "justMe": "Just me",
+    "owner": "Only the credential owner",
+    "revoked": "Access revoked"
+  },
+  "whichHumans": "Which humans can use this credential?",
+  "whichAgents": "Which agents can use this connection?",
+  "whichAgentsLabel": "Which agents can use this connection",
+  "justAgentsIPick": "Just agents I pick",
+  "anyAgent": "Any agent",
+  "removingNote": "Removing an assigned agent stops receiving and sending from its inbox."
+}

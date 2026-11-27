@@ -1,0 +1,18 @@
+{
+  "noRecordedFailure": "No recorded system recovery failure.",
+  "leasePolicy": "lease policy {{policy}}",
+  "inspecting": "Inspecting recovery…",
+  "inspect": "Inspect recovery",
+  "inspectionFailed": "Recovery inspection failed. Try inspecting again.",
+  "noRecoveryAction": "No recorded recovery action for this run.",
+  "recordedFailure": "Recorded failure:",
+  "inspectCurrentSource": "Inspect current source",
+  "currentIdentity": "Current recorded-source identity",
+  "action": "Action {{id}}",
+  "readOnlyNote": "This read-only observation checks recorded identity. It does not confirm provider termination, local files, or successful preservation.",
+  "verified": "Recorded-source identity verified.",
+  "notInspected": "Source not inspected: this record exceeds the inspection limit.",
+  "blocked": "Blocked:",
+  "leasePolicyLabel": "lease policy",
+  "observed": "Observed {{time}}"
+}

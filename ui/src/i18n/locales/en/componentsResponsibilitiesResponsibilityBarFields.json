@@ -1,0 +1,40 @@
+{
+  "optional": " (optional)",
+  "enterNumber": "Enter a number",
+  "unit": "Unit",
+  "unitPlaceholderRange": "e.g. months, $",
+  "unitPlaceholder": "e.g. $, days",
+  "direction": "Better when it is",
+  "bar": {
+    "label": "The bar",
+    "hint": "How is success measured? One sentence.",
+    "required": "Describe the bar",
+    "placeholder": "e.g. Every investor conversation has a next step within a week"
+  },
+  "kind": "Kind of measure",
+  "metric": {
+    "labelYesNo": "What should be true",
+    "label": "What you measure",
+    "requiredYesNo": "Say what should be true",
+    "required": "Name what you measure",
+    "placeholderYesNo": "e.g. Board pack sent a week before the meeting",
+    "placeholderRange": "e.g. Runway",
+    "placeholder": "e.g. Investors contacted"
+  },
+  "target": "Target",
+  "targetPercent": "Target (%)",
+  "setTarget": "Set a target",
+  "example": "e.g. {{value}}",
+  "low": "Low",
+  "high": "High",
+  "setLow": "Set the low bound",
+  "setHigh": "Set the high bound",
+  "current": {
+    "label": "Where it is now",
+    "hintYesNo": "Is it true today? The agents working on this keep it current.",
+    "unknown": "Not known yet",
+    "yes": "Yes",
+    "no": "No",
+    "hint": "The latest reading, if you know it. The agents working on this keep it current."
+  }
+}

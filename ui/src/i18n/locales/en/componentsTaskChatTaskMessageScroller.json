@@ -1,0 +1,8 @@
+{
+  "messagesAria": "Conversation messages",
+  "loadFailed": "Earlier messages couldn’t load.",
+  "retry": "Retry",
+  "loadingEarlier": "Loading earlier messages…",
+  "scrollUp": "Scroll up for earlier messages",
+  "scrollToLatest": "Scroll to latest"
+}

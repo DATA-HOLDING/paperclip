@@ -1,0 +1,5 @@
+{
+  "runChanged": "A parada não foi aceita porque a execução mudou.",
+  "sessionChanged": "A parada não foi aceita porque a sua sessão mudou.",
+  "anotherOperator": "Este pedido de parada pertence a outro operador."
+}

@@ -1,0 +1,52 @@
+{
+  "outOfDateSr": " (out of date)",
+  "anAgent": "An agent",
+  "reportingHere": "Reporting here: {{names}}",
+  "outOfDateWritten": "Out of date · written {{ago}}",
+  "written": "Written {{ago}}",
+  "noAgentCanReport": "No agent can report yet",
+  "askedForUpdate": "Asked for an update",
+  "noReportYet": "No report yet",
+  "theAgent": "the agent",
+  "fromNumberNotAgent": " · From the number, not from an agent",
+  "noMetric": "No metric yet",
+  "fromNumberSr": " (from the number)",
+  "askAria": "Ask {{name}} for an update on {{title}}",
+  "noAgentToAsk": "No agent to ask",
+  "waitingFor": "Waiting for {{name}}",
+  "asking": "Asking…",
+  "askForUpdate": "Ask for an update",
+  "editAria": "Edit the status of {{title}}",
+  "edit": "Edit",
+  "notInArea": "Not in an area",
+  "archived": " · Archived",
+  "nothingFiledHere": "Nothing you own is filed here yet.",
+  "newResponsibility": "New responsibility",
+  "dialog": {
+    "title": "Edit the status",
+    "description": "say where it stands and why. It shows as written by you until an agent writes a newer one.",
+    "status": "Status",
+    "why": "Why, in one line",
+    "whyPlaceholder": "e.g. Holding at 1.3 MB with the font cleanup still to land.",
+    "moreDetail": "More detail",
+    "optional": "(optional)",
+    "saveFailed": "Couldn’t save the status.",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "save": "Save status"
+  },
+  "countsHeading": "Where your responsibilities stand",
+  "summary": {
+    "title": "Summary",
+    "provenance": "Composed from what agents wrote",
+    "waitingOn": "Waiting on: "
+  },
+  "askFailed": "Couldn’t ask for an update.",
+  "areas": {
+    "title": "Areas",
+    "description": "Each status as the agent closest to the work wrote it.",
+    "newArea": "New area",
+    "empty": "Nothing you own yet. Review what was proposed for you, or add a new responsibility."
+  },
+  "loadAction": "load what your agents wrote"
+}

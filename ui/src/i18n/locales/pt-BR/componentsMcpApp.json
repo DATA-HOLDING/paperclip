@@ -1,0 +1,23 @@
+{
+  "unsupportedBrowser": "Este navegador não consegue exibir o widget deste app com segurança. O resultado da ferramenta continua na atividade.",
+  "wantsToSendAria": "{{applicationName}} quer enviar uma mensagem",
+  "wantsToSend": "{{applicationName}} quer enviar:",
+  "sendFailed": "Não foi possível enviar a mensagem.",
+  "dismiss": "Dispensar",
+  "sending": "Enviando…",
+  "send": "Enviar",
+  "viewCouldNotBeShown": "Não foi possível exibir a visualização deste app.",
+  "app": "App",
+  "appLower": "app",
+  "loadingView": "Carregando visualização de {{applicationName}}",
+  "showingFullScreen": "Exibindo em tela cheia",
+  "backToChat": "Voltar ao chat",
+  "widgetFrom": "Widget de {{applicationName}}",
+  "exitFullScreen": "Sair da tela cheia",
+  "viewNoLongerAvailable": "Esta visualização de {{applicationName}} não está mais disponível.",
+  "couldNotShowView": "{{applicationName}} não conseguiu exibir esta visualização. O resultado da ferramenta continua na linha acima.",
+  "openFullScreenAria": "Abrir {{displayName}} de {{applicationName}} em tela cheia",
+  "openFullScreen": "Abrir em tela cheia",
+  "notLoadedYet": "{{label}} (ainda não carregado)",
+  "showMore": "Mostrar mais {{count}}"
+}

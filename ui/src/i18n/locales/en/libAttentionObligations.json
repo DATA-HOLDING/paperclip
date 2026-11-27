@@ -1,0 +1,9 @@
+{
+  "unnamedProject": "Unnamed project",
+  "taskWaitingOnApproval": "Task waiting on this approval",
+  "taskInReview": "Task in review",
+  "blockedByThisRun": "Blocked by this run",
+  "blockedWork": "Blocked work",
+  "alsoFailed": "Also failed",
+  "approvalThisAnswers": "Approval this answers"
+}

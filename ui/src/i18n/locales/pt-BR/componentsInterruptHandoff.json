@@ -1,0 +1,26 @@
+{
+  "user": {
+    "board": "Conselho",
+    "you": "{{name}} (você)"
+  },
+  "chip": {
+    "agent": "Agente",
+    "user": "Usuário",
+    "noResponsible": "Sem responsável —",
+    "unassigned": "Sem responsável"
+  },
+  "wake": "Acordar",
+  "mentionCoach": {
+    "didYouMean": "Você quis dizer",
+    "plainText": "? Texto simples não notifica nem atribui um agente.",
+    "insertAria": "Inserir menção a {{name}} no seu comentário",
+    "insert": "Inserir menção",
+    "dismiss": "Dispensar sugestão"
+  },
+  "handOffTo": "Passar para",
+  "pause": {
+    "title": "O que isso afeta",
+    "nothingLive": "Nada em andamento para pausar — nenhuma execução de agente está ativa ou na fila. Isso registra uma pausa para que novos trabalhos não comecem até você retomar.",
+    "noTasks": "Nenhuma tarefa é afetada."
+  }
+}

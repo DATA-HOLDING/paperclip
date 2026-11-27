@@ -11,6 +11,7 @@ import { useLocation } from "@/lib/router";
 import { queryKeys } from "@/lib/queryKeys";
 import { MODAL_SELECTOR, useModalOpen, useOnboardingInProgress } from "./AnnouncementWell";
 import { PaperclipMark } from "./PaperclipLockup";
+import { t } from "@/i18n";
 
 export const STAR_PROMPT_COMPLETED_TASKS = 5;
 export const STAR_PROMPT_SEEN_KEY = "paperclip.github-star-prompt.seen";
@@ -110,19 +111,19 @@ export function GitHubStarPrompt() {
           <div className="mb-2 flex size-14 items-center justify-center rounded-full border border-border bg-muted">
             <PaperclipMark decorative className="size-7" />
           </div>
-          <DialogTitle>You completed {STAR_PROMPT_COMPLETED_TASKS} tasks!</DialogTitle>
+          <DialogTitle>{t("componentsGitHubStarPrompt.title", { count: STAR_PROMPT_COMPLETED_TASKS })}</DialogTitle>
           <DialogDescription className="max-w-xs">
-            If you're enjoying Paperclip, consider giving us a star on GitHub!
+            {t("componentsGitHubStarPrompt.description")}
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2">
           <Button asChild className="w-full">
             <a href={PAPERCLIP_GITHUB_URL} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
               <Star className="size-4 fill-current" aria-hidden />
-              Star on GitHub
+              {t("componentsGitHubStarPrompt.star")}
             </a>
           </Button>
-          <Button variant="ghost" className="w-full text-muted-foreground" onClick={() => setOpen(false)}>Not now</Button>
+          <Button variant="ghost" className="w-full text-muted-foreground" onClick={() => setOpen(false)}>{t("componentsGitHubStarPrompt.notNow")}</Button>
         </div>
       </DialogContent>
     </Dialog>

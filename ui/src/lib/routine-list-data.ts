@@ -1,5 +1,6 @@
 import type { FolderListResult, RoutineListItem } from "@paperclipai/shared";
 import { filterRoutines, matchesRoutineStatus, type RoutineViewState, type RoutineSortField, type RoutineSortDir } from "./routine-list-view";
+import { t } from "@/i18n";
 
 function timestampValue(value: Date | string | null | undefined) {
   if (!value) return Number.NEGATIVE_INFINITY;
@@ -44,11 +45,11 @@ export function buildRoutineFilterOptions({ projects, agents, userById, routines
   routines: readonly RoutineListItem[];
 }) {
   return {
-    projects: [{ id: "__none", name: "No project" }, ...projects.map(project => ({ id: project.id, name: project.name }))],
-    agents: [{ id: "__none", name: "No default agent" }, ...agents.map(agent => ({ id: agent.id, name: agent.name }))],
-    responsibleUsers: [{ id: "__none", name: "No responsible user" }, ...Array.from(userById, ([id, profile]) => ({ id, name: profile.label }))],
-    statuses: [{ id: "active", name: "Enabled" }, { id: "paused", name: "Paused" }, { id: "archived", name: "Archived" }],
-    origins: [...new Set(["manual", "built_in_agent_bundle", ...routines.map(routine => routine.originKind ?? "manual")])].map(id => ({ id, name: id === "manual" ? "Custom" : id === "built_in_agent_bundle" ? "Built-in" : id.replaceAll("_", " ") })),
+    projects: [{ id: "__none", name: t("libRoutineListData.noProject") }, ...projects.map(project => ({ id: project.id, name: project.name }))],
+    agents: [{ id: "__none", name: t("libRoutineListData.noDefaultAgent") }, ...agents.map(agent => ({ id: agent.id, name: agent.name }))],
+    responsibleUsers: [{ id: "__none", name: t("libRoutineListData.noResponsibleUser") }, ...Array.from(userById, ([id, profile]) => ({ id, name: profile.label }))],
+    statuses: [{ id: "active", name: t("libRoutineListData.enabled") }, { id: "paused", name: t("libRoutineListData.paused") }, { id: "archived", name: t("libRoutineListData.archived") }],
+    origins: [...new Set(["manual", "built_in_agent_bundle", ...routines.map(routine => routine.originKind ?? "manual")])].map(id => ({ id, name: id === "manual" ? t("libRoutineListData.custom") : id === "built_in_agent_bundle" ? t("libRoutineListData.builtIn") : id.replaceAll("_", " ") })),
   };
 }
 

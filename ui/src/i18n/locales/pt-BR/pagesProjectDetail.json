@@ -1,0 +1,42 @@
+{
+  "toast": {
+    "archived": "\"{{name}}\" foi arquivado",
+    "unarchived": "\"{{name}}\" foi desarquivado",
+    "saved": "Projeto salvo",
+    "archiveFailed": "Falha ao arquivar o projeto",
+    "unarchiveFailed": "Falha ao desarquivar o projeto"
+  },
+  "picker": {
+    "ariaLabel": "Alterar ícone e cor do projeto",
+    "icon": "Ícone",
+    "searchIcons": "Buscar ícones...",
+    "noIcons": "Nenhum ícone corresponde",
+    "color": "Cor",
+    "resetGray": "Voltar ao cinza neutro",
+    "neutral": "Neutro (padrão)",
+    "selectColor": "Selecionar a cor {{color}}"
+  },
+  "loadTasksAction": "carregar as tarefas do projeto",
+  "fallbackName": "Projeto",
+  "breadcrumbs": {
+    "projects": "Projetos"
+  },
+  "loadAction": "carregar este projeto",
+  "leftNotice": "Você saiu deste projeto. Ele não aparece mais na sua barra lateral.",
+  "dismissLeftNotice": "Dispensar o aviso de participação no projeto",
+  "pausedByBudget": "Pausado pelo limite rígido do orçamento",
+  "managedBy": "Gerenciado por {{plugin}}",
+  "summary": {
+    "title": "Resumo do projeto",
+    "description": "O resumidor mantém aqui o status mais recente do projeto, o próximo passo e os itens que precisam do operador."
+  },
+  "tabs": {
+    "tasks": "Tarefas",
+    "pluginOperations": "Operações do plugin",
+    "workspaces": "Espaços de trabalho",
+    "configuration": "Configuração",
+    "budget": "Orçamento"
+  },
+  "loadWorkspacesAction": "carregar os espaços de trabalho",
+  "loadingWorkspaces": "Carregando espaços de trabalho..."
+}

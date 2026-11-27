@@ -1,0 +1,10 @@
+{
+  "chip": {
+    "needed": "Recovery needed",
+    "inProgress": "Recovery in progress",
+    "observeOnly": "Observing active run",
+    "escalated": "Recovery escalated"
+  },
+  "workspaceRecoveryNeeded": "Workspace recovery needed",
+  "inProgressAttempt": "Recovery in progress · {{attempt}}/{{max}}"
+}

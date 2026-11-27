@@ -16,6 +16,7 @@ import { Download, Maximize2, Minus, Network, Plus, Upload } from "lucide-react"
 import { AGENT_ROLE_LABELS, type Agent } from "@paperclipai/shared";
 import { useCloudInstance } from "@/hooks/useCloudInstance";
 import { useHiddenSettings } from "@/hooks/useHiddenSettings";
+import { t } from "@/i18n";
 
 // Layout constants
 const CARD_W = 200;
@@ -207,7 +208,7 @@ export function OrgChart() {
   }, [agents]);
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Org Chart" }]);
+    setBreadcrumbs([{ label: t("pagesOrgChart.breadcrumb") }]);
   }, [setBreadcrumbs]);
 
   // Layout computation
@@ -442,7 +443,7 @@ export function OrgChart() {
   }, [pan, zoom]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Network} message="Select a company to view the org chart." />;
+    return <EmptyState icon={Network} message={t("pagesOrgChart.selectCompany")} />;
   }
 
   // Keep a loaded chart on screen through a failed refetch; only a real
@@ -456,7 +457,7 @@ export function OrgChart() {
       <QueryErrorState
         size="page"
         error={orgTreeView.error}
-        action="load the org chart"
+        action={t("pagesOrgChart.loadAction")}
         onRetry={orgTreeView.retry}
         retrying={orgTreeView.isFetching}
       />
@@ -464,7 +465,7 @@ export function OrgChart() {
   }
 
   if (orgTree && orgTree.length === 0) {
-    return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
+    return <EmptyState icon={Network} message={t("pagesOrgChart.noHierarchy")} />;
   }
 
   return (
@@ -474,7 +475,7 @@ export function OrgChart() {
           <Link to="/company/import">
             <Button variant="outline" size="sm">
               <Upload className="mr-1.5 h-3.5 w-3.5" />
-              Import company
+              {t("pagesOrgChart.importCompany")}
             </Button>
           </Link>
         )}
@@ -482,7 +483,7 @@ export function OrgChart() {
           <Link to="/company/export">
             <Button variant="outline" size="sm">
               <Download className="mr-1.5 h-3.5 w-3.5" />
-              Export company
+              {t("pagesOrgChart.exportCompany")}
             </Button>
           </Link>
         )}
@@ -519,8 +520,8 @@ export function OrgChart() {
                 });
               }
             }}
-            title="Zoom in"
-            aria-label="Zoom in"
+            title={t("pagesOrgChart.zoomIn")}
+            aria-label={t("pagesOrgChart.zoomIn")}
           >
             <Plus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>
@@ -535,16 +536,16 @@ export function OrgChart() {
                 });
               }
             }}
-            title="Zoom out"
-            aria-label="Zoom out"
+            title={t("pagesOrgChart.zoomOut")}
+            aria-label={t("pagesOrgChart.zoomOut")}
           >
             <Minus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>
           <button
             className="flex size-9 items-center justify-center rounded border border-border bg-background text-(length:--text-nano) transition-colors hover:bg-accent sm:size-7"
             onClick={fitToScreen}
-            title="Fit to screen"
-            aria-label="Fit chart to screen"
+            title={t("pagesOrgChart.fitToScreen")}
+            aria-label={t("pagesOrgChart.fitChartToScreen")}
           >
             <Maximize2 className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
           </button>

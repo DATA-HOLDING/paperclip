@@ -1,0 +1,30 @@
+{
+  "openNewTab": "Open a new tab",
+  "frame": {
+    "label": "Side panel",
+    "toggle": "Toggle side panel",
+    "restore": "Restore side panel",
+    "maximize": "Maximize side panel",
+    "close": "Close side panel"
+  },
+  "launcher": {
+    "loading": "Loading…",
+    "alreadyOpen": "Already open",
+    "title": "Open a side panel tab",
+    "description": "Choose a view or resource to open.",
+    "placeholder": "Search tabs and resources…",
+    "empty": "No matching tabs or resources."
+  },
+  "mobile": {
+    "switchTabs": "Switch tabs, {{count}} open",
+    "chooseTab": "Choose a tab",
+    "openTabs": "Open tabs",
+    "closeTab": "Close {{label}}"
+  },
+  "tabs": {
+    "closed": "Tab closed.",
+    "lastClosed": "Last tab closed. Choose something to open.",
+    "tabFallback": "tab",
+    "moved": "Moved {{label}} to position {{position}} of {{total}}."
+  }
+}

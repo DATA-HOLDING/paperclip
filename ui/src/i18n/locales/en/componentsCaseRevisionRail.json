@@ -1,0 +1,33 @@
+{
+  "author": {
+    "agent": "Agent",
+    "user": "User",
+    "system": "System"
+  },
+  "via": "via",
+  "actor": {
+    "agent": "agent",
+    "board": "board",
+    "system": "system"
+  },
+  "revisionOption": "rev {{number}} - {{time}} - {{actor}}",
+  "diffTitle": "Diff -",
+  "old": "Old",
+  "new": "New",
+  "oldRevision": "Old revision",
+  "newRevision": "New revision",
+  "selectRevision": "Select revision",
+  "selectTwo": "Select two revisions to compare.",
+  "sameRevision": "Both sides are the same revision.",
+  "content": "Content",
+  "loading": "Loading revisions…",
+  "empty": "No revisions yet.",
+  "revisions": "Revisions",
+  "diff": "Diff",
+  "revisionNumber": "rev {{number}}",
+  "latest": "latest",
+  "noBody": "This revision has no body.",
+  "errorActions": {
+    "loadRevisions": "load revisions"
+  }
+}

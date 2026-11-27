@@ -1,0 +1,15 @@
+{
+  "plan": "Plan",
+  "writing": "Writing",
+  "open": "Open",
+  "inTheSidebar": "in the sidebar",
+  "openInTaskSidebar": "Open {{title}} in task sidebar",
+  "openRevisionInTaskSidebar": "Open {{title}} revision {{revision}} in task sidebar",
+  "writingPlan": "Writing plan",
+  "revShort": "rev {{revision}}",
+  "waitingFirstStep": "Waiting for the first plan step…",
+  "openToReview": "Open the synchronized plan to review it.",
+  "openPlan": "Open Plan",
+  "openPlanRevision": "Open Plan revision {{revision}}",
+  "streamingPreview": "Streaming Plan preview"
+}

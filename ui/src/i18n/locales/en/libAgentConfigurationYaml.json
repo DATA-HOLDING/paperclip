@@ -1,0 +1,11 @@
+{
+  "nestingTooDeep": "Configuration nesting must not exceed 50 levels.",
+  "unsupportedKey": "Unsupported configuration key: {{key}}",
+  "jsonOnly": "Configuration must contain only JSON-compatible values (no NaN or infinity).",
+  "tooLarge": "Configuration must be smaller than 8 MiB.",
+  "useYaml12": "Use YAML 1.2.",
+  "noAliases": "YAML aliases are not supported. Write each value explicitly.",
+  "noAnchors": "YAML anchors are not supported.",
+  "noTags": "YAML tags are not supported.",
+  "document": "document"
+}

@@ -1,0 +1,10 @@
+{
+  "breadcrumb": "Não encontrado",
+  "orgNotFound": "Organização não encontrada",
+  "pageNotFound": "Página não encontrada",
+  "noOrgPrefix": "Nenhuma organização corresponde ao prefixo \"{{prefix}}\".",
+  "routeMissing": "Esta rota não existe.",
+  "requestedPath": "Caminho solicitado:",
+  "openDashboard": "Abrir painel",
+  "goHome": "Ir para o início"
+}

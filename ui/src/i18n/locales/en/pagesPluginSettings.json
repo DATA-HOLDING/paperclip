@@ -1,0 +1,130 @@
+{
+  "breadcrumbs": {
+    "organization": "Organization",
+    "settings": "Settings",
+    "plugins": "Plugins",
+    "pluginDetails": "Plugin Details"
+  },
+  "loadingDetails": "Loading plugin details",
+  "loadAction": "load this plugin",
+  "noDescription": "No description provided.",
+  "tabs": {
+    "configuration": "Configuration",
+    "status": "Status"
+  },
+  "about": {
+    "title": "About",
+    "description": "Description",
+    "author": "Author",
+    "categories": "Categories",
+    "none": "None"
+  },
+  "settings": {
+    "title": "Settings",
+    "configureFromEnvironments": "Configure this plugin from Settings → Environments.",
+    "environmentDriversNote": "{{driver}} registers environment runtime settings there so the execution target stays instance-scoped while secret bindings still resolve through the selected organization context.",
+    "thisPlugin": "This plugin",
+    "openEnvironments": "Open Environments",
+    "noSettings": "This plugin does not require any settings."
+  },
+  "runtime": {
+    "title": "Runtime Dashboard",
+    "description": "Worker process, scheduled jobs, and webhook deliveries",
+    "worker": {
+      "title": "Worker Process",
+      "status": "Status",
+      "uptime": "Uptime",
+      "pendingRpcs": "Pending RPCs",
+      "crashes": "Crashes",
+      "crashCounts": "{{consecutive}} consecutive / {{total}} total",
+      "lastCrash": "Last Crash",
+      "none": "No worker process registered."
+    },
+    "jobs": {
+      "title": "Recent Job Runs",
+      "none": "No job runs recorded yet."
+    },
+    "webhooks": {
+      "title": "Recent Webhook Deliveries",
+      "none": "No webhook deliveries recorded yet."
+    },
+    "lastChecked": "Last checked: {{time}}",
+    "unavailable": "Runtime diagnostics are unavailable right now."
+  },
+  "logs": {
+    "title": "Recent Logs",
+    "description": "Last {{count}} log entries"
+  },
+  "health": {
+    "title": "Health Status",
+    "checking": "Checking health...",
+    "overall": "Overall",
+    "lifecycle": "Lifecycle",
+    "runsWhenReady": "Health checks run once the plugin is ready."
+  },
+  "details": {
+    "title": "Details",
+    "pluginId": "Plugin ID",
+    "pluginKey": "Plugin Key",
+    "npmPackage": "NPM Package",
+    "version": "Version"
+  },
+  "permissions": {
+    "title": "Permissions",
+    "none": "No special permissions requested."
+  },
+  "folders": {
+    "selectOrganization": "Select an organization to configure this plugin's local folders.",
+    "title": "Local folders",
+    "loadAction": "load local folder settings",
+    "loading": "Loading local folders",
+    "saved": "Local folder saved.",
+    "savedNeedsAttention": "Local folder saved, but validation still needs attention.",
+    "pathRequired": "Local folder path is required.",
+    "pathAbsolute": "Local folder must be a full absolute path.",
+    "healthy": "Healthy",
+    "needsAttention": "Needs attention",
+    "readWrite": "Read/write",
+    "readOnly": "Read only",
+    "configured": "Configured",
+    "readable": "Readable",
+    "writable": "Writable",
+    "yes": "Yes",
+    "no": "No",
+    "notRequested": "Not requested",
+    "configuredPath": "Configured path",
+    "pathLabel": "Local folder path",
+    "save": "Save",
+    "validationProblems": "Validation problems"
+  },
+  "requirements": {
+    "requiredDirectories": "Required directories",
+    "missingDirectories": "Missing directories",
+    "requiredFiles": "Required files",
+    "missingFiles": "Missing files",
+    "notInspected": "Not inspected",
+    "missingCount": "{{count}} missing",
+    "present": "Present",
+    "noneDeclared": "None declared.",
+    "rootNotInspected": "Configured root was not inspected."
+  },
+  "config": {
+    "selectOrganizationToSave": "Select an organization before saving plugin configuration.",
+    "saved": "Configuration saved.",
+    "selectOrganizationToTest": "Select an organization before testing plugin configuration.",
+    "testPassed": "Configuration test passed.",
+    "testFailed": "Configuration test failed.",
+    "loading": "Loading configuration...",
+    "saving": "Saving...",
+    "save": "Save Configuration",
+    "testing": "Testing...",
+    "test": "Test Configuration"
+  },
+  "relative": {
+    "justNow": "just now",
+    "seconds": "{{count}}s ago",
+    "minutes": "{{count}}m ago",
+    "hours": "{{count}}h ago",
+    "days": "{{count}}d ago"
+  }
+}

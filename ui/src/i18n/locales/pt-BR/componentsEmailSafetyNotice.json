@@ -1,0 +1,7 @@
+{
+  "title": "Qualquer pessoa pode enviar e-mail para uma caixa sem restrições",
+  "body": "E-mails recebidos podem criar tarefas e acionar trabalho dos agentes. Configure uma lista de permissões no AgentMail para limitar quem pode contatar esta caixa.",
+  "note": "O Paperclip não verifica restrições de remetente. O AgentMail controla novas mensagens e respostas separadamente; confira as duas listas.",
+  "openAgentMail": "Abrir o AgentMail ↗",
+  "setUpAllowlists": "Configurar listas de permissões ↗"
+}

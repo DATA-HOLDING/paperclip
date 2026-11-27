@@ -1,0 +1,8 @@
+{
+  "subscriptionAccount": "Subscription account",
+  "credentialsUnavailable": "Connect or reconnect a subscription in AI connections to view its quota.",
+  "usageNotReported": "Usage not reported",
+  "resets": "Resets {{time}}",
+  "percentUsed": "{{percent}}% used",
+  "lastChecked": "Last checked {{time}}"
+}

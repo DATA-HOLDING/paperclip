@@ -1,0 +1,73 @@
+{
+  "status": {
+    "backlog": "Backlog",
+    "todo": "Todo",
+    "in_progress": "In Progress",
+    "monitoring": "Monitoring",
+    "in_review": "In Review",
+    "done": "Done",
+    "blocked": "Blocked",
+    "cancelled": "Cancelled"
+  },
+  "priority": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "assignee": {
+    "me": "Me",
+    "unassigned": "Unassigned"
+  },
+  "filters": {
+    "status": "Status",
+    "openItems": "Open items",
+    "assignee": "Assignee",
+    "searchAssignees": "Search assignees…",
+    "noAssignees": "No assignees",
+    "project": "Project",
+    "searchProjects": "Search projects…",
+    "noProjects": "No projects",
+    "label": "Label",
+    "searchLabels": "Search labels…",
+    "noLabels": "No labels",
+    "priority": "Priority",
+    "updated": "Updated"
+  },
+  "clearAll": "Clear all",
+  "chips": {
+    "removeFilter": "Remove filter {{label}}"
+  },
+  "menu": {
+    "searchPlaceholder": "Search…",
+    "noOptions": "No options",
+    "filterBy": "Filter by {{label}}",
+    "clear": "Clear"
+  },
+  "sheet": {
+    "showResults": "Show results",
+    "showCount_one": "Show {{count}} result",
+    "showCount_other": "Show {{count}} results",
+    "filters": "Filters",
+    "cancel": "Cancel"
+  },
+  "sort": {
+    "sortResults": "Sort results",
+    "sortPrefix": "Sort:",
+    "sortBy": "Sort by"
+  },
+  "zero": {
+    "title": "No results with these filters",
+    "matches_one": "1 result matches",
+    "matches_other": "{{count}} results match",
+    "butYour": ", but your",
+    "filtersHide_one": "active filter hides",
+    "filtersHide_other": "{{count}} active filters hide",
+    "allOfThem": " all of them.",
+    "loosen": "Loosen a filter",
+    "remove": "Remove",
+    "additional_one": "+{{count}} result",
+    "additional_other": "+{{count}} results",
+    "clearAllFilters": "Clear all filters"
+  }
+}

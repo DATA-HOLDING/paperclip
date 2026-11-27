@@ -1,0 +1,8 @@
+{
+  "theAssignee": "o responsável",
+  "parked": "Estacionada",
+  "willNotBeAsked": "não será chamado para trabalhar nisto até o status mudar para A fazer ou Em andamento.",
+  "commentsStillNotify": "Os comentários continuam notificando o responsável para dúvidas ou triagem. Deixe estacionada só se o trabalho estiver em espera de propósito.",
+  "resuming": "Retomando…",
+  "resumeNow": "Retomar agora"
+}

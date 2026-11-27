@@ -1,0 +1,71 @@
+{
+  "contextCompacted": {
+    "label": "Contexto compactado",
+    "fromTo": "{{from}} → {{to}} tokens",
+    "from": "a partir de {{from}} tokens"
+  },
+  "unnamedTool": "Ferramenta sem nome",
+  "thoughtForSeconds": "Pensou por {{seconds}}s",
+  "thoughtForMinutes": "Pensou por {{minutes}}m {{seconds}}s",
+  "planStep": "Etapa do plano",
+  "subagent": "Subagente",
+  "usage": {
+    "providerSessionTotal": "Total da sessão do provedor",
+    "providerSessionDetail": "Este uso acumulado pode incluir execuções anteriores da sessão retomada do provedor."
+  },
+  "interrupted": {
+    "tool": "Interrompido antes de o provedor informar a conclusão.",
+    "protocol": "Interrompido antes da conclusão."
+  },
+  "phrases": {
+    "readFiles_one": "Leu um arquivo",
+    "readFiles_other": "Leu {{count}} arquivos",
+    "editedFiles_one": "Editou um arquivo",
+    "editedFiles_other": "Editou {{count}} arquivos",
+    "ranCommands_one": "Executou um comando",
+    "ranCommands_other": "Executou {{count}} comandos",
+    "searched_one": "Buscou uma vez",
+    "searched_other": "Buscou {{count}} vezes",
+    "usedTools_one": "Usou uma ferramenta",
+    "usedTools_other": "Usou {{count}} ferramentas",
+    "updatedPlans_one": "Atualizou o plano",
+    "updatedPlans_other": "Atualizou {{count}} planos",
+    "usedSubagents_one": "Usou um subagente",
+    "usedSubagents_other": "Usou {{count}} subagentes",
+    "updatedModel_one": "Atualizou o modelo",
+    "updatedModel_other": "Atualizou o modelo {{count}} vezes",
+    "compactedContext_one": "Compactou o contexto",
+    "compactedContext_other": "Compactou o contexto {{count}} vezes",
+    "handledArtifacts_one": "Tratou um artefato",
+    "handledArtifacts_other": "Tratou {{count}} artefatos",
+    "changedReviewMode_one": "Mudou o modo de revisão",
+    "changedReviewMode_other": "Mudou o modo de revisão {{count}} vezes",
+    "ranHooks_one": "Executou um hook",
+    "ranHooks_other": "Executou {{count}} hooks",
+    "referencedMemory_one": "Consultou a memória",
+    "referencedMemory_other": "Consultou a memória {{count}} vezes",
+    "ranSafetyReviews_one": "Fez uma revisão de segurança",
+    "ranSafetyReviews_other": "Fez {{count}} revisões de segurança",
+    "sentTerminalInput_one": "Enviou entrada ao terminal",
+    "sentTerminalInput_other": "Enviou entrada ao terminal {{count}} vezes",
+    "waited_one": "Aguardou",
+    "waited_other": "Aguardou {{count}} vezes",
+    "receivedProviderNotices_one": "Recebeu um aviso do provedor",
+    "receivedProviderNotices_other": "Recebeu {{count}} avisos do provedor",
+    "searchedAvailableTools_one": "Buscou ferramentas disponíveis",
+    "searchedAvailableTools_other": "Buscou ferramentas disponíveis {{count}} vezes",
+    "readFromPaperclip_one": "Leu do Paperclip",
+    "readFromPaperclip_other": "Leu do Paperclip {{count}} vezes",
+    "usedPaperclip_one": "Usou o Paperclip",
+    "usedPaperclip_other": "Usou o Paperclip {{count}} vezes",
+    "changedFiles_one": "Alterou um arquivo",
+    "changedFiles_other": "Alterou {{count}} arquivos"
+  },
+  "summary": {
+    "more": ", +{{hidden}} mais",
+    "runnerActivity": "Atividade do runner",
+    "runnerUpdates": "{{n}} atualizações do runner",
+    "reasoning": "Raciocínio",
+    "noToolActivity": "Nenhuma atividade de ferramenta"
+  }
+}

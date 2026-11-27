@@ -1,0 +1,27 @@
+{
+  "defaultPolicyRemediation": "An organization administrator can change the skill policy to allow this.",
+  "defaultAdminRemediation": "This requires organization administration access. Ask an administrator to make this change.",
+  "titles": {
+    "authenticationRequired": "Sign in to manage skills.",
+    "companyBoundaryDenied": "This skill belongs to another organization.",
+    "workspaceBoundaryDenied": "This skill source is outside an allowed workspace.",
+    "sourceValidationFailed": "This skill source failed validation.",
+    "unsafeContentBlocked": "This skill contains unsafe content.",
+    "secretHandlingBlocked": "This skill exposes a secret value.",
+    "actorRestricted": "This action isn't available for the current actor."
+  },
+  "remediations": {
+    "authenticationRequired": "Sign in and try again.",
+    "companyBoundaryDenied": "Open the skill from the organization that owns it.",
+    "workspaceBoundaryDenied": "Import from a configured Paperclip workspace or the organization managed-skill directory.",
+    "sourceValidationFailed": "Fix the flagged source and retry.",
+    "unsafeContentBlocked": "Remove the fetch-and-execute or unsafe pattern before saving.",
+    "secretHandlingBlocked": "Remove the secret value before saving.",
+    "actorRestricted": "Retry from an account with access to this action."
+  },
+  "policyTitleWithAction": "{{action}} is restricted by your organization policy.",
+  "policyTitle": "This action is restricted by your organization policy.",
+  "adminTitle": "This change needs administration access.",
+  "platformTitle": "This action is blocked by a platform safety rule.",
+  "platformRemediation": "Fix the flagged issue and try again."
+}

@@ -5,6 +5,7 @@
  * adapters get sensible defaults derived from their type string via
  * `getAdapterDisplay()`.
  */
+import { t } from "@/i18n";
 import type { ComponentType } from "react";
 import { agentHarnessType } from "@paperclipai/shared";
 import {
@@ -62,112 +63,112 @@ export interface AdapterDisplayInfo {
 }
 
 const adapterDisplayMap: Record<string, AdapterDisplayInfo> = {
-  antigravity_runtime: { label: "Google Antigravity", description: "Antigravity through Paperclip Runner", icon: Gem, hideFromVisualSelection: true },
-  copilot_runtime: { label: "GitHub Copilot", description: "Copilot through Paperclip Runner", icon: Code, hideFromVisualSelection: true },
-  kimi_runtime: { label: "Kimi Code (Runner)", description: "Kimi Code through Paperclip Runner", icon: Moon, hideFromVisualSelection: true },
+  antigravity_runtime: { label: "Google Antigravity", description: t("adaptersAdapterDisplayRegistry.description.antigravityRuntime"), icon: Gem, hideFromVisualSelection: true },
+  copilot_runtime: { label: "GitHub Copilot", description: t("adaptersAdapterDisplayRegistry.description.copilotRuntime"), icon: Code, hideFromVisualSelection: true },
+  kimi_runtime: { label: t("adaptersAdapterDisplayRegistry.label.kimiRuntime"), description: t("adaptersAdapterDisplayRegistry.description.kimiRuntime"), icon: Moon, hideFromVisualSelection: true },
   acpx_local: {
-    label: "ACPX (retired)",
-    description: "Retired standalone ACPX adapter",
+    label: t("adaptersAdapterDisplayRegistry.label.acpxLocal"),
+    description: t("adaptersAdapterDisplayRegistry.description.acpxLocal"),
     icon: Bot,
     comingSoon: true,
-    disabledLabel: "Use Claude Code or Codex with the ACP engine",
+    disabledLabel: t("adaptersAdapterDisplayRegistry.disabledLabel.acpxLocal"),
     hideFromVisualSelection: true,
   },
   claude_local: {
     label: "Claude Code",
-    description: "Claude Code CLI harness",
+    description: t("adaptersAdapterDisplayRegistry.description.claudeLocal"),
     icon: Sparkles,
     recommended: true,
   },
   codex_local: {
     label: "Codex",
-    description: "Codex CLI harness",
+    description: t("adaptersAdapterDisplayRegistry.description.codexLocal"),
     icon: Code,
     recommended: true,
   },
   paperclip_runner: {
     label: "Paperclip Runner",
-    description: "Experimental Rust runner with a Codex provider",
+    description: t("adaptersAdapterDisplayRegistry.description.paperclipRunner"),
     icon: Cpu,
     experimental: true,
   },
   gemini_local: {
     label: "Gemini CLI",
-    description: "Gemini CLI harness",
+    description: t("adaptersAdapterDisplayRegistry.description.geminiLocal"),
     icon: Gem,
   },
   grok_local: {
     label: "Grok Build",
-    description: "Grok Build harness",
+    description: t("adaptersAdapterDisplayRegistry.description.grokLocal"),
     icon: Bot,
   },
   kimi_local: {
     label: "Kimi Code",
-    description: "Kimi Code CLI harness",
+    description: t("adaptersAdapterDisplayRegistry.description.kimiLocal"),
     icon: Moon,
   },
   hermes_gateway: {
     label: "Hermes Gateway",
-    description: "Remote Hermes API server",
+    description: t("adaptersAdapterDisplayRegistry.description.hermesGateway"),
     icon: Bot,
     hideFromVisualSelection: true,
   },
   hermes_local: {
     label: "Hermes",
-    description: "Hermes harness",
+    description: t("adaptersAdapterDisplayRegistry.description.hermesLocal"),
     icon: Bot,
   },
   opencode_local: {
     label: "OpenCode",
-    description: "OpenCode multi-provider harness",
+    description: t("adaptersAdapterDisplayRegistry.description.opencodeLocal"),
     icon: OpenCodeLogoIcon,
   },
   pi_local: {
     label: "Pi",
-    description: "Pi harness",
+    description: t("adaptersAdapterDisplayRegistry.description.piLocal"),
     icon: Terminal,
   },
   cursor: {
     label: "Cursor",
-    description: "Cursor CLI harness",
+    description: t("adaptersAdapterDisplayRegistry.description.cursor"),
     icon: MousePointer2,
   },
   // Display-only choice: persisted as paperclip_runner with provider openai_dot.
-  grok_bot: { label: "Grok Bot", experimental: true, icon: Bot, description: "An existing external Bot in Grok" },
+  grok_bot: { label: "Grok Bot", experimental: true, icon: Bot, description: t("adaptersAdapterDisplayRegistry.description.grokBot") },
   openai_dot: {
     label: "OpenAI Dot",
-    description: "Your Dot in ChatGPT",
+    description: t("adaptersAdapterDisplayRegistry.description.openaiDot"),
     icon: Bot,
     experimental: true,
   },
   muse: {
-    label: "Muse — Personal agent",
-    description: "Your personal Muse at muse.ai",
+    label: t("adaptersAdapterDisplayRegistry.label.muse"),
+    description: t("adaptersAdapterDisplayRegistry.description.muse"),
     icon: Bot,
     experimental: true,
   },
   cursor_cloud: {
     label: "Cursor Cloud",
-    description: "Managed remote Cursor agent",
+    description: t("adaptersAdapterDisplayRegistry.description.cursorCloud"),
     icon: MousePointer2,
   },
   openclaw_gateway: {
     label: "OpenClaw Gateway",
-    description: "External gateway adapter",
+    description: t("adaptersAdapterDisplayRegistry.description.openclawGateway"),
     icon: Bot,
     comingSoon: true,
-    disabledLabel: "Invite external agents from the add-agent modal",
+    disabledLabel: t("adaptersAdapterDisplayRegistry.disabledLabel.openclawGateway"),
     hideFromVisualSelection: true,
   },
   process: {
-    label: "Process",
-    description: "Internal process adapter",
+    label: t("adaptersAdapterDisplayRegistry.label.process"),
+    description: t("adaptersAdapterDisplayRegistry.description.process"),
     icon: Cpu,
     comingSoon: true,
   },
   http: {
     label: "HTTP",
-    description: "Internal HTTP adapter",
+    description: t("adaptersAdapterDisplayRegistry.description.http"),
     icon: Cpu,
     comingSoon: true,
   },
@@ -214,7 +215,7 @@ export function getAdapterDisplay(type: string): AdapterDisplayInfo {
   const label = withSuffix(humanizeType(type), suffix);
   return {
     label,
-    description: suffix ? `External ${suffix} adapter` : "External adapter",
+    description: suffix ? t("adaptersAdapterDisplayRegistry.externalSuffixAdapter", { suffix }) : t("adaptersAdapterDisplayRegistry.externalAdapter"),
     icon: Cpu,
   };
 }

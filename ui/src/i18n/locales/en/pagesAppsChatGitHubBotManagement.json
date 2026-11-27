@@ -1,0 +1,77 @@
+{
+  "repos": {
+    "title": "Repositories",
+    "manage": "Manage repositories",
+    "manageOnGitHub": "Manage on GitHub",
+    "refresh": "Refresh repositories",
+    "description": "Choose where the bot can receive messages and use tools. Repository changes save immediately.",
+    "search": "Search repositories",
+    "disableAllAria": "Disable all repositories",
+    "enableAllAria": "Enable all repositories",
+    "disableAll": "Disable all",
+    "enableAll": "Enable all",
+    "summary": "{{enabled}} of {{total}} repositories enabled. Toggle all applies across the entire connection.",
+    "loadAction": "load repositories",
+    "unavailable": "Unavailable on GitHub. Update the App’s installation access, then refresh.",
+    "taskDefaults": "Task defaults",
+    "loading": "Loading repositories…",
+    "noMatch": "No repositories match your search.",
+    "none": "No repositories available. Add repository access on GitHub, then refresh.",
+    "loadMore": "Load more repositories",
+    "refreshed": "Repository access refreshed. New repositories stay disabled."
+  },
+  "config": {
+    "loadAction": "load the bot configuration",
+    "loading": "Loading configuration…",
+    "toolsDisabled": "This saved bot has GitHub tools disabled, so it cannot start work or respond.",
+    "enableTools": "Enable bot tools",
+    "manageToolPermissions": "Manage tool permissions",
+    "discard": "Discard changes",
+    "saved": "Changes saved.",
+    "saving": "Saving…",
+    "save": "Save changes"
+  },
+  "result": {
+    "conclusion": {
+      "success": "Passed",
+      "failure": "Below threshold",
+      "neutral": "Report only",
+      "actionRequired": "Action required"
+    },
+    "awaitingCheck": "Awaiting check",
+    "state": {
+      "queued": "Queued",
+      "running": "Reviewing",
+      "incomplete": "Incomplete",
+      "error": "Review failed",
+      "superseded": "Superseded"
+    }
+  },
+  "review": {
+    "commit": "Commit",
+    "noAssessment": "No assessment has been submitted yet.",
+    "paperclipTask": "Paperclip task",
+    "githubComment": "GitHub comment",
+    "check": "Check",
+    "evidence": "Review evidence",
+    "agentRun": "Agent run",
+    "rationale": "Rationale",
+    "findings": "Findings",
+    "coverage": "Coverage",
+    "coverageSummary": "{{reviewed}} files reviewed · {{omitted}} omitted"
+  },
+  "list": {
+    "empty": "No reviews yet",
+    "emptyDescription": "Mention the bot on a pull request, or enable automatic events in Settings.",
+    "aria": "Reviews",
+    "pullRequest": "Pull request #{{number}}",
+    "loadAction": "load reviews",
+    "loading": "Loading reviews…"
+  },
+  "detail": {
+    "backToAll": "← All reviews",
+    "notFound": "This review was not found in this connection.",
+    "allReviews": "All reviews",
+    "loadReviewAction": "load the review"
+  }
+}

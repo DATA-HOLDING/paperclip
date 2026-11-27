@@ -1,0 +1,10 @@
+{
+  "title": "Plano",
+  "revision": "· rev. {{revision}}",
+  "progress": "{{done}}/{{total}} concluídas",
+  "priority": {
+    "high": "alta",
+    "medium": "média",
+    "low": "baixa"
+  }
+}

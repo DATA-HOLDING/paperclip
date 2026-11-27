@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "loadFailed": "Não foi possível carregar o arquivo ({{status}}).",
+    "empty": "A resposta do arquivo está vazia.",
+    "tooLarge": "Este arquivo é grande demais para pré-visualizar. Baixe-o.",
+    "binary": "Este arquivo contém dados binários. Baixe-o.",
+    "unavailable": "A pré-visualização não está disponível. Baixe o arquivo para vê-lo."
+  }
+}

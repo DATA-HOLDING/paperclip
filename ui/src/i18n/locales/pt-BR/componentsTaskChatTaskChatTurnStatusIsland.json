@@ -1,0 +1,29 @@
+{
+  "headline": {
+    "stepDone": "Etapa concluída",
+    "allStepsDone": "Todas as {{count}} etapas concluídas",
+    "plan": "Plano",
+    "blocked": "Bloqueado: {{label}}",
+    "upNext": "A seguir: {{label}}"
+  },
+  "stepStatus": {
+    "completed": "concluída",
+    "inProgress": "em andamento",
+    "pending": "não iniciada",
+    "blocked": "bloqueada",
+    "failed": "falhou"
+  },
+  "filesChanged_one": "{{count}} arquivo alterado",
+  "filesChanged_other": "{{count}} arquivos alterados",
+  "earlierSteps_one": "{{count}} etapa anterior",
+  "earlierSteps_other": "{{count}} etapas anteriores",
+  "earlierStepsDone_one": "{{count}} etapa anterior concluída",
+  "earlierStepsDone_other": "{{count}} etapas anteriores concluídas",
+  "moreSteps_one": "+{{count}} etapa a mais",
+  "moreSteps_other": "+{{count}} etapas a mais",
+  "agentPlanAriaLabel": "Plano do agente",
+  "planProgressAriaLabel": "Progresso do plano",
+  "checklistAriaLabel": "Checklist do turno",
+  "showFewer": "Mostrar menos",
+  "stepsDoneSr": "{{completed}} de {{total}} etapas concluídas"
+}

@@ -1,0 +1,16 @@
+{
+  "done": {
+    "approve": "Review approved — issue marked done.",
+    "requestChanges": "Changes requested — issue returned to the assignee.",
+    "sendBack": "Sent back to work — issue returned to the assignee."
+  },
+  "approve": "Approve",
+  "error": {
+    "title": "Could not record the review decision",
+    "body": "Please try again."
+  },
+  "sendBack": "Send back to work",
+  "noteRequired": "Add a note to request changes",
+  "requestChanges": "Request changes",
+  "notePlaceholder": "Add a note — required to request changes, optional otherwise…"
+}

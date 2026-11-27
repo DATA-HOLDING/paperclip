@@ -1,0 +1,6 @@
+{
+  "resets": "Resets {{time}}",
+  "title": "Anthropic subscription",
+  "description": "Quota from the Claude subscription connected to this server.",
+  "used": "{{percent}}% used"
+}

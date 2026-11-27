@@ -1,0 +1,26 @@
+{
+  "button": {
+    "sending": "Sending…",
+    "sent": "Test message sent",
+    "requestNew": "Request a new invitation",
+    "waiting": "Waiting for Slack connection…",
+    "send": "Send me a test message"
+  },
+  "status": {
+    "expired": "The Slack invitation expired.",
+    "openInvitation": "Open the invitation in Slack to connect your account."
+  },
+  "dismiss": "Dismiss",
+  "dialog": {
+    "title": "Connect your Slack account",
+    "description": "Choose your account. Messages to this agent will use your Paperclip permissions.",
+    "findLabel": "Find your Slack account",
+    "findPlaceholder": "Find your name",
+    "accountGroup": "Your Slack account",
+    "noAccounts": "No available accounts found in this Slack workspace.",
+    "loadMore": "Load more Slack accounts",
+    "cancel": "Cancel",
+    "sendingInvitation": "Sending invitation…",
+    "sendInvitation": "Send connection invitation"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "validation": {
+    "required": "Este campo é obrigatório",
+    "invalidSecret": "Referência de segredo inválida",
+    "invalidJsonObject": "Informe um objeto JSON válido",
+    "minLength": "Deve ter pelo menos {{min}} caracteres",
+    "maxLength": "Deve ter no máximo {{max}} caracteres",
+    "pattern": "Deve corresponder ao padrão: {{pattern}}",
+    "number": "Deve ser um número válido",
+    "minimum": "Deve ser pelo menos {{min}}",
+    "maximum": "Deve ser no máximo {{max}}",
+    "exclusiveMinimum": "Deve ser maior que {{min}}",
+    "exclusiveMaximum": "Deve ser menor que {{max}}",
+    "integer": "Deve ser um número inteiro",
+    "multipleOf": "Deve ser múltiplo de {{value}}",
+    "minItems": "Deve ter pelo menos {{min}} itens",
+    "maxItems": "Deve ter no máximo {{max}} itens"
+  },
+  "enum": {
+    "placeholder": "Selecione uma opção",
+    "none": "Nenhum"
+  },
+  "secret": {
+    "hiddenSummary": "Sensível — {{count}} caracteres ocultos. Clique no olho para revelar.",
+    "hide": "Ocultar segredo",
+    "show": "Mostrar segredo",
+    "description": "Escolha um segredo existente da organização ou cole um valor bruto (o Paperclip o guardará como segredo ao salvar).",
+    "placeholder": "Selecione um segredo existente",
+    "emptyHint": "Nenhum segredo ativo ainda. Crie um ou cole um valor bruto abaixo.",
+    "hideRaw": "Ocultar campo de valor bruto",
+    "pasteRaw": "Ou cole um valor bruto"
+  },
+  "array": {
+    "addItem": "Adicionar item",
+    "add": "Adicionar",
+    "item": "Item {{index}}",
+    "removeItem": "Remover item",
+    "empty": "Nenhum item adicionado ainda."
+  },
+  "jsonObject": {
+    "ariaLabel": "JSON de {{label}}",
+    "hint": "Informe um objeto JSON usando os nomes de argumento da ação."
+  },
+  "advancedOptions": "Opções avançadas",
+  "moreOptions": "Mais opções",
+  "noOptions": "Nenhuma opção de configuração disponível."
+}

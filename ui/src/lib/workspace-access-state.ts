@@ -4,6 +4,7 @@ import type {
   WorkspaceReadinessState,
   WorkspaceRuntimeService,
 } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 /**
  * Derives the workspace access state the UI shows (PAP-17572).
@@ -75,11 +76,11 @@ function timestampMs(value: Date | string | null | undefined): number | null {
 function failedRepairNotice(repair: WorkspaceOperation): WorkspaceAccessNotice {
   const phase = typeof repair.metadata?.repairPhase === "string" ? repair.metadata.repairPhase : null;
   return {
-    title: "Repair failed",
+    title: t("libWorkspaceAccessState.repairFailed.title"),
     description: phase
-      ? `The repair stopped during ${phase}. The pre-repair backup was kept.`
-      : "The repair stopped before the workspace became usable. The pre-repair backup was kept.",
-    action: { kind: "view_logs", label: "View repair log" },
+      ? t("libWorkspaceAccessState.repairFailed.descriptionWithPhase", { phase })
+      : t("libWorkspaceAccessState.repairFailed.description"),
+    action: { kind: "view_logs", label: t("libWorkspaceAccessState.repairFailed.viewLog") },
   };
 }
 
@@ -88,32 +89,32 @@ function failedProvisionNotice(provision: WorkspaceOperation): WorkspaceAccessNo
     ? provision.metadata.seedFailurePhase
     : null;
   return {
-    title: "Database provisioning failed",
+    title: t("libWorkspaceAccessState.provisioningFailed.title"),
     description: phase
-      ? `The earlier clone attempt failed during ${phase}. The workspace later became usable.`
-      : "An earlier clone attempt failed, but the workspace later became usable.",
-    action: { kind: "view_logs", label: "View provisioning log" },
+      ? t("libWorkspaceAccessState.provisioningFailed.earlierWithPhase", { phase })
+      : t("libWorkspaceAccessState.provisioningFailed.earlier"),
+    action: { kind: "view_logs", label: t("libWorkspaceAccessState.provisioningFailed.viewLog") },
   };
 }
 
 const HANDOFF_REASON_COPY: Record<string, string> = {
   handoff_not_configured:
-    "This instance has no workspace login handoff configured, so opening the board falls back to snapshot-local credentials.",
+    t("libWorkspaceAccessState.handoff.handoffNotConfigured"),
   no_board_identity:
-    "Your session has no cloned user to sign in as, so opening the board falls back to snapshot-local credentials.",
-  runtime_not_running: "No healthy runtime service is publishing a URL for this workspace yet.",
-  runtime_url_unusable: "The runtime row is publishing a URL Paperclip cannot open.",
-  workspace_not_ready: "The cloned database is not ready to accept a login yet.",
+    t("libWorkspaceAccessState.handoff.noBoardIdentity"),
+  runtime_not_running: t("libWorkspaceAccessState.handoff.runtimeNotRunning"),
+  runtime_url_unusable: t("libWorkspaceAccessState.handoff.runtimeUrlUnusable"),
+  workspace_not_ready: t("libWorkspaceAccessState.handoff.workspaceNotReady"),
 };
 
 const READINESS_FAILURE_COPY: Record<string, string> = {
-  database_unreachable: "The isolated database is not answering.",
-  clone_data_missing: "The clone restored no organization or issue rows.",
-  clone_data_unreadable: "The cloned product tables could not be read.",
-  cloned_membership_missing: "No cloned user has an active organization membership.",
-  cloned_identity_unreadable: "The cloned identity tables could not be read.",
-  auth_handoff_not_configured: "The workspace was started without a login handoff key.",
-  seed_manifest_unreadable: "The seed manifest is unreadable, so the restore cannot be trusted.",
+  database_unreachable: t("libWorkspaceAccessState.readiness.databaseUnreachable"),
+  clone_data_missing: t("libWorkspaceAccessState.readiness.cloneDataMissing"),
+  clone_data_unreadable: t("libWorkspaceAccessState.readiness.cloneDataUnreadable"),
+  cloned_membership_missing: t("libWorkspaceAccessState.readiness.clonedMembershipMissing"),
+  cloned_identity_unreadable: t("libWorkspaceAccessState.readiness.clonedIdentityUnreadable"),
+  auth_handoff_not_configured: t("libWorkspaceAccessState.readiness.authHandoffNotConfigured"),
+  seed_manifest_unreadable: t("libWorkspaceAccessState.readiness.seedManifestUnreadable"),
 };
 
 /**
@@ -126,7 +127,7 @@ export function describeWorkspaceReadinessCause(
   if (!failure) return null;
   const phase = describeSeedPhase(failure.readiness);
   if (phase && READINESS_FAILURE_COPY[phase]) return READINESS_FAILURE_COPY[phase];
-  if (phase) return `Last recorded phase: ${phase}.`;
+  if (phase) return t("libWorkspaceAccessState.lastRecordedPhase", { phase });
   if (failure.detail && READINESS_FAILURE_COPY[failure.detail]) return READINESS_FAILURE_COPY[failure.detail];
   return HANDOFF_REASON_COPY[failure.reason] ?? null;
 }
@@ -187,11 +188,11 @@ export function resolveWorkspaceAccessState(input: {
     const phase = typeof repair.metadata?.repairPhase === "string" ? repair.metadata.repairPhase : null;
     return {
       state: "repairing",
-      title: "Repairing workspace database",
+      title: t("libWorkspaceAccessState.repairing.title"),
       description: phase
-        ? `Only the isolated database is replaced; the git worktree and your files are preserved. Current phase: ${phase}.`
-        : "Only the isolated database is replaced; the git worktree and your files are preserved.",
-      action: { kind: "wait", label: "Repair in progress" },
+        ? t("libWorkspaceAccessState.repairing.descriptionWithPhase", { phase })
+        : t("libWorkspaceAccessState.repairing.description"),
+      action: { kind: "wait", label: t("libWorkspaceAccessState.repairing.action") },
       handoffAvailable,
     };
   }
@@ -207,9 +208,9 @@ export function resolveWorkspaceAccessState(input: {
   if (provision?.status === "running") {
     return {
       state: "provisioning",
-      title: "Provisioning database",
-      description: "Restoring the isolated database clone for this workspace. This runs once before the first start.",
-      action: { kind: "wait", label: "Provisioning" },
+      title: t("libWorkspaceAccessState.provisioning.title"),
+      description: t("libWorkspaceAccessState.provisioning.description"),
+      action: { kind: "wait", label: t("libWorkspaceAccessState.provisioning.action") },
       handoffAvailable,
     };
   }
@@ -219,11 +220,11 @@ export function resolveWorkspaceAccessState(input: {
       : null;
     return {
       state: "failed",
-      title: "Database provisioning failed",
+      title: t("libWorkspaceAccessState.provisioningFailed.title"),
       description: seedPhase
-        ? `The clone failed during ${seedPhase}. Repairing replaces only the isolated database.`
-        : "The clone did not finish, so this workspace has no usable database yet.",
-      action: { kind: "repair", label: "Repair workspace" },
+        ? t("libWorkspaceAccessState.provisioningFailed.withPhase", { phase: seedPhase })
+        : t("libWorkspaceAccessState.provisioningFailed.description"),
+      action: { kind: "repair", label: t("libWorkspaceAccessState.actions.repair") },
       handoffAvailable,
     };
   }
@@ -235,9 +236,9 @@ export function resolveWorkspaceAccessState(input: {
     if (failure.reason === "runtime_not_running" && !servingService && !startingService) {
       return {
         state: "stopped",
-        title: "Workspace is not running",
-        description: "Start the workspace runtime to publish its board.",
-        action: { kind: "start", label: "Start workspace" },
+        title: t("libWorkspaceAccessState.stopped.title"),
+        description: t("libWorkspaceAccessState.stopped.description"),
+        action: { kind: "start", label: t("libWorkspaceAccessState.actions.start") },
         handoffAvailable,
       };
     }
@@ -246,25 +247,25 @@ export function resolveWorkspaceAccessState(input: {
       const validating = readinessState === "validating" || readinessState === "provisioning";
       return {
         state: validating ? "validating" : "degraded",
-        title: validating ? "Validating clone" : "Workspace is degraded",
+        title: validating ? t("libWorkspaceAccessState.validating.title") : t("libWorkspaceAccessState.degraded.title"),
         description: [
-          cause ?? "The workspace is serving, but its clone did not pass the readiness contract.",
-          validating ? "Paperclip is still confirming the clone." : "One bounded repair replaces the isolated database.",
+          cause ?? t("libWorkspaceAccessState.degraded.notPassedReadiness"),
+          validating ? t("libWorkspaceAccessState.validating.stillConfirming") : t("libWorkspaceAccessState.degraded.oneRepair"),
         ].join(" "),
         action: validating
-          ? { kind: "wait", label: "Validating" }
-          : { kind: "repair", label: "Repair workspace" },
+          ? { kind: "wait", label: t("libWorkspaceAccessState.validating.action") }
+          : { kind: "repair", label: t("libWorkspaceAccessState.actions.repair") },
         handoffAvailable,
       };
     }
     if (!handoffAvailable) {
       return {
         state: servingService ? "ready" : "degraded",
-        title: servingService ? "Ready — snapshot-local sign-in" : "Workspace is degraded",
-        description: cause ?? "Opening the board will ask for the credentials captured in this snapshot.",
+        title: servingService ? t("libWorkspaceAccessState.ready.snapshotLocalTitle") : t("libWorkspaceAccessState.degraded.title"),
+        description: cause ?? t("libWorkspaceAccessState.ready.snapshotLocalDescription"),
         action: servingService
-          ? { kind: "open", label: "Open workspace" }
-          : { kind: "start", label: "Start workspace" },
+          ? { kind: "open", label: t("libWorkspaceAccessState.actions.open") }
+          : { kind: "start", label: t("libWorkspaceAccessState.actions.start") },
         handoffAvailable: false,
         secondaryNotice,
       };
@@ -274,9 +275,9 @@ export function resolveWorkspaceAccessState(input: {
   if (startingService) {
     return {
       state: "provisioning",
-      title: "Workspace is starting",
-      description: "Paperclip is starting the workspace runtime and waiting for its board URL.",
-      action: { kind: "wait", label: "Starting workspace" },
+      title: t("libWorkspaceAccessState.starting.title"),
+      description: t("libWorkspaceAccessState.starting.description"),
+      action: { kind: "wait", label: t("libWorkspaceAccessState.starting.action") },
       handoffAvailable,
     };
   }
@@ -284,9 +285,9 @@ export function resolveWorkspaceAccessState(input: {
   if (servingService) {
     return {
       state: "ready",
-      title: "Ready",
-      description: "Opening the workspace signs you in to the cloned board without a password.",
-      action: { kind: "open", label: "Open workspace" },
+      title: t("libWorkspaceAccessState.ready.title"),
+      description: t("libWorkspaceAccessState.ready.description"),
+      action: { kind: "open", label: t("libWorkspaceAccessState.actions.open") },
       handoffAvailable,
       secondaryNotice,
     };
@@ -298,19 +299,19 @@ export function resolveWorkspaceAccessState(input: {
   if (unhealthyService) {
     return {
       state: "degraded",
-      title: "Workspace is degraded",
+      title: t("libWorkspaceAccessState.degraded.title"),
       description: cause
-        ?? "The runtime is up but did not report a usable database, so Paperclip will not publish it as ready.",
-      action: { kind: "repair", label: "Repair workspace" },
+        ?? t("libWorkspaceAccessState.degraded.noUsableDatabase"),
+      action: { kind: "repair", label: t("libWorkspaceAccessState.actions.repair") },
       handoffAvailable,
     };
   }
 
   return {
     state: "stopped",
-    title: "Workspace is not running",
-    description: "Start the workspace runtime to publish its board.",
-    action: { kind: "start", label: "Start workspace" },
+    title: t("libWorkspaceAccessState.stopped.title"),
+    description: t("libWorkspaceAccessState.stopped.description"),
+    action: { kind: "start", label: t("libWorkspaceAccessState.actions.start") },
     handoffAvailable,
   };
 }

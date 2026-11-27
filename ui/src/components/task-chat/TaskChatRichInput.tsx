@@ -6,6 +6,7 @@ import {
   type MentionOption,
 } from "@/components/MarkdownEditor";
 import { Button } from "@/components/ui/button";
+import { t } from "@/i18n";
 
 interface TaskChatRichInputProps {
   value: string;
@@ -37,7 +38,7 @@ export function TaskChatRichInput({
   onUploadingChange,
   ariaLabelledBy,
   testId = "task-chat-rich-input",
-  attachAriaLabel = "Attach image",
+  attachAriaLabel = t("componentsTaskChatTaskChatRichInput.attachImage"),
   showImageAttachControls = false,
   questionAnswer = false,
 }: TaskChatRichInputProps) {
@@ -59,7 +60,7 @@ export function TaskChatRichInput({
   }
 
   async function uploadImage(file: File): Promise<string> {
-    if (!imageUploadHandler) throw new Error("Image uploads are unavailable.");
+    if (!imageUploadHandler) throw new Error(t("componentsTaskChatTaskChatRichInput.uploadsUnavailable"));
     uploadCountRef.current += 1;
     updateUploading(true);
     setUploadError(null);
@@ -69,7 +70,7 @@ export function TaskChatRichInput({
       setUploadError(
         error instanceof Error
           ? error.message
-          : "The image could not be uploaded.",
+          : t("componentsTaskChatTaskChatRichInput.uploadFailed"),
       );
       throw error;
     } finally {
@@ -135,9 +136,9 @@ export function TaskChatRichInput({
             ) : (
               <ImagePlus aria-hidden className="h-3.5 w-3.5" />
             )}
-            Attach image
+            {t("componentsTaskChatTaskChatRichInput.attachImage")}
           </Button>
-          <span>or drop/paste an image into the note</span>
+          <span>{t("componentsTaskChatTaskChatRichInput.dropHint")}</span>
         </div>
       ) : null}
       {uploadError ? (

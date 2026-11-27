@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "inbox": "Inbox",
+    "taskDetail": "Task detail",
+    "decisions": "Decisions",
+    "global": "Global"
+  },
+  "shortcuts": {
+    "moveDown": "Move down",
+    "moveUp": "Move up",
+    "collapseGroup": "Collapse selected group",
+    "expandGroup": "Expand selected group",
+    "openItem": "Open selected item",
+    "archiveItem": "Archive item",
+    "markRead": "Mark as read",
+    "markUnread": "Mark as unread",
+    "quickArchive": "Quick-archive back to inbox",
+    "goToInbox": "Go to inbox",
+    "focusComposer": "Focus comment composer",
+    "toggleDecision": "Open or close selected decision",
+    "dismissDecision": "Dismiss selected decision",
+    "search": "Search current page or quick search",
+    "newTask": "New task",
+    "toggleSidebar": "Toggle sidebar",
+    "togglePanel": "Toggle panel",
+    "showShortcuts": "Show keyboard shortcuts"
+  },
+  "then": "then",
+  "footer": {
+    "press": "Press",
+    "close": "to close · Shortcuts are disabled in text fields"
+  },
+  "title": "Keyboard shortcuts"
+}

@@ -11,6 +11,7 @@ import { tenantSessionRecovery } from "@/lib/tenant-session-recovery";
 import { apiFetch } from "./client";
 import { apiErrorMessage, isRawErrorCode } from "./errors";
 import { readApiJson } from "./response";
+import { t } from "@/i18n";
 
 type AuthErrorBody =
   | {
@@ -199,7 +200,7 @@ export const authApi = {
     if (!res.ok) {
       const recovery = tenantSessionRecovery.recoverIfNeeded(res.status, payload);
       if (recovery) return recovery;
-      throw new Error((payload as { error?: string } | null)?.error ?? `Failed to load profile (${res.status})`);
+      throw new Error((payload as { error?: string } | null)?.error ?? t("apiAuth.failedToLoadProfile", { status: res.status }));
     }
     return currentUserProfileSchema.parse(payload);
   },

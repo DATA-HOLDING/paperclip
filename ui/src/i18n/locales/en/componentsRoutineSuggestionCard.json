@@ -1,0 +1,9 @@
+{
+  "defaultOffer": "This looks like something that comes up regularly. Want me to do it on a schedule?",
+  "routineSetUp": "Routine set up:",
+  "settingUp": "Setting up the routine…",
+  "yourAgent": "Your agent",
+  "offerLabel": "Offer to repeat {{title}}",
+  "noThanks": "No thanks",
+  "makeRoutine": "Make it a routine"
+}

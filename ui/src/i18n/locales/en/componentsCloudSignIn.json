@@ -1,0 +1,6 @@
+{
+  "title": "Sign in to Paperclip Cloud",
+  "restoreFailed": "We couldn't restore your session. Continue to Paperclip Cloud to try again.",
+  "unavailable": "Cloud sign-in is unavailable for this workspace. Please contact your administrator.",
+  "continue": "Continue to Paperclip Cloud"
+}

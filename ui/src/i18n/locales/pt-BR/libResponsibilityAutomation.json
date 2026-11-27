@@ -1,0 +1,66 @@
+{
+  "shareLabel": "{{percent}}% automatizado",
+  "automationCount_one": "{{count}} automação",
+  "automationCount_other": "{{count}} automações",
+  "manualTaskCount_one": "{{count}} tarefa manual",
+  "manualTaskCount_other": "{{count}} tarefas manuais",
+  "nothingFiled": "Nada foi registrado aqui ainda.",
+  "noAutomationsNoTasks": "Nenhuma automação e nenhuma tarefa manual recente.",
+  "sentence": {
+    "noResponsibilities": "Você ainda não é dono de nenhuma responsabilidade.",
+    "tail_one": "{{count}} tarefa manual poderia ser automatizada.",
+    "tail_other": "{{count}} tarefas manuais poderiam ser automatizadas.",
+    "allHaveSomething": "Toda responsabilidade sua tem algo automatizado; {{tail}}",
+    "allAutomated": "Tudo o que é seu está automatizado.",
+    "singleNothing": "Sua responsabilidade ainda não tem nada automatizado",
+    "noneOf": "Nenhuma das suas {{total}} responsabilidades tem algo automatizado ainda",
+    "someOf_one": "{{count}} das suas {{total}} responsabilidades ainda não tem nada automatizado",
+    "someOf_other": "{{count}} das suas {{total}} responsabilidades ainda não têm nada automatizado"
+  },
+  "anAgent": "um agente",
+  "itsAgent": "o agente dela",
+  "yourAgent": "seu agente",
+  "yourAgentCapitalized": "Seu agente",
+  "age": {
+    "justNow": "agora mesmo",
+    "minutesAgo_one": "há {{count}} minuto",
+    "minutesAgo_other": "há {{count}} minutos",
+    "hoursAgo_one": "há {{count}} hora",
+    "hoursAgo_other": "há {{count}} horas"
+  },
+  "start": {
+    "webhookDetail": "quando outro sistema a chama",
+    "lastCalled": "Chamada pela última vez {{age}}",
+    "notCalled": "Ainda não foi chamada",
+    "standingDetail": "a cada ativação",
+    "lastChecked": "Verificada pela última vez {{age}}: {{result}}",
+    "acted": "agiu",
+    "actedWithNote": "agiu ({{note}})",
+    "nothingNeeded": "nada necessário",
+    "notChecked": "Ainda não foi verificada",
+    "onRequest": "Sob demanda",
+    "onRequestDetail": "quando alguém a executa"
+  },
+  "stalled": {
+    "paused": "Pausada",
+    "noAgent": "Nenhum agente para executá-la",
+    "noWakeups": "Não está rodando: {{agent}} não é ativado sozinho (heartbeat desligado)"
+  },
+  "candidate": {
+    "agentOffered": "Um agente se ofereceu para repeti-la",
+    "offered": "{{agent}} ofereceu: {{cadence}}",
+    "doneByAgent": "Feita por {{agent}} {{age}}",
+    "doneByHand": "Feita à mão {{age}}",
+    "withAgent": "Com {{agent}} agora"
+  },
+  "button": {
+    "review": "Revisar a proposta de {{who}}",
+    "continue": "Continuar com {{who}}",
+    "automate": "Automatizar com {{who}}"
+  },
+  "noCandidates": {
+    "nothingElse": "Nada mais aqui parece valer a pena automatizar.",
+    "covered": "As automações estão dando conta do trabalho.",
+    "noRecent": "Nenhuma tarefa manual recente para automatizar."
+  }
+}

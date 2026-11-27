@@ -1,5 +1,6 @@
 import type { OrgNode } from "../../api/agents";
 import type { ChartTask } from "./tasks";
+import { t } from "@/i18n";
 
 /** Development-only fixtures; these never create issues or start agent runs. */
 export function createTaskPreview(roots: OrgNode[]): ChartTask[] {
@@ -12,8 +13,8 @@ export function createTaskPreview(roots: OrgNode[]): ChartTask[] {
   const engineer = engineering.reports.find(node => node.role === "engineer") ?? engineering.reports[0] ?? engineering;
   const reviewer = nodes.find(node => node.role === "qa") ?? nodes.at(-1)!;
   return [
-    { id: "preview-launch", title: "Plan product launch", identifier: null, ownerId: marketing.id, agentIds: [marketing.id] },
-    { id: "preview-onboarding", title: "Build onboarding flow", identifier: null, ownerId: engineering.id, agentIds: [...new Set([engineering.id, engineer.id])] },
-    { id: "preview-release", title: "Review release readiness", identifier: null, ownerId: reviewer.id, agentIds: [reviewer.id] },
+    { id: "preview-launch", title: t("pagesOrgChart.preview.planLaunch"), identifier: null, ownerId: marketing.id, agentIds: [marketing.id] },
+    { id: "preview-onboarding", title: t("pagesOrgChart.preview.buildOnboarding"), identifier: null, ownerId: engineering.id, agentIds: [...new Set([engineering.id, engineer.id])] },
+    { id: "preview-release", title: t("pagesOrgChart.preview.reviewRelease"), identifier: null, ownerId: reviewer.id, agentIds: [reviewer.id] },
   ];
 }

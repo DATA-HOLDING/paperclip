@@ -1,0 +1,19 @@
+{
+  "setup": {
+    "title": "Configurar {{name}}",
+    "message": "{{label}} é gerado por um agente integrado. Configure o modelo dele para ativar o recurso.",
+    "action": "Configurar {{name}}"
+  },
+  "pending": {
+    "title": "{{name}} aguarda aprovação",
+    "message": "{{label}} ficará disponível depois que o conselho aprovar a contratação deste agente integrado."
+  },
+  "paused": {
+    "title": "{{label}} está pausado.",
+    "viewAgent": "Ver agente",
+    "resuming": "Retomando…",
+    "resumeAgent": "Retomar agente",
+    "message": "O agente integrado foi pausado, então novos itens de {{label}} não estão sendo gerados.",
+    "messageAt": "O agente integrado foi pausado {{pausedAt}}, então novos itens de {{label}} não estão sendo gerados."
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "runExitedWithError": "A execução terminou com um erro.",
+  "joinRequest": {
+    "agent": "Pedido de entrada de agente",
+    "agentNamed": "Pedido de entrada de agente: {{name}}",
+    "human": "Pedido de entrada de pessoa",
+    "requestedFrom": "pedido {{time}} a partir do IP {{ip}}",
+    "adapter": "adaptador: {{adapter}}"
+  },
+  "failedRun": {
+    "title": "Execução com falha",
+    "titleWithAgent": "Execução com falha — {{name}}"
+  },
+  "approval": {
+    "requestedBy": "pedido por {{name}}",
+    "updated": "atualizado {{time}}"
+  },
+  "approve": "Aprovar",
+  "reject": "Rejeitar",
+  "markAsRead": "Marcar como lido",
+  "retrying": "Tentando novamente…",
+  "retry": "Tentar novamente",
+  "dismiss": "Dispensar",
+  "breadcrumb": "Caixa de entrada",
+  "creators": {
+    "board": "Conselho",
+    "me": "Eu"
+  },
+  "actions": {
+    "approveRequest": "aprovar este pedido",
+    "rejectRequest": "rejeitar este pedido",
+    "approveJoinRequest": "aprovar o pedido de entrada",
+    "rejectJoinRequest": "rejeitar o pedido de entrada",
+    "retryRun": "tentar a execução novamente",
+    "archiveTask": "arquivar a tarefa",
+    "undoArchive": "desfazer o arquivamento da caixa de entrada",
+    "loadApprovals": "carregar as aprovações"
+  },
+  "selectCompany": "Selecione uma organização para ver a caixa de entrada.",
+  "searchPlaceholder": "Buscar na caixa de entrada…",
+  "tabs": {
+    "mine": "Minhas",
+    "recent": "Recentes",
+    "unread": "Não lidas",
+    "blocked": "Bloqueadas",
+    "all": "Todas"
+  },
+  "toolbar": {
+    "group": "Agrupar",
+    "sort": "Ordenar",
+    "columns": "Escolha quais colunas da caixa de entrada ficam visíveis",
+    "disableNesting": "Desativar aninhamento pai-filho",
+    "enableNesting": "Ativar aninhamento pai-filho"
+  },
+  "groupBy": {
+    "none": "Nenhum",
+    "type": "Tipo",
+    "assignee": "Responsável",
+    "project": "Projeto",
+    "workspace": "Espaço de trabalho"
+  },
+  "markAllRead": {
+    "marking": "Marcando…",
+    "button": "Marcar tudo como lido",
+    "confirmTitle": "Marcar tudo como lido?",
+    "confirmDescription_one": "Isso vai marcar {{count}} item não lido como lido.",
+    "confirmDescription_other": "Isso vai marcar {{count}} itens não lidos como lidos.",
+    "cancel": "Cancelar"
+  },
+  "filters": {
+    "category": "Categoria",
+    "allCategories": "Todas as categorias",
+    "myRecentTasks": "Minhas tarefas recentes",
+    "joinRequests": "Pedidos de entrada",
+    "approvals": "Aprovações",
+    "failedRuns": "Execuções com falha",
+    "alerts": "Alertas",
+    "approvalStatus": "Status da aprovação",
+    "allApprovalStatuses": "Todos os status de aprovação",
+    "needsAction": "Precisa de ação",
+    "resolved": "Resolvidas"
+  },
+  "empty": {
+    "search": "Nenhum item da caixa de entrada corresponde à sua busca.",
+    "mine": "Caixa de entrada zerada.",
+    "unread": "Nenhum item novo na caixa de entrada.",
+    "recent": "Nenhum item recente na caixa de entrada.",
+    "filters": "Nenhum item da caixa de entrada corresponde a estes filtros."
+  },
+  "search": {
+    "archived": "Arquivadas",
+    "otherResults": "Outros resultados"
+  },
+  "newTaskIn": "Nova tarefa em {{group}}",
+  "alerts": {
+    "heading": "Alertas",
+    "agentErrors_one": "agente com erros",
+    "agentErrors_other": "agentes com erros",
+    "budgetAt": "Orçamento com",
+    "utilizationThisMonth": "de uso este mês"
+  },
+  "subTaskCount_one": "({{count}} subtarefa)",
+  "subTaskCount_other": "({{count}} subtarefas)",
+  "earlierDivider": "Antes"
+}

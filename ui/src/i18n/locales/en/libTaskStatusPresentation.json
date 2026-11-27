@@ -1,0 +1,30 @@
+{
+  "status": {
+    "backlog": "Backlog",
+    "todo": "Todo",
+    "in_progress": "In Progress",
+    "in_review": "In Review",
+    "blocked": "Blocked",
+    "done": "Done",
+    "cancelled": "Cancelled",
+    "idle": "Idle",
+    "monitoring": "Monitoring",
+    "in_queue": "In Queue"
+  },
+  "blocked": {
+    "plain": "Blocked",
+    "waitingOnSubtask": "Blocked · waiting on active sub-task {{identifier}}",
+    "waitingOnSubtasks_one": "Blocked · waiting on 1 active sub-task",
+    "waitingOnSubtasks_other": "Blocked · waiting on {{count}} active sub-tasks",
+    "coveredByDependency": "Blocked · covered by active dependency {{identifier}}",
+    "coveredByDependencies_one": "Blocked · covered by 1 active dependency",
+    "coveredByDependencies_other": "Blocked · covered by {{count}} active dependencies",
+    "reviewStalledOn": "Blocked · review stalled on {{identifier}}",
+    "reviewsStalled_one": "Blocked · review stalled with no clear next step",
+    "reviewsStalled_other": "Blocked · {{count}} reviews stalled with no clear next step",
+    "attention_one": "{{count}} blocker needs attention",
+    "attention_other": "{{count}} blockers need attention",
+    "attentionWithCovered": "Blocked · {{attention}}; {{coveredCount}} covered by active work",
+    "withReason": "Blocked · {{reason}}"
+  }
+}

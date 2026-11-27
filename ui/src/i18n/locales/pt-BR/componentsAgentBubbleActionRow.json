@@ -1,0 +1,25 @@
+{
+  "copyFailed": "Não foi possível copiar a mensagem",
+  "copyMessage": "Copiar mensagem",
+  "moreActions": "Mais ações",
+  "messageCopied": "Mensagem copiada",
+  "helpful": "Útil",
+  "needsWork": "Precisa melhorar",
+  "whatCouldBeBetter": "O que poderia ter sido melhor?",
+  "addShortNote": "Adicione uma nota curta",
+  "dismiss": "Dispensar",
+  "saving": "Salvando...",
+  "saveNote": "Salvar nota",
+  "sharingDialog": {
+    "title": "Salve sua preferência de compartilhamento de feedback",
+    "description": "Escolha se as respostas de IA avaliadas podem ser compartilhadas com a Paperclip Labs. Esta resposta passa a ser o padrão para futuros votos positivos e negativos.",
+    "savedLocally": "Este voto é sempre salvo localmente.",
+    "chooseAlwaysAllowPrefix": "Escolha",
+    "alwaysAllow": "Sempre permitir",
+    "chooseAlwaysAllowSuffix": "para compartilhar este voto e as futuras respostas de IA avaliadas. Escolha",
+    "dontAllow": "Não permitir",
+    "chooseDontAllowSuffix": "para manter este voto e os futuros votos apenas localmente.",
+    "changeLater": "Você pode alterar isso depois em Configurações > Geral.",
+    "readTerms": "Leia nossos termos de serviço"
+  }
+}

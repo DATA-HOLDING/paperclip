@@ -1,0 +1,11 @@
+{
+  "disposition": {
+    "queued": "queued",
+    "coalesced": "would be coalesced",
+    "skipped": "would be skipped"
+  },
+  "note": {
+    "runsImmediately": "runs immediately",
+    "ifPreviousRunActive": "if the previous run is still active"
+  }
+}

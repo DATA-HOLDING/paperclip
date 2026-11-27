@@ -1,0 +1,150 @@
+{
+  "selectFile": "Select a file to preview its contents.",
+  "binaryUnavailable": "Binary asset preview is not available for this file type.",
+  "renames": {
+    "title": "Renames",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "skipped": "skipped",
+    "skip": "skip",
+    "confirmed": "confirmed",
+    "confirm": "confirm rename"
+  },
+  "adapters": {
+    "openaiDotExperimental": "OpenAI Dot (experimental)",
+    "museExperimental": "Muse — Personal agent (experimental)",
+    "musePersonal": "Muse — Personal agent",
+    "title": "Adapters",
+    "agents_one": "{{count}} agent",
+    "agents_other": "{{count}} agents",
+    "agentBadge": "agent",
+    "chooseAvailable": "Choose an available harness",
+    "configure": "configure adapter",
+    "fallback": "source adapter {{source}} is not installed here — this agent will use {{target}}",
+    "runnerUnavailable": "Paperclip Runner is unavailable here. Choose another harness.",
+    "runnerProviderExperimental": "Paperclip Runner provider {{provider}} requires its experimental feature to be enabled. This import keeps its saved harness until you choose another one."
+  },
+  "errors": {
+    "selectZip": "Select a .zip organization package.",
+    "emptyZip": "No package files were found in the selected zip archive.",
+    "jobLost": "The server no longer reports this import job — it may have restarted while the import ran.",
+    "statusUnreadable": "The import status can no longer be read — your session may have expired. Reload and sign in to check on it.",
+    "serverFailed": "Import failed on the server.",
+    "partFailed": "Part {{part}} of {{total}} failed to upload.",
+    "chooseCloudHarness": "Choose an available Cloud harness for each imported agent.",
+    "unknownProvider": "Unknown Paperclip Runner provider {{provider}}. Keep the package configuration or explicitly choose another harness.",
+    "dotBilling": "OpenAI Dot requires acknowledgement of external billing. Configure the Dot adapter and enable Allow externally billed provider.",
+    "museBilling": "Muse requires acknowledgement of external billing. Configure Muse and enable Allow externally billed provider."
+  },
+  "transferProgress": "Uploading part {{current}} of {{total}} — {{uploaded}} of {{size}} uploaded.",
+  "resumesFromParts": "{{progress}} An interrupted upload resumes from the finished parts.",
+  "localZipHelp": "Upload a .zip exported directly from Paperclip. Re-zipped archives created by Finder, Explorer, or other zip tools may not import correctly.",
+  "breadcrumbs": {
+    "company": "Company",
+    "settings": "Settings",
+    "import": "Import"
+  },
+  "toast": {
+    "previewFailed": "Preview failed",
+    "completed": "Import completed",
+    "completedBody": "Open the organization to view it.",
+    "importFailed": "Import failed",
+    "packageReadFailed": "Package read failed",
+    "activationPartial": "Some items were not activated",
+    "activationPartialBody_one": "{{count}} item failed to activate; the rest were activated.",
+    "activationPartialBody_other": "{{count}} items failed to activate; the rest were activated."
+  },
+  "expired": {
+    "title": "Import completed",
+    "namedBefore": "The import finished and",
+    "namedAfter": "is ready. Its detailed summary is no longer available.",
+    "unnamed": "The import finished and your organization is ready. Its detailed summary is no longer available, but the organization has been added — select it from the organization switcher to view it.",
+    "paused": "Imported agents arrived paused — resume them from the company's Agents page so assigned tasks can start.",
+    "openDashboard": "Open organization dashboard"
+  },
+  "complete": {
+    "title": "Import complete",
+    "summary": "{{name}}: {{agents}}, {{skills}}, {{projects}}, and {{routines}} processed.",
+    "agents_one": "{{count}} agent",
+    "agents_other": "{{count}} agents",
+    "skills_one": "{{count}} skill",
+    "skills_other": "{{count}} skills",
+    "projects_one": "{{count}} project",
+    "projects_other": "{{count}} projects",
+    "routines_one": "{{count}} routine",
+    "routines_other": "{{count}} routines",
+    "skillResults": "Skill import results",
+    "asSlug": "as {{slug}}",
+    "goToDashboard": "Go to dashboard"
+  },
+  "activation": {
+    "title": "Activate imported agents and routines",
+    "importedPaused": "imported paused",
+    "activated": "activated",
+    "failed": "failed: {{error}}",
+    "paused": "paused",
+    "activating": "Activating...",
+    "activateSelected": "Activate selected ({{n}})",
+    "leftPausedHint": "Anything left paused here stays visible on the company's Agents and Routines pages, which offer the same resume actions — nothing is lost if you leave this page."
+  },
+  "resume": {
+    "title": "Resume watching import",
+    "body": "An import you started earlier is still running on the server.",
+    "running": "Import running on the server — safe to keep waiting; reconnecting won't lose it."
+  },
+  "selectOrganization": "Select an organization to import into.",
+  "source": {
+    "title": "Import source",
+    "description": "Choose a GitHub repo or upload a local Paperclip zip package.",
+    "github": "GitHub repo",
+    "local": "Local zip",
+    "chooseZip": "Choose zip",
+    "localPackage_one": "{{name}} with {{count}} file",
+    "localPackage_other": "{{name}} with {{count}} files",
+    "zipSize": "({{size}} zip)",
+    "githubUrl": "GitHub URL",
+    "githubUrlHint": "Repo tree path or blob URL to COMPANY.md (e.g. github.com/owner/repo/tree/main/company)."
+  },
+  "target": {
+    "label": "Target",
+    "hint": "Import into this organization or create a new one.",
+    "new": "Create new organization",
+    "existing": "Existing company: {{name}}",
+    "newName": "New organization name",
+    "newNameHint": "Optional override. Leave blank to use the package name.",
+    "newNamePlaceholder": "Imported Organization"
+  },
+  "collision": {
+    "label": "Collision strategy",
+    "hint": "Board imports can rename, skip, or replace matching organization content.",
+    "rename": "Rename on conflict",
+    "skip": "Skip on conflict",
+    "replace": "Replace existing"
+  },
+  "preview": {
+    "previewing": "Previewing...",
+    "button": "Preview import",
+    "chooseFirst": "Choose a package above to enable the preview.",
+    "importInProgress": "Import in progress — the package and settings unlock when it finishes.",
+    "analyzing": "Uploading and analyzing your package{{size}} — large packages can take a few minutes. Keep this page open.",
+    "failedPrefix": "Preview failed:",
+    "failedSuffix": "Retry, or re-export the package without large attachments to shrink it."
+  },
+  "bar": {
+    "title": "Import preview",
+    "selected_one": "{{selected}} / {{total}} file selected",
+    "selected_other": "{{selected}} / {{total}} files selected",
+    "conflicts_one": "{{count}} conflict",
+    "conflicts_other": "{{count}} conflicts",
+    "errors_one": "{{count}} error",
+    "errors_other": "{{count}} errors",
+    "startPaused": "Start imported agents and routines paused",
+    "importing": "Importing...",
+    "importFiles_one": "Import {{count}} file",
+    "importFiles_other": "Import {{count}} files",
+    "runningOnServer": "Import running on the server — safe to keep waiting; reconnecting won't lose it. Large packages can take several minutes.",
+    "failedPrefix": "Import failed:",
+    "failedSuffix": "Nothing may have been created, or the import stopped partway — check the target company before retrying."
+  },
+  "packageFiles": "Package files"
+}

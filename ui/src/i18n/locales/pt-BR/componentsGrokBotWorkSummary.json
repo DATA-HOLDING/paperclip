@@ -1,0 +1,15 @@
+{
+  "refreshFailed": "Não foi possível atualizar o status da conexão.",
+  "status": {
+    "recoveryNeeded": "Recuperação necessária",
+    "awaitingAcknowledgement": "Aguardando confirmação",
+    "working": "Trabalhando no Grok Bot",
+    "noActiveSession": "Nenhuma sessão de trabalho ativa no Paperclip",
+    "setupIncomplete": "Configuração da conexão incompleta"
+  },
+  "queuedTasks": "Tarefas na fila:",
+  "checking": "Verificando…",
+  "lastContact": "Último contato:",
+  "notObserved": "Não observado",
+  "footnote": "Mostra a atividade informada pelo Paperclip. Abra o app de desktop do Grok Bot para ver a atividade completa do Bot."
+}

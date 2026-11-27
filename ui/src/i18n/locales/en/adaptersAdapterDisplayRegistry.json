@@ -1,0 +1,38 @@
+{
+  "description": {
+    "antigravityRuntime": "Antigravity through Paperclip Runner",
+    "copilotRuntime": "Copilot through Paperclip Runner",
+    "kimiRuntime": "Kimi Code through Paperclip Runner",
+    "acpxLocal": "Retired standalone ACPX adapter",
+    "claudeLocal": "Claude Code CLI harness",
+    "codexLocal": "Codex CLI harness",
+    "paperclipRunner": "Experimental Rust runner with a Codex provider",
+    "geminiLocal": "Gemini CLI harness",
+    "grokLocal": "Grok Build harness",
+    "kimiLocal": "Kimi Code CLI harness",
+    "hermesGateway": "Remote Hermes API server",
+    "hermesLocal": "Hermes harness",
+    "opencodeLocal": "OpenCode multi-provider harness",
+    "piLocal": "Pi harness",
+    "cursor": "Cursor CLI harness",
+    "grokBot": "An existing external Bot in Grok",
+    "openaiDot": "Your Dot in ChatGPT",
+    "muse": "Your personal Muse at muse.ai",
+    "cursorCloud": "Managed remote Cursor agent",
+    "openclawGateway": "External gateway adapter",
+    "process": "Internal process adapter",
+    "http": "Internal HTTP adapter"
+  },
+  "label": {
+    "kimiRuntime": "Kimi Code (Runner)",
+    "acpxLocal": "ACPX (retired)",
+    "muse": "Muse — Personal agent",
+    "process": "Process"
+  },
+  "disabledLabel": {
+    "acpxLocal": "Use Claude Code or Codex with the ACP engine",
+    "openclawGateway": "Invite external agents from the add-agent modal"
+  },
+  "externalSuffixAdapter": "External {{suffix}} adapter",
+  "externalAdapter": "External adapter"
+}

@@ -1,0 +1,12 @@
+{
+  "refreshToRetry": "Refresh the task to retry.",
+  "waitForCurrentRun": "Wait for the current run to finish.",
+  "agentUnavailable": "The assigned agent is unavailable.",
+  "completePendingReview": "Complete the pending review or approval before retrying.",
+  "resolveBlockers": "Resolve the task’s blockers before retrying.",
+  "taskChanged": "The task changed. Refresh and try again.",
+  "defaultRepository": "The task’s repository",
+  "repairStale": "This repair no longer matches the task. Refresh to review its current state.",
+  "defaultAgentName": "The assigned agent",
+  "taskChangedWhileSaving": "The task changed while saving. Refresh to check its current state."
+}

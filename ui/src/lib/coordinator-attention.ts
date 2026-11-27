@@ -1,6 +1,7 @@
 import { attentionReceiptText, type AttentionItem, type AttentionFeedView, type AttentionPersonalView, type DecisionHistoryItem, type DecisionHistoryOutcomeFilter, type DecisionHistoryScope } from "@paperclipai/shared";
 import { queryKeys } from "./queryKeys";
 import { isInlineResolvable } from "./attention";
+import { t } from "@/i18n";
 
 /**
  * The pending feed for one person and one view (PAP-749 plan §1). The key
@@ -35,15 +36,15 @@ export function coordinatorCardTitle(item: AttentionItem) {
  */
 function coordinatorCardAsk(item: AttentionItem, taskTitle: string | null): string | null {
   const title = item.subject.title?.trim() || null;
-  if (item.sourceKind === "blocker_attention" && title) return `Get “${title}” moving again`;
+  if (item.sourceKind === "blocker_attention" && title) return t("libCoordinatorAttention.ask.blocker", { title });
   if (item.sourceKind === "agent_error_alert") {
     const agent = item.detail?.kind === "agent_error" ? item.detail.agentName ?? title : title;
-    return agent ? `${agent} hit an error and needs help` : null;
+    return agent ? t("libCoordinatorAttention.ask.agentError", { agent }) : null;
   }
-  if (item.sourceKind === "review" && title && title === taskTitle) return `Review “${title}”`;
+  if (item.sourceKind === "review" && title && title === taskTitle) return t("libCoordinatorAttention.ask.review", { title });
   // PAP-775 (UI1): approvals and join requests are answered on the card now.
-  if (item.sourceKind === "approval" && title && !/^approve\b/i.test(title)) return `Approve “${title}”?`;
-  if (item.sourceKind === "join_request" && title) return `Let ${title} join the company?`;
+  if (item.sourceKind === "approval" && title && !/^approve\b/i.test(title)) return t("libCoordinatorAttention.ask.approval", { title });
+  if (item.sourceKind === "join_request" && title) return t("libCoordinatorAttention.ask.joinRequest", { title });
   return null;
 }
 
@@ -51,8 +52,9 @@ function coordinatorCardAsk(item: AttentionItem, taskTitle: string | null): stri
 export function coordinatorCardDetail(item: AttentionItem, detailLine: string | null): string | null {
   if (item.sourceKind === "blocker_attention" && item.detail?.kind === "blocker" && !item.detail.blockingIssue) {
     const count = item.detail.blockedTaskCount ?? 0;
-    const holding = count > 0 ? `It's holding up ${count} ${count === 1 ? "task" : "tasks"}, and no` : "No";
-    return `${holding} one is working on it. Unblock it, reassign it, or nudge its owner.`;
+    return count > 0
+      ? t("libCoordinatorAttention.detail.blockerHolding", { count })
+      : t("libCoordinatorAttention.detail.blockerIdle");
   }
   return detailLine ?? item.whyNow;
 }
@@ -77,14 +79,14 @@ export function pendingDecisionTaskIds(items: AttentionItem[]) {
  * it is not an outcome here.
  */
 export const DECISION_HISTORY_OUTCOME_OPTIONS: ReadonlyArray<{ value: DecisionHistoryOutcomeFilter; label: string }> = [
-  { value: "accepted", label: "Approved" },
-  { value: "answered", label: "Answered" },
-  { value: "rejected", label: "Changes requested" },
-  { value: "decided", label: "Decided" },
-  { value: "withdrawn", label: "Withdrawn" },
-  { value: "expired", label: "Expired" },
-  { value: "issue_closed", label: "Closed with task" },
-  { value: "cancelled", label: "Cancelled" },
+  { value: "accepted", label: t("libCoordinatorAttention.outcome.accepted") },
+  { value: "answered", label: t("libCoordinatorAttention.outcome.answered") },
+  { value: "rejected", label: t("libCoordinatorAttention.outcome.rejected") },
+  { value: "decided", label: t("libCoordinatorAttention.outcome.decided") },
+  { value: "withdrawn", label: t("libCoordinatorAttention.outcome.withdrawn") },
+  { value: "expired", label: t("libCoordinatorAttention.outcome.expired") },
+  { value: "issue_closed", label: t("libCoordinatorAttention.outcome.issueClosed") },
+  { value: "cancelled", label: t("libCoordinatorAttention.outcome.cancelled") },
 ];
 
 /**
@@ -93,8 +95,8 @@ export const DECISION_HISTORY_OUTCOME_OPTIONS: ReadonlyArray<{ value: DecisionHi
  * different person handled for you, and the cards that were for you.
  */
 export const DECISION_HISTORY_SCOPE_OPTIONS: ReadonlyArray<{ value: DecisionHistoryScope; label: string }> = [
-  { value: "mine", label: "Handled by me or for me" },
-  { value: "all", label: "Everyone" },
+  { value: "mine", label: t("libCoordinatorAttention.scope.mine") },
+  { value: "all", label: t("libCoordinatorAttention.scope.all") },
 ];
 export const DEFAULT_DECISION_HISTORY_SCOPE: DecisionHistoryScope = "mine";
 
@@ -105,18 +107,18 @@ export const DEFAULT_DECISION_HISTORY_SCOPE: DecisionHistoryScope = "mine";
  * item review its verdict counts. Everything else keeps the server's label.
  */
 export function decisionHistoryHeadline(item: DecisionHistoryItem, userLabelMap?: ReadonlyMap<string, string> | null) {
-  const actorLabel = item.resolvedByUserId ? userLabelMap?.get(item.resolvedByUserId) ?? "someone" : null;
+  const actorLabel = item.resolvedByUserId ? userLabelMap?.get(item.resolvedByUserId) ?? t("libCoordinatorAttention.someone") : null;
   if (item.action && actorLabel) {
     const line = attentionReceiptText({ outcome: item.action.outcome, actorLabel });
     return item.action.detail ? `${line}: ${item.action.detail}` : line;
   }
-  if (item.resultOutcome === "withdrawn" && actorLabel) return `Withdrawn by @${actorLabel}`;
+  if (item.resultOutcome === "withdrawn" && actorLabel) return t("libCoordinatorAttention.withdrawnBy", { actorLabel });
   return item.label;
 }
 
 /** The task line of a history entry; an approval with no task names itself instead. */
 export function decisionHistoryContext(item: DecisionHistoryItem) {
-  if (!item.issueId) return item.sourceKind === "approval" ? `Approval · ${item.title}` : item.title;
+  if (!item.issueId) return item.sourceKind === "approval" ? t("libCoordinatorAttention.approvalContext", { title: item.title }) : item.title;
   return [item.issueIdentifier, item.issueTitle].filter(Boolean).join(" · ");
 }
 

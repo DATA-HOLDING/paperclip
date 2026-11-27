@@ -1,0 +1,30 @@
+{
+  "changeLabels": {
+    "addArea": "New area",
+    "renameArea": "Rename area",
+    "removeArea": "Remove area",
+    "addResponsibility": "New responsibility",
+    "rewordResponsibility": "Reword responsibility",
+    "moveResponsibility": "Move responsibility",
+    "removeResponsibility": "Let go of responsibility"
+  },
+  "alsoLetsGo": "Also lets go of: {{items}}",
+  "goesWith": "Goes with {{area}}",
+  "keep": "Keep",
+  "dropAriaLabel": "Drop this change",
+  "drop": "Drop",
+  "changed": "Dashboard changed.",
+  "changedWithSummary": "Dashboard changed: {{summary}}.",
+  "replaced": "Proposed dashboard changes, replaced by newer ones.",
+  "rejected": "Not these dashboard changes.",
+  "yourAgent": "Your agent",
+  "cardAriaLabel": "Proposed dashboard changes",
+  "proposes": "{{agentName}} proposes",
+  "existingArea": "Existing area",
+  "responsibilitiesIn": "Responsibilities in {{name}}",
+  "notRightDefault": "Those dashboard changes aren't right yet.",
+  "notRightPlaceholder": "e.g. Keep Hiring, and fewer responsibilities under Fundraising",
+  "openConversation": "Open the conversation",
+  "notRight": "Not right",
+  "applyChanges": "Apply changes"
+}

@@ -12,6 +12,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { documentDisplayTitle } from "@/lib/issue-artifacts";
 import { createIssueDetailPath } from "@/lib/issueDetailBreadcrumb";
 import { Link, useLocation } from "@/lib/router";
+import { t } from "@/i18n";
 
 type HeadingNode = { type: string; value?: string; children?: HeadingNode[] };
 
@@ -34,7 +35,7 @@ export function TaskDocumentSourceLink({ taskRef }: { taskRef: string }) {
   return (
     <Link to={createIssueDetailPath(encodeURIComponent(taskRef))} disableIssueQuicklook
       className="inline-flex w-fit items-center gap-1.5 rounded-sm text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-      Open source task <ArrowUpRight className="size-4" aria-hidden />
+      {t("componentsTaskSidePanel.document.openSourceTask")} <ArrowUpRight className="size-4" aria-hidden />
     </Link>
   );
 }
@@ -86,14 +87,14 @@ export function TaskDocumentPanel({
     return (
       <div className="flex items-center gap-2 py-8 text-sm text-muted-foreground" role="status">
         <Loader2 className="size-4 animate-spin" aria-hidden />
-        Loading document…
+        {t("componentsTaskSidePanel.document.loading")}
       </div>
     );
   }
   if (view.kind === "error") {
     return (
       <div className="py-6">
-        <QueryErrorState error={query.error} action="load the document" onRetry={view.retry} retrying={view.isFetching} />
+        <QueryErrorState error={query.error} action={t("componentsTaskSidePanel.document.loadAction")} onRetry={view.retry} retrying={view.isFetching} />
       </div>
     );
   }
@@ -102,9 +103,9 @@ export function TaskDocumentPanel({
       <div className="flex items-start gap-3 py-8 text-sm" role="status">
         <FileQuestion className="mt-0.5 size-5 shrink-0 text-muted-foreground" aria-hidden />
         <div className="space-y-1">
-          <p className="font-medium">{revisionId ? "Reviewed revision unavailable" : "Document no longer available"}</p>
+          <p className="font-medium">{revisionId ? t("componentsTaskSidePanel.document.reviewedUnavailable") : t("componentsTaskSidePanel.document.noLongerAvailable")}</p>
           <p className="text-muted-foreground">
-            {revisionId ? "The exact reviewed revision could not be found. The current version has not been substituted." : "Close this tab or choose another document."}
+            {revisionId ? t("componentsTaskSidePanel.document.reviewedNotFound") : t("componentsTaskSidePanel.document.closeOrChoose")}
           </p>
         </div>
       </div>
@@ -116,15 +117,15 @@ export function TaskDocumentPanel({
       <header className="space-y-1">
         {!hasMatchingHeading ? <h2 className="text-lg font-semibold">{title}</h2> : null}
         <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-          <span>{`Revision ${document.latestRevisionNumber ?? 1}`}</span>
+          <span>{t("componentsTaskSidePanel.document.revision", { number: document.latestRevisionNumber ?? 1 })}</span>
           <span aria-hidden>·</span>
-          <span>{`Updated ${new Date(document.updatedAt).toLocaleString()}`}</span>
+          <span>{t("componentsTaskSidePanel.document.updated", { date: new Date(document.updatedAt).toLocaleString() })}</span>
           {!revisionId ? <DocumentAnnotationsCountChip
             issueId={issueId}
             docKey={document.key}
             panelOpen={annotationPanelOpen}
             onToggle={() => setAnnotationPanelOpen((open) => !open)}
-          /> : <span>· Reviewed version</span>}
+          /> : <span>· {t("componentsTaskSidePanel.document.reviewedVersion")}</span>}
         </div>
       </header>
       {document.body.trim() ? (
@@ -146,7 +147,7 @@ export function TaskDocumentPanel({
           </DocumentMarkdownBody>
         </IssueDocumentAnnotations>
       ) : (
-        <p className="text-sm text-muted-foreground">Document is empty.</p>
+        <p className="text-sm text-muted-foreground">{t("componentsTaskSidePanel.document.empty")}</p>
       )}
     </article>
   );

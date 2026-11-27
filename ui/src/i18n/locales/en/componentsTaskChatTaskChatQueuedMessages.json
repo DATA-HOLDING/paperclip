@@ -1,0 +1,57 @@
+{
+  "status": {
+    "stillQueuedReady": "Messages are still queued. They will send when the task is ready."
+  },
+  "savedResponse": "Saved response",
+  "steer": {
+    "unsupported": "This runner does not support steering",
+    "temporarilyUnavailable": "Steering is temporarily unavailable",
+    "available": "Steer this message into the active turn"
+  },
+  "row": {
+    "images": "Images",
+    "reorder": "Reorder queued message: {{label}}",
+    "queuedImages": "Queued images",
+    "sendQueued": "Send queued messages",
+    "interruptTitle": "Interrupt the active turn and send queued messages",
+    "sendNowTitle": "Send queued messages now",
+    "interrupt": "Interrupt",
+    "send": "Send",
+    "steer": "Steer",
+    "discardTitle": "Discard queued message",
+    "discardAriaLabel": "Discard queued message: {{label}}",
+    "actionsTitle": "Queued message actions",
+    "actionsAriaLabel": "Queued message actions: {{label}}",
+    "editMessage": "Edit message"
+  },
+  "autoSteer": {
+    "sendingIn": "Sending in {{seconds}}s",
+    "editTitle": "Edit before it is sent",
+    "edit": "Edit",
+    "cancelTitle": "Keep this message in the queue",
+    "cancel": "Cancel"
+  },
+  "announce": {
+    "autoSteer": "Queued message will be sent into the active turn in a few seconds. Edit or Cancel to keep it.",
+    "moved": "Moved queued message to position {{position}} of {{total}}.",
+    "steering": "Steering queued message.",
+    "sending": "Sending queued messages.",
+    "discarding": "Discarding queued message.",
+    "stillQueued": "Messages are still queued.",
+    "steered": "Message steered into the active turn.",
+    "willSendAfterStop": "Queued messages will be sent when the previous run has stopped.",
+    "submitted": "Queued messages submitted. Waiting for the agent.",
+    "discarded": "Queued message discarded."
+  },
+  "error": {
+    "reorderConflict": "The queue changed in another session. Its latest order has been restored.",
+    "reorderFailed": "Couldn’t reorder. Previous order restored.",
+    "alreadySending": "Too late to discard: this message is already being sent.",
+    "steerFailed": "Couldn’t steer. Message is still queued.",
+    "interruptFailed": "Couldn’t interrupt. Message is still queued.",
+    "sendFailed": "Couldn’t send. Message is still queued.",
+    "discardConflict": "The queue changed in another session. Review it and try again.",
+    "discardFailed": "Couldn’t discard. Message is still queued."
+  },
+  "ariaLabel": "Queued messages"
+}

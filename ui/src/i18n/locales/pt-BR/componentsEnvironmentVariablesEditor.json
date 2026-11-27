@@ -1,0 +1,120 @@
+{
+  "model": {
+    "invalidName": "Nome inválido — use letras, dígitos e _",
+    "duplicateName": "Nome duplicado",
+    "reservedPrefix": "Prefixo reservado — fornecido automaticamente e pode ser sobrescrito",
+    "secretMissing": "Este segredo não existe mais — as execuções vão falhar até você vinculá-lo novamente.",
+    "secretDisabled": "As execuções vão falhar até que seja reativado ou vinculado novamente.",
+    "userSecretMissing": "Esta definição de segredo de usuário não existe mais — as execuções vão falhar até você vinculá-la novamente.",
+    "userSecretDisabled": "As execuções vão falhar até que esta definição de segredo de usuário seja reativada ou vinculada novamente."
+  },
+  "secretForm": {
+    "nameRequired": "O nome é obrigatório",
+    "nameFormat": "Use letras minúsculas, dígitos e _",
+    "nameExists": "Já existe um segredo com este nome",
+    "valueRequired": "O valor é obrigatório",
+    "createFailed": "Falha ao criar o segredo",
+    "createAndBind": "Criar e vincular",
+    "storeAndBind": "Guardar e vincular",
+    "createHeading": "Criar segredo",
+    "storeHeading": "Guardar valor como segredo",
+    "storeDescriptionBefore": "Move o valor digitado para um segredo criptografado da organização e vincula",
+    "thisVariable": "esta variável",
+    "storeDescriptionAfter": " a ele.",
+    "nameLabel": "Nome",
+    "nameAriaLabel": "Nome do segredo",
+    "valueLabel": "Valor",
+    "valuePlaceholder": "valor",
+    "valueAriaLabel": "Valor do segredo",
+    "hideValue": "Ocultar valor",
+    "showValue": "Mostrar valor",
+    "cancel": "Cancelar"
+  },
+  "secretPicker": {
+    "upOneFolder": "Subir uma pasta",
+    "browseSecrets": "Navegar pelos segredos",
+    "current": "Atual",
+    "missingSecret": "Segredo ausente ({{id}})",
+    "recentlyUsed": "Usados recentemente",
+    "allSecrets": "Todos os segredos",
+    "selectSecret": "Selecione um segredo…",
+    "searchSecrets": "Buscar segredos…",
+    "noMatches": "Nenhum segredo correspondente",
+    "createSecretNamed": "Criar segredo",
+    "createNew": "Criar novo segredo…"
+  },
+  "row": {
+    "secretCreated": "Segredo {{name}} criado",
+    "source": {
+      "textValue": "Valor em texto",
+      "textValueDescription": "Guarda o valor diretamente como texto simples.",
+      "organizationSecret": "Segredo da organização",
+      "organizationSecretDescription": "Resolve um segredo guardado da organização no início da execução.",
+      "organizationSecretReference": "Referência a segredo da organização",
+      "userSecret": "Segredo de usuário",
+      "userSecretDescription": "Resolve o valor próprio do usuário responsável no início da execução.",
+      "userSecretReference": "Referência a segredo de usuário"
+    },
+    "variableName": "Nome da variável",
+    "valueSource": "Origem do valor",
+    "valuePlaceholder": "valor",
+    "variableValue": "Valor da variável",
+    "sensitive": {
+      "title": "Este valor parece sensível — guarde-o como segredo",
+      "storeAsSecret": "Guardar como segredo",
+      "dismissAriaLabel": "Dispensar sugestão de valor sensível",
+      "dismissTitle": "Dispensar — manter este valor como texto simples"
+    },
+    "version": {
+      "ariaLabel": "Versão",
+      "secretVersion": "Versão do segredo",
+      "recommended": "(recomendado)"
+    },
+    "userSecret": {
+      "ariaLabel": "Segredo de usuário",
+      "selectPlaceholder": "Selecione um segredo de usuário...",
+      "unknown": "Desconhecido ({{key}})",
+      "keyPlaceholder": "chave do segredo de usuário",
+      "keyAriaLabel": "Chave do segredo de usuário"
+    },
+    "requirement": {
+      "ariaLabel": "Obrigatoriedade",
+      "required": "Obrigatório",
+      "optional": "Opcional"
+    },
+    "undo": {
+      "revertedToText": "Revertido para texto —",
+      "button": "Desfazer"
+    },
+    "moreActions": "Mais ações",
+    "storeAsSecretMenu": "Guardar como segredo…",
+    "remove": "Remover {{name}}",
+    "variableFallback": "variável"
+  },
+  "editor": {
+    "defaultHint": "Defina a KEY com o nome da variável de ambiente que o processo espera, por exemplo GH_TOKEN. Escolha um segredo para resolver um valor guardado no início da execução. As variáveis PAPERCLIP_* são injetadas automaticamente.",
+    "changedNamesMore": "{{names}} +{{extra}} mais",
+    "addVariable": "Adicionar variável",
+    "summary": {
+      "new": "Novas: {{names}}",
+      "edited": "Editadas: {{names}}",
+      "removed": "Removidas: {{names}}"
+    },
+    "imported_one": "{{count}} variável importada",
+    "imported_other": "{{count}} variáveis importadas",
+    "attention": "{{count}} vínculos precisam de atenção",
+    "header": {
+      "name": "Nome",
+      "value": "Valor"
+    },
+    "empty": "Nenhuma variável de ambiente",
+    "recentlyUsed": "Usados recentemente:",
+    "bindSecret": "Vincular {{name}}",
+    "unsaved": {
+      "title": "Alterações não salvas",
+      "revert": "Reverter",
+      "save": "Salvar"
+    },
+    "userSecretsNote": "Os segredos de usuário são resolvidos a partir do usuário responsável pela execução. Vínculos obrigatórios falham até que esse usuário defina o valor em Segredos → Meus segredos."
+  }
+}

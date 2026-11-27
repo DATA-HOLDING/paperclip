@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import type { ComponentProps } from "react";
 import { useIssueNavigationPrefetch } from "@/hooks/useIssueNavigationPrefetch";
 import { SidebarNavItem } from "./SidebarNavItem";
@@ -28,7 +29,7 @@ export function RecentTaskNavItem({
   const linkHandlers = useIssueNavigationPrefetch(pathRef);
   return <SidebarNavItem {...props} to={to ?? `/issues/${pathRef}`} linkHandlers={linkHandlers}
     labelClassName={cn(task.isUnreadForMe && "font-semibold", labelClassName)}
-    trailing={<>{trailing}{task.isUnreadForMe && <span className="flex shrink-0 items-center" aria-label="Unread">
-      <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" /><span className="sr-only">Unread</span>
+    trailing={<>{trailing}{task.isUnreadForMe && <span className="flex shrink-0 items-center" aria-label={t("componentsRecentTaskNavItem.unread")}>
+      <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" /><span className="sr-only">{t("componentsRecentTaskNavItem.unread")}</span>
     </span>}</>} />;
 }

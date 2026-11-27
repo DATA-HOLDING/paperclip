@@ -39,6 +39,7 @@ import { taskStatusIconProps } from "@/lib/task-status-presentation";
 import { cn } from "@/lib/utils";
 import { healthStatusStyle } from "./ResponsibilityHealthBadge";
 import type { ResponsibilityPageActions } from "./ResponsibilityPageLayout";
+import { t } from "@/i18n";
 
 /** One glyph per status, so status never rests on colour alone. */
 export const HEALTH_ICON: Record<ResponsibilityHealth, LucideIcon> = {
@@ -91,10 +92,8 @@ export function ProposalsNotice({
   if (count <= 0) return null;
   const message =
     subject === "this"
-      ? "This responsibility was proposed for you and is waiting for your review."
-      : count === 1
-        ? "1 proposed responsibility is waiting for your review."
-        : `${count} proposed responsibilities are waiting for your review.`;
+      ? t("componentsResponsibilitiesResponsibilityViewParts.proposals.this")
+      : t("componentsResponsibilitiesResponsibilityViewParts.proposals.list", { count });
   return (
     <div
       role="status"
@@ -106,7 +105,7 @@ export function ProposalsNotice({
         {message}
       </p>
       <Button size="xs" variant="outline" onClick={onReview}>
-        {subject === "this" || count === 1 ? "Review it" : "Review them"}
+        {subject === "this" || count === 1 ? t("componentsResponsibilitiesResponsibilityViewParts.proposals.reviewIt") : t("componentsResponsibilitiesResponsibilityViewParts.proposals.reviewThem")}
       </Button>
     </div>
   );
@@ -134,9 +133,9 @@ export function ResponsibilityViewHeader({
         {actions}
       </div>
       {responsibility.status === "let_go" ? (
-        <p className="text-sm text-muted-foreground">You let go of this.</p>
+        <p className="text-sm text-muted-foreground">{t("componentsResponsibilitiesResponsibilityViewParts.header.letGo")}</p>
       ) : responsibility.status === "dismissed" ? (
-        <p className="text-sm text-muted-foreground">You dismissed this when it was proposed.</p>
+        <p className="text-sm text-muted-foreground">{t("componentsResponsibilitiesResponsibilityViewParts.header.dismissed")}</p>
       ) : null}
       {children}
     </header>
@@ -161,24 +160,24 @@ export function ResponsibilityHeaderActions({
       {isActive ? (
         <Button variant="outline" onClick={() => actions.newTask({ defaultTitle: "" })}>
           <SquarePen aria-hidden="true" />
-          New task for an agent
+          {t("componentsResponsibilitiesResponsibilityViewParts.actions.newTask")}
         </Button>
       ) : null}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size="icon" variant="ghost" aria-label="More actions for this responsibility">
+          <Button size="icon" variant="ghost" aria-label={t("componentsResponsibilitiesResponsibilityViewParts.actions.more")}>
             <MoreHorizontal aria-hidden="true" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           {isActive ? (
-            <DropdownMenuItem onSelect={() => actions.setStatus("let_go")}>Let go</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => actions.setStatus("let_go")}>{t("componentsResponsibilitiesResponsibilityViewParts.actions.letGo")}</DropdownMenuItem>
           ) : status === "let_go" || status === "dismissed" ? (
-            <DropdownMenuItem onSelect={() => actions.setStatus("active")}>Take it back on</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => actions.setStatus("active")}>{t("componentsResponsibilitiesResponsibilityViewParts.actions.takeBack")}</DropdownMenuItem>
           ) : null}
           <DropdownMenuSeparator />
           <DropdownMenuItem variant="destructive" onSelect={actions.requestDelete}>
-            Delete…
+            {t("componentsResponsibilitiesResponsibilityViewParts.actions.delete")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -243,12 +242,12 @@ export function stripSlots(skills: number, artifacts: number, slots = 4): { skil
 
 function moreLine(moreSkills: number, moreArtifacts: number, artifactsCapped: boolean): string | null {
   const parts: string[] = [];
-  if (moreSkills > 0) parts.push(`${moreSkills} more ${moreSkills === 1 ? "skill" : "skills"}`);
+  if (moreSkills > 0) parts.push(t("componentsResponsibilitiesResponsibilityViewParts.strip.moreSkills", { count: moreSkills }));
   if (moreArtifacts > 0) {
-    parts.push(artifactsCapped ? "many more artifacts" : `${moreArtifacts.toLocaleString("en-US")} more ${moreArtifacts === 1 ? "artifact" : "artifacts"}`);
+    parts.push(artifactsCapped ? t("componentsResponsibilitiesResponsibilityViewParts.strip.manyMoreArtifacts") : t("componentsResponsibilitiesResponsibilityViewParts.strip.moreArtifacts", { count: moreArtifacts, formatted: moreArtifacts.toLocaleString("en-US") }));
   }
   if (parts.length === 0) return null;
-  return `And ${parts.join(" and ")}.`;
+  return t("componentsResponsibilitiesResponsibilityViewParts.strip.moreLine", { parts: parts.join(t("componentsResponsibilitiesResponsibilityViewParts.strip.and")) });
 }
 
 function StripCard({ to, icon, title, kind }: { to: string; icon: ReactNode; title: string; kind: string }) {
@@ -271,10 +270,10 @@ function StripCard({ to, icon, title, kind }: { to: string; icon: ReactNode; tit
 }
 
 /** "1 more skill", "61 more artifacts", "many more artifacts". */
-function moreOf(count: number, one: string, many: string, capped = false): string | null {
+function moreOf(count: number, kind: "skill" | "artifact", capped = false): string | null {
   if (count <= 0) return null;
-  if (capped) return `and many more ${many}`;
-  return `and ${count.toLocaleString("en-US")} more ${count === 1 ? one : many}`;
+  if (capped) return t(`componentsResponsibilitiesResponsibilityViewParts.moreOf.${kind}Many`);
+  return t(`componentsResponsibilitiesResponsibilityViewParts.moreOf.${kind}`, { count, formatted: count.toLocaleString("en-US") });
 }
 
 function CardsSection({
@@ -316,7 +315,7 @@ function skillCards(skills: readonly ResponsibilitySkillSummary[], agentsById: R
         to={skillRoute(skill)}
         icon={<SkillCardIcon card={skill} size={24} />}
         title={skill.name}
-        kind={holder ? `${holder}${skill.agentIds.length > 1 ? ` and ${skill.agentIds.length - 1} more` : ""}` : "Skill"}
+        kind={holder ? (skill.agentIds.length > 1 ? t("componentsResponsibilitiesResponsibilityViewParts.cards.holderAndMore", { holder, count: skill.agentIds.length - 1 }) : holder) : t("componentsResponsibilitiesResponsibilityViewParts.cards.skill")}
       />
     );
   });
@@ -330,7 +329,7 @@ function artifactCards(artifacts: readonly CompanyArtifact[]) {
       to={artifact.href}
       icon={<FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />}
       title={artifact.title}
-      kind={artifact.issue.identifier ? `From ${artifact.issue.identifier}` : "Artifact"}
+      kind={artifact.issue.identifier ? t("componentsResponsibilitiesResponsibilityViewParts.cards.from", { identifier: artifact.issue.identifier }) : t("componentsResponsibilitiesResponsibilityViewParts.cards.artifact")}
     />
   ));
 }
@@ -370,10 +369,10 @@ export function SkillCards({
   return (
     <CardsSection
       kind="skill"
-      title="Skills"
+      title={t("componentsResponsibilitiesResponsibilityViewParts.cards.skillsTitle")}
       count={skills.length}
-      empty="No skills yet. They come from the agents doing the work."
-      more={moreOf(skills.length - shown.length, "skill", "skills")}
+      empty={t("componentsResponsibilitiesResponsibilityViewParts.cards.noSkills")}
+      more={moreOf(skills.length - shown.length, "skill")}
     >
       {skillCards(shown, agentsById)}
     </CardsSection>
@@ -394,10 +393,10 @@ export function ArtifactCards({
   return (
     <CardsSection
       kind="artifact"
-      title="Artifacts"
+      title={t("componentsResponsibilitiesResponsibilityViewParts.cards.artifactsTitle")}
       count={total}
-      empty="Nothing produced yet."
-      more={moreOf(Math.max(0, total - shown.length), "artifact", "artifacts", total >= RESPONSIBILITY_ARTIFACT_COUNT_LIMIT)}
+      empty={t("componentsResponsibilitiesResponsibilityViewParts.cards.noArtifacts")}
+      more={moreOf(Math.max(0, total - shown.length), "artifact", total >= RESPONSIBILITY_ARTIFACT_COUNT_LIMIT)}
     >
       {artifactCards(shown)}
     </CardsSection>
@@ -433,10 +432,10 @@ export function SkillArtifactStrip({
   return (
     <section aria-labelledby="responsibility-strip-heading" className="flex flex-col gap-2">
       <h2 id="responsibility-strip-heading" className="text-sm font-semibold text-foreground">
-        Skills and artifacts
+        {t("componentsResponsibilitiesResponsibilityViewParts.strip.heading")}
       </h2>
       {shownSkills.length + shownArtifacts.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No skills or artifacts yet.</p>
+        <p className="text-sm text-muted-foreground">{t("componentsResponsibilitiesResponsibilityViewParts.strip.empty")}</p>
       ) : (
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4" data-testid="responsibility-strip">
           {shownSkills.map((skill) => {
@@ -447,7 +446,7 @@ export function SkillArtifactStrip({
                 to={skillRoute(skill)}
                 icon={<SkillCardIcon card={skill} size={24} />}
                 title={skill.name}
-                kind={holder ? `Skill · ${holder}${skill.agentIds.length > 1 ? ` and ${skill.agentIds.length - 1} more` : ""}` : "Skill"}
+                kind={holder ? `${t("componentsResponsibilitiesResponsibilityViewParts.cards.skill")} · ${skill.agentIds.length > 1 ? t("componentsResponsibilitiesResponsibilityViewParts.cards.holderAndMore", { holder, count: skill.agentIds.length - 1 }) : holder}` : t("componentsResponsibilitiesResponsibilityViewParts.cards.skill")}
               />
             );
           })}
@@ -457,7 +456,7 @@ export function SkillArtifactStrip({
               to={artifact.href}
               icon={<FileText aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />}
               title={artifact.title}
-              kind={artifact.issue.identifier ? `Artifact · ${artifact.issue.identifier}` : "Artifact"}
+              kind={artifact.issue.identifier ? `${t("componentsResponsibilitiesResponsibilityViewParts.cards.artifact")} · ${artifact.issue.identifier}` : t("componentsResponsibilitiesResponsibilityViewParts.cards.artifact")}
             />
           ))}
         </ul>

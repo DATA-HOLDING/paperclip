@@ -1,0 +1,14 @@
+{
+  "connectGithub": "Conectar o GitHub",
+  "title": "Criar projeto",
+  "close": "Fechar novo projeto",
+  "projectName": "Nome do projeto",
+  "sourceRepositories": "Repositórios de origem",
+  "availableIn": "Disponível em",
+  "selectEnvironments": "Selecione os ambientes",
+  "environmentsHint": "Esses ambientes podem compartilhar os arquivos de trabalho deste projeto. A escolha de armazenamento fica com o projeto.",
+  "loadingEnvironments": "Carregando ambientes…",
+  "loadEnvironmentsAction": "carregar os ambientes do projeto",
+  "cancel": "Cancelar",
+  "creating": "Criando…"
+}

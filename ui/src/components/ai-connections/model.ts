@@ -1,5 +1,6 @@
 /** Redacted presentation contracts shared with the production API. */
 import { isAiConnectionCompatible, type AiConnectionMetadata, type AiProvider, type AiAuthMethod, type AiManagedConnectionSummary, type AiConnectionBinding } from "@paperclipai/shared";
+import { t } from "@/i18n";
 export type { AiProvider, AiAuthMethod, AiConnectionBinding } from "@paperclipai/shared";
 export type AiConnectionStatus = AiManagedConnectionSummary["status"];
 
@@ -8,21 +9,21 @@ export const AI_PROVIDERS: Record<
   { name: string; subscriptionName?: string; logo?: string }
 > = {
   github: { name: "GitHub Copilot", logo: "/brands/apps/github-copilot.svg" },
-  google: { name: "Google", subscriptionName: "Google Antigravity account", logo: "/brands/apps/google.svg" },
+  google: { name: "Google", subscriptionName: t("componentsAiConnections.model.subscriptionGoogle"), logo: "/brands/apps/google.svg" },
   anthropic: {
     name: "Claude",
-    subscriptionName: "Claude subscription",
+    subscriptionName: t("componentsAiConnections.model.subscriptionClaude"),
     logo: "/brands/claude-color.svg",
   },
   openai: {
     name: "OpenAI",
-    subscriptionName: "ChatGPT subscription",
+    subscriptionName: t("componentsAiConnections.model.subscriptionChatGpt"),
     logo: "/brands/codex-color.svg",
   },
   openrouter: { name: "OpenRouter", logo: "/brands/apps/openrouter.svg" },
   xai: {
     name: "Grok",
-    subscriptionName: "Grok subscription",
+    subscriptionName: t("componentsAiConnections.model.subscriptionGrok"),
     logo: "/brands/adapters/grok.svg",
   },
 };
@@ -45,25 +46,30 @@ export interface AiConnectionRequirement {
 }
 
 export const AI_CONNECTION_STATUS: Record<AiConnectionStatus, string> = {
-  connected: "Connected",
-  needs_attention: "Needs attention",
-  expired: "Expired",
-  revoked: "Revoked",
+  connected: t("componentsAiConnections.model.status.connected"),
+  needs_attention: t("componentsAiConnections.model.status.needsAttention"),
+  expired: t("componentsAiConnections.model.status.expired"),
+  revoked: t("componentsAiConnections.model.status.revoked"),
 };
 
+/**
+ * `ownerName` is the owner's real name; leave it empty when the account is the
+ * signed-in person's own (never pass a display label such as "You").
+ */
 export function defaultAiConnectionName(ownerName: string | undefined, provider: AiProvider, method: AiAuthMethod) {
   const owner = ownerName?.trim();
-  const prefix = owner && owner !== "You" ? `${owner}'s` : "My";
   const providerName = method === "subscription"
     ? AI_PROVIDERS[provider].subscriptionName ?? AI_PROVIDERS[provider].name
-    : `${AI_PROVIDERS[provider].name} API`;
-  return `${prefix} ${providerName} account`;
+    : t("componentsAiConnections.model.apiName", { provider: AI_PROVIDERS[provider].name });
+  return owner
+    ? t("componentsAiConnections.model.nameOther", { owner, provider: providerName })
+    : t("componentsAiConnections.model.nameOwn", { provider: providerName });
 }
 
 export function aiMethodLabel(provider: AiProvider, method: AiAuthMethod) {
   return method === "subscription"
-    ? (AI_PROVIDERS[provider].subscriptionName ?? "Subscription unavailable")
-    : provider === "github" ? "Personal access token" : "API key";
+    ? (AI_PROVIDERS[provider].subscriptionName ?? t("componentsAiConnections.model.subscriptionUnavailable"))
+    : provider === "github" ? t("componentsAiConnections.model.personalAccessToken") : t("componentsAiConnections.model.apiKey");
 }
 
 export function aiConnectionDisplayLabel(connection: AiConnectionSummary) {
@@ -71,7 +77,7 @@ export function aiConnectionDisplayLabel(connection: AiConnectionSummary) {
   return [
     connection.name,
     aiMethodLabel(connection.provider, connection.method),
-    personal ? "Personal" : "Company shared",
+    personal ? t("componentsAiConnections.model.personal") : t("componentsAiConnections.model.companyShared"),
     connection.accountLabel || connection.ownerName,
   ].filter(Boolean).join(" · ");
 }
@@ -104,12 +110,12 @@ export function personalAiDefault(
 
 export function aiConnectionProblem(connection?: AiConnectionSummary) {
   if (!connection)
-    return "No connection selected. Connect an account to continue.";
+    return t("componentsAiConnections.model.noConnection");
   return (
     connection.unavailableReason ??
     (connection.status === "connected"
       ? null
-      : `${AI_CONNECTION_STATUS[connection.status]}. Reconnect this account to continue.`)
+      : t("componentsAiConnections.model.reconnectToContinue", { status: AI_CONNECTION_STATUS[connection.status] }))
   );
 }
 
@@ -124,7 +130,7 @@ export function bindingProblem(
     binding.provider !== requirement.provider ||
     (binding.mode !== "responsible_user" && requirement.method !== undefined && binding.method !== requirement.method)
   )
-    return "Choose a connection compatible with this provider and sign-in method.";
+    return t("componentsAiConnections.model.chooseCompatible");
   if (binding.mode === "responsible_user")
     return aiConnectionProblem(
       personalAiDefault(connections, requirement, userId),
@@ -137,14 +143,14 @@ export function bindingProblem(
       matchesAiRequirement(item, requirement),
   );
   if (!connection)
-    return "This connection is no longer available for this agent. Choose another connection.";
+    return t("componentsAiConnections.model.noLongerAvailable");
   if (binding.mode === "shared" && connection.ownership !== "shared")
-    return "Choose a company-shared connection.";
+    return t("componentsAiConnections.model.chooseShared");
   if (
     binding.mode === "delegated" &&
     (connection.ownership !== "personal" ||
       connection.ownerUserId !== userId)
   )
-    return "This credential is not shared with you. Choose a connection you can use.";
+    return t("componentsAiConnections.model.notShared");
   return aiConnectionProblem(connection);
 }

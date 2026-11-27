@@ -1,0 +1,34 @@
+{
+  "tooltip": {
+    "runs_one": "{{date}}: {{count}} execução",
+    "runs_other": "{{date}}: {{count}} execuções",
+    "succeeded": "com sucesso: {{count}}",
+    "recovered": "recuperadas: {{count}} (nova tentativa bem-sucedida)",
+    "failed": "com falha: {{count}}",
+    "other": "outras: {{count}}",
+    "issues": "{{date}}: {{count}} tarefas"
+  },
+  "noRuns": "Nenhuma execução ainda",
+  "noTasks": "Nenhuma tarefa",
+  "legend": {
+    "succeeded": "Sucesso",
+    "recovered": "Recuperadas",
+    "failed": "Falha",
+    "other": "Outras"
+  },
+  "priority": {
+    "critical": "Crítica",
+    "high": "Alta",
+    "medium": "Média",
+    "low": "Baixa"
+  },
+  "status": {
+    "todo": "A fazer",
+    "inProgress": "Em andamento",
+    "inReview": "Em revisão",
+    "done": "Concluída",
+    "blocked": "Bloqueada",
+    "cancelled": "Cancelada",
+    "backlog": "Backlog"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "sort": {
+    "top": "Top",
+    "alphabetical": "Alphabetical",
+    "recent": "Recent"
+  },
+  "resumeAgent": "Resume agent",
+  "pauseAgent": "Pause agent",
+  "updating": "Updating...",
+  "budgetPaused": "Budget paused",
+  "invalidOrgChain": "Invalid org chain",
+  "invalidReportingChain": "Invalid reporting chain",
+  "pausedByBudget": "Agent paused by budget",
+  "openActions": "Open actions for {{name}}",
+  "removeFromStarred": "Remove from starred",
+  "starAgent": "Star agent",
+  "editAgent": "Edit agent",
+  "pausedByBudgetLimits": "Agent was paused by budget limits",
+  "leaving": "Leaving...",
+  "leaveAgent": "Leave agent",
+  "toast": {
+    "paused": "Agent paused",
+    "resumed": "Agent resumed",
+    "pauseFailed": "Could not pause agent",
+    "resumeFailed": "Could not resume agent"
+  },
+  "sectionLabel": "Agents",
+  "newAgent": "New agent",
+  "sectionActions": "Agents section actions",
+  "browseAgents": "Browse agents",
+  "sortLabel": "Agent sort",
+  "seeAllAgents": "See all agents"
+}

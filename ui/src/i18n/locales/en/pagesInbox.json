@@ -1,0 +1,126 @@
+{
+  "run": {
+    "exitedWithError": "Run exited with an error.",
+    "thinking": "Thinking",
+    "tryingAgain": "Trying again in {{seconds}}s…",
+    "attemptFailed": "Couldn’t finish this attempt. Your message is saved.",
+    "failedRun": "Failed run"
+  },
+  "joinRequest": {
+    "agentNamed": "Agent join request: {{name}}",
+    "agent": "Agent join request",
+    "human": "Human join request",
+    "requestedFrom": "requested {{when}} from IP {{ip}}",
+    "adapter": "adapter: {{type}}"
+  },
+  "userAction": {
+    "approval": "Approval required",
+    "question": "Respond to the pending question",
+    "reconnect": "Reconnect account",
+    "provider_billing": "Review provider billing and usage",
+    "assign_agent": "Assign an agent",
+    "choose_model": "Choose a supported model",
+    "resume": "Work is paused",
+    "budget": "Budget limit reached",
+    "project_access": "Agent needs project access",
+    "confirm_owner_stop": "Confirm the previous server stopped",
+    "confirm_run_stopped": "Confirm the previous run stopped",
+    "unblock": "The agent needs your help"
+  },
+  "markAsRead": "Mark as read",
+  "retry": "Retry",
+  "dismiss": "Dismiss",
+  "approvalStatus": {
+    "pending": "pending",
+    "revision_requested": "revision requested",
+    "approved": "approved",
+    "rejected": "rejected",
+    "cancelled": "cancelled"
+  },
+  "approval": {
+    "requestedBy": "requested by {{name}}",
+    "updated": "updated {{when}}"
+  },
+  "approve": "Approve",
+  "reject": "Reject",
+  "surface": {
+    "tasks": "Tasks",
+    "inbox": "Inbox"
+  },
+  "toolbarControls": "{{surface}} controls",
+  "accountChanged": "Your account changed. Refresh the inbox.",
+  "creator": {
+    "board": "Board",
+    "me": "Me"
+  },
+  "toast": {
+    "retryFailed": "Run retry failed",
+    "retryFailedBody": "Unable to retry run",
+    "taskArchived": "Task archived"
+  },
+  "undo": "Undo",
+  "selectOrganization": "Select an organization to view {{surface}}.",
+  "filterFeedback": {
+    "liveOnly": "Live runs only — tasks currently connected to an agent run.",
+    "activeStatuses": "Active statuses — open tasks, whether or not an agent is running."
+  },
+  "partialLoad": "Some inbox items couldn’t load. Showing available items.",
+  "retryMissing": "Retry missing items",
+  "tab": {
+    "mine": "Mine",
+    "recent": "Recent",
+    "unread": "Unread",
+    "blocked": "Blocked",
+    "all": "All"
+  },
+  "searchPlaceholder": "Search {{surface}}…",
+  "group": "Group",
+  "chooseColumns": "Choose which columns stay visible",
+  "sort": "Sort",
+  "disableNesting": "Disable parent-child nesting",
+  "enableNesting": "Enable parent-child nesting",
+  "groupBy": {
+    "none": "None",
+    "type": "Type",
+    "assignee": "Responsible",
+    "project": "Project",
+    "workspace": "Workspace"
+  },
+  "markAll": {
+    "marking": "Marking…",
+    "button": "Mark all as read",
+    "title": "Mark all as read?",
+    "description_one": "This will mark {{count}} unread item as read.",
+    "description_other": "This will mark {{count}} unread items as read."
+  },
+  "cancel": "Cancel",
+  "loadFailed": "Unable to load the inbox: {{reason}}",
+  "empty": {
+    "search": "No inbox items match your search.",
+    "mine": "Inbox zero.",
+    "unread": "No new inbox items.",
+    "recent": "No recent inbox items.",
+    "filters": "No inbox items match these filters."
+  },
+  "collapseSubtasks": "Collapse sub-tasks",
+  "expandSubtasks": "Expand sub-tasks",
+  "search": {
+    "archived": "Archived",
+    "otherResults": "Other results"
+  },
+  "newTaskIn": "New task in {{group}}",
+  "earlier": "Earlier",
+  "alerts": {
+    "title": "Alerts",
+    "agentErrors_one": "agent has errors",
+    "agentErrors_other": "agents have errors",
+    "budgetAt": "Budget at",
+    "budgetUtilization": "utilization this month"
+  },
+  "action": {
+    "approveRequest": "approve this request",
+    "rejectRequest": "reject this request"
+  },
+  "subTaskCount_one": "({{count}} sub-task)",
+  "subTaskCount_other": "({{count}} sub-tasks)"
+}

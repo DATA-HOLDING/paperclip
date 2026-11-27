@@ -1,0 +1,12 @@
+{
+  "empty": "Nenhuma rotina gerenciada.",
+  "configure": "Configurar",
+  "managedBy": "Gerenciada por {{name}}",
+  "schedule": "Agenda {{cron}}",
+  "missing": "Faltando {{refs}}",
+  "canRepair": "Os padrões da rotina podem ser reparados.",
+  "reconciling": "Reconciliando...",
+  "reconcile": "Reconciliar",
+  "resetting": "Redefinindo...",
+  "reset": "Redefinir"
+}

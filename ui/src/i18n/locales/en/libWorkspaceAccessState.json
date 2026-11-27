@@ -1,0 +1,75 @@
+{
+  "repairFailed": {
+    "title": "Repair failed",
+    "descriptionWithPhase": "The repair stopped during {{phase}}. The pre-repair backup was kept.",
+    "description": "The repair stopped before the workspace became usable. The pre-repair backup was kept.",
+    "viewLog": "View repair log"
+  },
+  "provisioningFailed": {
+    "title": "Database provisioning failed",
+    "earlierWithPhase": "The earlier clone attempt failed during {{phase}}. The workspace later became usable.",
+    "earlier": "An earlier clone attempt failed, but the workspace later became usable.",
+    "viewLog": "View provisioning log",
+    "withPhase": "The clone failed during {{phase}}. Repairing replaces only the isolated database.",
+    "description": "The clone did not finish, so this workspace has no usable database yet."
+  },
+  "handoff": {
+    "handoffNotConfigured": "This instance has no workspace login handoff configured, so opening the board falls back to snapshot-local credentials.",
+    "noBoardIdentity": "Your session has no cloned user to sign in as, so opening the board falls back to snapshot-local credentials.",
+    "runtimeNotRunning": "No healthy runtime service is publishing a URL for this workspace yet.",
+    "runtimeUrlUnusable": "The runtime row is publishing a URL Paperclip cannot open.",
+    "workspaceNotReady": "The cloned database is not ready to accept a login yet."
+  },
+  "readiness": {
+    "databaseUnreachable": "The isolated database is not answering.",
+    "cloneDataMissing": "The clone restored no organization or issue rows.",
+    "cloneDataUnreadable": "The cloned product tables could not be read.",
+    "clonedMembershipMissing": "No cloned user has an active organization membership.",
+    "clonedIdentityUnreadable": "The cloned identity tables could not be read.",
+    "authHandoffNotConfigured": "The workspace was started without a login handoff key.",
+    "seedManifestUnreadable": "The seed manifest is unreadable, so the restore cannot be trusted."
+  },
+  "lastRecordedPhase": "Last recorded phase: {{phase}}.",
+  "repairing": {
+    "title": "Repairing workspace database",
+    "descriptionWithPhase": "Only the isolated database is replaced; the git worktree and your files are preserved. Current phase: {{phase}}.",
+    "description": "Only the isolated database is replaced; the git worktree and your files are preserved.",
+    "action": "Repair in progress"
+  },
+  "provisioning": {
+    "title": "Provisioning database",
+    "description": "Restoring the isolated database clone for this workspace. This runs once before the first start.",
+    "action": "Provisioning"
+  },
+  "actions": {
+    "repair": "Repair workspace",
+    "start": "Start workspace",
+    "open": "Open workspace"
+  },
+  "stopped": {
+    "title": "Workspace is not running",
+    "description": "Start the workspace runtime to publish its board."
+  },
+  "validating": {
+    "title": "Validating clone",
+    "stillConfirming": "Paperclip is still confirming the clone.",
+    "action": "Validating"
+  },
+  "degraded": {
+    "title": "Workspace is degraded",
+    "notPassedReadiness": "The workspace is serving, but its clone did not pass the readiness contract.",
+    "oneRepair": "One bounded repair replaces the isolated database.",
+    "noUsableDatabase": "The runtime is up but did not report a usable database, so Paperclip will not publish it as ready."
+  },
+  "ready": {
+    "snapshotLocalTitle": "Ready — snapshot-local sign-in",
+    "snapshotLocalDescription": "Opening the board will ask for the credentials captured in this snapshot.",
+    "title": "Ready",
+    "description": "Opening the workspace signs you in to the cloned board without a password."
+  },
+  "starting": {
+    "title": "Workspace is starting",
+    "description": "Paperclip is starting the workspace runtime and waiting for its board URL.",
+    "action": "Starting workspace"
+  }
+}

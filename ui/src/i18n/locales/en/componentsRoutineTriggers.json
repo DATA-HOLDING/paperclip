@@ -1,0 +1,80 @@
+{
+  "urlWarning": {
+    "loopback": {
+      "title": "Other apps can’t reach this localhost URL",
+      "message": "This address points back to the machine sending the request. Services such as GitHub can’t use it to reach Paperclip on your computer."
+    },
+    "private": {
+      "title": "This webhook URL appears to be private",
+      "message": "Only senders with access to this network can reach this address. Apps on the public internet, such as GitHub, usually can’t deliver webhooks here."
+    },
+    "tailscale": {
+      "title": "This Tailscale URL may not be public",
+      "message": "Tailscale Serve is private to your tailnet, even with HTTPS. Apps outside your tailnet need Tailscale Funnel or another public HTTPS address. If Funnel is already enabled for this URL, you can continue."
+    },
+    "https": {
+      "title": "Use HTTPS for webhooks from other apps",
+      "message": "This URL uses HTTP. Many apps require HTTPS, and HTTP does not encrypt webhook credentials or payloads."
+    },
+    "invalid": {
+      "title": "Check the webhook URL",
+      "message": "This is not a valid HTTP or HTTPS URL. Your sending app needs a complete address it can reach."
+    },
+    "continueNote": "You can continue for local or private-network use. For public senders, use a publicly reachable HTTPS URL.",
+    "learnHttps": "Learn how to set up HTTPS and public access"
+  },
+  "instructions": {
+    "connect": "Connect the sending app to the Paperclip routine {{title}}.",
+    "webhookUrl": "Webhook URL: {{url}}",
+    "sendPost": "Send an HTTP POST request with a JSON object as the body (not an array or string).",
+    "github": {
+      "open": "In GitHub, open your repository → Settings → Webhooks → Add webhook.",
+      "payloadUrl": "Use the webhook URL above as Payload URL and select application/json as Content type.",
+      "secret": "Secret: {{secret}}",
+      "pasteSecret": "Paste this value into GitHub’s Secret field. GitHub signs requests with X-Hub-Signature-256; do not use Bearer authentication.",
+      "selectEvents": "Select the events that should start this routine, enable the webhook, and save.",
+      "check": "To check the connection, open Recent Deliveries and redeliver an event."
+    },
+    "none": {
+      "noKey": "This webhook has no key. Its URL is the shared secret, so keep it private.",
+      "addWebhook": "In the sending app, add a webhook using this URL, POST method and JSON body, then save it."
+    },
+    "idempotency": "Send a unique Idempotency-Key header for each event and reuse it on retries.",
+    "secretKey": "Secret key: {{secret}}",
+    "hmac": {
+      "sign": "Sign each request with HMAC-SHA256 using the secret key. The signed message is the Unix timestamp in seconds, a period, and the exact JSON body.",
+      "headers": "Send the timestamp in X-Paperclip-Timestamp and the signature in X-Paperclip-Signature, formatted sha256=<hex digest>.",
+      "oldTimestamp": "Requests with an old timestamp are rejected, so sign each request when you send it. Do not use Bearer authentication."
+    },
+    "app": {
+      "signingSecret": "If the app asks for a signing secret, paste the secret key above. Paperclip accepts HMAC-SHA256 over the exact request body in {{headers}}, formatted sha256=<hex digest>.",
+      "eitherHeader": "X-Hub-Signature or X-Hub-Signature-256",
+      "customHeaders": "For apps with custom headers, use Authorization: Bearer {{secret}}",
+      "subscribe": "Subscribe only to the events that should start this routine. Public services need a publicly reachable HTTPS URL.",
+      "addWebhook": "In the sending app, add a webhook using this URL, POST method, JSON body, and headers, then save it.",
+      "idempotency": "Send a unique Idempotency-Key header for each event and reuse it on retries, so retrying a setup test after activation cannot start the routine.",
+      "example": "Example JSON body: {{example}}",
+      "check": "To check the connection, send a test event from the app or perform the action that triggers a delivery."
+    },
+    "arrived": "The webhook in Paperclip shows whether the event arrived and authentication passed.",
+    "pending": {
+      "test": "During setup, deliveries only test the connection. They do not start the routine or create a task.",
+      "finish": "Finish in Paperclip to enable this webhook for future events. Test events are not replayed."
+    },
+    "enabled": "This webhook is enabled. Deliveries can start the routine and create tasks.",
+    "storeUrl": "Store the URL securely; do not put it in source control or logs.",
+    "storeKey": "Store the key securely; do not put it in source control or logs."
+  },
+  "fields": {
+    "copyLabel": "Copy {{label}}",
+    "copied": "Copied",
+    "copy": "Copy",
+    "copyFailed": "Copy failed. Select and copy the text below.",
+    "textLabel": "{{label}} text",
+    "agentInstructions": "Agent instructions",
+    "agentInstructionsDescription": "Give your agent everything it needs to connect this webhook: the URL, authentication key, and step-by-step instructions.",
+    "copyForAgent": "Copy for your agent",
+    "webhookSetup": "Webhook setup",
+    "webhookSetupDescription": "Paste this into your agent to connect this webhook to your routine."
+  }
+}

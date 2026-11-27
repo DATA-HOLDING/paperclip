@@ -1,0 +1,16 @@
+{
+  "testTask": {
+    "expired": "Tarefa de teste expirada",
+    "deleted": "Tarefa de teste excluída",
+    "unavailable": "Tarefa de teste indisponível"
+  },
+  "runGate": {
+    "noFiles": "Esta skill não tem arquivos para testar",
+    "pickAgent": "Escolha um agente para executar",
+    "addInput": "Adicione ou cole um texto de entrada para executar",
+    "saveEdits": "Salve as edições da skill antes de executar",
+    "inProgress": "Já há uma execução em andamento"
+  },
+  "harnessUnavailableBody": "Os registros salvos da execução continuam visíveis. Os documentos, anexos e produtos de trabalho do harness não estão mais disponíveis.",
+  "unknownEditor": "Editor desconhecido"
+}

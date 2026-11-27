@@ -9,6 +9,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { Link } from "@/lib/router";
 import { agentRouteRef } from "@/lib/utils";
 import { agentDetailHref } from "../agent-detail-navigation";
+import { t } from "@/i18n";
 
 /** A manager cannot be the agent itself or any member of its reporting subtree. */
 export function invalidManagerIds(agentId: string, agents: Agent[]): string[] {
@@ -41,7 +42,7 @@ export function AgentReportingManager({ agent }: { agent: Agent }) {
   const manager = agents.find((candidate) => candidate.id === agent.reportsTo);
   const disabled = !directory.data || directoryView.kind === "error" || update.isPending;
   return <div className="flex flex-col gap-1.5 px-(--agent-detail-module-inset) py-1.5 text-sm">
-    <span className="text-muted-foreground">Reports to:</span>
+    <span className="text-muted-foreground">{t("pagesAgentDetail.reportingManager.reportsTo")}</span>
     <div className="flex items-center gap-1.5">
       {manager ? <Link to={agentDetailHref(agentRouteRef(manager))} className={`${agentIdentityChipClass} no-underline`}>
         <AgentIdentityChipContent agent={manager} />
@@ -52,13 +53,13 @@ export function AgentReportingManager({ agent }: { agent: Agent }) {
         onChange={(id) => update.mutate(id)}
         disabled={disabled}
         disabledAgentIds={invalidManagerIds(agent.id, agents)}
-        trigger={<button type="button" disabled={disabled} aria-label={manager ? "Change manager" : "Choose manager"}
+        trigger={<button type="button" disabled={disabled} aria-label={manager ? t("pagesAgentDetail.reportingManager.change") : t("pagesAgentDetail.reportingManager.choose")}
           className={`${manager ? "agent-identity-chip inline-flex size-7 shrink-0 items-center justify-center rounded-md hover:bg-accent hover:text-foreground transition-colors" : agentIdentityChipClass} disabled:cursor-not-allowed disabled:opacity-50`}>
-          {manager ? <Pencil className="size-3.5" aria-hidden /> : <><UserRound className="size-5 text-muted-foreground" aria-hidden /><span>{agent.reportsTo ? "Manager unavailable" : "No manager"}</span></>}
+          {manager ? <Pencil className="size-3.5" aria-hidden /> : <><UserRound className="size-5 text-muted-foreground" aria-hidden /><span>{agent.reportsTo ? t("pagesAgentDetail.reportingManager.unavailable") : t("pagesAgentDetail.reportingManager.none")}</span></>}
         </button>}
       />
     </div>
-    {directoryView.kind === "error" ? <QueryErrorState error={directoryView.error} size="inline" action="load agents" onRetry={directoryView.retry} retrying={directoryView.isFetching} /> : null}
-    {update.error ? <QueryErrorState error={update.error} size="inline" action="change manager" /> : null}
+    {directoryView.kind === "error" ? <QueryErrorState error={directoryView.error} size="inline" action={t("pagesAgentDetail.reportingManager.loadAgentsAction")} onRetry={directoryView.retry} retrying={directoryView.isFetching} /> : null}
+    {update.error ? <QueryErrorState error={update.error} size="inline" action={t("pagesAgentDetail.reportingManager.changeManagerAction")} /> : null}
   </div>;
 }

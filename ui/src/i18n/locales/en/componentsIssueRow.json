@@ -1,0 +1,12 @@
+{
+  "restoreFromArchive": "Restore from archive",
+  "archive": "Archive",
+  "markAsRead": "Mark as read",
+  "parkedBlocker": {
+    "title": "Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee.",
+    "label": "Blocked by parked work"
+  },
+  "openTaskAria": "Open task {{identifier}} ({{status}})",
+  "openIssue": "Open {{identifier}}: {{title}}",
+  "recoveryStatus": "Task recovery status"
+}

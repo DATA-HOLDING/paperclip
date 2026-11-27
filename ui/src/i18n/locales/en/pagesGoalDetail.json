@@ -1,0 +1,19 @@
+{
+  "showProperties": "Show properties",
+  "noOrganization": "No organization selected",
+  "breadcrumbs": {
+    "goals": "Goals",
+    "goal": "Goal"
+  },
+  "descriptionPlaceholder": "Add a description...",
+  "tabs": {
+    "subGoals": "Sub-Goals ({{count}})",
+    "projects": "Projects ({{count}})"
+  },
+  "addSubGoal": "Sub Goal",
+  "noSubGoals": "No sub-goals.",
+  "noProjects": "No linked projects.",
+  "errorActions": {
+    "loadGoal": "load this goal"
+  }
+}

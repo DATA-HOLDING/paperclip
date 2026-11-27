@@ -29,6 +29,7 @@ import {
 } from "./gateway-helpers";
 import { describeError } from "@/api/errors";
 import { companyProjectsQuery } from "@/lib/company-projects-query";
+import { t } from "@/i18n";
 
 export function GatewaysList() {
   const navigate = useNavigate();
@@ -41,8 +42,8 @@ export function GatewaysList() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Connectors", href: "/apps" },
-      { label: "Gateways" },
+      { label: t("pagesAppsGateways.breadcrumbs.connectors"), href: "/apps" },
+      { label: t("pagesAppsGateways.breadcrumbs.gateways") },
     ]);
     return () => setBreadcrumbs([]);
   }, [setBreadcrumbs]);
@@ -98,25 +99,25 @@ export function GatewaysList() {
       }),
     onSuccess: async (gateway) => {
       pushToast({
-        title: gateway.status === "active" ? "Gateway on" : "Gateway off",
+        title: gateway.status === "active" ? t("pagesAppsGateways.toggle.on") : t("pagesAppsGateways.toggle.off"),
         body:
           gateway.status === "active"
-            ? `${gateway.name} is exposing its tools again.`
-            : `${gateway.name} is off — every client goes silent.`,
+            ? t("pagesAppsGateways.toggle.onBody", { name: gateway.name })
+            : t("pagesAppsGateways.toggle.offBody", { name: gateway.name }),
         tone: "success",
       });
       await queryClient.invalidateQueries({ queryKey: gatewaysQueryKey(selectedCompanyId!) });
     },
     onError: (error) =>
       pushToast({
-        title: "Couldn't update the gateway",
+        title: t("pagesAppsGateways.toggle.failed"),
         body: describeError(error).body,
         tone: "error",
       }),
   });
 
   if (!selectedCompanyId) {
-    return <div className="p-6 text-sm text-muted-foreground">Select an organization to manage gateways.</div>;
+    return <div className="p-6 text-sm text-muted-foreground">{t("pagesAppsGateways.selectOrganization")}</div>;
   }
 
   const gateways = gatewaysQuery.data?.gateways ?? [];
@@ -135,10 +136,9 @@ export function GatewaysList() {
   return (
     <div className="max-w-5xl space-y-5">
       <header className="space-y-1">
-        <h1 className="text-2xl font-bold tracking-tight">Apps</h1>
+        <h1 className="text-2xl font-bold tracking-tight">{t("pagesAppsGateways.list.title")}</h1>
         <p className="text-sm text-muted-foreground">
-          A gateway is one safe MCP endpoint that exposes only the apps you assign. Hand it to a client
-          like Cursor or Claude Desktop.
+          {t("pagesAppsGateways.list.intro")}
         </p>
       </header>
 
@@ -150,7 +150,7 @@ export function GatewaysList() {
       ) : gatewaysView.kind === "error" ? (
         <QueryErrorState
           error={gatewaysQuery.error}
-          action="load gateways"
+          action={t("pagesAppsGateways.list.loadAction")}
           onRetry={gatewaysView.retry}
           retrying={gatewaysView.isFetching}
         />
@@ -158,20 +158,20 @@ export function GatewaysList() {
         <EmptyGateways onCreate={() => setCreating(true)} />
       ) : (
         <div className="space-y-4 pt-1">
-          <div data-canonical-toolbar="gateways" role="toolbar" aria-label="Gateway controls" className="flex flex-wrap items-center justify-between gap-3">
+          <div data-canonical-toolbar="gateways" role="toolbar" aria-label={t("pagesAppsGateways.list.controlsAriaLabel")} className="flex flex-wrap items-center justify-between gap-3">
             <div className="relative w-full max-w-sm">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search by name, app, or owner"
+                placeholder={t("pagesAppsGateways.list.searchPlaceholder")}
                 className="pl-9"
-                aria-label="Search gateways"
+                aria-label={t("pagesAppsGateways.list.searchAriaLabel")}
               />
             </div>
             <Button data-toolbar-primary className="ml-auto" onClick={() => setCreating(true)}>
               <Plus className="mr-1.5 h-4 w-4" />
-              New gateway
+              {t("pagesAppsGateways.list.newGateway")}
             </Button>
           </div>
 
@@ -187,7 +187,7 @@ export function GatewaysList() {
                 gateway,
                 profile,
                 scope: formatScope(gateway, projectNames, agentNames),
-                appsLabel: `${apps.length} ${apps.length === 1 ? "app" : "apps"}${
+                appsLabel: `${apps.length === 1 ? t("pagesAppsGateways.list.appCount_one", { count: apps.length }) : t("pagesAppsGateways.list.appCount_other", { count: apps.length })}${
                   profile ? ` · ${allowedToolsLabel(profile)}` : ""
                 }`,
                 active: activeTokenCount(gateway),
@@ -202,12 +202,12 @@ export function GatewaysList() {
                 disabled={toggleMutation.isPending}
                 onClick={(event) => event.stopPropagation()}
                 onCheckedChange={() => toggleMutation.mutate({ gateway })}
-                aria-label={`Turn ${gateway.name} ${isGatewayOn(gateway) ? "off" : "on"}`}
+                aria-label={isGatewayOn(gateway) ? t("pagesAppsGateways.list.turnOff", { name: gateway.name }) : t("pagesAppsGateways.list.turnOn", { name: gateway.name })}
               />
             );
             const empty = (
               <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-                No gateways match “{search.trim()}”.
+                {t("pagesAppsGateways.list.noMatch", { term: search.trim() })}
               </div>
             );
             return (
@@ -217,12 +217,12 @@ export function GatewaysList() {
                   <table className="w-full min-w-(--sz-40rem) text-sm">
                     <thead>
                       <tr className="border-b border-border bg-muted/40 text-left text-(length:--text-micro) font-semibold uppercase tracking-wide text-muted-foreground">
-                        <th className="whitespace-nowrap px-4 py-2.5">Gateway</th>
-                        <th className="whitespace-nowrap px-4 py-2.5">Scope</th>
-                        <th className="whitespace-nowrap px-4 py-2.5">Apps</th>
-                        <th className="whitespace-nowrap px-4 py-2.5">Tokens</th>
-                        <th className="whitespace-nowrap px-4 py-2.5">Last used</th>
-                        <th className="whitespace-nowrap px-4 py-2.5 text-right">On</th>
+                        <th className="whitespace-nowrap px-4 py-2.5">{t("pagesAppsGateways.list.col.gateway")}</th>
+                        <th className="whitespace-nowrap px-4 py-2.5">{t("pagesAppsGateways.list.col.scope")}</th>
+                        <th className="whitespace-nowrap px-4 py-2.5">{t("pagesAppsGateways.list.col.apps")}</th>
+                        <th className="whitespace-nowrap px-4 py-2.5">{t("pagesAppsGateways.list.col.tokens")}</th>
+                        <th className="whitespace-nowrap px-4 py-2.5">{t("pagesAppsGateways.list.col.lastUsed")}</th>
+                        <th className="whitespace-nowrap px-4 py-2.5 text-right">{t("pagesAppsGateways.list.col.on")}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -239,7 +239,7 @@ export function GatewaysList() {
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{scope}</td>
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{appsLabel}</td>
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
-                            {active} active{expiring > 0 ? ` · ${expiring} expiring` : ""}
+                            {t("pagesAppsGateways.list.tokensSummary", { active })}{expiring > 0 ? t("pagesAppsGateways.list.tokensExpiring", { expiring }) : ""}
                           </td>
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
                             {lastUsed ? <RelativeTime value={lastUsed} /> : "—"}
@@ -274,14 +274,14 @@ export function GatewaysList() {
                         <div className="shrink-0">{toggle(gateway)}</div>
                       </div>
                       <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                        <MobileField label="Scope" value={scope} />
-                        <MobileField label="Apps" value={appsLabel} />
+                        <MobileField label={t("pagesAppsGateways.list.col.scope")} value={scope} />
+                        <MobileField label={t("pagesAppsGateways.list.col.apps")} value={appsLabel} />
                         <MobileField
-                          label="Tokens"
-                          value={`${active} active${expiring > 0 ? ` · ${expiring} expiring` : ""}`}
+                          label={t("pagesAppsGateways.list.col.tokens")}
+                          value={`${t("pagesAppsGateways.list.tokensSummary", { active })}${expiring > 0 ? t("pagesAppsGateways.list.tokensExpiring", { expiring }) : ""}`}
                         />
                         <MobileField
-                          label="Last used"
+                          label={t("pagesAppsGateways.list.col.lastUsed")}
                           value={lastUsed ? <RelativeTime value={lastUsed} /> : "—"}
                         />
                       </dl>
@@ -296,10 +296,9 @@ export function GatewaysList() {
           })()}
 
           <div className="rounded-lg border border-border bg-muted/30 px-4 py-3">
-            <div className="text-sm font-semibold text-foreground">Why a gateway?</div>
+            <div className="text-sm font-semibold text-foreground">{t("pagesAppsGateways.list.whyTitle")}</div>
             <p className="mt-1 text-sm text-muted-foreground">
-              You pick which apps go through it, who can use it, and how. Revoke the token, the whole
-              gateway goes silent — no app-by-app cleanup.
+              {t("pagesAppsGateways.list.whyBody")}
             </p>
           </div>
         </div>
@@ -328,14 +327,13 @@ function MobileField({ label, value }: { label: string; value: ReactNode }) {
 function EmptyGateways({ onCreate }: { onCreate: () => void }) {
   return (
     <div className="rounded-2xl border border-dashed border-border p-12 text-center">
-      <h2 className="text-lg font-semibold text-foreground">No gateways yet</h2>
+      <h2 className="text-lg font-semibold text-foreground">{t("pagesAppsGateways.list.emptyTitle")}</h2>
       <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
-        Group your connected apps into one safe endpoint you can hand to a client, then revoke it in one
-        move.
+        {t("pagesAppsGateways.list.emptyBody")}
       </p>
       <Button className="mt-5" onClick={onCreate}>
         <Plus className="mr-1.5 h-4 w-4" />
-        New gateway
+        {t("pagesAppsGateways.list.newGateway")}
       </Button>
     </div>
   );

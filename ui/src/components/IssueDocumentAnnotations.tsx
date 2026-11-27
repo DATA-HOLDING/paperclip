@@ -16,6 +16,7 @@ import { DocumentAnnotationLayer, type AnnotationAnchorRect, type PendingAnchor 
 import { DocumentAnnotationPanel } from "./DocumentAnnotationPanel";
 import { DocumentAnnotationPopover } from "./DocumentAnnotationPopover";
 import type { CompanyUserProfile } from "@/lib/company-members";
+import { t } from "@/i18n";
 
 // Width of the right-hand comment gutter on desktop (lg+). The gutter is an
 // in-flow flex column beside the document, so it scrolls with the doc instead
@@ -130,13 +131,13 @@ export function IssueDocumentAnnotations({
 
   const newCommentDisabled = draftDirty || draftConflicted || historicalPreview || !doc.latestRevisionId;
   const newCommentDisabledReason = historicalPreview
-    ? "New comments are disabled while previewing a historical revision."
+    ? t("componentsIssueDocumentAnnotations.disabled.historical")
     : draftConflicted
-      ? "Resolve the document conflict before adding new comments."
+      ? t("componentsIssueDocumentAnnotations.disabled.conflict")
       : draftDirty
-        ? "Save the draft to anchor new comments."
+        ? t("componentsIssueDocumentAnnotations.disabled.dirty")
         : !doc.latestRevisionId
-          ? "Document has no saved revision yet."
+          ? t("componentsIssueDocumentAnnotations.disabled.noRevision")
           : null;
 
   const handleSelectionAnchorChange = useCallback((anchor: PendingAnchor | null) => {
@@ -427,14 +428,14 @@ export function DocumentAnnotationsCountChip({
       onClick={onToggle}
       data-testid={`document-annotation-count-${docKey}`}
       aria-label={openCount === 0
-        ? `Open comments on ${docKey}`
-        : `Open ${openCount} unresolved comments on ${docKey}`}
+        ? t("componentsIssueDocumentAnnotations.chip.openComments", { docKey })
+        : t("componentsIssueDocumentAnnotations.chip.openUnresolved", { openCount, docKey })}
       aria-expanded={panelOpen}
     >
       <MessageSquare className="h-3 w-3" aria-hidden="true" />
       <span className="tabular-nums">{openCount}</span>
       <span className="hidden sm:inline">
-        {openCount === 1 ? "comment" : "comments"}
+        {t("componentsIssueDocumentAnnotations.chip.commentLabel", { count: openCount })}
       </span>
     </Button>
   );

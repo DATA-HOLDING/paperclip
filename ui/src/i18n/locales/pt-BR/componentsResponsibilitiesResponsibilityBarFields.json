@@ -1,0 +1,40 @@
+{
+  "optional": " (opcional)",
+  "enterNumber": "Informe um número",
+  "unit": "Unidade",
+  "unitPlaceholderRange": "ex.: meses, R$",
+  "unitPlaceholder": "ex.: R$, dias",
+  "direction": "Melhor quando está",
+  "bar": {
+    "label": "O padrão",
+    "hint": "Como o sucesso é medido? Uma frase.",
+    "required": "Descreva o padrão",
+    "placeholder": "ex.: Toda conversa com investidor tem um próximo passo em até uma semana"
+  },
+  "kind": "Tipo de medida",
+  "metric": {
+    "labelYesNo": "O que deve ser verdade",
+    "label": "O que você mede",
+    "requiredYesNo": "Diga o que deve ser verdade",
+    "required": "Dê um nome ao que você mede",
+    "placeholderYesNo": "ex.: Material do conselho enviado uma semana antes da reunião",
+    "placeholderRange": "ex.: Fôlego de caixa",
+    "placeholder": "ex.: Investidores contatados"
+  },
+  "target": "Meta",
+  "targetPercent": "Meta (%)",
+  "setTarget": "Defina uma meta",
+  "example": "ex.: {{value}}",
+  "low": "Mínimo",
+  "high": "Máximo",
+  "setLow": "Defina o limite inferior",
+  "setHigh": "Defina o limite superior",
+  "current": {
+    "label": "Situação atual",
+    "hintYesNo": "Isso é verdade hoje? Os agentes que trabalham nisto o mantêm atualizado.",
+    "unknown": "Ainda não se sabe",
+    "yes": "Sim",
+    "no": "Não",
+    "hint": "A leitura mais recente, se você souber. Os agentes que trabalham nisto a mantêm atualizada."
+  }
+}

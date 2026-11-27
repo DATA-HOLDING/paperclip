@@ -15,6 +15,7 @@ import { OnboardingHeading } from "./OnboardingPrimitives";
 import { PillGuy } from "./PillGuy";
 import { SleepingZs } from "./SleepingZs";
 import { Stepper } from "./Stepper";
+import { t } from "@/i18n";
 
 /**
  * A prototype of the connect step, from the PCLP-Onboarding file (nodes
@@ -106,14 +107,14 @@ export function ConnectModelPreview({
         <div className="pt-6">
           <OnboardingHeading
             center
-            title="Connect a model"
-            lede="Paperclip works with your existing subscription or API keys."
+            title={t("componentsOnboarding.stepper.connectModel")}
+            lede={t("componentsOnboarding.connectModelPreview.lede")}
           />
         </div>
 
         <div className="space-y-2 pt-12">
           <ModelSourceTiles
-            label="Model source"
+            label={t("componentsOnboarding.connectModelPreview.modelSource")}
             sources={MODEL_SOURCES}
             mode={mode}
             selectedId={selectedId}
@@ -133,7 +134,7 @@ export function ConnectModelPreview({
                 onCheckedChange={(checked) => setUseApiKeys(checked === true)}
               />
               <span className="text-sm font-medium text-foreground">
-                Use API keys instead
+                {t("componentsOnboarding.connectModelPreview.useApiKeys")}
               </span>
             </label>
           )}
@@ -143,7 +144,7 @@ export function ConnectModelPreview({
             disabled rather than failing on press. */}
         <FooterNav
           onBack={() => {}}
-          primaryLabel="Connect"
+          primaryLabel={t("componentsOnboarding.connectModelPreview.connect")}
           primaryDisabled={selectedId === null}
           onPrimary={() => {}}
         />

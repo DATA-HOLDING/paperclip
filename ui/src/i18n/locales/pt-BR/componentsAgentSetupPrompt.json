@@ -1,0 +1,19 @@
+{
+  "title": "Configuração com agente",
+  "description": "Cole isto no seu agente para ele cuidar da configuração.",
+  "label": "Configurar com um agente",
+  "recipientNamed": "o seu {{name}}",
+  "recipientGeneric": "o seu agente",
+  "copiedShort": "Copiado!",
+  "close": "Fechar a configuração com agente",
+  "promptLabel": "Prompt de configuração",
+  "copyFailed": "Não foi possível copiar automaticamente. Selecione e copie o prompt acima, ou tente novamente.",
+  "copied": "Copiado para a área de transferência",
+  "copying": "Copiando…",
+  "tryAgain": "Tentar copiar de novo",
+  "copy": "Copiar prompt",
+  "readyToPaste": "Pronto para colar no {{recipient}}.",
+  "giveTo": "Entregue este prompt para {{recipient}}.",
+  "worksWith": "Funciona com Codex, ChatGPT, Claude e outros.",
+  "copiedStatus": "Prompt de configuração copiado. Pronto para colar no {{recipient}}."
+}

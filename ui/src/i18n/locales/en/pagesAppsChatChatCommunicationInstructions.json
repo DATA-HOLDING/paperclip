@@ -1,0 +1,9 @@
+{
+  "label": "Additional communication instructions",
+  "help": "Applies to new conversations.",
+  "placeholder": "For example: Keep replies brief and explain technical terms.",
+  "cancel": "Cancel",
+  "saved": "Saved. Applies to new tasks.",
+  "saving": "Saving…",
+  "save": "Save instructions"
+}

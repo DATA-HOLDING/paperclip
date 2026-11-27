@@ -1,0 +1,29 @@
+{
+  "executingCommand": "Executando comando",
+  "inspectInput": "Inspecionar entrada de {{name}}",
+  "pathsStartingWith_one": "{{count}} caminho, começando por {{first}}",
+  "pathsStartingWith_other": "{{count}} caminhos, começando por {{first}}",
+  "noInput": "Sem entrada de {{name}}",
+  "payload": "Conteúdo de {{key}}",
+  "fields_one": "{{count}} campo: {{keys}}",
+  "fields_other": "{{count}} campos: {{keys}}",
+  "labels": {
+    "command": "Comando",
+    "input": "Entrada",
+    "intent": "Intenção",
+    "path": "Caminho",
+    "directory": "Diretório",
+    "query": "Consulta",
+    "target": "Destino",
+    "prompt": "Prompt",
+    "pattern": "Padrão",
+    "name": "Nome",
+    "paths": "Caminhos"
+  },
+  "moreSuffix": ", +{{count}} mais",
+  "toolFailed": "Ferramenta falhou",
+  "waitingForResult": "Aguardando resultado",
+  "completed": "Concluído",
+  "failedWithExitCode": "Falhou com código de saída {{exitCode}}",
+  "failed": "Falhou"
+}

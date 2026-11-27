@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useEffect, useRef, useState, type ClipboardEvent, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Copy, Check, Loader2 } from "lucide-react";
@@ -98,7 +99,7 @@ export function OnboardingLoginCard({
       <div
         className="flex min-h-(--sz-108px) items-center justify-center rounded-xl bg-muted/40"
         role="status"
-        aria-label="Preparing the sign-in"
+        aria-label={t("componentsAdapterLoginChrome.preparingSignIn")}
       >
         <Loader2 className="size-4 animate-spin text-muted-foreground" />
       </div>
@@ -308,13 +309,13 @@ export function OnboardingLoginCodeRow({
             animate={{ opacity: 1, y: 0, transition: COPIED_REVEAL }}
             exit={{ opacity: 0, transition: COPIED_REVEAL }}
           >
-            Copied!
+            {t("componentsAdapterLoginChrome.copied")}
           </motion.span>
         )}
       </AnimatePresence>
       <LoginCardCopyButton
         value={code}
-        label="Copy the code"
+        label={t("componentsAdapterLoginChrome.copyCode")}
         onCopied={() => {
           // No wait here. A press is a direct action, and delaying its
           // acknowledgement would read as the button having missed.
@@ -364,8 +365,8 @@ export function OnboardingCardField({
   onSubmit,
   onPaste,
   disabled,
-  label = "Authorization code",
-  placeholder = "Paste authorization code here",
+  label = t("componentsAdapterLoginChrome.field.label"),
+  placeholder = t("componentsAdapterLoginChrome.field.placeholder"),
   masked = false,
   autoFocus = false,
   className,
@@ -444,7 +445,7 @@ export function ProviderSubscriptionCard({
   return (
     <OnboardingLoginCard
       loading={loading}
-      instruction={failure ? (failure === "expired" ? "This sign-in expired" : "Sign-in didn’t finish") : (
+      instruction={failure ? (failure === "expired" ? t("componentsAdapterLoginChrome.subscription.expired") : t("componentsAdapterLoginChrome.subscription.failed")) : (
         <>
           <a
             href={authorizationUrl}
@@ -457,20 +458,20 @@ export function ProviderSubscriptionCard({
             rel="noreferrer noopener"
             className="underline underline-offset-2 hover:text-foreground"
           >
-            Sign in to {providerName}
+            {t("componentsAdapterLoginChrome.subscription.signInTo", { provider: providerName })}
           </a>
-          {mode === "hosted_redirect" ? " then paste the redirect URL below"
-            : mode === "browser_redirect" ? " then return here"
+          {mode === "hosted_redirect" ? t("componentsAdapterLoginChrome.subscription.thenPasteRedirect")
+            : mode === "browser_redirect" ? t("componentsAdapterLoginChrome.subscription.thenReturn")
             : mode === "submitted_code"
-            ? " then come back and enter authorization code"
-            : " by providing the authorization code below"}
+            ? t("componentsAdapterLoginChrome.subscription.thenEnterCode")
+            : t("componentsAdapterLoginChrome.subscription.byProvidingCode")}
         </>
       )}
     >
       {failure && (
         <div className="flex flex-col items-start gap-3 px-2">
-          <p role="alert" className="text-sm text-muted-foreground">{failureMessage ?? "Retry sign-in to get a fresh code. Your setup is saved."}</p>
-          {onRetry && <Button type="button" variant="outline" onClick={onRetry}>Retry sign-in</Button>}
+          <p role="alert" className="text-sm text-muted-foreground">{failureMessage ?? t("componentsAdapterLoginChrome.subscription.retryHint")}</p>
+          {onRetry && <Button type="button" variant="outline" onClick={onRetry}>{t("componentsAdapterLoginChrome.subscription.retry")}</Button>}
         </div>
       )}
       {children}
@@ -486,9 +487,9 @@ export function ProviderApiKeyCard({
 }) {
   return (
     <OnboardingLoginCard
-      instruction={`Provide your ${providerName} API key to connect`}
+      instruction={t("componentsAdapterLoginChrome.apiKey.instruction", { provider: providerName })}
     >
-      <OnboardingCardField {...field} label="API key" masked />
+      <OnboardingCardField {...field} label={t("componentsAdapterLoginChrome.apiKey.label")} masked />
     </OnboardingLoginCard>
   );
 }
@@ -552,16 +553,16 @@ export function LocalProviderLoginInstructions({ adapterType, login, hostedRedir
     setBrowserCode(value);
     void submitBrowserCode(value);
   }
-  if (login?.preparing) return <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Preparing sign-in…</p>;
+  if (login?.preparing) return <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />{t("componentsAdapterLoginChrome.local.preparing")}</p>;
   const ready = login?.status === "ready";
   const awaitingBrowserSignIn = browserLogin && !ready && !login?.authorizationUrl && !login?.error;
   return <div className="min-w-0 max-w-full space-y-3 text-sm text-muted-foreground">
     {ready ? <>
-      <p role="status" className={cn("flex items-center gap-2 text-foreground", ANALYTICS_MASK_CLASS)}><Check className="size-4 shrink-0 text-(--status-task-icon-done)" />{login?.accountLabel ?? provider} is signed in. Click Connect to use this account.</p>
-      {!showCommand && <button type="button" className="underline underline-offset-4" onClick={() => browserLogin ? login?.retry() : setShowCommand(true)}>Use a different account</button>}
-    </> : !browserLogin && <p>{isolated ? `Sign in to ${provider} for this connection on the machine running Paperclip. Your existing terminal login stays separate.` : `Connect uses your local ${provider} account on the machine running Paperclip.`}</p>}
-    {awaitingBrowserSignIn && <p role="status">Preparing browser sign-in…</p>}
-    {(submitting || codeSubmitted) && !ready && !login?.error && <p role="status">Finishing sign-in…</p>}
+      <p role="status" className={cn("flex items-center gap-2 text-foreground", ANALYTICS_MASK_CLASS)}><Check className="size-4 shrink-0 text-(--status-task-icon-done)" />{t("componentsAdapterLoginChrome.local.signedIn", { account: login?.accountLabel ?? provider })}</p>
+      {!showCommand && <button type="button" className="underline underline-offset-4" onClick={() => browserLogin ? login?.retry() : setShowCommand(true)}>{t("componentsAdapterLoginChrome.local.differentAccount")}</button>}
+    </> : !browserLogin && <p>{isolated ? t("componentsAdapterLoginChrome.local.isolatedHint", { provider }) : t("componentsAdapterLoginChrome.local.sharedHint", { provider })}</p>}
+    {awaitingBrowserSignIn && <p role="status">{t("componentsAdapterLoginChrome.local.preparingBrowser")}</p>}
+    {(submitting || codeSubmitted) && !ready && !login?.error && <p role="status">{t("componentsAdapterLoginChrome.local.finishing")}</p>}
     {browserLogin && !ready && !submitting && !codeSubmitted && !login?.error && login?.authorizationUrl && <ProviderSubscriptionCard
       providerName={connectSourceName(adapterType)}
       authorizationUrl={login.authorizationUrl}
@@ -575,16 +576,16 @@ export function LocalProviderLoginInstructions({ adapterType, login, hostedRedir
           onSubmit={() => void submitBrowserCode()}
           disabled={submitting}
         />
-        <Button type="button" disabled={!browserCode.trim() || submitting} onClick={() => void submitBrowserCode()}>Submit code</Button>
+        <Button type="button" disabled={!browserCode.trim() || submitting} onClick={() => void submitBrowserCode()}>{t("componentsAdapterLoginChrome.local.submitCode")}</Button>
       </div> : hostedGoogleRedirect ? <div className="flex flex-col gap-2">
         <p className="px-2 text-xs text-muted-foreground">
           {optionalHostedGoogleRedirect
-            ? <>Finish signing in in the Google browser window, then return here. If your browser is on another machine and the <code className="font-mono">127.0.0.1</code> redirect page won’t load, copy the full URL from your address bar and paste it below.</>
-            : <>After signing in with Google, your browser will redirect to a <code className="font-mono">127.0.0.1</code> page that won’t load. Copy the full URL from your browser’s address bar and paste it below.</>}
+            ? <>{t("componentsAdapterLoginChrome.local.optionalRedirectBefore")}<code className="font-mono">127.0.0.1</code>{t("componentsAdapterLoginChrome.local.optionalRedirectAfter")}</>
+            : <>{t("componentsAdapterLoginChrome.local.redirectBefore")}<code className="font-mono">127.0.0.1</code>{t("componentsAdapterLoginChrome.local.redirectAfter")}</>}
         </p>
         <OnboardingCardField
-          label="Google redirect URL"
-          placeholder="Paste http://127.0.0.1:... URL here"
+          label={t("componentsAdapterLoginChrome.local.redirectLabel")}
+          placeholder={t("componentsAdapterLoginChrome.local.redirectPlaceholder")}
           className={cn(ANALYTICS_MASK_CLASS, ANALYTICS_NO_CAPTURE_CLASS)}
           value={browserCode}
           onChange={(value) => {
@@ -595,18 +596,18 @@ export function LocalProviderLoginInstructions({ adapterType, login, hostedRedir
           onSubmit={() => void submitBrowserCode()}
           disabled={submitting}
         />
-        <Button type="button" disabled={!browserCode.trim() || submitting} onClick={() => void submitBrowserCode()}>Submit redirect URL</Button>
+        <Button type="button" disabled={!browserCode.trim() || submitting} onClick={() => void submitBrowserCode()}>{t("componentsAdapterLoginChrome.local.submitRedirect")}</Button>
         {submitError && <p role="alert" className="px-2 text-xs text-destructive">{submitError}</p>}
-      </div> : adapterType === "antigravity_runtime" ? <p>Finish signing in in the Google browser window, then return here.</p> : <OnboardingLoginCodeRow code={login.code ?? ""} />}
+      </div> : adapterType === "antigravity_runtime" ? <p>{t("componentsAdapterLoginChrome.local.finishGoogle")}</p> : <OnboardingLoginCodeRow code={login.code ?? ""} />}
     </ProviderSubscriptionCard>}
     {!browserLogin && (!ready || showCommand) && !login?.error && <>
-      <p>Run this in a terminal on that machine and finish signing in in your browser. We’ll check automatically when you return.</p>
+      <p>{t("componentsAdapterLoginChrome.local.runCommand")}</p>
       {command && <div className="flex min-w-0 max-w-full items-start gap-2 rounded-md border bg-muted p-3 text-foreground">
         <pre className={cn("min-w-0 flex-1 whitespace-pre-wrap break-all font-mono text-xs", ANALYTICS_NO_CAPTURE_CLASS)}><code>{command}</code></pre>
-        <LoginCardCopyButton value={command} label="Copy sign-in command" />
+        <LoginCardCopyButton value={command} label={t("componentsAdapterLoginChrome.local.copyCommand")} />
       </div>}
     </>}
     {login?.error && <p role="alert">{login.error}</p>}
-    {login && !login.preparing && !ready && !awaitingBrowserSignIn && (isolated || login.error) && <button type="button" className="underline underline-offset-4" onClick={login.retry}>{isolated ? "Start sign-in again" : "Check again"}</button>}
+    {login && !login.preparing && !ready && !awaitingBrowserSignIn && (isolated || login.error) && <button type="button" className="underline underline-offset-4" onClick={login.retry}>{isolated ? t("componentsAdapterLoginChrome.local.startAgain") : t("componentsAdapterLoginChrome.local.checkAgain")}</button>}
   </div>;
 }

@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { useState, type CSSProperties } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -15,6 +16,7 @@ import { queryKeys } from "@/lib/queryKeys";
 import { useCloudInstance } from "@/hooks/useCloudInstance";
 import { useCloudSidebarLinks } from "@/hooks/useCloudSidebarLinks";
 import { SidebarSlackFeedback } from "./SidebarSlackFeedback";
+import { LanguageMenuAction } from "./LanguageMenuAction";
 import { useCanInviteCompanyMembers } from "@/hooks/useCompanyInviteAccess";
 import { useHiddenSettings } from "@/hooks/useHiddenSettings";
 import { useSignOut } from "@/hooks/useSignOut";
@@ -153,9 +155,9 @@ export function SidebarAccountMenu({
 
   const signOutMutation = useSignOut({ onSignedOut: closeNavigationChrome });
 
-  const displayName = session?.user.name?.trim() || "Board";
+  const displayName = session?.user.name?.trim() || t("componentsSidebarAccountMenu.boardName");
   const secondaryLabel =
-    session?.user.email?.trim() || (deploymentMode === "authenticated" ? "Signed in" : "Local workspace board");
+    session?.user.email?.trim() || (deploymentMode === "authenticated" ? t("componentsSidebarAccountMenu.signedIn") : t("componentsSidebarAccountMenu.localBoard"));
   const initials = deriveInitials(displayName);
   const profileHref = userProfilePath(session?.user);
 
@@ -179,7 +181,7 @@ export function SidebarAccountMenu({
                 "flex min-w-0 items-center gap-2.5 rounded-lg text-left text-(length:--text-compact) font-medium text-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                 "flex-1 px-2 py-1.5",
               )}
-              aria-label="Open account menu"
+              aria-label={t("componentsSidebarAccountMenu.openMenu")}
             >
               <Avatar size="sm">
                 {session?.user.image ? <AvatarImage src={session.user.image} alt={displayName} /> : null}
@@ -190,7 +192,7 @@ export function SidebarAccountMenu({
           </PopoverTrigger>
           <FlyoutContent
             shadow={shadow}
-            aria-label="Account"
+            aria-label={t("componentsSidebarAccountMenu.account")}
             side="top"
             align="start"
             sideOffset={10}
@@ -200,7 +202,7 @@ export function SidebarAccountMenu({
             <FlyoutHeader data-flyout-profile data-marquee-surface className="relative flex h-(--profile-popover-header-height) shrink-0 items-center gap-2.5 px-3.5">
               <Link
                 to={profileHref}
-                aria-label="View profile"
+                aria-label={t("componentsSidebarAccountMenu.viewProfile")}
                 onClick={closeNavigationChrome}
                 className="absolute inset-0 transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
               />
@@ -221,7 +223,7 @@ export function SidebarAccountMenu({
                     href={`https://github.com/paperclipai/paperclip/commit/${stagingCommit}`}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`View commit ${stagingCommit} on GitHub`}
+                    aria-label={t("componentsSidebarAccountMenu.viewCommit", { commit: stagingCommit })}
                     title={stagingCommit}
                   >
                     SHA {stagingCommit.slice(0, 7)}
@@ -232,14 +234,15 @@ export function SidebarAccountMenu({
 
             <FlyoutOptions className="flex flex-col gap-0.5 border-t border-border p-2.5">
               <MenuAction
-                label="Settings"
+                label={t("componentsSidebarAccountMenu.settings")}
                 icon={Settings}
                 href="/company/settings"
                 onClick={closeNavigationChrome}
               />
+              <LanguageMenuAction />
               {showInvite && inviteHref ? (
                 <MenuAction
-                  label="Invite"
+                  label={t("componentsSidebarAccountMenu.invite")}
                   icon={UserPlus}
                   href={inviteHref}
                   topLevel={isCloud}
@@ -247,7 +250,7 @@ export function SidebarAccountMenu({
                 />
               ) : null}
               <MenuAction
-                label="Documentation"
+                label={t("componentsSidebarAccountMenu.documentation")}
                 icon={BookOpen}
                 href={DOCS_URL}
                 external
@@ -268,7 +271,7 @@ export function SidebarAccountMenu({
                     <LogOut className="size-4" />
                   </span>
                   <TruncatedText className="min-w-0 flex-1 truncate">
-                    {signOutMutation.isPending ? "Signing out..." : "Sign out"}
+                    {signOutMutation.isPending ? t("componentsSidebarAccountMenu.signingOut") : t("componentsSidebarAccountMenu.signOut")}
                   </TruncatedText>
                 </button>
               ) : null}
@@ -284,13 +287,13 @@ export function SidebarAccountMenu({
                 href={FEEDBACK_URL}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Share feedback"
+                aria-label={t("componentsSidebarAccountMenu.shareFeedback")}
                 className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground/50 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Flag className="h-4 w-4" aria-hidden="true" />
               </a>
             </TooltipTrigger>
-            <TooltipContent side="top">Share feedback</TooltipContent>
+            <TooltipContent side="top">{t("componentsSidebarAccountMenu.shareFeedback")}</TooltipContent>
           </Tooltip>
         ) : null}
       </div>

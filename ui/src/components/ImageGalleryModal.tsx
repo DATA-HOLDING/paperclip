@@ -3,6 +3,7 @@ import { Dialog as DialogPrimitive } from "radix-ui";
 import { ChevronLeft, ChevronRight, Download, ExternalLink, X } from "lucide-react";
 import { attachmentDownloadPath, attachmentFilename, attachmentOpenPath } from "@/lib/issue-attachments";
 import { isVideoLikeOutput } from "@/lib/issue-output";
+import { t } from "@/i18n";
 
 export interface GalleryMediaItem {
   id: string;
@@ -105,7 +106,7 @@ export function ImageGalleryModal({
             returnFocusRef.current?.focus({ preventScroll: true });
           } : undefined}
         >
-          <DialogPrimitive.Title className="sr-only">Image gallery</DialogPrimitive.Title>
+          <DialogPrimitive.Title className="sr-only">{t("componentsImageGalleryModal.title")}</DialogPrimitive.Title>
           {/* Top bar */}
           <div className="flex items-center justify-between px-5 py-3 text-white/80 text-sm shrink-0">
             <span className="truncate max-w-(--pct-50) font-medium" title={filename}>
@@ -120,8 +121,8 @@ export function ImageGalleryModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/50 hover:text-white transition-colors"
-                title="Open original"
-                aria-label={`Open original ${filename}`}
+                title={t("componentsImageGalleryModal.openOriginal")}
+                aria-label={t("componentsImageGalleryModal.openOriginalFile", { filename })}
                 onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="h-4.5 w-4.5" />
@@ -130,8 +131,8 @@ export function ImageGalleryModal({
                 href={attachmentDownloadPath(current)}
                 download={filename}
                 className="text-white/50 hover:text-white transition-colors"
-                title="Download"
-                aria-label={`Download ${filename}`}
+                title={t("componentsImageGalleryModal.download")}
+                aria-label={t("componentsImageGalleryModal.downloadFile", { filename })}
                 onClick={(e) => e.stopPropagation()}
               >
                 <Download className="h-4.5 w-4.5" />
@@ -140,7 +141,7 @@ export function ImageGalleryModal({
                 type="button"
                 onClick={() => onOpenChange(false)}
                 className="text-white/50 hover:text-white transition-colors"
-                title="Close"
+                title={t("componentsImageGalleryModal.close")}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -156,7 +157,7 @@ export function ImageGalleryModal({
                   type="button"
                   onClick={goPrev}
                   className="rounded-full bg-white/10 p-3 text-white/60 hover:text-white hover:bg-white/20 transition-colors"
-                  title="Previous"
+                  title={t("componentsImageGalleryModal.previous")}
                 >
                   <ChevronLeft className="h-7 w-7" />
                 </button>
@@ -191,7 +192,7 @@ export function ImageGalleryModal({
                   type="button"
                   onClick={goNext}
                   className="rounded-full bg-white/10 p-3 text-white/60 hover:text-white hover:bg-white/20 transition-colors"
-                  title="Next"
+                  title={t("componentsImageGalleryModal.next")}
                 >
                   <ChevronRight className="h-7 w-7" />
                 </button>

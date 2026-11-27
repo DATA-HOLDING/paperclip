@@ -1,0 +1,32 @@
+{
+  "views": {
+    "mine": "For you",
+    "unassigned": "Unassigned",
+    "company": "Company",
+    "archived": "Archived",
+    "all": "Everyone"
+  },
+  "unassignedBanner_one": "{{count}} card needs an owner",
+  "unassignedBanner_other": "{{count}} cards need an owner",
+  "poolAudience": "No owner yet. Any board member can answer it.",
+  "companyAudience": "Company alert for operators",
+  "noClaim": "It has no task to assign, so it can't be claimed.",
+  "transferredBy": "Transferred by",
+  "responders": {
+    "onlyYou": "Only you can answer it.",
+    "onlyUser": "Only @{{name}} can answer it.",
+    "addressedPerson": "the addressed person",
+    "anyBoardMember": "Any board member can answer it.",
+    "anyBoardMemberToo": "Any board member can answer it too.",
+    "agentOrBoard": "{{name}} or any board member can answer it.",
+    "agentOrBoardToo": "{{name}} or any board member can answer it too.",
+    "addressedAgent": "The addressed agent",
+    "anyoneExcept": "Anyone except {{name}} can answer it.",
+    "anyoneExceptToo": "Anyone except {{name}} can answer it too.",
+    "agentThatAsked": "the agent that asked",
+    "anyoneElse": "Anyone else can answer it too.",
+    "anyone": "Anyone can answer it."
+  },
+  "noOwnerYet": "No owner yet. {{responders}}",
+  "someone": "someone"
+}

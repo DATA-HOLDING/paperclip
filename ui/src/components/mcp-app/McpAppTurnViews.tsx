@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useMcpAppIssueId, useMcpAppViewsForRun, type McpAppViewsFreshness } from "./McpAppIssueContext";
 import { McpAppView } from "./McpAppView";
 import type { McpAppDisplayMode } from "./mcp-app-host";
+import { t } from "@/i18n";
 
 /** "DisplayMeetings" → "Display meetings". */
 export function mcpAppToolDisplayName(toolName: string): string {
@@ -20,7 +21,7 @@ function McpAppRunView({ issueId, view }: { issueId: string; view: McpAppViewSum
   return (
     <section data-testid="mcp-app-turn-view" aria-label={`${view.applicationName}: ${displayName}`} className="flex min-w-0 flex-col gap-2">
       <div className="flex min-w-0 items-center gap-2 text-xs">
-        <span className="shrink-0 text-muted-foreground">Widget from {view.applicationName}</span>
+        <span className="shrink-0 text-muted-foreground">{t("componentsMcpApp.widgetFrom", { applicationName: view.applicationName })}</span>
         <span className="min-w-0 truncate font-medium text-foreground">{displayName}</span>
         <Button
           type="button"
@@ -29,10 +30,10 @@ function McpAppRunView({ issueId, view }: { issueId: string; view: McpAppViewSum
           className="ml-auto shrink-0 text-xs text-muted-foreground"
           onClick={() => { setNear(true); setDisplayMode("fullscreen"); }}
           disabled={displayMode === "fullscreen"}
-          aria-label={`Open ${view.applicationName} ${displayName} full screen`}
+          aria-label={t("componentsMcpApp.openFullScreenAria", { applicationName: view.applicationName, displayName })}
         >
           <Maximize2 aria-hidden="true" />
-          Open full screen
+          {t("componentsMcpApp.openFullScreen")}
         </Button>
       </div>
       <NearViewport placeholderLabel={`${view.applicationName}: ${displayName}`} near={near} onNear={markNear}>
@@ -63,7 +64,7 @@ function NearViewport({ children, placeholderLabel, near, onNear }: { children: 
     return () => observer.disconnect();
   }, [near, onNear]);
   if (near) return <>{children}</>;
-  return <div ref={ref} role="status" aria-label={`${placeholderLabel} (not loaded yet)`} data-testid="mcp-app-view-placeholder" className="h-24 rounded-lg border border-border bg-muted/30" />;
+  return <div ref={ref} role="status" aria-label={t("componentsMcpApp.notLoadedYet", { label: placeholderLabel })} data-testid="mcp-app-view-placeholder" className="h-24 rounded-lg border border-border bg-muted/30" />;
 }
 
 /**
@@ -106,7 +107,7 @@ function RunViews({ runId, ...freshness }: { runId: string } & McpAppViewsFreshn
       {shown.map((view) => <McpAppRunView key={view.id} issueId={issueId} view={view} />)}
       {hidden > 0 ? (
         <Button type="button" variant="ghost" size="sm" className="self-start" onClick={() => setShowAll(true)}>
-          Show {hidden} more
+          {t("componentsMcpApp.showMore", { count: hidden })}
         </Button>
       ) : null}
     </div>

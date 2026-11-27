@@ -1,0 +1,72 @@
+{
+  "source": {
+    "approval": "Aprovação",
+    "decision": "Decisão",
+    "issueThreadInteraction": "Decisão solicitada",
+    "joinRequest": "Pedido de entrada",
+    "recoveryAction": "Recuperação",
+    "productivityReview": "Tarefa",
+    "blockerAttention": "Dependência bloqueada",
+    "review": "Revisão",
+    "failedRun": "Execução com falha",
+    "budgetAlert": "Orçamento",
+    "agentErrorAlert": "Erro do agente"
+  },
+  "severity": {
+    "critical": "Crítica",
+    "high": "Alta",
+    "medium": "Média",
+    "low": "Baixa"
+  },
+  "nouns": {
+    "option_one": "{{count}} opção",
+    "option_other": "{{count}} opções",
+    "question_one": "{{count}} pergunta",
+    "question_other": "{{count}} perguntas",
+    "suggestedTask_one": "{{count}} tarefa sugerida",
+    "suggestedTask_other": "{{count}} tarefas sugeridas",
+    "item_one": "{{count}} item",
+    "item_other": "{{count}} itens"
+  },
+  "detail": {
+    "toVerdict": "{{items}} para dar veredicto",
+    "blockedBy": "Bloqueada por {{blocker}}",
+    "budget": "{{percent}}% do orçamento usado ({{observed}} / {{limit}})"
+  },
+  "shelves": {
+    "decideNow": "Decidir agora",
+    "newToday": "Novos hoje",
+    "earlier": "Anteriores"
+  },
+  "decideBy": {
+    "today": "Hoje",
+    "thisWeek": "Esta semana",
+    "whenever": "Quando der",
+    "notSet": "Não definido"
+  },
+  "dateRange": {
+    "all": "Tudo",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "last7Days": "Últimos 7 dias",
+    "thisMonth": "Este mês"
+  },
+  "groupBy": {
+    "none": "Nenhum",
+    "date": "Data",
+    "type": "Tipo",
+    "project": "Projeto",
+    "severity": "Gravidade"
+  },
+  "sort": {
+    "newest": "Mais recentes primeiro",
+    "oldest": "Mais antigos primeiro"
+  },
+  "dateBucket": {
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "thisWeek": "Esta semana",
+    "earlier": "Anteriores"
+  },
+  "noProject": "Sem projeto"
+}

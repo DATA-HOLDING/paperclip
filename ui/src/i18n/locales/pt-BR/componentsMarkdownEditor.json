@@ -1,0 +1,21 @@
+{
+  "languages": {
+    "text": "Texto"
+  },
+  "uploadFailed": "Falha ao enviar a imagem",
+  "fallback": {
+    "message": "Editor avançado indisponível para este markdown. Mostrando o código-fonte.",
+    "retry": "Tentar o editor avançado novamente"
+  },
+  "mentionKind": {
+    "task": "Tarefa",
+    "project": "Projeto",
+    "user": "Usuário",
+    "skill": "Skill",
+    "routine": "Rotina"
+  },
+  "drop": {
+    "file": "Solte o arquivo para enviar",
+    "image": "Solte a imagem para enviar"
+  }
+}

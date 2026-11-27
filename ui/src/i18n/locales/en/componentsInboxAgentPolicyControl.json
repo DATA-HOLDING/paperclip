@@ -1,0 +1,30 @@
+{
+  "modes": {
+    "open": {
+      "title": "Any of my agents",
+      "description": "Let any agent you manage archive tasks out of your inbox."
+    },
+    "allowlist": {
+      "title": "Only chosen agents",
+      "description": "Restrict inbox tidying to the agents you pick below."
+    },
+    "disabled": {
+      "title": "Off",
+      "description": "Agents can never archive tasks from your inbox."
+    }
+  },
+  "loadAction": "load the inbox agent policy",
+  "loading": "Loading inbox agent policy…",
+  "title": "Let agents tidy my inbox",
+  "description": "Choose whether the agents you manage may archive tasks out of your inbox on your behalf. You can undo any archive, and every agent archive is attributed in the task's properties.",
+  "policyLabel": "Inbox agent archiving policy",
+  "allowedAgents": "Agents allowed to tidy my inbox",
+  "selectAgents": "Select agents",
+  "agentsSelected_one": "{{count}} agent selected",
+  "agentsSelected_other": "{{count}} agents selected",
+  "noAgents": "You don’t manage any agents yet.",
+  "saveAction": "save the inbox agent policy",
+  "saved": "Saved",
+  "saving": "Saving…",
+  "save": "Save"
+}

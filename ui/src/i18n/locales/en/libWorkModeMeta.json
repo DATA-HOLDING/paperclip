@@ -1,0 +1,8 @@
+{
+  "autoMode": "Auto mode",
+  "planMode": "Plan mode",
+  "askMode": "Ask mode",
+  "pendingAsk": "Ask mode for this submission. Click to change. The responsible will answer in this thread; no implementation work.",
+  "pendingPlanning": "Plan mode is on for this submission. Click to change.",
+  "pendingAuto": "Auto mode for this submission. Click to change."
+}

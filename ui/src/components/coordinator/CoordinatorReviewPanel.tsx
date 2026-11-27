@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useQueryView } from "@/components/QueryView";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { isImageFilename } from "@/components/task-chat/task-chat-attachments";
+import { t } from "@/i18n";
 
 /** The document a card asks you to review, when it has one (a plan approval today). */
 export function attentionReviewDocumentKey(item: AttentionItem): string | null {
@@ -77,10 +78,10 @@ export function needsYouArtifactId(artifact: NeedsYouArtifact, item: AttentionIt
 
 /** "Plan", "Approval" or "Attachments": the artifact's name on its tab and button. */
 export function needsYouArtifactLabel(artifact: NeedsYouArtifact) {
-  if (artifact.kind === "approval") return "Approval";
-  if (artifact.kind === "images") return "Attachments";
-  if (artifact.kind === "attachment") return artifact.name ?? "Attachment";
-  return artifact.key === "plan" ? "Plan" : artifact.title ?? artifact.key;
+  if (artifact.kind === "approval") return t("componentsCoordinator.review.approval");
+  if (artifact.kind === "images") return t("componentsCoordinator.review.attachments");
+  if (artifact.kind === "attachment") return artifact.name ?? t("componentsCoordinator.review.attachment");
+  return artifact.key === "plan" ? t("componentsCoordinator.review.plan") : artifact.title ?? artifact.key;
 }
 
 export interface CoordinatorReviewPanelProps {
@@ -111,12 +112,12 @@ export function CoordinatorReviewPanel(props: CoordinatorReviewPanelProps) {
   const requestView = useQueryView(request);
   if (!requestIssueId) return <CoordinatorReviewPanelContent {...props} />;
   if (requestView.kind === "loading" || requestView.kind === "reconnecting") {
-    return <p role="status" className="text-sm text-muted-foreground">Loading the requested document…</p>;
+    return <p role="status" className="text-sm text-muted-foreground">{t("componentsCoordinator.review.loadingRequested")}</p>;
   }
   const interaction = request.data?.find(entry => entry.id === item.subject.id);
   const target = interaction?.kind === "request_confirmation" ? interaction.payload.target : null;
   if (requestView.kind === "error" || !target || target.type !== "issue_document") {
-    return <div role="alert" className="space-y-2 text-sm"><p>The requested document could not be loaded.</p><Button variant="outline" onClick={() => void request.refetch()}>Retry</Button></div>;
+    return <div role="alert" className="space-y-2 text-sm"><p>{t("componentsCoordinator.review.requestedLoadError")}</p><Button variant="outline" onClick={() => void request.refetch()}>{t("componentsCoordinator.common.retry")}</Button></div>;
   }
   const resolved: NeedsYouArtifact = { kind: "document", key: target.key, issueId: target.issueId ?? requestIssueId, requestIssueId,
     documentTarget: { documentKey: target.key, revisionId: target.revisionId, interactionId: interaction!.id,
@@ -151,9 +152,9 @@ function CoordinatorReviewPanelContent({ companyId, item, artifact, agentMap, cu
             : <ImagesArtifact item={item} />}
     </div>
     {exactHref ? artifact.kind === "attachment" ? <a href={exactHref} target="_blank" rel="noreferrer" className="flex max-w-full items-center gap-2 text-left text-sm text-muted-foreground hover:text-foreground">
-      <span className="shrink-0">Open file</span><ArrowUpRight className="size-4 shrink-0" />
+      <span className="shrink-0">{t("componentsCoordinator.review.openFile")}</span><ArrowUpRight className="size-4 shrink-0" />
     </a> : <button type="button" onClick={() => onOpenTask(exactHref)} className="flex max-w-full items-center gap-2 text-left text-sm text-muted-foreground hover:text-foreground">
-      <span className="shrink-0">{`Open in ${artifact.kind === "approval" && !task ? "approvals" : artifact.kind === "document" && !ownDocument ? artifact.issueId : task?.identifier ?? "task"}`}</span><ArrowUpRight className="size-4 shrink-0" />
+      <span className="shrink-0">{t("componentsCoordinator.review.openIn", { target: artifact.kind === "approval" && !task ? t("componentsCoordinator.review.approvalsTarget") : artifact.kind === "document" && !ownDocument ? artifact.issueId : task?.identifier ?? t("componentsCoordinator.review.taskTarget") })}</span><ArrowUpRight className="size-4 shrink-0" />
     </button> : null}
     {/* The card's own actions, pinned to the bottom of the artifact. */}
     {/* Only the buttons the card itself offers (UX1). */}
@@ -164,7 +165,7 @@ function CoordinatorReviewPanelContent({ companyId, item, artifact, agentMap, cu
         onResolved={resolved => { if (resolved && resolved.status !== "pending") onResolved(); }} />
         : <ApprovalResolver item={item} companyId={companyId} toggle={null} presentation="panel" shareDraft onResolved={onResolved} />}
       </AttentionForOtherGate>
-    </div> : interactionIssueId ? <p className="text-sm text-muted-foreground">Answer on the inbox card while reviewing this artifact.</p> : null}
+    </div> : interactionIssueId ? <p className="text-sm text-muted-foreground">{t("componentsCoordinator.review.answerOnCard")}</p> : null}
   </div>;
 }
 
@@ -176,8 +177,8 @@ function DocumentArtifact({ issueId, documentKey, label, revisionId }: { issueId
   return <>
     {/* Say the title once (IA4): a body that opens with it already shows it. */}
     {doc.data?.body.trimStart().toLocaleLowerCase().startsWith(`# ${(doc.data.title ?? label).toLocaleLowerCase()}`) ? null : <h2 className="mb-4 text-lg font-medium">{doc.data?.title ?? label}</h2>}
-    {doc.isPending ? <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Loading {label.toLocaleLowerCase()}…</p>
-      : doc.isError || !doc.data ? <p className="text-sm text-muted-foreground">This document couldn't be loaded. Open it in the task instead.</p>
+    {doc.isPending ? <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />{t("componentsCoordinator.review.loadingLabel", { label: label.toLocaleLowerCase() })}</p>
+      : doc.isError || !doc.data ? <p className="text-sm text-muted-foreground">{t("componentsCoordinator.review.documentLoadError")}</p>
       : <MarkdownBody>{doc.data.body}</MarkdownBody>}
   </>;
 }
@@ -185,9 +186,9 @@ function DocumentArtifact({ issueId, documentKey, label, revisionId }: { issueId
 function ApprovalArtifact({ approvalId, title }: { approvalId: string; title: string | null }) {
   const approval = useQuery({ queryKey: queryKeys.approvals.detail(approvalId), queryFn: () => approvalsApi.get(approvalId) });
   return <>
-    <h2 className="mb-4 text-lg font-medium">{title ?? "Approval"}</h2>
-    {approval.isPending ? <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Loading approval…</p>
-      : approval.isError || !approval.data ? <p className="text-sm text-muted-foreground">This approval couldn't be loaded. Open it instead.</p>
+    <h2 className="mb-4 text-lg font-medium">{title ?? t("componentsCoordinator.review.approval")}</h2>
+    {approval.isPending ? <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />{t("componentsCoordinator.review.loadingApproval")}</p>
+      : approval.isError || !approval.data ? <p className="text-sm text-muted-foreground">{t("componentsCoordinator.review.approvalLoadError")}</p>
       : <ApprovalPayloadRenderer type={approval.data.type} payload={approval.data.payload} hidePrimaryTitle />}
   </>;
 }
@@ -198,7 +199,7 @@ function AttachmentArtifact({ assetId, name }: { assetId: string; name: string }
   const [previewFailed, setPreviewFailed] = useState(false);
   return <>
     <h2 className="mb-4 text-lg font-medium">{name}</h2>
-    {previewFailed ? <p className="text-sm text-muted-foreground">This file cannot be previewed. Open the original file below.</p>
+    {previewFailed ? <p className="text-sm text-muted-foreground">{t("componentsCoordinator.review.cannotPreview")}</p>
       : <img src={attachmentUrl(assetId)} alt={name} onError={() => setPreviewFailed(true)} className="w-full rounded-md border border-border bg-muted object-contain" />}
   </>;
 }
@@ -206,7 +207,7 @@ function AttachmentArtifact({ assetId, name }: { assetId: string; name: string }
 function ImagesArtifact({ item }: { item: AttentionItem }) {
   const images = attentionDetailImages(item);
   return <>
-    <h2 className="mb-4 text-lg font-medium">Attachments</h2>
+    <h2 className="mb-4 text-lg font-medium">{t("componentsCoordinator.review.attachments")}</h2>
     <div className="space-y-3">
       {images.map((image, index) => <img key={`${image.assetId}-${index}`} src={attentionImageUrl(image.assetId)} alt={image.alt ?? ""} loading="lazy"
         className="w-full rounded-md border border-border bg-muted object-contain" />)}

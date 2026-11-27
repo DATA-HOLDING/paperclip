@@ -1,0 +1,428 @@
+{
+  "basics": {
+    "errors": {
+      "selectOrganization": "Select an organization to create an agent.",
+      "noAdapters": "No agent adapters are available on this instance.",
+      "saveFailed": "Could not save agent setup."
+    },
+    "progressLabel": "New agent progress",
+    "steps": {
+      "name": "1. Name",
+      "adapter": "2. Adapter"
+    },
+    "title": {
+      "name": "Meet your next agent",
+      "adapter": "Choose an adapter"
+    },
+    "description": {
+      "name": "Start with a name. Make them your own.",
+      "adapter": "How should {{name}} work?"
+    },
+    "fields": {
+      "name": "Agent name",
+      "namePlaceholder": "e.g. Darnold"
+    },
+    "inviteExternal": "Invite an external agent",
+    "adapterLegend": "Adapter",
+    "loadingAdapters": "Loading adapters…",
+    "loadAdaptersAction": "load the adapter list",
+    "candidate": "Candidate",
+    "notAvailableYet": "Not available yet",
+    "footer": {
+      "cancel": "Cancel",
+      "back": "Back",
+      "saving": "Saving…",
+      "chooseAdapter": "Choose adapter",
+      "configure": "Configure agent"
+    }
+  },
+  "externalInvite": {
+    "presets": {
+      "dotDescription": "Your Dot in ChatGPT",
+      "grokBotDescription": "An existing Bot in Grok",
+      "museDescription": "Your personal Muse at muse.ai",
+      "hermesDescription": "An existing Hermes agent",
+      "otherDescription": "Any agent that can connect to Paperclip",
+      "museName": "Muse — Personal agent",
+      "otherName": "Other"
+    },
+    "dotChecks": {
+      "connected": {
+        "title": "Connected to Paperclip",
+        "description": "Your Dot has connected to this agent."
+      },
+      "updates": {
+        "title": "Task updates enabled",
+        "description": "Your Dot is subscribed to new assignments and messages."
+      },
+      "test": {
+        "title": "Test event confirmed",
+        "description": "Your Dot received our test and replied to Paperclip."
+      }
+    },
+    "dotMessages": {
+      "agentUnavailable": "Connection checks passed, but this agent cannot receive tasks. Resolve the agent’s setup blocker in Paperclip.",
+      "offline": "Connection updates paused. Reconnect to check the latest status.",
+      "promptUnavailable": "This setup prompt was replaced in another window. Create a fresh prompt to continue.",
+      "eventTimeout": "Your Dot connected, but hasn’t confirmed the test event. Ask it to check Paperclip, then retry.",
+      "finishing": "Your Dot confirmed the test event. Paperclip is finishing agent setup.",
+      "ready": "Your Dot is ready for tasks. Messages can travel both ways.",
+      "waiting": "Watching for your Dot. Updates will appear here automatically.",
+      "connected": "Your Dot connected. Waiting for it to enable task updates.",
+      "testing": "Waiting for your Dot to confirm a test event. No task will be created."
+    },
+    "dotChecksLabel": "Dot connection checks",
+    "checkState": {
+      "complete": ": complete",
+      "needsAttention": ": needs attention",
+      "inProgress": ": in progress",
+      "waiting": ": waiting"
+    },
+    "museChecks": {
+      "paired": {
+        "title": "Paired with Paperclip",
+        "description": "Paperclip authorized the scoped Muse agent connection."
+      },
+      "receiver": {
+        "title": "Receiver detected",
+        "description": "Paperclip observed a public receiver check. Only an authenticated reply confirms Muse can work."
+      },
+      "background": {
+        "title": "Background reply verified",
+        "description": "Muse replied to an independent background test."
+      }
+    },
+    "museMessages": {
+      "offline": "Connection updates paused. Refresh to check the latest evidence.",
+      "disconnected": "Disconnected. These are the last observed connection checks. Detector cleanup and worker stop evidence remain separate.",
+      "expired": "This Muse connection expired. Reconnect Muse with a fresh setup prompt. Previous checks do not restore access.",
+      "disabled": "Muse is disabled. These are the last observed connection checks; new work cannot start.",
+      "promptUnavailable": "This setup prompt was replaced or expired. Create a fresh prompt to continue.",
+      "agentUnavailable": "Connection checks passed. Resolve this agent’s setup or approval blocker before assigning tasks.",
+      "noRecentResponse": "No recent response. Open Muse to check the current conversation and hostname permission, then test again. Silence does not identify a permission problem.",
+      "testing": "Waiting for Muse to reply to the current background test.",
+      "ready": "Muse is ready for tasks. All connection checks and agent setup passed.",
+      "finishing": "All connection checks passed. Paperclip is finishing agent setup.",
+      "waitingPair": "Watching for Muse to pair. Copy the setup prompt into your current Muse conversation.",
+      "paired": "Muse is paired. Waiting for the first persisted receiver contact.",
+      "receiverDetected": "Receiver detected. Waiting for Muse to reply to the background test."
+    },
+    "museChecksLabel": "Muse connection checks",
+    "progress": {
+      "agentUnavailable": "Agent unavailable",
+      "updatesPaused": "Updates paused",
+      "needsAttention": "Needs attention",
+      "finishing": "Finishing setup…",
+      "connecting": "Connecting…",
+      "confirming": "Confirming connection…"
+    },
+    "back": "Back",
+    "title": {
+      "invite": "Invite an external agent",
+      "museConnected": "Muse is connected",
+      "inviteMuse": "Invite your Muse",
+      "connectMuse": "Connect your Muse",
+      "dotConnected": "Your Dot is connected",
+      "connectDot": "Connect your Dot",
+      "inviteHermes": "Invite your Hermes agent",
+      "inviteAgent": "Invite your agent"
+    },
+    "description": {
+      "bring": "Bring an agent you already use into {{companyName}}.",
+      "museDetails": "Give your personal Muse a name and role in {{companyName}}.",
+      "museRequires": "Muse requires an authenticated Paperclip instance with a public HTTPS URL and a company operator account.",
+      "museReady": "Muse can receive assignments and work with {{companyName}}.",
+      "museChecking": "We’re checking whether this instance can prepare Muse setup.",
+      "musePaste": "Paste the setup prompt into your current Muse conversation. Complete Connect Paperclip if Muse asks, then approve this Paperclip hostname. Muse keeps the connection credential in its secure vault. The hostname permission applies to future requests.",
+      "dotReady": "Your Dot can now receive assignments and work with {{companyName}}.",
+      "dotAgentUnavailable": "Your Dot is connected. This agent must be available in Paperclip before it can receive assignments.",
+      "dotFinishing": "Your Dot has connected and confirmed task updates. Paperclip is preparing it for assignments.",
+      "dotConnecting": "Your Dot has connected. We’re checking that task updates can travel both ways.",
+      "dotCopy": "Copy the setup prompt and send it to your Dot in ChatGPT. Your Dot will connect itself; we’ll watch for it here.",
+      "hermesCopy": "Copy the invitation prompt and send it to your Hermes agent. Approve its join request in Paperclip when it’s ready.",
+      "agentCopy": "Copy the invitation prompt and send it to your agent. Approve its join request in Paperclip when it’s ready."
+    },
+    "tryAgain": "Try again",
+    "needsApproval": "An organization admin needs to approve this agent before {{agent}} can connect. This page will update after approval.",
+    "loadingMuseInvitation": "Loading Muse invitation…",
+    "loadingMuseSetup": "Loading Muse setup…",
+    "museForm": {
+      "name": "Agent name",
+      "role": "Role",
+      "toolsNote": "Muse uses its own approved tools. Provider usage and cost are unavailable to Paperclip."
+    },
+    "museActions": {
+      "testReply": "Test background reply",
+      "refresh": "Refresh connection",
+      "open": "Open Muse",
+      "note": "Receiver contact is persisted in batches and may lag. Setup never creates a task. Provider usage and cost are unavailable."
+    },
+    "preparingInvitation": "Preparing your invitation…",
+    "dotNote": "Dot uses your OpenAI account. Provider usage and cost aren’t reported to Paperclip.",
+    "dotActions": {
+      "retryTest": "Retry test event",
+      "reconnect": "Reconnect updates"
+    },
+    "otherNote": "The invitation includes everything your agent needs to join {{companyName}}. You can review its request before granting access.",
+    "footer": {
+      "close": "Close",
+      "saveExit": "Save & exit",
+      "cancel": "Cancel",
+      "reviewApproval": "Review approval",
+      "preparing": "Preparing…",
+      "continue": "Continue",
+      "done": "Done",
+      "loadingSetup": "Loading setup…",
+      "refreshSetup": "Refresh setup",
+      "reconnectMuse": "Reconnect Muse",
+      "newPrompt": "Create a new prompt",
+      "waitingDot": "Waiting for Dot…"
+    },
+    "prompt": {
+      "copySetup": "Copy setup prompt",
+      "museDescription": "Send this whole prompt to your current Muse conversation.",
+      "copyInvitation": "Copy invitation prompt",
+      "dotDescription": "Send this whole prompt to your Dot in ChatGPT.",
+      "agentDescription": "Send this whole prompt to your agent."
+    }
+  },
+  "externalInviteDialog": {
+    "loadingAgents": "Loading available agents…",
+    "experimentalErrorRefresh": "Unable to load experimental settings. Try again after refreshing.",
+    "experimentalError": "Unable to load experimental settings.",
+    "enableDot": "Enable OpenAI Dot in experimental settings.",
+    "enableGrok": "Enable Grok Bot and Paperclip Runner in experimental settings.",
+    "enableMuse": "Enable Muse and Paperclip Runner in experimental settings to connect your personal Muse.",
+    "agentTerminated": "This agent was terminated. Invite another agent to connect Dot.",
+    "resumeAgent": "Resume this agent before connecting Dot.",
+    "missingPublicOrigin": "This instance has no public HTTPS URL for Muse. Ask your instance administrator to configure a stable public HTTPS address, then refresh setup. Muse cannot connect through a local-only address.",
+    "operatorRequired": "Use an authenticated Paperclip instance with a public HTTPS URL and a company operator account. Local trusted access alone cannot connect Muse.",
+    "identityFailed": "Unable to confirm your account. Refresh to resume Muse setup.",
+    "yourOrganization": "your organization"
+  },
+  "grokBot": {
+    "steps": {
+      "identify": "Identify Bot",
+      "connect": "Connect access",
+      "enable": "Enable assignments",
+      "verify": "Verify"
+    },
+    "title": {
+      "connected": "Your Grok Bot is connected",
+      "connect": "Connect your Grok Bot"
+    },
+    "description": {
+      "connected": "{{botName}} can receive assignments and work with {{companyName}}.",
+      "connect": "Bring an existing Bot into {{companyName}}. It continues to run in Grok Bot."
+    },
+    "setupLabel": "Grok Bot setup",
+    "tryAgain": "Try again",
+    "restoring": "Restoring saved setup…",
+    "needsApproval": "An organization admin needs to approve this agent. Setup is saved and will resume after approval.",
+    "fields": {
+      "paperclipName": "Paperclip name",
+      "botName": "Bot name in Grok",
+      "botNameHint": "Use the name shown in the Grok Bot desktop app. Bot web links may no longer work.",
+      "role": "Role",
+      "manager": "Manager",
+      "noManager": "No manager"
+    },
+    "access": {
+      "intro": "Copy the connection instructions into your Bot’s chat. Add the custom MCP plugin and complete its browser authorization.",
+      "copyInstructions": "Copy connection instructions",
+      "promptTitle": "Connect Paperclip access",
+      "promptDescription": "Send these instructions to your Bot. The pairing code stays in your browser.",
+      "pairingCode": "One-use pairing code",
+      "copyPairingCode": "Copy pairing code",
+      "copyCode": "Copy code",
+      "pairingHint": "Copy this code into Paperclip’s authorization page. Do not paste it into Bot chat. Expires {{time}}.",
+      "connected": "Agent access connected.",
+      "watching": "Watching for authorization. This connection works as the named agent.",
+      "accountWide": "Grok plugins are account-wide. Linking one Bot does not isolate its credentials from other Bots on your account."
+    },
+    "routine": {
+      "intro": "Ask your Bot to create a webhook-only routine, then open its Webhook panel in the desktop app.",
+      "copyInstructions": "Copy routine instructions",
+      "promptTitle": "Enable assignments",
+      "promptDescription": "Send this to the connected Bot. The routine wakes it when Paperclip work changes.",
+      "clickHint": "If clicking the routine does nothing, use the “Webhook URL” navigation link the Bot supplies.",
+      "stored": "Routine credentials are stored. Continue to verify both directions.",
+      "replace": "Replace routine credentials",
+      "webhookUrl": "Webhook URL",
+      "webhookKey": "Webhook key",
+      "copyFields": "Copy these fields directly from Grok into Paperclip. Credentials are stored securely and are never included in instructions."
+    },
+    "verify": {
+      "checksLabel": "Grok connection checks",
+      "delivered": "Assignment delivered",
+      "replied": "Reply received",
+      "complete": "Complete",
+      "waiting": "Waiting",
+      "recovery": "Recovery needed. Inspect Grok’s activity in this agent’s configuration before another delivery.",
+      "ready": "Both directions verified. Your Bot is ready for tasks.",
+      "finishing": "Both directions verified. Paperclip is finishing agent setup.",
+      "rejected": "The routine rejected delivery. Check its URL and key, then try again.",
+      "accepted": "The routine accepted delivery. Waiting for an authenticated reply to Paperclip.",
+      "sendChallenge": "Send a harmless challenge. This creates no task.",
+      "external": "Grok runs externally. Usage and spending are not reported. Paperclip contact does not prove the Bot is continuously available."
+    },
+    "footer": {
+      "back": "Back",
+      "saveExit": "Save & exit",
+      "reviewApproval": "Review approval",
+      "saving": "Saving…",
+      "done": "Done",
+      "waitingReply": "Waiting for reply…",
+      "finishing": "Finishing setup…",
+      "verify": "Verify connection",
+      "continue": "Continue"
+    }
+  },
+  "providerConnection": {
+    "errors": {
+      "noResponse": "The provider did not respond. Check the connection and try again.",
+      "connectFailed": "Could not connect to the provider.",
+      "noSavedConnection": "The login did not return a saved connection. Try again.",
+      "retrieveFailed": "Could not retrieve the saved connection. Go back and retry.",
+      "checkSubscription": "Could not check your saved Claude subscription. Try again.",
+      "prepareSignIn": "Could not prepare sign-in. Reload this page to try again."
+    },
+    "tiles": {
+      "connectionType": "Connection type",
+      "connectProvider": "Connect your model provider",
+      "advanced": "Advanced"
+    },
+    "useConnection": "Use connection",
+    "api": {
+      "chooseOrEnter": "Choose a saved API key or enter a new one",
+      "provide": "Provide your {{provider}} API key to connect",
+      "label": "API key",
+      "keyEntered": "Key entered. Retry the connection.",
+      "placeholder": "Enter API key here"
+    },
+    "subscription": {
+      "savedClaude": "Use your saved Claude subscription for this agent.",
+      "existing": "Use the existing provider connection for this environment.",
+      "noBrowserSignIn": "This environment does not support browser sign-in. Choose a sign-in environment or connect with an API key."
+    },
+    "footer": {
+      "waitingAuth": "Waiting for auth…",
+      "waitingCode": "Waiting for code",
+      "connecting": "Connecting",
+      "continueTo": "Continue to {{provider}}",
+      "signInTo": "Sign in to {{provider}}",
+      "useSavedSubscription": "Use saved subscription",
+      "useSavedKey": "Use saved API key",
+      "connect": "Connect"
+    },
+    "savedKeysAvailable_one": "{{count}} saved API key available.",
+    "savedKeysAvailable_other": "{{count}} saved API keys available."
+  },
+  "setup": {
+    "selectOrganization": "Select an organization to create an agent.",
+    "errors": {
+      "cursorModel": "Enter the exact Cursor Cloud model ID.",
+      "kimiModel": "Enter the exact Kimi model ID.",
+      "kimiKey": "Enter KIMI_API_KEY or select an organization secret.",
+      "antigravityModel": "Choose or enter an exact Google Antigravity model ID.",
+      "copilotModel": "Refresh Copilot models and select an available model before creating this agent.",
+      "dotBilling": "Acknowledge external provider billing before creating your Dot agent.",
+      "providerModel": "Choose or enter a model in provider/model format.",
+      "githubUrl": "Enter a GitHub repository URL.",
+      "cursorKey": "Enter a Cursor API key.",
+      "hermesUrl": "Enter the Hermes API base URL.",
+      "kimiApiModel": "Enter the Kimi API model name.",
+      "envKey": "Enter {{envKey}} or select an organization secret.",
+      "createFailed": "Could not create the agent.",
+      "removeCredential": "{{message}} Could not remove an unused setup credential. Remove it from Secrets before retrying.",
+      "saveFailed": "Could not save agent setup.",
+      "saveEnvironment": "Could not save the environment.",
+      "retryPreparation": "Could not retry computer preparation."
+    },
+    "loadCreatedFailed": "Could not load the created agent. Return to Agents to view it.",
+    "loadingAgent": "Loading your agent…",
+    "loadingSetup": "Loading your agent setup…",
+    "adapterUnavailable": "This adapter is unavailable. Choose an enabled adapter.",
+    "changeAdapter": "Change adapter",
+    "creating": "Creating your agent…",
+    "retry": "Retry",
+    "steps": {
+      "connect": "Connect",
+      "runtime": "Configure",
+      "saved": "Confirmation"
+    },
+    "defaultModel": "Default",
+    "localMachine": "Local machine",
+    "nativeRunner": "Native app server runner",
+    "preparingComputer": "Preparing your agent computer…",
+    "retryPreparation": "Retry preparation",
+    "loadSetupAction": "load agent setup data",
+    "antigravityPending": "Google Antigravity is not available yet. You can connect your Google account and review settings. This agent cannot finish setup or run tasks yet. Model and connection settings are not saved to this agent yet.",
+    "antigravityCandidate": "Google Antigravity candidate is enabled for testing on this instance.",
+    "noManagedEnvironment": "No managed environment is available. Configure an environment before continuing.",
+    "stepsLabel": "Agent setup steps",
+    "connectModelTitle": "Connect a model",
+    "loadingConnection": "Loading connection settings…",
+    "saved": {
+      "title": {
+        "pending": "Agent submitted for approval",
+        "dot": "Your Dot agent has been created",
+        "finishing": "Finishing agent setup",
+        "ready": "Your agent is ready",
+        "paused": "Your agent is paused"
+      },
+      "adapter": "Adapter",
+      "model": "Model",
+      "environment": "Environment",
+      "message": {
+        "pending": "An organization administrator must approve this agent before it can work.",
+        "dot": "Pair your Dot and test event delivery in configuration before assigning work.",
+        "finishing": "Paperclip is preparing and verifying your agent. You can assign a task when it is ready.",
+        "ready": "Assign a task when you’re ready for this agent to work.",
+        "paused": "Review the agent’s status in configuration before assigning work."
+      },
+      "backToAgents": "Back to Agents",
+      "editConfiguration": "Edit configuration",
+      "pairDot": "Pair Dot",
+      "assignTask": "Assign {{name}} a Task"
+    },
+    "form": {
+      "title": "Configure your agent",
+      "dotIntro": "Create this agent, then copy its pairing prompt to your Dot.",
+      "allowExternalBilling": "Allow externally billed provider",
+      "allowExternalBillingHint": "Dot does not report token usage or cost. Paperclip cannot enforce a provider spend ceiling; known company and agent budget limits still apply.",
+      "modelsError": "Could not load models. Retry or enter a model ID manually.",
+      "thinkingEffort": "Thinking effort",
+      "auto": "Auto",
+      "apiKeyProvider": "API key provider",
+      "usingSavedKey": "Using saved key",
+      "required": "Required",
+      "optional": "Optional if already configured",
+      "getApiKey": "get api key",
+      "orgSecret": "Or use an organization secret",
+      "newKeysNote": "New keys are saved as organization secrets when you finish setup.",
+      "kimiKeyNote": "Use a Kimi Code API key for this runner.",
+      "providerModelNote": "Use a {{provider}}/model ID.",
+      "hermesUrl": "Hermes API base URL",
+      "kimiModel": "Kimi API model name",
+      "kimiProtocol": "Kimi API protocol",
+      "kimiBaseUrl": "Kimi API base URL",
+      "kimiBaseUrlHint": "Optional override for your provider endpoint.",
+      "providerDefault": "Provider default",
+      "cursorCloudNote": "Experimental. Cursor hosts this agent’s execution environment. A Paperclip computer is not required. Cursor manages cloud command permissions; the effective model is not acknowledged.",
+      "githubRepository": "GitHub repository",
+      "branch": "Branch",
+      "repositoryDefault": "Repository default",
+      "defaultEnvironment": "Default: {{environment}}"
+    },
+    "retrySavingEnvironment": "Retry saving environment",
+    "footer": {
+      "backToAgents": "Back to agents",
+      "saveExit": "Save & exit",
+      "connection": "Connection",
+      "connectModel": "Connect model",
+      "saving": "Saving…",
+      "finish": "Finish setup"
+    }
+  }
+}

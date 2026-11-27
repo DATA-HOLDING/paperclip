@@ -6,6 +6,7 @@ import { GripVertical, PinOff } from "lucide-react";
 import { RecentTaskNavItem } from "./RecentTaskNavItem";
 import { SidebarNavItem } from "./SidebarNavItem";
 import { cn } from "@/lib/utils";
+import { t } from "@/i18n";
 import type { Project } from "@paperclipai/shared";
 import { SidebarProjectTasks } from "./SidebarProjectTasks";
 
@@ -21,7 +22,7 @@ export function SortablePinnedRow({ id, label, disabled = false, className, hand
 }) {
   const sortable = useSortable({ id, disabled, transition: null });
   const handle = !disabled && <button ref={sortable.setActivatorNodeRef} type="button" {...sortable.attributes} {...sortable.listeners}
-    aria-label={`Reorder pinned ${label}`} title={`Drag to reorder ${label}`}
+    aria-label={t("componentsPinnedNavigationList.reorderAria", { label })} title={t("componentsPinnedNavigationList.dragToReorder", { label })}
     className={cn("absolute top-1/2 flex -translate-y-1/2 touch-none cursor-grab items-center justify-center rounded-md text-muted-foreground opacity-0 transition-opacity active:cursor-grabbing hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring pointer-coarse:opacity-100", handleClassName)}>
     <GripVertical aria-hidden className={handleIconClassName} />
   </button>;
@@ -36,7 +37,7 @@ function PinnedItem({ item, userId, onUnpin }: { item: PinnedNavigationItem; use
   const rowClassName = "design-sidebar-item design-sidebar-pinned-item";
   const row = (primary: ReactNode, handle: ReactNode) => <div className="design-sidebar-pinned-row relative">
     {primary}
-    <button type="button" aria-label={`Unpin ${item.label}`} title={`Unpin ${item.label}`}
+    <button type="button" aria-label={t("componentsPinnedNavigationList.unpin", { label: item.label })} title={t("componentsPinnedNavigationList.unpin", { label: item.label })}
       onMouseDown={event => event.stopPropagation()} onClick={() => onUnpin(item.key)}
       className="absolute right-10 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground opacity-0 transition-opacity hover:bg-sidebar-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring pointer-coarse:opacity-100"><PinOff className="size-3.5" /></button>
     {handle}

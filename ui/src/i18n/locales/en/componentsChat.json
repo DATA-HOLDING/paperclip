@@ -1,0 +1,199 @@
+{
+  "agentChannelsPanel": {
+    "title": "Channels",
+    "description": "Chat and email identities connected to this agent.",
+    "connectChannel": "Connect a channel",
+    "loading": "Loading channels…",
+    "emptyTitle": "No channels connected",
+    "emptyConnectAgent": "Connect an agent identity from Connectors.",
+    "emptyConnectAgentMail": "Connect AgentMail from Connectors.",
+    "openConnectors": "Open Connectors",
+    "providerIdentity": "Provider identity",
+    "openConnection": "Open connection"
+  },
+  "chatDetailSidebar": {
+    "ariaLabel": "Chat connection",
+    "settings": "Settings",
+    "access": "Access",
+    "reviews": "Reviews",
+    "conversations": "Conversations",
+    "activity": "Activity"
+  },
+  "chatSetupNavigation": {
+    "chooseAgent": "Choose agent",
+    "connectProvider": "Connect provider",
+    "tryIt": "Try it",
+    "ariaLabel": "Connection setup progress"
+  },
+  "legacyBoardSendNotice": {
+    "trigger": "Discard saved delivery record",
+    "title": "Discard saved delivery record?",
+    "description": "First check Activity. Discarding this browser record does not cancel an update that was already accepted. It lets you start a new update.",
+    "keep": "Keep record",
+    "discard": "Discard record"
+  },
+  "agentWorkPanels": {
+    "sort": {
+      "updated": "Last updated",
+      "created": "Created",
+      "status": "Status",
+      "title": "Title"
+    },
+    "tasks": {
+      "ariaLabel": "Agent tasks",
+      "search": "Search tasks",
+      "sort": "Sort",
+      "sortAria": "Sort tasks",
+      "loading": "Loading tasks…",
+      "errorAction": "load this agent's tasks",
+      "empty": "This agent hasn't worked on any tasks yet.",
+      "noMatchCapped": "No tasks match these filters among the {{limit}} most recently updated.",
+      "noMatch": "No tasks match these filters.",
+      "showingCapped": "Showing the {{limit}} most recently updated tasks."
+    },
+    "artifacts": {
+      "updated": "Updated {{date}}",
+      "loading": "Loading artifacts…",
+      "errorAction": "load this agent's artifacts",
+      "empty": "This agent hasn't produced any artifacts yet.",
+      "ariaLabel": "Agent artifacts",
+      "showingTruncated": "Showing this agent's {{n}} most recent artifacts."
+    }
+  },
+  "banner": {
+    "feedback": {
+      "awaitingConsent": {
+        "title": "Waiting for file consent",
+        "body": "The recipient must accept the file card in Microsoft Teams. The file is not delivered yet; this send identity is kept while Paperclip waits."
+      },
+      "published": {
+        "title": "Sent to channel",
+        "body": "The board update was published to the connected conversation."
+      },
+      "pending": {
+        "title": "Queued for channel",
+        "body": "Delivery is still pending. Your draft is kept until Paperclip confirms publication."
+      },
+      "streaming": {
+        "title": "Publishing to channel",
+        "body": "Delivery is still in progress. Your draft is kept until Paperclip confirms publication."
+      },
+      "retry": {
+        "title": "Delivery retry scheduled",
+        "body": "Paperclip will retry this publication. Your draft and retry identity are kept."
+      },
+      "deliveryUnknown": {
+        "title": "Delivery not confirmed",
+        "body": "The provider may have accepted this update. Resolve it in Activity before trying again to avoid a duplicate."
+      },
+      "failed": {
+        "title": "Channel delivery failed",
+        "body": "Your draft is kept. Open Activity to retry this same publication safely."
+      },
+      "cancelled": {
+        "title": "Channel delivery cancelled",
+        "body": "Your draft is kept. Some parts may already have been published; check Activity before starting a new send."
+      }
+    },
+    "filePhase": {
+      "consentPending": "Consent card queued",
+      "consentSending": "Sending consent card",
+      "consentUnknown": "Consent card delivery not confirmed",
+      "awaitingConsent": "Awaiting consent",
+      "uploadPending": "Upload queued",
+      "uploading": "Uploading file",
+      "uploadUnknown": "File upload not confirmed",
+      "fileInfoPending": "File notification queued",
+      "fileInfoSending": "Sending file notification",
+      "fileInfoUnknown": "File notification not confirmed",
+      "delivered": "Delivered",
+      "declined": "Declined",
+      "expired": "Consent expired",
+      "cancelled": "Cancelled; remote bytes may remain",
+      "conflict": "File delivery needs review"
+    },
+    "storage": {
+      "unknownSender": "An earlier update has an unknown sender. Open Activity to check its delivery before starting a new update.",
+      "unreadable": "Saved delivery identity could not be read. Check Activity and restore browser storage before starting another send.",
+      "rejectionNotSaved": "The rejected send could not be saved. Restore browser storage, then retry this same request to recover its receipt.",
+      "recordNotDiscarded": "Saved delivery record could not be discarded. Restore browser storage, then try again.",
+      "rejectionNotCleared": "Saved rejection could not be cleared. Restore browser storage before editing this send.",
+      "identityNotCleared": "Saved delivery identity could not be cleared. Restore browser storage before starting another send.",
+      "notPreserved": "Browser storage could not preserve this delivery identity. No update was sent. Restore browser storage, then reload to try again."
+    },
+    "accountChanged": "Your account changed. Reopen this task to send from your current account.",
+    "viewActivity": "View activity",
+    "rejected": {
+      "title": "Update was not sent",
+      "toastBody": "A selected file already belongs to another comment. Edit the rejected send to correct the selection.",
+      "body": "A selected file already belongs to another comment. This request was rejected before any channel message was queued. Your exact draft is kept.",
+      "edit": "Edit rejected send"
+    },
+    "unconfirmedToast": {
+      "title": "Couldn't confirm channel delivery",
+      "body": "{{detail}} Your draft is kept; retrying here reuses the same request identity."
+    },
+    "uploadError": "{{detail}} No channel message was sent. Check task files before retrying the upload.",
+    "selectedFileUnavailable": "Selected task file (details unavailable)",
+    "mixed": {
+      "title": "Delivery settled with mixed outcomes",
+      "body": "Not every part was confirmed delivered. Review the outcomes below; dismissing this receipt does not resend anything."
+    },
+    "remainingConsent": {
+      "title": "Waiting for remaining file consent",
+      "body": "Some parts have settled. The remaining file cards still need the recipient's response; this send stays locked until the whole batch is resolved."
+    },
+    "ariaLabel": "External conversation",
+    "connectedTo": "Connected to {{provider}}",
+    "slackMirrored": "Messages you send here and agent replies are also posted to Slack.",
+    "assignmentFixed": "Agent assignment is fixed for this external task.",
+    "openProvider": "Open {{provider}}",
+    "sendToChannel": "Send to channel",
+    "connection": "Connection",
+    "boardUpdate": "Board update",
+    "placeholder": "Write only what should be visible in the provider conversation.",
+    "addMessage": "Add a message to send with your files.",
+    "attachAria": "Attach file to channel update",
+    "uploading": "Uploading…",
+    "attachFile": "Attach file",
+    "filesStay": "Files stay on this task until you send them to the channel.",
+    "selectionNotice": "A file already attached to another comment was removed from this selection. Attach a new copy or share the task link; your message is unchanged.",
+    "filesInSend": "Files in this send",
+    "includeTaskFiles": "Include task files",
+    "filesHint": {
+      "github": "GitHub Apps cannot upload file bytes in comments. Checked files stay on the Paperclip task; GitHub receives an authenticated task link when this Board has a public URL, or a private-task notice otherwise.",
+      "teams": "In personal Teams chats, recipients accept each file before upload. Channels and group chats receive supported images directly; other files stay on the task, with a task link or private-task notice.",
+      "locked": "These are the files selected for this send. Selection is locked until delivery is resolved.",
+      "default": "Only checked files will be published to the external conversation."
+    },
+    "unnamedAttachment": "Unnamed attachment",
+    "openActivity": "Open Activity",
+    "resend": {
+      "stalledTitle": "Couldn’t send this update yet.",
+      "waitingTitle": "Sending when reconnected…",
+      "unconfirmedTitle": "Delivery result not confirmed",
+      "stalledBody": "Your exact draft and request identity are kept. Automatic resends stopped; choose Resend now to try again without creating a duplicate.",
+      "waitingBody": "Your exact draft and request identity are kept. It resends on its own without creating a duplicate.",
+      "unconfirmedBody": "Your exact draft and request identity are kept. Retry safely to learn the authoritative publication state without creating a duplicate."
+    },
+    "batch": {
+      "published": "{{n}} published",
+      "awaitingConsent": "{{n}} awaiting consent",
+      "declined": "{{n}} declined",
+      "expired": "{{n}} expired",
+      "cancelled": "{{n}} cancelled",
+      "ofTotal": "{{published}} of {{total}} parts published."
+    },
+    "fileOutcomesAria": "File delivery outcomes",
+    "statusRefreshFailed": "Delivery status could not be refreshed. Your draft is kept; Paperclip will check again without sending another update.",
+    "providerDetail": "Provider detail: {{detail}}",
+    "dismissReceipt": "Dismiss delivery receipt",
+    "footer": {
+      "slack": "Your message is posted to Slack with your name and starts the agent.",
+      "default": "Ordinary board comments remain Paperclip-only."
+    },
+    "sending": "Sending…",
+    "resendNow": "Resend now",
+    "retrySafely": "Retry safely"
+  }
+}

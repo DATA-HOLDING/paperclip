@@ -34,6 +34,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SidePanelTab } from "./SidePanelTab";
 import type { SidePanelTabItem } from "./types";
+import { t } from "@/i18n";
 
 interface SortableSidePanelTabProps {
   tab: SidePanelTabItem;
@@ -164,7 +165,7 @@ export function SidePanelTabs({
   onReorderTabs,
   onAddTab,
   addControl,
-  addLabel = "Open a new tab",
+  addLabel = t("componentsSidePanel.openNewTab"),
   appearance = "default",
   className,
 }: SidePanelTabsProps) {
@@ -260,7 +261,7 @@ export function SidePanelTabs({
     const index = tabIds.indexOf(tabId);
     const nextFocus = tabIds[index + 1] ?? tabIds[index - 1] ?? null;
     onCloseTab(tabId);
-    setAnnouncement(nextFocus ? "Tab closed." : "Last tab closed. Choose something to open.");
+    setAnnouncement(nextFocus ? t("componentsSidePanel.tabs.closed") : t("componentsSidePanel.tabs.lastClosed"));
     focusTab(nextFocus);
   }
 
@@ -276,7 +277,7 @@ export function SidePanelTabs({
       const [moved] = ordered.splice(index, 1);
       ordered.splice(target, 0, moved!);
       onReorderTabs(ordered);
-      setAnnouncement(`Moved ${tabs[index]?.label ?? "tab"} to position ${target + 1} of ${tabs.length}.`);
+      setAnnouncement(t("componentsSidePanel.tabs.moved", { label: tabs[index]?.label ?? t("componentsSidePanel.tabs.tabFallback"), position: target + 1, total: tabs.length }));
       focusTab(tabId);
       return;
     }
@@ -305,7 +306,7 @@ export function SidePanelTabs({
     const [moved] = ordered.splice(from, 1);
     ordered.splice(to, 0, moved!);
     onReorderTabs(ordered);
-    setAnnouncement(`Moved ${tabs[from]?.label ?? "tab"} to position ${to + 1} of ${tabs.length}.`);
+    setAnnouncement(t("componentsSidePanel.tabs.moved", { label: tabs[from]?.label ?? t("componentsSidePanel.tabs.tabFallback"), position: to + 1, total: tabs.length }));
   }
 
   function handleDragStart(event: DragStartEvent) {

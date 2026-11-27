@@ -1,0 +1,7 @@
+{
+  "uploading": "Enviando {{name}}…",
+  "remove": "Remover {{name}}",
+  "retry": "Tentar de novo {{name}}",
+  "uploadFailed": "Falha no envio",
+  "groupLabel": "Anexos de imagem"
+}

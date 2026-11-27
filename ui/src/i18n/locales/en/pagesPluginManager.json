@@ -1,0 +1,77 @@
+{
+  "errorWithoutMessage": "Plugin entered an error state without a stored error message.",
+  "experimental": "Experimental",
+  "breadcrumbs": {
+    "organization": "Organization",
+    "settings": "Settings",
+    "plugins": "Plugins"
+  },
+  "toasts": {
+    "installed": "Plugin installed successfully",
+    "installFailed": "Failed to install plugin",
+    "uninstalled": "Plugin uninstalled successfully",
+    "uninstallFailed": "Failed to uninstall plugin",
+    "enabled": "Plugin enabled",
+    "enableFailed": "Failed to enable plugin",
+    "disabled": "Plugin disabled",
+    "disableFailed": "Failed to disable plugin"
+  },
+  "loading": "Loading plugins...",
+  "loadAction": "load plugins",
+  "title": "Plugin Manager",
+  "installDialog": {
+    "title": "Install Plugin",
+    "description": "Enter the npm package name of the plugin you wish to install.",
+    "packageName": "npm Package Name"
+  },
+  "cancel": "Cancel",
+  "close": "Close",
+  "install": "Install",
+  "installing": "Installing...",
+  "enable": "Enable",
+  "disable": "Disable",
+  "uninstall": "Uninstall",
+  "uninstalling": "Uninstalling...",
+  "alpha": {
+    "title": "Plugins are alpha.",
+    "description": "The plugin runtime and API surface are still changing. Expect breaking changes while this feature settles."
+  },
+  "available": {
+    "title": "Available Plugins",
+    "bundled": "Bundled",
+    "loading": "Loading bundled plugins...",
+    "loadAction": "load bundled plugins",
+    "empty": "No bundled plugins were found in this checkout.",
+    "notInstalled": "Not installed",
+    "building": "Building plugin...",
+    "openSettings": "Open Settings",
+    "review": "Review"
+  },
+  "tags": {
+    "firstParty": "First-party",
+    "example": "Example"
+  },
+  "installed": {
+    "title": "Installed Plugins",
+    "emptyTitle": "No plugins installed",
+    "emptyDescription": "Install a plugin to extend functionality.",
+    "noDescription": "No description provided.",
+    "pluginError": "Plugin error",
+    "viewFullError": "View full error",
+    "configure": "Configure"
+  },
+  "uninstallDialog": {
+    "title": "Uninstall Plugin",
+    "before": "Are you sure you want to uninstall",
+    "after": "? This action cannot be undone."
+  },
+  "errorDialog": {
+    "title": "Error Details",
+    "description": "{{name}} hit an error state.",
+    "plugin": "Plugin",
+    "whatErrored": "What errored",
+    "noSummary": "No error summary available.",
+    "fullOutput": "Full error output",
+    "noStoredMessage": "No stored error message."
+  }
+}

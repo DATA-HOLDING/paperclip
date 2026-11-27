@@ -28,35 +28,37 @@ import { ToolsPageHeader, LoadingState, RelativeTime } from "./shared";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
 import { googleAccessRetrySummary } from "../../features/connections/googleAccessRemoval";
 import { auditTransportLabel } from "@/lib/connection-transport-label";
+import { t } from "@/i18n";
+import { Trans } from "react-i18next";
 
 const PAGE_SIZE = 50;
 const ALL = "__all";
 
 /** Outcome chip vocabulary (spec §4C / §5): Allowed · Blocked · Asked first · Failed · Waiting. */
 const OUTCOME_META: Record<ToolAuditOutcome, { label: string; status: string }> = {
-  allowed: { label: "Allowed", status: "allowed" },
-  blocked: { label: "Blocked", status: "denied" },
-  asked_first: { label: "Asked first", status: "require-approval" },
-  waiting: { label: "Waiting", status: "deferred" },
-  failed: { label: "Failed", status: "failed" },
-  unknown: { label: "Recorded", status: "unchecked" },
+  allowed: { label: t("pagesTools.audit.outcome.allowed"), status: "allowed" },
+  blocked: { label: t("pagesTools.audit.outcome.blocked"), status: "denied" },
+  asked_first: { label: t("pagesTools.audit.outcome.askedFirst"), status: "require-approval" },
+  waiting: { label: t("pagesTools.audit.outcome.waiting"), status: "deferred" },
+  failed: { label: t("pagesTools.audit.outcome.failed"), status: "failed" },
+  unknown: { label: t("pagesTools.audit.outcome.unknown"), status: "unchecked" },
 };
 
 const OUTCOME_FILTERS: { value: string; label: string }[] = [
-  { value: ALL, label: "All outcomes" },
-  { value: "allowed", label: "Allowed" },
-  { value: "blocked", label: "Blocked" },
-  { value: "asked_first", label: "Asked first" },
-  { value: "waiting", label: "Waiting" },
-  { value: "failed", label: "Failed" },
+  { value: ALL, label: t("pagesTools.audit.outcomeFilter.all") },
+  { value: "allowed", label: t("pagesTools.audit.outcome.allowed") },
+  { value: "blocked", label: t("pagesTools.audit.outcome.blocked") },
+  { value: "asked_first", label: t("pagesTools.audit.outcome.askedFirst") },
+  { value: "waiting", label: t("pagesTools.audit.outcome.waiting") },
+  { value: "failed", label: t("pagesTools.audit.outcome.failed") },
 ];
 
 const WINDOW_FILTERS: { value: ToolAuditWindow; label: string }[] = [
-  { value: "all", label: "All time" },
-  { value: "1h", label: "Last 1 hour" },
-  { value: "24h", label: "Last 24 hours" },
-  { value: "7d", label: "Last 7 days" },
-  { value: "30d", label: "Last 30 days" },
+  { value: "all", label: t("pagesTools.audit.window.allTime") },
+  { value: "1h", label: t("pagesTools.audit.window.last1h") },
+  { value: "24h", label: t("pagesTools.audit.window.last24h") },
+  { value: "7d", label: t("pagesTools.audit.window.last7d") },
+  { value: "30d", label: t("pagesTools.audit.window.last30d") },
 ];
 
 function detailString(details: Record<string, unknown> | null, key: string): string | undefined {
@@ -93,58 +95,58 @@ function formattedArguments(details: Record<string, unknown> | null): string | u
 
 function lifecycleSummary(event: ToolGatewayActivityEvent): string | null {
   if (!event.lifecycleType) return null;
-  const who = event.actorDisplayName ?? event.agentDisplayName ?? "Someone";
-  const app = event.appDisplayName ?? event.connectionDisplayName ?? "this app";
+  const who = event.actorDisplayName ?? event.agentDisplayName ?? t("pagesTools.audit.lifecycle.someone");
+  const app = event.appDisplayName ?? event.connectionDisplayName ?? t("pagesTools.audit.lifecycle.thisApp");
   const count = detailNumber(event.details, "count") ?? 0;
   const added = detailNumber(event.details, "added") ?? 0;
   const removed = detailNumber(event.details, "removed") ?? 0;
   switch (event.lifecycleType) {
     case "app_connected":
-      return `${who} connected ${app}`;
+      return t("pagesTools.audit.lifecycle.connected", { who, app });
     case "app_paused":
-      return `${who} paused ${app}`;
+      return t("pagesTools.audit.lifecycle.paused", { who, app });
     case "app_resumed":
-      return `${who} resumed ${app}`;
+      return t("pagesTools.audit.lifecycle.resumed", { who, app });
     case "reconnected":
-      return `${who} reconnected ${app}`;
+      return t("pagesTools.audit.lifecycle.reconnected", { who, app });
     case "disconnected":
-      return `${who} disconnected ${app}`;
+      return t("pagesTools.audit.lifecycle.disconnected", { who, app });
     case "allowlist_changed":
-      if (added > 0 && removed === 0) return `${who} added ${added} allowed ${added === 1 ? "item" : "items"} in ${app}`;
-      if (removed > 0 && added === 0) return `${who} removed ${removed} allowed ${removed === 1 ? "item" : "items"} in ${app}`;
-      return `${who} updated the allowlist for ${app}`;
+      if (added > 0 && removed === 0) return t("pagesTools.audit.lifecycle.addedAllowed", { who, count: added, app });
+      if (removed > 0 && added === 0) return t("pagesTools.audit.lifecycle.removedAllowed", { who, count: removed, app });
+      return t("pagesTools.audit.lifecycle.updatedAllowlist", { who, app });
     case "actions_quarantined":
-      return `${count} new ${count === 1 ? "action needs" : "actions need"} review in ${app}`;
+      return t("pagesTools.audit.lifecycle.actionsQuarantined", { count, app });
     case "google_access_ended":
     case "google_access_not_ended":
       return `${googleAccessRetrySummary(event.lifecycleType, event.details ?? null)} (${app})`;
     default:
-      return `${who} updated ${app}`;
+      return t("pagesTools.audit.lifecycle.updated", { who, app });
   }
 }
 
 /** Plain-words "why" for the row expander, keyed off the reason code. */
 function plainReason(event: ToolGatewayActivityEvent): string {
-  if (event.lifecycleType) return "This connection change was recorded in the app's activity history.";
+  if (event.lifecycleType) return t("pagesTools.audit.reason.lifecycle");
   const code = detailString(event.details, "reasonCode");
   if (code === "permitted_connections_not_installed") {
-    return "Permitted connections were not installed, so their tools were not added to this run.";
+    return t("pagesTools.audit.reason.notInstalled");
   }
   switch (event.normalizedOutcome) {
     case "allowed":
-      return "Allowed by your rules.";
+      return t("pagesTools.audit.reason.allowed");
     case "blocked":
-      if (code === "rate_limited") return "Blocked because it ran too many times in a short window.";
-      if (code?.includes("secret")) return "Blocked to keep a sensitive value from leaving.";
-      return "Blocked by a rule.";
+      if (code === "rate_limited") return t("pagesTools.audit.reason.rateLimited");
+      if (code?.includes("secret")) return t("pagesTools.audit.reason.secret");
+      return t("pagesTools.audit.reason.blockedByRule");
     case "asked_first":
-      return "Held for someone to approve before it could run.";
+      return t("pagesTools.audit.reason.askedFirst");
     case "waiting":
-      return "Waiting — the app it needs wasn't ready yet.";
+      return t("pagesTools.audit.reason.waiting");
     case "failed":
-      return "The app was allowed to run it, but returned an error.";
+      return t("pagesTools.audit.reason.failed");
     default:
-      return "Recorded by Paperclip.";
+      return t("pagesTools.audit.reason.recorded");
   }
 }
 
@@ -173,8 +175,8 @@ function ActivityRow({
   const [open, setOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
 
-  const who = event.agentDisplayName ?? "An agent";
-  const action = event.toolDisplayName ?? "an action";
+  const who = event.agentDisplayName ?? t("pagesTools.audit.row.anAgent");
+  const action = event.toolDisplayName ?? t("pagesTools.audit.row.anAction");
   const app = event.appDisplayName ?? event.connectionDisplayName ?? event.applicationDisplayName ?? null;
   const lifecycle = lifecycleSummary(event);
   const rawTool = detailString(event.details, "tool") ?? detailString(event.details, "toolName");
@@ -223,19 +225,28 @@ function ActivityRow({
             <span className="block text-foreground">{lifecycle}</span>
           ) : isRuntimeMcpDeliveryDiagnostic ? (
             <span className="block text-foreground">
-              <span className="font-medium">{who}</span>'s run received 0 MCP servers —{" "}
-              <span className="font-medium">{permittedNotInstalledCount ?? permittedNotInstalledConnections.length}</span>{" "}
-              permitted {(permittedNotInstalledCount ?? permittedNotInstalledConnections.length) === 1 ? "connection" : "connections"} not installed
+              <Trans
+                i18nKey="pagesTools.audit.row.runReceivedNoServers"
+                count={permittedNotInstalledCount ?? permittedNotInstalledConnections.length}
+                values={{ who }}
+                components={[<span className="font-medium" />]}
+              />
             </span>
           ) : (
             <span className="block text-foreground">
-              <span className="font-medium">{who}</span> used <span className="font-medium">{action}</span>
               {app ? (
-                <>
-                  {" "}
-                  in <span className="font-medium">{app}</span>
-                </>
-              ) : null}
+                <Trans
+                  i18nKey="pagesTools.audit.row.usedActionInApp"
+                  values={{ who, action, app }}
+                  components={[<span className="font-medium" />]}
+                />
+              ) : (
+                <Trans
+                  i18nKey="pagesTools.audit.row.usedAction"
+                  values={{ who, action }}
+                  components={[<span className="font-medium" />]}
+                />
+              )}
             </span>
           )}
         </span>
@@ -262,12 +273,12 @@ function ActivityRow({
           <div className="flex flex-wrap gap-3 text-xs">
             {issueId ? (
               <Link to={`/issues/${issueId}`} className="text-primary hover:underline">
-                View task
+                {t("pagesTools.audit.row.viewTask")}
               </Link>
             ) : null}
             {runId && agentId ? (
               <Link to={`/agents/${agentId}/runs/${runId}`} className="text-primary hover:underline">
-                View run
+                {t("pagesTools.audit.row.viewRun")}
               </Link>
             ) : null}
           </div>
@@ -279,32 +290,32 @@ function ActivityRow({
               className="flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
             >
               {detailsOpen ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
-              Details
+              {t("pagesTools.audit.row.details")}
             </button>
             {detailsOpen ? (
               <div className="mt-2 space-y-1.5 text-xs">
-                {rawTool ? <DetailFact label="Action name" value={rawTool} mono /> : null}
-                <DetailFact label="Reason code" value={reasonCode} mono />
-                <DetailFact label="Actor type" value={event.actorType ?? "—"} />
-                {runId ? <DetailFact label="Run ID" value={runId} mono /> : null}
-                {transport ? <DetailFact label="Type" value={auditTransportLabel(transport)} /> : null}
-                {requestMethod && endpoint ? <DetailFact label="HTTP request" value={`${requestMethod} ${endpoint}`} mono /> : null}
-                {mcpMethod ? <DetailFact label="MCP method" value={mcpMethod} mono /> : null}
-                {requestId ? <DetailFact label="Request ID" value={requestId} mono /> : null}
-                {request ? <DetailFact label="Dispatched" value={request.dispatched === true ? "Yes" : "No"} /> : null}
-                {httpStatus !== undefined ? <DetailFact label="HTTP status" value={String(httpStatus)} mono /> : null}
-                {contentType ? <DetailFact label="Content type" value={contentType} mono /> : null}
-                {responseBytes !== undefined ? <DetailFact label="Response size" value={`${responseBytes} bytes`} /> : null}
-                {upstreamRequestId ? <DetailFact label="Upstream ID" value={upstreamRequestId} mono /> : null}
+                {rawTool ? <DetailFact label={t("pagesTools.audit.detail.actionName")} value={rawTool} mono /> : null}
+                <DetailFact label={t("pagesTools.audit.detail.reasonCode")} value={reasonCode} mono />
+                <DetailFact label={t("pagesTools.audit.detail.actorType")} value={event.actorType ?? "—"} />
+                {runId ? <DetailFact label={t("pagesTools.audit.detail.runId")} value={runId} mono /> : null}
+                {transport ? <DetailFact label={t("pagesTools.audit.detail.type")} value={auditTransportLabel(transport)} /> : null}
+                {requestMethod && endpoint ? <DetailFact label={t("pagesTools.audit.detail.httpRequest")} value={`${requestMethod} ${endpoint}`} mono /> : null}
+                {mcpMethod ? <DetailFact label={t("pagesTools.audit.detail.mcpMethod")} value={mcpMethod} mono /> : null}
+                {requestId ? <DetailFact label={t("pagesTools.audit.detail.requestId")} value={requestId} mono /> : null}
+                {request ? <DetailFact label={t("pagesTools.audit.detail.dispatched")} value={request.dispatched === true ? t("pagesTools.audit.detail.yes") : t("pagesTools.audit.detail.no")} /> : null}
+                {httpStatus !== undefined ? <DetailFact label={t("pagesTools.audit.detail.httpStatus")} value={String(httpStatus)} mono /> : null}
+                {contentType ? <DetailFact label={t("pagesTools.audit.detail.contentType")} value={contentType} mono /> : null}
+                {responseBytes !== undefined ? <DetailFact label={t("pagesTools.audit.detail.responseSize")} value={t("pagesTools.audit.detail.bytes", { count: responseBytes })} /> : null}
+                {upstreamRequestId ? <DetailFact label={t("pagesTools.audit.detail.upstreamId")} value={upstreamRequestId} mono /> : null}
                 {isRuntimeMcpDeliveryDiagnostic ? (
                   <>
-                    <DetailFact label="Delivered MCP servers" value="0" mono />
+                    <DetailFact label={t("pagesTools.audit.detail.deliveredServers")} value="0" mono />
                     {permittedNotInstalledConnections.map((connection) => {
                       const connectionId = detailString(connection, "id");
-                      const connectionName = detailString(connection, "name") ?? "Unnamed connection";
+                      const connectionName = detailString(connection, "name") ?? t("pagesTools.audit.detail.unnamedConnection");
                       return connectionId ? (
                         <div key={connectionId} className="flex gap-2">
-                          <span className="shrink-0 text-muted-foreground">Not installed</span>
+                          <span className="shrink-0 text-muted-foreground">{t("pagesTools.audit.detail.notInstalled")}</span>
                           <Link to={`/apps/${connectionId}/permissions`} className={cn("font-medium text-primary hover:underline", ANALYTICS_MASK_CLASS)}>
                             {connectionName}
                           </Link>
@@ -315,7 +326,7 @@ function ActivityRow({
                 ) : null}
                 {argumentsText ? (
                   <div className="space-y-1">
-                    <span className="text-muted-foreground">Parameters (redacted)</span>
+                    <span className="text-muted-foreground">{t("pagesTools.audit.detail.parametersRedacted")}</span>
                     <pre className={cn("whitespace-pre-wrap break-words rounded-md border border-border bg-background p-3 font-mono text-xs text-foreground", ANALYTICS_MASK_CLASS)}>
                       {argumentsText}
                     </pre>
@@ -405,17 +416,17 @@ export function AuditTab({ companyId }: { companyId: string }) {
   return (
     <div className="space-y-4">
       <ToolsPageHeader
-        title="Activity"
-        description="What your agents actually did with your apps, newest first. Each line is one decision — allowed, blocked, asked first, waiting, or failed."
+        title={t("pagesTools.audit.header.title")}
+        description={t("pagesTools.audit.header.description")}
       />
 
-      <div data-canonical-toolbar="tool-audit" role="toolbar" aria-label="Tool audit filters" className="flex flex-wrap items-center gap-2">
+      <div data-canonical-toolbar="tool-audit" role="toolbar" aria-label={t("pagesTools.audit.filters.ariaLabel")} className="flex flex-wrap items-center gap-2">
         <Select value={app} onValueChange={setApp}>
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="App" />
+            <SelectValue placeholder={t("pagesTools.audit.filters.appPlaceholder")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={ALL}>All apps</SelectItem>
+            <SelectItem value={ALL}>{t("pagesTools.audit.filters.allApps")}</SelectItem>
             {(apps.data?.applications ?? []).map((a) => (
               <SelectItem key={a.id} value={a.id}>
                 {a.name}
@@ -424,7 +435,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
           </SelectContent>
         </Select>
         <AgentSelect
-          agents={[{ id: ALL, name: "All agents" }, ...(agents.data ?? [])]}
+          agents={[{ id: ALL, name: t("pagesTools.audit.filters.allAgents") }, ...(agents.data ?? [])]}
           value={agent}
           onChange={setAgent}
           triggerClassName="w-40"
@@ -454,14 +465,14 @@ export function AuditTab({ companyId }: { companyId: string }) {
           </SelectContent>
         </Select>
         <Input
-          placeholder="Search activity…"
+          placeholder={t("pagesTools.audit.filters.searchPlaceholder")}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="max-w-xs"
         />
         {hasActiveFilters ? (
           <Button variant="ghost" size="sm" onClick={clearFilters}>
-            Clear filters
+            {t("pagesTools.audit.filters.clear")}
           </Button>
         ) : null}
       </div>
@@ -471,7 +482,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
       ) : activityView.kind === "error" ? (
         <QueryErrorState
           error={activity.error}
-          action="load activity"
+          action={t("pagesTools.audit.loadActivityAction")}
           onRetry={activityView.retry}
           retrying={activityView.isFetching}
         />
@@ -481,13 +492,13 @@ export function AuditTab({ companyId }: { companyId: string }) {
             <CardContent className="flex flex-col items-center gap-3 py-14 text-center">
               <ScrollText className="h-10 w-10 text-muted-foreground/40" />
               <div>
-                <p className="text-sm font-medium text-foreground">No activity matches these filters</p>
+                <p className="text-sm font-medium text-foreground">{t("pagesTools.audit.empty.filteredTitle")}</p>
                 <p className="mt-1 max-w-md text-sm text-muted-foreground">
-                  Try a wider time window or different filters.
+                  {t("pagesTools.audit.empty.filteredBody")}
                 </p>
               </div>
               <Button variant="outline" size="sm" onClick={clearFilters}>
-                Clear filters
+                {t("pagesTools.audit.filters.clear")}
               </Button>
             </CardContent>
           </Card>
@@ -496,9 +507,9 @@ export function AuditTab({ companyId }: { companyId: string }) {
             <CardContent className="flex flex-col items-center gap-3 py-14 text-center">
               <ScrollText className="h-10 w-10 text-muted-foreground/40" />
               <div>
-                <p className="text-sm font-medium text-foreground">Nothing here yet</p>
+                <p className="text-sm font-medium text-foreground">{t("pagesTools.audit.empty.title")}</p>
                 <p className="mt-1 max-w-md text-sm text-muted-foreground">
-                  As soon as your agents start using connected apps, what they do shows up here.
+                  {t("pagesTools.audit.empty.body")}
                 </p>
               </div>
             </CardContent>
@@ -524,7 +535,7 @@ export function AuditTab({ companyId }: { companyId: string }) {
             onClick={() => activity.fetchNextPage()}
             disabled={activity.isFetchingNextPage}
           >
-            {activity.isFetchingNextPage ? "Loading…" : "Load more"}
+            {activity.isFetchingNextPage ? t("pagesTools.common.loading") : t("pagesTools.audit.loadMore")}
           </Button>
         </div>
       ) : null}

@@ -1,0 +1,17 @@
+{
+  "anAgent": "An agent",
+  "heldBy": "Held by {{names}}",
+  "skills": {
+    "title": "Skills",
+    "question": "What does this need, and what can the agents working on it do?",
+    "filedHere": "Filed here",
+    "empty": "No skills yet. Add one this needs, or they appear here from the agents doing the work: the ones assigned its tasks and routines, and the leads of its projects."
+  },
+  "artifacts": {
+    "orMore": "{{limit}} or more",
+    "truncated": "Showing the newest {{shown}} of {{of}}.",
+    "title": "Artifacts",
+    "question": "What has the work produced? Newest first; each opens in the task that made it.",
+    "empty": "Nothing produced yet. Documents, files and other output from the tasks under this responsibility collect here."
+  }
+}

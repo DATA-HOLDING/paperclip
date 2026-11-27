@@ -1,0 +1,10 @@
+{
+  "title": "Image gallery",
+  "openOriginal": "Open original",
+  "openOriginalFile": "Open original {{filename}}",
+  "download": "Download",
+  "downloadFile": "Download {{filename}}",
+  "close": "Close",
+  "previous": "Previous",
+  "next": "Next"
+}

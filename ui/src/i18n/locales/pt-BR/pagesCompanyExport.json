@@ -1,0 +1,54 @@
+{
+  "selectFile": "Selecione um arquivo para pré-visualizar o conteúdo.",
+  "binaryUnavailable": "A pré-visualização de arquivos binários não está disponível para este tipo de arquivo.",
+  "organization": "Organização",
+  "breadcrumbs": {
+    "settings": "Configurações",
+    "export": "Exportar"
+  },
+  "toast": {
+    "failed": "Falha na exportação",
+    "downloaded": "Exportação baixada",
+    "downloadedBody_one": "{{count}} arquivo exportado como {{name}}",
+    "downloadedBody_other": "{{count}} arquivos exportados como {{name}}"
+  },
+  "selectOrganization": "Selecione uma organização para exportar.",
+  "previewCancelled": {
+    "title": "Pré-visualização da exportação cancelada",
+    "message": "A solicitação de pré-visualização foi cancelada. Suas configurações de exportação não mudaram."
+  },
+  "retryPreview": "Tentar a pré-visualização novamente",
+  "previewFailed": "Falha na pré-visualização da exportação",
+  "previewFailedDescription": "Tente a pré-visualização novamente. Não é preciso recarregar esta página.",
+  "previewUnavailable": {
+    "title": "Pré-visualização da exportação indisponível",
+    "message": "Nenhuma pré-visualização da exportação está carregada.",
+    "action": "Carregar pré-visualização"
+  },
+  "header": {
+    "title": "Exportação de {{name}}",
+    "exporting_one": "Exportando {{selected}} de {{total}} arquivo",
+    "exporting_other": "Exportando {{selected}} de {{total}} arquivos",
+    "warnings_one": "{{count}} aviso",
+    "warnings_other": "{{count}} avisos",
+    "building": "Gerando a exportação...",
+    "exportFiles_one": "Exportar {{formatted}} arquivo",
+    "exportFiles_other": "Exportar {{formatted}} arquivos"
+  },
+  "notIncluded": "Não incluído nesta exportação",
+  "packageFiles": "Arquivos do pacote",
+  "whatToInclude": "O que incluir",
+  "attachmentsDisabled": "Os anexos acompanham as tarefas e as rotinas; reative uma delas para incluir os anexos.",
+  "historyOptIn": "O histórico de tarefas e rotinas é opcional porque pode ser grande.",
+  "searchFiles": "Buscar arquivos...",
+  "showMoreTasks": "Mostrar mais tarefas ({{visible}} de {{total}})",
+  "updating": {
+    "title": "Atualizando a pré-visualização da exportação…",
+    "body": "Históricos de tarefas grandes podem levar um minuto. Você pode desmarcar Tarefas ou cancelar esta atualização.",
+    "cancel": "Cancelar atualização"
+  },
+  "updateCancelled": {
+    "title": "Atualização da pré-visualização cancelada",
+    "body": "A pré-visualização anterior continua disponível. Tente novamente quando quiser."
+  }
+}

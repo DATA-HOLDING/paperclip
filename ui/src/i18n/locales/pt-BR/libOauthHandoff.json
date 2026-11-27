@@ -1,0 +1,7 @@
+{
+  "invalidHandoff": "O Paperclip Cloud retornou uma transferência de login inválida.",
+  "expired": "Este login expirou. Inicie a conexão novamente.",
+  "forbidden": "O Paperclip Cloud não conseguiu autorizar esta conexão para sua conta.",
+  "unavailable": "O Paperclip Cloud não conseguiu preparar o login seguro. Tente novamente.",
+  "invalidProviderAddress": "O Paperclip Cloud retornou um endereço de login do provedor inválido."
+}

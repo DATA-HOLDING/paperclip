@@ -1,0 +1,21 @@
+{
+  "privateRepository": "Private repository",
+  "removeRepo": "Remove {{name}}",
+  "addAnother": "Add another repo",
+  "addGithub": "Add GitHub repo",
+  "sourceRepos": "Source repos",
+  "optional": "optional",
+  "connectTitle": "Connect GitHub to pick a repo",
+  "connectBody": "Choose from repos you can access through your GitHub connections.",
+  "connectGithub": "Connect GitHub",
+  "availableRepos": "Available GitHub repos",
+  "searchRepos": "Search GitHub repos…",
+  "loadingRepos": "Loading GitHub repos…",
+  "loadError": "Couldn’t load GitHub repos. Try again.",
+  "emptyRepos": "No repos available. Connect an account with repo access.",
+  "noMatches": "No matching repos. Try another search or connection.",
+  "tryAgain": "Try again",
+  "connectAnother": "Connect another GitHub account",
+  "allConnections": "All GitHub connections you can use.",
+  "cancel": "Cancel"
+}

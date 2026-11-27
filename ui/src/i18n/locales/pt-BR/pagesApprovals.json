@@ -1,0 +1,13 @@
+{
+  "breadcrumb": "Aprovações",
+  "approveAction": "aprovar esta solicitação",
+  "rejectAction": "rejeitar esta solicitação",
+  "selectOrganization": "Selecione uma organização primeiro.",
+  "loadAction": "carregar as aprovações",
+  "tabs": {
+    "pending": "Pendentes",
+    "all": "Todas"
+  },
+  "emptyPending": "Nenhuma aprovação pendente.",
+  "emptyAll": "Nenhuma aprovação ainda."
+}

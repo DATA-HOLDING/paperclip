@@ -1,0 +1,31 @@
+{
+  "environment": {
+    "local": "Local",
+    "paperclipHost": "Paperclip host",
+    "localTitle": "Local - Paperclip host",
+    "loading": "Loading environment",
+    "sandbox": "Sandbox",
+    "managedByPaperclip": "Managed by Paperclip",
+    "sandboxProvider": "{{provider}} sandbox provider",
+    "unknown": "Unknown environment"
+  },
+  "breadcrumb": "Agents",
+  "loadAgentsAction": "load agents",
+  "setUp": "Set up",
+  "invalidReportingChain": "Invalid reporting chain",
+  "lastHeartbeat": "Last heartbeat",
+  "emptyMessage": "Create your first agent to get started.",
+  "newAgent": "New Agent",
+  "noHierarchy": "No organizational hierarchy defined.",
+  "live": "Live",
+  "liveCount": "Live ({{count}})",
+  "selectOrganization": "Select an organization to view agents.",
+  "chatWith": "Chat with {{name}}",
+  "chat": "Chat",
+  "chatTooltip": "chat with this agent",
+  "selectCompany": "Select a company to view agents.",
+  "viewMode": "View mode",
+  "listView": "List view",
+  "orgChartView": "Org chart view",
+  "noFilterMatch": "No agents match the selected filters."
+}

@@ -1,0 +1,19 @@
+{
+  "breadcrumb": "Tasks",
+  "unknownAgent": "Unknown agent",
+  "board": "Board",
+  "unknownUser": "Unknown user",
+  "emptyOrg": "No tasks in this organization",
+  "newTask": "New Task",
+  "emptyView": "No tasks match this view",
+  "clearFilters": "Clear filters",
+  "selectOrganization": "Select an organization to view tasks.",
+  "loadError": "Could not load tasks",
+  "retry": "Retry",
+  "loading": "Loading tasks…",
+  "matching": "{{n}} matching tasks",
+  "parentsIncluded": " · Parent tasks included for context",
+  "loadedCoverage": "Search, views and filters cover the {{n}} loaded tasks.",
+  "loadingMore": "Loading…",
+  "loadMore": "Load more tasks"
+}

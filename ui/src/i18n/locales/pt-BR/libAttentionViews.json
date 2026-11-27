@@ -1,0 +1,32 @@
+{
+  "views": {
+    "mine": "Para você",
+    "unassigned": "Sem responsável",
+    "company": "Organização",
+    "archived": "Arquivados",
+    "all": "Todos"
+  },
+  "unassignedBanner_one": "{{count}} cartão precisa de um responsável",
+  "unassignedBanner_other": "{{count}} cartões precisam de um responsável",
+  "poolAudience": "Ainda sem responsável. Qualquer membro do conselho pode responder.",
+  "companyAudience": "Alerta da organização para operadores",
+  "noClaim": "Não há tarefa para atribuir, então não pode ser assumido.",
+  "transferredBy": "Transferido por",
+  "responders": {
+    "onlyYou": "Só você pode responder.",
+    "onlyUser": "Só @{{name}} pode responder.",
+    "addressedPerson": "a pessoa destinatária",
+    "anyBoardMember": "Qualquer membro do conselho pode responder.",
+    "anyBoardMemberToo": "Qualquer membro do conselho também pode responder.",
+    "agentOrBoard": "{{name}} ou qualquer membro do conselho pode responder.",
+    "agentOrBoardToo": "{{name}} ou qualquer membro do conselho também pode responder.",
+    "addressedAgent": "O agente destinatário",
+    "anyoneExcept": "Qualquer pessoa, exceto {{name}}, pode responder.",
+    "anyoneExceptToo": "Qualquer pessoa, exceto {{name}}, também pode responder.",
+    "agentThatAsked": "o agente que perguntou",
+    "anyoneElse": "Qualquer outra pessoa também pode responder.",
+    "anyone": "Qualquer pessoa pode responder."
+  },
+  "noOwnerYet": "Ainda sem responsável. {{responders}}",
+  "someone": "alguém"
+}

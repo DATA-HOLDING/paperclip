@@ -1,0 +1,6 @@
+{
+  "title": "Pelo que você é responsável?",
+  "message": "Uma responsabilidade é algo pelo qual você responde, com um critério de sucesso e um número que mostra se você o está cumprindo. Agrupe-as nas áreas que importam para você, como Captação ou Contratação.",
+  "action": "Adicionar uma responsabilidade",
+  "askAgent": "Peça a {{name}} para rascunhá-las"
+}

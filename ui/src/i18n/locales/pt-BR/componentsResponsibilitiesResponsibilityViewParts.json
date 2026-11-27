@@ -1,0 +1,49 @@
+{
+  "proposals": {
+    "this": "Esta responsabilidade foi proposta para você e aguarda sua revisão.",
+    "list_one": "{{count}} responsabilidade proposta aguarda sua revisão.",
+    "list_other": "{{count}} responsabilidades propostas aguardam sua revisão.",
+    "reviewIt": "Revisar",
+    "reviewThem": "Revisar todas"
+  },
+  "header": {
+    "letGo": "Você liberou esta responsabilidade.",
+    "dismissed": "Você dispensou esta responsabilidade quando ela foi proposta."
+  },
+  "actions": {
+    "newTask": "Nova tarefa para um agente",
+    "more": "Mais ações para esta responsabilidade",
+    "letGo": "Liberar",
+    "takeBack": "Assumir de novo",
+    "delete": "Excluir…"
+  },
+  "strip": {
+    "moreSkills_one": "mais {{count}} skill",
+    "moreSkills_other": "mais {{count}} skills",
+    "manyMoreArtifacts": "muitos outros artefatos",
+    "moreArtifacts_one": "mais {{formatted}} artefato",
+    "moreArtifacts_other": "mais {{formatted}} artefatos",
+    "and": " e ",
+    "moreLine": "E {{parts}}.",
+    "heading": "Skills e artefatos",
+    "empty": "Nenhuma skill ou artefato ainda."
+  },
+  "moreOf": {
+    "skillMany": "e muitas outras skills",
+    "artifactMany": "e muitos outros artefatos",
+    "skill_one": "e mais {{formatted}} skill",
+    "skill_other": "e mais {{formatted}} skills",
+    "artifact_one": "e mais {{formatted}} artefato",
+    "artifact_other": "e mais {{formatted}} artefatos"
+  },
+  "cards": {
+    "holderAndMore": "{{holder}} e mais {{count}}",
+    "skill": "Skill",
+    "from": "De {{identifier}}",
+    "artifact": "Artefato",
+    "skillsTitle": "Skills",
+    "noSkills": "Nenhuma skill ainda. Elas vêm dos agentes que fazem o trabalho.",
+    "artifactsTitle": "Artefatos",
+    "noArtifacts": "Nada produzido ainda."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nouns": {
+    "message": "mensagem",
+    "comment": "comentário",
+    "task": "tarefa",
+    "update": "atualização"
+  },
+  "title": {
+    "unconfirmed": "Não conseguimos confirmar se o envio ({{noun}}) foi feito.",
+    "sending": "Enviando…",
+    "stalled": "Ainda não foi possível enviar ({{noun}}).",
+    "waiting": "Será enviado quando a conexão voltar…"
+  },
+  "detail": {
+    "saved": "O conteúdo ({{noun}}) está salvo neste dispositivo.",
+    "noStorage": "O armazenamento do navegador não está disponível. Mantenha esta aba aberta ou copie seu texto antes de sair.",
+    "maybeSent": "Talvez já esteja na conversa. Confira antes de enviar de novo; Cancelar mantém seu texto."
+  },
+  "resendNow": "Reenviar agora",
+  "cancel": "Cancelar"
+}

@@ -1,0 +1,28 @@
+{
+  "capabilities": {
+    "description": "Leia, busque e aja no Slack. Algumas ações exigem aprovação.",
+    "checking": "Verificando as permissões do Slack…",
+    "addPermissionsTitle": "Adicione permissões para liberar mais ferramentas",
+    "missingScopesPrefix": "Sua conexão atual continua funcionando. Nas",
+    "slackAppSettings": "configurações do app do Slack",
+    "missingScopesSuffix": ", escolha seu app, abra OAuth & Permissions, adicione estes Bot Token Scopes e reinstale o app no seu workspace."
+  },
+  "search": {
+    "title": "Seu acesso à busca do Slack",
+    "description": "A autorização pessoal opcional permite a busca privada nos runtimes compatíveis. Ela não lê canais em que o bot não entrou nem permite que o bot escreva em seu nome. A leitura básica de canais funciona sem ela.",
+    "connected": "Busca do Slack conectada",
+    "disconnect": "Desconectar busca",
+    "connect": "Conectar busca do Slack",
+    "notConfigured": "Um gerente de conexões precisa configurar primeiro as credenciais OAuth do seu app do Slack.",
+    "oauthConfigTitle": "Configuração do app OAuth para gerentes de conexões",
+    "redirectInstructionsPrefix": "Nas configurações do app do Slack, adicione esta URL de redirecionamento em OAuth & Permissions. Adicione os escopos de usuário",
+    "and": "e",
+    "redirectInstructionsSuffix": ". Encontre o Client ID e o Client Secret em Basic Information.",
+    "configurePublicUrl": "Configure primeiro uma URL HTTPS pública.",
+    "clientId": "Client ID",
+    "clientSecret": "Client Secret",
+    "saveOAuth": "Salvar configuração OAuth",
+    "loadAction": "carregar o acesso à busca do Slack",
+    "loading": "Carregando acesso à busca…"
+  }
+}

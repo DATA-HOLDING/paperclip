@@ -1,0 +1,41 @@
+{
+  "inboxCategory": {
+    "everything": "All categories",
+    "issuesITouched": "My recent tasks",
+    "joinRequests": "Join requests",
+    "approvals": "Approvals",
+    "failedRuns": "Failed runs",
+    "alerts": "Alerts"
+  },
+  "approvalStatus": {
+    "all": "All approval statuses",
+    "actionable": "Needs action",
+    "resolved": "Resolved"
+  },
+  "searchOptionPlaceholder": "Search {{label}}...",
+  "searchOptionAriaLabel": "Search {{label}}",
+  "filtersCount": "Filters: {{count}}",
+  "filter": "Filter",
+  "filters": "Filters",
+  "clear": "Clear",
+  "category": "Category",
+  "approvalStatusLabel": "Approval status",
+  "quickFilters": "Quick filters",
+  "status": "Status",
+  "priority": "Priority",
+  "responsible": "Responsible",
+  "noResponsible": "No responsible",
+  "me": "Me",
+  "creator": "Creator",
+  "removeCreator": "Remove creator {{label}}",
+  "searchCreators": "Search creators...",
+  "noCreatorsMatch": "No creators match.",
+  "project": "Project",
+  "projects": "Projects",
+  "labels": "Labels",
+  "externalObjectStatus": "External object status",
+  "visibility": "Visibility",
+  "liveRunsOnly": "Live runs only",
+  "showAgentCreatedTasks": "Show agent-created tasks",
+  "routineTasks": "Routine tasks"
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Tasks",
+  "newTask": "New Task",
+  "selectOrganization": "Select an organization to view tasks.",
+  "selectCompany": "Select a company to view tasks.",
+  "signInForArchived": "Sign in to view archived tasks.",
+  "loadingArchived": "Loading archived tasks…",
+  "loadAction": "load tasks"
+}

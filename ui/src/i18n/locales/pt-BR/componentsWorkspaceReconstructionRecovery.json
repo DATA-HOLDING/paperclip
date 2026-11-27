@@ -1,0 +1,22 @@
+{
+  "summary": "Continuar a partir das fontes salvas",
+  "destroyed": "O espaço de trabalho original foi destruído antes de as edições serem salvas. A última execução dele continuará como falha.",
+  "instructions": "Selecione os anexos da tarefa a partir dos quais reconstruir e registre o que ainda falta. O Paperclip inicia uma nova sessão pelas verificações normais de execução. Os limites de trabalho existentes continuam valendo.",
+  "attachmentsLegend": "Anexos de fonte salvos",
+  "attachment": "Anexo",
+  "attachmentLabel": "{{name}} ({{size}} bytes)",
+  "loading": "Carregando os anexos salvos…",
+  "attachFirst": "Anexe primeiro a esta tarefa os arquivos de fonte que restaram.",
+  "missingWork": "Trabalho que falta e plano de reconstrução",
+  "previousActions": "Ações externas já concluídas",
+  "outcome": {
+    "mixed": "Algumas concluídas, outras não realizadas",
+    "notPerformed": "Nenhuma realizada",
+    "completed": "Todas concluídas"
+  },
+  "evidence": "Evidências e ações que não devem ser repetidas",
+  "acknowledge": "Continuar a partir destas fontes. As edições perdidas não foram recuperadas.",
+  "queuing": "Enfileirando…",
+  "rebuild": "Reconstruir e continuar",
+  "boardOnly": "Um membro do conselho com acesso de execução pode continuar a partir dos anexos que restaram da tarefa."
+}

@@ -1,0 +1,10 @@
+{
+  "eventsAcrossKinds_one": "{{count}} evento em {{kinds}}",
+  "eventsAcrossKinds_other": "{{count}} eventos em {{kinds}}",
+  "kinds_one": "{{count}} tipo",
+  "kinds_other": "{{count}} tipos",
+  "net": "líquido",
+  "debits": "débitos",
+  "credits": "créditos",
+  "estimated": "estimado"
+}

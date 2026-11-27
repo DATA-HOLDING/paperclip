@@ -10,6 +10,7 @@ import { EMPTY_ROUTINE_FORM_DRAFT, RoutineEditDialog, type RoutineFormDraft } fr
 import { routineFieldsPayload, syncRoutineResponsibility } from "./routine-form";
 import { routinePath } from "./routine-routes";
 import { useRoutineFormOptions } from "./useRoutineFormOptions";
+import { t } from "@/i18n";
 
 /**
  * The routines list's "Create routine": the routine edit form in create mode.
@@ -44,15 +45,15 @@ export function RoutineCreateDialog({
       // Anything after this point is best effort: the routine exists, so report what is missing instead of failing.
       const missing: string[] = [];
       if (draft.responsibleUserId && draft.responsibleUserId !== routine.responsibleUserId) {
-        await routinesApi.update(routine.id, { responsibleUserId: draft.responsibleUserId }).catch(() => missing.push("the responsible user"));
+        await routinesApi.update(routine.id, { responsibleUserId: draft.responsibleUserId }).catch(() => missing.push(t("componentsRoutinePage.create.missing.responsibleUser")));
       }
       if (draft.schedule) {
         await routinesApi
           .createTrigger(routine.id, { kind: "schedule", cronExpression: draft.schedule.cronExpression, timezone: draft.schedule.timezone })
-          .catch(() => missing.push("the schedule"));
+          .catch(() => missing.push(t("componentsRoutinePage.saveParts.schedule")));
       }
       if (options.responsibilitiesOn && draft.responsibilityId) {
-        await syncRoutineResponsibility(routine.id, "", draft.responsibilityId).catch(() => missing.push("the responsibility"));
+        await syncRoutineResponsibility(routine.id, "", draft.responsibilityId).catch(() => missing.push(t("componentsRoutinePage.saveParts.responsibility")));
       }
       return { routine, missing };
     },
@@ -61,13 +62,13 @@ export function RoutineCreateDialog({
       onOpenChange(false);
       pushToast(
         missing.length > 0
-          ? { title: "Routine created", body: `Couldn’t save ${missing.join(" and ")}. Open Edit to try again.`, tone: "warn" }
-          : { title: "Routine created", tone: "success" },
+          ? { title: t("componentsRoutinePage.create.created"), body: t("componentsRoutinePage.create.missingBody", { missing: missing.join(t("componentsRoutinePage.saveParts.and")) }), tone: "warn" }
+          : { title: t("componentsRoutinePage.create.created"), tone: "success" },
       );
       await queryClient.invalidateQueries({ queryKey: queryKeys.routines.list(companyId) });
       navigate(routinePath(routine.id));
     },
-    onError: (cause) => setError(describeError(cause, { action: "create the routine" }).body),
+    onError: (cause) => setError(describeError(cause, { action: t("componentsRoutinePage.create.action") }).body),
   });
 
   return (
@@ -86,7 +87,7 @@ export function RoutineCreateDialog({
       responsibilities={options.responsibilities}
       mentions={options.mentions}
       saving={create.isPending}
-      error={error ?? (options.loadErrors.length > 0 ? "Some choices couldn’t be loaded. Close this and try again." : null)}
+      error={error ?? (options.loadErrors.length > 0 ? t("componentsRoutinePage.create.loadErrors") : null)}
       onSave={(draft) => create.mutate(draft)}
       onCreateSecret={options.createSecret}
     />

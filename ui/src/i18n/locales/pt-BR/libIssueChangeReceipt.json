@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "assigneeAgentId": "Responsável",
+    "assigneeUserId": "Responsável (usuário)",
+    "responsibleUserId": "Usuário responsável",
+    "blockedByIssueIds": "Bloqueios",
+    "labelIds": "Etiquetas",
+    "parentId": "Tarefa pai",
+    "projectId": "Projeto",
+    "goalId": "Objetivo",
+    "workMode": "Modo de trabalho",
+    "reviewPolicy": "Quem pode aprovar",
+    "billingCode": "Código de faturamento",
+    "checkoutRunId": "Execução de checkout",
+    "executionRunId": "Execução",
+    "hiddenAt": "Oculta",
+    "startedAt": "Iniciada",
+    "completedAt": "Concluída",
+    "cancelledAt": "Cancelada",
+    "requestDepth": "Profundidade da solicitação",
+    "sourceTrust": "Confiança da origem",
+    "executionPolicy": "Política de execução",
+    "executionWorkspaceId": "Espaço de trabalho de execução",
+    "projectWorkspaceId": "Espaço de trabalho do projeto"
+  },
+  "value": {
+    "none": "nenhum",
+    "yes": "sim",
+    "no": "não",
+    "items": "{{count}} itens",
+    "updated": "atualizado"
+  },
+  "authorizationReasons": {
+    "allow_visible_issue_write": "escrita aberta por padrão em uma tarefa visível",
+    "allow_scoped_agent_write": "escrita de agente com escopo",
+    "allow_board_actor": "ator do conselho",
+    "allow_self": "tarefa própria",
+    "allow_issue_mention_grant": "permissão por menção",
+    "allow_direct_parent_report": "subordinado direto da tarefa pai",
+    "allow_low_trust_boundary": "permissão de fronteira de baixa confiança",
+    "allow_explicit_grant": "permissão explícita concedida",
+    "allow_instance_admin": "administrador da instância",
+    "allow_local_board": "conselho local",
+    "internal_agent_write": "escrita interna de agente"
+  }
+}

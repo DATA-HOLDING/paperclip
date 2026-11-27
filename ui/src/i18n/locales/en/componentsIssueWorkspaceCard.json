@@ -1,0 +1,44 @@
+{
+  "options": {
+    "projectDefault": "Project default",
+    "newIsolated": "New isolated workspace",
+    "reuseExisting": "Reuse existing workspace",
+    "existingIsolated": "Existing isolated workspace"
+  },
+  "copy": {
+    "copied": "Copied!",
+    "copy": "Copy",
+    "copiedToClipboard": "Copied to clipboard",
+    "copyAria": "Copy {{label}}",
+    "value": "value"
+  },
+  "mode": {
+    "isolatedWorkspace": "Isolated workspace",
+    "operatorBranch": "Operator branch",
+    "cloudSandbox": "Cloud environment",
+    "adapterManaged": "Adapter managed",
+    "workspace": "Workspace"
+  },
+  "status": {
+    "active": "active",
+    "idle": "idle",
+    "in_review": "in review",
+    "archived": "archived"
+  },
+  "cancel": "Cancel",
+  "save": "Save",
+  "edit": "Edit",
+  "repo": "Repo:",
+  "environment": "Environment:",
+  "reusedWorkspaceSuffix": " · reused workspace",
+  "pending": {
+    "isolated": "A fresh isolated workspace will be created when this task runs.",
+    "reuse": "This task will reuse an existing workspace when it runs.",
+    "projectDefault": "This task will use the project default workspace configuration when it runs."
+  },
+  "reusing": "Reusing:",
+  "viewDetails": "View workspace details →",
+  "current": "Current:",
+  "browseFiles": "Browse files…",
+  "openFileByPath": "Open file by path…"
+}

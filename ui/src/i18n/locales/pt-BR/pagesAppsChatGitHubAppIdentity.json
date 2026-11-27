@@ -1,0 +1,19 @@
+{
+  "copyMention": "Copiar menção do GitHub",
+  "editAria": "Editar nome e logo do App no GitHub",
+  "branding": {
+    "title": "Nome e logo do GitHub App",
+    "description": "Altere o nome ou envie um logo nas configurações de informações de exibição do App no GitHub.",
+    "avatarAlt": "Avatar de {{name}} para download",
+    "editOnGitHub": "Editar no GitHub",
+    "renameNote": "Renomear também muda a @menção.",
+    "reconnectAfterward": "Reconecte depois",
+    "toUpdateHere": "para atualizá-la aqui."
+  },
+  "actions": {
+    "editTitle": "Altere o nome do App ou envie o logo dele no GitHub",
+    "editApp": "Editar App",
+    "refreshAria": "Atualizar a identidade do GitHub App",
+    "refreshTitle": "Reconecte depois de renomear o App para atualizar a @menção"
+  }
+}

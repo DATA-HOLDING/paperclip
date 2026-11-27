@@ -1,0 +1,14 @@
+{
+  "title_one": "A dependency needs the board",
+  "title_other": "{{count}} dependencies need the board",
+  "child": "Child",
+  "blocker": "Blocker",
+  "task": "Task",
+  "loadError": "Could not load this task's state: {{error}}",
+  "reload": "Reload",
+  "takingLonger": "Taking longer than usual…",
+  "retryAria": "Retry {{name}}",
+  "taskLower": "task",
+  "retrying": "Retrying…",
+  "retry": "Retry"
+}

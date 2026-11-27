@@ -1,0 +1,10 @@
+{
+  "title": "Espaço de trabalho clássico",
+  "description": "Use o espaço de trabalho anterior em vez do espaço padrão do Coordinator. Isso muda a sua interface em todas as organizações desta instância.",
+  "offByDefault": "Desligado por padrão. Desligue para voltar ao Coordinator. O seu trabalho e as configurações dos seus colegas continuam iguais.",
+  "localBoard": "Esta instância local usa a identidade compartilhada do Conselho local.",
+  "enable": "Ativar o espaço de trabalho clássico",
+  "saving": "Salvando o seu espaço de trabalho…",
+  "loading": "Carregando a sua preferência…",
+  "retry": "Tentar novamente"
+}

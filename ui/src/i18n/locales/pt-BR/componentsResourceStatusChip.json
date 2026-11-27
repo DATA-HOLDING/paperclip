@@ -1,0 +1,42 @@
+{
+  "ready": {
+    "label": "Pronto",
+    "title": "Materializado e igual ao padrão distribuído"
+  },
+  "needsSetup": {
+    "label": "Precisa de configuração",
+    "title": "Presente, mas ainda não pode ser usado"
+  },
+  "missing": {
+    "label": "Ausente",
+    "title": "Recurso esperado ausente; a reconciliação vai recriá-lo"
+  },
+  "error": {
+    "label": "Erro",
+    "title": "Falha ao carregar ou reconciliar"
+  },
+  "updateAvailable": {
+    "label": "Atualização disponível",
+    "title": "Sem edições — um padrão distribuído mais novo pode ser aplicado"
+  },
+  "drifted": {
+    "label": "Modificado",
+    "title": "Você editou isto; suas alterações são mantidas, não sobrescritas"
+  },
+  "scheduleOff": {
+    "label": "Agenda desligada",
+    "title": "Nenhum trabalho em segundo plano roda até você ativar — custo zero de tokens"
+  },
+  "scheduleOn": {
+    "label": "Semanal",
+    "title": "Roda na agenda semanal"
+  },
+  "pendingApproval": {
+    "label": "Aguardando aprovação",
+    "title": "Aguardando a aprovação da contratação pelo conselho antes de poder rodar"
+  },
+  "proposalPending": {
+    "label": "Proposta pendente",
+    "title": "Uma atualização proposta aguarda a sua revisão"
+  }
+}

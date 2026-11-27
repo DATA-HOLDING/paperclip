@@ -49,6 +49,7 @@ import { createIssueDetailLocationState } from "@/lib/issueDetailBreadcrumb";
 import { useResolvedViewerId } from "@/hooks/useResolvedViewerId";
 import { queryKeys } from "@/lib/queryKeys";
 import { Navigate, useLocation, useNavigate, useParams, useSearchParams } from "@/lib/router";
+import { t } from "@/i18n";
 
 /** Tasks shown per History page; "Load more" fetches the next page. */
 export const ROUTINE_HISTORY_PAGE_SIZE = 20;
@@ -62,7 +63,7 @@ export function RoutineDetail() {
   const { routineId, section } = useParams<{ routineId: string; section?: string }>();
   const [searchParams] = useSearchParams();
   const { selectedCompanyId } = useCompany();
-  if (!selectedCompanyId) return <EmptyState icon={Repeat} message="Select an organization to view routines." />;
+  if (!selectedCompanyId) return <EmptyState icon={Repeat} message={t("pagesRoutineDetail.selectOrganization")} />;
   if (!routineId) return <Navigate to="/routines" replace />;
   const address = resolveRoutineAddress({ routineId, section, legacyTab: searchParams.get("tab") });
   if (address.redirectTo) return <Navigate to={address.redirectTo} replace />;
@@ -197,12 +198,12 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
     mutationFn: (status: "active" | "paused" | "archived") => routinesApi.update(routineId, { status }),
     onSuccess: async (_saved, status) => {
       pushToast({
-        title: status === "active" ? "Routine is on" : status === "paused" ? "Routine paused" : "Routine archived",
+        title: status === "active" ? t("pagesRoutineDetail.toasts.on") : status === "paused" ? t("pagesRoutineDetail.toasts.paused") : t("pagesRoutineDetail.toasts.archived"),
         tone: "success",
       });
       await refreshRoutine();
     },
-    onError: (error) => toastError("Couldn’t change the routine", error, "change the routine"),
+    onError: (error) => toastError(t("pagesRoutineDetail.toasts.changeFailed"), error, t("pagesRoutineDetail.actions.changeRoutine")),
   });
 
   const runRoutine = useMutation({
@@ -216,7 +217,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
         ...(data?.executionWorkspaceSettings !== undefined ? { executionWorkspaceSettings: data.executionWorkspaceSettings } : {}),
       }),
     onSuccess: async () => {
-      pushToast({ title: "Routine run started", tone: "success" });
+      pushToast({ title: t("pagesRoutineDetail.toasts.runStarted"), tone: "success" });
       setRunOpen(false);
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: routineHistoryQueryKey(companyId, routineId) }),
@@ -224,7 +225,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
         refreshRoutine(),
       ]);
     },
-    onError: (error) => toastError("Routine run failed", error, "start the routine run"),
+    onError: (error) => toastError(t("pagesRoutineDetail.toasts.runFailed"), error, t("pagesRoutineDetail.actions.startRun")),
   });
 
   /** Saves, pauses, resumes, removes (with Undo on the page) or restores one trigger from the page. */
@@ -237,14 +238,14 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
       else pushToast({ title: success, tone: "success" });
       await refreshRoutine();
     },
-    onError: (error) => toastError("Couldn’t change this trigger", error, "change this trigger"),
+    onError: (error) => toastError(t("pagesRoutineDetail.toasts.triggerFailed"), error, t("pagesRoutineDetail.actions.changeTrigger")),
   });
   const triggerById = (id: string) => routineRef.current?.triggers.find((trigger) => trigger.id === id);
 
   const saveEdits = useMutation({
     mutationFn: async (draft: RoutineFormDraft) => {
       const latest = routineRef.current;
-      if (!latest) throw new Error("This routine is still loading. Try again in a moment.");
+      if (!latest) throw new Error(t("pagesRoutineDetail.stillLoading"));
       const saved = routineToDraft(latest, editResponsibilityRef.current);
       const responsibleUserChanged = Boolean(draft.responsibleUserId)
         && draft.responsibleUserId !== saved.responsibleUserId
@@ -293,7 +294,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
     onSuccess: async (warnings) => {
       setEditOpen(false);
       setRemovedWebhooks([]);
-      pushToast(warnings ? { title: "Routine saved", body: warnings, tone: "warn" } : { title: "Routine saved", tone: "success" });
+      pushToast(warnings ? { title: t("pagesRoutineDetail.toasts.saved"), body: warnings, tone: "warn" } : { title: t("pagesRoutineDetail.toasts.saved"), tone: "success" });
       await refreshRoutine();
     },
     onError: (error) => {
@@ -301,7 +302,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
         setSaveConflict(true);
         return;
       }
-      setSaveError(error instanceof PartialRoutineSaveError ? error.message : describeError(error, { action: "save the routine" }).body);
+      setSaveError(error instanceof PartialRoutineSaveError ? error.message : describeError(error, { action: t("pagesRoutineDetail.actions.save") }).body);
       void refreshRoutine().catch(() => undefined);
     },
   });
@@ -323,7 +324,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
     try {
       responsibilityId = await loadDirectResponsibility();
     } catch (error) {
-      toastError("Couldn’t open the editor", error, "load this routine’s responsibility");
+      toastError(t("pagesRoutineDetail.toasts.editorFailed"), error, t("pagesRoutineDetail.actions.loadResponsibility"));
       return;
     }
     editResponsibilityRef.current = responsibilityId;
@@ -347,7 +348,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
       setSaveConflict(false);
       setSaveError(null);
     } catch (error) {
-      setSaveError(describeError(error, { action: "reload the routine" }).body);
+      setSaveError(describeError(error, { action: t("pagesRoutineDetail.actions.reload") }).body);
     }
   }, [loadDirectResponsibility, refreshRoutine]);
 
@@ -357,7 +358,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
       setRemovedWebhooks((current) => current.filter((item) => item.id !== trigger.id));
       await refreshRoutine();
     },
-    onError: (error) => setSaveError(describeError(error, { action: "restore the webhook" }).body),
+    onError: (error) => setSaveError(describeError(error, { action: t("pagesRoutineDetail.actions.restoreWebhook") }).body),
   });
   const removeWebhook = useMutation({
     mutationFn: (trigger: RoutineTrigger) => routinesApi.updateTrigger(trigger.id, { archived: true }),
@@ -365,7 +366,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
       setRemovedWebhooks((current) => [...current, trigger]);
       await refreshRoutine();
     },
-    onError: (error) => setSaveError(describeError(error, { action: "remove the webhook" }).body),
+    onError: (error) => setSaveError(describeError(error, { action: t("pagesRoutineDetail.actions.removeWebhook") }).body),
   });
 
   const onRestoreSecretMaterials = useCallback(
@@ -399,11 +400,11 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
     if (!routineTitle) return;
     setBreadcrumbs(
       view === "routine"
-        ? [{ label: "Routines", href: "/routines" }, { label: routineTitle }]
+        ? [{ label: t("pagesRoutineDetail.breadcrumbs.routines"), href: "/routines" }, { label: routineTitle }]
         : [
-            { label: "Routines", href: "/routines" },
+            { label: t("pagesRoutineDetail.breadcrumbs.routines"), href: "/routines" },
             { label: routineTitle, href: routinePath(routineId) },
-            { label: view === "history" ? "Version history" : "Audit log" },
+            { label: view === "history" ? t("pagesRoutineDetail.versionHistory") : t("pagesRoutineDetail.auditLog") },
           ],
     );
   }, [routineId, routineTitle, setBreadcrumbs, view]);
@@ -482,13 +483,13 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
       <QueryErrorState
         size="page"
         error={routineView.error}
-        action="load this routine"
+        action={t("pagesRoutineDetail.actions.load")}
         onRetry={routineView.retry}
         retrying={routineView.isFetching}
       />
     );
   }
-  if (!routine) return <EmptyState icon={AlertCircle} message="We couldn't load this routine." />;
+  if (!routine) return <EmptyState icon={AlertCircle} message={t("pagesRoutineDetail.loadFailed")} />;
 
   const agent = options.allAgents.find((candidate) => candidate.id === routine.assigneeAgentId)
     ?? (routine.assignee ? { id: routine.assignee.id, name: routine.assignee.name, urlKey: routine.assignee.urlKey } : null);
@@ -496,18 +497,18 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
     ?? (routine.project ? { id: routine.project.id, name: routine.project.name } : null);
   const responsibleUser = routine.responsibleUserId
     ? options.people.find((person) => person.id === routine.responsibleUserId)
-      ?? (options.peopleFailed || options.people.length === 0 ? { id: routine.responsibleUserId, name: options.peopleFailed ? "Couldn’t load this person" : "Loading…" } : { id: routine.responsibleUserId, name: "Former member" })
+      ?? (options.peopleFailed || options.people.length === 0 ? { id: routine.responsibleUserId, name: options.peopleFailed ? t("pagesRoutineDetail.person.loadFailed") : t("pagesRoutineDetail.person.loading") } : { id: routine.responsibleUserId, name: t("pagesRoutineDetail.person.former") })
     : null;
   const pageResponsibilities = options.responsibilitiesOn ? responsibilityChoices.onPage : undefined;
   const responsibilityOptions = options.responsibilities ? responsibilityChoices.choices : undefined;
   const loadErrors = [
     // The routine stays on screen through a failed refresh; say so instead of showing stale data silently.
     ...(routineView.kind === "error"
-      ? [{ action: "refresh this routine", error: routineView.error, retry: routineView.retry, retrying: routineView.isFetching }]
+      ? [{ action: t("pagesRoutineDetail.actions.refresh"), error: routineView.error, retry: routineView.retry, retrying: routineView.isFetching }]
       : []),
     ...options.loadErrors,
     ...(linksView.kind === "error"
-      ? [{ action: "load this routine’s responsibilities", error: linksView.error, retry: linksView.retry, retrying: linksView.isFetching }]
+      ? [{ action: t("pagesRoutineDetail.actions.loadResponsibilities"), error: linksView.error, retry: linksView.retry, retrying: linksView.isFetching }]
       : []),
   ];
   const webhooks = routine.triggers.filter((trigger) => trigger.kind === "webhook");
@@ -532,7 +533,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
             <QueryErrorState
               size="inline"
               error={historyView.error}
-              action="load this routine’s tasks"
+              action={t("pagesRoutineDetail.actions.loadTasks")}
               onRetry={historyView.retry}
               retrying={historyView.isFetching}
             />
@@ -571,25 +572,25 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
         onEdit={openEdit}
         onSaveSchedule={(id, change) => {
           const trigger = triggerById(id);
-          if (trigger) changeTrigger.mutate({ trigger, patch: change, success: "Schedule saved" });
+          if (trigger) changeTrigger.mutate({ trigger, patch: change, success: t("pagesRoutineDetail.toasts.scheduleSaved") });
         }}
         onRemoveSchedule={(id) => {
           const trigger = triggerById(id);
-          if (trigger) changeTrigger.mutate({ trigger, patch: { archived: true }, success: "Schedule removed" });
+          if (trigger) changeTrigger.mutate({ trigger, patch: { archived: true }, success: t("pagesRoutineDetail.toasts.scheduleRemoved") });
         }}
         onSetTriggerPaused={(id, paused) => {
           const trigger = triggerById(id);
-          if (trigger) changeTrigger.mutate({ trigger, patch: { enabled: !paused }, success: paused ? "Paused" : "Resumed" });
+          if (trigger) changeTrigger.mutate({ trigger, patch: { enabled: !paused }, success: paused ? t("pagesRoutineDetail.toasts.triggerPaused") : t("pagesRoutineDetail.toasts.triggerResumed") });
         }}
-        onRemoveTrigger={(trigger) => changeTrigger.mutate({ trigger, patch: { archived: true }, success: "Removed" })}
+        onRemoveTrigger={(trigger) => changeTrigger.mutate({ trigger, patch: { archived: true }, success: t("pagesRoutineDetail.toasts.removed") })}
         removedTriggers={pageRemoved}
-        onRestoreTrigger={(trigger) => changeTrigger.mutate({ trigger, patch: { archived: false }, success: "Restored" })}
+        onRestoreTrigger={(trigger) => changeTrigger.mutate({ trigger, patch: { archived: false }, success: t("pagesRoutineDetail.toasts.restored") })}
         onOpenWebhook={(trigger) => webhook.show(trigger)}
       />
     ) : (
       <RoutineSubpage
         routineTitle={routine.title}
-        title={view === "history" ? "Version history" : "Audit log"}
+        title={view === "history" ? t("pagesRoutineDetail.versionHistory") : t("pagesRoutineDetail.auditLog")}
         onBack={() => navigate(routinePath(routine.id))}
       >
         {view === "history" ? (
@@ -649,7 +650,7 @@ function RoutineDetailPage({ companyId, routineId, view }: { companyId: string; 
           canChangeResponsibleUser={routine.canChangeResponsibleUser !== false}
           saving={saveEdits.isPending}
           saveConflict={saveConflict}
-          error={saveError ?? (loadErrors.length > 0 ? "Some choices couldn’t be loaded. Close this and use Retry on the page." : null)}
+          error={saveError ?? (loadErrors.length > 0 ? t("pagesRoutineDetail.choicesLoadFailed") : null)}
           onSave={(draft) => saveEdits.mutate(draft)}
           onReloadLatest={() => void reloadLatest()}
           onCreateSecret={options.createSecret}

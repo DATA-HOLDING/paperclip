@@ -1,0 +1,17 @@
+{
+  "adminRequired": "Um administrador da instância precisa configurar esta máquina Tailscale.",
+  "manageConnector": "Gerenciar conector do Tailscale",
+  "tailnetConnection": "Conexão da tailnet",
+  "chooseConnection": "Escolha uma conexão",
+  "unavailableConnection": "Conexão indisponível",
+  "machine": "Máquina",
+  "loadingMachines": "Carregando máquinas…",
+  "chooseMachine": "Escolha uma máquina",
+  "offline": "Offline",
+  "preparePairing": "Preparar pareamento da máquina",
+  "pairingInstructions": "Execute isto no computador selecionado como o usuário que vai executar as tarefas. Informe abaixo o nome de usuário, o espaço de trabalho e os hosts conhecidos exibidos. O Paperclip guarda a chave privada no cofre.",
+  "pairingCommand": "Comando de pareamento da máquina",
+  "errorActions": {
+    "connectTailscale": "conectar o Tailscale"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "research": {
+    "query": "Consulta",
+    "results_one": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "sources": "Fontes da pesquisa",
+    "showMore_one": "Mostrar mais {{count}} resultado",
+    "showMore_other": "Mostrar mais {{count}} resultados",
+    "showFewer": "Mostrar menos resultados",
+    "additionalOutput": "Há mais saída do provedor disponível no Runner Inspector."
+  },
+  "planSteps": "Etapas do plano",
+  "delegatedAgents": "Agentes delegados",
+  "outputTruncated": "Saída truncada em 8 KiB.",
+  "noChangedFiles": "Nenhum detalhe de arquivo alterado foi informado.",
+  "changedFiles": "Arquivos alterados",
+  "moreFiles_one": "Mais {{count}} arquivo não exibido",
+  "moreFiles_other": "Mais {{count}} arquivos não exibidos",
+  "previewUnavailable": "Prévia indisponível.",
+  "previewTruncated": "Prévia truncada pelo runner.",
+  "moreSources": "+{{n}} mais",
+  "timeLeft": "{{duration}} restantes",
+  "notice": {
+    "noMessage": "O provedor informou um aviso sem mensagem.",
+    "error": "Erro",
+    "providerUpdate": "Atualização do provedor",
+    "warning": "Aviso",
+    "details": "Detalhes"
+  }
+}

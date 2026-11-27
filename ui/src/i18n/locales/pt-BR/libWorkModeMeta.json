@@ -1,0 +1,8 @@
+{
+  "autoMode": "Modo automático",
+  "planMode": "Modo de planejamento",
+  "askMode": "Modo pergunta",
+  "pendingAsk": "Modo pergunta para este envio. Clique para mudar. O responsável vai responder nesta conversa; sem trabalho de implementação.",
+  "pendingPlanning": "O modo de planejamento está ativo para este envio. Clique para mudar.",
+  "pendingAuto": "Modo automático para este envio. Clique para mudar."
+}

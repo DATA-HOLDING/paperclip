@@ -11,6 +11,7 @@ import { PageSkeleton } from "../components/PageSkeleton";
 import { QueryErrorState, useQueryView } from "../components/QueryView";
 import { Button } from "@/components/ui/button";
 import { Target, Plus } from "lucide-react";
+import { t } from "@/i18n";
 
 export function Goals() {
   const { selectedCompanyId } = useCompany();
@@ -18,7 +19,7 @@ export function Goals() {
   const { setBreadcrumbs } = useBreadcrumbs();
 
   useEffect(() => {
-    setBreadcrumbs([{ label: "Goals" }]);
+    setBreadcrumbs([{ label: t("pagesGoals.breadcrumb") }]);
   }, [setBreadcrumbs]);
 
   const goalsQuery = useQuery({
@@ -30,7 +31,7 @@ export function Goals() {
   const goalsView = useQueryView(goalsQuery);
 
   if (!selectedCompanyId) {
-    return <EmptyState placement="upper" icon={Target} message="Select an organization to view goals." />;
+    return <EmptyState placement="upper" icon={Target} message={t("pagesGoals.selectOrganization")} />;
   }
 
   // Keep a loaded list on screen through a failed refetch; only a real
@@ -43,7 +44,7 @@ export function Goals() {
       <QueryErrorState
         size="page"
         error={goalsView.error}
-        action="load goals"
+        action={t("pagesGoals.loadGoalsAction")}
         onRetry={goalsView.retry}
         retrying={goalsView.isFetching}
       />
@@ -55,8 +56,8 @@ export function Goals() {
       {goals && goals.length === 0 && (
         <EmptyState placement="upper"
           icon={Target}
-          message="No goals yet."
-          action="Add Goal"
+          message={t("pagesGoals.empty")}
+          action={t("pagesGoals.addGoal")}
           onAction={() => openNewGoal()}
         />
       )}
@@ -66,7 +67,7 @@ export function Goals() {
           <div className="flex items-center justify-start">
             <Button size="sm" variant="outline" onClick={() => openNewGoal()}>
               <Plus className="h-3.5 w-3.5 mr-1.5" />
-              New Goal
+              {t("pagesGoals.newGoal")}
             </Button>
           </div>
           <GoalTree goals={goals} goalLink={(goal) => `/goals/${goal.id}`} />

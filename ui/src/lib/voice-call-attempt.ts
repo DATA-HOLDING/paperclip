@@ -1,6 +1,7 @@
 import type { voiceSessionsApi } from "@/api/voiceSessions";
 import { ApiError } from "@/api/client";
 import { VoiceSessionStartError } from "./voice-session-controller";
+import { t } from "@/i18n";
 
 type StartInput = Parameters<typeof voiceSessionsApi.start>[1];
 export interface VoiceCallAttempt { request: StartInput; sessionId?: string }
@@ -71,7 +72,7 @@ export function createVoiceCallAttempt(companyId: string, client: typeof voiceSe
     },
     async end(sessionId: string) {
       const result = await client.end(companyId, sessionId);
-      if (!["ended", "failed", "expired"].includes(result.state)) throw new Error("Speko has not confirmed hangup yet");
+      if (!["ended", "failed", "expired"].includes(result.state)) throw new Error(t("libVoiceCallAttempt.hangupUnconfirmed"));
       const saved = journal?.read();
       if (!saved || saved.sessionId === sessionId || saved.request.idempotencyKey === attempt?.request.idempotencyKey) journal?.clear();
       attempt = undefined; recovering = false;

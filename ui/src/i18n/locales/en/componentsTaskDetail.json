@@ -1,0 +1,42 @@
+{
+  "issueCreatedFromNote": {
+    "createdFrom": "Created from",
+    "byAgent": "by {{name}}"
+  },
+  "tasksPanel": {
+    "goToProject": "Go to {{name}} project",
+    "project": "Project",
+    "noProject": "No project",
+    "relatedTasks": "Related tasks",
+    "createdFrom": "Created from",
+    "ancestors": "Ancestors",
+    "ancestorTasksAria": "Ancestor tasks, root to parent",
+    "subtasks": "Subtasks",
+    "groupTasksAria": "{{name}} tasks",
+    "loading": "Loading tasks…",
+    "loadError": "Could not load all tasks.",
+    "retry": "Retry",
+    "empty": "No tasks yet."
+  },
+  "relationsPanel": {
+    "subtasks": "Subtasks",
+    "progress": "Progress",
+    "completeCount": "{{completed}} of {{total}} complete",
+    "subtaskCompletion": "Subtask completion",
+    "rootBlocker": "Root blocker",
+    "blockedSubtask": "Blocked subtask",
+    "nextAction": "Next action",
+    "nextSubtaskAction": "Next subtask action",
+    "allComplete": "All subtasks are complete.",
+    "noRemaining": "No remaining subtask actions.",
+    "noSubtasks": "No subtasks yet.",
+    "otherSubtasks": "Other subtasks",
+    "addSubtask": "Add subtask",
+    "referenced": "Referenced",
+    "referencedEmpty": "This task does not reference another task.",
+    "referencedTasks": "Referenced tasks",
+    "mentionedIn": "Mentioned in",
+    "mentionedInEmpty": "No other task mentions this task.",
+    "mentionedInTasks": "Tasks that mention this task"
+  }
+}

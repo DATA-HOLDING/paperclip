@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { StatusIcon } from "@/components/StatusIcon";
 import { taskStatusIconProps } from "@/lib/task-status-presentation";
+import { t } from "@/i18n";
 
 export type SubtaskCancellationChoice = "task_only" | "subtasks" | "dismiss";
 type Subtask = Pick<Issue, "id" | "title" | "status" | "displayStatus" | "externalConversationState" | "blockerAttention">;
@@ -57,14 +58,14 @@ export function TaskCancellationProvider({ children }: { children: ReactNode }) 
       <Dialog open={subtasks !== null} onOpenChange={open => { if (!open) finish("dismiss"); }}>
         <DialogContent aria-describedby={undefined} className="max-h-(--sz-calc-18) overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Cancel {subtasks?.length ?? 0} active {(subtasks?.length ?? 0) === 1 ? "subtask" : "subtasks"}?</DialogTitle>
+            <DialogTitle>{t("contextTaskCancellationContext.title", { count: subtasks?.length ?? 0 })}</DialogTitle>
           </DialogHeader>
-          <ul aria-label="Active subtasks" className="flex flex-col gap-2 text-sm">
+          <ul aria-label={t("contextTaskCancellationContext.listAria")} className="flex flex-col gap-2 text-sm">
             {subtaskList}
           </ul>
           <DialogFooter>
-            <Button variant="outline" onClick={() => finish("task_only")}>Cancel task only</Button>
-            <Button variant="destructive" onClick={() => finish("subtasks")}>Cancel task and subtasks</Button>
+            <Button variant="outline" onClick={() => finish("task_only")}>{t("contextTaskCancellationContext.taskOnly")}</Button>
+            <Button variant="destructive" onClick={() => finish("subtasks")}>{t("contextTaskCancellationContext.taskAndSubtasks")}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

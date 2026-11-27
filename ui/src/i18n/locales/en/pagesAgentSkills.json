@@ -1,0 +1,58 @@
+{
+  "releasePicker": {
+    "defaultLabel": "Default — current (recommended)",
+    "release": "Release",
+    "optionLabel": "{{name}} · released {{date}}",
+    "ariaLabel": "Skill release",
+    "beta": "Beta"
+  },
+  "source": {
+    "localFolder": "Local folder",
+    "catalog": "Catalog",
+    "paperclipManaged": "Paperclip managed"
+  },
+  "row": {
+    "readOnly": "Read-only",
+    "disableSkill": "Disable {{name}}",
+    "enableSkill": "Enable {{name}}"
+  },
+  "tab": {
+    "materializationNote": "Enabled skills are materialized into the stable Paperclip-managed prompt bundle on the agent's next run.",
+    "mode": {
+      "persistent": "Kept in workspace",
+      "ephemeral": "Applied on next run",
+      "unsupported": "Tracked only"
+    },
+    "unsupported": {
+      "customAcp": "Paperclip cannot manage skills for custom ACP commands yet.",
+      "openclaw": "Paperclip cannot manage OpenClaw skills here. Visit your OpenClaw instance to manage this agent's skills.",
+      "adapter": "Paperclip cannot manage skills for this adapter yet. Manage them in the adapter directly."
+    },
+    "legacyPaperclipBlocked": "Paperclip Runner uses native semantic coordination and cannot attach the legacy Paperclip operational skill.",
+    "betaBadge": "Beta · {{release}}",
+    "enabledCount": "{{enabled}} of {{total}} enabled",
+    "toolbarLabel": "Agent skills controls",
+    "searchSkills": "Search skills",
+    "browseStore": "Browse skills store",
+    "staleKey": "is enabled but missing from the organization library.",
+    "remove": "Remove",
+    "enabledSection": "Enabled on this agent",
+    "noEnabledMatch": "No enabled skills match your search.",
+    "noEnabled": "No skills enabled on this agent yet.",
+    "availableSection": "Available from the library",
+    "noAvailableMatch": "No available skills match your search.",
+    "importToEnable": "Import skills into the organization library to enable them here.",
+    "allEnabled": "Every library skill is enabled on this agent.",
+    "detectedSection": "Automatic and detected skills (read-only)",
+    "noDetectedMatch": "No detected skills match your search.",
+    "adapter": "Adapter: {{adapter}}",
+    "status": {
+      "saving": "Saving…",
+      "error": "Couldn’t save",
+      "unsaved": "Saving soon…",
+      "saved": "Saved"
+    },
+    "emptyLibraryTitle": "No skills in the organization library",
+    "emptyLibraryBody": "Install skills to the organization, then enable them on this agent."
+  }
+}

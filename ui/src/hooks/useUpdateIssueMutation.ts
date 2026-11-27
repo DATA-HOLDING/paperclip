@@ -14,6 +14,7 @@ import { useToastActions } from "@/context/ToastContext";
 import { useConnectivityStore } from "@/lib/connectivity";
 import { applyOptimisticIssueFieldUpdate, matchesIssueRef } from "@/lib/optimistic-issue-comments";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 export interface UpdateIssueVariables {
   /** Issue id or identifier. */
@@ -188,7 +189,7 @@ export function useUpdateIssueMutation(options: UseUpdateIssueMutationOptions): 
   const { pushToast } = useToastActions();
   const connectivity = useConnectivityStore();
   const cancelTask = useTaskCancellation();
-  const { companyId, invalidateKeys, onSuccess, onSettled, action = "update the task" } = options;
+  const { companyId, invalidateKeys, onSuccess, onSettled, action = t("hooksUseUpdateIssueMutation.updateTaskAction") } = options;
 
   const mutationOptions = {
     waitForTurn: (variables: UpdateIssueVariables) => issueWriteTurns.get(variables)?.ready,
@@ -215,7 +216,7 @@ export function useUpdateIssueMutation(options: UseUpdateIssueMutationOptions): 
       if (context) rollbackOptimisticIssueUpdate(queryClient, context.refs, context.rollback);
       if (error instanceof TaskCancellationDismissedError) return;
       if (error instanceof SubtaskCancellationError) {
-        pushToast({ title: "Some subtasks could not be canceled", body: error.message, tone: "error" });
+        pushToast({ title: t("hooksUseUpdateIssueMutation.subtasksNotCanceled"), body: error.message, tone: "error" });
         return;
       }
       // While the connection banner is up it already explains an outage.

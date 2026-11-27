@@ -1,0 +1,63 @@
+{
+  "actor": {
+    "agent": "Agente {{id}}",
+    "system": "Sistema",
+    "board": "Conselho",
+    "user": "Usuário {{id}}",
+    "plugin": "Plugin",
+    "unknown": "Autor desconhecido"
+  },
+  "task": "Tarefa",
+  "status": {
+    "backlog": "backlog",
+    "todo": "a fazer",
+    "inProgress": "em andamento",
+    "inReview": "em revisão",
+    "done": "concluída",
+    "blocked": "bloqueada",
+    "cancelled": "cancelada"
+  },
+  "change": {
+    "reopenedFromTo": "reabriu de {{from}} para {{to}}",
+    "reopenedFrom": "reabriu de {{from}}",
+    "reopenedTo": "reabriu a tarefa para {{to}}",
+    "reopened": "reabriu a tarefa",
+    "statusFromTo": "mudou o status de {{from}} para {{to}}",
+    "statusTo": "mudou o status para {{to}}",
+    "priority": "definiu a prioridade como {{priority}}",
+    "reassigned": "reatribuiu a tarefa",
+    "unassigned": "removeu o responsável da tarefa",
+    "title": "mudou o título",
+    "description": "mudou a descrição"
+  },
+  "viewTask": "Ver tarefa",
+  "activity": {
+    "created": "{{actor}} criou a tarefa",
+    "commented": "{{actor}} adicionou um comentário"
+  },
+  "join": {
+    "agent": "Um agente quer entrar",
+    "someone": "Alguém quer entrar",
+    "body": "Uma nova solicitação de entrada está aguardando aprovação.",
+    "viewInbox": "Ver caixa de entrada"
+  },
+  "agentStatus": {
+    "started": "{{name}} iniciou",
+    "errored": "{{name}} apresentou erro"
+  },
+  "viewAgent": "Ver agente",
+  "agentFallback": "Agente",
+  "chat": {
+    "cannotStart": "{{name}} não conseguiu iniciar este chat",
+    "body": "Esta identidade de chat externa não está vinculada, e os espaços de trabalho isolados para convidados estão desativados. Vincule a identidade em Conectores ou ative os espaços de trabalho isolados e depois inicie uma nova tarefa.",
+    "openConnections": "Abrir conexões de chat"
+  },
+  "run": {
+    "succeeded": "Execução de {{name}} concluída",
+    "failed": "Execução de {{name}} falhou",
+    "timedOut": "Execução de {{name}} esgotou o tempo",
+    "cancelled": "Execução de {{name}} cancelada",
+    "trigger": "Gatilho: {{detail}}",
+    "view": "Ver execução"
+  }
+}

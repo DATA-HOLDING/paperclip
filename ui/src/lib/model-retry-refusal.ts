@@ -1,5 +1,6 @@
 import type { ToastInput } from "../context/ToastContext";
 import { agentUrl } from "./utils";
+import { t } from "@/i18n";
 
 export const MODEL_STILL_UNAVAILABLE_CODE = "native_provider_model_still_unavailable";
 
@@ -13,16 +14,16 @@ export function modelStillUnavailableToast(
 ): ToastInput | null {
   const details = record(record(record(error).body).details);
   if (details.code !== MODEL_STILL_UNAVAILABLE_CODE) return null;
-  const body = error instanceof Error && error.message ? error.message : "The selected model is still unavailable.";
+  const body = error instanceof Error && error.message ? error.message : t("libModelRetryRefusal.defaultBody");
   const agentSetting = details.setting !== "task_model_override";
   return {
-    title: "Model still unavailable",
+    title: t("libModelRetryRefusal.title"),
     body,
     tone: "error",
     ttlMs: 15_000,
     dedupeKey: `model-still-unavailable:${String(details.agentId ?? agent?.id ?? "")}`,
     ...(agentSetting && agent
-      ? { action: { label: `Open ${agent.name ?? "agent"} model settings`, href: `${agentUrl(agent)}/runtime` } }
+      ? { action: { label: t("libModelRetryRefusal.openModelSettings", { name: agent.name ?? t("libModelRetryRefusal.agentFallback") }), href: `${agentUrl(agent)}/runtime` } }
       : {}),
   };
 }

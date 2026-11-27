@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { companyDirectoryQueryOptions, useAccountIdentity } from "@/api/companies-query";
 import { useToast } from "@/context/ToastContext";
 import { queryKeys } from "@/lib/queryKeys";
+import { t } from "@/i18n";
 
 export function InstanceAccess() {
   const { userId: accountUserId, settled: accountSettled } = useAccountIdentity();
@@ -22,9 +23,9 @@ export function InstanceAccess() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Settings", href: "/company/settings" },
-      { label: "Instance settings", href: "/company/settings/instance/general" },
-      { label: "Access" },
+      { label: t("pagesInstanceAccess.breadcrumbs.settings"), href: "/company/settings" },
+      { label: t("pagesInstanceAccess.breadcrumbs.instanceSettings"), href: "/company/settings/instance/general" },
+      { label: t("pagesInstanceAccess.breadcrumbs.access") },
     ]);
   }, [setBreadcrumbs]);
 
@@ -76,7 +77,7 @@ export function InstanceAccess() {
       await queryClient.invalidateQueries({ queryKey: queryKeys.access.userCompanyAccess(selectedUserId!) });
       await queryClient.invalidateQueries({ queryKey: queryKeys.access.adminUsers(search) });
       await queryClient.invalidateQueries({ queryKey: queryKeys.companies.all });
-      pushToast({ title: "Organization access updated", tone: "success" });
+      pushToast({ title: t("pagesInstanceAccess.toast.organizationAccessUpdated"), tone: "success" });
     },
   });
 
@@ -91,7 +92,7 @@ export function InstanceAccess() {
       if (selectedUserId) {
         await queryClient.invalidateQueries({ queryKey: queryKeys.access.userCompanyAccess(selectedUserId) });
       }
-      pushToast({ title: "Instance role updated", tone: "success" });
+      pushToast({ title: t("pagesInstanceAccess.toast.instanceRoleUpdated"), tone: "success" });
     },
   });
 
@@ -101,18 +102,18 @@ export function InstanceAccess() {
     !accountSettled ||
     (usersQuery.isSuccess && (companiesQuery.isPending || companiesView.kind === "reconnecting"))
   ) {
-    return <div className="text-sm text-muted-foreground">Loading instance access…</div>;
+    return <div className="text-sm text-muted-foreground">{t("pagesInstanceAccess.loadingInstanceAccess")}</div>;
   }
 
   if (usersView.kind === "error") {
     if (usersView.errorKind === "forbidden") {
-      return <div className="text-sm text-destructive">Instance admin access is required to manage users.</div>;
+      return <div className="text-sm text-destructive">{t("pagesInstanceAccess.adminRequired")}</div>;
     }
     return (
       <QueryErrorState
         size="page"
         error={usersQuery.error}
-        action="load users"
+        action={t("pagesInstanceAccess.actions.loadUsers")}
         onRetry={usersView.retry}
         retrying={usersView.isFetching}
       />
@@ -124,7 +125,7 @@ export function InstanceAccess() {
       <QueryErrorState
         size="page"
         error={companiesQuery.error}
-        action="load organizations"
+        action={t("pagesInstanceAccess.actions.loadOrganizations")}
         onRetry={companiesView.retry}
         retrying={companiesView.isFetching}
       />
@@ -136,22 +137,22 @@ export function InstanceAccess() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <Shield className="h-5 w-5 text-muted-foreground" />
-          <h1 className="text-lg font-semibold">Instance Access</h1>
+          <h1 className="text-lg font-semibold">{t("pagesInstanceAccess.title")}</h1>
         </div>
         <p className="max-w-3xl text-sm text-muted-foreground">
-          Search users, manage instance-admin status, and control which organizations they can access.
+          {t("pagesInstanceAccess.description")}
         </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-(--gtc-34)">
         <Card className="block space-y-4 p-4">
           <label className="block space-y-2 text-sm">
-            <span className="font-medium">Search users</span>
+            <span className="font-medium">{t("pagesInstanceAccess.searchUsers")}</span>
             <input
               className="w-full rounded-md border border-border bg-background px-3 py-2"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search by name or email"
+              placeholder={t("pagesInstanceAccess.searchPlaceholder")}
             />
           </label>
           <div className="space-y-2">
@@ -176,7 +177,7 @@ export function InstanceAccess() {
                   ) : null}
                 </div>
                 <div className="mt-2 text-xs text-muted-foreground">
-                  {user.activeCompanyMembershipCount} active organization memberships
+                  {t("pagesInstanceAccess.activeMemberships", { count: user.activeCompanyMembershipCount })}
                 </div>
               </button>
             ))}
@@ -185,13 +186,13 @@ export function InstanceAccess() {
 
         <Card className="block space-y-4 p-5">
           {!selectedUserId ? (
-            <div className="text-sm text-muted-foreground">Select a user to inspect instance access.</div>
+            <div className="text-sm text-muted-foreground">{t("pagesInstanceAccess.selectUser")}</div>
           ) : userAccessQuery.isLoading || userAccessView.kind === "reconnecting" ? (
-            <div className="text-sm text-muted-foreground">Loading user access…</div>
+            <div className="text-sm text-muted-foreground">{t("pagesInstanceAccess.loadingUserAccess")}</div>
           ) : userAccessView.kind === "error" ? (
             <QueryErrorState
               error={userAccessQuery.error}
-              action="load user access"
+              action={t("pagesInstanceAccess.actions.loadUserAccess")}
               onRetry={userAccessView.retry}
               retrying={userAccessView.isFetching}
             />
@@ -211,15 +212,15 @@ export function InstanceAccess() {
                   onClick={() => setAdminMutation.mutate(!(selectedUser?.isInstanceAdmin ?? false))}
                   disabled={setAdminMutation.isPending}
                 >
-                  {selectedUser?.isInstanceAdmin ? "Remove instance admin" : "Promote to instance admin"}
+                  {selectedUser?.isInstanceAdmin ? t("pagesInstanceAccess.removeAdmin") : t("pagesInstanceAccess.promoteAdmin")}
                 </Button>
               </div>
 
               <div className="space-y-3">
                 <div>
-                  <h2 className="text-sm font-semibold">Organization access</h2>
+                  <h2 className="text-sm font-semibold">{t("pagesInstanceAccess.organizationAccess")}</h2>
                   <p className="text-sm text-muted-foreground">
-                    Toggle organization membership for this user. New access defaults to an active operator membership.
+                    {t("pagesInstanceAccess.organizationAccessHint")}
                   </p>
                 </div>
                 <div className="grid gap-3 md:grid-cols-2">
@@ -251,13 +252,13 @@ export function InstanceAccess() {
                     onClick={() => updateCompanyAccessMutation.mutate()}
                     disabled={updateCompanyAccessMutation.isPending}
                   >
-                    {updateCompanyAccessMutation.isPending ? "Saving…" : "Save organization access"}
+                    {updateCompanyAccessMutation.isPending ? t("pagesInstanceAccess.saving") : t("pagesInstanceAccess.saveOrganizationAccess")}
                   </Button>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-sm font-semibold">Current memberships</h2>
+                <h2 className="text-sm font-semibold">{t("pagesInstanceAccess.currentMemberships")}</h2>
                 <div className="space-y-2">
                   {(userAccessQuery.data?.companyAccess ?? []).map((membership) => (
                     <div
@@ -267,7 +268,7 @@ export function InstanceAccess() {
                       <div>
                         <div className="font-medium">{membership.companyName || membership.companyId}</div>
                         <div className="text-muted-foreground">
-                          {membership.membershipRole || "unset"} • {membership.status}
+                          {membership.membershipRole || t("pagesInstanceAccess.unsetRole")} • {membership.status}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground">

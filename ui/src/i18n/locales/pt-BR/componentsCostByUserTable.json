@@ -1,0 +1,18 @@
+{
+  "title": "Por usuário",
+  "ariaLabel": "Custos por usuário",
+  "columns": {
+    "user": "Usuário",
+    "runs": "Execuções",
+    "input": "Entrada",
+    "output": "Saída",
+    "cost": "Custo"
+  },
+  "empty": "Nenhum custo atribuído a usuários ainda.",
+  "unknownUser": "Usuário desconhecido",
+  "unattributed": "Não atribuído",
+  "unattributedNote": "Custos não atribuídos não têm usuário registrado nesta organização.",
+  "cachedTokens": "{{tokens}} em cache",
+  "unpricedCharges_one": "{{count}} cobrança sem preço",
+  "unpricedCharges_other": "{{count}} cobranças sem preço"
+}

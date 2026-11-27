@@ -1,0 +1,7 @@
+{
+  "weekOf": "Week of",
+  "readOn": "Read on",
+  "value": "Value",
+  "noReadings": "No readings yet",
+  "weekTooltip": "Week of {{date}}: {{value}}"
+}

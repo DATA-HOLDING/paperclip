@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import type { ActivityEvent } from "@paperclipai/shared";
 import { cn } from "@/lib/utils";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 export type RoutineActivityEvent = Pick<ActivityEvent, "id" | "action" | "details" | "createdAt">;
 
@@ -16,13 +17,13 @@ function formatTime(value: string | Date): string {
 
 function summarizeEvent(event: RoutineActivityEvent): string {
   const details = event.details;
-  if (event.action === "routine.webhook_test_received") return "Connection working · No run or task created";
-  if (event.action === "routine.webhook_test_rejected") return "Update the key in your app and resend";
-  if (event.action === "routine.webhook_received") return "Authentication passed";
-  if (event.action === "routine.webhook_rejected") return "Check the key in your sending app";
+  if (event.action === "routine.webhook_test_received") return t("componentsRoutineActivityRow.summary.testReceived");
+  if (event.action === "routine.webhook_test_rejected") return t("componentsRoutineActivityRow.summary.testRejected");
+  if (event.action === "routine.webhook_received") return t("componentsRoutineActivityRow.summary.received");
+  if (event.action === "routine.webhook_rejected") return t("componentsRoutineActivityRow.summary.rejected");
   if (!details) return "";
   if (typeof details.changeSummary === "string") return details.changeSummary;
-  if (event.action === "routine.run_triggered") return `${details.source === "webhook" ? "Webhook" : details.source === "schedule" ? "Schedule" : "Manual"} · ${details.status === "issue_created" ? "Task created" : String(details.status ?? "").replaceAll("_", " ")}`;
+  if (event.action === "routine.run_triggered") return `${details.source === "webhook" ? t("componentsRoutineActivityRow.summary.sourceWebhook") : details.source === "schedule" ? t("componentsRoutineActivityRow.summary.sourceSchedule") : t("componentsRoutineActivityRow.summary.sourceManual")} · ${details.status === "issue_created" ? t("componentsRoutineActivityRow.summary.taskCreated") : String(details.status ?? "").replaceAll("_", " ")}`;
   return Object.entries(details).filter(([key]) => !/id$/i.test(key)).slice(0, 3)
     .map(([key, value]) => `${key.replace(/([a-z])([A-Z])/g, "$1 $2").replaceAll("_", " ").toLowerCase()}: ${formatDetailValue(value)}`)
     .join(" · ");
@@ -41,14 +42,14 @@ function formatDetailValue(value: unknown): string {
 }
 
 const actionLabels: Record<string, string> = {
-  "routine.webhook_test_received": "Connection test passed",
-  "routine.webhook_test_rejected": "Connection test rejected",
-  "routine.webhook_received": "Webhook event received",
-  "routine.webhook_rejected": "Webhook authentication failed",
-  "routine.created": "Routine created", "routine.updated": "Routine updated",
-  "routine.trigger_created": "Trigger added", "routine.trigger_updated": "Trigger updated",
-  "routine.trigger_deleted": "Trigger removed", "routine.trigger_removed": "Trigger removed", "routine.trigger_restored": "Trigger restored", "routine.trigger_setup_finished": "Webhook setup finished", "routine.trigger_test_started": "Started testing a webhook", "routine.trigger_secret_rotated": "Webhook key replaced",
-  "routine.run_triggered": "Routine started", "routine.run_created": "Run created",
+  "routine.webhook_test_received": t("componentsRoutineActivityRow.actions.webhookTestReceived"),
+  "routine.webhook_test_rejected": t("componentsRoutineActivityRow.actions.webhookTestRejected"),
+  "routine.webhook_received": t("componentsRoutineActivityRow.actions.webhookReceived"),
+  "routine.webhook_rejected": t("componentsRoutineActivityRow.actions.webhookRejected"),
+  "routine.created": t("componentsRoutineActivityRow.actions.created"), "routine.updated": t("componentsRoutineActivityRow.actions.updated"),
+  "routine.trigger_created": t("componentsRoutineActivityRow.actions.triggerCreated"), "routine.trigger_updated": t("componentsRoutineActivityRow.actions.triggerUpdated"),
+  "routine.trigger_deleted": t("componentsRoutineActivityRow.actions.triggerDeleted"), "routine.trigger_removed": t("componentsRoutineActivityRow.actions.triggerRemoved"), "routine.trigger_restored": t("componentsRoutineActivityRow.actions.triggerRestored"), "routine.trigger_setup_finished": t("componentsRoutineActivityRow.actions.triggerSetupFinished"), "routine.trigger_test_started": t("componentsRoutineActivityRow.actions.triggerTestStarted"), "routine.trigger_secret_rotated": t("componentsRoutineActivityRow.actions.triggerSecretRotated"),
+  "routine.run_triggered": t("componentsRoutineActivityRow.actions.runTriggered"), "routine.run_created": t("componentsRoutineActivityRow.actions.runCreated"),
 };
 function actionLabel(action: string) {
   return actionLabels[action] ?? action.replace(/^routine[._]/, "").replaceAll("_", " ").replaceAll(".", " ").replace(/^./, (char) => char.toUpperCase());

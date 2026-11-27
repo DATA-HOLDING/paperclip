@@ -1,0 +1,100 @@
+{
+  "breadcrumbs": {
+    "organization": "Organização",
+    "settings": "Configurações",
+    "members": "Membros",
+    "access": "Acesso"
+  },
+  "toasts": {
+    "memberUpdated": "Membro atualizado",
+    "updateFailed": "Falha ao atualizar o membro",
+    "joinApproved": "Pedido de entrada aprovado",
+    "approveFailed": "Falha ao aprovar o pedido de entrada",
+    "joinRejected": "Pedido de entrada rejeitado",
+    "rejectFailed": "Falha ao rejeitar o pedido de entrada",
+    "memberRemoved": "Membro removido",
+    "tasksCleanedUp_one": "{{count}} tarefa atribuída foi reorganizada.",
+    "tasksCleanedUp_other": "{{count}} tarefas atribuídas foram reorganizadas.",
+    "removeFailed": "Falha ao remover o membro"
+  },
+  "selectOrganization": "Selecione uma organização para gerenciar o acesso.",
+  "loading": "Carregando o acesso à organização…",
+  "forbidden": "Você não tem permissão para gerenciar os membros da organização.",
+  "loadAction": "carregar os membros da organização",
+  "title": "Membros da organização",
+  "invitePeople": "Convidar pessoas",
+  "tabs": {
+    "members": "Membros",
+    "invites": "Convites"
+  },
+  "instanceAdminNotice": "Esta conta pode gerenciar o acesso aqui por meio de privilégios de administrador da instância, mas no momento não tem uma participação ativa na organização.",
+  "pending": {
+    "title": "Entradas de pessoas pendentes",
+    "description": "Revise os pedidos de entrada pendentes antes que se tornem membros ativos da organização.",
+    "count": "{{count}} pendentes",
+    "unknownRequester": "Solicitante desconhecido",
+    "noEmail": "Nenhum e-mail disponível",
+    "joinInvite": "Convite de entrada {{types}}",
+    "defaultRole": " • função padrão {{role}}",
+    "noInviteMetadata": "Metadados do convite indisponíveis",
+    "submitted": "Enviado em {{time}}",
+    "approve": "Aprovar pessoa",
+    "reject": "Rejeitar pessoa"
+  },
+  "table": {
+    "name": "Nome",
+    "email": "E-mail",
+    "role": "Função",
+    "status": "Status",
+    "action": "Ação",
+    "empty": "Nenhuma participação de usuário encontrada nesta organização ainda."
+  },
+  "unset": "Não definida",
+  "memberStatus": {
+    "pending": "pendente",
+    "active": "ativo",
+    "suspended": "suspenso",
+    "archived": "arquivado"
+  },
+  "edit": "Editar",
+  "remove": "Remover",
+  "cancel": "Cancelar",
+  "editDialog": {
+    "title": "Editar membro",
+    "description": "Atualize a função na organização e o status de participação de {{name}}.",
+    "role": "Função na organização",
+    "status": "Status de participação",
+    "statusOptions": {
+      "active": "Ativo",
+      "pending": "Pendente",
+      "suspended": "Suspenso"
+    },
+    "saving": "Salvando…",
+    "save": "Salvar membro"
+  },
+  "removeDialog": {
+    "title": "Remover membro",
+    "description": "Arquive {{name}} e mova as atribuições ativas antes de ocultar este usuário dos campos de atribuição.",
+    "checking": "Verificando as tarefas atribuídas...",
+    "openTasks_one": "{{count}} tarefa aberta atribuída",
+    "openTasks_other": "{{count}} tarefas abertas atribuídas",
+    "reassignment": "Reatribuição de tarefas",
+    "leaveUnassigned": "Deixar sem responsável",
+    "humans": "Pessoas",
+    "agents": "Agentes",
+    "moreTasks_one": "mais {{count}} tarefa",
+    "moreTasks_other": "mais {{count}} tarefas",
+    "removing": "Removendo..."
+  },
+  "legacy": {
+    "checking": "Verificando extensões de permissões avançadas...",
+    "title": "Permissões avançadas",
+    "description": "Controles de acesso avançado, atribuição com escopo e concessões explícitas são fornecidos por extensões de configurações da organização instaladas.",
+    "unavailable": "Permissões avançadas indisponíveis",
+    "unavailableDescription": "O Paperclip continua aplicando os limites da organização e qualquer política restritiva existente, mas editar permissões avançadas exige uma extensão instalada.",
+    "pluginError": "Extensões de plugin indisponíveis: {{error}}",
+    "openMembers": "Abrir Membros",
+    "openInvites": "Abrir Convites"
+  },
+  "thisMember": "este membro"
+}

@@ -1,0 +1,164 @@
+{
+  "providers": {
+    "zapier": {
+      "description": "Use the apps and actions on your Zapier MCP server.",
+      "instructions": {
+        "0": "Create an MCP server in Zapier and choose Other as the client.",
+        "1": "Connect your apps and select the actions to expose.",
+        "2": "Open Connect, generate a token, and copy the full server URL."
+      },
+      "placeholder": "Paste the full URL from Zapier",
+      "urlHelp": "The full server URL can contain a secret token. Paste it exactly as Zapier provides it.",
+      "authHelp": "For a separate token, use https://mcp.zapier.com/api/v1/connect and choose Bearer token."
+    },
+    "arcade": {
+      "description": "Use the tools exposed by your Arcade gateway.",
+      "instructions": {
+        "0": "Create a gateway in Arcade and select its tools.",
+        "1": "Choose its User Source and copy the gateway URL.",
+        "2": "Paste the URL here, then sign in when prompted."
+      },
+      "urlHelp": "Copy the MCP gateway URL from Arcade. App authorization may be required the first time you use a tool.",
+      "authHelp": "For Arcade Headers, use an API key as the bearer token and add the Arcade-User-ID header for the acting user."
+    },
+    "composio": {
+      "description": "Discover and use your apps through Composio Connect.",
+      "instructions": {
+        "0": "Connect to Composio and sign in with your account.",
+        "1": "Connect underlying apps in Composio when prompted."
+      },
+      "urlHelp": "Paste the MCP URL from your existing Composio session. If it requires headers, add them under Change.",
+      "authHelp": "Session URLs and headers come from your external Composio setup. Direct-tools sessions expose individual actions."
+    },
+    "executor": {
+      "description": "Run tools through your Executor workspace.",
+      "instructions": {
+        "0": "Connect your apps and configure action policies in Executor.",
+        "1": "Open Integrations and copy the URL under “Connect an agent”.",
+        "2": "Paste it here and sign in when prompted."
+      },
+      "placeholder": "Paste your Executor workspace MCP URL",
+      "urlHelp": "Use the hosted workspace URL or a self-hosted HTTP endpoint reachable from Paperclip. The server’s endpoint policy also applies.",
+      "authHelp": "Keep any options in the copied URL. If using an API key, use a user key; workspace and organization keys cannot open an MCP session."
+    }
+  },
+  "accountChoice": {
+    "titleThrough": "Connect {{service}} through {{provider}}",
+    "title": "Connect {{provider}}",
+    "description": "Use an existing connection or connect a new account. Existing access stays unchanged.",
+    "externalBanner": "{{provider}} is an external service that handles the connection and requests to {{service}}. Reusing this account does not yet verify app access; the agent will check it and guide any additional authorization.",
+    "accountAvailable": "Provider account available",
+    "connectNew": "Connect new"
+  },
+  "common": {
+    "cancel": "Cancel"
+  },
+  "designExample": {
+    "notice": "Design example only. Review the interactive states in Storybook → Apps / Connections. No credentials are saved or sent."
+  },
+  "management": {
+    "title": "Connection settings",
+    "reconnect": "Reconnect",
+    "manageIn": "Manage in {{provider}}",
+    "disconnect": "Disconnect",
+    "confirmTitle": "Disconnect {{provider}}?",
+    "confirmDescription": "Delete this connection’s saved credentials and stop further calls through Paperclip. Other connections are unaffected. Actions already sent to the provider may still complete. Connecting again requires a new sign-in or key.",
+    "disconnecting": "Disconnecting…",
+    "disconnectConnection": "Disconnect connection"
+  },
+  "production": {
+    "credentialsRetained": "Saved credentials are retained when these fields are left blank. Enter a replacement only to change them.",
+    "includeRequestingAgent": "Include the requesting agent or choose all agents to continue this task.",
+    "headerIncomplete": "Enter both a name and value for each header.",
+    "consoleUrlInvalid": "Use an HTTPS console URL without credentials.",
+    "signInBlocked": "Paperclip couldn’t open sign-in. Use the sign-in link below to continue.",
+    "loadSavedAccessAction": "load saved access",
+    "loadingSavedAccess": "Loading saved access…"
+  },
+  "setup": {
+    "helpWith": "Help with {{label}}",
+    "boundary": "Paperclip controls access to the tools listed here. App and action permissions inside these tools are managed in",
+    "errors": {
+      "invalidUrl": {
+        "title": "Enter a valid MCP URL",
+        "body": "Paste the complete server URL, including https:// or http://. A dashboard page is not an MCP endpoint."
+      },
+      "oauthFailed": {
+        "title": "{{provider}} couldn’t connect",
+        "body": "Authorization did not complete. Your saved connection is still here, so you can try again."
+      },
+      "rejected": {
+        "title": "Credentials were rejected",
+        "body": "Check or replace the credentials from {{provider}}, then reconnect. Your agent access and tool choices are preserved."
+      },
+      "unreachable": {
+        "title": "Paperclip could not reach this server",
+        "body": "Check that the endpoint is running and reachable from Paperclip, then try again. Your draft is still here."
+      }
+    },
+    "serverUrl": "MCP server URL",
+    "consoleUrl": "Console URL (optional)",
+    "executorConsoleUrl": "Executor console URL",
+    "consoleUrlHelp": "The URL of your Executor organization’s integrations page. Used to open and manage imported accounts.",
+    "continueSetup": "Continue your setup",
+    "whoCanUse": "Who can use this connection",
+    "reconnectProvider": "Reconnect {{provider}}",
+    "subtitle": {
+      "onYourBehalf": "Paperclip will use {{provider}} on your behalf.",
+      "readyToResume": "Your {{provider}} setup is ready to resume.",
+      "manage": "Manage this {{provider}} connection."
+    },
+    "connected": "Connected",
+    "connectedAs": "Connected as {{identity}}",
+    "actionsAvailable": "{{count}} actions available",
+    "connectStep": "Connect",
+    "upstreamBanner": "{{provider}} handles the connection and requests to {{service}}.",
+    "upstreamComposio": "After connecting this account, sign in to the app in Composio.",
+    "upstreamOther": "Manage app sign-in in the provider, then refresh your gateway here.",
+    "done": "Done",
+    "continue": "Continue",
+    "permissions": "Permissions",
+    "openGuide": "Open {{provider}} setup guide",
+    "finishSignIn": "Finish signing in to {{provider}}",
+    "finishSignInBody": "Complete sign-in in the provider window, then return here. Paperclip is waiting for confirmation.",
+    "windowDidNotOpen": "If a window did not open,",
+    "openSignInAgain": "open sign-in again",
+    "cancelSignIn": "Cancel sign-in",
+    "waitingForSignIn": "Waiting for sign-in",
+    "cancelled": "Connection cancelled. Your setup details are preserved; try again when you are ready.",
+    "reuseSession": "Reuse an existing session",
+    "authentication": "Authentication",
+    "signInMethod": "Sign-in method",
+    "authOptions": {
+      "auto": "Automatic (sign in if required)",
+      "bearer": "Bearer token",
+      "headers": "Custom headers",
+      "none": "No additional authentication"
+    },
+    "bearerTokenLower": "bearer token",
+    "bearerHelp": "Paste the token only, without the word Bearer. It is kept in the connection’s credentials.",
+    "additionalHeaders": "Additional headers",
+    "headers": "Headers",
+    "headerName": "Header {{index}} name",
+    "headerNamePlaceholder": "Header name",
+    "headerValue": "Header {{index}} value",
+    "removeHeader": "Remove header {{index}}",
+    "addHeader": "Add header",
+    "discovering": "Connecting and discovering tools…",
+    "back": "Back",
+    "connecting": "Connecting…",
+    "tryAgain": "Try again",
+    "disconnected": "Disconnected",
+    "disconnectedBody": "Agents cannot use this connection. Reconnect to restore access under the saved permission choices.",
+    "justMe": "Just me",
+    "anyHuman": "Any human in the organization",
+    "toolsCount": "{{count}} tools",
+    "anyAgent": "Any agent",
+    "agentsWithAccess": "{{count}} agents with access",
+    "refreshHint": "Refresh the catalog after changing tools in {{provider}}. Existing Off and Ask first choices are preserved.",
+    "refreshing": "Refreshing…",
+    "refreshTools": "Refresh tools",
+    "draftKept": "Your access choices and setup progress are kept with this connection.",
+    "resumeSetup": "Resume setup"
+  }
+}

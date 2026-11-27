@@ -1,0 +1,26 @@
+{
+  "accountUnconfirmed": "Paperclip couldn’t confirm who is signed in.",
+  "itemStatus": {
+    "inProgress": "In progress",
+    "done": "Done",
+    "failed": "Failed"
+  },
+  "heading": {
+    "done": "Your agent set up {{subject}}",
+    "failed": "Your agent couldn’t finish setting up {{subject}}",
+    "working": "Your agent is setting up {{subject}}"
+  },
+  "expiredHeading": "This setup prompt expired",
+  "description": {
+    "expired": "Its progress link stopped working before your agent finished. Start again for a new prompt, then give it to your agent.",
+    "waiting": "Paste the prompt into your agent. Its steps appear here as it works.",
+    "done": "Every step is done.",
+    "working": "Keep your agent running; its steps update here."
+  },
+  "notStarted": "Not started",
+  "lastUpdate": "Last update {{timeAgo}}",
+  "refreshError": "Couldn’t refresh your agent’s progress: {{error}}",
+  "retry": "Retry",
+  "fixAndRestart": "Fix what stopped it, then start again for a new prompt.",
+  "startAgain": "Start again"
+}

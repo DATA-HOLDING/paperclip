@@ -1,0 +1,30 @@
+{
+  "type": {
+    "hireAgent": "Contratar agente",
+    "ceoStrategy": "Estratégia do CEO",
+    "budgetOverride": "Exceção de orçamento",
+    "boardApproval": "Aprovação do conselho"
+  },
+  "labelWithSubject": "{{base}}: {{subject}}",
+  "field": {
+    "skills": "Skills",
+    "name": "Nome",
+    "role": "Função",
+    "title": "Cargo",
+    "icon": "Ícone",
+    "capabilities": "Capacidades",
+    "adapter": "Adaptador",
+    "scope": "Escopo",
+    "window": "Janela",
+    "metric": "Métrica"
+  },
+  "limitObserved": "Limite {{limit}} · Observado {{observed}}",
+  "board": {
+    "title": "Título",
+    "summary": "Resumo",
+    "recommendedAction": "Ação recomendada",
+    "onApproval": "Ao aprovar",
+    "risks": "Riscos",
+    "proposedComment": "Comentário proposto"
+  }
+}

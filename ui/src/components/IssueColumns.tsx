@@ -25,31 +25,32 @@ import { Identity } from "./Identity";
 import { StatusIcon } from "./StatusIcon";
 import { Badge } from "@/components/ui/badge";
 import { taskStatusIconProps } from "@/lib/task-status-presentation";
+import { t } from "@/i18n";
 
 export const issueTrailingColumns: InboxIssueColumn[] = ["assignee", "kickedOffBy", "project", "workspace", "parent", "labels", "updated"];
 
 const issueColumnLabels: Record<InboxIssueColumn, string> = {
-  status: "Status",
-  id: "ID",
-  assignee: "Responsible",
-  kickedOffBy: "Kicked off by",
-  project: "Project",
-  workspace: "Workspace",
-  parent: "Parent task",
-  labels: "Tags",
-  updated: "Last updated",
+  status: t("componentsIssueColumns.label.status"),
+  id: t("componentsIssueColumns.label.id"),
+  assignee: t("componentsIssueColumns.label.assignee"),
+  kickedOffBy: t("componentsIssueColumns.label.kickedOffBy"),
+  project: t("componentsIssueColumns.label.project"),
+  workspace: t("componentsIssueColumns.label.workspace"),
+  parent: t("componentsIssueColumns.label.parent"),
+  labels: t("componentsIssueColumns.label.labels"),
+  updated: t("componentsIssueColumns.label.updated"),
 };
 
 const issueColumnDescriptions: Record<InboxIssueColumn, string> = {
-  status: "Task state chip on the left edge.",
-  id: "Ticket identifier like PAP-1009.",
-  assignee: "Responsible agent or board user.",
-  kickedOffBy: "Board user or agent who created the task.",
-  project: "Linked project pill with its color.",
-  workspace: "Execution or project workspace used for the task.",
-  parent: "Parent task identifier and title.",
-  labels: "Task labels and tags.",
-  updated: "Latest visible activity time.",
+  status: t("componentsIssueColumns.description.status"),
+  id: t("componentsIssueColumns.description.id"),
+  assignee: t("componentsIssueColumns.description.assignee"),
+  kickedOffBy: t("componentsIssueColumns.description.kickedOffBy"),
+  project: t("componentsIssueColumns.description.project"),
+  workspace: t("componentsIssueColumns.description.workspace"),
+  parent: t("componentsIssueColumns.description.parent"),
+  labels: t("componentsIssueColumns.description.labels"),
+  updated: t("componentsIssueColumns.description.updated"),
 };
 
 export function issueColumnDescription(
@@ -57,10 +58,10 @@ export function issueColumnDescription(
   presentation: "legacy" | "task" = "legacy",
 ): string {
   if (column === "id" && presentation === "task") {
-    return "Task identifier like PAP-1009 on the trailing edge.";
+    return t("componentsIssueColumns.description.idTask");
   }
   if (column === "status" && presentation === "task") {
-    return "Task state icon on the leading edge.";
+    return t("componentsIssueColumns.description.statusTask");
   }
   return issueColumnDescriptions[column];
 }
@@ -70,7 +71,7 @@ export function issueActivityTimestamp(issue: Issue): string {
 }
 
 export function issueActivityText(issue: Issue): string {
-  return `Updated ${issueActivityTimestamp(issue)}`;
+  return t("componentsIssueColumns.updatedAgo", { time: issueActivityTimestamp(issue) });
 }
 
 function issueTrailingGridTemplate(columns: InboxIssueColumn[]): string {
@@ -116,17 +117,17 @@ export function IssueColumnPicker({
           variant={iconOnly ? "outline" : "ghost"}
           size={iconOnly ? "icon" : "sm"}
           className={iconOnly ? "h-8 w-8 shrink-0" : "hidden h-8 shrink-0 px-2 text-xs sm:inline-flex"}
-          title="Columns"
+          title={t("componentsIssueColumns.columns")}
         >
           <Columns3 className={iconOnly ? "h-3.5 w-3.5" : "mr-1 h-3.5 w-3.5"} />
-          {!iconOnly && "Columns"}
+          {!iconOnly && t("componentsIssueColumns.columns")}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-(--sz-300px) rounded-xl border-border/70 p-1.5 shadow-xl shadow-black/10">
         <DropdownMenuLabel className="px-2 pb-1 pt-1.5">
           <div className="space-y-1">
             <div className="text-(length:--text-nano) font-semibold uppercase tracking-(--tracking-caps) text-muted-foreground">
-              Desktop task rows
+              {t("componentsIssueColumns.desktopTaskRows")}
             </div>
             <div className="text-sm font-medium text-foreground">
               {title}
@@ -161,10 +162,10 @@ export function IssueColumnPicker({
           >
             <span className="flex flex-col gap-0.5">
               <span className="text-sm font-medium text-foreground">
-                Date group separators
+                {t("componentsIssueColumns.dateGroupSeparators")}
               </span>
               <span className="text-xs leading-relaxed text-muted-foreground">
-                Show Today, Yesterday, and Earlier rules on newest-first task lists.
+                {t("componentsIssueColumns.dateGroupSeparatorsDescription")}
               </span>
             </span>
           </DropdownMenuCheckboxItem>
@@ -174,8 +175,8 @@ export function IssueColumnPicker({
           onSelect={onResetColumns}
           className="rounded-lg px-3 py-2 text-sm"
         >
-          Reset defaults
-          <span className="ml-auto text-xs text-muted-foreground">status, id, updated</span>
+          {t("componentsIssueColumns.resetDefaults")}
+          <span className="ml-auto text-xs text-muted-foreground">{t("componentsIssueColumns.resetDefaultsHint")}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -245,7 +246,7 @@ export function InboxIssueMetaLeading({
               "text-blue-600 dark:text-blue-400",
             )}
           >
-            Live
+            {t("componentsIssueColumns.live")}
           </span>
         </Badge>
       )}
@@ -255,7 +256,7 @@ export function InboxIssueMetaLeading({
             "px-1.5 sm:gap-1.5 sm:px-2",
             "border-border bg-transparent",
           )}
-          title={`${subtreeLiveCount} sub-task${subtreeLiveCount === 1 ? "" : "s"} running below`}
+          title={t("componentsIssueColumns.subtasksRunningBelow", { count: subtreeLiveCount })}
         >
           <span
             className={cn(
@@ -265,7 +266,7 @@ export function InboxIssueMetaLeading({
             aria-hidden="true"
           />
           <span className="hidden text-(length:--text-micro) font-medium text-muted-foreground sm:inline">
-            {subtreeLiveCount} live below
+            {t("componentsIssueColumns.liveBelow", { count: subtreeLiveCount })}
           </span>
         </Badge>
       )}
@@ -317,10 +318,10 @@ export function InboxIssueTrailingColumns({
   onFilterWorkspace?: (workspaceId: string) => void;
 }) {
   const activityText = issueActivityTimestamp(issue);
-  const userLabel = assigneeUserName ?? formatAssigneeUserLabel(issue.assigneeUserId, currentUserId) ?? "User";
+  const userLabel = assigneeUserName ?? formatAssigneeUserLabel(issue.assigneeUserId, currentUserId) ?? t("componentsIssueColumns.user");
   const originatingActor = deriveOriginatingActor(issue);
   const originatingUserId = originatingActor?.kind === "user" ? originatingActor.id : null;
-  const creatorUserLabel = creatorUserName ?? formatAssigneeUserLabel(originatingUserId, currentUserId) ?? "User";
+  const creatorUserLabel = creatorUserName ?? formatAssigneeUserLabel(originatingUserId, currentUserId) ?? t("componentsIssueColumns.user");
 
   return (
     <span
@@ -360,7 +361,7 @@ export function InboxIssueTrailingColumns({
 
           return (
             <span key={column} className="min-w-0 truncate text-xs text-muted-foreground">
-              Unassigned
+              {t("componentsIssueColumns.unassigned")}
             </span>
           );
         }
@@ -385,7 +386,7 @@ export function InboxIssueTrailingColumns({
           }
 
           if (originatingActor?.kind === "user") {
-            const tooltipText = viaAgentName ? `${creatorUserLabel} · via ${viaAgentName}` : creatorUserLabel;
+            const tooltipText = viaAgentName ? t("componentsIssueColumns.viaAgent", { user: creatorUserLabel, agent: viaAgentName }) : creatorUserLabel;
             return (
               <Tooltip key={column}>
                 <TooltipTrigger asChild>
@@ -405,7 +406,7 @@ export function InboxIssueTrailingColumns({
 
           return (
             <span key={column} className="min-w-0 truncate text-xs text-muted-foreground">
-              Unknown
+              {t("componentsIssueColumns.unknown")}
             </span>
           );
         }
@@ -431,7 +432,7 @@ export function InboxIssueTrailingColumns({
 
           return (
             <span key={column} className="min-w-0 truncate text-xs text-muted-foreground">
-              No project
+              {t("componentsIssueColumns.noProject")}
             </span>
           );
         }
@@ -488,7 +489,7 @@ export function InboxIssueTrailingColumns({
                     </button>
                   </TooltipTrigger>
                   <TooltipContent side="top" sideOffset={6}>
-                    Filter by workspace
+                    {t("componentsIssueColumns.filterByWorkspace")}
                   </TooltipContent>
                 </Tooltip>
               ) : (
@@ -508,7 +509,7 @@ export function InboxIssueTrailingColumns({
               {parentIdentifier ? (
                 <span className="font-mono">{parentIdentifier}</span>
               ) : (
-                <span className="italic">Sub-task</span>
+                <span className="italic">{t("componentsIssueColumns.subtask")}</span>
               )}
             </span>
           );

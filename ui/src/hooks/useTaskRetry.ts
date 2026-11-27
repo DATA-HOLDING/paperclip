@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { t } from "@/i18n";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Issue } from "@paperclipai/shared";
 import { ApiError } from "../api/client";
@@ -10,9 +11,9 @@ type RetryRequest = { issueId: string; identifier?: string | null; idempotencyKe
   retryAction?: "move_forward" };
 type RetryResult = Awaited<ReturnType<typeof issuesApi.retryTask>>;
 
-export const STALE_TASK_RETRY_MESSAGE = "This attempt was already replaced, so Retry did not start new work. The task now shows its current state.";
+export const STALE_TASK_RETRY_MESSAGE = t("hooksUseTaskRetry.staleRetry");
 
-export const ALREADY_MOVED_ON_MESSAGE = "The task already moved on, so nothing new was started. It now shows its current state.";
+export const ALREADY_MOVED_ON_MESSAGE = t("hooksUseTaskRetry.alreadyMovedOn");
 
 export function taskRetryNotStartedReason(result: RetryResult): string | null {
   if (!result.accepted && result.refused) return result.refused.message;

@@ -1,0 +1,50 @@
+{
+  "author": {
+    "you": "Você"
+  },
+  "actor": {
+    "system": "Sistema",
+    "board": "Conselho"
+  },
+  "timeline": {
+    "requestedFollowUp": "{{actor}} pediu acompanhamento",
+    "updatedIssue": "{{actor}} atualizou esta tarefa",
+    "statusChange": "Status: {{from}} -> {{to}}",
+    "none": "nenhum",
+    "unassigned": "Sem responsável",
+    "assigneeChange": "Responsável: {{from}} -> {{to}}",
+    "workspaceChange": "Espaço de trabalho: {{from}} -> {{to}}"
+  },
+  "duration": {
+    "seconds_one": "{{count}} segundo",
+    "seconds_other": "{{count}} segundos",
+    "minutes_one": "{{count}} minuto",
+    "minutes_other": "{{count}} minutos",
+    "hours_one": "{{count}} hora",
+    "hours_other": "{{count}} horas",
+    "hoursAndMinutes": "{{hours}} e {{minutes}}"
+  },
+  "run": {
+    "workedFor": "Trabalhou por {{duration}}",
+    "finishedWork": "Trabalho concluído",
+    "failedAfter": "Falhou após {{duration}}",
+    "failed": "A execução falhou",
+    "timedOutAfter": "Tempo esgotado após {{duration}}",
+    "timedOut": "Tempo da execução esgotado",
+    "interruptedAfter": "Interrompida pelo conselho após {{duration}}",
+    "interrupted": "Interrompida pelo conselho",
+    "pausedAfter": "Pausada pelo conselho após {{duration}}",
+    "paused": "Pausada pelo conselho",
+    "cancelledAfter": "Cancelada após {{duration}}",
+    "cancelled": "Execução cancelada",
+    "queued": "Na fila",
+    "working": "Trabalhando...",
+    "historicalSummary": "Execução {{runId}} de {{agent}}: {{status}}",
+    "finished": "Execução concluída"
+  },
+  "providerActivity": "Atividade do provedor",
+  "runError": "Erro na execução: {{message}}",
+  "live": {
+    "queued": "Na fila..."
+  }
+}

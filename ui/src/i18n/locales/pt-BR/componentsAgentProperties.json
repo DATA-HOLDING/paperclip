@@ -1,0 +1,13 @@
+{
+  "status": "Status",
+  "errorReason": "Motivo do erro",
+  "role": "Função",
+  "title": "Cargo",
+  "adapter": "Adaptador",
+  "session": "Sessão",
+  "lastError": "Último erro",
+  "lastRunError": "Erro da última execução",
+  "lastHeartbeat": "Último heartbeat",
+  "reportsTo": "Reporta a",
+  "created": "Criado em"
+}

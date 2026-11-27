@@ -1,0 +1,12 @@
+{
+  "restoreFromArchive": "Restaurar do arquivo",
+  "archive": "Arquivar",
+  "markAsRead": "Marcar como lida",
+  "parkedBlocker": {
+    "title": "Bloqueada por trabalho estacionado — pelo menos um bloqueio atribuído está no backlog e não vai acordar o responsável.",
+    "label": "Bloqueada por trabalho estacionado"
+  },
+  "openTaskAria": "Abrir tarefa {{identifier}} ({{status}})",
+  "openIssue": "Abrir {{identifier}}: {{title}}",
+  "recoveryStatus": "Status de recuperação da tarefa"
+}

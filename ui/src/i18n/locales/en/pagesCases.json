@@ -1,0 +1,39 @@
+{
+  "breadcrumb": "Cases",
+  "filterBy": "Filter by {{label}}",
+  "projectUnavailable": "Project unavailable",
+  "noProject": "No project",
+  "selectCompany": "Select a company to view cases.",
+  "controls": "Case controls",
+  "searchLabel": "Search cases",
+  "searchPlaceholder": "Search cases…",
+  "loading": "Loading cases…",
+  "updating": "Updating cases…",
+  "range": "{{from}}–{{to}} cases",
+  "countOne": "{{n}} case",
+  "countOther": "{{n}} cases",
+  "filters": {
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "type": "Type",
+    "allTypes": "All types",
+    "project": "Project",
+    "allProjects": "All projects",
+    "selectedProject": "Selected project"
+  },
+  "clearFilters": "Clear filters",
+  "filtersLoadError": "Some case filters couldn’t be loaded.",
+  "retryFilters": "Retry filters",
+  "loadError": "Cases couldn’t be loaded.",
+  "tryAgain": "Try again",
+  "empty": {
+    "page": "No cases on this page",
+    "filtered": "No cases match these filters",
+    "none": "No cases yet"
+  },
+  "firstPage": "First page",
+  "list": "Case list",
+  "pages": "Case list pages",
+  "previous": "Previous",
+  "next": "Next"
+}

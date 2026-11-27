@@ -1,0 +1,8 @@
+{
+  "unstarAgentName": "Desmarcar {{name}}",
+  "starAgentName": "Marcar {{name}} com estrela",
+  "unstarAgent": "Desmarcar agente",
+  "starAgent": "Marcar o agente com estrela para fixar",
+  "chats": "Chats",
+  "chatWithAgent": "Conversar com um agente"
+}

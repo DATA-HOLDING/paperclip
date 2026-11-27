@@ -1,0 +1,34 @@
+{
+  "never": "Never",
+  "edit": "Edit",
+  "unknownProject": "Unknown project",
+  "noProject": "No project",
+  "unknownAgent": "Unknown agent",
+  "noDefaultAgent": "No default agent",
+  "unavailableUser": "Unavailable user",
+  "noResponsibleUser": "No responsible user",
+  "disableAria": "Disable {{title}}",
+  "enableAria": "Enable {{title}}",
+  "state": {
+    "archived": "Archived",
+    "draft": "Draft",
+    "on": "On",
+    "off": "Off"
+  },
+  "badge": {
+    "archived": "archived",
+    "draft": "draft",
+    "paused": "paused"
+  },
+  "selectAria": "Select {{title}}",
+  "runningAria": "Running {{title}}",
+  "runNowAria": "Run now: {{title}}",
+  "runningEllipsis": "Running…",
+  "runNow": "Run now",
+  "moreActionsAria": "More actions for {{title}}",
+  "runningDots": "Running...",
+  "pause": "Pause",
+  "enable": "Enable",
+  "restore": "Restore",
+  "archive": "Archive"
+}

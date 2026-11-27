@@ -1,0 +1,18 @@
+{
+  "selectAgent": "Select agent…",
+  "noAgents": "No agents yet.",
+  "filterAgents": "Filter agents",
+  "selectNamed": "Select {{name}}",
+  "noMatches": "No matches.",
+  "selectAgents": "Select agents",
+  "agentsSelected_one": "{{count}} agent selected",
+  "agentsSelected_other": "{{count}} agents selected",
+  "allowNamed": "Allow {{name}}",
+  "noneSelected": "No agents selected",
+  "selectedCount": "{{count}} selected",
+  "cancel": "Cancel",
+  "saving": "Saving…",
+  "save": "Save",
+  "done": "Done",
+  "andMore": "and {{count}} more"
+}

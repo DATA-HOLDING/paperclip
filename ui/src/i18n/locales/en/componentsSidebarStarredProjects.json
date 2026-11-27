@@ -1,0 +1,8 @@
+{
+  "starredProjects": "Starred projects",
+  "privateProject": "Private project",
+  "pausedByBudget": "Project paused by budget",
+  "openActions": "Open actions for {{name}}",
+  "removeFromStarred": "Remove from starred",
+  "leaveProject": "Leave project"
+}

@@ -1,0 +1,35 @@
+{
+  "engine": {
+    "label": "Execution engine",
+    "hint": "Default uses ACP. If ACP is unavailable, the run fails with a setup error. Choose CLI explicitly to use it.",
+    "default": "Default (ACP)"
+  },
+  "acpCommand": {
+    "label": "ACP server command",
+    "hint": "Optional override for the Gemini ACP server command. Defaults to gemini --acp."
+  },
+  "sessionMode": {
+    "label": "ACP session mode",
+    "hint": "Persistent keeps ACP session state between runs. One-shot starts fresh each run.",
+    "persistent": "Persistent",
+    "oneshot": "One-shot"
+  },
+  "permissions": {
+    "label": "ACP non-interactive permissions",
+    "hint": "Fallback if the ACP agent asks for input outside an interactive session.",
+    "deny": "Deny",
+    "fail": "Fail"
+  },
+  "stateDir": {
+    "label": "ACP state directory",
+    "hint": "Optional ACP session state directory. Defaults to Paperclip-managed organization/agent scoped storage."
+  },
+  "warmIdle": {
+    "label": "ACP warm process idle ms",
+    "hint": "Defaults to 0, which closes the ACP process after each run while retaining persistent session state."
+  },
+  "instructionsFile": {
+    "label": "Agent instructions file",
+    "hint": "Absolute path to a markdown file (e.g. AGENTS.md) that defines this agent's behavior. Prepended to the Gemini prompt at runtime."
+  }
+}

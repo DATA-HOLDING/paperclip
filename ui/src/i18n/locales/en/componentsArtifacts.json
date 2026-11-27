@@ -1,0 +1,135 @@
+{
+  "unhealthy": "Unhealthy",
+  "card": {
+    "image": "Image",
+    "document": "Document",
+    "text": "Text",
+    "file": "File",
+    "openInNewTab": "Open file in new tab",
+    "downloadFile": "Download file",
+    "lastEdited": "Last edited {{date}}"
+  },
+  "dropzone": {
+    "dropFiles": "Drop files to add them to this task",
+    "label": "Artifact uploads"
+  },
+  "groupCard": {
+    "count_one": "{{count}} artifact",
+    "count_other": "{{count}} artifacts",
+    "updated": "Updated {{date}}"
+  },
+  "uploadArea": {
+    "label": "Task artifacts"
+  },
+  "upload": {
+    "chooseFiles": "Choose artifact files",
+    "uploadFiles": "Upload files",
+    "uploads": "Uploads",
+    "uploading": "Uploading…",
+    "failed": "Upload failed. Try again.",
+    "retry": "Retry",
+    "dismiss": "Dismiss upload: {{filename}}",
+    "emptyTitle": "Add files to this task",
+    "emptyDescription": "Drop files anywhere in this panel or use the upload icon."
+  },
+  "toolbar": {
+    "kind": {
+      "all": "All",
+      "image": "Images",
+      "video": "Videos",
+      "document": "Documents",
+      "text": "Text",
+      "file": "Files"
+    },
+    "group": {
+      "none": "None",
+      "task": "Task",
+      "parentTask": "Parent task"
+    },
+    "filterByType": "Filter artifacts by type",
+    "controls": "Artifacts controls",
+    "search": "Search artifacts",
+    "searchPlaceholder": "Search artifacts…",
+    "clearSearch": "Clear artifact search",
+    "groupCurrently": "Group artifacts (currently {{group}})",
+    "groupArtifacts": "Group artifacts",
+    "groupBy": "Group by"
+  },
+  "issueCard": {
+    "openInTabLabel": "Open in tab: {{title}}",
+    "openInTab": "Open in tab",
+    "loadingPreview": "Loading preview…",
+    "previewPatch": "Preview patch",
+    "previewData": "Preview data",
+    "loadPatchPreviewAction": "load the patch preview",
+    "loadingPatchPreview": "Loading patch preview…",
+    "csvTooLarge": "CSV is too large to preview. Download the file to view it.",
+    "loadCsvPreviewAction": "load the CSV preview",
+    "csvUnavailable": "CSV preview is unavailable. Download the file to view it."
+  },
+  "media": {
+    "openGallery": "Open gallery: {{title}}",
+    "video": "Video",
+    "image": "Image"
+  },
+  "rich": {
+    "filesChanged_one": "{{count}} file",
+    "filesChanged_other": "{{count}} files",
+    "checks": {
+      "passed": "Checks passed",
+      "pending": "Checks pending",
+      "failed": "Checks failed",
+      "unknown": "Checks not available"
+    },
+    "state": {
+      "open": "Open",
+      "draft": "Draft",
+      "merged": "Merged",
+      "closed": "Closed",
+      "unknown": "State unknown"
+    },
+    "pullRequest": "Pull request",
+    "source": "Source: {{source}}",
+    "openPullRequest": "Open pull request",
+    "commit": "Commit",
+    "viewCommit": "View commit",
+    "openImage": "Open image",
+    "patch": "Patch",
+    "revision": " · revision {{revision}}",
+    "closeDocument": "Close document",
+    "readDocument": "Read document",
+    "noRows": "No rows",
+    "first": "First ",
+    "rowCount_one": "{{count}} row",
+    "rowCount_other": "{{count}} rows",
+    "columnCount_one": "{{count}} column",
+    "columnCount_other": "{{count}} columns",
+    "viewData": "View data",
+    "downloadCsv": "Download CSV",
+    "noPreview": "No preview available",
+    "image": "Image",
+    "viewImageLabel": "View image: {{title}}",
+    "viewImage": "View image",
+    "video": "Video",
+    "openVideoLabel": "Open video: {{title}}",
+    "openVideo": "Open video",
+    "linkPreview": "Link preview",
+    "openLink": "Open link",
+    "file": "File",
+    "openFile": "Open file",
+    "downloadFile": "Download file",
+    "downloadUnavailable": "Download unavailable"
+  },
+  "fileRow": {
+    "openRawLabel": "Open raw {{filename}}",
+    "openRaw": "Open raw",
+    "downloadLabel": "Download {{filename}}",
+    "download": "Download",
+    "retryPreview": "Retry preview"
+  },
+  "v1Filters": {
+    "tasks": "Tasks",
+    "allFiles": "All files",
+    "label": "Show artifacts by task or by type"
+  }
+}

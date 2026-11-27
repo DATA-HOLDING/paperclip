@@ -1,0 +1,21 @@
+{
+  "nouns": {
+    "message": "message",
+    "comment": "comment",
+    "task": "task",
+    "update": "update"
+  },
+  "title": {
+    "unconfirmed": "We couldn’t confirm whether this {{noun}} was sent.",
+    "sending": "Sending…",
+    "stalled": "Couldn’t send this {{noun}} yet.",
+    "waiting": "Sending when reconnected…"
+  },
+  "detail": {
+    "saved": "Your {{noun}} is saved on this device.",
+    "noStorage": "Browser storage is unavailable. Keep this tab open or copy your text before leaving.",
+    "maybeSent": "It may already be in the conversation. Check it before sending again; Cancel keeps your text."
+  },
+  "resendNow": "Resend now",
+  "cancel": "Cancel"
+}

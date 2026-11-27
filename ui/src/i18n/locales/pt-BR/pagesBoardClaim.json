@@ -1,0 +1,24 @@
+{
+  "invalidUrl": "URL de reivindicação do Conselho inválida.",
+  "loading": "Carregando o desafio de reivindicação...",
+  "unavailable": "Desafio de reivindicação indisponível.",
+  "claimed": {
+    "title": "Propriedade do Conselho reivindicada",
+    "body": "Esta instância agora está vinculada ao seu usuário autenticado.",
+    "open": "Abrir o Conselho"
+  },
+  "signIn": {
+    "title": "É preciso entrar",
+    "body": "Entre ou crie uma conta e depois volte a esta página para reivindicar a propriedade do Conselho.",
+    "action": "Entrar / Criar conta"
+  },
+  "claim": {
+    "title": "Reivindicar a propriedade do Conselho",
+    "body": "Isso vai promover seu usuário a administrador da instância e migrar o acesso de propriedade da organização do modo confiável local.",
+    "claiming": "Reivindicando…",
+    "action": "Reivindicar propriedade"
+  },
+  "errorActions": {
+    "loadChallenge": "carregar o desafio de reivindicação do Conselho"
+  }
+}

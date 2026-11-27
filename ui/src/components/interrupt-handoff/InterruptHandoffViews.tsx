@@ -11,6 +11,7 @@ import {
   type TimelineAssigneeLike,
 } from "../../lib/interrupt-handoff";
 import { ANALYTICS_MASK_CLASS } from "@/lib/analytics/privacy";
+import { t } from "@/i18n";
 
 /**
  * Presentational views for the interrupt-handoff UX clarity surfaces (PAP-10669).
@@ -39,8 +40,8 @@ function agentIcon(agentId: string, resolvers: HandoffChipResolvers): string | n
 
 function userLabel(userId: string, resolvers: HandoffChipResolvers): string {
   const label = resolvers.resolveUserLabel?.(userId) ?? null;
-  const base = label ?? "Board";
-  return resolvers.currentUserId && resolvers.currentUserId === userId ? `${base} (you)` : base;
+  const base = label ?? t("componentsInterruptHandoff.user.board");
+  return resolvers.currentUserId && resolvers.currentUserId === userId ? t("componentsInterruptHandoff.user.you", { name: base }) : base;
 }
 
 const CHIP_CLASS =
@@ -60,7 +61,7 @@ export function AssigneeChip({
   if (assignee.agentId) {
     return (
       <span className={cn(CHIP_CLASS, className)} data-testid="handoff-assignee-chip" data-kind="agent">
-        <span className="sr-only">Agent </span>
+        <span className="sr-only">{`${t("componentsInterruptHandoff.chip.agent")} `}</span>
         <AgentAvatar agent={{ ...resolvers.agentMap?.get(assignee.agentId), id: assignee.agentId }} size={16} />
         <span className="max-w-(--sz-12rem) truncate">{agentName(assignee.agentId, resolvers)}</span>
       </span>
@@ -69,7 +70,7 @@ export function AssigneeChip({
   if (assignee.userId) {
     return (
       <span className={cn(CHIP_CLASS, className)} data-testid="handoff-assignee-chip" data-kind="user">
-        <span className="sr-only">User </span>
+        <span className="sr-only">{`${t("componentsInterruptHandoff.chip.user")} `}</span>
         <User className="h-3 w-3 shrink-0 text-muted-foreground" />
         <span className="max-w-(--sz-12rem) truncate">{userLabel(assignee.userId, resolvers)}</span>
       </span>
@@ -81,8 +82,8 @@ export function AssigneeChip({
       data-testid="handoff-assignee-chip"
       data-kind="unassigned"
     >
-      <span className="sr-only">No responsible — </span>
-      Unassigned
+      <span className="sr-only">{`${t("componentsInterruptHandoff.chip.noResponsible")} `}</span>
+      {t("componentsInterruptHandoff.chip.unassigned")}
     </span>
   );
 }
@@ -108,7 +109,7 @@ export function HandoffWakeRow({
       data-testid="handoff-wake-row"
       data-kind={info.kind}
     >
-      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Wake</span>
+      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{t("componentsInterruptHandoff.wake")}</span>
       <span className={cn(info.kind === "agent_wake" ? "text-foreground" : "text-muted-foreground")}>
         {info.wakeText}
       </span>
@@ -204,22 +205,21 @@ export function ComposerMentionCoach({
     >
       <Info className="h-3.5 w-3.5 shrink-0" aria-hidden />
       <span className="min-w-0 flex-1">
-        Did you mean <span className="font-medium">@{candidate.matchedText}</span>? Plain text won't
-        notify or assign an agent.
+        {t("componentsInterruptHandoff.mentionCoach.didYouMean")} <span className="font-medium">@{candidate.matchedText}</span>{t("componentsInterruptHandoff.mentionCoach.plainText")}
       </span>
       <button
         type="button"
         onClick={onInsert}
         className="shrink-0 rounded border border-amber-400/50 px-1.5 py-0.5 font-medium hover:bg-amber-100/60 dark:hover:bg-amber-500/20"
-        aria-label={`Insert mention for ${agentDisplayName} into your comment`}
+        aria-label={t("componentsInterruptHandoff.mentionCoach.insertAria", { name: agentDisplayName })}
       >
-        Insert mention
+        {t("componentsInterruptHandoff.mentionCoach.insert")}
       </button>
       <button
         type="button"
         onClick={onDismiss}
         className="shrink-0 rounded p-0.5 hover:bg-amber-100/60 dark:hover:bg-amber-500/20"
-        aria-label="Dismiss suggestion"
+        aria-label={t("componentsInterruptHandoff.mentionCoach.dismiss")}
       >
         <X className="h-3.5 w-3.5" aria-hidden />
       </button>
@@ -278,7 +278,7 @@ export function InterruptAssignConfirm({
         <div className="min-w-0 flex-1 space-y-1">
           <p className="font-medium">{copy.confirmTitle}</p>
           <p className="flex flex-wrap items-center gap-1 text-amber-700/90 dark:text-amber-300/90">
-            <span>Hand off to</span>
+            <span>{t("componentsInterruptHandoff.handOffTo")}</span>
             <AssigneeChip assignee={to} resolvers={resolvers} />
           </p>
         </div>
@@ -320,12 +320,11 @@ export function PauseAffectsSummaryView({
     >
       <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
         <PauseCircle className="h-3.5 w-3.5" aria-hidden />
-        What this affects
+        {t("componentsInterruptHandoff.pause.title")}
       </div>
       {summary.nothingLive ? (
         <p role="status" className="text-xs text-muted-foreground" data-testid="pause-nothing-live">
-          Nothing live to pause — no agent run is in flight or queued. This records a hold so new work
-          won't start until you resume.
+          {t("componentsInterruptHandoff.pause.nothingLive")}
         </p>
       ) : null}
       {visibleBuckets.length > 0 ? (
@@ -343,7 +342,7 @@ export function PauseAffectsSummaryView({
           ))}
         </ul>
       ) : (
-        <p className="text-xs text-muted-foreground">No tasks are affected.</p>
+        <p className="text-xs text-muted-foreground">{t("componentsInterruptHandoff.pause.noTasks")}</p>
       )}
     </div>
   );

@@ -1,0 +1,41 @@
+{
+  "failedRun": {
+    "defaultError": "The run failed",
+    "retryNotStarted": "Retry did not start",
+    "retryRequested": "Retry requested",
+    "retryFailed": "Could not retry this run",
+    "retryNote": "Retry starts a new run.",
+    "viewRun": "View run",
+    "retryRun": "Retry run",
+    "openRun": "Open run",
+    "retry": "Retry"
+  },
+  "budget": {
+    "warningDismissed": "Warning dismissed",
+    "keptPaused": "Kept paused",
+    "limitRaised": "Limit raised",
+    "updateFailed": "Could not update the budget",
+    "newLimit": "New limit (USD)",
+    "spentOf": "{{spent}} spent of {{limit}}",
+    "percentUsed": "{{percent}}% used",
+    "used": "Budget used",
+    "scopeLimit": {
+      "company": "Company limit",
+      "agent": "Agent limit",
+      "project": "Project limit"
+    },
+    "limit": "Limit",
+    "workContinues": "Work continues until the limit is reached",
+    "runsPaused": "New runs are paused",
+    "tooLow": "The new limit must be more than the current spend.",
+    "dismissWarning": "Dismiss warning",
+    "keepPaused": "Keep paused",
+    "cancel": "Cancel",
+    "raiseLimit": "Raise limit",
+    "raiseAndResume": "Raise limit & resume",
+    "increaseLimit": "Increase limit…",
+    "spendIs": "Spend is {{spent}} of a {{limit}} limit.",
+    "warningNoPause": "This warning does not pause work.",
+    "scopePaused": "Work in this scope is paused."
+  }
+}

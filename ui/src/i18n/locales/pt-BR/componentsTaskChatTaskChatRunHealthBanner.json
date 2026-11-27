@@ -1,0 +1,7 @@
+{
+  "anServer": "Um",
+  "serverFailed": " servidor MCP falhou ao iniciar",
+  "serversCount": "{{count}} servidores MCP",
+  "failedToStart": " falharam ao iniciar: ",
+  "ranWithoutTools": "O agente rodou sem estas ferramentas. Corrija o comando ou as credenciais do servidor e tente novamente."
+}

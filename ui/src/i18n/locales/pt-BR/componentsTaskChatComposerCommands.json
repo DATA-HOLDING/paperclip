@@ -1,0 +1,4 @@
+{
+  "swarmRefusal": "O swarm usa o modelo configurado do agente. Limpe as escolhas de modelo e esforço desta mensagem e envie /swarm.",
+  "goalExtraArgs": "/goal {{subcommand}} não aceita argumentos extras."
+}

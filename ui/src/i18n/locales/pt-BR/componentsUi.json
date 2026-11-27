@@ -1,0 +1,11 @@
+{
+  "close": "Fechar",
+  "breadcrumb": {
+    "label": "trilha de navegação",
+    "more": "Mais"
+  },
+  "command": {
+    "title": "Paleta de comandos",
+    "description": "Busque um comando para executar..."
+  }
+}

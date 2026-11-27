@@ -1,0 +1,22 @@
+{
+  "title": "Executar rotina",
+  "description": "Escolha o agente e, se quiser, o projeto para esta execução. Os padrões da rotina já vêm preenchidos e não serão alterados.",
+  "agentLabel": "Agente *",
+  "agentPlaceholder": "Agente",
+  "selectAgent": "Selecione um agente",
+  "searchAgents": "Buscar agentes...",
+  "noAgents": "Nenhum agente encontrado.",
+  "projectLabel": "Projeto",
+  "noProject": "Nenhum projeto",
+  "searchProjects": "Buscar projetos...",
+  "noProjects": "Nenhum projeto encontrado.",
+  "noValue": "Sem valor",
+  "true": "Verdadeiro",
+  "false": "Falso",
+  "chooseValue": "Escolha um valor",
+  "agentRequired": "É necessário um agente padrão para esta execução.",
+  "missing": "Faltando: {{names}}",
+  "chooseWorkspace": "Escolha um espaço de trabalho existente antes de executar.",
+  "cancel": "Cancelar",
+  "running": "Executando..."
+}

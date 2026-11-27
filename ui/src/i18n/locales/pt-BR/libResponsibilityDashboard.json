@@ -1,0 +1,12 @@
+{
+  "alsoRenamed_one": "Também renomeado para {{count}} outra pessoa",
+  "alsoRenamed_other": "Também renomeado para outras {{count}} pessoas",
+  "movedFrom": "Movido de {{area}}",
+  "movedHere": "Movido para cá",
+  "letGo": "Abandonado",
+  "restored": "Restaurado",
+  "you": "Você",
+  "anAgent": "Um agente",
+  "forYou": "{{name}}, para você",
+  "restoredEarlier": "Uma versão anterior foi restaurada."
+}

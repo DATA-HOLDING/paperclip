@@ -1,0 +1,5 @@
+{
+  "runChanged": "Stop was not accepted because the run changed.",
+  "sessionChanged": "Stop was not accepted because your session changed.",
+  "anotherOperator": "This Stop request belongs to another operator."
+}

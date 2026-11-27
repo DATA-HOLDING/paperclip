@@ -1,0 +1,105 @@
+{
+  "labels": {
+    "channel": "Channel {{id}}",
+    "channelResource": "Channel resource {{id}}",
+    "identity": "Identity {{id}}",
+    "profile": "Profile {{id}}",
+    "connection": "Connection {{id}}",
+    "agentPolicy": "Agent policy {{id}}",
+    "secret": "Secret {{id}}",
+    "secretProposal": "Secret proposal {{id}}",
+    "apiKey": "API key {{id}}",
+    "revision": "Revision {{id}}"
+  },
+  "steps": {
+    "duplicateEntries": "{{field}} contains duplicate entries.",
+    "itemNotSaved": "{{label}} is not in this agent’s saved configuration. Reload before editing it.",
+    "keepExplicit": "Keep {{path}}.{{key}} explicit; use null, false, an empty string, or an empty list to clear it where supported."
+  },
+  "instructionFileNotText": "Instruction file {{path}} cannot be edited as text.",
+  "channels": {
+    "providerImmutable": "A channel provider cannot be changed. Create a new channel instead.",
+    "editedAndRemoved": "Channel {{id}} cannot be edited and removed in the same save.",
+    "removedAndConfigured": "Channel {{id}} is both removed and configured.",
+    "removedAndIdentitiesEdited": "Channel {{id}} cannot be removed and have its identities edited in the same save.",
+    "steps": {
+      "settings": "Channel settings: {{id}}",
+      "resources": "Channel resources: {{id}}",
+      "remove": "Remove channel: {{id}}",
+      "create": "Create {{provider}} channel",
+      "setup": "Channel {{action}}: {{id}}",
+      "revokeIdentity": "Revoke channel identity: {{id}}"
+    }
+  },
+  "load": {
+    "channelOwnershipChanged": "Channel ownership changed. Reload configuration."
+  },
+  "resolve": {
+    "observedReadOnly": "observed is read-only. Remove this block and edit spec to change configuration."
+  },
+  "tools": {
+    "installedOrganizationWide": "{{name}} is installed organization-wide. Its inherited installation cannot be overridden for one agent.",
+    "installationChanged": "Installation for {{name}} changed. Reload before saving.",
+    "profileShared": "Profile {{name}} is shared with other targets. Set updateSharedDefinition: true to change its shared definition, or create a separate profile with profileId: null.",
+    "policiesScoped": "tools.policies must be scoped only to this agent.",
+    "steps": {
+      "installation": "Tool installation: {{name}}",
+      "profile": "Tool profile: {{name}}",
+      "profileShared": "Tool profile (shared definition): {{name}}",
+      "unbindProfile": "Unbind tool profile: {{name}}",
+      "policy": "Tool policy: {{name}}",
+      "removePolicy": "Remove tool policy: {{name}}"
+    }
+  },
+  "instructions": {
+    "chooseModeBeforeFiles": "Choose managed or external instructions mode before adding files.",
+    "chooseMode": "Choose managed or external instructions mode.",
+    "externalAbsolute": "External instructions require an absolute rootPath.",
+    "entryFileRequired": "The instructions entry file cannot be removed.",
+    "saveLocationFirst": "Save the instructions location or entry file first, then edit the files loaded from that location.",
+    "managedRootAssigned": "The managed instructions root is assigned by Paperclip. Choose external mode to use another folder.",
+    "steps": {
+      "location": "Instructions location (load the destination files)",
+      "file": "Instructions: {{path}}",
+      "removeFile": "Remove instruction file: {{path}}"
+    }
+  },
+  "secrets": {
+    "envBoth": "Set env.{{key}} either in adapterConfig or secrets.create.bind, not both in one save.",
+    "accessBoth": "Set access.{{alias}} either in adapterConfig or secrets.create.bind, not both in one save.",
+    "envChanged": "env.{{key}} changed before secret binding. Reload saved before saving.",
+    "accessChanged": "access.{{alias}} changed before secret binding. Reload saved before saving.",
+    "receipt": "Secret: {{name}}",
+    "rejectReason": "A rejected secret proposal requires a reason.",
+    "steps": {
+      "create": "Create secret: {{name}}",
+      "rotate": "Rotate secret: {{id}}",
+      "update": "Update secret: {{id}}",
+      "proposal": "Secret proposal: {{id}}"
+    }
+  },
+  "save": {
+    "requestFailed": "Request failed",
+    "interruptedSaved": "Saved: {{steps}}. ",
+    "interrupted": "Could not complete {{label}}: {{reason}}. Some changes may have been saved. Reload saved before saving again.",
+    "observedReadOnly": "observed is read-only. Edit spec to change configuration.",
+    "useSkillsSection": "Use the skills section instead of adapterConfig.{{key}}.",
+    "useInstructionsSection": "Use the instructions section instead of adapterConfig.{{key}}.",
+    "canAssignTasksRequired": "CEO agents and agents that can create agents also have task assignment authority. Set canAssignTasks to true.",
+    "apiKeyReceipt": "API key: {{name}}",
+    "restoreAlone": "Restore a revision in its own save, then edit the restored configuration.",
+    "agentChanged": "Agent configuration changed while you were editing. Reload saved before saving.",
+    "sectionChanged": "{{key}} changed while you were editing. Reload saved before saving.",
+    "secretChanged": "Secret {{id}} changed. Reload saved before saving.",
+    "profileChanged": "Tool profile {{id}} changed while you were editing. Reload saved before saving.",
+    "refreshing": "refreshing the saved configuration",
+    "steps": {
+      "agentConfiguration": "Agent configuration",
+      "skills": "Skills and version pins",
+      "permissions": "Permissions and trust",
+      "revokeApiKey": "Revoke API key: {{name}}",
+      "createApiKey": "Create API key: {{name}}",
+      "restoreRevision": "Restore configuration revision"
+    }
+  }
+}

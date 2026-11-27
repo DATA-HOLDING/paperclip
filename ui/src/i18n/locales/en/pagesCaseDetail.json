@@ -1,0 +1,36 @@
+{
+  "breadcrumbs": {
+    "cases": "Cases",
+    "case": "Case"
+  },
+  "notFound": "Case not found",
+  "loadAction": "load this case",
+  "backToCases": "Back to cases",
+  "labels": "Case labels",
+  "details": {
+    "label": "Case details",
+    "title": "Details"
+  },
+  "documents": {
+    "label": "Case documents",
+    "title": "Documents",
+    "more": "More documents are available on the linked tasks."
+  },
+  "attachments": {
+    "label": "Case attachments",
+    "title": "Attachments",
+    "download": "Download attachment"
+  },
+  "relatedTasks": "Related tasks",
+  "relatedCases": "Related cases",
+  "parent": "Parent",
+  "children": "Children",
+  "childrenError": "Child cases couldn’t be loaded.",
+  "noFindings": "No findings recorded yet.",
+  "meta": {
+    "project": "Project",
+    "created": "Created",
+    "updated": "Updated"
+  },
+  "viewInAudit": "View in Audit"
+}

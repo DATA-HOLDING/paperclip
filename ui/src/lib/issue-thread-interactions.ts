@@ -58,6 +58,7 @@ import type {
   SuggestTasksResultCreatedTask,
 } from "@paperclipai/shared";
 import { safeExternalHttpUrl, safeNavigableUrl } from "./safe-url";
+import { t } from "@/i18n";
 
 export function isInteractionPreparingApproval(interaction: IssueThreadInteraction): boolean {
   return interaction.status === "pending"
@@ -164,19 +165,19 @@ export function buildItemVerdictsSummary(
     result: interaction.result,
   });
   if (interaction.status === "answered") {
-    const parts = [`${progress.decided} decided`];
-    if (progress.approved > 0) parts.push(`${progress.approved} approved`);
-    if (progress.rejected > 0) parts.push(`${progress.rejected} rejected`);
-    if (progress.deferred > 0) parts.push(`${progress.deferred} deferred`);
+    const parts = [t("libIssueThreadInteractions.verdicts.decided", { count: progress.decided })];
+    if (progress.approved > 0) parts.push(t("libIssueThreadInteractions.verdicts.approved", { count: progress.approved }));
+    if (progress.rejected > 0) parts.push(t("libIssueThreadInteractions.verdicts.rejected", { count: progress.rejected }));
+    if (progress.deferred > 0) parts.push(t("libIssueThreadInteractions.verdicts.deferred", { count: progress.deferred }));
     return parts.join(" · ");
   }
   if (interaction.status === "expired") {
     const outcome = interaction.result?.outcome;
-    if (outcome === "superseded_by_comment") return "Verdicts expired after comment";
-    if (outcome === "stale_target") return "Verdicts expired after target changed";
-    return "Verdicts expired";
+    if (outcome === "superseded_by_comment") return t("libIssueThreadInteractions.verdicts.expiredAfterComment");
+    if (outcome === "stale_target") return t("libIssueThreadInteractions.verdicts.expiredAfterTarget");
+    return t("libIssueThreadInteractions.verdicts.expired");
   }
-  return `${progress.decided} of ${progress.total} decided`;
+  return t("libIssueThreadInteractions.verdicts.progress", { decided: progress.decided, total: progress.total });
 }
 
 export function getCheckboxConfirmationSelectedLabels(args: {
@@ -224,60 +225,60 @@ export function buildIssueThreadInteractionSummary(
   const administrativeOutcome = interaction.result && "outcome" in interaction.result
     ? interaction.result.outcome
     : null;
-  if (administrativeOutcome === "skipped") return "Skipped interaction";
-  if (administrativeOutcome === "withdrawn") return "Withdrawn interaction";
-  if (administrativeOutcome === "issue_closed") return "Expired when issue closed";
-  if (administrativeOutcome === "addressee_deleted") return "Cancelled when addressee was deleted";
+  if (administrativeOutcome === "skipped") return t("libIssueThreadInteractions.summary.skipped");
+  if (administrativeOutcome === "withdrawn") return t("libIssueThreadInteractions.summary.withdrawn");
+  if (administrativeOutcome === "issue_closed") return t("libIssueThreadInteractions.summary.issueClosed");
+  if (administrativeOutcome === "addressee_deleted") return t("libIssueThreadInteractions.summary.addresseeDeleted");
   if (interaction.kind === "suggest_tasks") {
     const count = interaction.payload.tasks.length;
     if (interaction.status === "accepted") {
       const createdCount = interaction.result?.createdTasks?.length ?? 0;
       const skippedCount = interaction.result?.skippedClientKeys?.length ?? 0;
       if (skippedCount > 0) {
-        return `Accepted ${createdCount} of ${count} tasks`;
+        return t("libIssueThreadInteractions.summary.acceptedPartial", { created: createdCount, count });
       }
-      return createdCount === 1 ? "Accepted 1 task" : `Accepted ${createdCount} tasks`;
+      return createdCount === 1 ? t("libIssueThreadInteractions.summary.acceptedOne") : t("libIssueThreadInteractions.summary.acceptedMany", { count: createdCount });
     }
     if (interaction.status === "rejected") {
-      return count === 1 ? "Rejected 1 task" : `Rejected ${count} tasks`;
+      return count === 1 ? t("libIssueThreadInteractions.summary.rejectedOne") : t("libIssueThreadInteractions.summary.rejectedMany", { count });
     }
-    return count === 1 ? "Suggested 1 task" : `Suggested ${count} tasks`;
+    return count === 1 ? t("libIssueThreadInteractions.summary.suggestedOne") : t("libIssueThreadInteractions.summary.suggestedMany", { count });
   }
 
   if (interaction.kind === "request_confirmation") {
-    if (interaction.status === "accepted") return "Confirmed request";
+    if (interaction.status === "accepted") return t("libIssueThreadInteractions.summary.confirmedRequest");
     if (interaction.status === "rejected") {
       const rejectLabel = interaction.payload.rejectLabel?.trim();
-      return rejectLabel ? `Selected “${rejectLabel}”` : "Declined request";
+      return rejectLabel ? t("libIssueThreadInteractions.summary.selectedOption", { label: rejectLabel }) : t("libIssueThreadInteractions.summary.declinedRequest");
     }
     if (interaction.status === "expired") {
       const outcome = interaction.result?.outcome;
-      if (outcome === "superseded_by_comment") return "Confirmation expired after comment";
-      if (outcome === "stale_target") return "Confirmation expired after target changed";
-      return "Confirmation expired";
+      if (outcome === "superseded_by_comment") return t("libIssueThreadInteractions.summary.confirmationExpiredComment");
+      if (outcome === "stale_target") return t("libIssueThreadInteractions.summary.confirmationExpiredTarget");
+      return t("libIssueThreadInteractions.summary.confirmationExpired");
     }
-    return "Requested confirmation";
+    return t("libIssueThreadInteractions.summary.requestedConfirmation");
   }
 
   if (interaction.kind === "request_checkbox_confirmation") {
     const optionCount = interaction.payload.options.length;
     if (interaction.status === "accepted") {
       const selectedCount = interaction.result?.selectedOptionIds?.length ?? 0;
-      if (selectedCount === 0) return "Confirmed with no options selected";
+      if (selectedCount === 0) return t("libIssueThreadInteractions.summary.confirmedNone");
       return selectedCount === 1
-        ? `Confirmed 1 of ${optionCount} options`
-        : `Confirmed ${selectedCount} of ${optionCount} options`;
+        ? t("libIssueThreadInteractions.summary.confirmedOneOf", { total: optionCount })
+        : t("libIssueThreadInteractions.summary.confirmedManyOf", { count: selectedCount, total: optionCount });
     }
-    if (interaction.status === "rejected") return "Declined selection";
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.declinedSelection");
     if (interaction.status === "expired") {
       const outcome = interaction.result?.outcome;
-      if (outcome === "superseded_by_comment") return "Selection expired after comment";
-      if (outcome === "stale_target") return "Selection expired after target changed";
-      return "Selection expired";
+      if (outcome === "superseded_by_comment") return t("libIssueThreadInteractions.summary.selectionExpiredComment");
+      if (outcome === "stale_target") return t("libIssueThreadInteractions.summary.selectionExpiredTarget");
+      return t("libIssueThreadInteractions.summary.selectionExpired");
     }
     return optionCount === 1
-      ? "Requested a selection from 1 option"
-      : `Requested a selection from ${optionCount} options`;
+      ? t("libIssueThreadInteractions.summary.requestedSelectionOne")
+      : t("libIssueThreadInteractions.summary.requestedSelectionMany", { count: optionCount });
   }
 
   if (interaction.kind === "request_item_verdicts") {
@@ -285,61 +286,61 @@ export function buildIssueThreadInteractionSummary(
   }
 
   if (interaction.kind === "connection_intent") {
-    if (interaction.status === "accepted") return `${interaction.payload.serviceName} connected`;
-    if (interaction.status === "rejected") return `${interaction.payload.serviceName} declined`;
+    if (interaction.status === "accepted") return t("libIssueThreadInteractions.summary.serviceConnected", { service: interaction.payload.serviceName });
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.serviceDeclined", { service: interaction.payload.serviceName });
     if (interaction.status === "expired") {
       return interaction.result?.outcome === "superseded"
-        ? `${interaction.payload.serviceName} request superseded`
-        : `${interaction.payload.serviceName} request expired`;
+        ? t("libIssueThreadInteractions.summary.serviceSuperseded", { service: interaction.payload.serviceName })
+        : t("libIssueThreadInteractions.summary.serviceExpired", { service: interaction.payload.serviceName });
     }
-    return `Connect ${interaction.payload.serviceName}`;
+    return t("libIssueThreadInteractions.summary.connectService", { service: interaction.payload.serviceName });
   }
 
   if (interaction.kind === "suggest_routine") {
-    if (interaction.status === "accepted") return `Routine set up: ${interaction.payload.title}`;
-    if (interaction.status === "rejected") return "Routine offer declined";
-    if (interaction.status !== "pending") return "Routine offer closed";
-    return `Repeat ${interaction.payload.title}?`;
+    if (interaction.status === "accepted") return t("libIssueThreadInteractions.summary.routineSetUp", { title: interaction.payload.title });
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.routineDeclined");
+    if (interaction.status !== "pending") return t("libIssueThreadInteractions.summary.routineClosed");
+    return t("libIssueThreadInteractions.summary.repeatRoutine", { title: interaction.payload.title });
   }
 
   if (interaction.kind === "propose_responsibility_bar") {
-    if (interaction.status === "accepted") return `Bar set: ${interaction.payload.bar.standard}`;
-    if (interaction.status === "rejected") return "Proposed bar: not right";
-    if (interaction.result?.outcome === "replaced") return "Proposed bar replaced";
-    if (interaction.status !== "pending") return "Proposed bar closed";
-    return `Proposed bar: ${interaction.payload.bar.standard}`;
+    if (interaction.status === "accepted") return t("libIssueThreadInteractions.summary.barSet", { standard: interaction.payload.bar.standard });
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.barNotRight");
+    if (interaction.result?.outcome === "replaced") return t("libIssueThreadInteractions.summary.barReplaced");
+    if (interaction.status !== "pending") return t("libIssueThreadInteractions.summary.barClosed");
+    return t("libIssueThreadInteractions.summary.barProposed", { standard: interaction.payload.bar.standard });
   }
 
   if (interaction.kind === "propose_automation") {
-    if (interaction.status === "accepted") return `Automation set up: ${interaction.payload.title}`;
-    if (interaction.status === "rejected") return "Proposed automation: not right";
-    if (interaction.result?.outcome === "replaced") return "Proposed automation replaced";
-    if (interaction.status !== "pending") return "Proposed automation closed";
-    return `Proposed automation: ${interaction.payload.title}`;
+    if (interaction.status === "accepted") return t("libIssueThreadInteractions.summary.automationSetUp", { title: interaction.payload.title });
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.automationNotRight");
+    if (interaction.result?.outcome === "replaced") return t("libIssueThreadInteractions.summary.automationReplaced");
+    if (interaction.status !== "pending") return t("libIssueThreadInteractions.summary.automationClosed");
+    return t("libIssueThreadInteractions.summary.automationProposed", { title: interaction.payload.title });
   }
 
   if (interaction.kind === "propose_dashboard_changes") {
-    if (interaction.status === "accepted") return `Dashboard changed${interaction.result?.summary ? `: ${interaction.result.summary}` : ""}`;
-    if (interaction.status === "rejected") return "Proposed dashboard changes: not right";
-    if (interaction.result?.outcome === "replaced") return "Proposed dashboard changes replaced";
-    if (interaction.status !== "pending") return "Proposed dashboard changes closed";
-    return "Proposed dashboard changes";
+    if (interaction.status === "accepted") return interaction.result?.summary ? t("libIssueThreadInteractions.summary.dashboardChangedWith", { summary: interaction.result.summary }) : t("libIssueThreadInteractions.summary.dashboardChanged");
+    if (interaction.status === "rejected") return t("libIssueThreadInteractions.summary.dashboardNotRight");
+    if (interaction.result?.outcome === "replaced") return t("libIssueThreadInteractions.summary.dashboardReplaced");
+    if (interaction.status !== "pending") return t("libIssueThreadInteractions.summary.dashboardClosed");
+    return t("libIssueThreadInteractions.summary.dashboardProposed");
   }
 
   const count = interaction.payload.questions.length;
   if (interaction.status === "answered") {
-    return count === 1 ? "Answered 1 question" : `Answered ${count} questions`;
+    return count === 1 ? t("libIssueThreadInteractions.summary.answeredOne") : t("libIssueThreadInteractions.summary.answeredMany", { count });
   }
   if (interaction.status === "cancelled") {
-    return count === 1 ? "Cancelled 1 question" : `Cancelled ${count} questions`;
+    return count === 1 ? t("libIssueThreadInteractions.summary.cancelledOne") : t("libIssueThreadInteractions.summary.cancelledMany", { count });
   }
   if (interaction.status === "expired") {
     if (interaction.result?.expirationReason === "superseded_by_comment") {
-      return count === 1 ? "Question expired after comment" : "Questions expired after comment";
+      return count === 1 ? t("libIssueThreadInteractions.summary.questionExpiredComment") : t("libIssueThreadInteractions.summary.questionsExpiredComment");
     }
-    return count === 1 ? "Question expired" : "Questions expired";
+    return count === 1 ? t("libIssueThreadInteractions.summary.questionExpired") : t("libIssueThreadInteractions.summary.questionsExpired");
   }
-  return count === 1 ? "Asked 1 question" : `Asked ${count} questions`;
+  return count === 1 ? t("libIssueThreadInteractions.summary.askedOne") : t("libIssueThreadInteractions.summary.askedMany", { count });
 }
 
 /** Readable model input for a durable answer delivered into a successor run. */

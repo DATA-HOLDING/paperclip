@@ -1,4 +1,5 @@
 import type { VoiceMediaCallbacks, VoiceMediaCredentials } from "./voice-session-controller";
+import { t } from "@/i18n";
 
 /** Load media after the server authorizes a user-initiated session. */
 export async function connectSpekoVoiceMedia(credentials: VoiceMediaCredentials, callbacks: VoiceMediaCallbacks) {
@@ -17,7 +18,7 @@ export async function connectSpekoVoiceMedia(credentials: VoiceMediaCredentials,
     sendChatMessage: (text: string) => conversation.sendChatMessage(text),
     async startAudioPlayback() {
       await conversation.startAudioPlayback();
-      if (!conversation.canPlaybackAudio) throw new Error("Audio playback remains blocked");
+      if (!conversation.canPlaybackAudio) throw new Error(t("libSpekoVoiceMedia.playbackBlocked"));
     },
   };
 }

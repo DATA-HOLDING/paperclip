@@ -1,0 +1,30 @@
+{
+  "filters": {
+    "all": "Todos"
+  },
+  "status": {
+    "inProgress": "Em andamento",
+    "forReview": "Para revisão",
+    "completed": "Concluídos",
+    "changesRequested": "Alterações solicitadas",
+    "failed": "Falhou"
+  },
+  "documentFallback": "Documento",
+  "title": "Artefatos",
+  "loading": "Carregando...",
+  "empty": {
+    "none": "As entregas e os planos da sua equipe vão aparecer aqui conforme forem produzidos.",
+    "filtered": "Nenhum artefato corresponde a este filtro."
+  },
+  "generating": "Gerando...",
+  "viewer": {
+    "loading": "Carregando documento...",
+    "notAvailable": "Documento ainda não disponível.",
+    "empty": "O documento está vazio.",
+    "needsReview": "Este documento precisa da sua revisão.",
+    "approve": "Aprovar",
+    "reject": "Rejeitar",
+    "approved": "Aprovado — tarefas de contratação criadas",
+    "changesRequested": "Alterações solicitadas — o CEO está revisando"
+  }
+}

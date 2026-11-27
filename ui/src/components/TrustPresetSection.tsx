@@ -18,14 +18,15 @@ import {
   type LowTrustBoundaryTarget,
 } from "../lib/trust-policy-ui";
 import { cn } from "../lib/utils";
+import { t } from "@/i18n";
 
 const inputClass =
   "w-full rounded-md border border-border px-2.5 py-1.5 bg-transparent outline-none text-sm font-mono placeholder:text-muted-foreground/40";
 
-function formatCount(value: readonly unknown[] | undefined, singular: string, plural: string) {
+function formatCount(value: readonly unknown[] | undefined, unit: "project" | "issue" | "agent" | "binding") {
   const count = value?.length ?? 0;
   if (count === 0) return "-";
-  return `${count} ${count === 1 ? singular : plural}`;
+  return t(`componentsTrustPresetSection.counts.${unit}`, { count });
 }
 
 function PolicyRow({ label, value }: { label: string; value: string }) {
@@ -45,9 +46,9 @@ export interface LowTrustBoundaryCandidate {
 type LowTrustBoundaryTargetType = LowTrustBoundaryTarget["type"];
 
 const BOUNDARY_TARGET_LABELS: Record<LowTrustBoundaryTargetType, string> = {
-  project: "Project",
-  root_issue: "Root issue",
-  issue: "Issue",
+  project: t("componentsTrustPresetSection.targets.project"),
+  root_issue: t("componentsTrustPresetSection.targets.rootIssue"),
+  issue: t("componentsTrustPresetSection.targets.issue"),
 };
 
 export function TrustPresetSection({
@@ -130,27 +131,27 @@ export function TrustPresetSection({
             <div className="min-w-0 flex-1 space-y-2">
               <div>
                 <p className="font-medium">
-                  {hasScope ? "Containment active" : "Containment not configured"}
+                  {hasScope ? t("componentsTrustPresetSection.containmentActive") : t("componentsTrustPresetSection.containmentMissing")}
                 </p>
                 <p className="mt-1 text-xs leading-5">
                   {hasScope
-                    ? "This agent can only read and mutate work inside its assigned review boundary. Raw output is quarantined from higher-trust agents until a trusted reviewer promotes it."
-                    : "This agent is set to low-trust review, but no project, root issue, or issue scope is set in the core policy. Add a scope before this agent can run without denial."}
+                    ? t("componentsTrustPresetSection.containmentActiveBody")
+                    : t("componentsTrustPresetSection.containmentMissingBody")}
                 </p>
               </div>
               {projectAccessEditor && (boundary?.projectIds?.length ?? 0) > 1 ? null : boundaryEditable ? (
                 <div className="rounded-md border border-border/70 bg-background/70 p-3 text-foreground space-y-3">
                   <div className="grid gap-3 sm:grid-cols-(--gtc-12)">
-                    <Field label="Boundary type">
+                    <Field label={t("componentsTrustPresetSection.boundaryType")}>
                       <select
                         className={inputClass}
                         value={targetType}
                         onChange={(event) => setTargetType(event.target.value as LowTrustBoundaryTargetType)}
                         disabled={disabled}
                       >
-                        <option value="project">Project</option>
-                        <option value="root_issue">Root issue</option>
-                        {allowSingleIssue && <option value="issue">Issue</option>}
+                        <option value="project">{t("componentsTrustPresetSection.targets.project")}</option>
+                        <option value="root_issue">{t("componentsTrustPresetSection.targets.rootIssue")}</option>
+                        {allowSingleIssue && <option value="issue">{t("componentsTrustPresetSection.targets.issue")}</option>}
                       </select>
                     </Field>
                     <Field label={BOUNDARY_TARGET_LABELS[targetType]}>
@@ -162,10 +163,10 @@ export function TrustPresetSection({
                       >
                         <option value="">
                           {candidatesLoading
-                            ? "Loading…"
+                            ? t("componentsTrustPresetSection.loading")
                             : targetCandidates.length === 0
-                              ? `No ${targetType === "project" ? "projects" : "issues"} available`
-                              : "Select boundary"}
+                              ? targetType === "project" ? t("componentsTrustPresetSection.noProjects") : t("componentsTrustPresetSection.noIssues")
+                              : t("componentsTrustPresetSection.selectBoundary")}
                         </option>
                         {targetCandidates.map((candidate) => (
                           <option key={candidate.id} value={candidate.id}>
@@ -177,7 +178,7 @@ export function TrustPresetSection({
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-xs text-muted-foreground">
-                      CE saves one containment boundary at a time. Saved policies include this organization id.
+                      {t("componentsTrustPresetSection.ceNote")}
                     </p>
                     {boundaryTarget ? (
                       <Button
@@ -188,49 +189,49 @@ export function TrustPresetSection({
                         onClick={handleClearBoundary}
                         disabled={disabled}
                       >
-                        Clear boundary
+                        {t("componentsTrustPresetSection.clearBoundary")}
                       </Button>
                     ) : null}
                   </div>
                 </div>
               ) : (
                 <div className="rounded-md border border-border/70 bg-background/70 p-3 text-foreground">
-                  <p className="text-sm font-medium">Managed by EE/API</p>
+                  <p className="text-sm font-medium">{t("componentsTrustPresetSection.managedByEe")}</p>
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                    This policy has {summarizeLowTrustBoundaryTarget(boundary).toLowerCase()} and cannot be edited by the CE single-boundary editor.
+                    {t("componentsTrustPresetSection.managedByEeBody", { summary: summarizeLowTrustBoundaryTarget(boundary).toLowerCase() })}
                   </p>
                 </div>
               )}
               {!projectAccessEditor && <p className="text-xs text-muted-foreground">
-                Want to set more than one containment boundary?{" "}
+                {t("componentsTrustPresetSection.moreBoundaries")}{" "}
                 <a
                   className="underline underline-offset-2 hover:text-foreground"
                   href="https://paperclip.ing/ee"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Get Paperclip EE.
+                  {t("componentsTrustPresetSection.getEe")}
                 </a>
               </p>}
               <CollapsibleSection
-                title="View policy"
+                title={t("componentsTrustPresetSection.viewPolicy")}
                 open={policyOpen}
                 onToggle={() => setPolicyOpen((open) => !open)}
               >
                 <div className="divide-y divide-border/60 text-foreground">
-                  <PolicyRow label="Preset" value="Low-trust review v1" />
-                  <PolicyRow label="Raw output" value="Quarantined from higher-trust agents" />
-                  <PolicyRow label="Projects" value={formatCount(boundary?.projectIds, "project", "projects")} />
-                  <PolicyRow label="Root issue" value={boundary?.rootIssueId ? boundary.rootIssueId.slice(0, 8) : "-"} />
-                  <PolicyRow label="Explicit issues" value={formatCount(boundary?.issueIds, "issue", "issues")} />
-                  <PolicyRow label="Allowed agents" value={formatCount(boundary?.allowedAgentIds, "agent", "agents")} />
-                  <PolicyRow label="Allowed tools" value={boundary?.allowedToolClasses?.join(" · ") || "-"} />
-                  <PolicyRow label="Allowed secrets" value={formatCount(boundary?.allowedSecretBindingIds, "binding", "bindings")} />
-                  <PolicyRow label="Promotion target" value={boundary?.outputPromotionTarget?.issueId?.slice(0, 8) ?? "-"} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.preset")} value={t("componentsTrustPresetSection.policy.presetValue")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.rawOutput")} value={t("componentsTrustPresetSection.policy.rawOutputValue")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.projects")} value={formatCount(boundary?.projectIds, "project")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.rootIssue")} value={boundary?.rootIssueId ? boundary.rootIssueId.slice(0, 8) : "-"} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.explicitIssues")} value={formatCount(boundary?.issueIds, "issue")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.allowedAgents")} value={formatCount(boundary?.allowedAgentIds, "agent")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.allowedTools")} value={boundary?.allowedToolClasses?.join(" · ") || "-"} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.allowedSecrets")} value={formatCount(boundary?.allowedSecretBindingIds, "binding")} />
+                  <PolicyRow label={t("componentsTrustPresetSection.policy.promotionTarget")} value={boundary?.outputPromotionTarget?.issueId?.slice(0, 8) ?? "-"} />
                   <PolicyRow
-                    label="EE fields"
+                    label={t("componentsTrustPresetSection.policy.eeFields")}
                     value={Object.keys(policy ?? {}).some((key) => !["trustPreset", "reviewPreset", "trustBoundary"].includes(key))
-                      ? "Custom advanced policy fields preserved"
+                      ? t("componentsTrustPresetSection.policy.customFields")
                       : "-"}
                   />
                 </div>
@@ -243,7 +244,7 @@ export function TrustPresetSection({
     return (
       <div className="flex flex-col gap-(--agent-detail-module-gap)">
         <div className="agent-trust-cards grid gap-(--agent-detail-module-gap) sm:grid-cols-3">
-          <div role="radiogroup" aria-label="Trust preset" className="contents">
+          <div role="radiogroup" aria-label={t("componentsTrustPresetSection.trustPreset")} className="contents">
             {(["low_trust_review", "standard"] as const).map((value) => {
               const selected = preset === value;
               return (
@@ -275,7 +276,7 @@ export function TrustPresetSection({
         {lowTrust ? projectAccessEditor : null}
         {managedPermissions.authorizationPolicy?.reviewPreset ? null : (
           <p className="text-xs text-muted-foreground">
-            Advanced permissions remain editable through the EE permissions extension when installed.
+            {t("componentsTrustPresetSection.advancedNote")}
           </p>
         )}
       </div>
@@ -284,9 +285,9 @@ export function TrustPresetSection({
 
   return (
     <div>
-      <h3 className="mb-3 text-sm font-medium">Trust</h3>
+      <h3 className="mb-3 text-sm font-medium">{t("componentsTrustPresetSection.trust")}</h3>
       <div className="rounded-lg border border-border p-4 space-y-3">
-        <Field label="Trust preset" hint="Choose how broadly this agent can read and act on Paperclip work objects.">
+        <Field label={t("componentsTrustPresetSection.trustPreset")} hint={t("componentsTrustPresetSection.trustPresetHint")}>
           <select
             className={inputClass}
             value={preset}
@@ -305,7 +306,7 @@ export function TrustPresetSection({
 
         {managedPermissions.authorizationPolicy?.reviewPreset ? null : (
           <p className="text-xs text-muted-foreground">
-            Advanced permissions remain editable through the EE permissions extension when installed.
+            {t("componentsTrustPresetSection.advancedNote")}
           </p>
         )}
       </div>

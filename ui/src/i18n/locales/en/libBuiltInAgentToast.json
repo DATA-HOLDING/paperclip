@@ -1,0 +1,6 @@
+{
+  "defaultNoun": "item",
+  "title": "{{name}} is paused",
+  "body": "Resume the agent to generate this {{noun}}.",
+  "viewAgent": "View agent"
+}

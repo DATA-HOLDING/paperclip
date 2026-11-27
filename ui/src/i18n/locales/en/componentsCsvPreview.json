@@ -1,0 +1,13 @@
+{
+  "fileIsEmpty": "File is empty.",
+  "csvPreview": "CSV preview",
+  "rowCount_one": "{{formatted}} row",
+  "rowCount_other": "{{formatted}} rows",
+  "columnCount_one": "{{formatted}} column",
+  "columnCount_other": "{{formatted}} columns",
+  "truncated": "Showing the first {{rows}} rows and {{columns}} columns. Download for the complete file.",
+  "tableLabel": "{{title}} CSV table",
+  "caption": "{{title}} — first record used as column headers",
+  "row": "Row",
+  "column": "Column {{number}}"
+}

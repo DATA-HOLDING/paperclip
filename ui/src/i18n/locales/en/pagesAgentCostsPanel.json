@@ -1,0 +1,18 @@
+{
+  "period": "Cost period",
+  "from": "From",
+  "to": "to",
+  "toAria": "To",
+  "selectDates": "Select a start and end date to load data.",
+  "loadFailed": "{{agentName}}'s costs could not be loaded. Please try again shortly.",
+  "empty": "No cost events for {{agentName}} in this period.",
+  "spend": "Spend",
+  "ledgerEvents": "{{count}} ledger events",
+  "tokens": "Tokens",
+  "tokensDescription": "in {{input}} ({{cached}} cached) · out {{output}}",
+  "runs": "Runs",
+  "runsDescription": "{{api}} api · {{subscription}} subscription",
+  "byModel": "By model",
+  "noModelBreakdown": "No model breakdown for this period.",
+  "tok": "{{value}} tok"
+}

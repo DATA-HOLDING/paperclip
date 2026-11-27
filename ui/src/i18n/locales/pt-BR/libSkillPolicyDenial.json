@@ -1,0 +1,27 @@
+{
+  "defaultPolicyRemediation": "Um administrador da organização pode alterar a política de skills para permitir isso.",
+  "defaultAdminRemediation": "Isso exige acesso de administração da organização. Peça a um administrador para fazer esta alteração.",
+  "titles": {
+    "authenticationRequired": "Entre para gerenciar skills.",
+    "companyBoundaryDenied": "Esta skill pertence a outra organização.",
+    "workspaceBoundaryDenied": "Esta fonte de skill está fora de um espaço de trabalho permitido.",
+    "sourceValidationFailed": "Esta fonte de skill falhou na validação.",
+    "unsafeContentBlocked": "Esta skill contém conteúdo inseguro.",
+    "secretHandlingBlocked": "Esta skill expõe o valor de um segredo.",
+    "actorRestricted": "Esta ação não está disponível para o ator atual."
+  },
+  "remediations": {
+    "authenticationRequired": "Entre e tente novamente.",
+    "companyBoundaryDenied": "Abra a skill a partir da organização dona dela.",
+    "workspaceBoundaryDenied": "Importe de um espaço de trabalho do Paperclip configurado ou do diretório de skills gerenciadas da organização.",
+    "sourceValidationFailed": "Corrija a fonte sinalizada e tente novamente.",
+    "unsafeContentBlocked": "Remova o padrão de baixar e executar ou outro padrão inseguro antes de salvar.",
+    "secretHandlingBlocked": "Remova o valor do segredo antes de salvar.",
+    "actorRestricted": "Tente novamente com uma conta que tenha acesso a esta ação."
+  },
+  "policyTitleWithAction": "A política da sua organização não permite esta ação ({{action}}).",
+  "policyTitle": "Esta ação está restrita pela política da sua organização.",
+  "adminTitle": "Esta alteração exige acesso de administração.",
+  "platformTitle": "Esta ação está bloqueada por uma regra de segurança da plataforma.",
+  "platformRemediation": "Corrija o problema sinalizado e tente novamente."
+}

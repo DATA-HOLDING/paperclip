@@ -1,0 +1,26 @@
+{
+  "reasons": {
+    "nativeProviderOverloaded": "Model at capacity",
+    "aiConnectionPoolWait": "Waiting for pool usage to recover",
+    "transientFailure": "Transient failure",
+    "missingIssueComment": "Missing task comment",
+    "processLost": "Process lost",
+    "assignmentRecovery": "Assignment recovery",
+    "issueContinuationNeeded": "Continuation needed",
+    "maxTurnsContinuation": "Max-turn continuation"
+  },
+  "attempt": "Attempt {{attempt}}",
+  "poolExhausted": "Pool exhausted",
+  "continuationScheduled": "Continuation scheduled",
+  "retryScheduled": "Retry scheduled",
+  "nextContinuationAt": "Next continuation {{dueAt}}",
+  "nextRetryAt": "Next retry {{dueAt}}",
+  "nextContinuationPending": "Next continuation pending schedule",
+  "nextRetryPending": "Next retry pending schedule",
+  "continuationExhausted": "Continuation exhausted",
+  "retryExhausted": "Retry exhausted",
+  "automaticRetriesExhausted": "Automatic retries exhausted",
+  "manualInterventionRequired": "{{reason}} Manual intervention required.",
+  "continuedRun": "Continued run",
+  "retriedRun": "Retried run"
+}

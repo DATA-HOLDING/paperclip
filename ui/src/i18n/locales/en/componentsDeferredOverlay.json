@@ -1,0 +1,7 @@
+{
+  "loadingTitle": "Loading {{title}}…",
+  "failedTitle": "Couldn't open {{title}}",
+  "failedDescription": "Close this window to keep working. Reload the page before trying again.",
+  "close": "Close",
+  "cancel": "Cancel"
+}

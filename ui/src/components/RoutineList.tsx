@@ -15,6 +15,7 @@ import { Identity } from "./Identity";
 import type { CompanyUserProfile } from "@/lib/company-members";
 import { routineColumnGrid, type RoutineColumn } from "./RoutineTable";
 import { ToggleSwitch } from "@/components/ui/toggle-switch";
+import { t } from "@/i18n";
 
 export type RoutineListProjectSummary = {
   name: string;
@@ -42,7 +43,7 @@ export type RoutineListRowItem = {
 };
 
 export function formatLastRunTimestamp(value: Date | string | null | undefined) {
-  if (!value) return "Never";
+  if (!value) return t("componentsRoutineList.never");
   return new Date(value).toLocaleString();
 }
 
@@ -96,7 +97,7 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
   runningRoutineId,
   statusMutationRoutineId,
   href,
-  configureLabel = "Edit",
+  configureLabel = t("componentsRoutineList.edit"),
   managedByLabel,
   secondaryDetails,
   runNowButton = false,
@@ -119,11 +120,11 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
   const runDisabled = runningRoutineId === routine.id || isArchived || disableRunNow;
 
   const user = routine.responsibleUserId ? userById?.get(routine.responsibleUserId) : null;
-  const projectCell = <span className="flex min-w-0 items-center gap-2"><span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ backgroundColor: project?.color ?? "var(--project-none)" }} /><span className="truncate">{routine.projectId ? project?.name ?? "Unknown project" : "No project"}</span></span>;
-  const agentCell = <span className="flex min-w-0 items-center gap-2">{routine.assigneeAgentId ? <AgentAvatar agent={{ ...agent, id: routine.assigneeAgentId }} size={16} className="h-3.5 w-3.5 shrink-0" /> : null}<span className="truncate">{routine.assigneeAgentId ? agent?.name ?? "Unknown agent" : "No default agent"}</span></span>;
-  const userCell = user ? <Identity name={user.label} avatarUrl={user.image} size="sm" /> : <span>{routine.responsibleUserId ? "Unavailable user" : "No responsible user"}</span>;
+  const projectCell = <span className="flex min-w-0 items-center gap-2"><span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ backgroundColor: project?.color ?? "var(--project-none)" }} /><span className="truncate">{routine.projectId ? project?.name ?? t("componentsRoutineList.unknownProject") : t("componentsRoutineList.noProject")}</span></span>;
+  const agentCell = <span className="flex min-w-0 items-center gap-2">{routine.assigneeAgentId ? <AgentAvatar agent={{ ...agent, id: routine.assigneeAgentId }} size={16} className="h-3.5 w-3.5 shrink-0" /> : null}<span className="truncate">{routine.assigneeAgentId ? agent?.name ?? t("componentsRoutineList.unknownAgent") : t("componentsRoutineList.noDefaultAgent")}</span></span>;
+  const userCell = user ? <Identity name={user.label} avatarUrl={user.image} size="sm" /> : <span>{routine.responsibleUserId ? t("componentsRoutineList.unavailableUser") : t("componentsRoutineList.noResponsibleUser")}</span>;
   const lastRunCell = <span>{formatLastRunTimestamp(routine.lastRun?.triggeredAt)}{routine.lastRun ? ` · ${formatRoutineRunStatus(routine.lastRun.status)}` : ""}</span>;
-  const enabledCell = <div className="flex items-center gap-2" onClick={event => { event.preventDefault(); event.stopPropagation(); }}><ToggleSwitch size="lg" checked={enabled} onCheckedChange={() => onToggleEnabled(routine, enabled)} disabled={isStatusPending || isArchived || disableToggle} aria-label={enabled ? `Disable ${routine.title}` : `Enable ${routine.title}`} /><span className="text-xs text-muted-foreground">{isArchived ? "Archived" : isDraft ? "Draft" : enabled ? "On" : "Off"}</span></div>;
+  const enabledCell = <div className="flex items-center gap-2" onClick={event => { event.preventDefault(); event.stopPropagation(); }}><ToggleSwitch size="lg" checked={enabled} onCheckedChange={() => onToggleEnabled(routine, enabled)} disabled={isStatusPending || isArchived || disableToggle} aria-label={enabled ? t("componentsRoutineList.disableAria", { title: routine.title }) : t("componentsRoutineList.enableAria", { title: routine.title })} /><span className="text-xs text-muted-foreground">{isArchived ? t("componentsRoutineList.state.archived") : isDraft ? t("componentsRoutineList.state.draft") : enabled ? t("componentsRoutineList.state.on") : t("componentsRoutineList.state.off")}</span></div>;
   const cellByColumn = { project: projectCell, assignee: agentCell, responsibleUser: userCell, lastRun: lastRunCell, enabled: enabledCell };
   const title = (
       <div className="min-w-0 flex-1 space-y-1.5">
@@ -131,7 +132,7 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
           <Link data-routine-link to={href} className="truncate text-sm font-medium no-underline text-inherit">{routine.title}</Link>
           {(isArchived || routine.status === "paused" || isDraft) ? (
             <span className="text-xs text-muted-foreground">
-              {isArchived ? "archived" : isDraft ? "draft" : "paused"}
+              {isArchived ? t("componentsRoutineList.badge.archived") : isDraft ? t("componentsRoutineList.badge.draft") : t("componentsRoutineList.badge.paused")}
             </span>
           ) : null}
           {managedByLabel ? (
@@ -154,7 +155,7 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
             type="checkbox"
             className="h-4 w-4 rounded border-border"
             checked={selected}
-            aria-label={`Select ${routine.title}`}
+            aria-label={t("componentsRoutineList.selectAria", { title: routine.title })}
             onChange={(event) => onSelectChange?.(routine, event.target.checked)}
           />
         </div>
@@ -165,8 +166,8 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
           <Button
             variant="outline"
             size="icon-sm"
-            aria-label={runningRoutineId === routine.id ? `Running ${routine.title}` : `Run now: ${routine.title}`}
-            title={runningRoutineId === routine.id ? "Running…" : "Run now"}
+            aria-label={runningRoutineId === routine.id ? t("componentsRoutineList.runningAria", { title: routine.title }) : t("componentsRoutineList.runNowAria", { title: routine.title })}
+            title={runningRoutineId === routine.id ? t("componentsRoutineList.runningEllipsis") : t("componentsRoutineList.runNow")}
             disabled={runDisabled}
             onClick={() => onRunNow(routine)}
           >
@@ -178,7 +179,7 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label={`More actions for ${routine.title}`}>
+            <Button variant="ghost" size="icon-sm" aria-label={t("componentsRoutineList.moreActionsAria", { title: routine.title })}>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -190,7 +191,7 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
               disabled={runDisabled}
               onClick={() => onRunNow(routine)}
             >
-              {runningRoutineId === routine.id ? "Running..." : "Run now"}
+              {runningRoutineId === routine.id ? t("componentsRoutineList.runningDots") : t("componentsRoutineList.runNow")}
             </DropdownMenuItem>
             {extraMenuItems ? (
               <>
@@ -203,14 +204,14 @@ function routineRowParts<TRoutine extends RoutineListRowItem>({
               onClick={() => onToggleEnabled(routine, enabled)}
               disabled={isStatusPending || isArchived || disableToggle}
             >
-              {enabled ? "Pause" : "Enable"}
+              {enabled ? t("componentsRoutineList.pause") : t("componentsRoutineList.enable")}
             </DropdownMenuItem>
             {!hideArchiveAction && onToggleArchived ? (
               <DropdownMenuItem
                 onClick={() => onToggleArchived(routine)}
                 disabled={isStatusPending}
               >
-                {routine.status === "archived" ? "Restore" : "Archive"}
+                {routine.status === "archived" ? t("componentsRoutineList.restore") : t("componentsRoutineList.archive")}
               </DropdownMenuItem>
             ) : null}
           </DropdownMenuContent>

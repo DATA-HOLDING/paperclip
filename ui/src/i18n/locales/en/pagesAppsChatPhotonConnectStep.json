@@ -1,0 +1,23 @@
+{
+  "title": "Connect iMessage Photon",
+  "intro": "Connect {{agentName}} to Photon Cloud. Pro supports direct messages through a shared line. Dedicated numbers also support individually enabled groups.",
+  "dashboardLink": "Photon dashboard",
+  "lineSetupLink": "Photon line setup",
+  "reconnectKeeps": "Reconnect keeps this project and",
+  "sharedDmAllocation": "shared DM allocation",
+  "dedicatedNumber": "dedicated number",
+  "reconnectSecretHint": ". Leave the secret blank to reuse the saved connection.",
+  "projectId": "Project ID",
+  "projectSecret": "Project secret",
+  "inspecting": "Inspecting Photon…",
+  "inspect": "Inspect Photon project",
+  "sharedDmsIn": "Shared DMs in {{projectName}}",
+  "dedicatedNumbersIn": "Dedicated numbers in {{projectName}}",
+  "sharedTaken": "This shared project already belongs to another channel. Use a separate Photon project for each agent.",
+  "noEligibleNumber": "No eligible dedicated number is available. Check the line allocation in Photon and existing Paperclip channels.",
+  "sharedInfo": "Direct messages only. Enroll each test sender in your Photon project's Users page, then use the number Photon assigns to that sender. Paperclip identity linking is still required. Groups cannot be enabled on this channel.",
+  "connecting": "Connecting…",
+  "reconnect": "Reconnect Photon",
+  "connectShared": "Connect shared DMs",
+  "connectSelected": "Connect selected number"
+}

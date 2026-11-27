@@ -1,0 +1,105 @@
+{
+  "runExitedWithError": "Run exited with an error.",
+  "joinRequest": {
+    "agent": "Agent join request",
+    "agentNamed": "Agent join request: {{name}}",
+    "human": "Human join request",
+    "requestedFrom": "requested {{time}} from IP {{ip}}",
+    "adapter": "adapter: {{adapter}}"
+  },
+  "failedRun": {
+    "title": "Failed run",
+    "titleWithAgent": "Failed run — {{name}}"
+  },
+  "approval": {
+    "requestedBy": "requested by {{name}}",
+    "updated": "updated {{time}}"
+  },
+  "approve": "Approve",
+  "reject": "Reject",
+  "markAsRead": "Mark as read",
+  "retrying": "Retrying…",
+  "retry": "Retry",
+  "dismiss": "Dismiss",
+  "breadcrumb": "Inbox",
+  "creators": {
+    "board": "Board",
+    "me": "Me"
+  },
+  "actions": {
+    "approveRequest": "approve this request",
+    "rejectRequest": "reject this request",
+    "approveJoinRequest": "approve the join request",
+    "rejectJoinRequest": "reject the join request",
+    "retryRun": "retry the run",
+    "archiveTask": "archive the task",
+    "undoArchive": "undo the inbox archive",
+    "loadApprovals": "load approvals"
+  },
+  "selectCompany": "Select a company to view inbox.",
+  "searchPlaceholder": "Search inbox…",
+  "tabs": {
+    "mine": "Mine",
+    "recent": "Recent",
+    "unread": "Unread",
+    "blocked": "Blocked",
+    "all": "All"
+  },
+  "toolbar": {
+    "group": "Group",
+    "sort": "Sort",
+    "columns": "Choose which inbox columns stay visible",
+    "disableNesting": "Disable parent-child nesting",
+    "enableNesting": "Enable parent-child nesting"
+  },
+  "groupBy": {
+    "none": "None",
+    "type": "Type",
+    "assignee": "Responsible",
+    "project": "Project",
+    "workspace": "Workspace"
+  },
+  "markAllRead": {
+    "marking": "Marking…",
+    "button": "Mark all as read",
+    "confirmTitle": "Mark all as read?",
+    "confirmDescription_one": "This will mark {{count}} unread item as read.",
+    "confirmDescription_other": "This will mark {{count}} unread items as read.",
+    "cancel": "Cancel"
+  },
+  "filters": {
+    "category": "Category",
+    "allCategories": "All categories",
+    "myRecentTasks": "My recent tasks",
+    "joinRequests": "Join requests",
+    "approvals": "Approvals",
+    "failedRuns": "Failed runs",
+    "alerts": "Alerts",
+    "approvalStatus": "Approval status",
+    "allApprovalStatuses": "All approval statuses",
+    "needsAction": "Needs action",
+    "resolved": "Resolved"
+  },
+  "empty": {
+    "search": "No inbox items match your search.",
+    "mine": "Inbox zero.",
+    "unread": "No new inbox items.",
+    "recent": "No recent inbox items.",
+    "filters": "No inbox items match these filters."
+  },
+  "search": {
+    "archived": "Archived",
+    "otherResults": "Other results"
+  },
+  "newTaskIn": "New task in {{group}}",
+  "alerts": {
+    "heading": "Alerts",
+    "agentErrors_one": "agent has errors",
+    "agentErrors_other": "agents have errors",
+    "budgetAt": "Budget at",
+    "utilizationThisMonth": "utilization this month"
+  },
+  "subTaskCount_one": "({{count}} sub-task)",
+  "subTaskCount_other": "({{count}} sub-tasks)",
+  "earlierDivider": "Earlier"
+}

@@ -7,6 +7,7 @@ import { describeError } from "@/api/errors";
 import { useOptionalToastActions } from "@/context/ToastContext";
 import { retryTransientOnly } from "@/lib/query-client";
 import { AI_PROVIDERS } from "./model";
+import { t } from "@/i18n";
 
 export function isOwnAiAccount(account: Pick<AiManagedConnectionSummary, "ownership" | "ownerUserId" | "routing">, userId: string) {
   return account.ownership === "personal" && account.ownerUserId === userId && !account.routing;
@@ -43,7 +44,7 @@ export function useAiConnectionDefaults(companyId: string | null, identity: { us
     queryKey: listKey,
     queryFn: async ({ signal }) => {
       const result = await aiConnectionsApi.list(companyId!, undefined, { signal, fresh: true });
-      if (identity.userId && result.currentUserId !== identity.userId) throw new Error("Your account changed. Refresh your connections.");
+      if (identity.userId && result.currentUserId !== identity.userId) throw new Error(t("componentsAiConnections.defaults.accountChanged"));
       return result;
     },
     enabled: Boolean(companyId) && identity.settled && enabled,
@@ -63,7 +64,7 @@ export function useAiConnectionDefaults(companyId: string | null, identity: { us
       if (activeScope.current !== target.scope || !identity.settled || !snapshot || !account ||
           account.companyId !== companyId || !isOwnAiAccount(account, snapshot.currentUserId) ||
           !account.canSetDefault || account.status !== "connected" || account.unavailableReason) {
-        throw new Error("This account is unavailable as your default. Refresh or reconnect it, then try again.");
+        throw new Error(t("componentsAiConnections.defaults.unavailableAsDefault"));
       }
       if (!account.isDefault) await aiConnectionsApi.setDefault(account.companyId, account.grantId);
     },
@@ -72,13 +73,13 @@ export function useAiConnectionDefaults(companyId: string | null, identity: { us
       if (activeScope.current !== target.scope) return;
       const saved = client.getQueryData<AiConnectionList>(listKey)?.connections.find(account => account.grantId === target.account.grantId);
       toast?.pushToast(saved?.isDefault
-        ? { tone: "success", title: `${target.account.name} is now your ${AI_PROVIDERS[target.account.provider].name} default` }
-        : { tone: "info", title: `Your ${AI_PROVIDERS[target.account.provider].name} default was updated`, body: "The latest saved selection is shown in Connectors." });
+        ? { tone: "success", title: t("componentsAiConnections.defaults.nowDefault", { account: target.account.name, provider: AI_PROVIDERS[target.account.provider].name }) }
+        : { tone: "info", title: t("componentsAiConnections.defaults.updated", { provider: AI_PROVIDERS[target.account.provider].name }), body: t("componentsAiConnections.defaults.updatedBody") });
     },
     onError: (error, target) => {
       if (activeScope.current !== target.scope) return;
-      toast?.pushToast({ tone: "error", title: `Couldn’t change your ${AI_PROVIDERS[target.account.provider].name} default`,
-        body: describeError(error).body, action: { label: "Retry", onClick: () => choose(target.account, true, target.scope) } });
+      toast?.pushToast({ tone: "error", title: t("componentsAiConnections.defaults.changeFailed", { provider: AI_PROVIDERS[target.account.provider].name }),
+        body: describeError(error).body, action: { label: t("componentsAiConnections.defaults.retry"), onClick: () => choose(target.account, true, target.scope) } });
     },
   });
   function choose(account: AiManagedConnectionSummary, retry = false, targetScope = scope) {

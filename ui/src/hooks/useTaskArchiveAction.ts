@@ -13,6 +13,7 @@ import {
   confirmLocalInboxArchive,
   invalidateTaskArchiveQueries,
 } from "@/lib/inboxArchiveCache";
+import { t } from "@/i18n";
 
 type ArchiveChange = { companyId: string; issueId: string; reference: string; archive: boolean; owner: string };
 
@@ -40,7 +41,7 @@ export function useTaskArchiveAction(companyId: string | null, userId: string | 
     onError: (error, { archive }, context) => {
       context?.release();
       toast?.pushToast({
-        title: archive ? "Archive failed" : "Restore failed",
+        title: archive ? t("hooksUseTaskArchiveAction.archiveFailed") : t("hooksUseTaskArchiveAction.restoreFailed"),
         body: describeError(error).body,
         tone: "error",
       });
@@ -63,12 +64,12 @@ export function useTaskArchiveAction(companyId: string | null, userId: string | 
         toast?.pushToast({
           id: `archive:${input.companyId}:${input.issueId}`,
           dedupe: false,
-          title: "Task archived",
+          title: t("hooksUseTaskArchiveAction.archived"),
           body: input.reference,
           tone: "success",
           ttlMs: 8000,
           action: {
-            label: "Undo",
+            label: t("hooksUseTaskArchiveAction.undo"),
             onClick: () => {
               if (account.isCurrentAccount()) void submit({ ...input, archive: false });
             },

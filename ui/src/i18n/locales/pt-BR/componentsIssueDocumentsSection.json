@@ -1,0 +1,87 @@
+{
+  "keyError": {
+    "plan": "Crie e revise Planos na conversa da tarefa.",
+    "artifactReview": "Revise este documento pelo seu produto de trabalho.",
+    "reserved": "Esta chave de documento é reservada para o estado da tarefa.",
+    "pattern": "Use letras minúsculas, números, - ou _, e comece com uma letra ou número."
+  },
+  "actor": {
+    "board": "Conselho",
+    "system": "Sistema"
+  },
+  "errors": {
+    "deleteFailed": "Falha ao excluir o documento",
+    "restoreFailed": "Falha ao restaurar a revisão do documento",
+    "lockFailed": "Falha ao atualizar o bloqueio do documento",
+    "keyAndBodyRequired": "A chave e o corpo do documento são obrigatórios",
+    "bodyEmpty": "O corpo do documento não pode ficar vazio",
+    "keyInvalid": "A chave do documento deve começar com uma letra ou número e usar só letras minúsculas, números, - ou _.",
+    "locked": "O documento está bloqueado. Desbloqueie-o antes de editar.",
+    "remoteChangedLoadFailed": "O documento mudou remotamente e não foi possível carregar a versão mais recente",
+    "saveAction": "salvar o documento",
+    "copyFailed": "Não foi possível copiar o documento",
+    "saveBeforeHistory": "Salve ou cancele suas alterações locais antes de ver uma revisão anterior.",
+    "saveBeforeLock": "Salve ou cancele as alterações locais antes de mudar o bloqueio do documento.",
+    "reviewedRevisionLoadFailed": "Não foi possível carregar a revisão revisada. Tente abrir o link de novo.",
+    "reviewedRevisionUnavailable": "A revisão revisada não está disponível."
+  },
+  "newDocument": "Novo documento",
+  "newShort": "Novo",
+  "title": "Documentos",
+  "placeholders": {
+    "key": "Chave do documento",
+    "title": "Título opcional",
+    "body": "Corpo em Markdown"
+  },
+  "cancel": "Cancelar",
+  "saving": "Salvando...",
+  "createDocument": "Criar documento",
+  "planBadge": "PLANO",
+  "lock": {
+    "unlock": "Desbloquear documento",
+    "lock": "Bloquear documento",
+    "unlockAria": "Desbloquear o documento {{key}}",
+    "lockAria": "Bloquear o documento {{key}}",
+    "locked": "Documento bloqueado"
+  },
+  "copied": "Copiado",
+  "copyDocument": "Copiar documento",
+  "actions": {
+    "label": "Ações do documento",
+    "edit": "Editar documento",
+    "download": "Baixar documento",
+    "viewDiff": "Ver diferenças",
+    "delete": "Excluir documento"
+  },
+  "loadingReviewedRevision": "Carregando a revisão revisada…",
+  "history": {
+    "viewingRevision": "Vendo a revisão {{number}}",
+    "body": "Esta é uma prévia histórica. Restaurá-la cria uma nova revisão mais recente e mantém o histórico só com acréscimos.",
+    "returnToLatest": "Voltar à mais recente",
+    "restoring": "Restaurando...",
+    "restore": "Restaurar esta revisão"
+  },
+  "conflict": {
+    "outOfDate": "Desatualizado",
+    "body": "Este documento mudou enquanto você editava. Seu rascunho local foi preservado e o salvamento automático está pausado.",
+    "hideRemote": "Ocultar remoto",
+    "reviewRemote": "Revisar remoto",
+    "keepDraft": "Manter meu rascunho",
+    "reloadRemote": "Recarregar remoto",
+    "overwriteRemote": "Sobrescrever remoto",
+    "remoteRevision": "Revisão remota {{number}}",
+    "updated": "atualizado {{time}}"
+  },
+  "status": {
+    "historical": "Vendo revisão histórica"
+  },
+  "retrySaving": "Tentar salvar de novo",
+  "deleteConfirm": {
+    "body": "Excluir este documento? Não é possível desfazer.",
+    "deleting": "Excluindo...",
+    "delete": "Excluir"
+  },
+  "errorActions": {
+    "saveDocument": "salvar o documento"
+  }
+}

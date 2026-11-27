@@ -7,6 +7,7 @@ import {
   type AgentConfigurationInput,
   type AgentConfigurationSource,
 } from "@paperclipai/shared";
+import { t } from "@/i18n";
 
 export function serializeAgentConfiguration(agent: AgentConfigurationSource): string {
   return serializeAgentConfigurationDocument({ apiVersion: "paperclip/v1", kind: "Agent", spec: agentConfigurationSpec(agent) } as AgentConfigurationDocument);
@@ -19,38 +20,38 @@ export function serializeAgentConfigurationDocument(document: AgentConfiguration
 }
 
 function assertJson(value: unknown, depth = 0): void {
-  if (depth > 50) throw new Error("Configuration nesting must not exceed 50 levels.");
+  if (depth > 50) throw new Error(t("libAgentConfigurationYaml.nestingTooDeep"));
   if (value === null || typeof value === "string" || typeof value === "boolean") return;
   if (typeof value === "number" && Number.isFinite(value)) return;
   if (Array.isArray(value)) { value.forEach(item => assertJson(item, depth + 1)); return; }
   if (value && typeof value === "object") {
     for (const [key, item] of Object.entries(value)) {
       if (["__proto__", "constructor", "prototype", "<<"].includes(key)) {
-        throw new Error(`Unsupported configuration key: ${key}`);
+        throw new Error(t("libAgentConfigurationYaml.unsupportedKey", { key }));
       }
       assertJson(item, depth + 1);
     }
     return;
   }
-  throw new Error("Configuration must contain only JSON-compatible values (no NaN or infinity).");
+  throw new Error(t("libAgentConfigurationYaml.jsonOnly"));
 }
 
 export function parseAgentConfigurationYaml(source: string): AgentConfigurationInput {
-  if (source.length > 8 * 1024 * 1024 || new TextEncoder().encode(source).byteLength > 8 * 1024 * 1024) throw new Error("Configuration must be smaller than 8 MiB.");
+  if (source.length > 8 * 1024 * 1024 || new TextEncoder().encode(source).byteLength > 8 * 1024 * 1024) throw new Error(t("libAgentConfigurationYaml.tooLarge"));
   const document = parseDocument(source, { version: "1.2", schema: "core", uniqueKeys: true, stringKeys: true });
   const problem = document.errors[0] ?? document.warnings[0];
   if (problem) throw new Error(problem.message);
-  if (document.directives?.yaml.version !== "1.2") throw new Error("Use YAML 1.2.");
+  if (document.directives?.yaml.version !== "1.2") throw new Error(t("libAgentConfigurationYaml.useYaml12"));
   visit(document, (_key, node) => {
-    if (isAlias(node)) throw new Error("YAML aliases are not supported. Write each value explicitly.");
-    if (node && typeof node === "object" && "anchor" in node && node.anchor) throw new Error("YAML anchors are not supported.");
-    if (node && typeof node === "object" && "tag" in node && node.tag) throw new Error("YAML tags are not supported.");
+    if (isAlias(node)) throw new Error(t("libAgentConfigurationYaml.noAliases"));
+    if (node && typeof node === "object" && "anchor" in node && node.anchor) throw new Error(t("libAgentConfigurationYaml.noAnchors"));
+    if (node && typeof node === "object" && "tag" in node && node.tag) throw new Error(t("libAgentConfigurationYaml.noTags"));
   });
   const value: unknown = document.toJS({ maxAliasCount: 0 });
   assertJson(value);
   const parsed = agentConfigurationInputSchema.safeParse(value);
   if (!parsed.success) {
-    throw new Error(parsed.error.issues.map(issue => `${issue.path.join(".") || "document"}: ${issue.message}`).join("\n"));
+    throw new Error(parsed.error.issues.map(issue => `${issue.path.join(".") || t("libAgentConfigurationYaml.document")}: ${issue.message}`).join("\n"));
   }
   return parsed.data;
 }

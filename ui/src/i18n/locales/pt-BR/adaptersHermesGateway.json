@@ -1,0 +1,44 @@
+{
+  "secret": {
+    "hide": "Ocultar {{label}}",
+    "show": "Mostrar {{label}}",
+    "storedPlaceholder": "Segredo armazenado; digite um novo valor para substituí-lo"
+  },
+  "apiBaseUrl": {
+    "label": "URL base da API",
+    "hint": "URL base do servidor da API do Hermes que o Paperclip consegue acessar, como http://127.0.0.1:8642 ou uma URL HTTPS privada. URLs raiz/chat padrão do painel (como http://127.0.0.1:9119/chat) são aceitas e mapeadas para /api."
+  },
+  "apiKey": {
+    "label": "Chave de API",
+    "placeholder": "API_SERVER_KEY do Hermes, não PAPERCLIP_API_KEY"
+  },
+  "paperclipApiUrl": {
+    "label": "URL da API do Paperclip",
+    "hint": "URL opcional da API do Paperclip acessível pelo host do Hermes. Não é uma credencial."
+  },
+  "sessionKeyStrategy": {
+    "label": "Estratégia da chave de sessão",
+    "hint": "Controla X-Hermes-Session-Key. Por tarefa evita, por padrão, que a memória vaze entre tarefas.",
+    "issue": "Por tarefa",
+    "agent": "Por agente",
+    "run": "Por execução",
+    "none": "Nenhuma"
+  },
+  "timeoutSec": "Tempo limite em segundos",
+  "eventReconnectMs": {
+    "label": "Reconexão de eventos (ms)",
+    "hint": "Espera antes de reconectar o fluxo de eventos SSE do Hermes após uma desconexão não terminal."
+  },
+  "allowInsecureRemoteHttp": {
+    "label": "Permitir HTTP remoto (perigoso)",
+    "hint": "Recurso inseguro, só para desenvolvimento. Gateways remotos do Hermes devem usar HTTPS; HTTP em loopback continua permitido."
+  },
+  "headers": {
+    "label": "Cabeçalhos extras",
+    "hint": "Objeto JSON opcional com cabeçalhos extras não secretos. Os cabeçalhos críticos de segurança são gerados pelo adaptador."
+  },
+  "instructions": {
+    "label": "Instruções",
+    "hint": "Instruções estáveis opcionais do Hermes, enviadas separadamente da entrada de despertar."
+  }
+}

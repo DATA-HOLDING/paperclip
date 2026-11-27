@@ -1,0 +1,42 @@
+{
+  "window": {
+    "lifetime": "Orçamento total",
+    "monthlyUtc": "Orçamento mensal (UTC)"
+  },
+  "reservePerRun": "Reserva por execução (USD)",
+  "invalidReservation": "Informe um valor válido igual ou maior que zero.",
+  "reservationHint": "Uma estimativa reservada antes de cada execução começar. Zero desativa a estimativa. As cobranças reais do provedor podem ultrapassá-la.",
+  "updateReservation": "Atualizar reserva",
+  "advancedSettings": "Configurações avançadas",
+  "blockUnpriced": "Bloquear novo trabalho quando o uso não tiver preço confiável",
+  "observed": "Observado",
+  "percentOfLimit": "{{percent}}% do limite",
+  "noCap": "Nenhum limite configurado",
+  "budget": "Orçamento",
+  "disabled": "Desativado",
+  "softAlertAt": "Alerta suave em {{percent}}%",
+  "pauseReasonSuffix": " · pausa por {{reason}}",
+  "pendingRuns": "{{runCount}} execuções concluídas aguardam contabilização.",
+  "unpricedEvents": "{{eventCount}} eventos de uso estão sem preço. O gasto conhecido exclui o custo desconhecido deles.",
+  "remaining": "Restante",
+  "unlimited": "Ilimitado",
+  "utilizationAriaLabel": "Uso do orçamento: {{percent}}% usado",
+  "pausedProject": "A execução está pausada para este projeto até que o bloqueio de orçamento seja resolvido.",
+  "pausedScope": "Os heartbeats estão pausados para este escopo até que o bloqueio de orçamento seja resolvido.",
+  "budgetUsd": "Orçamento (USD)",
+  "saving": "Salvando...",
+  "updateBudget": "Atualizar orçamento",
+  "setBudget": "Definir orçamento",
+  "status": {
+    "paused": "Pausado",
+    "warning": "Alerta",
+    "hardStop": "Bloqueio total",
+    "healthy": "Saudável"
+  },
+  "invalidAmount": "Informe um valor válido em dólares, não negativo.",
+  "scopeType": {
+    "company": "organização",
+    "agent": "agente",
+    "project": "projeto"
+  }
+}

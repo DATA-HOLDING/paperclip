@@ -1,0 +1,9 @@
+{
+  "columns": {
+    "project": "Projeto",
+    "agent": "Agente",
+    "responsibleUser": "Usuário responsável",
+    "lastRun": "Última execução",
+    "enabled": "Ativa"
+  }
+}

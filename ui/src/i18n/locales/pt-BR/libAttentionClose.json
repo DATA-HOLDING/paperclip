@@ -1,0 +1,10 @@
+{
+  "anotherPerson": "outra pessoa",
+  "back": "Volta em {{date}}",
+  "archived": "Arquivado em {{date}}",
+  "alreadyAnsweredBy": "Já respondido por @{{name}}",
+  "alreadyAnsweredByAgent": "Já respondido por um agente",
+  "alreadyAnswered": "Já respondido",
+  "forOtherWithdraw": "Isto é para @{{name}}. Retirar mesmo assim?",
+  "forOtherContinue": "Isto é para @{{name}}. Continuar?"
+}

@@ -1,0 +1,4 @@
+{
+  "staleRetry": "Esta tentativa já foi substituída, então a nova tentativa não iniciou trabalho. A tarefa agora mostra o estado atual.",
+  "alreadyMovedOn": "A tarefa já avançou, então nada novo foi iniciado. Ela agora mostra o estado atual."
+}

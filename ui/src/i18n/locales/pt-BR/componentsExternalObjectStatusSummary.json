@@ -1,0 +1,7 @@
+{
+  "stale_one": "{{count}} desatualizado",
+  "stale_other": "{{count}} desatualizados",
+  "total_one": "{{count}} no total",
+  "total_other": "{{count}} no total",
+  "title": "Objetos externos: {{parts}}"
+}

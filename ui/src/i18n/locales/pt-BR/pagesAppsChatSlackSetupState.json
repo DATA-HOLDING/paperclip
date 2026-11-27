@@ -1,0 +1,12 @@
+{
+  "chooseAgent": "Escolher agente",
+  "connect": "Conectar",
+  "appConfigurationToken": "Token de acesso de configuração do app",
+  "installSlackApp": "Instalar o app do Slack",
+  "sendMessage": "Enviar uma mensagem",
+  "createSlackApp": "Criar app do Slack",
+  "addCredentials": "Adicionar credenciais",
+  "verifyConnection": "Verificar a conexão com o Slack",
+  "connectAccount": "Conectar sua conta do Slack",
+  "tryIt": "Experimentar"
+}

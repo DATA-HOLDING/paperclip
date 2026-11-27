@@ -1,0 +1,32 @@
+{
+  "suggestions": {
+    "openTodo": {
+      "label": "Open todo tasks",
+      "description": "Filter by task status"
+    },
+    "blocked": {
+      "label": "Blocked tasks",
+      "description": "Find blocked work"
+    },
+    "assignedToMe": {
+      "label": "Assigned to me",
+      "description": "Use your current board user"
+    },
+    "projectName": {
+      "label": "Project name",
+      "description": "Quote multi-word project names"
+    },
+    "label": {
+      "label": "Label",
+      "description": "Filter by issue label"
+    },
+    "highPriority": {
+      "label": "High priority",
+      "description": "Filter by priority"
+    },
+    "recentlyUpdated": {
+      "label": "Recently updated",
+      "description": "Updated in the last 7 days"
+    }
+  }
+}

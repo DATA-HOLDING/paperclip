@@ -1,0 +1,36 @@
+{
+  "status": {
+    "provisioning": "Provisionando…",
+    "starting": "Iniciando…",
+    "stopping": "Parando…",
+    "restarting": "Reiniciando…",
+    "failed": "Falhou",
+    "unhealthy": "Com problemas",
+    "running": "Em execução",
+    "stopped": "Parado"
+  },
+  "copy": {
+    "copied": "URL copiada",
+    "failed": "Falha ao copiar",
+    "copy": "Copiar URL"
+  },
+  "noUrl": "sem URL",
+  "openInNewTab": "Abrir em nova aba",
+  "actions": {
+    "start": "Iniciar",
+    "restart": "Reiniciar",
+    "stop": "Parar"
+  },
+  "viewLogs": "Ver logs",
+  "startingOnPort": "iniciando em :{{port}}…",
+  "allServices": "Todos os serviços",
+  "multi": {
+    "ariaLabel": "{{running}} de {{total}} serviços em execução — mostrar serviços",
+    "runningCount": "{{running}}/{{total}} em execução",
+    "servicesHeading": "Serviços · {{total}}",
+    "startAll": "Iniciar todos",
+    "stopAll": "Parar todos",
+    "restartAll": "Reiniciar todos",
+    "manage": "Gerenciar na aba Serviços →"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "failedToRender": "{{name}}: falha ao renderizar",
+  "unresolvedTarget": "{{name}}: não foi possível resolver o destino do lançador \"{{target}}\".",
+  "close": "Fechar"
+}

@@ -1,0 +1,7 @@
+{
+  "failedAfterPlanSaved": "A restauração do espaço de trabalho falhou depois que o plano foi salvo. O plano salvo está disponível.",
+  "failed": "A restauração do espaço de trabalho falhou.",
+  "filesNeedRecovery": "Os arquivos do espaço de trabalho precisam ser recuperados.",
+  "noFinalResponse": "Nenhuma resposta final foi registrada.",
+  "affectedPath": "Caminho afetado: {{path}}."
+}

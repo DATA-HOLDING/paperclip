@@ -19,6 +19,7 @@ import { useCompany } from "@/context/CompanyContext";
 import { queryKeys } from "@/lib/queryKeys";
 import { useSearchParams } from "@/lib/router";
 import { caseListView, DEFAULT_CASE_COLUMNS } from "@/lib/case-list-view";
+import { t } from "@/i18n";
 
 const PAGE_SIZE = 50;
 const ALL = "all";
@@ -34,7 +35,7 @@ function CaseFilter({ label, value, options, onChange, disabled }: {
 }) {
   return <div className="space-y-1">
     <span className="text-xs text-muted-foreground">{label}</span>
-    <SelectPopover aria-label={`Filter by ${label.toLowerCase()}`} value={value}
+    <SelectPopover aria-label={t("pagesCases.filterBy", { label: label.toLowerCase() })} value={value}
       options={options} onValueChange={onChange} disabled={disabled} className="text-sm data-[size=default]:h-9" />
   </div>;
 }
@@ -69,7 +70,7 @@ export function Cases() {
     ...(view.groupBy !== "none" ? { groupBy: view.groupBy } : {}),
   };
 
-  useEffect(() => setBreadcrumbs([{ label: "Cases" }]), [setBreadcrumbs]);
+  useEffect(() => setBreadcrumbs([{ label: t("pagesCases.breadcrumb") }]), [setBreadcrumbs]);
 
   const casesQuery = useQuery({
     queryKey: [...queryKeys.cases.list(selectedCompanyId ?? ""), filters],
@@ -99,7 +100,7 @@ export function Cases() {
     const key = view.groupBy === "status" ? record.status : view.groupBy === "type" ? record.caseType
       : view.groupBy === "project" ? record.projectId ?? "none" : ALL;
     const label = view.groupBy === "status" ? CASE_STATUS_LABELS[record.status]
-      : view.groupBy === "project" ? record.projectId ? projectNames.get(record.projectId) ?? "Project unavailable" : "No project" : key;
+      : view.groupBy === "project" ? record.projectId ? projectNames.get(record.projectId) ?? t("pagesCases.projectUnavailable") : t("pagesCases.noProject") : key;
     if (!groups.has(key)) groups.set(key, { label, records: [] });
     groups.get(key)!.records.push(record);
   }
@@ -136,21 +137,21 @@ export function Cases() {
   };
   const clearFilters = () => setView({ q: "", status: "", type: "", project: "" });
 
-  if (!selectedCompanyId) return <EmptyState icon={FolderOpen} message="Select a company to view cases." />;
+  if (!selectedCompanyId) return <EmptyState icon={FolderOpen} message={t("pagesCases.selectCompany")} />;
 
   return (
     <div className="mx-auto max-w-6xl space-y-4" data-testid="case-pages">
-      <CollectionToolbar ariaLabel="Case controls" search={<div className="flex min-w-0 items-center gap-3">
+      <CollectionToolbar ariaLabel={t("pagesCases.controls")} search={<div className="flex min-w-0 items-center gap-3">
         <div className="relative min-w-0 flex-1 sm:max-w-xs">
           <Search aria-hidden className="pointer-events-none absolute left-2 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
-          <Input aria-label="Search cases" placeholder="Search cases…" value={query}
+          <Input aria-label={t("pagesCases.searchLabel")} placeholder={t("pagesCases.searchPlaceholder")} value={query}
             data-page-search-target="true" onChange={event => setFilter("q", event.target.value)} className="h-8 pl-8" />
         </div>
         <p role="status" className="whitespace-nowrap text-xs text-muted-foreground">
-          {casesWaiting ? "Loading cases…" : casesQuery.isFetching ? "Updating cases…"
+          {casesWaiting ? t("pagesCases.loading") : casesQuery.isFetching ? t("pagesCases.updating")
             : (casesQueryView.kind === "error") ? ""
-              : page > 1 && records.length > 0 ? `${offset + 1}–${offset + records.length} cases`
-                : `${records.length}${hasNext ? "+" : ""} ${records.length === 1 && !hasNext ? "case" : "cases"}`}
+              : page > 1 && records.length > 0 ? t("pagesCases.range", { from: offset + 1, to: offset + records.length })
+                : records.length === 1 && !hasNext ? t("pagesCases.countOne", { n: records.length }) : t("pagesCases.countOther", { n: `${records.length}${hasNext ? "+" : ""}` })}
         </p>
       </div>} controls={<CaseListControls activeFilterCount={activeFilterCount} columns={view.columns}
         onColumnsChange={columns => setView({ columns: columns.join(",") === DEFAULT_CASE_COLUMNS.join(",") ? "" : columns.join(",") || "none" }, false)}
@@ -158,45 +159,45 @@ export function Cases() {
         onSortChange={(field, dir) => setView({ sort: field === "updated" ? "" : field, dir: dir === "desc" ? "" : dir })}
         groupBy={view.groupBy} onGroupChange={group => setView({ group: group === "none" ? "" : group })}
         filters={<>
-        <CaseFilter label="Status" value={status} onChange={value => setFilter("status", value)} options={[
-          { value: ALL, label: "All statuses" },
+        <CaseFilter label={t("pagesCases.filters.status")} value={status} onChange={value => setFilter("status", value)} options={[
+          { value: ALL, label: t("pagesCases.filters.allStatuses") },
           ...CASE_STATUSES.map(value => ({ value, label: CASE_STATUS_LABELS[value] })),
         ]} />
-        <CaseFilter label="Type" value={type} disabled={typesQuery.isPending || (typesQueryView.kind === "error")}
+        <CaseFilter label={t("pagesCases.filters.type")} value={type} disabled={typesQuery.isPending || (typesQueryView.kind === "error")}
           onChange={value => setFilter("type", value)} options={[
-            { value: ALL, label: "All types" },
+            { value: ALL, label: t("pagesCases.filters.allTypes") },
             ...typeOptions.map(value => ({ value, label: value })),
           ]} />
-        <CaseFilter label="Project" value={project} disabled={projectsQuery.isPending || (projectsQueryView.kind === "error")}
+        <CaseFilter label={t("pagesCases.filters.project")} value={project} disabled={projectsQuery.isPending || (projectsQueryView.kind === "error")}
           onChange={value => setFilter("project", value)} options={[
-            { value: ALL, label: "All projects" },
-            { value: "none", label: "No project" },
+            { value: ALL, label: t("pagesCases.filters.allProjects") },
+            { value: "none", label: t("pagesCases.noProject") },
             ...(projectsQuery.data ?? []).map(item => ({ value: item.id, label: item.name })),
             ...(project !== ALL && project !== "none" && !projectNames.has(project)
-              ? [{ value: project, label: "Selected project" }] : []),
+              ? [{ value: project, label: t("pagesCases.filters.selectedProject") }] : []),
           ]} />
         </>} />}
-        feedback={hasFilters ? <Button variant="ghost" size="sm" onClick={clearFilters}>Clear filters</Button> : undefined} />
+        feedback={hasFilters ? <Button variant="ghost" size="sm" onClick={clearFilters}>{t("pagesCases.clearFilters")}</Button> : undefined} />
 
       {(typesQueryView.kind === "error") || (projectsQueryView.kind === "error") ? <div role="alert" className="flex flex-wrap items-center gap-3 text-sm">
-        <p>Some case filters couldn’t be loaded.</p>
+        <p>{t("pagesCases.filtersLoadError")}</p>
         <Button variant="ghost" size="sm" onClick={() => {
           if ((typesQueryView.kind === "error")) void typesQuery.refetch();
           if ((projectsQueryView.kind === "error")) void projectsQuery.refetch();
-        }}>Retry filters</Button>
+        }}>{t("pagesCases.retryFilters")}</Button>
       </div> : null}
 
       {casesWaiting ? <div aria-hidden="true" className="space-y-2">
         {Array.from({ length: 6 }, (_, index) => <Skeleton key={index} className="h-16 w-full rounded-none" />)}
       </div> : (casesQueryView.kind === "error") ? <div role="alert" className="flex flex-wrap items-center gap-3 py-6 text-sm">
-        <p>Cases couldn’t be loaded.</p>
-        <Button variant="outline" size="sm" onClick={() => void casesQuery.refetch()}>Try again</Button>
+        <p>{t("pagesCases.loadError")}</p>
+        <Button variant="outline" size="sm" onClick={() => void casesQuery.refetch()}>{t("pagesCases.tryAgain")}</Button>
       </div> : records.length === 0 ? (
         <EmptyState icon={hasFilters ? Search : FolderOpen}
-          message={page > 1 ? "No cases on this page" : hasFilters ? "No cases match these filters" : "No cases yet"}
-          action={page > 1 ? "First page" : hasFilters ? "Clear filters" : undefined} hideActionIcon
+          message={page > 1 ? t("pagesCases.empty.page") : hasFilters ? t("pagesCases.empty.filtered") : t("pagesCases.empty.none")}
+          action={page > 1 ? t("pagesCases.firstPage") : hasFilters ? t("pagesCases.clearFilters") : undefined} hideActionIcon
           onAction={() => page > 1 ? setPage(1) : clearFilters()} />
-      ) : <section aria-label="Case list" aria-busy={casesQuery.isFetching} inert={casesQuery.isPlaceholderData} className="border-t border-border">
+      ) : <section aria-label={t("pagesCases.list")} aria-busy={casesQuery.isFetching} inert={casesQuery.isPlaceholderData} className="border-t border-border">
         {[...groups].map(([key, group]) => <div key={key}>
           {view.groupBy !== "none" && <IssueGroupHeader label={group.label} className="border-b border-border px-3 pt-4" />}
           {group.records.map(record => <CaseListRow key={record.id} caseData={record} columns={view.columns}
@@ -205,9 +206,9 @@ export function Cases() {
         </div>)}
       </section>}
 
-      {page > 1 || hasNext ? <nav aria-label="Case list pages" className="flex items-center justify-end gap-2">
-        <Button variant="outline" size="sm" disabled={page === 1 || casesQuery.isFetching} onClick={() => setPage(page - 1)}>Previous</Button>
-        <Button variant="outline" size="sm" disabled={!hasNext || casesQuery.isFetching} onClick={() => setPage(page + 1)}>Next</Button>
+      {page > 1 || hasNext ? <nav aria-label={t("pagesCases.pages")} className="flex items-center justify-end gap-2">
+        <Button variant="outline" size="sm" disabled={page === 1 || casesQuery.isFetching} onClick={() => setPage(page - 1)}>{t("pagesCases.previous")}</Button>
+        <Button variant="outline" size="sm" disabled={!hasNext || casesQuery.isFetching} onClick={() => setPage(page + 1)}>{t("pagesCases.next")}</Button>
       </nav> : null}
     </div>
   );

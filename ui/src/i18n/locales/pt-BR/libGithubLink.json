@@ -1,0 +1,5 @@
+{
+  "pullRequest": "Pull request do GitHub: {{label}}",
+  "issue": "Issue do GitHub: {{label}}",
+  "repository": "Repositório do GitHub: {{repo}}"
+}

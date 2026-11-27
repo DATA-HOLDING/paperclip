@@ -1,0 +1,42 @@
+{
+  "validation": {
+    "required": "This question is required.",
+    "customAnswer": "Enter a custom answer.",
+    "minLength": "Enter at least {{count}} characters.",
+    "maxLength": "Enter no more than {{count}} characters.",
+    "unsupportedPattern": "This question has an unsupported validation pattern.",
+    "noMatch": "Use the requested format.",
+    "validInteger": "Enter a valid integer.",
+    "validNumber": "Enter a valid number.",
+    "minimum": "Enter a value of at least {{value}}.",
+    "maximum": "Enter a value no greater than {{value}}."
+  },
+  "recommended": "Recommended",
+  "noAnswer": "No answer",
+  "missingAnswer": "Question {{number}} needs an answer before you can send.",
+  "submitFailed": "The answers could not be submitted.",
+  "cancelFailed": "The questions could not be cancelled.",
+  "pagination": {
+    "label": "Question pagination",
+    "previous": "Previous question",
+    "position": "{{page}} of {{total}}",
+    "next": "Next question"
+  },
+  "context": "Question context",
+  "writeAnAnswer": "Write an answer",
+  "required": "Required",
+  "optional": "Optional",
+  "addContextPlaceholder": "Add context for the agent…",
+  "writeYourAnswerPlaceholder": "Write your answer",
+  "attachImage": "Attach image to answer for {{prompt}}",
+  "filterChoices": "Filter choices",
+  "filterChoicesFor": "Filter choices for {{prompt}}",
+  "other": "Other",
+  "typeYourAnswer": "Type your answer",
+  "attachImageOther": "Attach image to other answer for {{prompt}}",
+  "cancel": "Cancel",
+  "skip": "Skip",
+  "submitAnswers": "Submit answers",
+  "next": "Next",
+  "noAnswerableQuestions": "No answerable questions were provided."
+}

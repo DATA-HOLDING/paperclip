@@ -1,0 +1,25 @@
+{
+  "status": "Status",
+  "level": "Nível",
+  "owner": "Responsável",
+  "none": "Nenhum",
+  "parentGoal": "Objetivo pai",
+  "created": "Criado",
+  "updated": "Atualizado",
+  "options": {
+    "planned": "Planejado",
+    "active": "Ativo",
+    "achieved": "Alcançado",
+    "cancelled": "Cancelado",
+    "company": "Organização",
+    "team": "Equipe",
+    "agent": "Agente",
+    "task": "Tarefa"
+  },
+  "levels": {
+    "company": "organização",
+    "team": "equipe",
+    "agent": "agente",
+    "task": "tarefa"
+  }
+}

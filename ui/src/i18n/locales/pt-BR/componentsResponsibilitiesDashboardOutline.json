@@ -1,0 +1,23 @@
+{
+  "you": "Você",
+  "notInArea": "Fora de uma área",
+  "archivedSuffix": " · Arquivada",
+  "nothingFiled": "Nada seu está nesta área ainda.",
+  "newResponsibility": "Nova responsabilidade",
+  "overview": {
+    "title": "Visão geral",
+    "subtitle": "Um retrato do seu trabalho"
+  },
+  "figures": {
+    "areas": "Áreas",
+    "responsibilities": "Responsabilidades",
+    "projects": "Projetos",
+    "tasks": "Tarefas"
+  },
+  "areas": {
+    "title": "Áreas",
+    "subtitle": "Com o que você se importa?",
+    "newArea": "Nova área",
+    "empty": "Nada seu ainda. Revise o que foi proposto para você ou adicione uma nova responsabilidade."
+  }
+}

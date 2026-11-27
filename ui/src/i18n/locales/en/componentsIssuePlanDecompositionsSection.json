@@ -1,0 +1,21 @@
+{
+  "status": {
+    "completed": "Completed",
+    "inFlight": "In flight"
+  },
+  "title": "Plan decomposition",
+  "acceptedRevisions_one": "1 accepted plan revision",
+  "acceptedRevisions_other": "{{count}} accepted plan revisions",
+  "agentFallback": "agent",
+  "revision": "revision {{revision}}",
+  "planRevision": "Plan {{revision}}",
+  "childrenCreated_one": "{{created}} of {{count}} child task created",
+  "childrenCreated_other": "{{created}} of {{count}} child tasks created",
+  "idempotentTitle": "Repeat attempts with this fingerprint reuse this record instead of creating new children",
+  "idempotentClaim": "Idempotent claim",
+  "owner": "Owner: {{name}}",
+  "started": "Started {{time}}",
+  "completed": "Completed {{time}}",
+  "updated": "Updated {{time}}",
+  "planDocument": "Plan document"
+}

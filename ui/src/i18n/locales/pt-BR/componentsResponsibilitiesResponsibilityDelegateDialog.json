@@ -1,0 +1,38 @@
+{
+  "groups": {
+    "primary": "Seu agente principal",
+    "others": "Outros agentes"
+  },
+  "created": {
+    "title": "Tarefa criada",
+    "hasIt": "{{name}} está com ela.",
+    "agentHasIt": "O agente está com ela.",
+    "filedUnder": " Ela está arquivada em {{title}}.",
+    "giveAnother": "Dar outra tarefa",
+    "done": "Concluído"
+  },
+  "form": {
+    "title": "Nova tarefa para um agente",
+    "description": "Cria uma tarefa em {{title}} e a entrega ao agente.",
+    "who": "Quem",
+    "loadingAgents": "Carregando agentes…",
+    "chooseAgent": "Escolha um agente",
+    "searchAgents": "Buscar agentes…",
+    "noAgents": "Nenhum agente pode assumir isto. Adicione um agente primeiro.",
+    "agent": "Agente",
+    "how": "Como",
+    "howLabel": "Como o agente trabalha",
+    "whatToDo": "O que fazer",
+    "whatPlaceholder": "ex.: Redigir a atualização para investidores",
+    "anythingElse": "Mais alguma coisa ",
+    "optional": "(opcional)",
+    "anythingPlaceholder": "Contexto, restrições ou como fica o resultado concluído",
+    "createFailed": "Não foi possível criar a tarefa. ",
+    "cancel": "Cancelar",
+    "creating": "Criando tarefa…",
+    "create": "Criar tarefa"
+  },
+  "errorActions": {
+    "loadAgents": "carregar os agentes"
+  }
+}

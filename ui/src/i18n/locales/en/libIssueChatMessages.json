@@ -1,0 +1,50 @@
+{
+  "author": {
+    "you": "You"
+  },
+  "actor": {
+    "system": "System",
+    "board": "Board"
+  },
+  "timeline": {
+    "requestedFollowUp": "{{actor}} requested follow-up",
+    "updatedIssue": "{{actor}} updated this issue",
+    "statusChange": "Status: {{from}} -> {{to}}",
+    "none": "none",
+    "unassigned": "Unassigned",
+    "assigneeChange": "Assignee: {{from}} -> {{to}}",
+    "workspaceChange": "Workspace: {{from}} -> {{to}}"
+  },
+  "duration": {
+    "seconds_one": "{{count}} second",
+    "seconds_other": "{{count}} seconds",
+    "minutes_one": "{{count}} minute",
+    "minutes_other": "{{count}} minutes",
+    "hours_one": "{{count}} hour",
+    "hours_other": "{{count}} hours",
+    "hoursAndMinutes": "{{hours}} {{minutes}}"
+  },
+  "run": {
+    "workedFor": "Worked for {{duration}}",
+    "finishedWork": "Finished work",
+    "failedAfter": "Failed after {{duration}}",
+    "failed": "Run failed",
+    "timedOutAfter": "Timed out after {{duration}}",
+    "timedOut": "Run timed out",
+    "interruptedAfter": "Interrupted by board after {{duration}}",
+    "interrupted": "Interrupted by board",
+    "pausedAfter": "Paused by board after {{duration}}",
+    "paused": "Paused by board",
+    "cancelledAfter": "Cancelled after {{duration}}",
+    "cancelled": "Run cancelled",
+    "queued": "Queued",
+    "working": "Working...",
+    "historicalSummary": "{{agent}} run {{runId}} {{status}}",
+    "finished": "Run finished"
+  },
+  "providerActivity": "Provider activity",
+  "runError": "Run error: {{message}}",
+  "live": {
+    "queued": "Queued..."
+  }
+}

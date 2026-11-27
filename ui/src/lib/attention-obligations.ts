@@ -1,5 +1,6 @@
 import type { AttentionItem } from "@paperclipai/shared";
 import { attentionDetailLine, sourceMeta } from "./attention";
+import { t } from "@/i18n";
 
 /**
  * One card for each obligation (PAP-749 plan §2, Rule 11). The server keeps
@@ -62,7 +63,7 @@ export function inboxProjectOptions(folded: FoldedAttentionObligations, cards: r
     }
   }
   for (const receipt of receipts) {
-    if (receipt.projectId) projects.set(receipt.projectId, receipt.projectName ?? "Unnamed project");
+    if (receipt.projectId) projects.set(receipt.projectId, receipt.projectName ?? t("libAttentionObligations.unnamedProject"));
   }
   return [...projects.entries()];
 }
@@ -86,11 +87,11 @@ export function inboxCardMatchesFilters(folded: FoldedAttentionObligations, item
  * the work a failed run blocks, or another cause.
  */
 export function attentionEvidenceLabel(lead: AttentionItem, evidence: AttentionItem): string {
-  if (evidence.sourceKind === "review") return lead.sourceKind === "approval" ? "Task waiting on this approval" : "Task in review";
-  if (evidence.sourceKind === "blocker_attention") return lead.sourceKind === "failed_run" ? "Blocked by this run" : "Blocked work";
-  if (evidence.sourceKind === "failed_run") return "Also failed";
+  if (evidence.sourceKind === "review") return lead.sourceKind === "approval" ? t("libAttentionObligations.taskWaitingOnApproval") : t("libAttentionObligations.taskInReview");
+  if (evidence.sourceKind === "blocker_attention") return lead.sourceKind === "failed_run" ? t("libAttentionObligations.blockedByThisRun") : t("libAttentionObligations.blockedWork");
+  if (evidence.sourceKind === "failed_run") return t("libAttentionObligations.alsoFailed");
   // Raise limit approves the override approval and Keep paused rejects it (PAP-768).
-  if (evidence.sourceKind === "approval" && lead.sourceKind === "budget_alert") return "Approval this answers";
+  if (evidence.sourceKind === "approval" && lead.sourceKind === "budget_alert") return t("libAttentionObligations.approvalThisAnswers");
   return sourceMeta(evidence.sourceKind).label;
 }
 

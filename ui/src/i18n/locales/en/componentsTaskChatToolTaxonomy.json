@@ -1,0 +1,442 @@
+{
+  "groups": {
+    "toolSearch": {
+      "singular": "tool search",
+      "plural": "tool searches"
+    },
+    "taskOperation": {
+      "singular": "task operation",
+      "plural": "task operations"
+    },
+    "swarmUpdate": {
+      "singular": "swarm update",
+      "plural": "swarm updates"
+    },
+    "command": {
+      "singular": "command",
+      "plural": "commands"
+    },
+    "read": {
+      "singular": "read",
+      "plural": "reads"
+    },
+    "search": {
+      "singular": "search",
+      "plural": "searches"
+    },
+    "fileChange": {
+      "singular": "file change",
+      "plural": "file changes"
+    },
+    "delegation": {
+      "singular": "delegation",
+      "plural": "delegations"
+    },
+    "wait": {
+      "singular": "wait",
+      "plural": "waits"
+    },
+    "toolAction": {
+      "singular": "tool action",
+      "plural": "tool actions"
+    },
+    "paperclipRead": {
+      "singular": "Paperclip read",
+      "plural": "Paperclip reads"
+    }
+  },
+  "exactActions": {
+    "applyPatch": {
+      "running": "Applying a patch",
+      "completed": "Applied a patch"
+    },
+    "read": {
+      "running": "Reading a file",
+      "completed": "Read a file"
+    },
+    "write": {
+      "running": "Writing a file",
+      "completed": "Wrote a file"
+    },
+    "edit": {
+      "running": "Editing a file",
+      "completed": "Edited a file"
+    },
+    "notebookRead": {
+      "running": "Reading a notebook",
+      "completed": "Read a notebook"
+    },
+    "notebookEdit": {
+      "running": "Editing a notebook",
+      "completed": "Edited a notebook"
+    },
+    "glob": {
+      "running": "Searching files",
+      "completed": "Searched files"
+    },
+    "grep": {
+      "running": "Searching file contents",
+      "completed": "Searched file contents"
+    },
+    "toolSearch": {
+      "running": "Searching available tools",
+      "completed": "Searched available tools"
+    },
+    "webSearch": {
+      "running": "Searching the web",
+      "completed": "Searched the web"
+    },
+    "webFetch": {
+      "running": "Fetching a web page",
+      "completed": "Fetched a web page"
+    },
+    "todoWrite": {
+      "running": "Updating the task list",
+      "completed": "Updated the task list"
+    },
+    "taskCreate": {
+      "running": "Creating a task",
+      "completed": "Created a task"
+    },
+    "taskUpdate": {
+      "running": "Updating a task",
+      "completed": "Updated a task"
+    },
+    "taskList": {
+      "running": "Listing tasks",
+      "completed": "Listed tasks"
+    },
+    "taskGet": {
+      "running": "Reading a task",
+      "completed": "Read a task"
+    },
+    "enterPlanMode": {
+      "running": "Entering plan mode",
+      "completed": "Entered plan mode"
+    },
+    "exitPlanMode": {
+      "running": "Leaving plan mode",
+      "completed": "Left plan mode"
+    },
+    "skill": {
+      "running": "Loading a skill",
+      "completed": "Loaded a skill"
+    },
+    "askUserQuestion": {
+      "running": "Requesting input",
+      "completed": "Requested input"
+    },
+    "requestHumanInput": {
+      "running": "Requesting input",
+      "completed": "Requested input"
+    },
+    "agent": {
+      "running": "Starting a subagent",
+      "completed": "Started a subagent"
+    },
+    "task": {
+      "running": "Starting a subagent",
+      "completed": "Started a subagent"
+    },
+    "taskOutput": {
+      "running": "Checking subagent progress",
+      "completed": "Checked subagent progress"
+    },
+    "taskStop": {
+      "running": "Stopping a subagent",
+      "completed": "Stopped a subagent"
+    },
+    "sendMessage": {
+      "running": "Messaging a subagent",
+      "completed": "Messaged a subagent"
+    },
+    "spawnAgent": {
+      "running": "Starting a subagent",
+      "completed": "Started a subagent"
+    },
+    "waitAgent": {
+      "running": "Checking subagent progress",
+      "completed": "Checked subagent progress"
+    },
+    "waitThreads": {
+      "running": "Checking task progress",
+      "completed": "Checked task progress"
+    },
+    "interruptAgent": {
+      "running": "Interrupting a subagent",
+      "completed": "Interrupted a subagent"
+    },
+    "reportFindings": {
+      "running": "Reporting findings",
+      "completed": "Reported findings"
+    },
+    "guardianReview": {
+      "running": "Reviewing safety",
+      "completed": "Reviewed safety"
+    },
+    "lsp": {
+      "running": "Inspecting code intelligence",
+      "completed": "Inspected code intelligence"
+    },
+    "compactConversation": {
+      "running": "Compacting context",
+      "completed": "Compacted context"
+    },
+    "imageGeneration": {
+      "running": "Generating an image",
+      "completed": "Generated an image"
+    },
+    "viewImage": {
+      "running": "Viewing an image",
+      "completed": "Viewed an image"
+    },
+    "multiToolUseParallel": {
+      "running": "Running tools in parallel",
+      "completed": "Ran tools in parallel"
+    },
+    "getTaskContext": {
+      "running": "Reading task context",
+      "completed": "Read task context"
+    },
+    "getTaskHistory": {
+      "running": "Reading task history",
+      "completed": "Read task history"
+    },
+    "listDocuments": {
+      "running": "Listing documents",
+      "completed": "Listed documents"
+    },
+    "readDocument": {
+      "running": "Reading a document",
+      "completed": "Read a document"
+    },
+    "listDocumentRevisions": {
+      "running": "Listing document revisions",
+      "completed": "Listed document revisions"
+    },
+    "reportProgress": {
+      "running": "Reporting progress",
+      "completed": "Reported progress"
+    },
+    "answerStatusQuestion": {
+      "running": "Answering a status question",
+      "completed": "Answered a status question"
+    },
+    "writeDocument": {
+      "running": "Writing a document",
+      "completed": "Wrote a document"
+    },
+    "registerDeliverable": {
+      "running": "Attaching a file",
+      "completed": "Attached a file"
+    },
+    "swarmUpdate": {
+      "running": "Swarm",
+      "completed": "Swarm"
+    },
+    "finishTask": {
+      "running": "Reporting completion",
+      "completed": "Reported completion"
+    },
+    "paperclipFinish": {
+      "running": "Reporting completion",
+      "completed": "Reported completion"
+    },
+    "blockTask": {
+      "running": "Reporting a blocker",
+      "completed": "Reported a blocker"
+    },
+    "paperclipBlock": {
+      "running": "Reporting a blocker",
+      "completed": "Reported a blocker"
+    },
+    "requestReview": {
+      "running": "Requesting review",
+      "completed": "Requested review"
+    },
+    "listAgents": {
+      "running": "Listing agents",
+      "completed": "Listed agents"
+    },
+    "getAgent": {
+      "running": "Reading agent details",
+      "completed": "Read agent details"
+    },
+    "searchTasks": {
+      "running": "Searching tasks",
+      "completed": "Searched tasks"
+    },
+    "listApprovals": {
+      "running": "Listing approvals",
+      "completed": "Listed approvals"
+    },
+    "getApproval": {
+      "running": "Reading an approval",
+      "completed": "Read an approval"
+    },
+    "getApprovalContext": {
+      "running": "Reading approval context",
+      "completed": "Read approval context"
+    },
+    "getWorkspaceRuntime": {
+      "running": "Reading workspace status",
+      "completed": "Read workspace status"
+    },
+    "controlWorkspaceService": {
+      "running": "Controlling a workspace service",
+      "completed": "Controlled a workspace service"
+    },
+    "setDependencies": {
+      "running": "Updating task dependencies",
+      "completed": "Updated task dependencies"
+    },
+    "setTaskTitle": {
+      "running": "Naming the task",
+      "completed": "Named the task"
+    },
+    "createTask": {
+      "running": "Creating a task",
+      "completed": "Created a task"
+    },
+    "requestApproval": {
+      "running": "Requesting approval",
+      "completed": "Requested approval"
+    },
+    "decideApproval": {
+      "running": "Deciding an approval",
+      "completed": "Decided an approval"
+    },
+    "commentOnApproval": {
+      "running": "Commenting on an approval",
+      "completed": "Commented on an approval"
+    },
+    "scheduleWake": {
+      "running": "Scheduling a wake-up",
+      "completed": "Scheduled a wake-up"
+    },
+    "genericApiRequest": {
+      "running": "Calling the Paperclip API",
+      "completed": "Called the Paperclip API"
+    }
+  },
+  "actions": {
+    "read": {
+      "running": "Reading data",
+      "completed": "Read data",
+      "runningObject": "Reading {{object}}",
+      "completedObject": "Read {{object}}"
+    },
+    "list": {
+      "running": "Listing items",
+      "completed": "Listed items",
+      "runningObject": "Listing {{object}}",
+      "completedObject": "Listed {{object}}"
+    },
+    "search": {
+      "running": "Searching",
+      "completed": "Searched",
+      "runningObject": "Searching {{object}}",
+      "completedObject": "Searched {{object}}"
+    },
+    "fetch": {
+      "running": "Fetching data",
+      "completed": "Fetched data",
+      "runningObject": "Fetching {{object}}",
+      "completedObject": "Fetched {{object}}"
+    },
+    "open": {
+      "running": "Opening an item",
+      "completed": "Opened an item",
+      "runningObject": "Opening {{object}}",
+      "completedObject": "Opened {{object}}"
+    },
+    "update": {
+      "running": "Updating data",
+      "completed": "Updated data",
+      "runningObject": "Updating {{object}}",
+      "completedObject": "Updated {{object}}"
+    },
+    "create": {
+      "running": "Creating an item",
+      "completed": "Created an item",
+      "runningObject": "Creating {{object}}",
+      "completedObject": "Created {{object}}"
+    },
+    "delete": {
+      "running": "Deleting an item",
+      "completed": "Deleted an item",
+      "runningObject": "Deleting {{object}}",
+      "completedObject": "Deleted {{object}}"
+    },
+    "move": {
+      "running": "Moving an item",
+      "completed": "Moved an item",
+      "runningObject": "Moving {{object}}",
+      "completedObject": "Moved {{object}}"
+    },
+    "request": {
+      "running": "Requesting input",
+      "completed": "Requested input",
+      "runningObject": "Requesting {{object}}",
+      "completedObject": "Requested {{object}}"
+    },
+    "post": {
+      "running": "Posting an update",
+      "completed": "Posted an update",
+      "runningObject": "Posting {{object}}",
+      "completedObject": "Posted {{object}}"
+    },
+    "start": {
+      "running": "Starting an operation",
+      "completed": "Started an operation",
+      "runningObject": "Starting {{object}}",
+      "completedObject": "Started {{object}}"
+    },
+    "stop": {
+      "running": "Stopping an operation",
+      "completed": "Stopped an operation",
+      "runningObject": "Stopping {{object}}",
+      "completedObject": "Stopped {{object}}"
+    },
+    "switch": {
+      "running": "Switching mode",
+      "completed": "Switched mode",
+      "runningObject": "Switching {{object}}",
+      "completedObject": "Switched {{object}}"
+    },
+    "run": {
+      "running": "Running a command",
+      "completed": "Ran a command"
+    },
+    "wait": {
+      "running": "Waiting",
+      "completed": "Finished waiting"
+    },
+    "finish": {
+      "running": "Reporting completion",
+      "completed": "Reported completion"
+    },
+    "block": {
+      "running": "Reporting a blocker",
+      "completed": "Reported a blocker"
+    },
+    "think": {
+      "running": "Thinking",
+      "completed": "Finished thinking"
+    },
+    "other": {
+      "running": "Running",
+      "completed": "Ran"
+    }
+  },
+  "unnamedTool": "Unnamed tool",
+  "runningUnnamed": "Running an unnamed tool",
+  "ranUnnamed": "Ran an unnamed tool",
+  "runningNamed": "Running {{name}}",
+  "ranNamed": "Ran {{name}}",
+  "markers": {
+    "failed": "failed",
+    "stopped": "stopped",
+    "retried": "retried"
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "context": {
+    "compactionUnavailable": "A compactação não está disponível no momento.",
+    "compactFailed": "Não foi possível compactar o contexto",
+    "tryAgainSoon": "Tente novamente em instantes.",
+    "label": "Contexto",
+    "loadAction": "carregar a janela de contexto"
+  },
+  "routine": {
+    "label": "Rotina"
+  },
+  "externalObjects": {
+    "githubPr": "PR do Github",
+    "githubIssue": "Issue do Github",
+    "label": "Objetos externos",
+    "loadFailed": "Não foi possível carregar os objetos externos.",
+    "retry": "Tentar novamente",
+    "references": "Referências"
+  },
+  "blocker": {
+    "privateTask": "Tarefa privada",
+    "thisPrivateTask": "esta tarefa privada",
+    "removeLabel": "Remover {{label}} como bloqueio",
+    "actions": "Ações do bloqueio {{label}}",
+    "visitTask": "Abrir tarefa",
+    "remove": "Remover bloqueio",
+    "taskAria": "Tarefa {{label}}: {{title}}",
+    "taskTitleAria": "Tarefa: {{title}}",
+    "confirmTitle": "Remover bloqueio?",
+    "confirmDescription": "Remover {{label}} como bloqueio desta tarefa.",
+    "cancel": "Cancelar"
+  },
+  "expand": {
+    "fewerItems": "Mostrar menos itens",
+    "moreItems": "Mostrar mais {{hidden}} itens",
+    "less": "Mostrar menos",
+    "more": "Mostrar mais {{hidden}}"
+  },
+  "plans": {
+    "loading": "Carregando o plano…",
+    "noDocumentYet": "Esta tarefa está no modo de planejamento, mas nenhum documento de plano foi escrito ainda.",
+    "confirmationMissingDocument": "Há uma confirmação de plano pendente, mas o documento de plano que ela deveria confirmar está faltando.",
+    "empty": "Nenhum plano ainda. O documento de plano, os planos aceitos e as revisões deles aparecerão aqui.",
+    "revisionLine": "Revisão {{number}} · atualizada {{updated}}"
+  },
+  "artifacts": {
+    "status": {
+      "inProgress": "Em andamento",
+      "forReview": "Para revisão",
+      "done": "Concluído",
+      "changesRequested": "Alterações solicitadas",
+      "failed": "Falhou"
+    },
+    "tooLarge": "Este arquivo Markdown é grande demais para a prévia. Use Raw ou Download.",
+    "documentEmpty": "O documento está vazio.",
+    "unsupported": "Não é possível mostrar este arquivo como Markdown. Use Raw ou Download.",
+    "previewFailed": "Não foi possível carregar a prévia.",
+    "retry": "Tentar novamente",
+    "preparingPreview": "Preparando a prévia…",
+    "openInTabAria": "Abrir em uma aba: {{title}}",
+    "openInTab": "Abrir em uma aba",
+    "openRawAria": "Abrir {{title}} sem formatação",
+    "openRaw": "Abrir sem formatação",
+    "downloadAria": "Baixar {{title}}",
+    "download": "Baixar",
+    "someFailed": "Não foi possível carregar alguns artefatos.",
+    "loading": "Carregando artefatos…",
+    "empty": "Nenhum artefato ainda. Produtos de trabalho, documentos e arquivos produzidos por agentes aparecerão aqui.",
+    "run": "Execução {{id}}"
+  },
+  "common": {
+    "none": "Nenhum",
+    "user": "Usuário",
+    "searchAgents": "Buscar agentes...",
+    "noAgents": "Nenhum agente encontrado.",
+    "searchTasks": "Buscar tarefas...",
+    "searchingTasks": "Buscando tarefas...",
+    "noMatchingTasks": "Nenhuma tarefa encontrada.",
+    "agent": "Agente"
+  },
+  "copyToClipboard": "Copiar {{value}} para a área de transferência",
+  "archive": {
+    "unarchiveFailed": "Não foi possível desarquivar esta tarefa. Tente novamente.",
+    "archivedByTitle": "Arquivada por {{name}} · {{date}}",
+    "unarchiving": "Desarquivando…",
+    "unarchive": "Desarquivar"
+  },
+  "workspace": {
+    "newIsolated": "Novo espaço de trabalho isolado",
+    "reuseExisting": "Reutilizar espaço de trabalho existente",
+    "default": "Padrão",
+    "runtime": {
+      "jobCompleted": "Job do espaço de trabalho concluído.",
+      "stopped": "Serviço do espaço de trabalho parado.",
+      "restarted": "Serviço do espaço de trabalho reiniciado.",
+      "started": "Serviço do espaço de trabalho iniciado.",
+      "failed": "Não foi possível controlar os comandos do espaço de trabalho."
+    },
+    "defaultDescription": "Usar a política de espaço de trabalho do projeto",
+    "newIsolatedDescription": "Criar um espaço de trabalho novo na próxima execução",
+    "reuseExistingEllipsis": "Reutilizar espaço de trabalho existente…",
+    "reuseDescription": "Escolha um espaço de trabalho para reutilizar",
+    "currentStaysActive": "O espaço de trabalho atual continua ativo. Vale a partir da próxima execução.",
+    "appliesNextRun": "Vale a partir da próxima execução.",
+    "backToOptions": "Voltar às opções de espaço de trabalho",
+    "mode": "Modo do espaço de trabalho",
+    "search": "Buscar espaços de trabalho...",
+    "searchReusable": "Buscar espaços de trabalho reutilizáveis",
+    "loading": "Carregando espaços de trabalho...",
+    "loadFailed": "Não foi possível carregar os espaços de trabalho.",
+    "noMatches": "Nenhum espaço de trabalho encontrado.",
+    "view": "Ver espaço de trabalho",
+    "notAttached": "Esta tarefa não está vinculada a um espaço de trabalho."
+  },
+  "model": {
+    "overrideSummary": "Substituição · {{details}}",
+    "overrideAdapterOptions": "Substituição · opções do adaptador",
+    "overrideHint": "Substituição do modelo na tarefa — troca o modelo principal do agente nesta tarefa.",
+    "primaryModel": "Modelo principal",
+    "lane": "Trilha do modelo",
+    "lanePrimary": "Principal",
+    "laneOverride": "Substituição",
+    "model": "Modelo",
+    "defaultModel": "Modelo padrão",
+    "searchModels": "Buscar modelos...",
+    "noModels": "Nenhum modelo encontrado.",
+    "thinkingEffort": "Esforço de raciocínio",
+    "enableChrome": "Ativar o Chrome (--chrome)",
+    "notEditable": "O adaptador deste responsável não oferece substituições editáveis na tarefa.",
+    "selectCompatible": "Selecione um agente responsável compatível para editar estas substituições.",
+    "clearAdapterOptions": "Limpar opções do adaptador"
+  },
+  "execution": {
+    "runReviewNow": "Executar a revisão agora",
+    "runApprovalNow": "Executar a aprovação agora",
+    "searchReviewers": "Buscar revisores...",
+    "searchApprovers": "Buscar aprovadores...",
+    "requester": "Quem pediu",
+    "policyUnavailable": "Política de execução indisponível. Atualize para tentar de novo.",
+    "waitingForWorkspace": "Aguardando o espaço de trabalho",
+    "waitingForProvider": "Aguardando o provedor",
+    "state": {
+      "review": {
+        "changesRequested": "Revisão: alterações solicitadas",
+        "changesRequestedBy": "Revisão: alterações solicitadas por {{name}}",
+        "pending": "Revisão pendente",
+        "pendingWith": "Revisão pendente com {{name}}"
+      },
+      "approval": {
+        "changesRequested": "Aprovação: alterações solicitadas",
+        "changesRequestedBy": "Aprovação: alterações solicitadas por {{name}}",
+        "pending": "Aprovação pendente",
+        "pendingWith": "Aprovação pendente com {{name}}"
+      }
+    }
+  },
+  "watchdog": {
+    "disabled": "(desativado)",
+    "agent": "Agente vigia",
+    "selectAgent": "Selecionar agente",
+    "noAgent": "Nenhum agente vigia",
+    "instructions": "Instruções",
+    "optional": "(opcional)",
+    "instructionsPlaceholder": "O que o vigia deve observar e como deve manter o trabalho andando?",
+    "task": "Tarefa do vigia:",
+    "viewTask": "Ver tarefa",
+    "removing": "Removendo…",
+    "remove": "Remover",
+    "saving": "Salvando…",
+    "update": "Atualizar",
+    "set": "Definir vigia",
+    "openTask": "Abrir a tarefa do vigia"
+  },
+  "labels": {
+    "addLabel": "Adicionar etiqueta",
+    "more": "+{{hidden}} mais",
+    "search": "Buscar etiquetas...",
+    "newLabel": "Nova etiqueta",
+    "creating": "Criando…",
+    "create": "Criar etiqueta"
+  },
+  "monitor": {
+    "checksPaused": "Verificações automáticas pausadas",
+    "cleared": "Limpo",
+    "checkNowHint": "Verifique agora para pedir uma verificação manual",
+    "resumeHint": "Retome esta tarefa para continuar verificando",
+    "checkingMomentarily": "verificando em instantes…",
+    "firesOnNextTick": "dispara no próximo ciclo",
+    "attempt": "Tentativa {{count}}",
+    "lastChecked": "última verificação {{time}}",
+    "afterAttempt": "depois da tentativa {{count}}",
+    "title": "Monitor",
+    "nextCheck": "Próxima verificação",
+    "watching": "Observando",
+    "notes": "Notas",
+    "lastTriggered": "Último disparo",
+    "notYetTriggered": "— ainda não disparou",
+    "checking": "Verificando…",
+    "checkNow": "Verificar agora",
+    "edit": "Editar",
+    "clear": "Limpar",
+    "notesPlaceholder": "O que o agente deve verificar de novo?",
+    "externalService": "Serviço externo",
+    "schedule": "Agendar"
+  },
+  "scheduledRetry": {
+    "pendingSchedule": "Agendamento pendente",
+    "continuationDueNow": "Continuação prevista para agora",
+    "retryDueNow": "Nova tentativa prevista para agora",
+    "continuationAt": "Continuação {{when}}",
+    "retryAt": "Nova tentativa {{when}}",
+    "scheduledContinuation": "Continuação agendada",
+    "scheduledRetry": "Nova tentativa agendada",
+    "reason": "Motivo",
+    "nextAttempt": "Próxima tentativa",
+    "replacesRun": "Substitui a execução",
+    "agent": "Agente",
+    "lastError": "Último erro",
+    "retrying": "Tentando novamente…",
+    "alreadyPromoted": "Já antecipada",
+    "promoted": "Antecipada",
+    "retryNow": "Tentar agora",
+    "promoting": "Antecipando a nova tentativa agendada",
+    "alreadyPromotedStarting": "Já antecipada — execução começando",
+    "promotedStarting": "Antecipada — execução começando",
+    "pullsContinuation": "Antecipa a continuação imediatamente",
+    "pullsRetry": "Antecipa a nova tentativa imediatamente"
+  },
+  "assignee": {
+    "unassigned": "Sem responsável",
+    "assignToMe": "Atribuir a mim",
+    "assignTo": "Atribuir a {{name}}",
+    "assignToRequester": "Atribuir a quem pediu",
+    "noAssignee": "Sem responsável",
+    "search": "Buscar responsáveis...",
+    "agents": "Agentes",
+    "boardUsers": "Usuários do conselho",
+    "noMatches": "Nenhum resultado."
+  },
+  "project": {
+    "noProject": "Nenhum projeto",
+    "search": "Buscar projetos..."
+  },
+  "parent": {
+    "parentTask": "Tarefa pai",
+    "noParent": "Sem tarefa pai"
+  },
+  "blockedBy": {
+    "searchAria": "Buscar tarefas para adicionar como bloqueios",
+    "noBlockers": "Sem bloqueios",
+    "addBlocker": "Adicionar bloqueio"
+  },
+  "subtasks": {
+    "empty": "Nenhuma subtarefa ainda.",
+    "add": "Adicionar subtarefa",
+    "addSubTask": "Adicionar subtarefa"
+  },
+  "rows": {
+    "status": "Status",
+    "priority": "Prioridade",
+    "assignee": "Responsável",
+    "model": "Modelo",
+    "usageLimit": "Limite de uso",
+    "project": "Projeto",
+    "labels": "Etiquetas",
+    "parent": "Tarefa pai",
+    "blockedBy": "Bloqueada por",
+    "blocking": "Bloqueando",
+    "subtasks": "Subtarefas",
+    "subTasks": "Subtarefas",
+    "pullRequests": "Pull requests",
+    "approvals": "Aprovações",
+    "executionPolicy": "Política de execução",
+    "reviewers": "Revisores",
+    "approvers": "Aprovadores",
+    "execution": "Execução",
+    "workspace": "Espaço de trabalho",
+    "sandbox": "Sandbox",
+    "scheduledRetry": "Nova tentativa agendada",
+    "monitor": "Monitor",
+    "watchdog": "Vigia",
+    "context": "Contexto",
+    "service": "Serviço",
+    "branch": "Branch",
+    "folder": "Pasta",
+    "originating": "Origem",
+    "started": "Iniciada",
+    "completed": "Concluída",
+    "created": "Criada",
+    "updated": "Atualizada",
+    "archived": "Arquivada",
+    "depth": "Profundidade",
+    "referenced": "Referenciadas",
+    "relatedTasks": "Tarefas relacionadas"
+  },
+  "sections": {
+    "relationships": "Relações",
+    "execution": "Execução",
+    "workspace": "Espaço de trabalho",
+    "about": "Sobre",
+    "work": "Trabalho",
+    "triage": "Triagem"
+  },
+  "loadingUsageLimit": "Carregando o limite de uso",
+  "pullRequests": {
+    "loadFailed": "Não foi possível carregar os pull requests.",
+    "retry": "Tentar novamente"
+  },
+  "tabs": {
+    "properties": "Propriedades",
+    "subtasks": "Subtarefas",
+    "references": "Referências",
+    "plan": "Plano",
+    "artifacts": "Artefatos",
+    "panelSections": "Seções do painel de propriedades",
+    "closeTab": "Fechar a aba {{label}}",
+    "openClosed": "Abrir uma aba fechada da barra lateral",
+    "allOpen": "Todas as abas da barra lateral estão abertas"
+  },
+  "copied": "Copiado"
+}

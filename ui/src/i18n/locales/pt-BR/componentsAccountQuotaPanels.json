@@ -1,0 +1,8 @@
+{
+  "subscriptionAccount": "Conta de assinatura",
+  "credentialsUnavailable": "Conecte ou reconecte uma assinatura em Conexões de IA para ver a cota.",
+  "usageNotReported": "Uso não informado",
+  "resets": "Renova em {{time}}",
+  "percentUsed": "{{percent}}% usado",
+  "lastChecked": "Última verificação em {{time}}"
+}

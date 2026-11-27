@@ -1,0 +1,16 @@
+{
+  "blocked": "Bloqueado",
+  "thinking": "Pensando",
+  "thought": "Pensou",
+  "tokenUsage": "Uso de tokens",
+  "blockedReason": "Bloqueado: {{reason}}",
+  "permission": "Permissão {{decision}}",
+  "readFiles": "Leu {{count}} arquivos",
+  "filesRead": "Arquivos lidos",
+  "activityCount_one": "{{count}} atividade",
+  "activityCount_other": "{{count}} atividades",
+  "toggleLabel": "{{action}} {{target}}",
+  "collapse": "Recolher",
+  "expand": "Expandir",
+  "activityHistory": "Histórico de atividades"
+}

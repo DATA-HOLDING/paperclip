@@ -1,0 +1,15 @@
+{
+  "decisionViews": "Visões de decisões",
+  "openUnassigned": "Abrir sem responsável",
+  "whyMe": "Por que eu?",
+  "someone": "alguém",
+  "anotherPerson": "outra pessoa",
+  "forUser": "Para @{{name}}",
+  "openToAssign": "Abrir para atribuir",
+  "claiming": "Assumindo…",
+  "claim": "Assumir",
+  "receipts": "Recibos",
+  "reason": "Motivo: {{reason}}",
+  "open": "Abrir",
+  "dismissReceipt": "Dispensar recibo"
+}

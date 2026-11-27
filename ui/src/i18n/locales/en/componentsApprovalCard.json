@@ -1,0 +1,17 @@
+{
+  "requestedBy": "Requested by",
+  "createdAgo": "Approval request created {{timeAgo}}",
+  "status": {
+    "pending": "pending",
+    "approved": "approved",
+    "rejected": "rejected",
+    "revision_requested": "revision requested",
+    "cancelled": "cancelled"
+  },
+  "decisionNote": "Decision note.",
+  "approving": "Approving...",
+  "approve": "Approve",
+  "rejecting": "Rejecting...",
+  "reject": "Reject",
+  "viewDetails": "View details"
+}

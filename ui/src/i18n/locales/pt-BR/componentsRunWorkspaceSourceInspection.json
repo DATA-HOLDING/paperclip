@@ -1,0 +1,18 @@
+{
+  "noRecordedFailure": "Nenhuma falha de recuperação do sistema registrada.",
+  "leasePolicy": "política de concessão {{policy}}",
+  "inspecting": "Inspecionando a recuperação…",
+  "inspect": "Inspecionar recuperação",
+  "inspectionFailed": "A inspeção da recuperação falhou. Tente inspecionar novamente.",
+  "noRecoveryAction": "Nenhuma ação de recuperação registrada para esta execução.",
+  "recordedFailure": "Falha registrada:",
+  "inspectCurrentSource": "Inspecionar a origem atual",
+  "currentIdentity": "Identidade atual da origem registrada",
+  "action": "Ação {{id}}",
+  "readOnlyNote": "Esta observação somente leitura confere a identidade registrada. Ela não confirma o encerramento no provedor, os arquivos locais nem a preservação bem-sucedida.",
+  "verified": "Identidade da origem registrada verificada.",
+  "notInspected": "Origem não inspecionada: este registro excede o limite de inspeção.",
+  "blocked": "Bloqueado:",
+  "leasePolicyLabel": "política de concessão",
+  "observed": "Observado em {{time}}"
+}

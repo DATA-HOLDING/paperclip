@@ -1,0 +1,54 @@
+{
+  "retryClose": "Tentar fechar novamente",
+  "closeWorkspace": "Fechar espaço de trabalho",
+  "toast": {
+    "retried": "Nova tentativa de fechar o espaço de trabalho",
+    "closed": "Espaço de trabalho fechado",
+    "failed": "Falha ao fechar o espaço de trabalho"
+  },
+  "description": {
+    "beforeName": "Arquive",
+    "afterName": "e limpe os artefatos que pertencem ao espaço de trabalho. O Paperclip mantém o registro do espaço de trabalho e o histórico das tarefas, mas o remove das visões de espaços de trabalho ativos."
+  },
+  "checking": "Verificando se é seguro fechar este espaço de trabalho...",
+  "inspectAction": "verificar se o espaço de trabalho pode ser fechado",
+  "state": {
+    "blocked": "O fechamento está bloqueado",
+    "warnings": "O fechamento é permitido, com avisos",
+    "ready": "Pronto para fechar"
+  },
+  "detail": {
+    "shared": "Esta é uma sessão de espaço de trabalho compartilhado. Arquivá-la remove o registro desta sessão, mas mantém o espaço de trabalho do projeto.",
+    "ownCheckout": "Este espaço de trabalho de execução tem um caminho de checkout próprio e pode ser arquivado de forma independente.",
+    "primary": "Este espaço de trabalho de execução aponta no momento para o caminho do espaço de trabalho principal do projeto.",
+    "disposable": "Este espaço de trabalho é descartável e pode ser arquivado."
+  },
+  "sections": {
+    "blockingTasks": "Tarefas que bloqueiam",
+    "blockingReasons": "Motivos do bloqueio",
+    "warnings": "Avisos",
+    "gitStatus": "Status do Git",
+    "otherLinkedTasks": "Outras tarefas vinculadas",
+    "runtimeServices": "Serviços de execução vinculados",
+    "cleanupActions": "Ações de limpeza"
+  },
+  "git": {
+    "branch": "Branch",
+    "baseRef": "Ref base",
+    "mergedIntoBase": "Mesclado na base",
+    "aheadBehind": "À frente / atrás",
+    "dirtyFiles": "Arquivos rastreados modificados",
+    "untrackedFiles": "Arquivos não rastreados",
+    "unknown": "Desconhecido",
+    "notSet": "Não definido",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "noAdditionalDetails": "Sem detalhes adicionais",
+  "cleanupFailed": "A limpeza falhou antes neste espaço de trabalho. Tentar fechar novamente executa a limpeza outra vez e atualiza o status do espaço de trabalho se der certo.",
+  "alreadyArchived": "Este espaço de trabalho já está arquivado.",
+  "repoRoot": "Raiz do repositório:",
+  "workspacePath": "Caminho do espaço de trabalho:",
+  "lastChecked": "Verificado por último em {{time}}",
+  "cancel": "Cancelar"
+}

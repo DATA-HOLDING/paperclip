@@ -1,0 +1,38 @@
+{
+  "breadcrumb": "Decisões",
+  "toast": {
+    "seedingFailed": "Não foi possível atualizar o preenchimento automático",
+    "removed": "Removida da fila",
+    "excludeFailed": "Não foi possível excluir"
+  },
+  "selectOrganization": "Selecione uma organização primeiro.",
+  "loadAction": "carregar esta fila",
+  "empty": {
+    "title": "Esta fila está vazia.",
+    "body": "As decisões chegam aqui quando correspondem às regras da fila ou quando um agente as adiciona."
+  },
+  "noMatch": {
+    "title": "Nenhuma decisão corresponde à sua busca ou aos filtros.",
+    "body": "Ajuste ou limpe a busca e os filtros para ver o restante."
+  },
+  "aging": {
+    "label": "Envelhecendo",
+    "body": "Paradas há mais de {{days}} dias — mantidas fora da fila. Mantenha as que você ainda quer ver."
+  },
+  "seed": {
+    "titleOn": "O preenchimento automático está ligado",
+    "titleOff": "O preenchimento automático está desligado",
+    "bodyOn": "Esta fila se preenche sozinha. As decisões entram assim que correspondem a qualquer uma das regras:",
+    "bodyOff": "As adições automáticas estão pausadas. Estas regras adicionariam decisões à fila quando ligadas:",
+    "noteOn": "Desligar só interrompe as novas adições automáticas — as decisões que já estão aqui ficam, e você ainda pode adicionar ou remover decisões à mão.",
+    "noteOff": "Adicionar ou remover decisões à mão continua funcionando com o preenchimento automático desligado.",
+    "disable": "Desativar",
+    "enable": "Ativar"
+  },
+  "exclude": {
+    "button": "Excluir",
+    "title": "Remover desta fila",
+    "reasonPlaceholder": "Motivo (opcional)…",
+    "cancel": "Cancelar"
+  }
+}

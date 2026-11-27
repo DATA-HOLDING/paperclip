@@ -1,0 +1,30 @@
+{
+  "name": "Nome",
+  "cancel": "Cancelar",
+  "add": {
+    "title": "Adicionar uma área",
+    "description": "Com o que você se importa? Uma área é ampla, como Captação ou Contratação. Ninguém é dono dela e ela não tem prazo; as responsabilidades que você tem ficam dentro dela.",
+    "placeholder": "ex.: Captação",
+    "failed": "Não foi possível adicionar a área. {{error}}",
+    "adding": "Adicionando…",
+    "submit": "Adicionar área"
+  },
+  "rename": {
+    "title": "Renomear área",
+    "description": "Todos na organização veem o novo nome.",
+    "failed": "Não foi possível renomear a área. {{error}}",
+    "saving": "Salvando…",
+    "submit": "Salvar nome"
+  },
+  "archive": {
+    "title": "Arquivar {{title}}?",
+    "description": "Ela fica arquivada para todos na organização, e nada novo pode ser incluído nela.",
+    "ownedHere_one": "Sua responsabilidade nela continua lá até você movê-la para outra área.",
+    "ownedHere_other": "Suas {{count}} responsabilidades nela continuam lá até você movê-las para outra área.",
+    "restoreLater": "Você pode restaurá-la depois.",
+    "failed": "Não foi possível arquivar a área. {{error}}",
+    "keep": "Manter",
+    "archiving": "Arquivando…",
+    "submit": "Arquivar área"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "breadcrumbs": {
+    "company": "Organização",
+    "settings": "Configurações",
+    "connections": "Conexões"
+  },
+  "noOrganizationSelected": "Nenhuma organização selecionada. Selecione uma organização no seletor acima.",
+  "title": "Conexões"
+}

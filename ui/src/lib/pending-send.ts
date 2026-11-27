@@ -21,6 +21,7 @@
 
 import { classifyError, errorStatus } from "@/api/errors";
 import { CommentSubmissionUnknownError } from "./comment-submit-result";
+import { t } from "@/i18n";
 
 /** What to do after a send failed. */
 export type SendFailure =
@@ -39,7 +40,7 @@ export type SendOutcome = "sent" | SendFailure;
  */
 export class PendingSendAccountChangedError extends Error {
   constructor() {
-    super("Your account changed. The original request is kept for its owner.");
+    super(t("libPendingSend.accountChanged"));
     this.name = "PendingSendAccountChangedError";
   }
 }

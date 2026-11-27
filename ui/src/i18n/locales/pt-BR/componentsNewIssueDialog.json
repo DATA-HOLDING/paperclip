@@ -1,0 +1,65 @@
+{
+  "stagedFilesMissing_one": "Esta página não tem mais o arquivo preparado para esta tarefa ({{names}}). Anexe-o novamente e depois crie a tarefa.",
+  "stagedFilesMissing_other": "Esta página não tem mais os {{count}} arquivos preparados para esta tarefa ({{names}}). Anexe-os novamente e depois crie a tarefa.",
+  "createTaskAction": "criar a tarefa",
+  "fileReadCancelled": "Leitura do arquivo cancelada",
+  "privacy": {
+    "subtaskOfPrivate": "Subtarefa da tarefa privada {{title}}",
+    "inPrivateProject": "No projeto privado {{name}}"
+  },
+  "toast": {
+    "openIssue": "Abrir {{ref}}",
+    "createdWithWarnings": "{{ref}} criada com avisos de upload",
+    "filesNotAdded_one": "{{count}} arquivo preparado não pôde ser adicionado.",
+    "filesNotAdded_other": "{{count}} arquivos preparados não puderam ser adicionados.",
+    "created": "{{ref}} criada",
+    "notSavedTitle": "Não foi possível salvar uma tarefa",
+    "notSavedBody": "Abra Nova tarefa para recuperar o pedido salvo."
+  },
+  "recovery": {
+    "needsAttention": "O pedido salvo precisa de atenção",
+    "unavailable": "O pedido salvo está indisponível. Cancele-o antes de criar outra tarefa.",
+    "attachAgain": "Anexe novamente os arquivos originais: {{names}}.",
+    "restoreFields": "Restaure os campos originais da tarefa salva antes de tentar novamente, ou cancele o pedido salvo para começar outra tarefa."
+  },
+  "newSubTask": "Nova subtarefa",
+  "newTask": "Nova tarefa",
+  "describePlaceholder": "Descreva uma tarefa…",
+  "createSubTask": "Criar subtarefa",
+  "createTask": "Criar tarefa",
+  "waitingToBeSaved": "Esta tarefa está aguardando para ser salva.",
+  "retrySavedTask": "Tentar novamente a tarefa salva: {{title}}",
+  "cancelSavedRequest": "Cancelar pedido salvo",
+  "taskTitle": "Título da tarefa",
+  "subTaskOf": "Subtarefa de",
+  "parentAccessError": "Não foi possível verificar o acesso à tarefa pai.",
+  "checkingParentAccess": "Verificando o acesso à tarefa pai…",
+  "retry": "Tentar novamente",
+  "worktreeCheckError": "Não foi possível verificar a worktree selecionada. Tente novamente em Worktrees ou escolha Nova worktree.",
+  "worktreeUnavailable": "A worktree selecionada não está mais disponível. Escolha outra worktree ou comece uma nova.",
+  "documents": "Documentos",
+  "removeDocument": "Remover documento",
+  "attachments": "Anexos",
+  "removeAttachment": "Remover anexo",
+  "backlogNote": {
+    "prefix": "Atribuir indica intenção de execução - deixe o status como",
+    "backlog": "Backlog",
+    "middle": " só para estacionar isto de propósito. O responsável não será acordado até o status mudar para ",
+    "todo": "A fazer",
+    "or": " ou",
+    "inProgress": "Em andamento",
+    "end": "."
+  },
+  "pausedNote": {
+    "body": " está pausado e não começará a trabalhar nesta tarefa até ser retomado",
+    "fromImport": " — ele chegou pausado de uma importação de organização",
+    "end": ". Você pode retomá-lo na página da tarefa depois de criá-la."
+  },
+  "lowTrustNote": "Agente de revisão de baixa confiança. Ele só pode agir dentro do limite de revisão atribuído; a política da tarefa, do projeto ou da execução define o escopo concreto.",
+  "project": "Projeto",
+  "selectProject": "Selecionar projeto",
+  "noProject": "Sem projeto",
+  "searchProjects": "Buscar projetos...",
+  "noProjectsFound": "Nenhum projeto encontrado.",
+  "privateProject": "Projeto privado"
+}

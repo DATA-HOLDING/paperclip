@@ -1,0 +1,18 @@
+{
+  "boardName": "Board",
+  "signedIn": "Signed in",
+  "localBoard": "Local workspace board",
+  "openMenu": "Open account menu",
+  "viewProfile": "View profile",
+  "invite": "Invite",
+  "documentation": "Documentation",
+  "signingOut": "Signing out...",
+  "signOut": "Sign out",
+  "shareFeedback": "Share feedback",
+  "account": "Account",
+  "viewCommit": "View commit {{commit}} on GitHub",
+  "settings": "Settings",
+  "inviteDescription": "Invite people to your organization.",
+  "documentationDescription": "Open Paperclip docs in a new tab.",
+  "signOutDescription": "End this browser session."
+}

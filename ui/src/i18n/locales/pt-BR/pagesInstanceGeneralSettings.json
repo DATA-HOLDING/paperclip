@@ -1,0 +1,73 @@
+{
+  "breadcrumbs": {
+    "settings": "Configurações",
+    "general": "Geral"
+  },
+  "loading": "Carregando configurações gerais...",
+  "loadAction": "carregar as configurações gerais",
+  "title": "Geral",
+  "description": "Configure as preferências de toda a instância.",
+  "descriptionWithTopics": "Configure as preferências de toda a instância, incluindo {{topics}}.",
+  "topics": {
+    "logDisplay": "exibição de logs",
+    "backupRetention": "retenção de backups",
+    "dataSharing": "compartilhamento de dados",
+    "listWithLast": "{{list}} e {{last}}",
+    "pair": "{{first}} e {{second}}"
+  },
+  "deployment": {
+    "title": "Implantação e autenticação",
+    "localTrusted": "O modo local confiável é otimizado para um operador local. As requisições do navegador rodam no contexto local do conselho e não é preciso entrar.",
+    "authenticatedPublic": "O modo público autenticado exige entrar para acessar o conselho e é destinado a URLs públicas.",
+    "authenticatedPrivate": "O modo privado autenticado exige entrar e é destinado a implantações em LAN, VPN ou outras redes privadas.",
+    "authReadiness": "Autenticação",
+    "ready": "Pronto",
+    "notReady": "Não pronto",
+    "bootstrapStatus": "Status da inicialização",
+    "setupRequired": "Configuração necessária",
+    "bootstrapInvite": "Convite de inicialização",
+    "active": "Ativo",
+    "none": "Nenhum"
+  },
+  "censor": {
+    "title": "Ocultar nome de usuário nos logs",
+    "description": "Oculta o trecho do nome de usuário em caminhos de diretório pessoal e em saídas de log semelhantes visíveis ao operador. Menções avulsas ao nome de usuário fora de caminhos ainda não são mascaradas na transcrição ao vivo. Desligado por padrão.",
+    "toggle": "Alternar ocultação do nome de usuário nos logs"
+  },
+  "backup": {
+    "title": "Retenção de backups",
+    "description": "Configure por quanto tempo os backups automáticos do banco de dados são mantidos. Os backups rodam mais ou menos a cada hora e são compactados com gzip. Dentro da janela diária, todos são mantidos; depois dela, são preservados um backup por semana e um por mês.",
+    "daily": "Diário",
+    "weekly": "Semanal",
+    "monthly": "Mensal",
+    "days_one": "{{count}} dia",
+    "days_other": "{{count}} dias",
+    "weeks_one": "{{count}} semana",
+    "weeks_other": "{{count}} semanas",
+    "months_one": "{{count}} mês",
+    "months_other": "{{count}} meses"
+  },
+  "feedback": {
+    "title": "Compartilhamento de feedback de IA",
+    "description": "Controle se os votos positivos e negativos podem enviar a resposta de IA votada para a Paperclip Labs. Os votos são sempre salvos localmente.",
+    "terms": "Leia nossos termos de serviço",
+    "noDefault": "Nenhum padrão foi salvo ainda. O próximo voto positivo ou negativo vai perguntar uma vez e então salvar a resposta aqui.",
+    "allow": "Sempre permitir",
+    "allowDescription": "Compartilhar automaticamente as respostas de IA votadas.",
+    "deny": "Não permitir",
+    "denyDescription": "Manter as respostas de IA votadas só localmente."
+  },
+  "devHint": {
+    "removeThe": "Para testar de novo a pergunta de primeiro uso no dev local, remova a chave",
+    "keyFromThe": "da linha JSON",
+    "jsonRow": "desta instância, ou volte o valor para",
+    "unsetAnd": ". Sem valor e",
+    "bothMean": "significam que nenhum padrão foi escolhido ainda."
+  },
+  "signOut": {
+    "title": "Sair",
+    "description": "Saia desta instância do Paperclip. Você será redirecionado para a página de login.",
+    "signingOut": "Saindo...",
+    "action": "Sair"
+  }
+}

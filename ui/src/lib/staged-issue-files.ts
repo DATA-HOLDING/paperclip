@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 export interface StagedIssueFile {
   id: string;
   file: File;
@@ -13,7 +14,7 @@ function openDatabase(): Promise<IDBDatabase> {
     const request = indexedDB.open("paperclip:issue-draft-files", 1);
     request.onupgradeneeded = () => request.result.createObjectStore("files");
     request.onerror = () => reject(request.error);
-    request.onblocked = () => reject(new Error("Draft file storage is blocked"));
+    request.onblocked = () => reject(new Error(t("libStagedIssueFiles.storageBlocked")));
     request.onsuccess = () => {
       const db = request.result;
       db.onversionchange = () => { db.close(); database = undefined; };

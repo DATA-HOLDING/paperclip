@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "loadFailed": "Could not load file ({{status}}).",
+    "empty": "The file response is empty.",
+    "tooLarge": "This file is too large to preview. Download it instead.",
+    "binary": "This file contains binary data. Download it instead.",
+    "unavailable": "File preview is unavailable. Download the file to view it."
+  }
+}

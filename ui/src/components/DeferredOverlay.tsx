@@ -1,3 +1,4 @@
+import { t } from "@/i18n";
 import { Component, Suspense, useState, type ReactNode } from "react";
 import { captureBrowserException } from "../lib/sentry";
 import { PaperclipLoading } from "./AnimatedPaperclipIcon";
@@ -14,11 +15,11 @@ interface DeferredOverlayProps {
 function OverlayNotice({ title, onClose, failed = false }: Pick<DeferredOverlayProps, "title" | "onClose"> & { failed?: boolean }) {
   return <Dialog open onOpenChange={(open) => { if (!open) onClose(); }}>
     <DialogContent showCloseButton={false} aria-describedby={undefined}>
-      <DialogTitle>{failed ? `Couldn't open ${title.toLowerCase()}` : `Loading ${title.toLowerCase()}…`}</DialogTitle>
+      <DialogTitle>{failed ? t("componentsDeferredOverlay.failedTitle", { title: title.toLowerCase() }) : t("componentsDeferredOverlay.loadingTitle", { title: title.toLowerCase() })}</DialogTitle>
       {failed
-        ? <p className="text-sm text-muted-foreground">Close this window to keep working. Reload the page before trying again.</p>
+        ? <p className="text-sm text-muted-foreground">{t("componentsDeferredOverlay.failedDescription")}</p>
         : <PaperclipLoading className="min-h-0" />}
-      <div className="flex justify-end"><Button variant="outline" onClick={onClose}>{failed ? "Close" : "Cancel"}</Button></div>
+      <div className="flex justify-end"><Button variant="outline" onClick={onClose}>{failed ? t("componentsDeferredOverlay.close") : t("componentsDeferredOverlay.cancel")}</Button></div>
     </DialogContent>
   </Dialog>;
 }

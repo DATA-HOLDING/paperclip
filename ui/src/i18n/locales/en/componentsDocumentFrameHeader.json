@@ -1,0 +1,10 @@
+{
+  "expand": "Expand {{key}} document",
+  "collapse": "Collapse {{key}} document",
+  "rev": "rev {{number}}",
+  "revisionHistory": "Revision history",
+  "loadingRevisions": "Loading revisions...",
+  "current": "Current",
+  "noRevisions": "No revisions yet",
+  "updated": "updated {{time}}"
+}

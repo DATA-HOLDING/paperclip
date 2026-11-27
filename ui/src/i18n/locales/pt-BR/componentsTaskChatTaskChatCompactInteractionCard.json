@@ -1,0 +1,135 @@
+{
+  "kind": {
+    "suggestTasks": {
+      "fallbackTitle": "Tarefas sugeridas",
+      "label": "Tarefas"
+    },
+    "askUserQuestions": {
+      "fallbackTitle": "Perguntas",
+      "label": "Perguntas"
+    },
+    "requestConfirmation": {
+      "fallbackTitle": "Confirmação",
+      "label": "Confirmação"
+    },
+    "requestCheckboxConfirmation": {
+      "fallbackTitle": "Escolha as opções",
+      "label": "Seleção"
+    },
+    "requestItemVerdicts": {
+      "fallbackTitle": "Revisar itens",
+      "label": "Revisão"
+    },
+    "connectionIntent": {
+      "fallbackTitle": "Conectar serviço",
+      "label": "Conexão"
+    },
+    "suggestRoutine": {
+      "fallbackTitle": "Oferta de rotina",
+      "label": "Rotina"
+    },
+    "proposeResponsibilityBar": {
+      "fallbackTitle": "Meta proposta",
+      "label": "Meta"
+    },
+    "proposeAutomation": {
+      "fallbackTitle": "Automação proposta",
+      "label": "Automação"
+    },
+    "proposeDashboardChanges": {
+      "fallbackTitle": "Alterações propostas no painel",
+      "label": "Painel"
+    }
+  },
+  "status": {
+    "pending": "pendente",
+    "accepted": "aceita",
+    "rejected": "rejeitada",
+    "answered": "respondida",
+    "cancelled": "cancelada",
+    "expired": "expirada",
+    "failed": "falhou"
+  },
+  "verdict": {
+    "approve": "aprovar",
+    "reject": "rejeitar",
+    "defer": "adiar"
+  },
+  "details": "Detalhes",
+  "attachment": "Anexo",
+  "openTarget": "Abrir {{label}}",
+  "planLower": "plano",
+  "planRevision": "revisão {{revision}} do plano",
+  "receipt": {
+    "thePlan": "o plano",
+    "planVersion": "Plano v{{revision}}",
+    "approved": "Aprovou {{plan}}",
+    "requestedChangesWithReason": "Pediu alterações em {{plan}}: {{reason}}",
+    "requestedChanges": "Pediu alterações em {{plan}}"
+  },
+  "answerLabel": "Resposta:",
+  "noAnswer": "Sem resposta",
+  "noOptionsSelected": "Nenhuma opção selecionada",
+  "noVerdicts": "Nenhum veredito enviado",
+  "noTasksCreated": "Nenhuma tarefa criada",
+  "connectionRequested": "{{agent}} solicitou acesso a {{service}}.",
+  "routineRepeat": "Repetir {{title}}: {{cadence}}.",
+  "dashboardChanges_one": "{{count}} alteração no painel.",
+  "dashboardChanges_other": "{{count}} alterações no painel.",
+  "riskLevel": "risco {{risk}}",
+  "expires": "Expira em",
+  "secret": {
+    "secret": "Segredo",
+    "binding": "Vínculo",
+    "why": "Motivo",
+    "expires": "Expira em"
+  },
+  "reasonLabel": "Motivo:",
+  "questionsAnswered": "Perguntas respondidas",
+  "viewOriginal": "Ver a solicitação original e a resolução",
+  "acceptPlan": "Você aceita este plano?",
+  "arguments": "Argumentos",
+  "whatShouldChange": "O que deve mudar?",
+  "optional": "opcional",
+  "describeChange": "Descreva o que deve mudar",
+  "addShortNote": "Adicione uma nota curta",
+  "back": "Voltar",
+  "reject": "Rejeitar",
+  "approve": "Aprovar",
+  "countHint": {
+    "range": "{{selected}} selecionadas · escolha {{minimum}}–{{maximum}}",
+    "atLeast": "{{selected}} selecionadas · pelo menos {{minimum}}",
+    "selected": "{{selected}} selecionadas"
+  },
+  "filterOptions": "Filtrar opções",
+  "decline": "Recusar",
+  "confirmSelection": "Confirmar seleção",
+  "hiddenFollowUp": "{{count}} continuação oculta",
+  "selectTasks": "Selecione as tarefas a criar.",
+  "filterSuggestedTasks": "Filtrar tarefas sugeridas",
+  "suggestedTasks": "Tarefas sugeridas",
+  "whyTasksChange": "Por que essas tarefas devem mudar? (opcional)",
+  "selectedOf": "{{selected}} de {{total}} selecionadas",
+  "cancel": "Cancelar",
+  "requestRevision": "Pedir revisão",
+  "sendBack": "Devolver",
+  "reviseEllipsis": "Revisar…",
+  "revise": "Revisar",
+  "create": "Criar",
+  "createSelected": "Criar selecionadas",
+  "decided": "{{count}} decididos",
+  "itemPagination": "Paginação dos itens",
+  "previousItem": "Item anterior",
+  "pagePosition": "{{page}} de {{total}}",
+  "nextItem": "Próximo item",
+  "open": "Abrir",
+  "verdictFor": "Veredito para {{label}}",
+  "reason": "Motivo",
+  "addShortReason": "Adicione um motivo curto",
+  "submitRejectionReason": "Enviar motivo da rejeição",
+  "applyCount": "Aplicar {{count}}",
+  "applyDecisions": "Aplicar decisões",
+  "you": "Você",
+  "suggestedTask": "Tarefa sugerida",
+  "noReviewItems": "Nenhum item para revisar foi enviado."
+}

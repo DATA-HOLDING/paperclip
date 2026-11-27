@@ -1,0 +1,21 @@
+{
+  "status": {
+    "completed": "Concluída",
+    "inFlight": "Em andamento"
+  },
+  "title": "Decomposição do plano",
+  "acceptedRevisions_one": "1 revisão de plano aceita",
+  "acceptedRevisions_other": "{{count}} revisões de plano aceitas",
+  "agentFallback": "agente",
+  "revision": "revisão {{revision}}",
+  "planRevision": "Plano, {{revision}}",
+  "childrenCreated_one": "{{created}} de {{count}} tarefa filha criada",
+  "childrenCreated_other": "{{created}} de {{count}} tarefas filhas criadas",
+  "idempotentTitle": "Novas tentativas com esta impressão digital reutilizam este registro em vez de criar novas filhas",
+  "idempotentClaim": "Registro idempotente",
+  "owner": "Dono: {{name}}",
+  "started": "Iniciada {{time}}",
+  "completed": "Concluída {{time}}",
+  "updated": "Atualizada {{time}}",
+  "planDocument": "Documento do plano"
+}

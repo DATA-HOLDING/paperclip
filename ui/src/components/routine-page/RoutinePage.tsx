@@ -53,6 +53,7 @@ import {
   webhookHealth,
   webhookTitle,
 } from "./routine-summary";
+import { t } from "@/i18n";
 
 export type RoutinePerson = { id: string; name: string; avatarUrl?: string | null };
 export type RoutinePageAgent = AvatarAgent & { id: string; name: string; urlKey?: string | null };
@@ -171,18 +172,18 @@ function ScheduleRow({
       }}
     >
       <PopoverTrigger asChild>
-        <button type="button" className={rowButtonClass} aria-label={`Change schedule: ${describeScheduleTrigger(trigger)}`}>
+        <button type="button" className={rowButtonClass} aria-label={t("componentsRoutinePage.page.changeSchedule", { schedule: describeScheduleTrigger(trigger) })}>
           <CalendarClock className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
           <span className={cn("min-w-0 flex-1 truncate font-medium", dimmed && "text-muted-foreground")}>
             {describeScheduleTrigger(trigger)}
           </span>
-          <span className="shrink-0 text-xs text-muted-foreground">{trigger.enabled ? timezone : "Paused"}</span>
+          <span className="shrink-0 text-xs text-muted-foreground">{trigger.enabled ? timezone : t("componentsRoutinePage.page.paused")}</span>
         </button>
       </PopoverTrigger>
       {/* Wider when Pause/Resume joins Remove and Save, so the footer stays on one row. */}
       <PopoverContent align="start" className={cn("flex flex-col gap-4", onSetPaused ? "w-96" : "w-80")}>
         <ScheduleEditor value={cron} onChange={setCron} onValidityChange={setValid} />
-        <p className="text-xs text-muted-foreground">Times are in {timezone}.</p>
+        <p className="text-xs text-muted-foreground">{t("componentsRoutinePage.page.timesIn", { timezone })}</p>
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1">
             <Button
@@ -194,7 +195,7 @@ function ScheduleRow({
                 onRemove();
               }}
             >
-              Remove schedule
+              {t("componentsRoutinePage.page.removeSchedule")}
             </Button>
             {onSetPaused ? (
               <Button
@@ -206,7 +207,7 @@ function ScheduleRow({
                   onSetPaused(trigger.enabled);
                 }}
               >
-                {trigger.enabled ? "Pause" : "Resume"}
+                {trigger.enabled ? t("componentsRoutinePage.page.pause") : t("componentsRoutinePage.page.resume")}
               </Button>
             ) : null}
           </div>
@@ -218,7 +219,7 @@ function ScheduleRow({
               onSave({ cronExpression: cron, timezone });
             }}
           >
-            Save schedule
+            {t("componentsRoutinePage.page.saveSchedule")}
           </Button>
         </div>
       </PopoverContent>
@@ -239,13 +240,13 @@ function WebhookRow({
   const ignored = !routineActive && health !== "setup" && health !== "testing";
   const Icon = trigger.signingMode === "github_hmac" ? GitBranch : Webhook;
   return (
-    <button type="button" className={rowButtonClass} onClick={onOpen} aria-label={`Open ${webhookTitle(trigger)}`}>
+    <button type="button" className={rowButtonClass} onClick={onOpen} aria-label={t("componentsRoutinePage.page.openWebhook", { title: webhookTitle(trigger) })}>
       <Icon className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
       <span className={cn("min-w-0 flex-1 truncate font-medium", (ignored || health === "paused") && "text-muted-foreground")}>
         {webhookTitle(trigger)}
       </span>
       <span className={cn("shrink-0 text-xs", health === "rejected" && !ignored ? "text-destructive" : "text-muted-foreground")}>
-        {ignored ? "Ignoring events" : WEBHOOK_HEALTH_LABELS[health]}
+        {ignored ? t("componentsRoutinePage.page.ignoringEvents") : WEBHOOK_HEALTH_LABELS[health]}
       </span>
     </button>
   );
@@ -277,7 +278,7 @@ function StaticTriggerRow({
     <>
       <Icon className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
       <span className={cn("min-w-0 flex-1 truncate font-medium", dimmed && "text-muted-foreground")}>{title}</span>
-      <span className="shrink-0 text-xs text-muted-foreground">{trigger.enabled ? detail : "Paused"}</span>
+      <span className="shrink-0 text-xs text-muted-foreground">{trigger.enabled ? detail : t("componentsRoutinePage.page.paused")}</span>
     </>
   );
   if (!onSetPaused && !onRemove) {
@@ -286,7 +287,7 @@ function StaticTriggerRow({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button type="button" className={rowButtonClass} aria-label={`Change ${title}`}>
+        <button type="button" className={rowButtonClass} aria-label={t("componentsRoutinePage.page.changeTrigger", { title })}>
           {content}
         </button>
       </PopoverTrigger>
@@ -303,7 +304,7 @@ function StaticTriggerRow({
                 onRemove();
               }}
             >
-              Remove
+              {t("componentsRoutinePage.page.remove")}
             </Button>
           ) : <span />}
           {onSetPaused ? (
@@ -315,7 +316,7 @@ function StaticTriggerRow({
                 onSetPaused(trigger.enabled);
               }}
             >
-              {trigger.enabled ? "Pause" : "Resume"}
+              {trigger.enabled ? t("componentsRoutinePage.page.pause") : t("componentsRoutinePage.page.resume")}
             </Button>
           ) : null}
         </div>
@@ -328,8 +329,8 @@ function StaticTriggerRow({
 export function triggerTitle(trigger: RoutineTrigger): string {
   if (trigger.kind === "schedule") return describeScheduleTrigger(trigger);
   if (trigger.kind === "webhook") return webhookTitle(trigger);
-  if (trigger.kind === "heartbeat") return "Standing check";
-  return "API trigger";
+  if (trigger.kind === "heartbeat") return t("componentsRoutinePage.page.standingCheck.title");
+  return t("componentsRoutinePage.page.apiTrigger");
 }
 
 function Instructions({
@@ -355,20 +356,20 @@ function Instructions({
 
   return (
     <Field
-      label="Instructions"
+      label={t("componentsRoutinePage.page.instructions")}
       action={empty ? null : (
         <div className="flex items-center gap-1">
           {commentCount > 0 ? (
             <Button variant="ghost" size="xs" className="text-muted-foreground" onClick={onOpenComments}>
               <MessageSquare />
-              {commentCount} {commentCount === 1 ? "comment" : "comments"}
+              {t("componentsRoutinePage.page.comments", { count: commentCount })}
             </Button>
           ) : null}
           <Button
             variant="ghost"
             size="icon-xs"
             className="text-muted-foreground"
-            aria-label={copied ? "Instructions copied" : "Copy instructions"}
+            aria-label={copied ? t("componentsRoutinePage.page.instructionsCopied") : t("componentsRoutinePage.page.copyInstructions")}
             onClick={async () => {
               await copyTextToClipboard(markdown);
               setCopied(true);
@@ -382,8 +383,8 @@ function Instructions({
     >
       {empty ? (
         <div className="flex flex-col items-start gap-2">
-          <p className="text-sm text-muted-foreground">No instructions yet. The agent only gets the title.</p>
-          <Button variant="outline" size="sm" onClick={onEdit}>Add instructions</Button>
+          <p className="text-sm text-muted-foreground">{t("componentsRoutinePage.page.noInstructions")}</p>
+          <Button variant="outline" size="sm" onClick={onEdit}>{t("componentsRoutinePage.page.addInstructions")}</Button>
         </div>
       ) : (
         <>
@@ -407,7 +408,7 @@ function Instructions({
               aria-expanded={expanded}
               onClick={() => setExpanded((value) => !value)}
             >
-              {expanded ? "Show less" : "Show all"}
+              {expanded ? t("componentsRoutinePage.page.showLess") : t("componentsRoutinePage.page.showAll")}
               <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", expanded && "rotate-180")} />
             </Button>
           ) : null}
@@ -469,18 +470,18 @@ export function RoutinePage({
           {routine.managedByPlugin ? (
             <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-              Managed by {routine.managedByPlugin.pluginDisplayName}
+              {t("componentsRoutinePage.page.managedBy", { plugin: routine.managedByPlugin.pluginDisplayName })}
             </p>
           ) : null}
         </div>
 
-        <Field label="Status">
+        <Field label={t("componentsRoutinePage.page.status")}>
           <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
             <ToggleSwitch
               checked={state === "active"}
               onCheckedChange={onToggleActive}
               disabled={statusPending || archived || state === "draft"}
-              aria-label={state === "active" ? "Pause this routine" : "Turn this routine on"}
+              aria-label={state === "active" ? t("componentsRoutinePage.page.pauseRoutine") : t("componentsRoutinePage.page.turnOn")}
             />
             <span className={cn("text-sm font-medium", state !== "active" && "text-muted-foreground")}>
               {ROUTINE_STATE_LABELS[state]}
@@ -491,14 +492,14 @@ export function RoutinePage({
           {state === "draft" ? (
             <p className="text-sm text-muted-foreground">
               <button type="button" className="font-medium text-foreground underline-offset-4 hover:underline" onClick={onEdit}>
-                Choose a default agent
+                {t("componentsRoutinePage.page.chooseDefaultAgent")}
               </button>{" "}
-              to turn this routine on.
+              {t("componentsRoutinePage.page.toTurnOn")}
             </p>
           ) : null}
         </Field>
 
-        <Field label="Repeats">
+        <Field label={t("componentsRoutinePage.page.repeats")}>
           <div className="flex min-w-0 flex-col">
             {schedules.map((trigger) => (
               <ScheduleRow
@@ -516,9 +517,9 @@ export function RoutinePage({
             {standingCheck ? (
               <StaticTriggerRow
                 icon={Radar}
-                title="Standing check"
-                detail="Each time the agent wakes up"
-                description="The agent carries out these instructions each time it wakes up and reports what it found. It never creates a task by itself."
+                title={t("componentsRoutinePage.page.standingCheck.title")}
+                detail={t("componentsRoutinePage.page.standingCheck.detail")}
+                description={t("componentsRoutinePage.page.standingCheck.description")}
                 trigger={standingCheck}
                 routineActive={active}
                 onSetPaused={onSetTriggerPaused ? (paused) => onSetTriggerPaused(standingCheck.id, paused) : undefined}
@@ -528,9 +529,9 @@ export function RoutinePage({
             {apiTrigger ? (
               <StaticTriggerRow
                 icon={Terminal}
-                title="API"
-                detail="Started by an API call"
-                description="Starts this routine when an app or agent calls the routine API."
+                title={t("componentsRoutinePage.page.api.title")}
+                detail={t("componentsRoutinePage.page.api.detail")}
+                description={t("componentsRoutinePage.page.api.description")}
                 trigger={apiTrigger}
                 routineActive={active}
                 onSetPaused={onSetTriggerPaused ? (paused) => onSetTriggerPaused(apiTrigger.id, paused) : undefined}
@@ -539,19 +540,19 @@ export function RoutinePage({
             ) : null}
             {removedTriggers.map((trigger) => (
               <p key={trigger.id} role="status" className="flex min-w-0 items-center gap-2 py-1.5 text-sm text-muted-foreground">
-                <span className="min-w-0 flex-1 truncate">{triggerTitle(trigger)} removed.</span>
+                <span className="min-w-0 flex-1 truncate">{t("componentsRoutinePage.editDialog.webhookRemoved", { title: triggerTitle(trigger) })}</span>
                 {onRestoreTrigger ? (
-                  <Button type="button" variant="ghost" size="xs" onClick={() => onRestoreTrigger(trigger)}>Undo</Button>
+                  <Button type="button" variant="ghost" size="xs" onClick={() => onRestoreTrigger(trigger)}>{t("componentsRoutinePage.editDialog.undo")}</Button>
                 ) : null}
               </p>
             ))}
             {routine.triggers.length === 0 && removedTriggers.length === 0 ? (
-              <p className="py-1.5 text-sm text-muted-foreground">Doesn’t repeat. Runs only when you start it.</p>
+              <p className="py-1.5 text-sm text-muted-foreground">{t("componentsRoutinePage.page.doesntRepeat")}</p>
             ) : null}
           </div>
         </Field>
 
-        <Field label="Default agent">
+        <Field label={t("componentsRoutinePage.editDialog.defaultAgent")}>
           {agent ? (
             <Link
               to={`/agents/${agent.urlKey ?? agent.id}`}
@@ -561,22 +562,22 @@ export function RoutinePage({
               <span className="truncate">{agent.name}</span>
             </Link>
           ) : (
-            <Button variant="outline" size="sm" className="w-fit" onClick={onEdit}>Choose an agent</Button>
+            <Button variant="outline" size="sm" className="w-fit" onClick={onEdit}>{t("componentsRoutinePage.editDialog.chooseAgent")}</Button>
           )}
         </Field>
 
-        <Field label="Default responsible user">
+        <Field label={t("componentsRoutinePage.editDialog.defaultResponsibleUser")}>
           {responsibleUser ? (
             <p className="flex min-w-0 items-center gap-2 py-1.5 text-sm font-medium">
               <PersonAvatar person={responsibleUser} />
               <span className="truncate">{responsibleUser.name}</span>
             </p>
           ) : (
-            <p className="py-1.5 text-sm text-muted-foreground">No one yet</p>
+            <p className="py-1.5 text-sm text-muted-foreground">{t("componentsRoutinePage.page.noOneYet")}</p>
           )}
         </Field>
 
-        <Field label="Project">
+        <Field label={t("componentsRoutinePage.editDialog.project")}>
           {project ? (
             <Link
               to={`/projects/${project.urlKey ?? project.id}`}
@@ -586,14 +587,14 @@ export function RoutinePage({
               <span className="truncate">{project.name}</span>
             </Link>
           ) : (
-            <p className="py-1.5 text-sm text-muted-foreground">No project</p>
+            <p className="py-1.5 text-sm text-muted-foreground">{t("componentsRoutinePage.editDialog.noProject")}</p>
           )}
         </Field>
 
         {responsibilities ? (
-          <Field label="Responsibility">
+          <Field label={t("componentsRoutinePage.editDialog.responsibility")}>
             {responsibilities.length === 0 ? (
-              <p className="py-1.5 text-sm text-muted-foreground">None</p>
+              <p className="py-1.5 text-sm text-muted-foreground">{t("componentsRoutinePage.page.none")}</p>
             ) : (
               <ul className="flex min-w-0 flex-col">
                 {responsibilities.map((responsibility) => (
@@ -606,7 +607,7 @@ export function RoutinePage({
                     </Link>
                     <span className="shrink-0 text-xs text-muted-foreground">
                       {responsibility.via === "project" && project
-                        ? `Through ${project.name}`
+                        ? t("componentsRoutinePage.page.through", { project: project.name })
                         : responsibility.areaTitle ?? ""}
                     </span>
                   </li>
@@ -617,17 +618,17 @@ export function RoutinePage({
         ) : null}
 
         {routine.variables.length > 0 ? (
-          <Field label="Asks for">
+          <Field label={t("componentsRoutinePage.page.asksFor")}>
             <ul className="flex min-w-0 flex-col gap-1.5 py-1.5">
               {routine.variables.map((variable) => (
                 <li key={variable.name} className="flex min-w-0 items-baseline gap-2 text-sm">
                   <span className="truncate font-medium">{variable.label || variable.name}</span>
                   <span className="shrink-0 text-xs text-muted-foreground">
                     {variable.defaultValue != null && variable.defaultValue !== ""
-                      ? `Usually ${String(variable.defaultValue)}`
+                      ? t("componentsRoutinePage.page.usually", { value: String(variable.defaultValue) })
                       : variable.required
-                        ? "Required"
-                        : "Optional"}
+                        ? t("componentsRoutinePage.page.required")
+                        : t("componentsRoutinePage.page.optional")}
                   </span>
                 </li>
               ))}
@@ -636,7 +637,7 @@ export function RoutinePage({
         ) : null}
 
         {secretNames.length > 0 ? (
-          <Field label="Secrets">
+          <Field label={t("componentsRoutinePage.editDialog.secrets")}>
             <ul className="flex min-w-0 flex-wrap gap-x-4 gap-y-1.5 py-1.5">
               {secretNames.map((name) => (
                 <li key={name} className="flex min-w-0 items-center gap-1.5 font-mono text-xs">
@@ -649,7 +650,7 @@ export function RoutinePage({
         ) : null}
 
         {runRules.length > 0 ? (
-          <Field label="Run rules">
+          <Field label={t("componentsRoutinePage.page.runRules")}>
             <ul className="flex flex-col gap-1 py-1.5 text-sm">
               {runRules.map((rule) => <li key={rule}>{rule}</li>)}
             </ul>
@@ -667,19 +668,19 @@ export function RoutinePage({
           renderBody={renderInstructionsBody}
         />
 
-        <Field label="History">
+        <Field label={t("componentsRoutinePage.page.history")}>
           {historyError && history.length === 0 ? (
             historyError
           ) : historyLoading ? (
-            <p className="py-1.5 text-sm text-muted-foreground" role="status">Loading tasks…</p>
+            <p className="py-1.5 text-sm text-muted-foreground" role="status">{t("componentsRoutinePage.page.loadingTasks")}</p>
           ) : history.length === 0 ? (
             <p className="py-1.5 text-sm text-muted-foreground">
               {state === "active" && nextRun
-                ? `No tasks yet. The first one starts ${formatNextRun(nextRun)}.`
-                : "No tasks yet. Each run creates a task here."}
+                ? t("componentsRoutinePage.page.noTasksNext", { when: formatNextRun(nextRun) })
+                : t("componentsRoutinePage.page.noTasks")}
             </p>
           ) : (
-            <TaskSummaryList issues={history} label="Tasks created by this routine" issueLinkState={historyLinkState} />
+            <TaskSummaryList issues={history} label={t("componentsRoutinePage.page.historyLabel")} issueLinkState={historyLinkState} />
           )}
           {historyError && history.length > 0 ? historyError : null}
           {hasMoreHistory && history.length > 0 ? (
@@ -690,13 +691,12 @@ export function RoutinePage({
               disabled={loadingMoreHistory}
               onClick={onLoadMoreHistory}
             >
-              {loadingMoreHistory ? "Loading…" : "Load more"}
+              {loadingMoreHistory ? t("componentsRoutinePage.page.loading") : t("componentsRoutinePage.page.loadMore")}
             </Button>
           ) : null}
           {skippedRunCount > 0 ? (
             <p className="text-xs text-muted-foreground">
-              {skippedRunCount === 1 ? "1 run was" : `${skippedRunCount} runs were`} folded into a task that was still in
-              progress.
+              {t("componentsRoutinePage.page.skippedRuns", { count: skippedRunCount })}
             </p>
           ) : null}
         </Field>
@@ -759,32 +759,32 @@ export function RoutinePageActions({
   return (
     <div className="flex items-center gap-1">
       {archived ? null : (
-        <Button variant="ghost" size="icon-sm" aria-label="Edit routine" onClick={onEdit}>
+        <Button variant="ghost" size="icon-sm" aria-label={t("componentsRoutinePage.editDialog.titleEdit")} onClick={onEdit}>
           <Pencil />
         </Button>
       )}
       <DropdownMenu defaultOpen={defaultMenuOpen}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon-sm" aria-label="More routine actions">
+          <Button variant="ghost" size="icon-sm" aria-label={t("componentsRoutinePage.page.moreActions")}>
             <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onSelect={onOpenVersionHistory}>
             <History />
-            Version history
+            {t("componentsRoutinePage.page.versionHistory")}
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={onOpenAuditLog}>
             <ScrollText />
-            Audit log
+            {t("componentsRoutinePage.page.auditLog")}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           {archived && onRestore ? (
-            <DropdownMenuItem onSelect={onRestore}>Restore routine</DropdownMenuItem>
+            <DropdownMenuItem onSelect={onRestore}>{t("componentsRoutinePage.page.restore")}</DropdownMenuItem>
           ) : (
             <DropdownMenuItem variant="destructive" onSelect={onArchive}>
               <Trash2 />
-              Archive routine
+              {t("componentsRoutinePage.page.archive")}
             </DropdownMenuItem>
           )}
         </DropdownMenuContent>

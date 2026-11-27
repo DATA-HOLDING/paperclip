@@ -1,0 +1,18 @@
+{
+  "formIncomplete": "O formulário está incompleto",
+  "title": "Adicionar uma responsabilidade",
+  "description": "Algo pelo qual você responde, com um critério de sucesso e um número que mostra se você o está cumprindo.",
+  "titleLabel": "Pelo que você responde?",
+  "titlePlaceholder": "ex.: Funil de investidores",
+  "titleMissing": "Dê um nome àquilo pelo que você responde",
+  "area": "Área",
+  "noArea": "Sem área",
+  "newArea": "Nova área…",
+  "newAreaName": "Nome da nova área",
+  "newAreaPlaceholder": "ex.: Captação de recursos",
+  "newAreaMissing": "Dê um nome à nova área",
+  "error": "Não foi possível adicionar a responsabilidade. {{message}}",
+  "cancel": "Cancelar",
+  "adding": "Adicionando…",
+  "submit": "Adicionar responsabilidade"
+}

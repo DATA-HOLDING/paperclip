@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { t } from ".";
+import { matchLocale, t } from ".";
 import en from "./locales/en.json";
 import { localeMessages } from "./locales";
 import { validateLocaleMessages } from "./locale-validation";
@@ -14,13 +14,18 @@ describe("locale validation", () => {
   it("accepts registered locale files", () => {
     expect(Object.keys(localeMessages)).toContain("en");
     for (const [locale, messages] of Object.entries(localeMessages)) {
-      expect(validateLocaleMessages(messages), locale).toEqual([]);
+      expect(validateLocaleMessages(messages, localeMessages.en), locale).toEqual([]);
     }
+  });
+
+  it("accepts a partial catalog: missing keys fall back to English", () => {
+    expect(validateLocaleMessages({ app: { noCompanies: { title: "Título" } } })).toEqual([]);
   });
 
   it("rejects missing and extra nested keys", () => {
     expect(
-      validateLocaleMessages({
+      validateLocaleMessages(
+        {
         app: {
           noCompanies: {
             title: en.app.noCompanies.title,
@@ -28,7 +33,10 @@ describe("locale validation", () => {
             unexpected: "Unexpected",
           },
         },
-      }),
+        },
+        en,
+        { requireComplete: true },
+      ),
     ).toEqual(
       expect.arrayContaining([
         "app.noCompanies.newCompany is missing",
@@ -98,5 +106,17 @@ describe("locale validation", () => {
     expect(validateLocaleMessages({ message: "x".repeat(200) }, { message: "Short" })).toEqual([
       "message is too long: 200 characters exceeds 133",
     ]);
+  });
+});
+
+describe("locale matching", () => {
+  it("matches the exact tag, then the base language, else nothing", () => {
+    const offered = ["en", "pt-BR"];
+    expect(matchLocale("pt-BR", offered)).toBe("pt-BR");
+    expect(matchLocale("pt", offered)).toBe("pt-BR");
+    expect(matchLocale("pt-PT", offered)).toBe("pt-BR");
+    expect(matchLocale("en-US", offered)).toBe("en");
+    expect(matchLocale("de-DE", offered)).toBeNull();
+    expect(matchLocale(null, offered)).toBeNull();
   });
 });

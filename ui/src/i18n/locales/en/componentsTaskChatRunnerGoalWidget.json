@@ -1,0 +1,48 @@
+{
+  "status": {
+    "active": "active",
+    "paused": "paused",
+    "blocked": "blocked",
+    "limited": "limited",
+    "usage_limited": "usage limited",
+    "budget_limited": "budget limited",
+    "complete": "complete"
+  },
+  "pending": {
+    "starting": "Starting",
+    "editing": "Saving",
+    "replacing": "Replacing",
+    "pausing": "Pausing after current turn",
+    "resuming": "Resuming",
+    "clearing": "Clearing",
+    "continuing": "Continuing in a new run"
+  },
+  "errors": {
+    "selectAgent": "Select an agent to use /goal.",
+    "unsupported": "Session goals are unsupported by this agent.",
+    "actionFailed": "The goal action could not be applied.",
+    "noGoal": "There is no current session goal to edit.",
+    "addObjective": "Add an objective after /goal to start a goal."
+  },
+  "ariaLabel": "Agent session goal",
+  "title": "Session goal",
+  "workingNow": "Working now",
+  "hint": "Type /goal followed by an objective to pursue work across turns.",
+  "tokens": "{{tokens}} tokens",
+  "iterations": "{{count}} iterations",
+  "edit": "Edit goal",
+  "pause": "Pause goal",
+  "resume": "Resume goal",
+  "clear": "Clear goal",
+  "dialog": {
+    "replaceTitle": "Replace session goal?",
+    "editTitle": "Edit session goal",
+    "replaceBody": "This clears the unfinished goal and starts a new goal with the objective below.",
+    "editBody": "Update the objective without clearing the goal's progress.",
+    "objective": "Goal objective",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "replace": "Replace goal",
+    "save": "Save goal"
+  }
+}

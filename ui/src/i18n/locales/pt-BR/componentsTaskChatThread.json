@@ -1,0 +1,109 @@
+{
+  "durableInput": {
+    "questions": "Perguntas",
+    "suggestedTasks": "Tarefas sugeridas",
+    "chooseOptions": "Escolha opções",
+    "reviewItems": "Revisar itens",
+    "connectService": "Conectar serviço",
+    "routineOffer": "Oferta de rotina",
+    "proposedBar": "Padrão proposto",
+    "proposedAutomation": "Automação proposta",
+    "proposedDashboardChanges": "Alterações propostas no painel",
+    "reviewPlan": "Revisar plano",
+    "approveToolAction": "Aprovar ação de ferramenta",
+    "reviewSecretProposal": "Revisar proposta de segredo",
+    "confirmation": "Confirmação"
+  },
+  "emptyMessage": "Nenhuma mensagem ainda.",
+  "errors": {
+    "notReassignable": "A tarefa não está disponível para reatribuição.",
+    "queuedNotEditable": "Esta mensagem na fila não pode mais ser editada.",
+    "alreadyAnswered": "Esta pergunta já foi respondida ou encerrada.",
+    "cancelUnavailable": "Não é possível cancelar esta pergunta.",
+    "submitThroughCard": "Envie a resposta pelo cartão da pergunta salva.",
+    "missingTurnIdentity": "Esta solicitação de runtime não tem a identidade da rodada do provedor necessária para resolvê-la.",
+    "permissionNoForm": "Esta permissão de runtime não aceita dados de formulário enviados.",
+    "skipUnavailable": "Não é possível pular esta interação.",
+    "dismissFailed": "Não foi possível dispensar esta solicitação. Tente novamente.",
+    "reorderUnavailable": "Não é possível reordenar a fila.",
+    "steeringUnavailable": "Não é possível redirecionar.",
+    "discardUnavailable": "Não é possível descartar."
+  },
+  "agentAttachment": "Anexo do agente",
+  "browserN": "Navegador {{n}}",
+  "browser": "Navegador",
+  "waiting": {
+    "label": "Aguardando para retomar",
+    "detail": "A execução anterior precisa ser verificada antes que o trabalho continue. Veja a retenção de execução da tarefa para a próxima ação. As verificações individuais continuam no histórico de execuções."
+  },
+  "failure": {
+    "label": {
+      "runtimeMissing": "Runtime ausente",
+      "modelUnavailable": "Modelo indisponível",
+      "swarmNotStarted": "O swarm não iniciou",
+      "swarmNotFinished": "O swarm não terminou",
+      "approvalRequired": "Aprovação necessária",
+      "usageLimit": "Limite de uso atingido",
+      "diskFull": "Disco cheio",
+      "runCancelled": "Execução cancelada",
+      "runInterrupted": "Execução interrompida",
+      "runTimedOut": "Execução esgotou o tempo",
+      "branchUnavailable": "Branch inicial indisponível",
+      "restoreFailed": "Falha ao restaurar o espaço de trabalho",
+      "aiNeeded": "Conexão de IA necessária",
+      "stopped": "Interrompida",
+      "couldntStart": "Não foi possível iniciar",
+      "runFailed": "Falha na execução"
+    },
+    "afterResponse": " depois de retornar uma resposta final",
+    "cancelled": "A execução foi cancelada{{boundary}}.",
+    "interrupted": "A execução foi interrompida{{boundary}}.",
+    "runtimeMissing": "Falta um pacote obrigatório no runtime do provedor selecionado. Reinstale ou recompile o Paperclip com as dependências de provedor incluídas, reinicie o servidor e teste o runtime do agente antes de tentar novamente.",
+    "approvalRequired": "Esta operação exige aprovação, mas este runner não tem um tratador interativo de aprovação. Revise a operação e atualize a configuração de permissão do agente antes de tentar novamente.",
+    "modelRejected": "O provedor rejeitou o modelo \"{{model}}\".",
+    "selectedModelRejected": "O provedor rejeitou o modelo selecionado.",
+    "chooseModel": "Escolha um modelo compatível ou limpe a substituição de modelo da tarefa e tente novamente.",
+    "swarmNotStarted": "O swarm não iniciou e nada foi alterado. Envie /swarm de novo para tentar mais uma vez.",
+    "usageLimit": "O provedor do modelo atingiu o limite de uso atual. Tente novamente depois que o limite for renovado.",
+    "diskFull": "O agente encheu o disco do computador dele, então a execução parou. Peça ao agente para usar menos espaço em disco e tente novamente.",
+    "frameTooLarge": "A saída do provedor excedeu o limite seguro.",
+    "runnerTimedOut": "O runner esgotou o tempo{{boundary}} ({{code}}).",
+    "runnerStopped": "O runner parou{{boundary}} ({{code}}).",
+    "repairBranch": "Corrija a branch inicial abaixo antes de tentar novamente.",
+    "useConnectionCard": "Use o cartão de conexão abaixo para continuar.",
+    "aiUnavailable": "Esta execução parou porque a conta de IA dela estava indisponível.",
+    "reconciliation": "A execução anterior precisa ser verificada antes que esta tarefa continue. Sua mensagem foi preservada. Veja a execução interrompida para mais detalhes.",
+    "executionStopped": "A execução foi interrompida.",
+    "runFailedCode": "A execução falhou ({{code}}). {{retry}}",
+    "workspaceSetup": "A configuração do espaço de trabalho falhou antes de o agente iniciar."
+  },
+  "retry": {
+    "scheduled": "Nova tentativa agendada automaticamente.",
+    "canRetry": "Você já pode tentar esta mensagem novamente.",
+    "preserved": "Sua mensagem foi preservada."
+  },
+  "terminal": {
+    "runCompleted": "Execução concluída",
+    "noResponse": "O runner não retornou nenhuma resposta para o usuário.",
+    "turnCancelled": "Esta rodada foi cancelada antes de retornar uma resposta."
+  },
+  "runtime": {
+    "permission": "Permissão de runtime",
+    "input": "Entrada de runtime"
+  },
+  "interrupting": "Interrompendo…",
+  "interrupt": "Interromper",
+  "moreRunOutput": "Mais saída da execução",
+  "history": {
+    "error": "Parte do histórico da tarefa não pôde ser carregada.",
+    "loading": "Parte do histórico da tarefa ainda está carregando.",
+    "retry": "Tentar novamente",
+    "loadingFull": "Carregando o histórico da tarefa…"
+  },
+  "takingLonger": "Está demorando mais do que o normal…",
+  "stoppedBeforeResponse": "Esta execução parou antes de haver uma resposta. Revise a conexão ou a ação de recuperação da tarefa abaixo.",
+  "waitingTranscript": "Aguardando a transcrição...",
+  "pendingInputs_one": "{{count}} entrada pendente",
+  "pendingInputs_other": "{{count}} entradas pendentes",
+  "documentRevision": "Documento · rev. {{revision}}"
+}

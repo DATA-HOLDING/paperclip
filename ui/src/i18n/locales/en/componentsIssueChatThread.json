@@ -1,0 +1,187 @@
+{
+  "liveStatus": {
+    "using": "Using {{tool}}",
+    "noOutput": "no output for {{elapsed}} - still running",
+    "ago": "{{elapsed}} ago"
+  },
+  "assigneeNotice": {
+    "stillSettingUp": " is still being set up.",
+    "finishSetup": "Finish setup",
+    "preparing": "Its computer is being prepared. Runs start automatically when setup finishes.",
+    "setupUnfinished": "Its setup isn't finished yet. Finish setup to let it start runs.",
+    "pauseBudget": "It was paused by a budget hard stop.",
+    "pauseImport": "It arrived paused from an organization import — imported agents stay parked until you resume them.",
+    "pauseSystem": "It was paused by the system.",
+    "pauseArchived": "It was paused because its company is archived.",
+    "pauseManual": "It was paused manually.",
+    "isPaused": " is paused.",
+    "resuming": "Resuming…",
+    "resume": "Resume agent",
+    "newRunsBlocked": "New runs will not start until the agent is resumed."
+  },
+  "authors": {
+    "agent": "Agent",
+    "you": "You",
+    "system": "System",
+    "board": "Board"
+  },
+  "fallback": {
+    "tool": "Tool: {{name}}",
+    "args": "Args:\n{{args}}",
+    "result": "Result:\n{{result}}",
+    "errorTitle": "Chat renderer hit an internal state error.",
+    "errorBody": "Showing a safe fallback transcript instead of crashing the tasks page.",
+    "noContent": "No message content."
+  },
+  "values": {
+    "none": "None"
+  },
+  "toolSummary": {
+    "commands_one": "ran {{count}} command",
+    "commands_other": "ran {{count}} commands",
+    "tools_one": "called {{count}} tool",
+    "tools_other": "called {{count}} tools",
+    "separator": ", "
+  },
+  "cot": {
+    "working": "Working",
+    "worked": "Worked",
+    "forDuration": "for {{duration}}"
+  },
+  "actions": {
+    "copy": "Copy",
+    "cancel": "Cancel",
+    "copyMessage": "Copy message",
+    "moreActions": "More actions"
+  },
+  "copy": {
+    "failedTitle": "Copy failed",
+    "unableText": "Unable to copy text",
+    "unableMessage": "Unable to copy message",
+    "unableNotice": "Unable to copy system notice",
+    "unableNoticeLink": "Unable to copy system notice link"
+  },
+  "tool": {
+    "input": "Input",
+    "result": "Result"
+  },
+  "providerActivity": {
+    "title": "Provider activity",
+    "childAgent": "Child agent",
+    "unavailableSource": "Unavailable source",
+    "providerReported": "(provider-reported)",
+    "model": "Model"
+  },
+  "queue": {
+    "deferredWake": "⏸ Deferred wake",
+    "queued": "Queued",
+    "interrupting": "Interrupting...",
+    "interrupt": "Interrupt"
+  },
+  "badges": {
+    "followUp": "Follow-up"
+  },
+  "comment": {
+    "deleted": "Comment deleted",
+    "sentFromIMessage": "Sent from iMessage",
+    "sending": "Sending...",
+    "delete": "Delete comment",
+    "deleteTitle": "Delete comment?",
+    "deleteDescription": "This will replace the comment with a deleted-comment marker.",
+    "fallbackAuthor": "Comment",
+    "deletedThis": " deleted this comment"
+  },
+  "run": {
+    "stop": "Stop run",
+    "stopping": "Stopping...",
+    "view": "View run",
+    "running": "Running"
+  },
+  "assistant": {
+    "fastResponse": "Platform-generated acknowledgement. The agent’s substantive response follows separately."
+  },
+  "feedback": {
+    "helpful": "Helpful",
+    "needsWork": "Needs work",
+    "whatBetter": "What could have been better?",
+    "notePlaceholder": "Add a short note",
+    "dismiss": "Dismiss",
+    "saving": "Saving...",
+    "saveNote": "Save note",
+    "sharingTitle": "Save your feedback sharing preference",
+    "sharingDescription": "Choose whether voted AI outputs can be shared with Paperclip Labs. This answer becomes the default for future thumbs up and thumbs down votes.",
+    "savedLocally": "This vote is always saved locally.",
+    "choose": "Choose",
+    "alwaysAllow": "Always allow",
+    "toShare": "to share this vote and future voted AI outputs. Choose",
+    "dontAllow": "Don't allow",
+    "toKeepLocal": "to keep this vote and future votes local.",
+    "changeLater": "You can change this later in Settings > General.",
+    "terms": "Read our terms of service"
+  },
+  "timeline": {
+    "updatedTask": "updated this task",
+    "hideConfirmation": "Hide confirmation",
+    "expiredConfirmation": "Expired confirmation",
+    "requestedFollowUp": "requested follow-up",
+    "status": "Status",
+    "assignee": "Assignee",
+    "workspace": "Workspace",
+    "run": "run"
+  },
+  "notice": {
+    "noDetails": "No additional details.",
+    "staleDisposition": "Stale disposition warning",
+    "copyLink": "Copy link",
+    "copyLinkAria": "Copy link to system notice",
+    "copyText": "Copy notice text",
+    "copyAria": "Copy system notice"
+  },
+  "composer": {
+    "fileTypeNotAllowed": "This file type cannot be attached here",
+    "dropToUpload": "Drop to upload",
+    "dropHint": "Images insert into the reply. Other files are added to this task.",
+    "draftConflict": "Another tab changed the saved draft. This draft is kept separately in this tab.",
+    "storageUnavailable": " Browser storage is unavailable; copy your text before leaving.",
+    "restoreOnReload": " It will be restored if you reload this tab.",
+    "placeholder": "Reply",
+    "stopping": "Stopping…",
+    "stop": "Stop",
+    "stopResponse": "Stop response",
+    "posting": "Posting...",
+    "send": "Send"
+  },
+  "attachments": {
+    "uploading": "Uploading to task",
+    "failed": "Upload failed",
+    "inline": "Inserted inline",
+    "attached": "Attached to task",
+    "retry": "Retry {{name}}",
+    "remove": "Remove {{name}}"
+  },
+  "responsible": {
+    "placeholder": "Responsible",
+    "none": "No responsible",
+    "search": "Search responsible...",
+    "empty": "No responsible found."
+  },
+  "noAssignee": {
+    "title": "No responsible selected",
+    "description": "This comment will be posted without an assignee, so no agent will be woken to act on it. Go back to pick a responsible, or send anyway.",
+    "goBack": "Go back",
+    "sendAnyway": "Send anyway"
+  },
+  "thread": {
+    "noRunOutput": "No run output yet.",
+    "empty": "This task conversation is empty. Start with a message below.",
+    "jumpToLatest": "Jump to latest",
+    "takingLonger": "Taking longer than usual…"
+  },
+  "legacyRecovery": {
+    "label": "Legacy recovery task",
+    "body": "Legacy recovery task. Newer recovery actions live on the source task"
+  },
+  "errorActions": {
+    "uploadFile": "upload the file"
+  }
+}

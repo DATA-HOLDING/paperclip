@@ -1,0 +1,21 @@
+{
+  "in": "in",
+  "out": "out",
+  "total": "total",
+  "apiRuns": "~{{count}} api",
+  "subRuns": "~{{count}} sub",
+  "runs": "runs",
+  "periodSpend": "Period spend",
+  "ofCompanyBudget": "{{percent}}% of company budget",
+  "thisWeek": "This week",
+  "perWeek": "~{{amount}} / wk",
+  "rollingWindows": "Rolling windows",
+  "tok": "tok",
+  "subscription": "Subscription",
+  "subscriptionShare": "{{percent}}% of token usage via subscription",
+  "providerTokensShare": "{{percent}}% of provider tokens",
+  "providerCostShare": "{{percent}}% of provider cost",
+  "subscriptionQuota": "Subscription quota",
+  "percentUsed": "{{percent}}% used",
+  "resets": "resets {{date}}"
+}

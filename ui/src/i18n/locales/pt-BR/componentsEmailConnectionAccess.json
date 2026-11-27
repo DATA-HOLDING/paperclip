@@ -1,0 +1,16 @@
+{
+  "loadAction": "carregar o acesso à conexão",
+  "loading": "Carregando o acesso…",
+  "human": {
+    "organization": "Qualquer pessoa da organização",
+    "justMe": "Só eu",
+    "owner": "Só o dono da credencial",
+    "revoked": "Acesso revogado"
+  },
+  "whichHumans": "Quais pessoas podem usar esta credencial?",
+  "whichAgents": "Quais agentes podem usar esta conexão?",
+  "whichAgentsLabel": "Quais agentes podem usar esta conexão",
+  "justAgentsIPick": "Só os agentes que eu escolher",
+  "anyAgent": "Qualquer agente",
+  "removingNote": "Remover um agente atribuído interrompe o recebimento e o envio pela caixa de entrada dele."
+}

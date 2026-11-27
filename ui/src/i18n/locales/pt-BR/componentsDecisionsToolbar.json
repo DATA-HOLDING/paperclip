@@ -1,0 +1,25 @@
+{
+  "severity": {
+    "critical": "Crítica",
+    "high": "Alta",
+    "medium": "Média",
+    "low": "Baixa"
+  },
+  "controls": "Controles de decisões",
+  "searchLabel": "Buscar decisões",
+  "searchPlaceholder": "Buscar decisões…",
+  "filter": "Filtrar",
+  "group": "Agrupar",
+  "sort": "Ordenar",
+  "count_one": "{{count}} decisão",
+  "count_other": "{{count}} decisões",
+  "clear": "Limpar",
+  "section": {
+    "type": "Tipo",
+    "severity": "Gravidade",
+    "project": "Projeto",
+    "workspace": "Espaço de trabalho"
+  },
+  "noProject": "Sem projeto",
+  "noWorkspace": "Sem espaço de trabalho"
+}

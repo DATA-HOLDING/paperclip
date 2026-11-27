@@ -1,0 +1,130 @@
+{
+  "toast": {
+    "restoredTitle": "Revisão {{from}} restaurada como revisão {{to}}",
+    "restoredBodyWithSecrets": "O estado ativado dos gatilhos foi restaurado a partir do snapshot. Novos segredos de webhook estão disponíveis no aviso acima.",
+    "restoredBody": "O estado ativado dos gatilhos foi restaurado a partir do snapshot.",
+    "restoreFailed": "Falha ao restaurar a revisão",
+    "restoreAction": "restaurar a revisão"
+  },
+  "loadAction": "carregar as revisões",
+  "empty": {
+    "title": "Nenhuma edição ainda",
+    "description": "A revisão 1 é o único histórico desta rotina. Salvar uma edição cria a primeira revisão adicional."
+  },
+  "historical": {
+    "viewing": "Visualizando a revisão {{number}} (somente leitura)",
+    "description": "Restaurar esta revisão cria uma nova revisão {{number}} com o mesmo conteúdo. O histórico só recebe acréscimos.",
+    "returnToCurrent": "Voltar à atual",
+    "restoreAsNew": "Restaurar como nova revisão"
+  },
+  "theRoutine": "a rotina",
+  "conflict": {
+    "title": "Edições da rotina não salvas",
+    "description": "Você alterou {{fields}} mas ainda não salvou. Salve ou descarte antes de visualizar ou restaurar uma revisão mais antiga.",
+    "discard": "Descartar alterações",
+    "save": "Salvar e continuar"
+  },
+  "list": {
+    "title": "Revisões",
+    "total": "{{count}} no total",
+    "current": "Atual",
+    "restored": "Restaurada",
+    "showOlder": "Mostrar {{count}} mais antigas…"
+  },
+  "revShort": "rev {{number}}",
+  "preview": {
+    "restoreThis": "Restaurar esta revisão",
+    "savedBy": "Salva {{time}} por {{actor}}",
+    "compare": "Comparar com a atual",
+    "structuredFields": "Campos estruturados",
+    "differs": "diferente da atual",
+    "noDescription": "Sem descrição",
+    "triggers": "Gatilhos ({{count}})",
+    "noTriggers": "Nenhum gatilho nesta revisão.",
+    "webhookNote": "Os segredos de webhook não são guardados nas revisões. Se um gatilho de webhook restaurado precisar ser recriado, o Paperclip gera um segredo novo na restauração.",
+    "variables": "Variáveis ({{count}})",
+    "default": "padrão: {{value}}"
+  },
+  "fields": {
+    "title": "Título",
+    "priority": "Prioridade",
+    "status": "Status",
+    "defaultAgent": "Agente padrão",
+    "project": "Projeto",
+    "concurrency": "Concorrência",
+    "catchUp": "Recuperação",
+    "env": "Ambiente",
+    "description": "Descrição",
+    "variables": "Variáveis"
+  },
+  "enabled": "ativado",
+  "disabled": "desativado",
+  "restore": {
+    "title": "Restaurar a revisão {{number}}?",
+    "description": "Isto cria uma nova revisão {{next}} com o mesmo conteúdo da revisão {{number}}. As revisões {{number}}–{{current}} continuam no histórico e não são alteradas.",
+    "fieldsRevert": "Os valores dos campos da rotina, as variáveis e o cron do agendamento serão revertidos.",
+    "secretsRevert": "Os segredos da rotina serão revertidos: {{counts}}.",
+    "historyPreserved": "O histórico de execuções anteriores é mantido.",
+    "webhookRecreated": "O gatilho de webhook {{label}} será recriado com uma nova URL e um novo segredo. O Paperclip mostrará o segredo uma vez após a restauração — copie-o antes de fechar.",
+    "summaryLabel": "Resumo da alteração (opcional)",
+    "summaryPlaceholder": "Por que você está restaurando? Fica visível no histórico.",
+    "cancel": "Cancelar",
+    "restoring": "Restaurando…",
+    "confirm": "Restaurar como revisão {{number}}"
+  },
+  "compare": {
+    "title": "Comparar revisões da rotina",
+    "old": "Antiga",
+    "new": "Nova",
+    "fieldChanges": "Alterações de campos",
+    "noFieldChanges": "Nenhuma alteração estrutural de campos.",
+    "field": "Campo",
+    "oldValue": "Valor antigo",
+    "newValue": "Valor novo",
+    "descriptionDiff": "Diferenças na descrição",
+    "close": "Fechar",
+    "restoreRev": "Restaurar a rev {{number}} como nova revisão"
+  },
+  "diff": {
+    "noDescription": "Nenhuma das revisões tem descrição.",
+    "identical": "As descrições são idênticas.",
+    "content": "Conteúdo"
+  },
+  "actor": {
+    "board": "conselho",
+    "agent": "agente",
+    "system": "sistema"
+  },
+  "unassigned": "Sem responsável",
+  "noProject": "Sem projeto",
+  "trigger": {
+    "replay": "replay {{seconds}}s",
+    "heartbeat": "Verificação contínua a cada ativação",
+    "removed": "Gatilho removido ({{label}})",
+    "added": "Gatilho adicionado ({{label}})",
+    "changed": "Gatilho {{label}}"
+  },
+  "list2": "{{first}} e {{second}}",
+  "listMany": "{{rest}} e {{last}}",
+  "env": {
+    "plainSet": "texto simples (definido)",
+    "plainChanged": "texto simples (alterado)",
+    "keys_one": "{{count}} chave",
+    "keys_other": "{{count}} chaves",
+    "keysWithSecrets_one": "{{keys}} ({{count}} referência a segredo)",
+    "keysWithSecrets_other": "{{keys}} ({{count}} referências a segredos)",
+    "added_one": "{{count}} chave adicionada",
+    "added_other": "{{count}} chaves adicionadas",
+    "removed_one": "{{count}} chave removida",
+    "removed_other": "{{count}} chaves removidas",
+    "changed_one": "{{count}} chave alterada",
+    "changed_other": "{{count}} chaves alteradas",
+    "fieldAdded": "Ambiente: adicionada ({{key}})",
+    "fieldRemoved": "Ambiente: removida ({{key}})",
+    "fieldBindingKind": "Ambiente {{key}}: tipo de vínculo",
+    "fieldSecret": "Ambiente {{key}}: segredo",
+    "fieldVersion": "Ambiente {{key}}: versão",
+    "fieldValue": "Ambiente {{key}}: valor"
+  },
+  "none": "(nenhuma)"
+}

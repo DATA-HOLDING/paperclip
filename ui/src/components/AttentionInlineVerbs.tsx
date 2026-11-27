@@ -14,6 +14,7 @@ import { DecisionCardFooter } from "./DecisionCardFooter";
 import { NeedsYouPanel, NeedsYouPanelNote, NeedsYouPanelRow } from "./coordinator/NeedsYouCardKit";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { t } from "@/i18n";
 
 /**
  * Inline verbs for the cards whose server actions now work in place (PAP-749
@@ -50,7 +51,7 @@ export type InlineVerbsPresentation = "card" | "panel";
 
 function failedRunError(item: AttentionItem): string {
   const excerpt = item.detail?.kind === "failed_run" || item.detail?.kind === "agent_error" ? item.detail.failureReasonExcerpt : null;
-  return metadataString(item, "error") ?? metadataString(item, "errorReason") ?? excerpt ?? metadataString(item, "errorCode") ?? "The run failed";
+  return metadataString(item, "error") ?? metadataString(item, "errorReason") ?? excerpt ?? metadataString(item, "errorCode") ?? t("componentsAttentionInlineVerbs.failedRun.defaultError");
 }
 
 /** Retry the failed run's task, and open the run log. */
@@ -85,7 +86,7 @@ export function FailedRunActions({
       const notStarted = taskRetryNotStartedReason(result);
       setRetryNotice(notStarted);
       toasts?.pushToast({
-        title: notStarted ? "Retry did not start" : "Retry requested",
+        title: notStarted ? t("componentsAttentionInlineVerbs.failedRun.retryNotStarted") : t("componentsAttentionInlineVerbs.failedRun.retryRequested"),
         body: notStarted ?? item.relatedIssue?.identifier ?? undefined,
         tone: notStarted ? "info" : "success",
       });
@@ -95,14 +96,14 @@ export function FailedRunActions({
     },
     onError: (error) => {
       idempotencyKey.current = null;
-      toasts?.pushToast({ title: "Could not retry this run", body: error instanceof Error ? error.message : undefined, tone: "error" });
+      toasts?.pushToast({ title: t("componentsAttentionInlineVerbs.failedRun.retryFailed"), body: error instanceof Error ? error.message : undefined, tone: "error" });
     },
   });
 
   if (presentation === "card") {
     const error = failedRunError(item);
     const reason = metadataString(item, "retryExhaustedReason");
-    const note = [reason && reason !== error ? reason : null, issueId ? "Retry starts a new run." : null].filter(Boolean).join(" ");
+    const note = [reason && reason !== error ? reason : null, issueId ? t("componentsAttentionInlineVerbs.failedRun.retryNote") : null].filter(Boolean).join(" ");
     return <>
       <NeedsYouPanel>
         <NeedsYouPanelRow icon={<TriangleAlert className="text-destructive" />} title={error} />
@@ -113,13 +114,13 @@ export function FailedRunActions({
       <DecisionCardFooter leading={leading}>
         {item.subject.href && (
           <Button asChild variant={issueId ? "outline" : "default"} size="sm">
-            <Link to={item.subject.href}>View run</Link>
+            <Link to={item.subject.href}>{t("componentsAttentionInlineVerbs.failedRun.viewRun")}</Link>
           </Button>
         )}
         {issueId && (
           <Button type="button" size="sm" disabled={retry.isPending} onClick={() => retry.mutate()}>
             {retry.isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-            Retry run
+            {t("componentsAttentionInlineVerbs.failedRun.retryRun")}
           </Button>
         )}
       </DecisionCardFooter>
@@ -133,7 +134,7 @@ export function FailedRunActions({
       {item.subject.href && (
         <Button asChild variant="outline" size="sm">
           <Link to={item.subject.href}>
-            Open run
+            {t("componentsAttentionInlineVerbs.failedRun.openRun")}
             <ExternalLink className="h-3.5 w-3.5" />
           </Link>
         </Button>
@@ -141,7 +142,7 @@ export function FailedRunActions({
       {issueId && (
         <Button type="button" size="sm" disabled={retry.isPending} onClick={() => retry.mutate()}>
           {retry.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
-          Retry
+          {t("componentsAttentionInlineVerbs.failedRun.retry")}
         </Button>
       )}
     </ActionsFooter>
@@ -194,7 +195,7 @@ export function BudgetAlertActions({
       budgetsApi.resolveIncident(companyId, item.subject.id, input),
     onSuccess: (_result, input) => {
       toasts?.pushToast({
-        title: input.action === "keep_paused" ? (isWarning ? "Warning dismissed" : "Kept paused") : "Limit raised",
+        title: input.action === "keep_paused" ? (isWarning ? t("componentsAttentionInlineVerbs.budget.warningDismissed") : t("componentsAttentionInlineVerbs.budget.keptPaused")) : t("componentsAttentionInlineVerbs.budget.limitRaised"),
         body: item.subject.title ?? undefined,
         tone: "success",
       });
@@ -203,14 +204,14 @@ export function BudgetAlertActions({
       onResolved?.();
     },
     onError: (error) => {
-      toasts?.pushToast({ title: "Could not update the budget", body: error instanceof Error ? error.message : undefined, tone: "error" });
+      toasts?.pushToast({ title: t("componentsAttentionInlineVerbs.budget.updateFailed"), body: error instanceof Error ? error.message : undefined, tone: "error" });
     },
   });
 
   const limitInput = (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
       <label className="text-xs font-medium text-muted-foreground" htmlFor={`attention-budget-${item.id}`}>
-        New limit (USD)
+        {t("componentsAttentionInlineVerbs.budget.newLimit")}
       </label>
       <Input
         id={`attention-budget-${item.id}`}
@@ -231,30 +232,30 @@ export function BudgetAlertActions({
     return <>
       <NeedsYouPanel>
         <div className="flex items-baseline justify-between gap-3">
-          <span className="truncate text-(length:--text-compact) font-medium text-foreground">{`${formatCents(observed)} spent of ${formatCents(limit)}`}</span>
-          <span className="shrink-0 text-xs text-muted-foreground">{`${percent}% used`}</span>
+          <span className="truncate text-(length:--text-compact) font-medium text-foreground">{t("componentsAttentionInlineVerbs.budget.spentOf", { spent: formatCents(observed), limit: formatCents(limit) })}</span>
+          <span className="shrink-0 text-xs text-muted-foreground">{t("componentsAttentionInlineVerbs.budget.percentUsed", { percent })}</span>
         </div>
-        <div className="h-1 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label="Budget used" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.min(percent, 100)}>
+        <div className="h-1 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label={t("componentsAttentionInlineVerbs.budget.used")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.min(percent, 100)}>
           <div className={cn("h-full rounded-full", !isWarning || percent >= 100 ? "bg-destructive" : "bg-amber-500")} style={{ width: `${Math.min(percent, 100)}%` }} />
         </div>
         <NeedsYouPanelNote>
-          {[scope ? `${scope[0]!.toUpperCase()}${scope.slice(1)} limit` : "Limit", isWarning ? "Work continues until the limit is reached" : "New runs are paused"].join(" · ")}
+          {[scope ? t(`componentsAttentionInlineVerbs.budget.scopeLimit.${scope}`, { defaultValue: `${scope[0]!.toUpperCase()}${scope.slice(1)} limit` }) : t("componentsAttentionInlineVerbs.budget.limit"), isWarning ? t("componentsAttentionInlineVerbs.budget.workContinues") : t("componentsAttentionInlineVerbs.budget.runsPaused")].join(" · ")}
         </NeedsYouPanelNote>
         {raising ? limitInput : null}
-        {raising && tooLow ? <p className="text-xs text-destructive">The new limit must be more than the current spend.</p> : null}
+        {raising && tooLow ? <p className="text-xs text-destructive">{t("componentsAttentionInlineVerbs.budget.tooLow")}</p> : null}
       </NeedsYouPanel>
       {footerContext}
       <DecisionCardFooter leading={leading}>
         <Button type="button" variant="ghost" size="sm" disabled={resolve.isPending} onClick={() => resolve.mutate({ action: "keep_paused" })}>
-          {isWarning ? "Dismiss warning" : "Keep paused"}
+          {isWarning ? t("componentsAttentionInlineVerbs.budget.dismissWarning") : t("componentsAttentionInlineVerbs.budget.keepPaused")}
         </Button>
         {raising ? <>
-          <Button type="button" variant="outline" size="sm" disabled={resolve.isPending} onClick={() => setRaising(false)}>Cancel</Button>
+          <Button type="button" variant="outline" size="sm" disabled={resolve.isPending} onClick={() => setRaising(false)}>{t("componentsAttentionInlineVerbs.budget.cancel")}</Button>
           <Button type="button" size="sm" disabled={raiseDisabled} onClick={raise}>
             {resolve.isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-            {isWarning ? "Raise limit" : "Raise limit & resume"}
+            {isWarning ? t("componentsAttentionInlineVerbs.budget.raiseLimit") : t("componentsAttentionInlineVerbs.budget.raiseAndResume")}
           </Button>
-        </> : <Button type="button" size="sm" disabled={resolve.isPending} onClick={() => setRaising(true)}>Increase limit…</Button>}
+        </> : <Button type="button" size="sm" disabled={resolve.isPending} onClick={() => setRaising(true)}>{t("componentsAttentionInlineVerbs.budget.increaseLimit")}</Button>}
       </DecisionCardFooter>
     </>;
   }
@@ -262,11 +263,11 @@ export function BudgetAlertActions({
   return (
     <div className="space-y-3" data-attention-budget-actions>
       <p className="text-sm text-muted-foreground">
-        {`Spend is ${formatCents(observed)} of a ${formatCents(limit)} limit.`}
-        {isWarning ? " This warning does not pause work." : " Work in this scope is paused."}
+        {t("componentsAttentionInlineVerbs.budget.spendIs", { spent: formatCents(observed), limit: formatCents(limit) })}
+        {" "}{isWarning ? t("componentsAttentionInlineVerbs.budget.warningNoPause") : t("componentsAttentionInlineVerbs.budget.scopePaused")}
       </p>
       {limitInput}
-      {tooLow && <p className="text-xs text-destructive">The new limit must be more than the current spend.</p>}
+      {tooLow && <p className="text-xs text-destructive">{t("componentsAttentionInlineVerbs.budget.tooLow")}</p>}
       <ActionsFooter leading={leading}>
         <Button
           type="button"
@@ -275,11 +276,11 @@ export function BudgetAlertActions({
           disabled={resolve.isPending}
           onClick={() => resolve.mutate({ action: "keep_paused" })}
         >
-          {isWarning ? "Dismiss warning" : "Keep paused"}
+          {isWarning ? t("componentsAttentionInlineVerbs.budget.dismissWarning") : t("componentsAttentionInlineVerbs.budget.keepPaused")}
         </Button>
         <Button type="button" size="sm" disabled={raiseDisabled} onClick={raise}>
           {resolve.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <ArrowUpRight className="h-3.5 w-3.5" />}
-          {isWarning ? "Raise limit" : "Raise limit & resume"}
+          {isWarning ? t("componentsAttentionInlineVerbs.budget.raiseLimit") : t("componentsAttentionInlineVerbs.budget.raiseAndResume")}
         </Button>
       </ActionsFooter>
     </div>

@@ -1,0 +1,7 @@
+{
+  "invalidHandoff": "Paperclip Cloud returned an invalid sign-in handoff.",
+  "expired": "This sign-in expired. Start the connection again.",
+  "forbidden": "Paperclip Cloud could not authorize this connection for your account.",
+  "unavailable": "Paperclip Cloud couldn’t prepare secure sign-in. Try again.",
+  "invalidProviderAddress": "Paperclip Cloud returned an invalid provider sign-in address."
+}

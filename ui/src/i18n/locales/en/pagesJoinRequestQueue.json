@@ -1,0 +1,39 @@
+{
+  "breadcrumbs": {
+    "organization": "Organization",
+    "inbox": "Inbox",
+    "joinRequests": "Join Requests"
+  },
+  "toast": {
+    "approved": "Join request approved",
+    "rejected": "Join request rejected"
+  },
+  "selectOrganization": "Select an organization to review join requests.",
+  "loading": "Loading join requests…",
+  "forbidden": "You do not have permission to review join requests for this organization.",
+  "loadAction": "load join requests",
+  "title": "Join Request Queue",
+  "description": "Review human and agent join requests outside the mixed inbox feed. This queue uses the same approval mutations as the inline inbox cards.",
+  "filters": {
+    "status": "Status",
+    "pendingApproval": "Pending approval",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "requestType": "Request type",
+    "all": "All",
+    "human": "Human",
+    "agent": "Agent"
+  },
+  "empty": "No join requests match the current filters.",
+  "unknownHuman": "Unknown human requester",
+  "unknownAgent": "Unknown agent requester",
+  "reject": "Reject",
+  "approve": "Approve",
+  "inviteContext": "Invite context",
+  "inviteSummary": "{{types}} join invite",
+  "defaultRole": " • default role {{role}}",
+  "inviteUnavailable": "Invite metadata unavailable",
+  "requestDetails": "Request details",
+  "submitted": "Submitted {{date}}",
+  "sourceIp": "Source IP {{ip}}"
+}

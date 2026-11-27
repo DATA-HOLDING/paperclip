@@ -1,0 +1,25 @@
+{
+  "tasks": "Tasks",
+  "errors": {
+    "pendingDecisions": "Some tasks with pending decisions couldn’t load.",
+    "load": "Could not load tasks",
+    "details": "Task details couldn’t load."
+  },
+  "unknownAgent": "Unknown agent",
+  "board": "Board",
+  "empty": {
+    "noMatch": "No tasks match this view",
+    "noArchived": "No archived tasks",
+    "noDecision": "No tasks need a decision.",
+    "none": "No tasks in this organization",
+    "clearFilters": "Clear filters",
+    "newTask": "New Task"
+  },
+  "noOrg": "Select an organization to view tasks.",
+  "signIn": "Sign in to view archived tasks.",
+  "retry": "Retry",
+  "loading": "Loading tasks…",
+  "loadedHint": "{{n}} tasks loaded. Load more to include them in filters.",
+  "loadingMore": "Loading…",
+  "loadMore": "Load more tasks"
+}

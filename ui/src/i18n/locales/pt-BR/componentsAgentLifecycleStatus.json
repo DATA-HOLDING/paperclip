@@ -1,0 +1,41 @@
+{
+  "phases": {
+    "preparing": {
+      "label": "Preparando agente",
+      "description": "Os recursos necessários estão sendo preparados. O trabalho fica na fila."
+    },
+    "verifying": {
+      "label": "Verificando agente",
+      "description": "A configuração de execução salva está sendo conferida. O trabalho fica na fila."
+    },
+    "pausing": {
+      "label": "Pausando agente",
+      "description": "Aguardando a execução e os recursos necessários pararem."
+    },
+    "resuming": {
+      "label": "Retomando agente",
+      "description": "Os recursos necessários estão sendo iniciados. O trabalho fica na fila."
+    },
+    "terminating": {
+      "label": "Desligando agente",
+      "description": "Parando a execução antes da limpeza dos recursos."
+    },
+    "cleaningUp": {
+      "label": "Limpando agente",
+      "description": "Os recursos necessários estão sendo removidos. O desligamento não terminou."
+    }
+  },
+  "failed": {
+    "preparing": "Falha ao preparar o agente",
+    "verifying": "Falha ao verificar o agente",
+    "pausing": "Falha ao pausar o agente",
+    "resuming": "Falha ao retomar o agente",
+    "terminating": "Falha ao desligar o agente",
+    "cleaningUp": "Falha ao limpar o agente"
+  },
+  "refreshError": "Não foi possível atualizar o status do ciclo de vida do agente.",
+  "retrying": "Tentando novamente…",
+  "retryNow": "Tentar agora",
+  "retryHintManual": "Tentar agora confere a configuração salva de novo, imediatamente.",
+  "retryHintAuto": "O Paperclip tenta novamente sozinho; Tentar agora confere de novo, imediatamente."
+}

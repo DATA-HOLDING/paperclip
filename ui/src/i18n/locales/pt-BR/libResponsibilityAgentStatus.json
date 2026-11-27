@@ -1,0 +1,75 @@
+{
+  "tiles": {
+    "onTrack": "No rumo",
+    "atRisk": "Em risco",
+    "behind": "Atrasada",
+    "unclear": "Incerta"
+  },
+  "listAnd": "{{rest}} e {{last}}",
+  "author": {
+    "you": "Você",
+    "aPerson": "Uma pessoa",
+    "anAgent": "Um agente",
+    "anAgentLower": "um agente"
+  },
+  "dateLocale": "pt-BR",
+  "writtenAgo": {
+    "today": "hoje",
+    "yesterday": "ontem",
+    "daysAgo_one": "há {{count}} dia",
+    "daysAgo_other": "há {{count}} dias",
+    "onDate": "em {{date}}"
+  },
+  "tileLines": {
+    "ofResponsibilities_one": "De {{count}} responsabilidade",
+    "ofResponsibilities_other": "De {{count}} responsabilidades",
+    "everyOneHasStatus": "Todas têm um status",
+    "cantTell_one": "{{count}} ainda sem como dizer",
+    "cantTell_other": "{{count}} ainda sem como dizer",
+    "notMeasured_one": "{{count}} não medida",
+    "notMeasured_other": "{{count}} não medidas",
+    "noneRightNow": "Nenhuma no momento",
+    "inAreas_one": "Em {{count}} área",
+    "inAreas_other": "Em {{count}} áreas"
+  },
+  "provenance": {
+    "byAgent_one": "{{count}} escrito por um agente",
+    "byAgent_other": "{{count}} escritos por agentes",
+    "outOfDate_one": "{{count}} desatualizado",
+    "outOfDate_other": "{{count}} desatualizados",
+    "byPerson_one": "{{count}} escrito por uma pessoa",
+    "byPerson_other": "{{count}} escritos por uma pessoa",
+    "fromNumber_one": "{{count}} pelo número",
+    "fromNumber_other": "{{count}} pelos números"
+  },
+  "summary": {
+    "noResponsibilities": "Você ainda não é dono de nenhuma responsabilidade.",
+    "noneWritten": "Nenhum agente escreveu um status ainda. Todos os status abaixo vêm dos números.",
+    "oneWritten": "O seu único status está escrito.",
+    "allWritten": "Todos os seus {{total}} status estão escritos.",
+    "someWritten": "{{written}} dos seus {{total}} status estão escritos; o resto vem dos números.",
+    "noneBehind": "Nenhum dos escritos está atrasado ou em risco.",
+    "theyPut": "Eles apontam {{list}}.",
+    "behindCount": "{{count}} atrasada(s)",
+    "atRiskCount": "{{count}} em risco",
+    "and": " e ",
+    "stale_one": "{{count}} tem mais de {{days}} dias.",
+    "stale_other": "{{count}} têm mais de {{days}} dias.",
+    "waiting_one": "{{names}}, para {{count}} atualização",
+    "waiting_other": "{{names}}, para {{count}} atualizações"
+  },
+  "area": {
+    "onTrack_one": "{{onTrack}} de {{count}} responsabilidade no rumo",
+    "onTrack_other": "{{onTrack}} de {{count}} responsabilidades no rumo"
+  },
+  "metric": {
+    "noAnswer": "Nenhuma resposta ainda",
+    "shouldBeYes": "deveria ser sim",
+    "noReading": "Nenhuma leitura ainda",
+    "range": "faixa {{target}}",
+    "noRange": "nenhuma faixa definida",
+    "targetAtMost": "meta de no máximo {{target}}",
+    "target": "meta {{target}}",
+    "noTarget": "nenhuma meta definida"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "inbox": "Caixa de entrada",
+    "taskDetail": "Detalhe da tarefa",
+    "decisions": "Decisões",
+    "global": "Global"
+  },
+  "shortcuts": {
+    "moveDown": "Descer",
+    "moveUp": "Subir",
+    "collapseGroup": "Recolher o grupo selecionado",
+    "expandGroup": "Expandir o grupo selecionado",
+    "openItem": "Abrir o item selecionado",
+    "archiveItem": "Arquivar o item",
+    "markRead": "Marcar como lida",
+    "markUnread": "Marcar como não lida",
+    "quickArchive": "Arquivar e voltar à caixa de entrada",
+    "goToInbox": "Ir para a caixa de entrada",
+    "focusComposer": "Focar no campo de comentário",
+    "toggleDecision": "Abrir ou fechar a decisão selecionada",
+    "dismissDecision": "Dispensar a decisão selecionada",
+    "search": "Buscar na página atual ou busca rápida",
+    "newTask": "Nova tarefa",
+    "toggleSidebar": "Mostrar/ocultar a barra lateral",
+    "togglePanel": "Mostrar/ocultar o painel",
+    "showShortcuts": "Mostrar os atalhos de teclado"
+  },
+  "then": "depois",
+  "footer": {
+    "press": "Pressione",
+    "close": "para fechar · Os atalhos ficam desativados em campos de texto"
+  },
+  "title": "Atalhos de teclado"
+}

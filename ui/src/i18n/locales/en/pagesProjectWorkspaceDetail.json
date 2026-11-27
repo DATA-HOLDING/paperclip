@@ -1,0 +1,103 @@
+{
+  "tabs": {
+    "configuration": "Configuration"
+  },
+  "sourceTypes": {
+    "localPath": {
+      "label": "Local git checkout",
+      "description": "A local path Paperclip can use directly."
+    },
+    "nonGitPath": {
+      "label": "Local non-git path",
+      "description": "A local folder without git semantics."
+    },
+    "gitRepo": {
+      "label": "Remote git repo",
+      "description": "A repo URL with optional refs and local checkout."
+    },
+    "remoteManaged": {
+      "label": "Remote-managed workspace",
+      "description": "A hosted workspace tracked by external reference."
+    }
+  },
+  "visibility": {
+    "default": "Default",
+    "advanced": "Advanced"
+  },
+  "validation": {
+    "jsonObject": "Workspace commands JSON must be a JSON object.",
+    "invalidJson": "Invalid JSON.",
+    "remoteRequires": "Remote-managed workspaces require a remote workspace ref or repo URL.",
+    "requiresPathOrRepo": "Workspace requires at least one local path or repo URL.",
+    "absolutePath": "Local workspace path must be absolute.",
+    "repoUrl": "Repo URL must be a valid URL."
+  },
+  "breadcrumbs": {
+    "projects": "Projects",
+    "workspaces": "Workspaces"
+  },
+  "errors": {
+    "save": "Failed to save workspace.",
+    "update": "Failed to update workspace.",
+    "control": "Failed to control workspace commands."
+  },
+  "runtime": {
+    "jobCompleted": "Workspace job completed.",
+    "serviceStopped": "Workspace service stopped. Task execution is not paused.",
+    "serviceRestarted": "Workspace service restarted. Task execution is not paused.",
+    "serviceStarted": "Workspace service started."
+  },
+  "loading": "Loading workspace…",
+  "loadAction": "load this workspace",
+  "notFound": "Workspace not found for this project.",
+  "backToWorkspaces": "Back to workspaces",
+  "eyebrow": "Project workspace",
+  "makePrimary": "Make primary",
+  "isPrimary": "This is the project’s primary codebase workspace.",
+  "intro": "Configure the concrete workspace Paperclip attaches to this project. These values drive per-workspace checkout behavior, default runtime services for child execution workspaces, and let you override setup or cleanup commands when one workspace needs special handling.",
+  "fields": {
+    "name": "Workspace name",
+    "visibility": "Visibility",
+    "sourceType": "Source type",
+    "localPath": "Local path",
+    "repoUrl": "Repo URL",
+    "repoRef": "Repo ref",
+    "defaultRef": "Default ref",
+    "sharedKey": "Shared workspace key",
+    "remoteProvider": "Remote provider",
+    "remoteRef": "Remote workspace ref",
+    "setupCommand": "Setup command",
+    "setupCommandHint": "Runs when this workspace needs custom bootstrap",
+    "cleanupCommand": "Cleanup command",
+    "cleanupCommandHint": "Runs before project-level execution workspace teardown"
+  },
+  "advanced": {
+    "summary": "Advanced runtime JSON",
+    "description": "Paperclip derives Services and Jobs from this JSON. Prefer editing named commands first; use raw JSON for advanced lifecycle, port, readiness, or environment settings.",
+    "label": "Workspace commands JSON",
+    "hint": "Execution workspaces inherit this config unless they override it. Legacy `services` arrays still work, but `commands` supports both services and jobs."
+  },
+  "saveChanges": "Save changes",
+  "reset": "Reset",
+  "noUnsavedChanges": "No unsaved changes.",
+  "facts": {
+    "eyebrow": "Workspace facts",
+    "title": "Current state",
+    "project": "Project",
+    "workspaceId": "Workspace ID",
+    "none": "None",
+    "repo": "Repo",
+    "updated": "Updated"
+  },
+  "commands": {
+    "eyebrow": "Workspace commands",
+    "title": "Services and jobs",
+    "description": "Long-running services stay supervised here, while one-shot jobs run on demand against this workspace. Execution workspaces inherit this config unless they override it.",
+    "noServices": "No services have been started for this workspace yet.",
+    "noConfig": "No workspace command config is defined for this workspace yet.",
+    "noJobs": "No one-shot jobs are configured for this workspace yet.",
+    "disabledHint": "Project workspaces need a working directory before local commands can run, and services also need runtime config."
+  },
+  "loadingPlugin": "Loading workspace plugin...",
+  "backToConfiguration": "Back to configuration"
+}

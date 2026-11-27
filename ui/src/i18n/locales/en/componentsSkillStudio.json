@@ -1,0 +1,138 @@
+{
+  "agentsUsing": {
+    "triggerLabel_one": "{{count}} agent uses this skill",
+    "triggerLabel_other": "{{count}} agents use this skill",
+    "updateFailedFallback": "Failed to update agent skills.",
+    "updateFailedTitle": "Update failed",
+    "noPermission": "You don't have permission to change this agent's skills.",
+    "title": "Agents using {{name}}",
+    "descriptionEmpty": "No agents have this skill assigned yet.",
+    "description_one": "{{count}} agent has this skill in their desired set.",
+    "description_other": "{{count}} agents have this skill in their desired set.",
+    "emptyManage": "Add an agent below to assign this skill.",
+    "emptyReadOnly": "This skill isn't assigned to any agents."
+  },
+  "agentRow": {
+    "versionAria": "{{name}} version",
+    "skillVersionAria": "{{name}} skill version",
+    "latest": "Latest",
+    "behindLatest_one": "{{count}} version behind latest",
+    "behindLatest_other": "{{count}} versions behind latest",
+    "confirmRemoveAria": "Confirm removing this skill from {{name}}",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "removeAria": "Remove this skill from {{name}}"
+  },
+  "addAgent": {
+    "loading": "Loading agents...",
+    "placeholder": "Add agent…",
+    "searchPlaceholder": "Search agents...",
+    "empty": "All eligible agents already have this skill."
+  },
+  "fork": {
+    "successTitle": "Editing a copy",
+    "successBodySwitched_one": "Created a copy of {{name}} and switched {{count}} agent to it.",
+    "successBodySwitched_other": "Created a copy of {{name}} and switched {{count}} agents to it.",
+    "successBody": "Created a copy of {{name}}. It's now editable.",
+    "errorTitle": "Couldn't create a copy",
+    "errorFallback": "The fork request failed.",
+    "createAndSwitch_one": "Create copy & switch {{count}} agent",
+    "createAndSwitch_other": "Create copy & switch {{count}} agents",
+    "create": "Create copy",
+    "title": "Edit a copy of {{name}}",
+    "description": "{{name}} is read-only because it comes from an external source. Creating a fully editable copy in your workspace leaves the original untouched and still updatable.",
+    "existingTitle": "You already have a copy",
+    "existingBody": "An unedited copy of this skill already exists. Open it instead of making another.",
+    "openExisting": "Open your existing copy",
+    "switchLabel": "Switch these agents to the copy",
+    "switchOn": "These agents will run your copy instead of the original.",
+    "switchOff": "These agents keep running the original — your copy won't change what they do.",
+    "noAgents": "Nothing is assigned to it, so your copy won't change any agent's behaviour.",
+    "cancel": "Cancel",
+    "createAnother": "Create another copy"
+  },
+  "projectRepository": {
+    "aria": "Skills from {{project}}",
+    "defaultBranch": "Default branch",
+    "projectAccess": "Project access",
+    "importing": "Importing…",
+    "retryImport": "Retry import",
+    "importRemaining": "Import remaining skills",
+    "importSkills": "Import skills",
+    "starting": "Starting import…",
+    "checking": "Checking repository for skills… This can take a few minutes for large repositories.",
+    "queued": "Import queued. Skills will appear here when ready."
+  },
+  "policy": {
+    "dismiss": "Dismiss"
+  },
+  "provenance": {
+    "originalSkill": "the original skill",
+    "forkedFromTitle": "Forked from {{label}}",
+    "forkedFrom": "Forked from",
+    "workingTree": "the project working tree",
+    "livesIn": "This skill lives in",
+    "savesWrite": ". Saves write to the project working tree and are not committed.",
+    "editCopy": "Edit a copy instead"
+  },
+  "tabs": {
+    "installed": "Installed",
+    "discover": "Discover",
+    "authored": "My Skills",
+    "aria": "Skills views"
+  },
+  "branchRepair": {
+    "sourceChanged": "This source is refreshing or changed. Your branch is still selected. Try saving again.",
+    "refUnavailable": "GitHub could not find that branch or revision. Check the name or choose another branch.",
+    "saveFailed": "Could not change the branch. Try again.",
+    "title": "Choose a new branch",
+    "currentlyTracking": "Currently tracking {{branch}}",
+    "defaultBranch": "the default branch",
+    "cancel": "Cancel",
+    "changing": "Changing branch…",
+    "change": "Change branch"
+  },
+  "connectionRepair": {
+    "title": "Choose GitHub connection",
+    "description": "Automatic updates will use your access to this connection. Installed skills and selections stay in place.",
+    "loading": "Loading connections…",
+    "tryAgain": "Try again",
+    "connectToContinue": "Connect GitHub to continue.",
+    "manage": "Manage GitHub connections",
+    "sourceChanged": "This source was updated. Your connection is still selected. Save again to apply it.",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "save": "Save connection",
+    "groupLabel": "GitHub connection"
+  },
+  "sync": {
+    "automaticUpdates": "Automatic updates",
+    "refreshing": "Refreshing…",
+    "refresh": "Refresh"
+  },
+  "toolbar": {
+    "sort": {
+      "agents": "Most agents",
+      "stars": "Most stars",
+      "forks": "Most forks",
+      "recent": "Recently updated",
+      "alphabetical": "Alphabetical"
+    },
+    "aria": "Skills controls",
+    "sortLabel": "Sort",
+    "sourceLabel": "Source",
+    "all": "All",
+    "allSources": "All sources",
+    "scan": "Scan project workspaces for skills",
+    "newFolder": "New folder",
+    "done": "Done",
+    "select": "Select",
+    "new": "New",
+    "createSkill": "Create new skill",
+    "discover": "Discover skills",
+    "importGithub": "Import from GitHub",
+    "manageSources": "Manage sources",
+    "importPath": "Import from path or URL",
+    "importProject": "Import skills from project"
+  }
+}

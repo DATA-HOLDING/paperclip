@@ -3,6 +3,7 @@ import { routinesApi } from "@/api/routines";
 import { responsibilitiesApi } from "@/api/responsibilities";
 import { EMPTY_ROUTINE_FORM_DRAFT, type RoutineFormDraft, type RoutineResponsibilityOption } from "./RoutineEditDialog";
 import type { RoutineResponsibility } from "./RoutinePage";
+import { t } from "@/i18n";
 
 export function localTimezone(): string {
   try {
@@ -108,17 +109,17 @@ export async function syncRoutineResponsibility(routineId: string, from: string,
 export type RoutineSavePart = "details" | "schedule" | "responsibility";
 
 const SAVE_PART_LABELS: Record<RoutineSavePart, string> = {
-  details: "the routine’s details",
-  schedule: "the schedule",
-  responsibility: "the responsibility",
+  details: t("componentsRoutinePage.saveParts.details"),
+  schedule: t("componentsRoutinePage.saveParts.schedule"),
+  responsibility: t("componentsRoutinePage.saveParts.responsibility"),
 };
 
 /** A save that partly went through: says what was saved, what was not, and that saving again finishes it. */
 export class PartialRoutineSaveError extends Error {
   constructor(saved: readonly RoutineSavePart[], failed: RoutineSavePart, cause: unknown) {
     const detail = cause instanceof Error && cause.message ? ` (${cause.message})` : "";
-    const savedText = saved.map((part) => SAVE_PART_LABELS[part]).join(" and ");
-    super(`Saved ${savedText}, but ${SAVE_PART_LABELS[failed]} couldn’t be updated${detail}. Save again to finish.`);
+    const savedText = saved.map((part) => SAVE_PART_LABELS[part]).join(t("componentsRoutinePage.saveParts.and"));
+    super(t("componentsRoutinePage.partialSave", { saved: savedText, failed: SAVE_PART_LABELS[failed], detail }));
     this.name = "PartialRoutineSaveError";
   }
 }

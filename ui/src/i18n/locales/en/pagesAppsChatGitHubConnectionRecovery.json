@@ -1,0 +1,97 @@
+{
+  "notice": {
+    "needsRepair": "GitHub connection needs repair",
+    "disconnected": "GitHub bot is disconnected",
+    "body": "Reconnect this bot to restore GitHub reviews and @mentions. Start with the App already saved in Paperclip.",
+    "reconnect": "Reconnect GitHub",
+    "details": "Connection details"
+  },
+  "credential": {
+    "helpAria": "Help with {{label}}"
+  },
+  "recovery": {
+    "existingAppFallback": "your existing App",
+    "restoreBefore": "Restore ",
+    "restoreAfter": " using its saved credentials. Paperclip will check the App and its installation, then repair event delivery.",
+    "staysAttached": "Your agent, repository choices, review settings, and task history stay attached to this connection. You don’t need to create another GitHub App.",
+    "useSaved": "Use saved credentials instead",
+    "replaceCredentials": "Replace App credentials…"
+  },
+  "actions": {
+    "checkingGithub": "Checking GitHub…",
+    "verifyAndReconnect": "Verify and reconnect",
+    "connectExisting": "Connect existing App",
+    "reconnectSaved": "Reconnect saved App",
+    "checking": "Checking…",
+    "reconnect": "Reconnect",
+    "connect": "Connect"
+  },
+  "errors": {
+    "reconnectFailed": "Could not reconnect GitHub. Try again.",
+    "secretChangedUnseen": "The webhook secret changed, but this page did not receive it. Generate another secret and update GitHub.",
+    "generateFailed": "Could not generate the webhook secret. Try again.",
+    "rotationTitle": "Could not finish secret rotation",
+    "reconnectAppTitle": "Could not reconnect this App",
+    "reconnectSavedTitle": "Could not reconnect the saved App",
+    "rotationHint": "Use the newest secret in GitHub App settings, then retry reconnecting after GitHub verifies delivery.",
+    "reconnectHint": "Try again if the service is temporarily unavailable. If GitHub rejected the saved key, replace the credentials for this same App below."
+  },
+  "rotation": {
+    "aria": "Rotate webhook secret",
+    "title": "Rotate the webhook secret",
+    "committed": "The rotated secret is saved. Reconnect using that value; Paperclip will check GitHub’s signed delivery.",
+    "instructionsBefore": "Generate a new secret, then replace the webhook secret in ",
+    "appSettingsLink": "GitHub App settings",
+    "instructionsAfter": ". GitHub must verify the new secret before you reconnect.",
+    "warning": "Generating immediately invalidates the previous secret. This value is shown only here; keep this page open until you have copied it.",
+    "generateAnother": "Generate another secret",
+    "generate": "Generate webhook secret",
+    "uncertain": "The active secret is not confirmed. Check its saved status before using an earlier value.",
+    "checkStatus": "Check saved secret status",
+    "newSecret": "New webhook secret",
+    "copy": "Copy webhook secret"
+  },
+  "credentials": {
+    "titleReplace": "Replace credentials for the same App",
+    "titleConnect": "Connect your existing GitHub App",
+    "openSettings": "Open GitHub App settings",
+    "andChoose": " and choose ",
+    "orgOwned": "If it’s owned by an organization, open that organization’s Settings → Developer settings → GitHub Apps → Edit. You’ll need permission to manage the App.",
+    "requested": "Enter the requested credentials below. Other saved credentials stay in place.",
+    "appId": {
+      "label": "App ID",
+      "help": "The numeric App ID on the GitHub App’s settings page. This is different from its Client ID or installation ID.",
+      "copyBefore": "Copy ",
+      "copyAfter": " from the App’s settings page.",
+      "savedFilled": "The saved ID is filled in when available.",
+      "invalid": "Use the numeric App ID, not the Client ID."
+    },
+    "privateKey": {
+      "label": "Private key",
+      "help": "Upload the .pem file downloaded from this GitHub App, or paste its entire contents, including the BEGIN and END lines.",
+      "step1Before": "In the same App’s settings, open ",
+      "step1Path": "Credentials → Key pairs → New key",
+      "step1Middle": ". On the older settings page, use ",
+      "step1OldPath": "Private keys → Generate a private key",
+      "step2Before": "Upload the downloaded ",
+      "step2After": " file below, or paste its entire contents.",
+      "reuse": "You can reuse a .pem file you already saved. GitHub cannot show an old private key again. Creating a new key for the same App keeps its installation.",
+      "uploadAria": "Upload private key PEM file",
+      "readFailed": "Could not read this file. Try again or paste the key below.",
+      "pasteReplacement": "Paste a replacement PEM key",
+      "paste": "Or paste the complete PEM key",
+      "loaded": "Private key loaded. Paste or upload another key to replace it.",
+      "invalid": "Use a PEM private key, including its BEGIN and END lines. A token or client secret won’t work here.",
+      "docsLink": "GitHub’s private key instructions"
+    },
+    "webhookSecret": {
+      "label": "Webhook secret",
+      "help": "The secret configured for this App’s webhook. It must match GitHub exactly.",
+      "body": "Use the secret saved when you configured this App’s webhook. If you no longer have it, change the webhook secret in GitHub App settings and enter the same value here."
+    },
+    "clientSecret": {
+      "label": "Client secret",
+      "help": "The client secret for this GitHub App’s user authentication. Leave the saved private key in place."
+    }
+  }
+}

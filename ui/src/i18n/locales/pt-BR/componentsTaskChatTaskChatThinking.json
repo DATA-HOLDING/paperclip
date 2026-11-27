@@ -1,0 +1,8 @@
+{
+  "reasoningDetail": "Detalhe do raciocínio",
+  "reasoning": "Raciocínio",
+  "thinking": "Pensando…",
+  "thought": "Pensou",
+  "collapseAria": "Recolher {{label}}: {{preview}}",
+  "expandAria": "Expandir {{label}}: {{preview}}"
+}

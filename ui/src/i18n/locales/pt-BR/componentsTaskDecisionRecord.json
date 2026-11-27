@@ -1,0 +1,9 @@
+{
+  "title": "Registro da decisão",
+  "loading": "Carregando a decisão…",
+  "loadFailed": "Não foi possível carregar esta decisão.",
+  "retry": "Tentar novamente",
+  "notAvailable": "Esta decisão não está disponível nesta tarefa.",
+  "recordedChoice": "Escolha registrada",
+  "dismissed": "Dispensada"
+}

@@ -1,0 +1,278 @@
+{
+  "stopFinalize": {
+    "updateFailedWithReason": "Run was stopped, but updating the task failed: {{reason}}",
+    "updateFailed": "Run was stopped, but updating the task failed. Retry the task status update."
+  },
+  "plan": {
+    "approved": "Approved plan",
+    "requestedChanges": "Requested changes",
+    "title": "Plan"
+  },
+  "treePreview": {
+    "forbidden": "Only board users can preview subtree controls.",
+    "stale": "Preview is stale because subtree hold state changed. Retry to refresh.",
+    "invalid": "This subtree action is currently invalid for the selected tasks.",
+    "loadFailed": "Unable to load preview."
+  },
+  "actor": {
+    "system": "System",
+    "board": "Board",
+    "unknown": "Unknown",
+    "user": "User"
+  },
+  "attribution": {
+    "assignee": "Assignee",
+    "originating": "Originating",
+    "labelVia": "{{label}}: {{name}} · via {{via}}",
+    "label": "{{label}}: {{name}}",
+    "via": "via {{via}}",
+    "people": "Task people"
+  },
+  "loadingConversation": "Loading conversation",
+  "header": {
+    "routineExecution": "Routine execution from routine {{id}}",
+    "routine": "Routine",
+    "noProject": "No project",
+    "live": "Live",
+    "watchdogTitle": "This task is a generated watchdog task. It verifies whether stopped work in the watched task tree is legitimate.",
+    "watchdog": "Watchdog",
+    "workMode": "This task is in {{mode}}.",
+    "parkedBlockerTitle": "Blocked by parked work — at least one assigned blocker is in backlog and will not wake its assignee.",
+    "parkedBlocker": "Blocked by parked work"
+  },
+  "mobile": {
+    "backToInbox": "Back to inbox",
+    "moreActions": "More actions"
+  },
+  "archiveFromInbox": "Archive from inbox",
+  "copyAsMarkdown": "Copy as markdown",
+  "properties": "Properties",
+  "hideTask": "Hide this task",
+  "retry": {
+    "failedRunMissing": "Failed run is no longer available.",
+    "queuedTitle": "Retry queued",
+    "queuedBody": "The exact request will retry when this task is ready.",
+    "failedTitle": "Run retry failed",
+    "failedBody": "Unable to retry run"
+  },
+  "queue": {
+    "awaitingAckOne": "The queued message is awaiting server acknowledgement.",
+    "awaitingAckMany": "The queued messages are awaiting server acknowledgement.",
+    "noRunTarget": "The queued message no longer has an active run target.",
+    "stillQueued": "Messages are still queued.",
+    "interruptFailed": "Couldn’t interrupt. Message is still queued.",
+    "alreadySendingTitle": "Message is already being sent",
+    "alreadySendingBody": "The continuation started before the discard was confirmed, so Paperclip could not unsend it."
+  },
+  "comments": {
+    "loadingEarlier": "Loading earlier comments...",
+    "loadEarlier": "Load earlier comments",
+    "moreMessages": "More messages"
+  },
+  "grok": {
+    "stop": "Stop Paperclip work",
+    "pause": "Pause work",
+    "stopping": "Stopping Paperclip work…",
+    "pausing": "Pausing...",
+    "notice": "Runs in Grok Bot · Usage not reported. Stop Paperclip work revokes this session’s authority; remote execution may continue. Open the Grok Bot desktop app to inspect it."
+  },
+  "previewAgent": "Preview agent",
+  "cost": {
+    "title": "Cost Summary",
+    "none": "No cost data yet.",
+    "thisTask": "This task",
+    "noDirect": "No direct cost data.",
+    "includingSubtasks": "Including sub-tasks",
+    "tokens": "Tokens {{tokens}}",
+    "breakdownCached": " (in {{input}}, out {{output}}, cached {{cached}})",
+    "breakdown": " (in {{input}}, out {{output}})",
+    "runtime": "Runtime {{duration}}",
+    "runs_one": " ({{count}} run)",
+    "runs_other": " ({{count}} runs)",
+    "tasks_one": "{{count}} task",
+    "tasks_other": "{{count}} tasks"
+  },
+  "breadcrumb": {
+    "tasks": "Tasks"
+  },
+  "roles": {
+    "owner": "Owner"
+  },
+  "attachment": "Attachment",
+  "me": "Me",
+  "inbox": {
+    "restored": "Task restored to inbox",
+    "undoFailed": "Undo failed",
+    "restoreFailed": "Unable to restore this task to the inbox",
+    "archived": "Task archived from inbox",
+    "undo": "Undo",
+    "archiveFailed": "Archive failed",
+    "archiveFailedBody": "Unable to archive this task from the inbox"
+  },
+  "recovery": {
+    "failedTitle": "Recovery resolution failed",
+    "failedBody": "Unable to resolve recovery action",
+    "stateChanged": "The task’s state has changed. Refresh to see its current state."
+  },
+  "tree": {
+    "noPauseHold": "No active subtree pause hold is available to resume.",
+    "wakeFailures_one": "Pause released, but {{count}} task could not start. {{message}} Check the affected agents and try starting them again.",
+    "wakeFailures_other": "Pause released, but {{count}} tasks could not start. {{message}} Check the affected agents and try starting them again."
+  },
+  "stop": {
+    "doneOk": "Run stopped and task done",
+    "cancelledOk": "Run stopped and task cancelled",
+    "subtasksNotCanceled": "Some subtasks could not be canceled",
+    "updateFailed": "Run stopped; task update failed",
+    "doneFailed": "Stop and done failed",
+    "cancelFailed": "Stop and cancel failed",
+    "failedBody": "Unable to stop the run and update the task"
+  },
+  "monitor": {
+    "queued": "Monitor check queued",
+    "failed": "Monitor check failed",
+    "failedBody": "Unable to trigger the monitor right now"
+  },
+  "approval": {
+    "approved": "Approval approved",
+    "rejected": "Approval rejected",
+    "approveFailed": "Approval failed",
+    "rejectFailed": "Rejection failed",
+    "updateFailed": "Unable to update approval"
+  },
+  "cancelFailed": "Cancel failed",
+  "queuedComment": {
+    "cancelFailedBody": "Unable to cancel the queued comment",
+    "canceled": "Queued comment canceled",
+    "restored": "The queued message was restored to the composer."
+  },
+  "interaction": {
+    "requestConfirmed": "Request confirmed",
+    "selectionConfirmed": "Selection confirmed",
+    "acceptedSkipped_one": "Accepted {{count}} draft and skipped {{skipped}}",
+    "acceptedSkipped_other": "Accepted {{count}} drafts and skipped {{skipped}}",
+    "suggestedAccepted": "Suggested tasks accepted",
+    "acceptFailed": "Accept failed",
+    "suggestionRejected": "Suggestion rejected",
+    "rejectFailed": "Reject failed",
+    "answersSubmitted": "Answers submitted",
+    "submitFailed": "Submit failed",
+    "allVerdicts": "All verdicts applied",
+    "appliedDecisions_one": "Applied {{count}} decision",
+    "appliedDecisions_other": "Applied {{count}} decisions",
+    "applyFailed": "Apply failed",
+    "applyFailedBody": "Unable to apply the verdicts",
+    "questionCancelled": "Question cancelled",
+    "cancelQuestionFailed": "Unable to cancel the question",
+    "skipFailed": "Skip failed",
+    "skipFailedBody": "Unable to skip this request"
+  },
+  "comment": {
+    "deleted": "Comment deleted",
+    "deletedBody": "The thread now shows a deleted-comment marker.",
+    "deleteFailedBody": "Unable to delete the comment"
+  },
+  "deleteFailed": "Delete failed",
+  "feedback": {
+    "savedShare": "Feedback saved. Future votes will share",
+    "savedLocal": "Feedback saved. Future votes will stay local",
+    "savedSharing": "Feedback saved and sharing enabled",
+    "saved": "Feedback saved",
+    "failed": "Failed to save feedback"
+  },
+  "unknownError": "Unknown error",
+  "detailsLoading": "Task details are still loading. Please try again.",
+  "upload": {
+    "failed": "Upload failed",
+    "importFailed": "Document import failed",
+    "uploading": "Uploading...",
+    "attachment": "Upload attachment",
+    "short": "Upload"
+  },
+  "subtasks": {
+    "createLabel": "Sub-task",
+    "title": "Sub-tasks",
+    "new": "New Sub-task"
+  },
+  "privateTask": "Private task",
+  "copy": {
+    "copied": "Copied to clipboard",
+    "failed": "Copy failed",
+    "failedBody": "Unable to copy task markdown"
+  },
+  "finalize": {
+    "cancel": "Stop and cancel",
+    "cancelPending": "Stopping and cancelling...",
+    "done": "Stop and done",
+    "donePending": "Stopping and marking done..."
+  },
+  "resume": {
+    "noAssignee": "No assignee agent"
+  },
+  "reissue": {
+    "notLoaded": "Task is not loaded yet.",
+    "created": "Isolated re-issue created",
+    "createdBody": "{{identifier}} will run on a fresh isolated workspace.",
+    "createdFallback": "A fresh isolated re-issue was created.",
+    "failed": "Re-issue failed",
+    "failedBody": "Unable to create an isolated re-issue."
+  },
+  "reconcile": {
+    "repaired": "Workspace repaired",
+    "repairedBody": "Dirty changes were quarantined onto a rescue branch and the recorded branch restored; the task will resume.",
+    "reconciled": "Workspace branch reconciled",
+    "reconciledBody": "The recorded branch now matches the live branch; the task will resume.",
+    "failed": "Reconcile failed",
+    "failedBody": "Unable to reconcile the workspace branch.",
+    "noWorkspace": "This task has no execution workspace to reconcile."
+  },
+  "repair": {
+    "failed": "Repair failed",
+    "noWorkspace": "This task has no execution workspace to repair."
+  },
+  "paused": "Paused",
+  "composer": {
+    "reopenHint": "This issue's isolated workspace was archived. Your next comment or resume reopens it and rebuilds the worktree.",
+    "agentChatDisabled": "Agent Chat is disabled in Experimental settings."
+  },
+  "actions": {
+    "copyMarkdown": "Copy task as markdown",
+    "openFile": "Open file... (g f)",
+    "openFileLabel": "Open file in this issue",
+    "moreTaskActions": "More task actions",
+    "showActivity": "Show task activity",
+    "addSubtask": "Add subtask"
+  },
+  "description": {
+    "placeholder": "Add a description..."
+  },
+  "detailsError": "Some task details could not be loaded.",
+  "retryButton": "Retry",
+  "replySent": "Reply sent. Send a message to continue.",
+  "hidden": "This task is hidden",
+  "artifacts": "Artifacts",
+  "tabs": {
+    "chat": "Chat",
+    "activity": "Activity",
+    "relatedWork": "Related work"
+  },
+  "unavailable": {
+    "repairPermission": "You don’t have permission to repair this task’s workspace.",
+    "retryPermission": "You don’t have permission to retry this task.",
+    "pauseCheck": "Couldn’t check whether this task is paused. Refresh to try again.",
+    "resumeTask": "Resume the task before retrying.",
+    "resumeProject": "Resume the project before retrying.",
+    "pendingInteraction": "Respond to the pending question or confirmation before retrying.",
+    "recoveryPermission": "You don’t have permission to retry this recovery action.",
+    "taskPaused": "The task is paused. Resume it before retrying.",
+    "projectPaused": "The project is paused. Resume it before retrying."
+  },
+  "createdTasksError": "Could not load created tasks.",
+  "agent": "Agent",
+  "sidePanel": "Task side panel",
+  "errorActions": {
+    "loadTask": "load this task",
+    "postComment": "post the comment",
+    "checkMonitor": "check the monitor"
+  }
+}

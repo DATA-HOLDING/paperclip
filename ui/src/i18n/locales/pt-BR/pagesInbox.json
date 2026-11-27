@@ -1,0 +1,126 @@
+{
+  "run": {
+    "exitedWithError": "A execução terminou com um erro.",
+    "thinking": "Pensando",
+    "tryingAgain": "Tentando de novo em {{seconds}}s…",
+    "attemptFailed": "Não foi possível concluir esta tentativa. Sua mensagem foi salva.",
+    "failedRun": "Execução com falha"
+  },
+  "joinRequest": {
+    "agentNamed": "Pedido de entrada de agente: {{name}}",
+    "agent": "Pedido de entrada de agente",
+    "human": "Pedido de entrada de pessoa",
+    "requestedFrom": "solicitado {{when}} do IP {{ip}}",
+    "adapter": "adaptador: {{type}}"
+  },
+  "userAction": {
+    "approval": "Aprovação necessária",
+    "question": "Responda à pergunta pendente",
+    "reconnect": "Reconecte a conta",
+    "provider_billing": "Revise a cobrança e o uso do provedor",
+    "assign_agent": "Atribua um agente",
+    "choose_model": "Escolha um modelo compatível",
+    "resume": "O trabalho está pausado",
+    "budget": "Limite de orçamento atingido",
+    "project_access": "O agente precisa de acesso ao projeto",
+    "confirm_owner_stop": "Confirme que o servidor anterior parou",
+    "confirm_run_stopped": "Confirme que a execução anterior parou",
+    "unblock": "O agente precisa da sua ajuda"
+  },
+  "markAsRead": "Marcar como lida",
+  "retry": "Tentar novamente",
+  "dismiss": "Dispensar",
+  "approvalStatus": {
+    "pending": "pendente",
+    "revision_requested": "revisão solicitada",
+    "approved": "aprovada",
+    "rejected": "rejeitada",
+    "cancelled": "cancelada"
+  },
+  "approval": {
+    "requestedBy": "solicitada por {{name}}",
+    "updated": "atualizada {{when}}"
+  },
+  "approve": "Aprovar",
+  "reject": "Rejeitar",
+  "surface": {
+    "tasks": "Tarefas",
+    "inbox": "Caixa de entrada"
+  },
+  "toolbarControls": "Controles de {{surface}}",
+  "accountChanged": "Sua conta mudou. Atualize a caixa de entrada.",
+  "creator": {
+    "board": "Conselho",
+    "me": "Eu"
+  },
+  "toast": {
+    "retryFailed": "Falha ao tentar a execução de novo",
+    "retryFailedBody": "Não foi possível tentar a execução de novo",
+    "taskArchived": "Tarefa arquivada"
+  },
+  "undo": "Desfazer",
+  "selectOrganization": "Selecione uma organização para ver {{surface}}.",
+  "filterFeedback": {
+    "liveOnly": "Só execuções ao vivo — tarefas conectadas agora a uma execução de agente.",
+    "activeStatuses": "Status ativos — tarefas em aberto, com ou sem agente executando."
+  },
+  "partialLoad": "Alguns itens da caixa de entrada não puderam ser carregados. Mostrando os itens disponíveis.",
+  "retryMissing": "Tentar carregar os itens que faltam",
+  "tab": {
+    "mine": "Minhas",
+    "recent": "Recentes",
+    "unread": "Não lidas",
+    "blocked": "Bloqueadas",
+    "all": "Todas"
+  },
+  "searchPlaceholder": "Buscar {{surface}}…",
+  "group": "Agrupar",
+  "chooseColumns": "Escolha quais colunas ficam visíveis",
+  "sort": "Ordenar",
+  "disableNesting": "Desativar aninhamento pai-filho",
+  "enableNesting": "Ativar aninhamento pai-filho",
+  "groupBy": {
+    "none": "Nenhum",
+    "type": "Tipo",
+    "assignee": "Responsável",
+    "project": "Projeto",
+    "workspace": "Espaço de trabalho"
+  },
+  "markAll": {
+    "marking": "Marcando…",
+    "button": "Marcar tudo como lido",
+    "title": "Marcar tudo como lido?",
+    "description_one": "Isto vai marcar {{count}} item não lido como lido.",
+    "description_other": "Isto vai marcar {{count}} itens não lidos como lidos."
+  },
+  "cancel": "Cancelar",
+  "loadFailed": "Não foi possível carregar a caixa de entrada: {{reason}}",
+  "empty": {
+    "search": "Nenhum item da caixa de entrada corresponde à sua busca.",
+    "mine": "Caixa de entrada zerada.",
+    "unread": "Nenhum item novo na caixa de entrada.",
+    "recent": "Nenhum item recente na caixa de entrada.",
+    "filters": "Nenhum item da caixa de entrada corresponde a estes filtros."
+  },
+  "collapseSubtasks": "Recolher subtarefas",
+  "expandSubtasks": "Expandir subtarefas",
+  "search": {
+    "archived": "Arquivadas",
+    "otherResults": "Outros resultados"
+  },
+  "newTaskIn": "Nova tarefa em {{group}}",
+  "earlier": "Antes",
+  "alerts": {
+    "title": "Alertas",
+    "agentErrors_one": "agente com erros",
+    "agentErrors_other": "agentes com erros",
+    "budgetAt": "Orçamento com",
+    "budgetUtilization": "de uso neste mês"
+  },
+  "action": {
+    "approveRequest": "aprovar esta solicitação",
+    "rejectRequest": "rejeitar esta solicitação"
+  },
+  "subTaskCount_one": "({{count}} subtarefa)",
+  "subTaskCount_other": "({{count}} subtarefas)"
+}

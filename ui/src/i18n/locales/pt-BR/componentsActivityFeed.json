@@ -1,0 +1,30 @@
+{
+  "filter": {
+    "all": "Todas",
+    "inProgress": "Em andamento",
+    "inReview": "Em revisão",
+    "done": "Concluídas"
+  },
+  "actor": {
+    "system": "Sistema",
+    "board": "Conselho",
+    "unknown": "Desconhecido"
+  },
+  "madeUpdates": "fez {{count}} atualizações em",
+  "earlier": "Antes",
+  "otherActivity": "Outras atividades",
+  "empty": {
+    "noAgents": "Nenhum agente configurado ainda. Adicione um agente para começar.",
+    "allPaused": "Todos os agentes estão pausados. Retome os agentes pela barra lateral para ver a atividade.",
+    "running": "Seus agentes estão em execução — a atividade vai aparecer aqui em breve.",
+    "default": "A atividade dos seus agentes vai aparecer aqui."
+  },
+  "title": "Feed dos agentes",
+  "subtitle": "Atividade ao vivo dos seus agentes",
+  "groupByTaskAria": "agrupar por tarefa",
+  "groupByTask": "Agrupar por tarefa",
+  "showFlat": "Mostrar sem agrupamento",
+  "filterByAria": "filtrar por",
+  "filterBy": "Filtrar por",
+  "showAllActivity": "Mostrar toda a atividade"
+}

@@ -1,0 +1,29 @@
+{
+  "headline": {
+    "stepDone": "Step done",
+    "allStepsDone": "All {{count}} steps done",
+    "plan": "Plan",
+    "blocked": "Blocked: {{label}}",
+    "upNext": "Up next: {{label}}"
+  },
+  "stepStatus": {
+    "completed": "done",
+    "inProgress": "in progress",
+    "pending": "not started",
+    "blocked": "blocked",
+    "failed": "failed"
+  },
+  "filesChanged_one": "{{count}} file changed",
+  "filesChanged_other": "{{count}} files changed",
+  "earlierSteps_one": "{{count}} earlier step",
+  "earlierSteps_other": "{{count}} earlier steps",
+  "earlierStepsDone_one": "{{count}} earlier step done",
+  "earlierStepsDone_other": "{{count}} earlier steps done",
+  "moreSteps_one": "+{{count}} more step",
+  "moreSteps_other": "+{{count}} more steps",
+  "agentPlanAriaLabel": "Agent plan",
+  "planProgressAriaLabel": "Plan progress",
+  "checklistAriaLabel": "Within-turn checklist",
+  "showFewer": "Show fewer",
+  "stepsDoneSr": "{{completed}} of {{total}} steps done"
+}

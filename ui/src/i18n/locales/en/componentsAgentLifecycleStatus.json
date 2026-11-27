@@ -1,0 +1,41 @@
+{
+  "phases": {
+    "preparing": {
+      "label": "Preparing agent",
+      "description": "Required resources are being prepared. Work stays queued."
+    },
+    "verifying": {
+      "label": "Verifying agent",
+      "description": "The saved execution configuration is being checked. Work stays queued."
+    },
+    "pausing": {
+      "label": "Pausing agent",
+      "description": "Waiting for execution and required resources to stop."
+    },
+    "resuming": {
+      "label": "Resuming agent",
+      "description": "Required resources are being started. Work stays queued."
+    },
+    "terminating": {
+      "label": "Terminating agent",
+      "description": "Stopping execution before resource cleanup."
+    },
+    "cleaningUp": {
+      "label": "Cleaning up agent",
+      "description": "Required resources are being removed. Termination is not complete."
+    }
+  },
+  "failed": {
+    "preparing": "Agent preparation failed",
+    "verifying": "Agent verification failed",
+    "pausing": "Agent pause failed",
+    "resuming": "Agent resume failed",
+    "terminating": "Agent termination failed",
+    "cleaningUp": "Agent cleanup failed"
+  },
+  "refreshError": "Could not refresh agent lifecycle status.",
+  "retrying": "Retrying…",
+  "retryNow": "Retry now",
+  "retryHintManual": "Retry now checks the saved configuration again immediately.",
+  "retryHintAuto": "Paperclip retries automatically; Retry now checks again immediately."
+}

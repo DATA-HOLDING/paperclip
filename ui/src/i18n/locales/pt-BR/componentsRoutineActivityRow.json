@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "testReceived": "Conexão funcionando · Nenhuma execução ou tarefa criada",
+    "testRejected": "Atualize a chave no seu app e reenvie",
+    "received": "Autenticação aprovada",
+    "rejected": "Confira a chave no app que envia",
+    "sourceWebhook": "Webhook",
+    "sourceSchedule": "Agendamento",
+    "sourceManual": "Manual",
+    "taskCreated": "Tarefa criada"
+  },
+  "actions": {
+    "webhookTestReceived": "Teste de conexão aprovado",
+    "webhookTestRejected": "Teste de conexão rejeitado",
+    "webhookReceived": "Evento de webhook recebido",
+    "webhookRejected": "Falha na autenticação do webhook",
+    "created": "Rotina criada",
+    "updated": "Rotina atualizada",
+    "triggerCreated": "Gatilho adicionado",
+    "triggerUpdated": "Gatilho atualizado",
+    "triggerDeleted": "Gatilho removido",
+    "triggerRemoved": "Gatilho removido",
+    "triggerRestored": "Gatilho restaurado",
+    "triggerSetupFinished": "Configuração do webhook concluída",
+    "triggerTestStarted": "Teste de webhook iniciado",
+    "triggerSecretRotated": "Chave do webhook substituída",
+    "runTriggered": "Rotina iniciada",
+    "runCreated": "Execução criada"
+  }
+}
